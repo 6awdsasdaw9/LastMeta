@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: c0aa460550093a946b3363c79ecd00ac
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - prefabVirtualMouse: {fileID: 4196366782621939137, guid: de53fa1da0da6b4438be33893c4739d8, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
