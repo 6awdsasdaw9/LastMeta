@@ -3,12 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - InitialPoint
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
@@ -38,6 +39,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: -4
+    uniqueID: 1678958265
+    locked: 0
+  - name: -3
+    uniqueID: 3834849339
+    locked: 0
+  - name: -2
+    uniqueID: 2904672303
+    locked: 0
+  - name: -1
+    uniqueID: 702570149
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: 1
+    uniqueID: 2612920811
+    locked: 0
+  - name: 2
+    uniqueID: 3115122753
+    locked: 0
+  - name: 3
+    uniqueID: 2968807401
     locked: 0
