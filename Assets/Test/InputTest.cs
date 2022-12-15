@@ -1,36 +1,28 @@
+using Code.Character.Hero;
 using Code.Services.Input;
-using Test.Platformer_Toolkit_Character_Controller;
+using Test.Hero;
 using UnityEngine;
 
 namespace Test
 {
     public class InputTest : MonoBehaviour
     {
-        [SerializeField] private characterMovement move;
-        [SerializeField] private characterJump jump;
-
+        [SerializeField] private HeroMovement move;
+        [SerializeField] private HeroJump jump;
+        [SerializeField] private checkJump _checkJump;
         private InputService testInput;
 
 
         private void Start()
         {
-            //testInput.test.Player.testJump.performed += ctx => jump.OnJump(ctx);
             testInput = new InputService();
-            testInput.PlayerJumpEvent += context =>  jump.OnJump(context);
-            testInput.PlayerJumpEvent += context =>  jump.OnJump(context);
-      
-        }
+          //  testInput.PlayerJumpEvent += context =>  _checkJump.OnJump(context);
+           testInput.PlayerJumpEvent += context =>  jump.OnJump(context);
+            testInput.PlayerMovementEvent += context => move.OnMovement(context);
+            testInput.PlayerCrochEvent += context => move.OnCrouch(context);
 
-     
 
-        void Update()
-        {
-            float horizontal = testInput.horizontalAxis;
-            /*if (testInput.verticalAxis > 0)
-            {
-                fdfsdfdsfs();
-            }*/
-            move.directionX = horizontal;
         }
+        
     }
 }

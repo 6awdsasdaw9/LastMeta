@@ -7,15 +7,8 @@ namespace Code.Services.Input
     public class InputService
     {
         private InputMaster _master;
-        public float horizontalAxis => _master.Player.Movement.ReadValue<Vector2>().x;
-        public float verticalAxis => _master.Player.Movement.ReadValue<Vector2>().y;
-        public Vector2 Axis => _master.Player.Movement.ReadValue<Vector2>();
-
+        
         private bool _isInteractPressed = false;
-
-
-
-
         public InputService()
         {
             _master = new InputMaster();
@@ -36,13 +29,20 @@ namespace Code.Services.Input
 
         private void ConnectToEvents()
         {
+            _master.Player.Horizontal.performed += Movement;
+            _master.Player.Horizontal.canceled += Movement;
+            
             _master.Player.Dash.started += Dash;
-            _master.Player.Punch.started += Punch;
-            _master.Player.Punch.canceled += StopShoot;
-            _master.Player.testJump.started  +=  ctx => Jump(ctx);
-
-            _master.Player.HandToHand.started += SkillButton_1;
-            _master.Player.TakeAGun.started += SkillButton_2;
+            _master.Player.Attack.started += Attack;
+            _master.Player.Attack.canceled += StopAttack;
+            _master.Player.Jump.started  +=  Jump;
+            _master.Player.Crouch.started  +=  Crouch;
+            _master.Player.Crouch.canceled  +=  Crouch;
+            
+            
+            
+            _master.Player.Skill_One.started += SkillButton_One;
+            _master.Player.Skill_Two.started += SkillButton_Two;
 
 
             _master.UI.MenuPause.started += OpenMenu;
@@ -65,6 +65,15 @@ namespace Code.Services.Input
         public void EneblePlayerInput() => _master.Player.Enable();
         public void DisablePlayerInput() => _master.Player.Disable();
 
+        private void  Movement(InputAction.CallbackContext context)
+        {
+            Debug.Log(context.ReadValue<float>());
+            PlayerMovementEvent?.Invoke(context);
+        }
+
+        public event Action<InputAction.CallbackContext> PlayerMovementEvent;
+        private void Crouch(InputAction.CallbackContext context) => PlayerCrochEvent?.Invoke(context);
+        public event Action<InputAction.CallbackContext> PlayerCrochEvent;
 
         private void Jump(InputAction.CallbackContext context) => PlayerJumpEvent?.Invoke(context);
         public event Action<InputAction.CallbackContext> PlayerJumpEvent;
@@ -72,7 +81,7 @@ namespace Code.Services.Input
         private void Dash(InputAction.CallbackContext context) => PlayerDashEvent?.Invoke();
         public event Action PlayerDashEvent;
 
-        private void Punch(InputAction.CallbackContext context)
+        private void Attack(InputAction.CallbackContext context)
         {
             /* if (_mainCamera?.ScreenToViewportPoint(Input.mousePosition).y >= 0.05f)*/
             {
@@ -82,11 +91,11 @@ namespace Code.Services.Input
 
         public event Action PlayerPunchEvent;
 
-        private void SkillButton_1(InputAction.CallbackContext context) => SkillButton_1_Event?.Invoke();
+        private void SkillButton_One(InputAction.CallbackContext context) => SkillButton_1_Event?.Invoke();
         public event Action SkillButton_1_Event;
-        private void SkillButton_2(InputAction.CallbackContext context) => SkillButton_2_Event?.Invoke();
+        private void SkillButton_Two(InputAction.CallbackContext context) => SkillButton_2_Event?.Invoke();
         public event Action SkillButton_2_Event;
-        private void StopShoot(InputAction.CallbackContext context) => PlayerStopShootEvent?.Invoke();
+        private void StopAttack(InputAction.CallbackContext context) => PlayerStopShootEvent?.Invoke();
         public event Action PlayerStopShootEvent;
 
         #endregion
