@@ -3,12 +3,12 @@ using UnityEngine.InputSystem;
 
 namespace Code.Character.Hero
 {
-    [RequireComponent(typeof(Rigidbody2D),typeof(CharacterCollision))]
+    [RequireComponent(typeof(Rigidbody),typeof(CharacterCollision))]
     public class HeroMovement : MonoBehaviour
     {
         [Header("Components")] 
         private MovementLimiter _movementLimiter;
-        private Rigidbody2D _body;
+        private Rigidbody _body;
         private CharacterCollision _collision;
 
         [Header("Movement Stats")] 
@@ -53,7 +53,7 @@ namespace Code.Character.Hero
         {
             _movementLimiter = new MovementLimiter(true);
             _movementLimiter.OnDisableMovementMode += StopMovement;
-            _body = GetComponent<Rigidbody2D>();
+            _body = GetComponent<Rigidbody>();
             _collision = GetComponent<CharacterCollision>();
         }
 

@@ -3,13 +3,13 @@ using UnityEngine.InputSystem;
 
 namespace Code.Character.Hero
 {
-    [RequireComponent(typeof(Rigidbody2D), typeof(CharacterCollision))]
+    [RequireComponent(typeof(Rigidbody), typeof(CharacterCollision))]
     public class HeroJump : MonoBehaviour
     {
         [Header("Components")] private MovementLimiter _movementLimiter;
         private CharacterCollision _collision;
         private CharacterJuice _juice;
-        private Rigidbody2D _body;
+        private Rigidbody _body;
         private Vector2 _velocity;
 
         [Header("Jumping Stats")] [SerializeField] [Range(2f, 5.5f)]
@@ -55,7 +55,7 @@ namespace Code.Character.Hero
 
         private void Awake()
         {
-            _body = GetComponent<Rigidbody2D>();
+            _body = GetComponent<Rigidbody>();
             _collision = GetComponent<CharacterCollision>();
             _juice = GetComponentInChildren<CharacterJuice>();
             _movementLimiter = new MovementLimiter(true);
@@ -136,8 +136,8 @@ namespace Code.Character.Hero
         private void SetPhysics()
         {
             //Определите шкалу гравитации персонажа, используя предоставленную статистику. Умножьте это на gravMultiplier, используемый позже
-            var newGravity = new Vector2(0, -2 * _jumpHeight / (_timeToJumpApex * _timeToJumpApex));
-            _body.gravityScale = newGravity.y / Physics2D.gravity.y * _gravMultiplier;
+            // var newGravity = new Vector2(0, -2 * _jumpHeight / (_timeToJumpApex * _timeToJumpApex));
+            // _body.gravityScale = newGravity.y / Physics2D.gravity.y * _gravMultiplier;
         }
 
 
@@ -208,10 +208,11 @@ namespace Code.Character.Hero
                 _jumpBufferCounter = 0;
                 _coyoteTimeCounter = 0;
                 
-                if (jumpPhase < 1)
+                /*if (jumpPhase < 1)
                     _jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * _body.gravityScale * _jumpHeight);
                 else
-                    _jumpSpeed = _jumpHeight  * _body.gravityScale;
+                    _jumpSpeed = _jumpHeight  * _body.gravityScale;*/
+                _jumpSpeed = _jumpHeight;
                 
                 jumpPhase += 1;
 

@@ -25,8 +25,8 @@ namespace Code.Character
         }
 
         private bool GroundCheck() => 
-            Physics2D.Raycast(transform.position + _colliderOffset, Vector2.down, _groundLength, _groundLayer) || 
-            Physics2D.Raycast(transform.position - _colliderOffset, Vector2.down, _groundLength, _groundLayer);
+            Physics.Raycast(transform.position + _colliderOffset, Vector2.down, _groundLength, _groundLayer) || 
+            Physics.Raycast(transform.position - _colliderOffset, Vector2.down, _groundLength, _groundLayer);
 
 
         private void OnDrawGizmos()

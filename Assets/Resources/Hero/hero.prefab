@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6659652504158788575}
-  - component: {fileID: 6659652504158788547}
-  - component: {fileID: 6659652504158788572}
   - component: {fileID: 4355872365580197732}
   - component: {fileID: 6659652504158788561}
   - component: {fileID: 6659652504158788546}
@@ -38,43 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &6659652504158788547
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6659652504158788574}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.44634956
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 2
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
---- !u!70 &6659652504158788572
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6659652504158788574}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 510a13912115f5b428902468b59475a1, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.6}
-  m_Size: {x: 0.25, y: 1.4}
-  m_Direction: 0
 --- !u!95 &4355872365580197732
 Animator:
   serializedVersion: 3
@@ -125,6 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 4355872365580197732}
   _hero: {fileID: 6659652504158788560}
+  _collision: {fileID: 0}
 --- !u!114 &6659652504158788560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,21 +100,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 2.02
-  crouchSpeed: 0.346
-  maxAcceleration: 52
-  maxDecceleration: 52
-  maxTurnSpeed: 80
-  maxAirAcceleration: 0
-  maxAirDeceleration: 0
-  maxAirTurnSpeed: 80
-  friction: 0
-  useAcceleration: 1
-  itsTheIntro: 1
+  _crouchSpeed: 0.5
+  _maxAcceleration: 52
+  _maxDecceleration: 52
+  _maxTurnSpeed: 80
+  _maxAirAcceleration: 0
+  _maxAirDeceleration: 0
+  _maxAirTurnSpeed: 80
   directionX: 0
-  velocity: {x: 0, y: 0}
-  onGround: 0
-  pressingKey: 0
-  isCrouch: 0
 --- !u!114 &6659652504158788562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,14 +125,12 @@ MonoBehaviour:
   upwardMovementMultiplier: 1.1
   downwardMovementMultiplier: 0.3
   maxAirJumps: 1
+  variablejumpHeight: 0
   jumpCutOff: 3.4
   speedLimit: 4.3
   coyoteTime: 0.05
   jumpBuffer: 8
-  jumpSpeed: 5
-  gravMultiplier: 0
-  canJumpAgain: 1
-  onGround: 0
+  _desiredJump: 0
 --- !u!1 &6659652505123971937
 GameObject:
   m_ObjectHideFlags: 0
