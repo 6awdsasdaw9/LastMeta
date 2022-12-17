@@ -76,7 +76,6 @@ namespace Code.Character.Hero
        
             if (directionX != 0)
             {
-                Rotation();
                 pressingMove = true;
             }
             else
@@ -108,8 +107,7 @@ namespace Code.Character.Hero
             _desiredVelocity = new Vector2(directionX, 0f) * maxSpeed;
 
         
-        private void Rotation() =>
-            transform.localScale = new Vector3(directionX > 0 ? 1 : -1, 1, 1);
+   
 
         private void MoveWithAcceleration()
         {
