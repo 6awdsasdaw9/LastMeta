@@ -22,6 +22,9 @@ namespace Code.Character.Hero
 
         private void Update()
         {
+            
+            SetAnimationDirection();
+            
             if (_collision.onGround)
             {
                 PlayMove();
@@ -31,15 +34,23 @@ namespace Code.Character.Hero
             {
                 _animator.SetBool(Jump_b, true);
 
-            _animator.SetBool(Move_b,false);
+                _animator.SetBool(Move_b, false);
             }
 
+            
             PlayCrouch();
+        }
+
+        private void SetAnimationDirection()
+        {
+            if (_hero.directionX != 0)
+            {
+                _animator.SetFloat(Direction_f, _hero.directionX);
+            }
         }
 
         private void PlayMove()
         {
-            _animator.SetFloat(Direction_f, _hero.directionX);
             _animator.SetBool(Move_b, _hero.directionX != 0);
         }
 
