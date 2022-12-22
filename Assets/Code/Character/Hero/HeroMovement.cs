@@ -61,6 +61,7 @@ namespace Code.Character.Hero
         private void Update()
         { 
             SetDesiredVelocity();
+            Rotation();
         }
 
         private void FixedUpdate()
@@ -84,6 +85,9 @@ namespace Code.Character.Hero
             }
         }
 
+
+        
+
         public void OnCrouch(InputAction.CallbackContext context)
         {
             if (context.started)
@@ -96,15 +100,17 @@ namespace Code.Character.Hero
         public Vector2 GetVelocity() =>
             _velocity;
 
+        private void Rotation() =>
+            transform.localScale = new Vector3(directionX > 0 ? 1 : -1, 1, 1);
+
+        private void SetDesiredVelocity() =>
+            _desiredVelocity = new Vector2(directionX, 0f) * maxSpeed;
         private void StopMovement()
         {
             directionX = 0;
             pressingCrouch = false;
             pressingMove = false;
         }
-
-        private void SetDesiredVelocity() =>
-            _desiredVelocity = new Vector2(directionX, 0f) * maxSpeed;
 
         
    

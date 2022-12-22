@@ -11,8 +11,8 @@ namespace Code.Character.Hero
         [SerializeField] private HeroMovement _hero;
         [SerializeField] private CharacterCollision _collision;
 
-        private readonly int Move_b = Animator.StringToHash("Move");
-        private readonly int Direction_f = Animator.StringToHash("Direction");
+        //private readonly int Move_b = Animator.StringToHash("Move");
+        private readonly int Speed_f = Animator.StringToHash("Speed");
         private readonly int Jump_b = Animator.StringToHash("Jump");
         private readonly int Dash_t = Animator.StringToHash("Dash");
         private readonly int Crouch_b = Animator.StringToHash("Crouch");
@@ -34,7 +34,7 @@ namespace Code.Character.Hero
             {
                 _animator.SetBool(Jump_b, true);
 
-                _animator.SetBool(Move_b, false);
+                //_animator.SetBool(Move_b, false);
             }
 
             
@@ -45,13 +45,13 @@ namespace Code.Character.Hero
         {
             if (_hero.directionX != 0)
             {
-                _animator.SetFloat(Direction_f, _hero.directionX);
+                _animator.SetFloat(Speed_f, Mathf.Abs(_hero.directionX));
             }
         }
 
         private void PlayMove()
         {
-            _animator.SetBool(Move_b, _hero.directionX != 0);
+           // _animator.SetBool(Move_b, _hero.directionX != 0);
         }
 
         private void PlayCrouch()
