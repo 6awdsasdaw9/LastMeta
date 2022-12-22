@@ -9,7 +9,7 @@ namespace Code.Character.Hero
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private HeroMovement _hero;
-        [SerializeField] private CharacterCollision _collision;
+        [SerializeField] private HeroCollision _collision;
 
         //private readonly int Move_b = Animator.StringToHash("Move");
         private readonly int Speed_f = Animator.StringToHash("Speed");
@@ -43,10 +43,8 @@ namespace Code.Character.Hero
 
         private void SetAnimationDirection()
         {
-            if (_hero.directionX != 0)
-            {
                 _animator.SetFloat(Speed_f, Mathf.Abs(_hero.directionX));
-            }
+            
         }
 
         private void PlayMove()

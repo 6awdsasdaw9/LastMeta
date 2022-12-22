@@ -14,7 +14,7 @@ public class checkJump : MonoBehaviour
 
     private HeroMovement _controller;
     private Rigidbody2D _body;
-    private CharacterCollision _ground;
+    private HeroCollision _ground;
     private Vector2 _velocity;
 
     private int _jumpPhase;
@@ -27,7 +27,7 @@ public class checkJump : MonoBehaviour
     void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
-        _ground = GetComponent<CharacterCollision>();
+        _ground = GetComponent<HeroCollision>();
         _controller = GetComponent<HeroMovement>();
 
         _defaultGravityScale = 1f;

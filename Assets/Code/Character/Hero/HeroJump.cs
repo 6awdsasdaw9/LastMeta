@@ -3,11 +3,11 @@ using UnityEngine.InputSystem;
 
 namespace Code.Character.Hero
 {
-    [RequireComponent(typeof(Rigidbody), typeof(CharacterCollision))]
+    [RequireComponent(typeof(Rigidbody), typeof(HeroCollision))]
     public class HeroJump : MonoBehaviour
     {
         [Header("Components")] private MovementLimiter _movementLimiter;
-        private CharacterCollision _collision;
+        private HeroCollision _collision;
         private CharacterJuice _juice;
         private Rigidbody _body;
         private Vector2 _velocity;
@@ -56,7 +56,7 @@ namespace Code.Character.Hero
         private void Awake()
         {
             _body = GetComponent<Rigidbody>();
-            _collision = GetComponent<CharacterCollision>();
+            _collision = GetComponent<HeroCollision>();
             _juice = GetComponentInChildren<CharacterJuice>();
             _movementLimiter = new MovementLimiter(true);
             _defaultGravityScale = 1f;

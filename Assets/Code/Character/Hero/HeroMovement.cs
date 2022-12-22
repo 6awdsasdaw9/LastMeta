@@ -3,19 +3,17 @@ using UnityEngine.InputSystem;
 
 namespace Code.Character.Hero
 {
-    [RequireComponent(typeof(Rigidbody),typeof(CharacterCollision))]
+    [RequireComponent(typeof(Rigidbody), typeof(HeroCollision))]
     public class HeroMovement : MonoBehaviour
     {
-        [Header("Components")] 
-        private MovementLimiter _movementLimiter;
+        [Header("Components")] private MovementLimiter _movementLimiter;
         private Rigidbody _body;
-        private CharacterCollision _collision;
+        private HeroCollision _collision;
 
-        [Header("Movement Stats")] 
-        
-        [SerializeField, Range(0f, 20f)]   public float maxSpeed = 10f;
+        [Header("Movement Stats")] [SerializeField, Range(0f, 20f)]
+        public float maxSpeed = 10f;
 
-        [SerializeField, Range(0f, 1f)]   private float _crouchSpeed = 0.5f;
+        [SerializeField, Range(0f, 1f)] private float _crouchSpeed = 0.5f;
 
         [SerializeField, Range(0f, 100f)] [Tooltip("How fast to reach max speed")]
         public float _maxAcceleration = 52f;
@@ -34,7 +32,7 @@ namespace Code.Character.Hero
 
         [SerializeField, Range(0f, 100f)] [Tooltip("How fast to stop when changing direction when in mid-air")]
         public float _maxAirTurnSpeed = 80f;
-        
+
 
         [Header("Calculations")] public float directionX;
         private Vector2 _desiredVelocity;
@@ -44,7 +42,7 @@ namespace Code.Character.Hero
         private float _deceleration;
         private float _turnSpeed;
 
-   
+
         [Header("Current State")] private bool pressingMove;
         public bool isCrouch => _collision.onGround && pressingCrouch;
         private bool pressingCrouch;
@@ -54,12 +52,12 @@ namespace Code.Character.Hero
             _movementLimiter = new MovementLimiter(true);
             _movementLimiter.OnDisableMovementMode += StopMovement;
             _body = GetComponent<Rigidbody>();
-            _collision = GetComponent<CharacterCollision>();
+            _collision = GetComponent<HeroCollision>();
         }
 
 
         private void Update()
-        { 
+        {
             SetDesiredVelocity();
             Rotation();
         }
@@ -74,7 +72,7 @@ namespace Code.Character.Hero
         {
             if (_movementLimiter.characterCanMove)
                 directionX = context.ReadValue<float>();
-       
+
             if (directionX != 0)
             {
                 pressingMove = true;
@@ -86,25 +84,29 @@ namespace Code.Character.Hero
         }
 
 
-        
-
         public void OnCrouch(InputAction.CallbackContext context)
         {
             if (context.started)
                 pressingCrouch = true;
 
-            else 
+            else
                 pressingCrouch = false;
         }
 
         public Vector2 GetVelocity() =>
             _velocity;
 
-        private void Rotation() =>
-            transform.localScale = new Vector3(directionX > 0 ? 1 : -1, 1, 1);
+        private void Rotation()
+        {
+            if (directionX != 0)
+            {
+                transform.localScale = new Vector3(directionX > 0 ? 1 : -1, 1, 1);
+            }
+        }
 
         private void SetDesiredVelocity() =>
             _desiredVelocity = new Vector2(directionX, 0f) * maxSpeed;
+
         private void StopMovement()
         {
             directionX = 0;
@@ -112,8 +114,6 @@ namespace Code.Character.Hero
             pressingMove = false;
         }
 
-        
-   
 
         private void MoveWithAcceleration()
         {
@@ -136,10 +136,10 @@ namespace Code.Character.Hero
             {
                 _maxSpeedChange = _deceleration * Time.deltaTime;
             }
-            
+
             _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange) *
-                         (isCrouch ? _crouchSpeed : 1);
-            
+                          (isCrouch ? _crouchSpeed : 1);
+
             _body.velocity = _velocity;
         }
     }
