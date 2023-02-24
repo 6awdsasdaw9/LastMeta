@@ -1,4 +1,4 @@
-using Code.Infrastructure.Services;
+/*using Code.Infrastructure.Services;
 using UnityEngine;
 
 namespace Code.Infrastructure.AssetManagement
@@ -8,4 +8,4 @@ namespace Code.Infrastructure.AssetManagement
         GameObject Instantiate(string path);
         GameObject Instantiate(string path, Vector3 at);
     }
-}
+}*/

@@ -11,7 +11,10 @@ namespace Code.Character.Enemies
         private static readonly int isMoving_b = Animator.StringToHash("IsMoving");
         private static readonly int attack_t = Animator.StringToHash("Attack");
     
-        void Awake() => _animator = GetComponent<Animator>();
+        void Awake()
+        {
+            _animator = GetComponent<Animator>();
+        }
 
         public void PlayDeath() => _animator.SetTrigger(death_t);
         public void PlayWin() => _animator.SetTrigger(win_t);
@@ -23,7 +26,7 @@ namespace Code.Character.Enemies
             _animator.SetFloat(speed_f,speed);
         }
     
-        public void StopMove() =>  _animator.SetBool(isMoving_b,false);
+        public void StopMoving() =>  _animator.SetBool(isMoving_b,false);
 
     }
 }

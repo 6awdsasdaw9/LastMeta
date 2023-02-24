@@ -1,6 +1,5 @@
 using Code.Infrastructure.AssetManagement;
-using Code.Infrastructure.Facroty;
-using Code.Infrastructure.Services;
+using Code.Services;
 using Code.Services.Input;
 
 namespace Code.Infrastructure.States
@@ -28,16 +27,13 @@ namespace Code.Infrastructure.States
         {
         }
 
-        private void EnterLoadLevel() => 
+        private void EnterLoadLevel() =>
             _stateMachine.Enter<LoadLevelState, string>("Main");
 
 
         private void RegisterServices()
         {
-            Game.inputService = new InputService();
-            AllServices.Container.RegisterSingle<IGameFactory>(new GameFactory(AllServices.Container.Single<IAssets>()));
+            //  Game.inputService = new InputService();
         }
-
-     
     }
 }

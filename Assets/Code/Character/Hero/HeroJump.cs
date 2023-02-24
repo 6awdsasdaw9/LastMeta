@@ -1,5 +1,7 @@
+using Code.Services.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 namespace Code.Character.Hero
 {
@@ -52,28 +54,36 @@ namespace Code.Character.Hero
         private bool _currentlyJumping;
         private bool _canJumpAgain;
         private int jumpPhase;
+        private InputController _input;
 
         private void Awake()
         {
             _body = GetComponent<Rigidbody>();
             _collision = GetComponent<HeroCollision>();
             _juice = GetComponentInChildren<CharacterJuice>();
-            _movementLimiter = new MovementLimiter(true);
+           // _movementLimiter = new MovementLimiter(true);
             _defaultGravityScale = 1f;
         }
-
-        public void OnJump(InputAction.CallbackContext context)
+        
+        [Inject]
+        private void Construct(InputController input,MovementLimiter limiter)
         {
-            if (_movementLimiter.characterCanMove)
-            {
-                if (context.started)
-                {
-                    _desiredJump = true;
-                    _pressingJump = true;
-                }
+            _movementLimiter = limiter;
+            _input = input;
+            _input.PlayerJumpEvent += OnJump;
+        }
 
-                if (context.canceled) _pressingJump = false;
+        private void OnJump(InputAction.CallbackContext context)
+        {
+            if (!_movementLimiter.charactersCanMove) return;
+           
+            if (context.started)
+            {
+                _desiredJump = true;
+                _pressingJump = true;
             }
+
+            if (context.canceled) _pressingJump = false;
         }
 
         private void Update()

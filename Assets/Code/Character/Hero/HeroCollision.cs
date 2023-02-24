@@ -3,7 +3,7 @@ using UnityEngine.Serialization;
 
 //This script is used by both movement and jump to detect when the character is touching the ground
 
-namespace Code.Character
+namespace Code.Character.Hero
 {
     public class HeroCollision : MonoBehaviour
     {

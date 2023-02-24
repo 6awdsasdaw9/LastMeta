@@ -2,22 +2,28 @@ using System;
 
 namespace Code.Character
 {
-    [Serializable]
-    internal class MovementLimiter
+    public class MovementLimiter
     {
-        public bool characterCanMove { get; private set; }
+        public bool charactersCanMove { get; private set; }
         public Action OnDisableMovementMode;
         public Action OnEnableMovementMode;
-        public MovementLimiter(bool canMove)
+
+        public MovementLimiter()
         {
-            characterCanMove = canMove;
+            charactersCanMove = true;
         }
 
 
         public void DisableMovement()
         {
-            characterCanMove = false;
+            charactersCanMove = false;
             OnDisableMovementMode?.Invoke();
-        } 
+        }
+
+        public void EnableMovement()
+        {
+            charactersCanMove = true;
+            OnEnableMovementMode?.Invoke();
+        }
     }
 }

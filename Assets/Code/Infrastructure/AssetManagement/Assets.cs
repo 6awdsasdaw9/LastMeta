@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 namespace Code.Infrastructure.AssetManagement
 {
@@ -16,4 +16,4 @@ namespace Code.Infrastructure.AssetManagement
             return Object.Instantiate(heroPrefab);
         }
     }
-}
+}*/

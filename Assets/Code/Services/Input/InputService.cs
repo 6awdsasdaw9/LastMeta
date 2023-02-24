@@ -4,9 +4,13 @@ using UnityEngine.InputSystem;
 
 namespace Code.Services.Input
 {
-    public class InputService
+    public interface IInputService
     {
-        private InputMaster _master;
+    }
+
+    public class InputService : IInputService
+    {
+        private readonly InputMaster _master;
         
         private bool _isInteractPressed = false;
         public InputService()
