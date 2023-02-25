@@ -1,13 +1,10 @@
-using Code.Infrastructure.AssetManagement;
 using Code.Services;
-using Code.Services.Input;
 
 namespace Code.Infrastructure.States
 {
     //Start work in GameBootstrapper.It is first gamestate
     public class BootstrapState : IState
     {
-        private const string Initial = "Initial";
         private GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
 
@@ -19,21 +16,16 @@ namespace Code.Infrastructure.States
 
         public void Enter()
         {
-            RegisterServices();
-            _sceneLoader.Load(Initial, onLoaded: EnterLoadLevel);
+            _sceneLoader.Load(Constants.initialScene, onLoaded: EnterLoadLevel);
         }
 
         public void Exit()
         {
         }
 
-        private void EnterLoadLevel() =>
-            _stateMachine.Enter<LoadLevelState, string>("Main");
-
-
-        private void RegisterServices()
+        private void EnterLoadLevel()
         {
-            //  Game.inputService = new InputService();
+            _stateMachine.Enter<LoadLevelState, string>(Constants.homeScene);
         }
     }
 }

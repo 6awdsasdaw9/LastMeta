@@ -8,13 +8,12 @@ namespace Code.Infrastructure.States
 {
     public class LoadLevelState : IPayloadedState<string>
     {
-        private const string InitialPointTag = "InitialPoint";
+
      
 
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
-        private readonly IGameFactory _gameFactory;
 
         public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain)
         {
@@ -35,16 +34,8 @@ namespace Code.Infrastructure.States
 
         private void onLoaded()
         {
-            var hero = _gameFactory.CreateHero(GameObject.FindWithTag(InitialPointTag));
-
-            _gameFactory.CreateHud();
-
-            CameraFollow(hero);
-
             _stateMachine.Enter<GameLoopState>();
         }
 
-        private void CameraFollow(GameObject hero) =>
-            Camera.main.GetComponent<CameraFollow>().Follow(hero);
     }
 }
