@@ -17,7 +17,7 @@ namespace Code.CameraLogic
         private Vector3 _target;
 
         private const float offsetX = 0.5f;
-        private const float offsetY = 1.7f;
+        private const float offsetY = 1.6f;
 
         //private float _inputX => Game.inputService.horizontalAxis;
         [SerializeField] private bool isHavingBounds;

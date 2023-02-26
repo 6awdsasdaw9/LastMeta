@@ -20,7 +20,7 @@ namespace Code.Objects
 
         private void Start()
         {
-            transform.DORotate(GetAngle(), _cycleLength,RotateMode.FastBeyond360).SetLoops(1, LoopType.Restart);
+            transform.DORotate(GetAngle(), _cycleLength,RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart);
         }
 
         private Vector3 GetAngle()

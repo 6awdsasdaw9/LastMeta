@@ -87,6 +87,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -201,6 +202,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -665,6 +678,28 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      WhiteVoid_3: 9040218494634756596
+      WhiteVoid_15: -8584016905148029696
+      WhiteVoid_4: -2815905774470695277
+      WhiteVoid_6: 874740048144089818
+      WhiteVoid_7: -3510634230479259628
+      WhiteVoid_8: 9036394659075197242
+      WhiteVoid_13: 7618979124160449687
+      WhiteVoid_9: -5690957767368846372
+      WhiteVoid_0: 6118454059346354983
+      WhiteVoid_16: 1177221619316219989
+      WhiteVoid_5: 4516834782462914116
+      WhiteVoid_10: -6453043082909968075
+      WhiteVoid_19: 63154542991370435
+      WhiteVoid_18: -5883440423588953960
+      WhiteVoid_17: -3271497066423591441
+      WhiteVoid_1: -8240409327047407245
+      WhiteVoid_14: 4141453699029912012
+      WhiteVoid_20: -6382067396735820453
+      WhiteVoid_2: -352728679018982569
+      WhiteVoid_11: 1281549268539313759
+      WhiteVoid_12: 4230401478523688238
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

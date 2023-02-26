@@ -15,7 +15,13 @@ MonoBehaviour:
   Source: {fileID: 2800000, guid: e4a8598b4a7f9de41bf934bafbc2ddce, type: 3}
   Method: 0
   Weights: {x: 1, y: 2, z: 1}
+  VConversionCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   UseDitherPattern: 1
-  DitherPattern: {fileID: 11400000, guid: 218fec54e28fcca42abd36f468ac506a, type: 2}
+  DitherPattern: {fileID: 11400000, guid: 665add148214f504fb57f8e4d6317dee, type: 2}
   GeneratedFileName: 
   AutoGenerateFileName: 1

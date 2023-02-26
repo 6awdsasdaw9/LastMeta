@@ -156,6 +156,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -270,6 +271,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1217,6 +1230,51 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      RealHero_18: -6879923814172351936
+      RealHero_16: -8516700480580993473
+      RealHero_28: 6928747644046997208
+      RealHero_19: 5591881494627350332
+      RealHero_32: 7811765977471553009
+      RealHero_43: -7302407973540764542
+      RealHero_0: 4973902899288373548
+      RealHero_8: 2709887551466658609
+      RealHero_14: -871215311416680735
+      RealHero_39: 3994463921275636749
+      RealHero_10: -902216851986149130
+      RealHero_33: -1523256290433739957
+      RealHero_6: -3729368290958007930
+      RealHero_35: -946231604386704576
+      RealHero_15: -4558995606719850750
+      RealHero_17: 6903570534995345659
+      RealHero_30: 8139546772469417850
+      RealHero_34: -7776098632729103434
+      RealHero_13: -1845589588126630601
+      RealHero_20: -1481337882870648565
+      RealHero_25: 641813578724978489
+      RealHero_1: 6557868268019416675
+      RealHero_42: 7967908988258967315
+      RealHero_24: 2262528131796139722
+      RealHero_29: -4169294358572194688
+      RealHero_36: -1255938324049667726
+      RealHero_38: -1850142530118454781
+      RealHero_11: 4754511633898951658
+      RealHero_27: 4855807563228741362
+      RealHero_3: -8738228590650118502
+      RealHero_4: -8516960340551110456
+      RealHero_5: -5918301871206358729
+      RealHero_40: 3938250577934077822
+      RealHero_2: 4787096867511115812
+      RealHero_23: -1054984179564455553
+      RealHero_7: -5775844656991049898
+      RealHero_31: 3476983457804003384
+      RealHero_41: -7842385522541629893
+      RealHero_12: 3886637131880908262
+      RealHero_26: -1093476325131652324
+      RealHero_22: -2758060850502399441
+      RealHero_37: 1907323733599892437
+      RealHero_21: -1063352309903961552
+      RealHero_9: -1280560328406603937
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -90,6 +90,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -204,6 +205,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -689,6 +702,29 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Lola_8: -3814554691009002888
+      Lola_7: -6031812072069944805
+      Lola_14: -2385175403428684160
+      Lola_2: -5114798142304652766
+      Lola_10: -5421555591378889201
+      Lola_9: 4200694981135851814
+      Lola_18: -1704156480697372957
+      Lola_0: 6125796527213767124
+      Lola_20: -3858949752083349315
+      Lola_17: 2058025976213569725
+      Lola_21: 5132829447886939312
+      Lola_12: 4767671783707077987
+      Lola_13: -1265319682071353130
+      Lola_6: 7398625755770491242
+      Lola_19: 5109686199271364730
+      Lola_1: -2579441127179474397
+      Lola_3: -414577771920984919
+      Lola_4: 1693224919265351159
+      Lola_5: 820609022803992835
+      Lola_15: -5692811948945596593
+      Lola_11: 49229852731331885
+      Lola_16: -1949196195867576936
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
