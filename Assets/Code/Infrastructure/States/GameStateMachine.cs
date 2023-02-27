@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using Code.Logic;
 using Code.Services;
+using ModestTree;
 
 namespace Code.Infrastructure.States
 {
     //Create in Game
     public class GameStateMachine
     {
-
-        private Dictionary<Type, IExitableState> _states;
+        private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _activeState;
 
         public GameStateMachine(SceneLoader sceneLoader, LoadingCurtain loadingCurtain)

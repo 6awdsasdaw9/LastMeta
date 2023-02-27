@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-
-#if UNITY_EDITOR
 using UnityEditor;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
+#if UNITY_EDITOR
 #endif
 
-using UnityEngine;
-
-namespace UnityEngine.Tilemaps
+namespace Code.Logic.AnimathionTile.Tiles.Animated_Tile.Scripts
 {
     [Serializable]
     [CreateAssetMenu(fileName = "New Animated Tile", menuName = "Tiles/Animated Tile")]

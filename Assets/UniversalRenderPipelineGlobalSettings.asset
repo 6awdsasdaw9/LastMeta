@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: UniversalRenderPipelineGlobalSettings
   m_EditorClassIdentifier: 
   k_AssetVersion: 2
-  lightLayerName0: Envinoment
+  lightLayerName0: ButtomEnvironment
   lightLayerName1: Character
-  lightLayerName2: TopEnvnoment
+  lightLayerName2: TopEnvironment
   lightLayerName3: Light Layer 3
   lightLayerName4: Light Layer 4
   lightLayerName5: Light Layer 5

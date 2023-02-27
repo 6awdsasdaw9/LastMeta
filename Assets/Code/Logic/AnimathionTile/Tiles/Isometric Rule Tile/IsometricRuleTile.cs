@@ -1,6 +1,8 @@
 ﻿using System;
+using Code.Logic.AnimathionTile.Tiles.Rule_Tile.Scripts;
+using UnityEngine;
 
-namespace UnityEngine
+namespace Code.Logic.AnimathionTile.Tiles.Isometric_Rule_Tile
 {
     public class IsometricRuleTile<T> : IsometricRuleTile
     {

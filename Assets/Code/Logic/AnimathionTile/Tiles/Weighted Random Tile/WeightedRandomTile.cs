@@ -1,10 +1,10 @@
 using System;
-
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
+using UnityEngine;
+using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
-namespace UnityEngine.Tilemaps {
+namespace Code.Logic.AnimathionTile.Tiles.Weighted_Random_Tile {
     [Serializable]
     public struct WeightedSprite {
         public Sprite Sprite;

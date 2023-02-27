@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using Code.Logic.AnimathionTile.Tiles.Isometric_Rule_Tile;
+using Code.Logic.AnimathionTile.Tiles.Rule_Tile.Scripts;
 using UnityEngine;
 
 namespace UnityEditor

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Code.Logic.AnimathionTile.Tiles.Rule_Tile.Scripts;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace UnityEngine
+namespace Code.Logic.AnimathionTile.Tiles.Rule_Override_Tile.Scripts
 {
     [Serializable]
     [CreateAssetMenu(fileName = "New Rule Override Tile", menuName = "Tiles/Rule Override Tile")]

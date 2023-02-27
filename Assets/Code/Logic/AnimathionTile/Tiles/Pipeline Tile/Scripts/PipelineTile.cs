@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-
-#if UNITY_EDITOR
 using UnityEditor;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+#if UNITY_EDITOR
 #endif
 
-using UnityEngine;
-
-namespace UnityEngine.Tilemaps
+namespace Code.Logic.AnimathionTile.Tiles.Pipeline_Tile.Scripts
 {
 	[Serializable]
 	[CreateAssetMenu(fileName = "New Pipeline Tile", menuName = "Tiles/Pipeline Tile")]

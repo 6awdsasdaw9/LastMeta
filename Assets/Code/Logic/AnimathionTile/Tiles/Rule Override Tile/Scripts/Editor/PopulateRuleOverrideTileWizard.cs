@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Code.Logic.AnimathionTile.Tiles.Rule_Override_Tile.Scripts;
+using Code.Logic.AnimathionTile.Tiles.Rule_Tile.Scripts;
 
 namespace UnityEditor {
 	public class PopulateRuleOverideTileWizard : ScriptableWizard {

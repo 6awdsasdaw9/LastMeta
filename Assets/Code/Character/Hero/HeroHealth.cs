@@ -1,8 +1,9 @@
 using System;
 using Code.Data;
+using Code.Data.DataPersistence;
 using UnityEngine;
 
-namespace Code.Character
+namespace Code.Character.Hero
 {
     public interface IHealth
     {
@@ -12,40 +13,27 @@ namespace Code.Character
         void TakeDamage(float damage);
     }
 
-    public class HeroHealth : MonoBehaviour, IHealth
+    public class HeroHealth : MonoBehaviour, IHealth, IDataPersistence
     {
-        private DataHealth _dataHealth;
+        private HealthData _healthData;
         public event Action HealthChanged;
 
         public float Current
         {
-            get => _dataHealth.currentHP;
+            get => _healthData.currentHP;
             set
             {
-                if (_dataHealth.currentHP != value)
+                if (_healthData.currentHP != value)
                 {
-                    _dataHealth.currentHP = value;
+                    _healthData.currentHP = value;
                 }
             }
         }
 
         public float Max
         {
-            get => _dataHealth.maxHP;
-            set => _dataHealth.maxHP = value;
-        }
-
-        public void LoadProgress(PlayerProgress progress)
-        {
-            _dataHealth = progress.heroDataHealth;
-
-            HealthChanged?.Invoke();
-        }
-
-        public void UpdateProgress(PlayerProgress progress)
-        {
-            progress.heroDataHealth.currentHP = Current;
-            progress.heroDataHealth.maxHP = Max;
+            get => _healthData.maxHP;
+            set => _healthData.maxHP = value;
         }
 
 
@@ -57,6 +45,18 @@ namespace Code.Character
             Current -= damage;
 
             HealthChanged?.Invoke();
+        }
+
+        public void LoadData(ProgressData progressData)
+        {
+            _healthData = progressData.heroHealth;
+            HealthChanged?.Invoke();
+        }
+
+        public void SaveData(ProgressData progressData)
+        {
+            progressData.heroHealth.currentHP = Current;
+            progressData.heroHealth.maxHP = Max;
         }
     }
 }

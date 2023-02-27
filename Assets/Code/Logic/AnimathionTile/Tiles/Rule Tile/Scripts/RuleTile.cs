@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Code.Logic.AnimathionTile.Tiles.Rule_Override_Tile.Scripts;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace UnityEngine
+namespace Code.Logic.AnimathionTile.Tiles.Rule_Tile.Scripts
 {
     public class RuleTile<T> : RuleTile
     {

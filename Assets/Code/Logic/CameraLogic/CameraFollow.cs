@@ -1,10 +1,9 @@
-using System;
 using Code.Character.Hero;
 using Code.Debugers;
 using UnityEngine;
 using Zenject;
 
-namespace Code.CameraLogic
+namespace Code.Logic.CameraLogic
 {
     public class CameraFollow : MonoBehaviour
     {
@@ -19,11 +18,11 @@ namespace Code.CameraLogic
         private const float offsetX = 0.5f;
         private const float offsetY = 1.6f;
 
-        //private float _inputX => Game.inputService.horizontalAxis;
         [SerializeField] private bool isHavingBounds;
         [SerializeField] private float distanceBoundsX, distanceBoundsY;
         private Vector2 minBounds, maxBounds;
 
+        //private float _inputX => Game.inputService.horizontalAxis;
         private float _inputY
         {
             get
@@ -51,15 +50,11 @@ namespace Code.CameraLogic
 
         private void LateUpdate()
         {
-            Log.ColorLog(IsOutBounds().ToString());
             if (_following == null)
                 return;
 
-            if (!IsOutBounds())
-            {
+            if (!IsOutBounds()) 
                 _target = GetFollowingPosition();
-            }
-
 
             transform.position = Vector3.SmoothDamp(transform.position, _target, ref _velocity, _dampTime);
         }

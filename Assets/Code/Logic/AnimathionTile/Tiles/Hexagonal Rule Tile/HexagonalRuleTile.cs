@@ -1,8 +1,9 @@
 using System;
-using System.Collections.Generic;
+using Code.Logic.AnimathionTile.Tiles.Rule_Tile.Scripts;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace UnityEngine
+namespace Code.Logic.AnimathionTile.Tiles.Hexagonal_Rule_Tile
 {
     public class HexagonalRuleTile<T> : HexagonalRuleTile
     {

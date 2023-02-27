@@ -4,7 +4,7 @@ using System;
 namespace Code.Data
 {
     [Serializable]
-    public class DataHealth
+    public class HealthData
     {
         public float currentHP;
         public float maxHP;
