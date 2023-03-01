@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Code.Debugers;
 using Code.Logic;
 using Code.Services;
-using ModestTree;
+
 
 namespace Code.Infrastructure.States
 {
@@ -14,6 +15,7 @@ namespace Code.Infrastructure.States
 
         public GameStateMachine(SceneLoader sceneLoader, LoadingCurtain loadingCurtain)
         {
+            Log.ColorLog("Create State Machine");
             _states = new Dictionary<Type, IExitableState>
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader),
@@ -25,12 +27,14 @@ namespace Code.Infrastructure.States
         public void Enter<TState>() where TState : class, IState
         {
             IState state = ChangeState<TState>();
+            Log.ColorLog($"Enter {state} ");
             state.Enter();
         }
 
         public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadedState<TPayload>
         {
             TState state = ChangeState<TState>();
+            Log.ColorLog($"Enter Payload {state} ");
             state.Enter(payload);
         }
 

@@ -44,6 +44,7 @@ namespace Code.Character.Hero
 
         public bool isCrouch => _collision.onGround && pressingCrouch;
 
+
         [Inject]
         private void Construct(InputController input, MovementLimiter limiter)
         {
@@ -53,8 +54,8 @@ namespace Code.Character.Hero
             _movementLimiter = limiter;
             _movementLimiter.OnDisableMovementMode += StopMovement;
         }
-
-
+        
+        
         private void Update()
         {
             SetDesiredVelocity();
