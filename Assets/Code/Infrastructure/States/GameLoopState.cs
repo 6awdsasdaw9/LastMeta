@@ -2,6 +2,7 @@ namespace Code.Infrastructure.States
 {
     public class GameLoopState : IState
     {
+
         public GameLoopState(GameStateMachine stateMachine)
         {
         }
@@ -12,6 +13,8 @@ namespace Code.Infrastructure.States
 
         public void Enter()
         {
+         
         }
+
     }
 }

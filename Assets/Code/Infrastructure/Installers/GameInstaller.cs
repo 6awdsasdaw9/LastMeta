@@ -13,6 +13,8 @@ public class GameInstaller : MonoInstaller<GameInstaller>, IInitializable, ICoro
         BindInterfaces();
         
         BindStateMachine();
+        
+        BindTimeOfDayController();
     }
 
     public void Initialize() => 
@@ -25,6 +27,12 @@ public class GameInstaller : MonoInstaller<GameInstaller>, IInitializable, ICoro
     private void BindStateMachine() =>
         Container.Bind<GameStateMachine>()
             .AsSingle().WithArguments(new SceneLoader(this), curtain).NonLazy();
+
+    private void BindTimeOfDayController()
+    {
+       // Container.Bind<TimeOfDayController>().AsSingle().NonLazy();
+       Container.BindInterfacesAndSelfTo<TimeOfDayController>().AsSingle().NonLazy();
+    }
 }
 
 
