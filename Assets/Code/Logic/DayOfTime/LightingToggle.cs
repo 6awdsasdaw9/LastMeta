@@ -9,34 +9,26 @@ namespace Code.Logic.DayOfTime
     {
         [SerializeField] private Light _directionLight;
 
-        private float _morningIntensity, _eveningIntensity, _nightIntensity;
-        private Vector3 _morningAngle, _eveningAngle, _nightAngle;
-
+        private LightingSettings _lightingSettings;
         private TimeOfDayController _timeOfDayController;
+        private float _animationDuration;
 
-        private float delay;
+
         [Inject]
         private void Construct(TimeOfDayController timeOfDayController, GameSettings gameSettings)
         {
-            delay = gameSettings.dayTimeInSeconds / 3;
             _timeOfDayController = timeOfDayController;
-            
-            _morningAngle = gameSettings.morningAngle;
-            _eveningAngle = gameSettings.eveningAngle;
-            _nightAngle = gameSettings.nightAngle;
-
-            _morningIntensity = gameSettings.morningIntensity;
-            _eveningIntensity = gameSettings.eveningIntensity;
-            _nightIntensity = gameSettings.nightIntensity;
+            _animationDuration = timeOfDayController.durationOfDay;
+            _lightingSettings = gameSettings.lightingSettings;
         }
 
         private void Start()
         {
             SubscribeToEvent();
-            SetLighting();
+            SetLighting(_timeOfDayController.dayTimeNormalized);
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             UnsubscribeToEvent();
         }
@@ -47,7 +39,7 @@ namespace Code.Logic.DayOfTime
             _timeOfDayController.OnEvening += SetEveningLighting;
             _timeOfDayController.OnNight += SetNightLighting;
         }
-        
+
         private void UnsubscribeToEvent()
         {
             _timeOfDayController.OnMorning -= SetMorningLighting;
@@ -55,38 +47,43 @@ namespace Code.Logic.DayOfTime
             _timeOfDayController.OnNight -= SetNightLighting;
         }
 
-        private void SetLighting()
-        {
-            switch (_timeOfDayController.CurrentTimeOfDay)
-            {
-                case TimeOfDay.Morning:
-                    SetMorningLighting();
-                    break;
-                case TimeOfDay.Evening:
-                    SetEveningLighting();
-                    break;
-                case TimeOfDay.Night:
-                    SetNightLighting();
-                    break;
-            }
-        }
-
         private void SetMorningLighting()
         {
-            _directionLight.transform.DORotate(_morningAngle,delay);
-            _directionLight.DOIntensity(_morningIntensity, delay);
+            var angle = _lightingSettings.morningAngle;
+            var intensity = _lightingSettings.morningIntensity;
+            SetLighting(angle, intensity);
         }
 
         private void SetEveningLighting()
         {
-            _directionLight.transform.DORotate(_eveningAngle, delay);
-            _directionLight.DOIntensity(_eveningIntensity, delay);
+            var angle = _lightingSettings.eveningAngle;
+            var intensity = _lightingSettings.eveningIntensity;
+            SetLighting(angle, intensity);
         }
 
         private void SetNightLighting()
         {
-            _directionLight.transform.DORotate(_nightAngle, delay);
-            _directionLight.DOIntensity(_nightIntensity, delay);
+            var angle = _lightingSettings.nightAngle;
+            var intensity = _lightingSettings.nightIntensity;
+            SetLighting(angle, intensity);
+        }
+
+        private void SetLighting(Vector3 angle, float intensity)
+        {
+            _directionLight.transform.DOLocalRotate(angle, _animationDuration);
+            _directionLight.DOIntensity(intensity, _animationDuration);
+        }
+
+        private void SetLighting(float dayTimeNormalized)
+        {
+            var targetAngle = Mathf.Lerp(_lightingSettings.morningAngle.y, _lightingSettings.eveningAngle.y,
+                dayTimeNormalized);
+            _directionLight.transform.DOLocalRotate(
+                new Vector3(targetAngle, _lightingSettings.morningAngle.x, _lightingSettings.morningAngle.z), 0);
+
+            var targetIntensity = Mathf.Lerp(_lightingSettings.morningIntensity, _lightingSettings.nightIntensity,
+                dayTimeNormalized);
+            _directionLight.DOIntensity(targetIntensity, 0);
         }
     }
 }

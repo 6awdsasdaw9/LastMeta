@@ -6,7 +6,9 @@ using Zenject;
 
 public class GameInstaller : MonoInstaller<GameInstaller>, IInitializable, ICoroutineRunner
 {
+    public bool isBindStateMachine = true;
     public LoadingCurtain curtain;
+    
     
     public override void InstallBindings()
     {
@@ -24,9 +26,14 @@ public class GameInstaller : MonoInstaller<GameInstaller>, IInitializable, ICoro
         Container.BindInterfacesTo<GameInstaller>()
             .FromInstance(this);
 
-    private void BindStateMachine() =>
+    private void BindStateMachine()
+    {
+        if(!isBindStateMachine)
+            return;
+        
         Container.Bind<GameStateMachine>()
             .AsSingle().WithArguments(new SceneLoader(this), curtain).NonLazy();
+    }
 
     private void BindTimeOfDayController()
     {
