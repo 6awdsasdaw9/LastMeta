@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Code.Logic.DayOfTime
 {
-    public class LightingToggle : MonoBehaviour
+    public class DirectionLightingToggle : MonoBehaviour
     {
         [SerializeField] private Light _directionLight;
 

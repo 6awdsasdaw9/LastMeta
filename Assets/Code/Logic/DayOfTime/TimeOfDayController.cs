@@ -1,16 +1,17 @@
 using Code.Data;
 using UnityEngine;
 using Zenject;
+
 public class TimeOfDayController : ITickable
 {
-    
     private float _dayTimeInSeconds;
     private float _currentSecondsOfDay;
     public float dayTimeNormalized => _currentSecondsOfDay / _dayTimeInSeconds;
     public float durationOfDay => _dayTimeInSeconds / 3;
     public TimeOfDay currentTimeOfDay { get; private set; }
-    
+
     public delegate void TimeOfDayEvent();
+
     public event TimeOfDayEvent OnMorning;
     public event TimeOfDayEvent OnEvening;
     public event TimeOfDayEvent OnNight;
@@ -37,15 +38,15 @@ public class TimeOfDayController : ITickable
 
     private void CheckTimeOfDay()
     {
-        if (_currentSecondsOfDay < durationOfDay /*&& currentTimeOfDay != TimeOfDay.Morning*/)
+        if (_currentSecondsOfDay < durationOfDay && currentTimeOfDay != TimeOfDay.Morning)
         {
             SetCurrentTimeOfDay(TimeOfDay.Morning);
         }
-        else if (_currentSecondsOfDay < durationOfDay * 2 /*&& currentTimeOfDay != TimeOfDay.Evening*/)
+        else if (_currentSecondsOfDay < durationOfDay * 2 && currentTimeOfDay != TimeOfDay.Evening)
         {
             SetCurrentTimeOfDay(TimeOfDay.Evening);
         }
-        else
+        else if (currentTimeOfDay != TimeOfDay.Night)
         {
             SetCurrentTimeOfDay(TimeOfDay.Night);
         }

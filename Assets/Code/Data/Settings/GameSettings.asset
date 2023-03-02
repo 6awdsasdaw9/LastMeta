@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957a180e785540399d934d2a2fbe28b8, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  dayTime: 50
+  dayTimeInSeconds: 50
+  lightingSettings:
+    morningIntensity: 0.9
+    eveningIntensity: 0.9
+    nightIntensity: 0.2
+    morningAngle: {x: 0, y: 0.5, z: 0}
+    eveningAngle: {x: 70, y: 0.5, z: 0}
+    nightAngle: {x: 70, y: 0.5, z: 0}
