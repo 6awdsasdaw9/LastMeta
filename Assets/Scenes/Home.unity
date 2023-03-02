@@ -317,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f41fecd33d44d4b4018b58769d5770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _directionLight: {fileID: 1211884538}
 --- !u!1 &266118015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,6 +1059,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 173820937}
     m_Modifications:
+    - target: {fileID: 329086282, guid: f6ba0b87a84e71d43a03167bb2efe0bd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2042644829635128147, guid: f6ba0b87a84e71d43a03167bb2efe0bd, type: 3}
       propertyPath: m_Name
       value: Directional Light
@@ -1112,6 +1117,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6ba0b87a84e71d43a03167bb2efe0bd, type: 3}
+--- !u!108 &1211884538 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 2042644829635128148, guid: f6ba0b87a84e71d43a03167bb2efe0bd, type: 3}
+  m_PrefabInstance: {fileID: 1211884537}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1436111962
 GameObject:
   m_ObjectHideFlags: 0

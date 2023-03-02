@@ -1,15 +1,12 @@
 using Code.Data;
-using Code.Debugers;
 using UnityEngine;
 using Zenject;
-
-
 public class TimeOfDayController : ITickable
 {
-    private float _dayTime;
-    private float _currentTime;
-
-    private float _morningTime, _eveningTime, _nightTime;
+    private float _dayTimeInSeconds;
+    private float _currentSecondsOfDay;
+    public float DayTimeNormalized => _currentSecondsOfDay / _dayTimeInSeconds;
+    public TimeOfDay CurrentTimeOfDay { get; private set; }
     
     public delegate void TimeOfDayEvent();
     public event TimeOfDayEvent OnMorning;
@@ -20,38 +17,62 @@ public class TimeOfDayController : ITickable
     [Inject]
     private void Construct(GameSettings settings)
     {
-        _dayTime = settings.dayTime;
-        _morningTime = 0;
-        _eveningTime = _dayTime / 2;
-        _nightTime = _dayTime - _dayTime / 3;
+        _dayTimeInSeconds = settings.dayTimeInSeconds;
     }
 
     public void Tick()
     {
-       ClockMovement();
-       CheckTimeOfDay();
+        ClockMovement();
+        CheckTimeOfDay();
     }
 
     private void ClockMovement()
     {
-        _currentTime += Time.deltaTime;
-        if (_currentTime >= _dayTime)
-            _currentTime = 0;
+        _currentSecondsOfDay += Time.deltaTime;
+        if (_currentSecondsOfDay >= _dayTimeInSeconds)
+            _currentSecondsOfDay = 0;
     }
 
     private void CheckTimeOfDay()
     {
-        if (_currentTime >= _morningTime && _currentTime < _eveningTime)
+        if (_currentSecondsOfDay < _dayTimeInSeconds * 0.25f)
         {
-            OnMorning?.Invoke(); // вызываем событие утра
+            SetCurrentTimeOfDay(TimeOfDay.Morning);
         }
-        else if (_currentTime >= _eveningTime && _currentTime < _nightTime)
+        else if (_currentSecondsOfDay < _dayTimeInSeconds * 0.75f)
         {
-            OnEvening?.Invoke(); // вызываем событие вечера
+            SetCurrentTimeOfDay(TimeOfDay.Evening);
         }
         else
         {
-            OnNight?.Invoke(); // вызываем событие ночи
+            SetCurrentTimeOfDay(TimeOfDay.Night);
         }
     }
+
+    private void SetCurrentTimeOfDay(TimeOfDay newTimeOfDay)
+    {
+        if (newTimeOfDay == CurrentTimeOfDay) return;
+
+        CurrentTimeOfDay = newTimeOfDay;
+
+        switch (CurrentTimeOfDay)
+        {
+            case TimeOfDay.Morning:
+                OnMorning?.Invoke();
+                break;
+            case TimeOfDay.Evening:
+                OnEvening?.Invoke();
+                break;
+            case TimeOfDay.Night:
+                OnNight?.Invoke();
+                break;
+        }
+    }
+}
+
+public enum TimeOfDay
+{
+    Morning,
+    Evening,
+    Night
 }

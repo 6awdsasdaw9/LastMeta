@@ -30,8 +30,7 @@ public class GameInstaller : MonoInstaller<GameInstaller>, IInitializable, ICoro
 
     private void BindTimeOfDayController()
     {
-       // Container.Bind<TimeOfDayController>().AsSingle().NonLazy();
-       Container.BindInterfacesAndSelfTo<TimeOfDayController>().AsSingle().NonLazy();
+        Container.BindInterfacesAndSelfTo<TimeOfDayController>().AsSingle().NonLazy();
     }
 }
 
