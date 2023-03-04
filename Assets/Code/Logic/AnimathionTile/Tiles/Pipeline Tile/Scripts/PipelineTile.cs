@@ -7,8 +7,7 @@ using UnityEngine.Tilemaps;
 
 namespace Code.Logic.AnimathionTile.Tiles.Pipeline_Tile.Scripts
 {
-	[Serializable]
-	[CreateAssetMenu(fileName = "New Pipeline Tile", menuName = "Tiles/Pipeline Tile")]
+	[Serializable, CreateAssetMenu(fileName = "New Pipeline Tile", menuName = "Tiles/Pipeline Tile")]
 	public class PipelineTile : TileBase
 	{
 		[SerializeField]

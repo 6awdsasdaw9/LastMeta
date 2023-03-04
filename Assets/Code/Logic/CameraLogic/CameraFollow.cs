@@ -41,10 +41,10 @@ namespace Code.Logic.CameraLogic
 
         private void Start()
         {
-            _target = GetFollowingPosition();
-            transform.position = _target;
             minBounds = new Vector2(-distanceBoundsX - offsetX, -distanceBoundsY);
             maxBounds = new Vector2(distanceBoundsX + offsetX, distanceBoundsY);
+            _target = GetFollowingPosition();
+            transform.position = _target;
         }
 
 

@@ -11,8 +11,7 @@ namespace Code.Logic.AnimathionTile.Tiles.Rule_Tile.Scripts
         public sealed override Type m_NeighborType { get { return typeof(T); } }
     }
 
-    [Serializable]
-    [CreateAssetMenu(fileName = "New Rule Tile", menuName = "Tiles/Rule Tile")]
+    [Serializable, CreateAssetMenu(fileName = "New Rule Tile", menuName = "Tiles/Rule Tile")]
     public class RuleTile : TileBase
     {
 

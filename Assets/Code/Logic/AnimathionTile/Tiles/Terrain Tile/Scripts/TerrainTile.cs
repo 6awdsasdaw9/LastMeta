@@ -7,8 +7,7 @@ using UnityEngine.Tilemaps;
 
 namespace Code.Logic.AnimathionTile.Tiles.Terrain_Tile.Scripts
 {
-	[Serializable]
-	[CreateAssetMenu(fileName = "New Terrain Tile", menuName = "Tiles/Terrain Tile")]
+	[Serializable, CreateAssetMenu(fileName = "New Terrain Tile", menuName = "Tiles/Terrain Tile")]
 	public class TerrainTile : TileBase
 	{
 		[SerializeField]

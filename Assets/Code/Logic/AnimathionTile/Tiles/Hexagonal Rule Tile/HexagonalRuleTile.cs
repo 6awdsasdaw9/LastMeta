@@ -10,8 +10,7 @@ namespace Code.Logic.AnimathionTile.Tiles.Hexagonal_Rule_Tile
         public sealed override Type m_NeighborType { get { return typeof(T); } }
     }
 
-    [Serializable]
-    [CreateAssetMenu(fileName = "New Hexagonal Rule Tile", menuName = "Tiles/Hexagonal Rule Tile")]
+    [Serializable, CreateAssetMenu(fileName = "New Hexagonal Rule Tile", menuName = "Tiles/Hexagonal Rule Tile")]
     public class HexagonalRuleTile : RuleTile
     {
         private static readonly int[,] RotatedOrMirroredIndexes =

@@ -1,9 +1,7 @@
-using Code.Infrastructure.Factory;
 using Code.Logic;
 using Code.Services;
-using UnityEngine;
 
-namespace Code.Infrastructure.States
+namespace Code.Infrastructure.Factory.States
 {
     public class LoadLevelState : IPayloadedState<string>
     {

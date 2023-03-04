@@ -1,4 +1,5 @@
 using Code.Data;
+using Code.Data.Settings;
 using DG.Tweening;
 using UnityEngine;
 using Zenject;

@@ -1,4 +1,5 @@
 using System;
+using Code.Data.Stats;
 
 namespace Code.Data.DataPersistence
 {
@@ -8,5 +9,10 @@ namespace Code.Data.DataPersistence
         public HealthData heroHealth;
         public WorldData worldData;
         public PowerData heroPowerData;
+
+        public ProgressData(string initialScene)
+        {
+            worldData = new WorldData(initialScene);
+        }
     }
 }

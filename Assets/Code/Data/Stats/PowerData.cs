@@ -1,6 +1,6 @@
 using System;
 
-namespace Code.Data
+namespace Code.Data.Stats
 {
     [Serializable]
     public class PowerData

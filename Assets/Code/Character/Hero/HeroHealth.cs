@@ -1,6 +1,7 @@
 using System;
 using Code.Data;
 using Code.Data.DataPersistence;
+using Code.Data.Stats;
 using UnityEngine;
 
 namespace Code.Character.Hero

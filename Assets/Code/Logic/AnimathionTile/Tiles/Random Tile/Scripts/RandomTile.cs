@@ -8,8 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace Code.Logic.AnimathionTile.Tiles.Random_Tile.Scripts
 {
-    [Serializable]
-    [CreateAssetMenu(fileName = "New Random Tile", menuName = "Tiles/Random Tile")]
+    [Serializable, CreateAssetMenu(fileName = "New Random Tile", menuName = "Tiles/Random Tile")]
     public class RandomTile : Tile
     {
         [SerializeField]

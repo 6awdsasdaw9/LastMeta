@@ -1,81 +1,85 @@
 using Code.Data;
+using Code.Data.Settings;
 using UnityEngine;
 using Zenject;
 
-public class TimeOfDayController : ITickable
+namespace Code.Logic.DayOfTime
 {
-    private float _dayTimeInSeconds;
-    private float _currentSecondsOfDay;
-    public float dayTimeNormalized => _currentSecondsOfDay / _dayTimeInSeconds;
-    public float durationOfDay => _dayTimeInSeconds / 3;
-    public TimeOfDay currentTimeOfDay { get; private set; }
-
-    public delegate void TimeOfDayEvent();
-
-    public event TimeOfDayEvent OnMorning;
-    public event TimeOfDayEvent OnEvening;
-    public event TimeOfDayEvent OnNight;
-
-
-    [Inject]
-    private void Construct(GameSettings settings)
+    public class TimeOfDayController : ITickable
     {
-        _dayTimeInSeconds = settings.dayTimeInSeconds;
-    }
+        private float _dayTimeInSeconds;
+        private float _currentSecondsOfDay;
+        public float dayTimeNormalized => _currentSecondsOfDay / _dayTimeInSeconds;
+        public float durationOfDay => _dayTimeInSeconds / 3;
+        public TimeOfDay currentTimeOfDay { get; private set; }
 
-    public void Tick()
-    {
-        ClockMovement();
-        CheckTimeOfDay();
-    }
+        public delegate void TimeOfDayEvent();
 
-    private void ClockMovement()
-    {
-        _currentSecondsOfDay += Time.deltaTime;
-        if (_currentSecondsOfDay >= _dayTimeInSeconds)
-            _currentSecondsOfDay = 0;
-    }
+        public event TimeOfDayEvent OnMorning;
+        public event TimeOfDayEvent OnEvening;
+        public event TimeOfDayEvent OnNight;
 
-    private void CheckTimeOfDay()
-    {
-        if (_currentSecondsOfDay < durationOfDay && currentTimeOfDay != TimeOfDay.Morning)
+
+        [Inject]
+        private void Construct(GameSettings settings)
         {
-            SetCurrentTimeOfDay(TimeOfDay.Morning);
+            _dayTimeInSeconds = settings.dayTimeInSeconds;
         }
-        else if (_currentSecondsOfDay < durationOfDay * 2 && currentTimeOfDay != TimeOfDay.Evening)
+
+        public void Tick()
         {
-            SetCurrentTimeOfDay(TimeOfDay.Evening);
+            ClockMovement();
+            CheckTimeOfDay();
         }
-        else if (currentTimeOfDay != TimeOfDay.Night)
+
+        private void ClockMovement()
         {
-            SetCurrentTimeOfDay(TimeOfDay.Night);
+            _currentSecondsOfDay += Time.deltaTime;
+            if (_currentSecondsOfDay >= _dayTimeInSeconds)
+                _currentSecondsOfDay = 0;
+        }
+
+        private void CheckTimeOfDay()
+        {
+            if (_currentSecondsOfDay < durationOfDay && currentTimeOfDay != TimeOfDay.Morning)
+            {
+                SetCurrentTimeOfDay(TimeOfDay.Morning);
+            }
+            else if (_currentSecondsOfDay < durationOfDay * 2 && currentTimeOfDay != TimeOfDay.Evening)
+            {
+                SetCurrentTimeOfDay(TimeOfDay.Evening);
+            }
+            else if (currentTimeOfDay != TimeOfDay.Night)
+            {
+                SetCurrentTimeOfDay(TimeOfDay.Night);
+            }
+        }
+
+        private void SetCurrentTimeOfDay(TimeOfDay newTimeOfDay)
+        {
+            if (newTimeOfDay == currentTimeOfDay) return;
+
+            currentTimeOfDay = newTimeOfDay;
+
+            switch (currentTimeOfDay)
+            {
+                case TimeOfDay.Morning:
+                    OnMorning?.Invoke();
+                    break;
+                case TimeOfDay.Evening:
+                    OnEvening?.Invoke();
+                    break;
+                case TimeOfDay.Night:
+                    OnNight?.Invoke();
+                    break;
+            }
         }
     }
 
-    private void SetCurrentTimeOfDay(TimeOfDay newTimeOfDay)
+    public enum TimeOfDay
     {
-        if (newTimeOfDay == currentTimeOfDay) return;
-
-        currentTimeOfDay = newTimeOfDay;
-
-        switch (currentTimeOfDay)
-        {
-            case TimeOfDay.Morning:
-                OnMorning?.Invoke();
-                break;
-            case TimeOfDay.Evening:
-                OnEvening?.Invoke();
-                break;
-            case TimeOfDay.Night:
-                OnNight?.Invoke();
-                break;
-        }
+        Morning,
+        Evening,
+        Night
     }
-}
-
-public enum TimeOfDay
-{
-    Morning,
-    Evening,
-    Night
 }

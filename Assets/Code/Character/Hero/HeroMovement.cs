@@ -1,5 +1,6 @@
 ﻿using Code.Data;
 using Code.Data.DataPersistence;
+using Code.Data.Stats;
 using Code.Services.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,16 +12,15 @@ namespace Code.Character.Hero
     [RequireComponent(typeof(Rigidbody), typeof(HeroCollision))]
     public class HeroMovement : MonoBehaviour, IMovement, IDataPersistence
     {
-        [Header("Components")] [SerializeField]
         private MovementLimiter _movementLimiter;
-
+        private InputController _input;
+        
+        [Header("Components")] 
         [SerializeField] private Rigidbody _body;
         [SerializeField] private HeroCollision _collision;
-        private InputController _input;
 
-        [Header("Movement Stats")] [SerializeField, Range(0f, 20f)]
-        private float maxSpeed = 10f;
-
+        [Header("Movement Stats")] 
+        [SerializeField, Range(0f, 20f)] private float maxSpeed = 10f;
         [SerializeField, Range(0f, 1f)] private float _crouchSpeed = 0.5f;
         [SerializeField, Range(0f, 100f)] private float _maxAcceleration = 52f;
         [SerializeField, Range(0f, 100f)] private float _maxDeceleration = 52f;

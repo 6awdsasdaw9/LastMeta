@@ -10,13 +10,14 @@ namespace Code.Character.Hero
         public bool onGround { get; private set; }
 
 
-        [FormerlySerializedAs("groundLength")]
-        [Header("Collider Settings")]
-        [SerializeField] private float _groundLength = 0.95f;
+        [FormerlySerializedAs("groundLength"), Header("Collider Settings"), SerializeField]
+        
+        private float _groundLength = 0.95f;
         [SerializeField] private Vector3 _colliderOffset;
 
-        [Header("Layer Masks")]
-        [SerializeField] private LayerMask _groundLayer;
+        [Header("Layer Masks"), SerializeField]
+        
+        private LayerMask _groundLayer;
  
 
         private void Update()

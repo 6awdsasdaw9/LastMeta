@@ -8,8 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace Code.Logic.AnimathionTile.Tiles.Animated_Tile.Scripts
 {
-    [Serializable]
-    [CreateAssetMenu(fileName = "New Animated Tile", menuName = "Tiles/Animated Tile")]
+    [Serializable, CreateAssetMenu(fileName = "New Animated Tile", menuName = "Tiles/Animated Tile")]
     public class AnimatedTile : TileBase
     {
         public Sprite[] m_AnimatedSprites;

@@ -17,8 +17,7 @@ namespace Code.Logic.AnimathionTile.GridInformation.Tile_Scripts
         Color
     }
 
-    [Serializable]
-    [AddComponentMenu("Tilemap/Grid Information")]
+    [Serializable, AddComponentMenu("Tilemap/Grid Information")]
     public class GridInformation : MonoBehaviour, ISerializationCallbackReceiver
     {
         internal struct GridInformationValue
@@ -40,53 +39,29 @@ namespace Code.Logic.AnimathionTile.GridInformation.Tile_Scripts
             get { return m_PositionProperties; }
         }
 
-        [SerializeField]
-        [HideInInspector]
-        private List<GridInformationKey> m_PositionIntKeys = new List<GridInformationKey>();
+        [SerializeField, HideInInspector] private List<GridInformationKey> m_PositionIntKeys = new List<GridInformationKey>();
 
-        [SerializeField]
-        [HideInInspector]
-        private List<int> m_PositionIntValues = new List<int>();
+        [SerializeField, HideInInspector] private List<int> m_PositionIntValues = new List<int>();
 
-        [SerializeField]
-        [HideInInspector]
-        private List<GridInformationKey> m_PositionStringKeys = new List<GridInformationKey>();
+        [SerializeField, HideInInspector] private List<GridInformationKey> m_PositionStringKeys = new List<GridInformationKey>();
 
-        [SerializeField]
-        [HideInInspector]
-        private List<String> m_PositionStringValues = new List<String>();
+        [SerializeField, HideInInspector] private List<String> m_PositionStringValues = new List<String>();
 
-        [SerializeField]
-        [HideInInspector]
-        private List<GridInformationKey> m_PositionFloatKeys = new List<GridInformationKey>();
+        [SerializeField, HideInInspector] private List<GridInformationKey> m_PositionFloatKeys = new List<GridInformationKey>();
 
-        [SerializeField]
-        [HideInInspector]
-        private List<float> m_PositionFloatValues = new List<float>();
+        [SerializeField, HideInInspector] private List<float> m_PositionFloatValues = new List<float>();
 
-        [SerializeField]
-        [HideInInspector]
-        private List<GridInformationKey> m_PositionDoubleKeys = new List<GridInformationKey>();
+        [SerializeField, HideInInspector] private List<GridInformationKey> m_PositionDoubleKeys = new List<GridInformationKey>();
 
-        [SerializeField]
-        [HideInInspector]
-        private List<Double> m_PositionDoubleValues = new List<Double>();
+        [SerializeField, HideInInspector] private List<Double> m_PositionDoubleValues = new List<Double>();
 
-        [SerializeField]
-        [HideInInspector]
-        private List<GridInformationKey> m_PositionObjectKeys = new List<GridInformationKey>();
+        [SerializeField, HideInInspector] private List<GridInformationKey> m_PositionObjectKeys = new List<GridInformationKey>();
 
-        [SerializeField]
-        [HideInInspector]
-        private List<Object> m_PositionObjectValues = new List<Object>();
+        [SerializeField, HideInInspector] private List<Object> m_PositionObjectValues = new List<Object>();
 
-        [SerializeField]
-        [HideInInspector]
-        private List<GridInformationKey> m_PositionColorKeys = new List<GridInformationKey>();
+        [SerializeField, HideInInspector] private List<GridInformationKey> m_PositionColorKeys = new List<GridInformationKey>();
 
-        [SerializeField]
-        [HideInInspector]
-        private List<Color> m_PositionColorValues = new List<Color>();
+        [SerializeField, HideInInspector] private List<Color> m_PositionColorValues = new List<Color>();
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {

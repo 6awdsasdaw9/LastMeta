@@ -11,8 +11,7 @@ namespace Code.Logic.AnimathionTile.Tiles.Weighted_Random_Tile {
         public int Weight;
     }
 
-    [Serializable]
-    [CreateAssetMenu(fileName = "New Weighted Random Tile", menuName = "Tiles/Weighted Random Tile")]
+    [Serializable, CreateAssetMenu(fileName = "New Weighted Random Tile", menuName = "Tiles/Weighted Random Tile")]
     public class WeightedRandomTile : Tile {
         [SerializeField] public WeightedSprite[] Sprites;
 

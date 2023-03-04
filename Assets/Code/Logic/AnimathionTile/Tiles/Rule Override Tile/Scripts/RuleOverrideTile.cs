@@ -7,8 +7,7 @@ using UnityEngine.Tilemaps;
 
 namespace Code.Logic.AnimathionTile.Tiles.Rule_Override_Tile.Scripts
 {
-    [Serializable]
-    [CreateAssetMenu(fileName = "New Rule Override Tile", menuName = "Tiles/Rule Override Tile")]
+    [Serializable, CreateAssetMenu(fileName = "New Rule Override Tile", menuName = "Tiles/Rule Override Tile")]
     public class RuleOverrideTile : TileBase
     {
         [Serializable]

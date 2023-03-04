@@ -14,26 +14,30 @@ namespace Code.Character
         [SerializeField] Animator myAnimator;
         [SerializeField] GameObject characterSprite;
 
-        [Header("Components - Particles")]
-        [SerializeField] private ParticleSystem moveParticles;
+        [Header("Components - Particles"), SerializeField]
+        
+        private ParticleSystem moveParticles;
         [SerializeField] private ParticleSystem jumpParticles;
         [SerializeField] private ParticleSystem landParticles;
 
-        [Header("Components - Audio")]
-        [SerializeField] AudioSource jumpSFX;
+        [Header("Components - Audio"), SerializeField]
+        
+        AudioSource jumpSFX;
         [SerializeField] AudioSource landSFX;
 
-        [Header("Settings - Squash and Stretch")]
-        [SerializeField] bool squashAndStretch;
+        [Header("Settings - Squash and Stretch"), SerializeField]
+        
+        bool squashAndStretch;
         [SerializeField, Tooltip("Width Squeeze, Height Squeeze, Duration")] Vector3 jumpSquashSettings;
         [SerializeField, Tooltip("Width Squeeze, Height Squeeze, Duration")] Vector3 landSquashSettings;
         [SerializeField, Tooltip("How powerful should the effect be?")] public float landSqueezeMultiplier;
         [SerializeField, Tooltip("How powerful should the effect be?")] public float jumpSqueezeMultiplier;
         [SerializeField] float landDrop = 1;
 
-        [Header("Tilting")]
+        [Header("Tilting"), SerializeField]
 
-        [SerializeField] bool leanForward;
+        
+        bool leanForward;
         [SerializeField, Tooltip("How far should the character tilt?")] public float maxTilt;
         [SerializeField, Tooltip("How fast should the character tilt?")] public float tiltSpeed;
 
@@ -47,8 +51,9 @@ namespace Code.Character
         public bool landSqueezing;
         public bool playerGrounded;
 
-        [Header("Platformer Toolkit Stuff")]
-        [SerializeField] bool showJumpLine;
+        [Header("Platformer Toolkit Stuff"), SerializeField]
+        
+        bool showJumpLine;
 
         public bool cameraFalling = false;
 

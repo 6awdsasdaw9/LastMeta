@@ -14,28 +14,28 @@ namespace Code.Character.Hero
         private Rigidbody _body;
         private Vector2 _velocity;
 
-        [Header("Jumping Stats")] [SerializeField] [Range(2f, 5.5f)]
+        [Header("Jumping Stats"), SerializeField, Range(2f, 5.5f)]  
         private float _jumpHeight = 7.3f;
 
-        [SerializeField] [Range(0.2f, 1.25f)] private float _timeToJumpApex;
-        [SerializeField] [Range(0f, 5f)] private float upwardMovementMultiplier = 1f;
-        [SerializeField] [Range(1f, 10f)] private float downwardMovementMultiplier = 6.17f;
-        [SerializeField] [Range(0, 1)] private int maxAirJumps;
+        [SerializeField, Range(0.2f, 1.25f)]  private float _timeToJumpApex;
+        [SerializeField, Range(0f, 5f)]  private float upwardMovementMultiplier = 1f;
+        [SerializeField, Range(1f, 10f)]  private float downwardMovementMultiplier = 6.17f;
+        [SerializeField, Range(0, 1)]  private int maxAirJumps;
 
 
-        [Header("Options")] [Tooltip("Should the character drop when you let go of jump?")]
+        [Header("Options"), Tooltip("Should the character drop when you let go of jump?")] 
         public bool variablejumpHeight;
 
-        [SerializeField] [Range(1f, 10f)] [Tooltip("Gravity multiplier when you let go of jump")]
+        [SerializeField, Range(1f, 10f), Tooltip("Gravity multiplier when you let go of jump")]  
         public float jumpCutOff;
 
-        [SerializeField] [Tooltip("Максимальная скорость, с которой персонаж может упасть")]
+        [SerializeField, Tooltip("Максимальная скорость, с которой персонаж может упасть")] 
         private float speedLimit;
 
-        [SerializeField] [Range(0f, 0.3f)] [Tooltip("Сколько должно длиться время койота?")]
+        [SerializeField, Range(0f, 0.3f), Tooltip("Сколько должно длиться время койота?")]  
         private float coyoteTime = 0.15f;
 
-        [SerializeField] [Range(0f, 0.3f)] [Tooltip("Как далеко от земли кушируется прыжок?")]
+        [SerializeField, Range(0f, 0.3f), Tooltip("Как далеко от земли кушируется прыжок?")]  
         private float jumpBuffer = 0.15f;
 
 
@@ -45,7 +45,7 @@ namespace Code.Character.Hero
         private float _defaultGravityScale;
         private float _gravMultiplier;
 
-        [Header("Current State")] [SerializeField]
+        [Header("Current State"), SerializeField] 
         private bool _desiredJump;
 
         private float _jumpBufferCounter;

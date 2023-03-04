@@ -3,8 +3,7 @@ using UnityEngine.AI;
 
 namespace Code.Character.Enemies
 {
-    [RequireComponent(typeof(NavMeshAgent))]
-    [RequireComponent(typeof(EnemyAnimator))]
+    [RequireComponent(typeof(NavMeshAgent)), RequireComponent(typeof(EnemyAnimator))]
     public class AnimateAlongAgent : MonoBehaviour
     {
         private const float minimalVelocity = 0.05f;

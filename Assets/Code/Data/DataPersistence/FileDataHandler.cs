@@ -6,10 +6,10 @@ namespace Code.Data.DataPersistence
 {
     public class FileDataHandler
     {
-        private string dataDirPath = "";
-        private string dataFileName = "";
-        private bool useEncryption = false;
+        private readonly string dataDirPath;
+        private readonly string dataFileName ;
         private readonly string encryptionCodeWord = "word";
+        private bool useEncryption = false;
 
         public FileDataHandler(string dataDirPath, string dataFileName, bool useEncryption)
         {
