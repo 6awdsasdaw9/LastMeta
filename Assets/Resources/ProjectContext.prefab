@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 6125440624345032042}
   - component: {fileID: 4713273940500263974}
   m_Layer: 0
-  m_Name: DataManager
+  m_Name: DataService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,6 +123,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fileName: LastMetaData
   _useEncryption: 0
+  gameProgressData:
+    heroHealth:
+      currentHP: 0
+      maxHP: 0
+    worldData:
+      positionOnLevel:
+        level: 
+        position:
+          X: 0
+          Y: 0
+          Z: 0
+    heroPowerData:
+      damage: 0
+      damagedRadius: 0
 --- !u!1 &6558999020885046083
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9011417748388375610
 Transform:
   m_ObjectHideFlags: 0

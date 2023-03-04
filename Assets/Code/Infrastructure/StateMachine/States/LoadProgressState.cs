@@ -1,7 +1,7 @@
 using Code.Data.DataPersistence;
 using Zenject;
 
-namespace Code.Infrastructure.Factory.States
+namespace Code.Infrastructure.StateMachine.States
 {
     public class LoadProgressState :IState
     {

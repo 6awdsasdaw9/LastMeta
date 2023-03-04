@@ -1,7 +1,7 @@
 using UnityEngine;
 using LightingSettings = Code.Logic.DayOfTime.LightingSettings;
 
-namespace Code.Data.Settings
+namespace Code.Data.Configs
 {
     [CreateAssetMenu(fileName = "GameSettings", menuName = "ScriptableObjects/GameSettings/GameSettings")]
     public class GameSettings : ScriptableObject

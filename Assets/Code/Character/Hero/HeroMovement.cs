@@ -30,7 +30,8 @@ namespace Code.Character.Hero
         [SerializeField, Range(0f, 100f)] public float _maxAirTurnSpeed = 80f;
 
 
-        [Header("Calculations")] public float directionX;
+        [Header("Calculations")] 
+        public float directionX;
         private Vector2 _desiredVelocity;
         private Vector2 _velocity;
         private float _maxSpeedChange;

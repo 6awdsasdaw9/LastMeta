@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Code.Infrastructure.StateMachine.States;
 using Code.Logic;
 using Code.Services;
 
-namespace Code.Infrastructure.Factory.States
+namespace Code.Infrastructure.StateMachine
 {
     //Create in Game
     public class GameStateMachine

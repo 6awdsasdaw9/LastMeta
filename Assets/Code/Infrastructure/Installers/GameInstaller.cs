@@ -1,5 +1,6 @@
 using Code.Data.DataPersistence;
-using Code.Infrastructure.Factory.States;
+using Code.Infrastructure.StateMachine;
+using Code.Infrastructure.StateMachine.States;
 using Code.Logic;
 using Code.Logic.DayOfTime;
 using Code.Services;

@@ -1,6 +1,6 @@
 using Code.Services;
 
-namespace Code.Infrastructure.Factory.States
+namespace Code.Infrastructure.StateMachine.States
 {
     //Start work in GameBootstrapper.It is first gamestate
     public class BootstrapState : IState
