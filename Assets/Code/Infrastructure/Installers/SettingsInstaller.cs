@@ -9,10 +9,12 @@ namespace Code.Infrastructure.Installers
     public class SettingsInstaller: ScriptableObjectInstaller<SettingsInstaller>
     {
         public GameSettings settings;
+        public GameConfig config;
 
         public override void InstallBindings()
         {
             Container.BindInstance(settings);
+            Container.BindInstance(config);
         }
     }
 }

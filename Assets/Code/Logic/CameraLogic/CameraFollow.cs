@@ -1,5 +1,4 @@
 using Code.Character.Hero;
-using Code.Debugers;
 using UnityEngine;
 using Zenject;
 
@@ -9,6 +8,7 @@ namespace Code.Logic.CameraLogic
     {
         [SerializeField] private float _dampTime = 0.75f;
         [SerializeField] private bool _isCanLookDown = true;
+        [SerializeField] private bool _isCanMoveY = true;
         private bool _isCanMove = true;
 
         private Transform _following;
@@ -21,25 +21,14 @@ namespace Code.Logic.CameraLogic
         [SerializeField] private bool isHavingBounds;
         [SerializeField] private float distanceBoundsX, distanceBoundsY;
         private Vector2 minBounds, maxBounds;
+        
 
-        //private float _inputX => Game.inputService.horizontalAxis;
-        private float _inputY
+        [Inject] private void Construct(HeroMovement hero)
         {
-            get
-            {
-                /*if 
-                    (_isCanLookDown) return Game.inputService.verticalAxis;*/
-                return 0;
-            }
+            _following = hero.transform;
         }
 
-        [Inject]
-        private void Construct(HeroMovement hero)
-        {
-            _following = hero.gameObject.transform;
-        }
-
-        private void Start()
+        private void Awake()
         {
             minBounds = new Vector2(-distanceBoundsX - offsetX, -distanceBoundsY);
             maxBounds = new Vector2(distanceBoundsX + offsetX, distanceBoundsY);
@@ -47,32 +36,46 @@ namespace Code.Logic.CameraLogic
             transform.position = _target;
         }
 
-
         private void LateUpdate()
         {
-            if (_following == null)
+            if (_following == null || !_isCanMove)
+            {
                 return;
+            }
 
-            if (!IsOutBounds()) 
-                _target = GetFollowingPosition();
+            var x = _following.position.x;
+            var y = _following.position.y;
 
+            if (isHavingBounds)
+            {
+                CheckBounds(ref x, ref y);
+            }
+
+            _target = new Vector3(x, y , 0f) + _cameraOffset;
             transform.position = Vector3.SmoothDamp(transform.position, _target, ref _velocity, _dampTime);
         }
 
-        private bool IsOutBounds()
+        private void CheckBounds(ref float x, ref float y)
         {
-            return isHavingBounds && (_following.position.x < minBounds.x || _following.position.x > maxBounds.x);
+            x = Mathf.Clamp(x, minBounds.x, maxBounds.x);
+
+            if (_isCanMoveY)
+            {
+                y = Mathf.Clamp(y, minBounds.y, maxBounds.y);
+            }
         }
 
         private Vector3 GetFollowingPosition()
         {
-            return _following.position + _cameraOffset();
+            return _following.position + _cameraOffset;
         }
 
-        private Vector3 _cameraOffset() => new Vector3(offsetX /* * _inputX*/, offsetY + _inputY, -60f);
+        private Vector3 _cameraOffset => new Vector3(offsetX, offsetY, -60f);
 
-
-        public void CameraHandler(bool active) => _isCanMove = active;
+        public void CameraHandler(bool active)
+        {
+            _isCanMove = active;
+        }
 
         public void Follow(GameObject following)
         {
@@ -81,7 +84,11 @@ namespace Code.Logic.CameraLogic
 
         private void OnDrawGizmos()
         {
-            if (!isHavingBounds) return;
+            if (!isHavingBounds)
+            {
+                return;
+            }
+
             Gizmos.color = new Color32(150, 150, 0, 255);
             Gizmos.DrawRay(Vector3.zero, Vector3.up * distanceBoundsY);
             Gizmos.DrawRay(Vector3.zero, Vector3.down * distanceBoundsY);

@@ -1,7 +1,8 @@
-﻿using Code.Data;
+﻿using Code.Data.Configs;
 using Code.Data.DataPersistence;
 using Code.Data.Stats;
 using Code.Services.Input;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -13,25 +14,15 @@ namespace Code.Character.Hero
     public class HeroMovement : MonoBehaviour, IMovement, IDataPersistence
     {
         private MovementLimiter _movementLimiter;
-        private InputController _input;
-        
-        [Header("Components")] 
+        private PlayerConfig _config;
+
+        [Title("Components")] 
         [SerializeField] private Rigidbody _body;
         [SerializeField] private HeroCollision _collision;
+        
+        private float _maxSpeed = 10f;
 
-        [Header("Movement Stats")] 
-        [SerializeField, Range(0f, 20f)] private float maxSpeed = 10f;
-        [SerializeField, Range(0f, 1f)] private float _crouchSpeed = 0.5f;
-        [SerializeField, Range(0f, 100f)] private float _maxAcceleration = 52f;
-        [SerializeField, Range(0f, 100f)] private float _maxDeceleration = 52f;
-        [SerializeField, Range(0f, 100f)] private float _maxTurnSpeed = 80f;
-        [SerializeField, Range(0f, 100f)] public float _maxAirAcceleration;
-        [SerializeField, Range(0f, 100f)] public float _maxAirDeceleration;
-        [SerializeField, Range(0f, 100f)] public float _maxAirTurnSpeed = 80f;
-
-
-        [Header("Calculations")] 
-        public float directionX;
+        [HideInInspector] public float directionX;
         private Vector2 _desiredVelocity;
         private Vector2 _velocity;
         private float _maxSpeedChange;
@@ -40,23 +31,26 @@ namespace Code.Character.Hero
         private float _turnSpeed;
 
 
-        [Header("Current State")] private bool pressingMove;
+        public bool isCrouch => _collision.onGround && pressingCrouch;
+        private bool pressingMove;
         private bool pressingCrouch;
 
-        public bool isCrouch => _collision.onGround && pressingCrouch;
 
 
         [Inject]
-        private void Construct(InputController input, MovementLimiter limiter)
+        private void Construct(InputController input, MovementLimiter limiter,GameConfig config)
         {
-            //_input = input;
             input.PlayerCrochEvent += OnCrouch;
             input.PlayerMovementEvent += OnMovement;
+            
             _movementLimiter = limiter;
             _movementLimiter.OnDisableMovementMode += StopMovement;
+            
+            _config = config.playerConfig;
+            _maxSpeed = config.playerConfig.maxSpeed;
         }
-        
-        
+
+
         private void Update()
         {
             SetDesiredVelocity();
@@ -91,7 +85,7 @@ namespace Code.Character.Hero
         }
 
         private void SetDesiredVelocity() =>
-            _desiredVelocity = new Vector2(directionX, 0f) * maxSpeed;
+            _desiredVelocity = new Vector2(directionX, 0f) * _maxSpeed;
 
         public void StopMovement()
         {
@@ -103,9 +97,9 @@ namespace Code.Character.Hero
 
         private void MoveWithAcceleration()
         {
-            _acceleration = _collision.onGround ? _maxAcceleration : _maxAirAcceleration;
-            _deceleration = _collision.onGround ? _maxDeceleration : _maxAirDeceleration;
-            _turnSpeed = _collision.onGround ? _maxTurnSpeed : _maxAirTurnSpeed;
+            _acceleration = _collision.onGround ? _config.maxAcceleration : _config.maxAirAcceleration;
+            _deceleration = _collision.onGround ? _config.maxDeceleration : _config.maxAirDeceleration;
+            _turnSpeed = _collision.onGround ? _config.maxTurnSpeed : _config.maxAirTurnSpeed;
 
             if (pressingMove)
             {
@@ -120,7 +114,7 @@ namespace Code.Character.Hero
             }
 
             _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange) *
-                          (isCrouch ? _crouchSpeed : 1);
+                          (isCrouch ? _config.crouchSpeed : 1);
 
             _body.velocity = _velocity;
         }

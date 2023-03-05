@@ -33,6 +33,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.4325864, y: -0.6772071, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6659652505123971942}
   m_Father: {fileID: 0}
@@ -40,7 +41,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4355872365580197732
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -53,6 +54,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -133,14 +135,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _body: {fileID: 4988326818585598692}
   _collision: {fileID: 6659652504158788561}
-  maxSpeed: 2.5
-  _crouchSpeed: 0.7
-  _maxAcceleration: 16
-  _maxDeceleration: 52
-  _maxTurnSpeed: 60
-  _maxAirAcceleration: 30
-  _maxAirDeceleration: 45
-  _maxAirTurnSpeed: 60
   directionX: 0
 --- !u!114 &6659652504158788562
 MonoBehaviour:
@@ -154,17 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2e5c134a2b4334ab9eec2bbc2f640a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpHeight: 3
-  _timeToJumpApex: 0.815
-  upwardMovementMultiplier: 2.9
-  downwardMovementMultiplier: 2
-  maxAirJumps: 1
-  variablejumpHeight: 0
-  jumpCutOff: 3.4
-  speedLimit: 6.71
-  coyoteTime: 0.1
-  jumpBuffer: 0.86
-  _desiredJump: 0
+  _collision: {fileID: 6659652504158788561}
+  _body: {fileID: 4988326818585598692}
 --- !u!1 &6659652505123971937
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +177,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6659652504158788575}
   m_RootOrder: 0
@@ -207,6 +193,7 @@ SpriteRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
