@@ -10,6 +10,8 @@ namespace Code.Data.DataPersistence
         public WorldData worldData;
         public PowerData heroPowerData;
 
+        public float currentTime;
+
         public ProgressData(string initialScene)
         {
             worldData = new WorldData(initialScene);

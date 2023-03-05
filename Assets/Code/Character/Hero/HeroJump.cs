@@ -1,10 +1,10 @@
 using Code.Data.Configs;
 using Code.Data.Stats;
 using Code.Services.Input;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
+using Sirenix.OdinInspector;
 
 namespace Code.Character.Hero
 {
@@ -14,7 +14,8 @@ namespace Code.Character.Hero
         private MovementLimiter _movementLimiter;
         private PlayerConfig _config;
 
-        [Title("Components")] [SerializeField] private HeroCollision _collision;
+        [Title("Components")] 
+        [SerializeField] private HeroCollision _collision;
         [SerializeField] private Rigidbody _body;
 
         [Title("Jumping Stats")] private float _jumpHeight = 7.3f;
@@ -69,32 +70,23 @@ namespace Code.Character.Hero
 
         private void CheckCoyoteTime()
         {
-            //Если мы не на земле и в данный момент не прыгаем, значит, мы сошли с края платформы.
-            //Итак, запускаем счетчик времени койота...
             if (!_currentlyJumping && !_collision.onGround)
                 _coyoteTimeCounter += Time.deltaTime;
             else
-                //Сбрасываем, когда касаемся земли или прыгаем
                 _coyoteTimeCounter = 0;
         }
 
         private void CheckJumpBuffer()
         {
-            // Буфер прыжков позволяет нам ставить в очередь прыжок, который будет воспроизводиться, когда мы в следующий раз коснемся земли
-            if (_config.jumpBuffer > 0)
-                //Вместо того, чтобы сразу отключить "desireJump", начинаем считать...
-                //Все это время функция DoAJump будет постоянно запускаться
-                if (_desiredJump)
-                {
-                    _jumpBufferCounter += Time.deltaTime;
+            if (!(_config.jumpBuffer > 0) || !_desiredJump) return;
+            
+            _jumpBufferCounter += Time.deltaTime;
 
-                    if (_jumpBufferCounter > _config.jumpBuffer)
-                    {
-                        //If time exceeds the jump buffer, turn off "desireJump"
-                        _desiredJump = false;
-                        _jumpBufferCounter = 0;
-                    }
-                }
+            if (_jumpBufferCounter > _config.jumpBuffer)
+            {
+                _desiredJump = false;
+                _jumpBufferCounter = 0;
+            }
         }
 
 
@@ -106,8 +98,6 @@ namespace Code.Character.Hero
             {
                 Jump();
                 _body.velocity = _velocity;
-                //Пропустить вычисления гравитации в этом кадре, поэтому в настоящее время прыжки не отключаются
-                //Это гарантирует, что вы не сможете совершить ошибку двойного прыжка во время койота
                 return;
             }
 
@@ -122,85 +112,61 @@ namespace Code.Character.Hero
             // _body.gravityScale = newGravity.y / Physics2D.gravity.y * _gravMultiplier;
         }
 
-
-        /// <summary>
-        ///     Сhange the character's gravity based on her Y direction
-        /// </summary>
         private void CalculateGravity()
         {
-            //если персонаж двигается вверх 
-            if (_body.velocity.y > 0.01f)
+            switch (_body.velocity.y)
             {
-                if (_collision.onGround)
-                {
-                    //Don't change it if Kit is stood on something (such as a moving platform)
+                case > 0.01f when _collision.onGround:
                     _gravMultiplier = _defaultGravityScale;
-                }
-                else
-                {
+                    break;
+                case > 0.01f:
                     _gravMultiplier = _config.upwardMovementMultiplier;
-                }
-            }
-
-            //если персонаж двигается вниз
-            else if (_body.velocity.y < -0.01f)
-            {
-                if (_collision.onGround)
-                    //Не меняйте его, если персонаж стоит на чем-то (например, на движущейся платформе)
+                    break;
+                case < -0.01f when _collision.onGround:
                     _gravMultiplier = _defaultGravityScale;
-                else
-                    //Иначе примените нисходящий множитель гравитации
+                    break;
+                case < -0.01f:
                     _gravMultiplier = _config.downwardMovementMultiplier;
-            }
-
-            else
-            {
-                if (_collision.onGround)
+                    break;
+                default:
                 {
-                    _currentlyJumping = false;
-                    jumpPhase = 0;
+                    if (_collision.onGround)
+                    {
+                        _currentlyJumping = false;
+                        jumpPhase = 0;
+                    }
+
+                    _gravMultiplier = _defaultGravityScale;
+                    break;
                 }
-
-                _gravMultiplier = _defaultGravityScale;
             }
-
-
             _body.velocity = new Vector3(_velocity.x, Mathf.Clamp(_velocity.y, -_config.speedLimit, 100));
         }
 
         private void Jump()
         {
-            //Создаем прыжок, если мы на земле, во время койота или доступен двойной прыжок
-            if (IsCanJump())
+            if (!IsCanJump()) return;
+            
+            _desiredJump = false;
+            _jumpBufferCounter = 0;
+            _coyoteTimeCounter = 0;
+            _jumpSpeed = _jumpHeight;
+
+            jumpPhase += 1;
+            _canJumpAgain = _maxAirJumps == 1 && _canJumpAgain == false;
+
+            switch (_velocity.y)
             {
-                _desiredJump = false;
-                _jumpBufferCounter = 0;
-                _coyoteTimeCounter = 0;
-
-                /*if (jumpPhase < 1)
-                    _jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * _body.gravityScale * _jumpHeight);
-                else
-                    _jumpSpeed = _jumpHeight  * _body.gravityScale;*/
-                _jumpSpeed = _jumpHeight;
-
-                jumpPhase += 1;
-
-                //если у нас включен двойной прыжок, разрешите нам прыгнуть еще раз (но только один раз)
-                _canJumpAgain = _maxAirJumps == 1 && _canJumpAgain == false;
-
-
-                //Определяем силу прыжка, основываясь на нашей гравитации и статистике
-
-                //Если движется вверх или вниз во время прыжка (например, при двойном прыжке), измените jumpSpeed;
-                // Это обеспечит одинаковую силу прыжка, независимо от вашей скорости.
-                if (_velocity.y > 0f)
+                case > 0f:
                     _jumpSpeed = Mathf.Max(_jumpSpeed - _velocity.y, 0f);
-                else if (_velocity.y < 0f) _jumpSpeed += Mathf.Abs(_body.velocity.y);
-
-
-                _velocity.y += _jumpSpeed;
-                _currentlyJumping = true;
+                    break;
+                case < 0f:
+                    _jumpSpeed += Mathf.Abs(_body.velocity.y);
+                    break;
             }
+            
+            _velocity.y += _jumpSpeed;
+            _currentlyJumping = true;
         }
 
         private bool IsCanJump()

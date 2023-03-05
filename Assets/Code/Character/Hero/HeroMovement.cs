@@ -1,6 +1,7 @@
 ﻿using Code.Data.Configs;
 using Code.Data.DataPersistence;
 using Code.Data.Stats;
+using Code.Debugers;
 using Code.Services.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -127,6 +128,7 @@ namespace Code.Character.Hero
 
             Vector3Data savedPosition = progressData.worldData.positionOnLevel.position;
             transform.position = savedPosition.AsUnityVector();
+            Log.ColorLog("Hero Loaded");
         }
 
         public void SaveData(ProgressData progressData) =>

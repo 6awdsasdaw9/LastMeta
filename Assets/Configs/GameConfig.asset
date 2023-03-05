@@ -13,21 +13,20 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: 
   playerConfig:
-    maxSpeed: 10
-    crouchSpeed: 0.5
-    maxAcceleration: 52
+    maxSpeed: 2.5
+    crouchSpeed: 0.7
+    maxAcceleration: 16
     maxDeceleration: 52
-    maxTurnSpeed: 80
-    maxAirAcceleration: 0
-    maxAirDeceleration: 0
-    maxAirTurnSpeed: 80
-    jumpHeight: 7.3
-    timeToJumpApex: 0
-    upwardMovementMultiplier: 1
-    downwardMovementMultiplier: 6.17
+    maxTurnSpeed: 60
+    maxAirAcceleration: 30
+    maxAirDeceleration: 45
+    maxAirTurnSpeed: 60
+    jumpHeight: 3
+    timeToJumpApex: 0.8
+    upwardMovementMultiplier: 3
+    downwardMovementMultiplier: 2
     maxAirJumps: 0
-    variableJumpHeight: 0
-    jumpCutOff: 0
-    speedLimit: 0
-    coyoteTime: 0.15
-    jumpBuffer: 0.15
+    jumpCutOff: 3
+    speedLimit: 6.7
+    coyoteTime: 0.1
+    jumpBuffer: 0.3

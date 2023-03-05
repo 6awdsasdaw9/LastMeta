@@ -12,12 +12,13 @@ namespace Code.Infrastructure.Installers
     {
         public bool isBindStateMachine = true;
         public LoadingCurtain curtain;
-    
+        public ProgressService progressService;
+
         public override void InstallBindings()
         {
             BindInterfaces();
 
-            BindDataManager();
+           // BindDataManager();
             BindStateMachine();
         
             BindTimeOfDayController();
@@ -31,7 +32,7 @@ namespace Code.Infrastructure.Installers
                 .FromInstance(this);
 
         private  void BindDataManager() => 
-            Container.Bind<ProgressService>().FromComponentInChildren();
+            Container.Bind<ProgressService>().FromInstance(progressService).AsSingle().NonLazy();
 
         private void BindStateMachine()
         {
@@ -39,7 +40,7 @@ namespace Code.Infrastructure.Installers
                 return;
         
             Container.Bind<GameStateMachine>()
-                .AsSingle().WithArguments(new SceneLoader(this), curtain).NonLazy();
+                .AsSingle().WithArguments(new SceneLoader(this), curtain,progressService).NonLazy();
         }
 
         private void BindTimeOfDayController() => 

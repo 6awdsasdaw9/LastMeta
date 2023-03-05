@@ -1,11 +1,14 @@
 using Code.Data;
 using Code.Data.Configs;
+using Code.Data.DataPersistence;
+using Code.Debugers;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Logic.DayOfTime
 {
-    public class TimeOfDayController : ITickable
+    // ищет только монобех
+    public class TimeOfDayController : ITickable, IDataPersistence
     {
         private float _dayTimeInSeconds;
         private float _currentSecondsOfDay;
@@ -73,6 +76,24 @@ namespace Code.Logic.DayOfTime
                     OnNight?.Invoke();
                     break;
             }
+        }
+
+        public void LoadData(ProgressData progressData)
+        {
+            Log.ColorLog("LoadTime");
+            _currentSecondsOfDay = progressData.currentTime;
+            
+            if (_currentSecondsOfDay < durationOfDay)
+                SetCurrentTimeOfDay(TimeOfDay.Morning);
+            else if (_currentSecondsOfDay < durationOfDay * 2)
+                SetCurrentTimeOfDay(TimeOfDay.Evening);
+            else
+                SetCurrentTimeOfDay(TimeOfDay.Night);
+        }
+
+        public void SaveData(ProgressData progressData)
+        {
+            progressData.currentTime = _currentSecondsOfDay;
         }
     }
 

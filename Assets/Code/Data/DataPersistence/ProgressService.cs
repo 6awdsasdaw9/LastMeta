@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Code.Debugers;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Code.Data.DataPersistence
@@ -18,9 +19,14 @@ namespace Code.Data.DataPersistence
         //------------------------------------------------------------------------------------------------------------------------------------------------------------
         public void Awake()
         {
-           //C:/Users/awdsasdaw/AppData/LocalLow/DefaultCompany
+            //C:/Users/awdsasdaw/AppData/LocalLow/DefaultCompany
            
             _dataHandler = new FileDataHandler(Application.persistentDataPath, _fileName,_useEncryption);
+    
+        }
+
+        public void FindAllIDataPersistence()
+        {
             _dataPersistenceObjects = FindDataPersistenceObjects();
         }
 
@@ -54,6 +60,7 @@ namespace Code.Data.DataPersistence
             }
         }
 
+        [Button]
         public void SaveGame()
         {
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
@@ -75,7 +82,8 @@ namespace Code.Data.DataPersistence
             _dataHandler.Save(gameProgressData);
         }
 
-        public void DeleteGame() => 
+        [Button]
+        public void DeleteGameProgress() => 
             _dataHandler.DeleteGame();
 
         private List<IDataPersistence> FindDataPersistenceObjects()

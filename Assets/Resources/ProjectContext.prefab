@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBindStateMachine: 1
   curtain: {fileID: 6208844317431929117}
+  progressService: {fileID: 4713273940500263974}
 --- !u!1 &2885941993813563393
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +89,7 @@ GameObject:
   - component: {fileID: 6125440624345032042}
   - component: {fileID: 4713273940500263974}
   m_Layer: 0
-  m_Name: DataService
+  m_Name: ProgressService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,14 +130,15 @@ MonoBehaviour:
       maxHP: 0
     worldData:
       positionOnLevel:
-        level: 
+        level: Home
         position:
-          X: 0
-          Y: 0
+          X: -6.229044
+          Y: -1.6399999
           Z: 0
     heroPowerData:
       damage: 0
       damagedRadius: 0
+    currentTime: 0
 --- !u!1 &6558999020885046083
 GameObject:
   m_ObjectHideFlags: 0
