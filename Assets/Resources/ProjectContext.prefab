@@ -44,9 +44,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b992d3625bbf045860b92bd9c6d4a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBindStateMachine: 1
   curtain: {fileID: 6208844317431929117}
-  progressService: {fileID: 4713273940500263974}
+  progressService: {fileID: 7851717853441147954}
+  time: {fileID: 7590297130746857179}
+--- !u!1 &986218102165789745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2780279090616764833}
+  - component: {fileID: 7590297130746857179}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2780279090616764833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986218102165789745}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 516.64276, y: 339.58176, z: 0.8521538}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9011417748388375610}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7590297130746857179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986218102165789745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc6117667a15edc469bfb492df4b47e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2885941993813563393
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6125440624345032042}
-  - component: {fileID: 4713273940500263974}
+  - component: {fileID: 7851717853441147954}
   m_Layer: 0
   m_Name: ProgressService
   m_TagString: Untagged
@@ -110,7 +154,7 @@ Transform:
   m_Father: {fileID: 9011417748388375610}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4713273940500263974
+--- !u!114 &7851717853441147954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e50ec3f893069409666e945e703e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fileName: LastMetaData
+  _fileName: data
   _useEncryption: 0
   gameProgressData:
     heroHealth:
@@ -130,10 +174,10 @@ MonoBehaviour:
       maxHP: 0
     worldData:
       positionOnLevel:
-        level: Home
+        level: 
         position:
-          X: -6.229044
-          Y: -1.6399999
+          X: 0
+          Y: 0
           Z: 0
     heroPowerData:
       damage: 0
@@ -173,6 +217,7 @@ Transform:
   - {fileID: 383824247431329560}
   - {fileID: 319814823614740457}
   - {fileID: 6125440624345032042}
+  - {fileID: 2780279090616764833}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -220,6 +265,10 @@ PrefabInstance:
     - target: {fileID: 1312477435389791906, guid: 72103a4a3845e7f43abfc322564ac1e2, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1312477435389791907, guid: 72103a4a3845e7f43abfc322564ac1e2, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 127
       objectReference: {fileID: 0}
     - target: {fileID: 1312477435389791934, guid: 72103a4a3845e7f43abfc322564ac1e2, type: 3}
       propertyPath: m_Pivot.x
@@ -402,6 +451,10 @@ PrefabInstance:
     - target: {fileID: 4244741007409124312, guid: c50349a20720e724cbd304ee71168dcc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735481942953230558, guid: c50349a20720e724cbd304ee71168dcc, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 127
       objectReference: {fileID: 0}
     - target: {fileID: 9046186401658153525, guid: c50349a20720e724cbd304ee71168dcc, type: 3}
       propertyPath: m_Name

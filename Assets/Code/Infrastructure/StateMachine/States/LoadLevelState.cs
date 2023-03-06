@@ -1,5 +1,4 @@
 using Code.Data.DataPersistence;
-using Code.Debugers;
 using Code.Logic;
 using Code.Services;
 
@@ -38,7 +37,6 @@ namespace Code.Infrastructure.StateMachine.States
 
         private void LoadProgressOrInitNew()
         {
-            _progressService.FindAllIDataPersistence();
             _progressService.LoadProgress();
         }
     }

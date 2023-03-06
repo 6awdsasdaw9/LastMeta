@@ -20,7 +20,7 @@ namespace Code.Character.Hero
         [Title("Components")] 
         [SerializeField] private Rigidbody _body;
         [SerializeField] private HeroCollision _collision;
-        
+
         private float _maxSpeed = 10f;
 
         [HideInInspector] public float directionX;
@@ -37,16 +37,15 @@ namespace Code.Character.Hero
         private bool pressingCrouch;
 
 
-
         [Inject]
-        private void Construct(InputController input, MovementLimiter limiter,GameConfig config)
+        private void Construct(InputController input, MovementLimiter limiter, GameConfig config)
         {
             input.PlayerCrochEvent += OnCrouch;
             input.PlayerMovementEvent += OnMovement;
-            
+
             _movementLimiter = limiter;
             _movementLimiter.OnDisableMovementMode += StopMovement;
-            
+
             _config = config.playerConfig;
             _maxSpeed = config.playerConfig.maxSpeed;
         }

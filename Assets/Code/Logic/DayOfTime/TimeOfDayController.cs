@@ -7,8 +7,8 @@ using Zenject;
 
 namespace Code.Logic.DayOfTime
 {
-    // ищет только монобех
-    public class TimeOfDayController : ITickable, IDataPersistence
+
+    public class TimeOfDayController : MonoBehaviour, ITickable, IDataPersistence
     {
         private float _dayTimeInSeconds;
         private float _currentSecondsOfDay;

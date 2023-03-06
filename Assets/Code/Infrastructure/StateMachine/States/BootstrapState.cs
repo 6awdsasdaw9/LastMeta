@@ -28,9 +28,9 @@ namespace Code.Infrastructure.StateMachine.States
 
         private void EnterLoadLevel()
         {
+            _progressService.LoadProgress();
             _stateMachine.Enter<LoadLevelState, string>(_progressService.gameProgressData.worldData.positionOnLevel
                 .level);
-           // _stateMachine.Enter<LoadProgressState>();
         }
     }
 }

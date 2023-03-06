@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Code.Debugers;
 using Code.Infrastructure;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,7 @@ namespace Code.Services
 
         public IEnumerator LoadScene(string nextScene, Action onLoaded = null)
         {
+            Log.ColorLog(nextScene);
             
             if (SceneManager.GetActiveScene().name == nextScene)
             {
@@ -33,4 +35,4 @@ namespace Code.Services
             onLoaded?.Invoke();
         }
     }
-}
+} 
