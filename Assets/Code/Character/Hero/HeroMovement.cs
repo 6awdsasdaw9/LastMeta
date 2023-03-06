@@ -70,10 +70,7 @@ namespace Code.Character.Hero
 
             pressingMove = directionX != 0;
         }
-
-
-        public Vector2 GetVelocity() =>
-            _velocity;
+        
 
         private void OnCrouch(InputAction.CallbackContext context) =>
             pressingCrouch = context.started;
@@ -121,18 +118,18 @@ namespace Code.Character.Hero
 
         public void LoadData(ProgressData progressData)
         {
-            if (progressData.worldData.positionOnLevel.level != CurrentLevel() ||
-                progressData.worldData.positionOnLevel == null)
+            if (progressData.worldData.heroPositionData.level != CurrentLevel() ||
+                progressData.worldData.heroPositionData.position.AsUnityVector() == Vector3.zero)
                 return;
 
-            Vector3Data savedPosition = progressData.worldData.positionOnLevel.position;
+            Vector3Data savedPosition = progressData.worldData.heroPositionData.position;
             transform.position = savedPosition.AsUnityVector();
             Log.ColorLog("Hero Loaded");
         }
 
         public void SaveData(ProgressData progressData) =>
-            progressData.worldData.positionOnLevel =
-                new PositionOnLevel(CurrentLevel(), transform.position.AsVectorData());
+            progressData.worldData.heroPositionData =
+                new HeroPositionData(CurrentLevel(), transform.position.AsVectorData());
 
         private string CurrentLevel() =>
             SceneManager.GetActiveScene().name;

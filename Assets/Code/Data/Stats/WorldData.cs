@@ -5,11 +5,11 @@ namespace Code.Data.Stats
     [Serializable]
     public class WorldData
     {
-        public PositionOnLevel positionOnLevel;
+        public HeroPositionData heroPositionData;
 
         public WorldData(string initialLevel)
         {
-            positionOnLevel = new PositionOnLevel(initialLevel);
+            heroPositionData = new HeroPositionData(initialLevel);
         }
     }
 }

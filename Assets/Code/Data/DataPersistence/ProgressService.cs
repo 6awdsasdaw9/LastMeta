@@ -18,24 +18,33 @@ namespace Code.Data.DataPersistence
         [Inject] private SaveData _data;
 
         
-        private void NewProgress() =>
+        private void NewProgress()
+        {
             gameProgressData = new ProgressData(initialScene: Constants.homeScene);
-        
+            _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
+            _dataHandler.Save(gameProgressData);
+        }
+
         public void LoadProgress()
+        {
+            LoadData();
+
+            foreach (IDataPersistence dataPersistenceObj in _data.Data)
+            {
+                dataPersistenceObj.LoadData(gameProgressData);
+            }
+        }
+
+        public void LoadData()
         {
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
 
             gameProgressData = _dataHandler.Load();
-            
+
             if (gameProgressData == null)
             {
                 Log.ColorLog("No data was found. Initializing data to defaults.", ColorType.Olive);
                 NewProgress();
-            }
-            
-            foreach (IDataPersistence dataPersistenceObj in _data.Data)
-            {
-                dataPersistenceObj.LoadData(gameProgressData);
             }
         }
 

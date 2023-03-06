@@ -3,18 +3,18 @@ using System;
 namespace Code.Data.Stats
 {
     [Serializable]
-    public class PositionOnLevel
+    public class HeroPositionData
     {
         public string level;
         public Vector3Data position;
 
-        public PositionOnLevel(string level, Vector3Data position)
+        public HeroPositionData(string level, Vector3Data position)
         {
             this.level = level;
             this.position = position;
         }
 
-        public PositionOnLevel(string initialLevel)
+        public HeroPositionData(string initialLevel)
         {
             level = initialLevel;
         }
