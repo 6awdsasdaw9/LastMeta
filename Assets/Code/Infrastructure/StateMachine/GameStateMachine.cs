@@ -15,7 +15,6 @@ namespace Code.Infrastructure.StateMachine
 
         public GameStateMachine(SceneLoader sceneLoader, LoadingCurtain loadingCurtain,ProgressService progressService)
         {
-
             _states = new Dictionary<Type, IExitableState>
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader,progressService),

@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace Code.Objects
     {
         [SerializeField] private float _distance = 2;
         [SerializeField] private float _cycleLength = 10;
-
+        
 
         void Start()
         {
@@ -16,6 +17,10 @@ namespace Code.Objects
             transform.DOMove(target, _cycleLength).SetEase(Ease.Flash).SetLoops(-1, LoopType.Yoyo);
         }
 
+        private void OnDestroy()
+        {
+            transform.DOKill();
+        }
 
         private void OnDrawGizmos()
         {

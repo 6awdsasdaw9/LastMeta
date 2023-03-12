@@ -1,5 +1,4 @@
-using Code.Data;
-using Code.Data.Configs;
+using Code.Data.GameData;
 using DG.Tweening;
 using UnityEngine;
 using Zenject;
@@ -19,8 +18,8 @@ namespace Code.Logic.DayOfTime
         private void Construct(TimeOfDayController timeOfDayController, GameSettings gameSettings)
         {
             _timeOfDayController = timeOfDayController;
-            _animationDuration = timeOfDayController.durationOfDay;
             _lightingSettings = gameSettings.lightingSettings;
+            _animationDuration = gameSettings.durationOfDayTime;
         }
 
         private void Start()
@@ -80,11 +79,11 @@ namespace Code.Logic.DayOfTime
             var targetAngle = Mathf.Lerp(_lightingSettings.morningAngle.y, _lightingSettings.eveningAngle.y,
                 dayTimeNormalized);
             _directionLight.transform.DOLocalRotate(
-                new Vector3(targetAngle, _lightingSettings.morningAngle.x, _lightingSettings.morningAngle.z), 0);
+                new Vector3(targetAngle, _lightingSettings.morningAngle.x, _lightingSettings.morningAngle.z), 0).Kill(true);
 
             var targetIntensity = Mathf.Lerp(_lightingSettings.morningIntensity, _lightingSettings.nightIntensity,
                 dayTimeNormalized);
-            _directionLight.DOIntensity(targetIntensity, 0);
+            _directionLight.DOIntensity(targetIntensity, 0).Kill(true);
         }
     }
 }

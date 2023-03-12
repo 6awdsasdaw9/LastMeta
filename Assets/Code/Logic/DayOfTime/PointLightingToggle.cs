@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Code.Data.GameData;
 using DG.Tweening;
 using UnityEngine;
 using Zenject;
@@ -13,10 +14,10 @@ namespace Code.Logic.DayOfTime
         private float _animationDuration;
         
         [Inject]
-        private void Construct(TimeOfDayController timeOfDayController)
+        private void Construct(TimeOfDayController timeOfDayController, GameSettings settings)
         {
             _timeOfDayController = timeOfDayController;
-            _animationDuration = _timeOfDayController.durationOfDay * 0.1f;
+            _animationDuration = settings.durationOfDayTime * 0.1f;
         }
 
         private void Start()

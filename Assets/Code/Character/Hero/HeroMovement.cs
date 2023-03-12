@@ -1,5 +1,5 @@
-﻿using Code.Data.Configs;
-using Code.Data.DataPersistence;
+﻿using Code.Data.DataPersistence;
+using Code.Data.GameData;
 using Code.Data.Stats;
 using Code.Debugers;
 using Code.Services.Input;

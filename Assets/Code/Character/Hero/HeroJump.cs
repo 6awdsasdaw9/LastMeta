@@ -1,4 +1,4 @@
-using Code.Data.Configs;
+using Code.Data.GameData;
 using Code.Data.Stats;
 using Code.Services.Input;
 using UnityEngine;

@@ -1,6 +1,5 @@
-using Code.Data;
-using Code.Data.Configs;
 using Code.Data.DataPersistence;
+using Code.Data.GameData;
 using Code.Debugers;
 using UnityEngine;
 using Zenject;
@@ -13,7 +12,7 @@ namespace Code.Logic.DayOfTime
         private float _dayTimeInSeconds;
         private float _currentSecondsOfDay;
         public float dayTimeNormalized => _currentSecondsOfDay / _dayTimeInSeconds;
-        public float durationOfDay => _dayTimeInSeconds / 3;
+
         public TimeOfDay currentTimeOfDay { get; private set; }
 
         public delegate void TimeOfDayEvent();
@@ -23,10 +22,17 @@ namespace Code.Logic.DayOfTime
         public event TimeOfDayEvent OnNight;
 
 
+        private float _morningTime, _eveningTime, _nightTime;
+        
+
         [Inject]
         private void Construct(GameSettings settings)
         {
             _dayTimeInSeconds = settings.dayTimeInSeconds;
+           
+            _morningTime = 0;
+            _eveningTime = settings.durationOfDayTime;
+            _nightTime =  settings.durationOfDayTime * 2;
         }
 
         public void Tick()
@@ -44,15 +50,15 @@ namespace Code.Logic.DayOfTime
 
         private void CheckTimeOfDay()
         {
-            if (_currentSecondsOfDay < durationOfDay && currentTimeOfDay != TimeOfDay.Morning)
+            if ( _currentSecondsOfDay < _eveningTime && currentTimeOfDay != TimeOfDay.Morning)
             {
                 SetCurrentTimeOfDay(TimeOfDay.Morning);
             }
-            else if (_currentSecondsOfDay < durationOfDay * 2 && currentTimeOfDay != TimeOfDay.Evening)
+            else if (_currentSecondsOfDay > _eveningTime && _currentSecondsOfDay < _nightTime && currentTimeOfDay != TimeOfDay.Evening)
             {
                 SetCurrentTimeOfDay(TimeOfDay.Evening);
             }
-            else if (currentTimeOfDay != TimeOfDay.Night)
+            else if (_currentSecondsOfDay > _nightTime && currentTimeOfDay != TimeOfDay.Night)
             {
                 SetCurrentTimeOfDay(TimeOfDay.Night);
             }
@@ -83,9 +89,9 @@ namespace Code.Logic.DayOfTime
             Log.ColorLog("LoadTime");
             _currentSecondsOfDay = progressData.currentTime;
             
-            if (_currentSecondsOfDay < durationOfDay)
+            if (_currentSecondsOfDay < _eveningTime)
                 SetCurrentTimeOfDay(TimeOfDay.Morning);
-            else if (_currentSecondsOfDay < durationOfDay * 2)
+            else if (_currentSecondsOfDay > _eveningTime &&_currentSecondsOfDay < _nightTime)
                 SetCurrentTimeOfDay(TimeOfDay.Evening);
             else
                 SetCurrentTimeOfDay(TimeOfDay.Night);
