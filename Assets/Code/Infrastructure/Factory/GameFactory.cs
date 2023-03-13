@@ -1,23 +1,41 @@
+using Code.Character.Hero;
+using Code.Data.GameData;
+using UnityEngine;
+using Zenject;
+
 namespace Code.Infrastructure.Factory
 {
-    //Creates and instantiates objects
-    public class GameFactory /*: IGameFactory*/
+    
+    public class GameFactory /* : IGameFactory*/
     {
-        /*private readonly IAssets _assets;
+        private readonly DiContainer _diContainer;
+        private readonly PrefabsData _prefabsData;
 
-        public GameFactory(IAssets assets)
+        public GameFactory(DiContainer container, PrefabsData prefabsData)
         {
-            _assets = assets;
+            _diContainer = container;
+            _prefabsData = prefabsData;
         }
+        
+        /*
         public GameObject CreateHero(GameObject at)
         {
-            return _assets.Instantiate(AssetPath.HeroPath, at: at.transform.position);
+            var hero = Object.Instantiate(_prefabsData.hero, at.transform.position,Quaternion.identity);
+            _diContainer.Inject(hero.GetComponent<HeroMovement>());
+            return hero.gameObject;
+        }
+        
+        public void CreateHeroT(GameObject at)
+        {
+            HeroMovement hero = _diContainer.InstantiatePrefabForComponent<HeroMovement>(_prefabsData.hero, at.transform.position,
+                Quaternion.identity, null);
+            _diContainer.Bind<HeroMovement>().FromInstance(hero).AsSingle().NonLazy();
         }
 
-        public void CreateHud()
+        public GameObject CreateHud()
         {
-            _assets.Instantiate(AssetPath.HudPath);
+            return Object.Instantiate(_prefabsData.hud.gameObject);
         }*/
-
+        
     }
 }

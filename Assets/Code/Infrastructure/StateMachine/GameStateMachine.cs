@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Code.Data.DataPersistence;
+using Code.Data.SavedDataPersistence;
 using Code.Infrastructure.StateMachine.States;
 using Code.Logic;
 using Code.Services;
@@ -13,12 +13,13 @@ namespace Code.Infrastructure.StateMachine
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _activeState;
 
-        public GameStateMachine(SceneLoader sceneLoader, LoadingCurtain loadingCurtain,ProgressService progressService)
+        public GameStateMachine(SceneLoader sceneLoader, LoadingCurtain loadingCurtain,
+            PersistentSavedDataService persistentSavedDataService)
         {
             _states = new Dictionary<Type, IExitableState>
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader,progressService),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, loadingCurtain,progressService),
+                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader,persistentSavedDataService),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, loadingCurtain, persistentSavedDataService),
                 [typeof(GameLoopState)] = new GameLoopState(this),
             };
         }

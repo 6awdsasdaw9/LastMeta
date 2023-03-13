@@ -1,6 +1,9 @@
-using Code.Data.DataPersistence;
+using Code.Data.SavedDataPersistence;
+using Code.Debugers;
+using Code.Infrastructure.Factory;
 using Code.Logic;
 using Code.Services;
+using UnityEngine;
 
 namespace Code.Infrastructure.StateMachine.States
 {
@@ -9,35 +12,30 @@ namespace Code.Infrastructure.StateMachine.States
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly LoadingCurtain _loadingCurtain;
-        private readonly ProgressService _progressService;
+        private readonly PersistentSavedDataService _dataService;
 
-        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain,
-            ProgressService progressService)
+        public LoadLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LoadingCurtain loadingCurtain,PersistentSavedDataService dataService)
         {
             _stateMachine = gameStateMachine;
             _sceneLoader = sceneLoader;
             _loadingCurtain = loadingCurtain;
-            _progressService = progressService;
+            _dataService = dataService;
         }
 
         public void Enter(string sceneName)
         {
             _loadingCurtain.Show();
-            _sceneLoader.Load(sceneName, onLoaded);
+            _sceneLoader.Load(sceneName, OnLoaded);
         }
 
         public void Exit() =>
             _loadingCurtain.Hide();
 
-        private void onLoaded()
+        private void OnLoaded()
         {
-            LoadProgressOrInitNew();
+            Log.ColorLog("LoadLevelState");
             _stateMachine.Enter<GameLoopState>();
         }
-
-        private void LoadProgressOrInitNew()
-        {
-            _progressService.LoadProgress();
-        }
+        
     }
 }

@@ -1,20 +1,20 @@
-using Code.Data.DataPersistence;
+using Code.Data.SavedDataPersistence;
 using Code.Services;
 
 namespace Code.Infrastructure.StateMachine.States
 {
-    //Start work in GameBootstrapper.It is first gamestate
+
     public class BootstrapState : IState
     {
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
-        private readonly ProgressService _progressService;
+        private readonly PersistentSavedDataService _persistentSavedDataService;
 
-        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader,ProgressService progressService)
+        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader,PersistentSavedDataService persistentSavedDataService)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
-            _progressService = progressService;
+            _persistentSavedDataService = persistentSavedDataService;
         }
 
         public void Enter()
@@ -28,9 +28,15 @@ namespace Code.Infrastructure.StateMachine.States
 
         private void EnterLoadLevel()
         {
-            _progressService.LoadData();
-            _stateMachine.Enter<LoadLevelState, string>(_progressService.gameProgressData.worldData.heroPositionData
-                .level);
+            _persistentSavedDataService.LoadData();
+          
+            string level = _persistentSavedDataService
+                .savedData
+                .worldData
+                .heroPositionData
+                .level;
+            
+            _stateMachine.Enter<LoadLevelState, string>(level);
         }
     }
 }

@@ -1,5 +1,5 @@
-using Code.Data.DataPersistence;
 using Code.Data.GameData;
+using Code.Data.SavedDataPersistence;
 using Code.Debugers;
 using UnityEngine;
 using Zenject;
@@ -7,7 +7,7 @@ using Zenject;
 namespace Code.Logic.DayOfTime
 {
 
-    public class TimeOfDayController : MonoBehaviour, ITickable, IDataPersistence
+    public class TimeOfDayController : ITickable, ISavedData
     {
         private float _dayTimeInSeconds;
         private float _currentSecondsOfDay;
@@ -26,13 +26,15 @@ namespace Code.Logic.DayOfTime
         
 
         [Inject]
-        private void Construct(GameSettings settings)
+        private void Construct(SettingsData settingsData, SavedDataCollection savedDataCollection)
         {
-            _dayTimeInSeconds = settings.dayTimeInSeconds;
+            _dayTimeInSeconds = settingsData.dayTimeInSeconds;
            
             _morningTime = 0;
-            _eveningTime = settings.durationOfDayTime;
-            _nightTime =  settings.durationOfDayTime * 2;
+            _eveningTime = settingsData.durationOfDayTime;
+            _nightTime =  settingsData.durationOfDayTime * 2;
+            
+            savedDataCollection.Add(this);
         }
 
         public void Tick()
@@ -84,10 +86,10 @@ namespace Code.Logic.DayOfTime
             }
         }
 
-        public void LoadData(ProgressData progressData)
+        public void LoadData(SavedData savedData)
         {
             Log.ColorLog("LoadTime");
-            _currentSecondsOfDay = progressData.currentTime;
+            _currentSecondsOfDay = savedData.currentTime;
             
             if (_currentSecondsOfDay < _eveningTime)
                 SetCurrentTimeOfDay(TimeOfDay.Morning);
@@ -97,9 +99,9 @@ namespace Code.Logic.DayOfTime
                 SetCurrentTimeOfDay(TimeOfDay.Night);
         }
 
-        public void SaveData(ProgressData progressData)
+        public void SaveData(SavedData savedData)
         {
-            progressData.currentTime = _currentSecondsOfDay;
+            savedData.currentTime = _currentSecondsOfDay;
         }
     }
 

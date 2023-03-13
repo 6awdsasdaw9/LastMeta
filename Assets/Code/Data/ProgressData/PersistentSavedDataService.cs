@@ -1,37 +1,39 @@
 using Code.Debugers;
-using Code.Infrastructure.Installers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Data.DataPersistence
+namespace Code.Data.SavedDataPersistence
 {
-    public class ProgressService : MonoBehaviour
+    public class PersistentSavedDataService : MonoBehaviour 
     {
         //C:\Users\awdsasdaw\AppData\LocalLow\DefaultCompany\LastMeta
-        
         [Title("File Storage Config")] 
         [SerializeField] private string _fileName;
         [SerializeField] private bool _useEncryption;
         private FileDataHandler _dataHandler;
-        public ProgressData gameProgressData { get; private set; }
-        [Inject] private SaveData _data;
+        public SavedData savedData { get; private set; }
 
+        [Inject] private DiContainer _container;
+        
+        SavedDataCollection dataCollection;
+        
         
         private void NewProgress()
         {
-            gameProgressData = new ProgressData(initialScene: Constants.homeScene);
+            savedData = new SavedData(initialScene: Constants.homeScene);
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
-            _dataHandler.Save(gameProgressData);
+            _dataHandler.Save(savedData);
         }
 
         public void LoadProgress()
         {
+            
             LoadData();
-
-            foreach (IDataPersistence dataPersistenceObj in _data.Data)
+            
+            foreach (ISavedData dataPersistenceObj in dataCollection.Data)
             {
-                dataPersistenceObj.LoadData(gameProgressData);
+                dataPersistenceObj.LoadData(savedData);
             }
         }
 
@@ -39,9 +41,9 @@ namespace Code.Data.DataPersistence
         {
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
 
-            gameProgressData = _dataHandler.Load();
-
-            if (gameProgressData == null)
+            savedData = _dataHandler.Load();
+            
+            if (savedData == null)
             {
                 Log.ColorLog("No data was found. Initializing data to defaults.", ColorType.Olive);
                 NewProgress();
@@ -53,23 +55,32 @@ namespace Code.Data.DataPersistence
         {
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
 
-            if (gameProgressData == null)
+            if (savedData == null)
             {
                 Log.ColorLog("No data was found.A new Game nees to be started before data can be saved",
                     LogStyle.Warning);
                 return;
             }
             
-            foreach (IDataPersistence dataPersistenceObj in _data.Data)
+
+
+            foreach (ISavedData dataPersistenceObj in dataCollection.Data)
             {
-                dataPersistenceObj.SaveData(gameProgressData);
+                dataPersistenceObj.SaveData(savedData);
             }
 
-            _dataHandler.Save(gameProgressData);
+            _dataHandler.Save(savedData);
         }
 
+        public void SetSavedDataCollection(SavedDataCollection collection)
+        {
+            dataCollection = collection;
+        }
+        
         [Button]
         public void DeleteProgress() =>
             _dataHandler.DeleteGame();
+
+   
     }
 }

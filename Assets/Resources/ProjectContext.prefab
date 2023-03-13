@@ -45,52 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curtain: {fileID: 6208844317431929117}
-  progressService: {fileID: 7851717853441147954}
-  time: {fileID: 7590297130746857179}
---- !u!1 &986218102165789745
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2780279090616764833}
-  - component: {fileID: 7590297130746857179}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2780279090616764833
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 986218102165789745}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 516.64276, y: 339.58176, z: 0.8521538}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 9011417748388375610}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7590297130746857179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 986218102165789745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc6117667a15edc469bfb492df4b47e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  persistentSavedDataService: {fileID: 7851717853441147954}
 --- !u!1 &2885941993813563393
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,21 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fileName: data
   _useEncryption: 0
-  gameProgressData:
-    heroHealth:
-      currentHP: 0
-      maxHP: 0
-    worldData:
-      positionOnLevel:
-        level: 
-        position:
-          X: 0
-          Y: 0
-          Z: 0
-    heroPowerData:
-      damage: 0
-      damagedRadius: 0
-    currentTime: 0
 --- !u!1 &6558999020885046083
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +157,6 @@ Transform:
   - {fileID: 383824247431329560}
   - {fileID: 319814823614740457}
   - {fileID: 6125440624345032042}
-  - {fileID: 2780279090616764833}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

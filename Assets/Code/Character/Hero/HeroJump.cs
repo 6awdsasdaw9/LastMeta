@@ -1,5 +1,6 @@
 using Code.Data.GameData;
 using Code.Data.Stats;
+using Code.Debugers;
 using Code.Services.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -35,15 +36,17 @@ namespace Code.Character.Hero
         private int jumpPhase;
 
         [Inject]
-        private void Construct(InputController input, MovementLimiter limiter, GameConfig config)
+        private void Construct(InputController input, MovementLimiter limiter, ConfigData configData)
         {
+            Log.ColorLog("Hero Construct Jump");
             input.PlayerJumpEvent += OnJump;
 
             _movementLimiter = limiter;
-            _config = config.playerConfig;
+            _config = configData.playerConfig;
 
-            _jumpHeight = config.playerConfig.jumpHeight;
-            _maxAirJumps = config.playerConfig.maxAirJumps;
+            _jumpHeight = configData.playerConfig.jumpHeight;
+            _maxAirJumps = configData.playerConfig.maxAirJumps;
+            
         }
 
         private void Update()

@@ -1,6 +1,6 @@
 using System;
 using Code.Data;
-using Code.Data.DataPersistence;
+using Code.Data.SavedDataPersistence;
 using Code.Data.Stats;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ namespace Code.Character.Hero
         void TakeDamage(float damage);
     }
 
-    public class HeroHealth : MonoBehaviour, IHealth, IDataPersistence
+    public class HeroHealth : MonoBehaviour, IHealth, ISavedData
     {
         private HealthData _healthData;
         public event Action HealthChanged;
@@ -48,16 +48,16 @@ namespace Code.Character.Hero
             HealthChanged?.Invoke();
         }
 
-        public void LoadData(ProgressData progressData)
+        public void LoadData(SavedData savedData)
         {
-            _healthData = progressData.heroHealth;
+            _healthData = savedData.heroHealth;
             HealthChanged?.Invoke();
         }
 
-        public void SaveData(ProgressData progressData)
+        public void SaveData(SavedData savedData)
         {
-            progressData.heroHealth.currentHP = Current;
-            progressData.heroHealth.maxHP = Max;
+            savedData.heroHealth.currentHP = Current;
+            savedData.heroHealth.maxHP = Max;
         }
     }
 }

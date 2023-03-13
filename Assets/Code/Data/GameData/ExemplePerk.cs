@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 
 namespace Code.Data.GameData
 {
-    public class ProgressConfig
+    public class ExemplePerk
     {
         [Searchable]
         public List<Perk> Perks = new List<Perk>()

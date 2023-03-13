@@ -3,8 +3,8 @@ using LightingSettings = Code.Logic.DayOfTime.LightingSettings;
 
 namespace Code.Data.GameData
 {
-    [CreateAssetMenu(fileName = "GameSettings", menuName = "ScriptableObjects/GameSettings/GameSettings")]
-    public class GameSettings : ScriptableObject
+    [CreateAssetMenu(fileName = "SettingsData", menuName = "ScriptableObjects/GameSettings/SettingsData")]
+    public class SettingsData : ScriptableObject
     {
         [Header("Day settings")]
         public float dayTimeInSeconds = 50;

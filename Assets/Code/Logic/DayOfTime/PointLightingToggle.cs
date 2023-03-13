@@ -14,10 +14,10 @@ namespace Code.Logic.DayOfTime
         private float _animationDuration;
         
         [Inject]
-        private void Construct(TimeOfDayController timeOfDayController, GameSettings settings)
+        private void Construct(TimeOfDayController timeOfDayController, SettingsData settingsData)
         {
             _timeOfDayController = timeOfDayController;
-            _animationDuration = settings.durationOfDayTime * 0.1f;
+            _animationDuration = settingsData.durationOfDayTime * 0.1f;
         }
 
         private void Start()

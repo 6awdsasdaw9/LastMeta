@@ -15,11 +15,11 @@ namespace Code.Logic.DayOfTime
 
 
         [Inject]
-        private void Construct(TimeOfDayController timeOfDayController, GameSettings gameSettings)
+        private void Construct(TimeOfDayController timeOfDayController, SettingsData settingsData)
         {
             _timeOfDayController = timeOfDayController;
-            _lightingSettings = gameSettings.lightingSettings;
-            _animationDuration = gameSettings.durationOfDayTime;
+            _lightingSettings = settingsData.lightingSettings;
+            _animationDuration = settingsData.durationOfDayTime;
         }
 
         private void Start()

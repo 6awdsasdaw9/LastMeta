@@ -398,8 +398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8475729ec945e8a917765b57123ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroPrefab: {fileID: 6659652504158788574, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
-  initialPoint: {fileID: 2131161962}
 --- !u!114 &359107524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,7 +501,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1830403187388025935, guid: 94631a162632ef146a88b41e18debe86, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830403187388025935, guid: 94631a162632ef146a88b41e18debe86, type: 3}
       propertyPath: _isCanMoveY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830403187388025935, guid: 94631a162632ef146a88b41e18debe86, type: 3}
+      propertyPath: _isCanLookDown
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1830403187388025935, guid: 94631a162632ef146a88b41e18debe86, type: 3}
@@ -512,7 +518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1830403187388025935, guid: 94631a162632ef146a88b41e18debe86, type: 3}
       propertyPath: distanceBoundsX
-      value: 1.59
+      value: 0.89
       objectReference: {fileID: 0}
     - target: {fileID: 1830403187388025935, guid: 94631a162632ef146a88b41e18debe86, type: 3}
       propertyPath: distanceBoundsY
@@ -1180,11 +1186,6 @@ Transform:
   m_Father: {fileID: 843570507}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2131161962 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6839795549722937538, guid: 26024cc3907eb874ea3dd39456b1a68a, type: 3}
-  m_PrefabInstance: {fileID: 6839795549708427925}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &259567993717257177
 GameObject:
   m_ObjectHideFlags: 0

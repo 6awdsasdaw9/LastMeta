@@ -23,7 +23,8 @@ namespace Code.Logic.CameraLogic
         private Vector2 minBounds, maxBounds;
         
 
-        [Inject] private void Construct(HeroMovement hero)
+        [Inject]
+        private void Construct(HeroMovement hero)
         {
             _following = hero.transform;
         }

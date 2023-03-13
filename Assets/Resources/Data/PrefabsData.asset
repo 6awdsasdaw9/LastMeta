@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c165e05881e42068159b1c2e3e8a86e, type: 3}
-  m_Name: SettingsInstaller
+  m_Script: {fileID: 11500000, guid: a5b98cc6c07448338424f602009cbab3, type: 3}
+  m_Name: PrefabsData
   m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: 5d9ad4c1249e56a46b5a80d0287dec74, type: 2}
-  config: {fileID: 11400000, guid: b026f2898c8d20844aa583fde4bac51c, type: 2}
+  hero: {fileID: 6659652504158788560, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
+  hud: {fileID: 7281473980765438915, guid: 72103a4a3845e7f43abfc322564ac1e2, type: 3}

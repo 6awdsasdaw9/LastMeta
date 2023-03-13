@@ -1,5 +1,5 @@
-﻿using Code.Data.DataPersistence;
-using Code.Data.GameData;
+﻿using Code.Data.GameData;
+using Code.Data.SavedDataPersistence;
 using Code.Data.Stats;
 using Code.Debugers;
 using Code.Services.Input;
@@ -12,7 +12,7 @@ using Zenject;
 namespace Code.Character.Hero
 {
     [RequireComponent(typeof(Rigidbody), typeof(HeroCollision))]
-    public class HeroMovement : MonoBehaviour, IMovement, IDataPersistence
+    public class HeroMovement : MonoBehaviour, IMovement, ISavedData
     {
         private MovementLimiter _movementLimiter;
         private PlayerConfig _config;
@@ -30,15 +30,13 @@ namespace Code.Character.Hero
         private float _acceleration;
         private float _deceleration;
         private float _turnSpeed;
-
-
+        
         public bool isCrouch => _collision.onGround && pressingCrouch;
         private bool pressingMove;
         private bool pressingCrouch;
-
-
+        
         [Inject]
-        private void Construct(InputController input, MovementLimiter limiter, GameConfig config)
+        private void Construct(InputController input, MovementLimiter limiter, ConfigData configData, SavedDataCollection dataCollection)
         {
             input.PlayerCrochEvent += OnCrouch;
             input.PlayerMovementEvent += OnMovement;
@@ -46,8 +44,10 @@ namespace Code.Character.Hero
             _movementLimiter = limiter;
             _movementLimiter.OnDisableMovementMode += StopMovement;
 
-            _config = config.playerConfig;
-            _maxSpeed = config.playerConfig.maxSpeed;
+            _config = configData.playerConfig;
+            _maxSpeed = configData.playerConfig.maxSpeed;
+            
+            dataCollection.Add(this);
         }
 
 
@@ -116,19 +116,18 @@ namespace Code.Character.Hero
             _body.velocity = _velocity;
         }
 
-        public void LoadData(ProgressData progressData)
+        public void LoadData(SavedData savedData)
         {
-            if (progressData.worldData.heroPositionData.level != CurrentLevel() ||
-                progressData.worldData.heroPositionData.position.AsUnityVector() == Vector3.zero)
+            if (savedData.worldData.heroPositionData.level != CurrentLevel() ||
+                savedData.worldData.heroPositionData.position.AsUnityVector() == Vector3.zero)
                 return;
-
-            Vector3Data savedPosition = progressData.worldData.heroPositionData.position;
+ 
+            Vector3Data savedPosition = savedData.worldData.heroPositionData.position;
             transform.position = savedPosition.AsUnityVector();
-            Log.ColorLog("Hero Loaded");
         }
 
-        public void SaveData(ProgressData progressData) =>
-            progressData.worldData.heroPositionData =
+        public void SaveData(SavedData savedData) =>
+            savedData.worldData.heroPositionData =
                 new HeroPositionData(CurrentLevel(), transform.position.AsVectorData());
 
         private string CurrentLevel() =>

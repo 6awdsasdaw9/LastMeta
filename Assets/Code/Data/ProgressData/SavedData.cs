@@ -1,10 +1,10 @@
 using System;
 using Code.Data.Stats;
 
-namespace Code.Data.DataPersistence
+namespace Code.Data.SavedDataPersistence
 {
     [Serializable]
-    public class ProgressData
+    public class SavedData
     {
         public HealthData heroHealth;
         public WorldData worldData;
@@ -12,7 +12,7 @@ namespace Code.Data.DataPersistence
 
         public float currentTime;
 
-        public ProgressData(string initialScene)
+        public SavedData(string initialScene)
         {
             worldData = new WorldData(initialScene);
         }

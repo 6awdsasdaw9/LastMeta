@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using UnityEngine;
 
-namespace Code.Data.DataPersistence
+namespace Code.Data.SavedDataPersistence
 {
     public class FileDataHandler
     {
@@ -66,14 +66,14 @@ namespace Code.Data.DataPersistence
 
     
 
-        public void Save(ProgressData progressData)
+        public void Save(SavedData savedData)
         {
             string fullPath = Path.Combine(dataDirPath, dataFileName);
             try
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
-                string dataToStore = JsonUtility.ToJson(progressData, true);
+                string dataToStore = JsonUtility.ToJson(savedData, true);
 
                 using (FileStream stream = new FileStream(fullPath,FileMode.Create))
                 {
@@ -89,10 +89,10 @@ namespace Code.Data.DataPersistence
                 Debug.LogError("Error occured when trying to save data to file: " + fullPath + "\n" + e);
             }
         }
-        public ProgressData Load()
+        public SavedData Load()
         {
             string fullPath = Path.Combine(dataDirPath, dataFileName);
-            ProgressData loadedProgressData = null;
+            SavedData loadedSavedData = null;
             if (File.Exists(fullPath))
             {
                 try
@@ -105,14 +105,14 @@ namespace Code.Data.DataPersistence
                             dataToLoad = reader.ReadToEnd();
                         }
                     }
-                    loadedProgressData = JsonUtility.FromJson<ProgressData>(dataToLoad);
+                    loadedSavedData = JsonUtility.FromJson<SavedData>(dataToLoad);
                 }
                 catch (Exception e)
                 {
                     Debug.LogError("Error occured when trying to load data from file: " + fullPath + "\n" + e);
                 }
             }
-            return loadedProgressData;
+            return loadedSavedData;
         }
 
 
