@@ -88,7 +88,6 @@ namespace Code.Logic.DayOfTime
 
         public void LoadData(SavedData savedData)
         {
-            Log.ColorLog("LoadTime");
             _currentSecondsOfDay = savedData.currentTime;
             
             if (_currentSecondsOfDay < _eveningTime)

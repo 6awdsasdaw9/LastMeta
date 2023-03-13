@@ -38,7 +38,6 @@ namespace Code.Character.Hero
         [Inject]
         private void Construct(InputController input, MovementLimiter limiter, ConfigData configData)
         {
-            Log.ColorLog("Hero Construct Jump");
             input.PlayerJumpEvent += OnJump;
 
             _movementLimiter = limiter;

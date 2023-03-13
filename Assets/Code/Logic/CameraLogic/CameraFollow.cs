@@ -9,6 +9,7 @@ namespace Code.Logic.CameraLogic
         [SerializeField] private float _dampTime = 0.75f;
         [SerializeField] private bool _isCanLookDown = true;
         [SerializeField] private bool _isCanMoveY = true;
+        private float startPosY;
         private bool _isCanMove = true;
 
         private Transform _following;
@@ -21,7 +22,7 @@ namespace Code.Logic.CameraLogic
         [SerializeField] private bool isHavingBounds;
         [SerializeField] private float distanceBoundsX, distanceBoundsY;
         private Vector2 minBounds, maxBounds;
-        
+
 
         [Inject]
         private void Construct(HeroMovement hero)
@@ -31,8 +32,12 @@ namespace Code.Logic.CameraLogic
 
         private void Awake()
         {
+            if (!_isCanMoveY)
+                startPosY = transform.position.y;
+
             minBounds = new Vector2(-distanceBoundsX - offsetX, -distanceBoundsY);
             maxBounds = new Vector2(distanceBoundsX + offsetX, distanceBoundsY);
+         
             _target = GetFollowingPosition();
             transform.position = _target;
         }
@@ -44,26 +49,23 @@ namespace Code.Logic.CameraLogic
                 return;
             }
 
-            var x = _following.position.x;
-            var y = _following.position.y;
+            var x = _following.position.x + _cameraOffset.x;
+            var y = _following.position.y + _cameraOffset.y;
+            var z = _cameraOffset.z;
 
             if (isHavingBounds)
             {
                 CheckBounds(ref x, ref y);
             }
 
-            _target = new Vector3(x, y , 0f) + _cameraOffset;
+            _target = new Vector3(x, y, z);
             transform.position = Vector3.SmoothDamp(transform.position, _target, ref _velocity, _dampTime);
         }
 
         private void CheckBounds(ref float x, ref float y)
         {
             x = Mathf.Clamp(x, minBounds.x, maxBounds.x);
-
-            if (_isCanMoveY)
-            {
-                y = Mathf.Clamp(y, minBounds.y, maxBounds.y);
-            }
+            y = _isCanMoveY ? Mathf.Clamp(y, minBounds.y, maxBounds.y) : startPosY;
         }
 
         private Vector3 GetFollowingPosition()
