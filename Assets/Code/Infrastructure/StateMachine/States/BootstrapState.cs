@@ -32,7 +32,7 @@ namespace Code.Infrastructure.StateMachine.States
           
             string level = _persistentSavedDataService
                 .savedData
-                .worldData
+                .heroScenePositionData
                 .heroPositionData
                 .level;
             

@@ -118,16 +118,16 @@ namespace Code.Character.Hero
 
         public void LoadData(SavedData savedData)
         {
-            if (savedData.worldData.heroPositionData.level != CurrentLevel() ||
-                savedData.worldData.heroPositionData.position.AsUnityVector() == Vector3.zero)
+            if (savedData.heroScenePositionData.heroPositionData.level != CurrentLevel() ||
+                savedData.heroScenePositionData.heroPositionData.position.AsUnityVector() == Vector3.zero)
                 return;
  
-            Vector3Data savedPosition = savedData.worldData.heroPositionData.position;
+            Vector3Data savedPosition = savedData.heroScenePositionData.heroPositionData.position;
             transform.position = savedPosition.AsUnityVector();
         }
 
         public void SaveData(SavedData savedData) =>
-            savedData.worldData.heroPositionData =
+            savedData.heroScenePositionData.heroPositionData =
                 new HeroPositionData(CurrentLevel(), transform.position.AsVectorData());
 
         private string CurrentLevel() =>

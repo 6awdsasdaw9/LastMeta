@@ -7,14 +7,14 @@ namespace Code.Data.SavedDataPersistence
     public class SavedData
     {
         public HealthData heroHealth;
-        public WorldData worldData;
+        public HeroScenePositionData heroScenePositionData;
         public PowerData heroPowerData;
 
         public float currentTime;
 
         public SavedData(string initialScene)
         {
-            worldData = new WorldData(initialScene);
+            heroScenePositionData = new HeroScenePositionData(initialScene);
         }
     }
 }

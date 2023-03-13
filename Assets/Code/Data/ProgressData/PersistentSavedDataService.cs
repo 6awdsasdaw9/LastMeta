@@ -14,14 +14,14 @@ namespace Code.Data.SavedDataPersistence
         private FileDataHandler _dataHandler;
         public SavedData savedData { get; private set; }
 
-        [Inject] private DiContainer _container;
+
         
         SavedDataCollection dataCollection;
         
         
         private void NewProgress()
         {
-            savedData = new SavedData(initialScene: Constants.homeScene);
+             savedData = new SavedData(initialScene: Constants.homeScene);
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
             _dataHandler.Save(savedData);
         }

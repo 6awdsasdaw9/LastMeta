@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.ProBuilder;
 
 namespace Code.Debugers
 {
@@ -8,8 +7,7 @@ namespace Code.Debugers
         [SerializeField] private ColliderType type;
         [SerializeField] private bool isVisible;
         [SerializeField] private byte alpha = 130;
-
-        [SerializeField] private ProBuilderMesh mesh;
+        
         private void OnDrawGizmos()
         {
             if(!isVisible)return;

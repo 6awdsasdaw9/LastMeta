@@ -8,7 +8,7 @@ namespace Code.Data.Stats
     [Serializable]
     public class PlayerConfig
     {
-        [Title("Движение")]
+        [Title("Move")]
         [Range(0f, 20f)] public float maxSpeed = 2.5f;
         [Range(0f, 1f)] public float crouchSpeed = 0.7f;
         [Range(0f, 100f)] public float maxAcceleration = 16f;
@@ -18,7 +18,7 @@ namespace Code.Data.Stats
         [Range(0f, 100f)] public float maxAirDeceleration = 45;
         [Range(0f, 100f)] public float maxAirTurnSpeed = 60;
 
-        [Title("Прыжок")] 
+        [Title("Jump")] 
         [Range(2f, 5.5f), Tooltip("Максимальная высота прыжка")]
         public float jumpHeight = 3;
 
