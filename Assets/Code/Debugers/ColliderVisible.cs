@@ -23,6 +23,10 @@ namespace Code.Debugers
                     return new Color32(30, 200, 30, alpha);
                 case ColliderType.Wall:
                     return new Color32(255, 255, 0, alpha);
+                case ColliderType.SaveTrigger:
+                    return new Color32(0, 255, 255, alpha);
+                case ColliderType.LevelTransferTrigger:
+                    return new Color32(100, 100, 255, alpha);
             }
             return new Color32(0, 0, 0, 0);
         }
@@ -30,7 +34,9 @@ namespace Code.Debugers
         private enum ColliderType
         {
             Ground,
-            Wall
+            Wall,
+            SaveTrigger,
+            LevelTransferTrigger
         }
     }
 }

@@ -11,11 +11,20 @@ namespace Code
         public const string initialScene = "Initial";
         public const string homeScene = "Home";
         public const string enterMetaPark = "EnterMetaPark";
+      
+        public  enum Scenes
+        {
+            Initial,
+            Home,
+            EnterMetaPark
+        }
+        
         #endregion
 
 
         #region Tag
         public const string InitialPointTag = "InitialPoint";
+        public const string PlayerTag = "Player";
 
         #endregion
     }

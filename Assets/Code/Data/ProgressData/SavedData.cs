@@ -1,7 +1,7 @@
 using System;
 using Code.Data.Stats;
 
-namespace Code.Data.SavedDataPersistence
+namespace Code.Data.ProgressData
 {
     [Serializable]
     public class SavedData

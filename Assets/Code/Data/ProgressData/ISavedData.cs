@@ -1,4 +1,4 @@
-namespace Code.Data.SavedDataPersistence
+namespace Code.Data.ProgressData
 {
     public interface ISavedData
     {

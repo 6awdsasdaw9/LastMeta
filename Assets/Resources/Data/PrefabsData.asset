@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b98cc6c07448338424f602009cbab3, type: 3}
   m_Name: PrefabsData
   m_EditorClassIdentifier: 
-  hero: {fileID: 6659652504158788560, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
+  realHero: {fileID: 6659652504158788560, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
+  hero: {fileID: 2929443425413194324, guid: 231f3597919323245ba45cfb13628748, type: 3}
   hud: {fileID: 7281473980765438915, guid: 72103a4a3845e7f43abfc322564ac1e2, type: 3}

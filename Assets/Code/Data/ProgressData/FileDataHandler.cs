@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using UnityEngine;
 
-namespace Code.Data.SavedDataPersistence
+namespace Code.Data.ProgressData
 {
     public class FileDataHandler
     {

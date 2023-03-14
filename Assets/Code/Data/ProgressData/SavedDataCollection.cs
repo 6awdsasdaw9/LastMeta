@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Code.Data.SavedDataPersistence
+namespace Code.Data.ProgressData
 {
     public class SavedDataCollection 
     {

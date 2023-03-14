@@ -1,9 +1,8 @@
 using Code.Debugers;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Zenject;
 
-namespace Code.Data.SavedDataPersistence
+namespace Code.Data.ProgressData
 {
     public class PersistentSavedDataService : MonoBehaviour 
     {

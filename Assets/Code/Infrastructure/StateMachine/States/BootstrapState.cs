@@ -1,4 +1,4 @@
-using Code.Data.SavedDataPersistence;
+using Code.Data.ProgressData;
 using Code.Services;
 
 namespace Code.Infrastructure.StateMachine.States
@@ -30,7 +30,7 @@ namespace Code.Infrastructure.StateMachine.States
         {
             _persistentSavedDataService.LoadData();
           
-            string level = _persistentSavedDataService
+            var level = _persistentSavedDataService
                 .savedData
                 .heroScenePositionData
                 .heroPositionData

@@ -1,10 +1,11 @@
-using Code.Character;
+    using Code.Character;
 using Code.Character.Hero;
 using Code.Data.GameData;
-using Code.Data.SavedDataPersistence;
+using Code.Data.ProgressData;
 using Code.Logic.DayOfTime;
 using Code.Services.Input;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Code.Infrastructure.Installers
@@ -52,11 +53,13 @@ namespace Code.Infrastructure.Installers
         private void BindHero()
         {
             var prefabsData = Container.Resolve<PrefabsData>();
-            Vector3 initalPoint = GameObject.FindGameObjectWithTag(Constants.InitialPointTag).transform.position;
+            
+            HeroMovement heroPrefab = SceneManager.GetActiveScene().name == Constants.homeScene ? prefabsData.realHero : prefabsData.hero;
+            Vector3 initialPoint = GameObject.FindGameObjectWithTag(Constants.InitialPointTag).transform.position;
 
             HeroMovement hero = Container.InstantiatePrefabForComponent<HeroMovement>(
-                prefabsData.hero,
-                initalPoint,
+                heroPrefab,
+                initialPoint,
                 Quaternion.identity,
                 null);
             

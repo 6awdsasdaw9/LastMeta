@@ -89,11 +89,11 @@ namespace Code.Services.Input
         {
             /* if (_mainCamera?.ScreenToViewportPoint(Input.mousePosition).y >= 0.05f)*/
             {
-                PlayerPunchEvent?.Invoke();
+                PlayerAttackEvent?.Invoke();
             }
         }
 
-        public event Action PlayerPunchEvent;
+        public event Action PlayerAttackEvent;
 
         private void SkillButton_One(InputAction.CallbackContext context) => SkillButton_1_Event?.Invoke();
         public event Action SkillButton_1_Event;
