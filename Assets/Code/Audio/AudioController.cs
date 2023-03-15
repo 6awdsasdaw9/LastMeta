@@ -1,3 +1,5 @@
+using System;
+using FMOD.Studio;
 using UnityEngine;
 
 namespace Code.Audio
@@ -6,13 +8,13 @@ namespace Code.Audio
     {
         [SerializeField] private string musicEventPath;
 
-        private FMOD.Studio.EventInstance music;
+        private EventInstance music;
     
-        private FMOD.Studio.PARAMETER_DESCRIPTION _parameterDescription;
-        private FMOD.Studio.PARAMETER_ID _parameterID;
+        private PARAMETER_DESCRIPTION _parameterDescription;
+        private PARAMETER_ID _parameterID;
 
-        private FMOD.Studio.Bus Music_Volume;
-        private FMOD.Studio.Bus Effect_Volume;
+        private Bus Music_Volume;
+        private Bus Effect_Volume;
     
         private void Start()
         {
@@ -20,6 +22,11 @@ namespace Code.Audio
                 return;
             music = FMODUnity.RuntimeManager.CreateInstance(musicEventPath);
             music.start();
+        }
+
+        private void OnDisable()
+        {
+            music.stop(STOP_MODE.ALLOWFADEOUT);
         }
 
         #region Param

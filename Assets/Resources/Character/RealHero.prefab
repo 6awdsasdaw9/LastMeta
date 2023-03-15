@@ -86,7 +86,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.17706597
+  m_Radius: 0.15
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.65, z: 0}
@@ -102,11 +102,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079bd03092cea444581fbf3cc51923b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundLength: 0.15
-  _colliderOffset: {x: 0, y: 0, z: 0}
+  underCeiling: 0
+  _hero: {fileID: 6659652504158788560}
+  _collider: {fileID: 1427034856}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  _groundLength: 0.15
+  _ceilingLength: 0.95
+  _colliderOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &6659652504158788546
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,8 +17,7 @@ namespace Code.Character.Hero
         private MovementLimiter _movementLimiter;
         private PlayerConfig _config;
 
-        [Title("Components")] 
-        [SerializeField] private Rigidbody _body;
+        [Title("Components")] [SerializeField] private Rigidbody _body;
         [SerializeField] private HeroCollision _collision;
 
         private float _maxSpeed = 10f;
@@ -30,13 +29,19 @@ namespace Code.Character.Hero
         private float _acceleration;
         private float _deceleration;
         private float _turnSpeed;
-        
-        public bool isCrouch => _collision.onGround && pressingCrouch;
+
+        public bool isCrouch
+        {
+            get => _collision.onGround && pressingCrouch || _collision.underCeiling;
+            private set { }
+        }
+
         private bool pressingMove;
         private bool pressingCrouch;
-        
+
         [Inject]
-        private void Construct(InputController input, MovementLimiter limiter, ConfigData configData, SavedDataCollection dataCollection)
+        private void Construct(InputController input, MovementLimiter limiter, ConfigData configData,
+            SavedDataCollection dataCollection)
         {
             input.PlayerCrochEvent += OnCrouch;
             input.PlayerMovementEvent += OnMovement;
@@ -46,7 +51,7 @@ namespace Code.Character.Hero
 
             _config = configData.playerConfig;
             _maxSpeed = configData.playerConfig.maxSpeed;
-            
+
             dataCollection.Add(this);
         }
 
@@ -70,10 +75,15 @@ namespace Code.Character.Hero
 
             pressingMove = directionX != 0;
         }
-        
 
-        private void OnCrouch(InputAction.CallbackContext context) =>
+
+        private void OnCrouch(InputAction.CallbackContext context)
+        {
             pressingCrouch = context.started;
+        }
+
+
+     
 
         private void Rotation()
         {
@@ -97,6 +107,7 @@ namespace Code.Character.Hero
             _acceleration = _collision.onGround ? _config.maxAcceleration : _config.maxAirAcceleration;
             _deceleration = _collision.onGround ? _config.maxDeceleration : _config.maxAirDeceleration;
             _turnSpeed = _collision.onGround ? _config.maxTurnSpeed : _config.maxAirTurnSpeed;
+            isCrouch = isCrouch && !_collision.underCeiling;
 
             if (pressingMove)
             {
@@ -113,6 +124,7 @@ namespace Code.Character.Hero
             _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange) *
                           (isCrouch ? _config.crouchSpeed : 1);
 
+
             _body.velocity = _velocity;
         }
 
@@ -121,7 +133,7 @@ namespace Code.Character.Hero
             if (savedData.heroScenePositionData.heroPositionData.level != CurrentLevel() ||
                 savedData.heroScenePositionData.heroPositionData.position.AsUnityVector() == Vector3.zero)
                 return;
- 
+
             Vector3Data savedPosition = savedData.heroScenePositionData.heroPositionData.position;
             transform.position = savedPosition.AsUnityVector();
         }

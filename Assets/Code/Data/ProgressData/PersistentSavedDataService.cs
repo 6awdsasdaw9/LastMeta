@@ -20,7 +20,7 @@ namespace Code.Data.ProgressData
         
         private void NewProgress()
         {
-             savedData = new SavedData(initialScene: Constants.homeScene);
+             savedData = new SavedData(initialScene: Constants.Scenes.Home.ToString());
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
             _dataHandler.Save(savedData);
         }
@@ -46,6 +46,7 @@ namespace Code.Data.ProgressData
             {
                 Log.ColorLog("No data was found. Initializing data to defaults.", ColorType.Olive);
                 NewProgress();
+                Log.ColorLog("new progress");
             }
         }
 

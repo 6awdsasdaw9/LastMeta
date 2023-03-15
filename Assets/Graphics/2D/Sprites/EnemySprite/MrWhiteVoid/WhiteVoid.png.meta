@@ -232,7 +232,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1024
+        y: 512
         width: 256
         height: 256
       alignment: 9
@@ -253,7 +253,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 1024
+        y: 512
         width: 256
         height: 256
       alignment: 9
@@ -274,7 +274,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 1024
+        y: 512
         width: 256
         height: 256
       alignment: 9
@@ -295,7 +295,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 768
-        y: 1024
+        y: 512
         width: 256
         height: 256
       alignment: 9
@@ -316,7 +316,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1024
-        y: 1024
+        y: 512
         width: 256
         height: 256
       alignment: 9
@@ -336,8 +336,8 @@ TextureImporter:
       name: WhiteVoid_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 768
+        x: 1280
+        y: 512
         width: 256
         height: 256
       alignment: 9
@@ -357,8 +357,8 @@ TextureImporter:
       name: WhiteVoid_6
       rect:
         serializedVersion: 2
-        x: 256
-        y: 768
+        x: 1536
+        y: 512
         width: 256
         height: 256
       alignment: 9
@@ -378,8 +378,8 @@ TextureImporter:
       name: WhiteVoid_7
       rect:
         serializedVersion: 2
-        x: 512
-        y: 768
+        x: 1792
+        y: 512
         width: 256
         height: 256
       alignment: 9
@@ -399,8 +399,8 @@ TextureImporter:
       name: WhiteVoid_8
       rect:
         serializedVersion: 2
-        x: 768
-        y: 768
+        x: 0
+        y: 256
         width: 256
         height: 256
       alignment: 9
@@ -420,8 +420,8 @@ TextureImporter:
       name: WhiteVoid_9
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 768
+        x: 256
+        y: 256
         width: 256
         height: 256
       alignment: 9
@@ -441,8 +441,8 @@ TextureImporter:
       name: WhiteVoid_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 512
+        x: 512
+        y: 256
         width: 256
         height: 256
       alignment: 9
@@ -462,8 +462,8 @@ TextureImporter:
       name: WhiteVoid_11
       rect:
         serializedVersion: 2
-        x: 256
-        y: 512
+        x: 768
+        y: 256
         width: 256
         height: 256
       alignment: 9
@@ -483,8 +483,8 @@ TextureImporter:
       name: WhiteVoid_12
       rect:
         serializedVersion: 2
-        x: 512
-        y: 512
+        x: 1024
+        y: 256
         width: 256
         height: 256
       alignment: 9
@@ -504,8 +504,8 @@ TextureImporter:
       name: WhiteVoid_13
       rect:
         serializedVersion: 2
-        x: 768
-        y: 512
+        x: 1280
+        y: 256
         width: 256
         height: 256
       alignment: 9
@@ -525,8 +525,8 @@ TextureImporter:
       name: WhiteVoid_14
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 512
+        x: 1536
+        y: 256
         width: 256
         height: 256
       alignment: 9
@@ -546,7 +546,7 @@ TextureImporter:
       name: WhiteVoid_15
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1792
         y: 256
         width: 256
         height: 256
@@ -567,8 +567,8 @@ TextureImporter:
       name: WhiteVoid_16
       rect:
         serializedVersion: 2
-        x: 256
-        y: 256
+        x: 0
+        y: 0
         width: 256
         height: 256
       alignment: 9
@@ -588,8 +588,8 @@ TextureImporter:
       name: WhiteVoid_17
       rect:
         serializedVersion: 2
-        x: 512
-        y: 256
+        x: 256
+        y: 0
         width: 256
         height: 256
       alignment: 9
@@ -609,8 +609,8 @@ TextureImporter:
       name: WhiteVoid_18
       rect:
         serializedVersion: 2
-        x: 768
-        y: 256
+        x: 512
+        y: 0
         width: 256
         height: 256
       alignment: 9
@@ -630,8 +630,8 @@ TextureImporter:
       name: WhiteVoid_19
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 256
+        x: 768
+        y: 0
         width: 256
         height: 256
       alignment: 9
@@ -651,7 +651,7 @@ TextureImporter:
       name: WhiteVoid_20
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1024
         y: 0
         width: 256
         height: 256
@@ -664,6 +664,48 @@ TextureImporter:
       bones: []
       spriteID: b5d95fc24875e67a0800000000000000
       internalID: -6382067396735820453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteVoid_21
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69f23d68ddf136e43bdd42beca9f6c4e
+      internalID: 1084553704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WhiteVoid_22
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13386ca0522dec043804723e56849be7
+      internalID: 936795354
       vertices: []
       indices: 
       edges: []
@@ -695,11 +737,13 @@ TextureImporter:
       WhiteVoid_18: -5883440423588953960
       WhiteVoid_17: -3271497066423591441
       WhiteVoid_1: -8240409327047407245
+      WhiteVoid_21: 1084553704
       WhiteVoid_14: 4141453699029912012
       WhiteVoid_20: -6382067396735820453
       WhiteVoid_2: -352728679018982569
       WhiteVoid_11: 1281549268539313759
       WhiteVoid_12: 4230401478523688238
+      WhiteVoid_22: 936795354
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

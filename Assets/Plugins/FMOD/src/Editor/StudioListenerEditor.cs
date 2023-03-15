@@ -1,4 +1,6 @@
 ﻿using UnityEditor;
+using Zenject;
+
 
 namespace FMODUnity
 {
@@ -7,7 +9,7 @@ namespace FMODUnity
     public class StudioListenerEditor : Editor
     {
         public SerializedProperty attenuationObject;
-
+  
         private void OnEnable()
         {
             attenuationObject = serializedObject.FindProperty("attenuationObject");

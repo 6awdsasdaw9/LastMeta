@@ -1,5 +1,7 @@
 using Code.Data.ProgressData;
+using Code.Debugers;
 using Code.Services;
+using FMOD;
 
 namespace Code.Infrastructure.StateMachine.States
 {
@@ -36,6 +38,7 @@ namespace Code.Infrastructure.StateMachine.States
                 .heroPositionData
                 .level;
             
+            Log.ColorLog("Bootstrap " + level);
             _stateMachine.Enter<LoadLevelState, string>(level);
         }
     }

@@ -1,16 +1,17 @@
+using Code.Character.Hero;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Character.Enemies
 {
     public class RotateToHero : Follow
     {
-        public float Speed;
-
+        [SerializeField] private SpriteRenderer _spriteRenderer;
         private Transform _heroTransform;
-        private Vector3 _positionToLook;
 
-        public void Construct(Transform heroTransform)
-            => _heroTransform = heroTransform;
+        [Inject]
+        private void Construct(HeroMovement hero)
+            => _heroTransform = hero.transform;
     
         private void Update()
         {
@@ -20,24 +21,8 @@ namespace Code.Character.Enemies
 
         private void RotateTowardsHero()
         {
-            UpdatePositionToLookAt();
-
-            transform.rotation = SmoothedRotation(transform.rotation, _positionToLook);
+            _spriteRenderer.flipX = !(transform.position.x < _heroTransform.position.x);
         }
 
-        private void UpdatePositionToLookAt()
-        {
-            Vector3 positionDelta = _heroTransform.position - transform.position;
-            _positionToLook = new Vector3(positionDelta.x, transform.position.y, positionDelta.z);
-        }
-    
-        private Quaternion SmoothedRotation(Quaternion rotation, Vector3 positionToLook) =>
-            Quaternion.Lerp(rotation, TargetRotation(positionToLook), SpeedFactor());
-
-        private Quaternion TargetRotation(Vector3 position) =>
-            Quaternion.LookRotation(position);
-
-        private float SpeedFactor() =>
-            Speed * Time.deltaTime;
     }
 }

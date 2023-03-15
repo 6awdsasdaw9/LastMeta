@@ -1,29 +1,31 @@
+using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Code.Character.Enemies
 {
     public class EnemyAnimator : MonoBehaviour
     {
-        private Animator _animator;
+        [SerializeField] private NavMeshAgent _agent;
+        [SerializeField] private Animator _animator;
+        private static readonly int Speed_f = Animator.StringToHash("Speed");
+        private static readonly int Attack_t = Animator.StringToHash("Attack");
         private static readonly int death_t = Animator.StringToHash("Death");
         private static readonly int win_t = Animator.StringToHash("Win");
-        private static readonly int speed_f = Animator.StringToHash("Speed");
         private static readonly int isMoving_b = Animator.StringToHash("IsMoving");
-        private static readonly int attack_t = Animator.StringToHash("Attack");
-    
-        void Awake()
+
+        private void Update()
         {
-            _animator = GetComponent<Animator>();
+            PlayMove(Mathf.Abs(_agent.velocity.x));
         }
 
         public void PlayDeath() => _animator.SetTrigger(death_t);
         public void PlayWin() => _animator.SetTrigger(win_t);
-        public void PlayAttack() => _animator.SetTrigger(attack_t);
+        public void PlayAttack() => _animator.SetTrigger(Attack_t);
 
-        public void Move(float speed)
+        public void PlayMove(float speed)
         {
-            _animator.SetBool(isMoving_b,true);
-            _animator.SetFloat(speed_f,speed);
+            _animator.SetFloat(Speed_f,speed);
         }
     
         public void StopMoving() =>  _animator.SetBool(isMoving_b,false);

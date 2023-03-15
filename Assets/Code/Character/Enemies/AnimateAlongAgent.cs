@@ -14,7 +14,7 @@ namespace Code.Character.Enemies
         {
             if (ShouldMove())
             {
-                animator.Move(agent.velocity.magnitude);
+                animator.PlayMove(agent.velocity.magnitude);
             }
             else
             {

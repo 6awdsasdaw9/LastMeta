@@ -7,25 +7,31 @@ namespace Code.Character.Enemies
 {
     public class AgentMoveToHero : Follow
     {
-        public NavMeshAgent agent;
-        private const float minimalDistance = 1;
+        [SerializeField] private NavMeshAgent _agent;
         private Transform _heroTransform;
+        private MovementLimiter _limiter;
+        
+        private const float minimalDistance = 1;
         
         [Inject]
-        private void Construct(HeroMovement hero)
+        private void Construct(HeroMovement hero,MovementLimiter limiter)
         {
             _heroTransform = hero.transform;
+            _limiter = limiter;
         }
         
         private void Update()
         {
-            if(_heroTransform && HeroNotReached())
-                agent.destination = _heroTransform.position;
+            if (_heroTransform && HeroNotReached() && _limiter.charactersCanMove)
+            {
+                _agent.destination = _heroTransform.position;
+                
+            }
         }
 
-        private bool HeroNotReached()
-        {
-            return Vector3.Distance(agent.transform.position, _heroTransform.position) >= minimalDistance;
-        }
+     
+
+        private bool HeroNotReached() => 
+            Vector3.Distance(_agent.transform.position, _heroTransform.position) >= minimalDistance;
     }
 }
