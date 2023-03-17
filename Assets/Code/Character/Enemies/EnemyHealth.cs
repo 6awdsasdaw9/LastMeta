@@ -1,4 +1,6 @@
 using System;
+using Code.Character.Hero;
+using Code.Character.Interfaces;
 using UnityEngine;
 
 namespace Code.Character.Enemies

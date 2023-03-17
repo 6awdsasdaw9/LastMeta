@@ -25,7 +25,7 @@ MonoBehaviour:
     timeToJumpApex: 0.8
     upwardMovementMultiplier: 3
     downwardMovementMultiplier: 2
-    maxAirJumps: 0
+    maxAirJumps: 1
     jumpCutOff: 3
     speedLimit: 6.7
     coyoteTime: 0.1

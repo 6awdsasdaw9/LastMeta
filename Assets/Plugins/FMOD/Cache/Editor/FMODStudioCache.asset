@@ -15,11 +15,38 @@ MonoBehaviour:
   Path: ../LastMeta_audio/Audio/FMODproject/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638144317287757584
+  lastModified: 638146213419152974
   FileSizes:
   - Name: Desktop
-    Value: 15132928
+    Value: 16278272
   Exists: 1
+--- !u!114 &-6614325868416969401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Environment/Water/Waterfall 2
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Environment/Water/Waterfall 2
+  Guid:
+    Data1: -795853312
+    Data2: 1171651829
+    Data3: 141586602
+    Data4: -937142045
+  Banks:
+  - {fileID: -5231750452691678465}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 9
+  Length: 22955
 --- !u!114 &-6298843794961917108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,10 +198,10 @@ MonoBehaviour:
   Path: ../LastMeta_audio/Audio/FMODproject/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638144317289858547
+  lastModified: 638146213420320327
   FileSizes:
   - Name: Desktop
-    Value: 8842912
+    Value: 8845952
   Exists: 1
 --- !u!114 &-3991333416500832371
 MonoBehaviour:
@@ -551,6 +578,30 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 20
   Length: 14000
+--- !u!114 &-1101310711298150651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/EnterMetaPark/DayNormilize
+  m_EditorClassIdentifier: 
+  Name: DayNormilize
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2771397485
+    data2: 2493122580
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-929957563965661179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -635,38 +686,16 @@ MonoBehaviour:
   - {fileID: 2140876307984340192}
   - {fileID: -1227733774228393566}
   - {fileID: -1366688249667683751}
-  - {fileID: 3063085122047821460}
+  - {fileID: 4270116294466475259}
+  - {fileID: 3118358798235997707}
+  - {fileID: -6614325868416969401}
   EditorParameters: []
   MasterBanks:
   - {fileID: -8877420638204659299}
   StringsBanks:
   - {fileID: 5179386392184932168}
-  cacheTime: 638144317289858547
+  cacheTime: 638146213420320327
   cacheVersion: 131601
---- !u!114 &20231532126066489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/HomeMusic/DayNormilize
-  m_EditorClassIdentifier: 
-  Name: DayNormilize
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2771397485
-    data2: 2493122580
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
 --- !u!114 &40569581148898882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,7 +858,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 20
   Length: 375
---- !u!114 &3063085122047821460
+--- !u!114 &3118358798235997707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -839,21 +868,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/HomeMusic
+  m_Name: event:/Music/EnterMetaPark
   m_EditorClassIdentifier: 
-  Path: event:/Music/HomeMusic
+  Path: event:/Music/EnterMetaPark
   Guid:
-    Data1: -679186606
-    Data2: 1171737619
-    Data3: -1235007557
-    Data4: -1447113874
+    Data1: 2050525325
+    Data2: 1217164241
+    Data3: 876140209
+    Data4: -403891229
   Banks:
   - {fileID: -8877420638204659299}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 20231532126066489}
+  - {fileID: -1101310711298150651}
   MinDistance: 1
   MaxDistance: 20
   Length: 109714
@@ -884,6 +913,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 93
+--- !u!114 &4270116294466475259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Home
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Home
+  Guid:
+    Data1: -679186606
+    Data2: 1171737619
+    Data3: -1235007557
+    Data4: -1447113874
+  Banks:
+  - {fileID: -8877420638204659299}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 7899297356533712499}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 92244
 --- !u!114 &4605523704776682483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,10 +983,10 @@ MonoBehaviour:
   Path: ../LastMeta_audio/Audio/FMODproject/Build/Desktop/Music.strings.bank
   Name: Music.strings
   StudioPath: bank:/Music.strings
-  lastModified: 638144317287767593
+  lastModified: 638146213419167986
   FileSizes:
   - Name: Desktop
-    Value: 3190
+    Value: 3272
   Exists: 1
 --- !u!114 &5264927100053069077
 MonoBehaviour:
@@ -1066,6 +1123,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 374
+--- !u!114 &7899297356533712499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Home/DayNormilize
+  m_EditorClassIdentifier: 
+  Name: DayNormilize
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2771397485
+    data2: 2493122580
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &8043830153161261903
 MonoBehaviour:
   m_ObjectHideFlags: 0

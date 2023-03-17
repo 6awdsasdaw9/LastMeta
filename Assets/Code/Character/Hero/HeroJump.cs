@@ -16,6 +16,7 @@ namespace Code.Character.Hero
         private PlayerConfig _config;
 
         [Title("Components")] 
+        [SerializeField] private HeroMovement _move;
         [SerializeField] private HeroCollision _collision;
         [SerializeField] private Rigidbody _body;
 
@@ -30,10 +31,9 @@ namespace Code.Character.Hero
         private bool _desiredJump;
         private float _jumpBufferCounter;
         private float _coyoteTimeCounter;
-        private bool _pressingJump;
         private bool _currentlyJumping;
         private bool _canJumpAgain;
-        private int jumpPhase;
+
 
         [Inject]
         private void Construct(InputController input, MovementLimiter limiter, ConfigData configData)
@@ -45,29 +45,24 @@ namespace Code.Character.Hero
 
             _jumpHeight = configData.playerConfig.jumpHeight;
             _maxAirJumps = configData.playerConfig.maxAirJumps;
-            
         }
 
         private void Update()
         {
-            SetPhysics();
-
             CheckJumpBuffer();
-
             CheckCoyoteTime();
         }
 
         private void OnJump(InputAction.CallbackContext context)
         {
-            if (!_movementLimiter.charactersCanMove) return;
+            if (!_movementLimiter.charactersCanMove || _move.isCrouch) 
+                return;
 
             if (context.started)
             {
                 _desiredJump = true;
-                _pressingJump = true;
             }
 
-            if (context.canceled) _pressingJump = false;
         }
 
         private void CheckCoyoteTime()
@@ -80,7 +75,8 @@ namespace Code.Character.Hero
 
         private void CheckJumpBuffer()
         {
-            if (!(_config.jumpBuffer > 0) || !_desiredJump) return;
+            if (!(_config.jumpBuffer > 0) || !_desiredJump) 
+                return;
             
             _jumpBufferCounter += Time.deltaTime;
 
@@ -107,13 +103,7 @@ namespace Code.Character.Hero
         }
 
 
-        private void SetPhysics()
-        {
-            //Определите шкалу гравитации персонажа, используя предоставленную статистику. Умножьте это на gravMultiplier, используемый позже
-            // var newGravity = new Vector2(0, -2 * _jumpHeight / (_timeToJumpApex * _timeToJumpApex));
-            // _body.gravityScale = newGravity.y / Physics2D.gravity.y * _gravMultiplier;
-        }
-
+   
         private void CalculateGravity()
         {
             switch (_body.velocity.y)
@@ -135,7 +125,6 @@ namespace Code.Character.Hero
                     if (_collision.onGround)
                     {
                         _currentlyJumping = false;
-                        jumpPhase = 0;
                     }
 
                     _gravMultiplier = _defaultGravityScale;
@@ -154,7 +143,7 @@ namespace Code.Character.Hero
             _coyoteTimeCounter = 0;
             _jumpSpeed = _jumpHeight;
 
-            jumpPhase += 1;
+  
             _canJumpAgain = _maxAirJumps == 1 && _canJumpAgain == false;
 
             switch (_velocity.y)

@@ -1,29 +1,33 @@
 using System.Linq;
+using Code.Character.Hero;
+using Code.Character.Interfaces;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Character.Enemies
 {
     [RequireComponent(typeof(EnemyAnimator))]
-    public class Attack : MonoBehaviour
+    public class EnemyAttack : MonoBehaviour
     {
-        public EnemyAnimator animator;
-        public float damage = 10;
-        public float attackCooldown = 3f;
-        public float cleavage;
-        public float effectiveDistance;
+        [SerializeField] private EnemyAnimator _animator;
+        [SerializeField] private float _damage = 10;
+        [SerializeField] private float _attackCooldown = 3f;
+        [SerializeField] private float _cleavage;
+        [SerializeField] private float _effectiveDistance;
 
         
         private Transform _heroTransform;
-        private float _attackCooldown;
+        private float _currentAttackCooldown;
         private bool _isAttacking;
         private int _layerMask;
-        private Collider[] _hits = new Collider[1];
+        private readonly Collider[] _hits = new Collider[1];
         private Vector3 startPoint;
         private bool _attackIsActive;
 
-        public void Construct(Transform transform1)
+        [Inject]
+        public void Construct(HeroMovement hero)
         {
-            _heroTransform = transform1;
+            _heroTransform = hero.transform;
         }
 
         private void Awake()
@@ -41,28 +45,25 @@ namespace Code.Character.Enemies
         private void StartAttack()
         {
             transform.LookAt(_heroTransform);
-            animator.PlayAttack();
+            _animator.PlayAttack();
         }
 
         private void OnAttack()
         {
-                PhysicsDebug.DrawDebug(StartPoint(), cleavage, 1);
+            PhysicsDebug.DrawDebug(StartPoint(), _cleavage, 1);
             if (Hit(out Collider hit))
             {
-
                 //hit.transform.GetComponent<HeroHealth>().TakeDamage(damage);
                 if (hit.gameObject.TryGetComponent(out IHealth heroHealth))
                 {
-                //    heroHealth.TakeDamage(damage);
-                    
-                 
+                    heroHealth.TakeDamage(_damage);
                 }
             }
         }
 
         private void OnAttackEnded()
         {
-            _attackCooldown = attackCooldown;
+            _currentAttackCooldown = _attackCooldown;
             _isAttacking = false;
         }
 
@@ -74,29 +75,26 @@ namespace Code.Character.Enemies
 
         private bool Hit(out Collider hit)
         {
-            int hitCount = Physics.OverlapSphereNonAlloc(StartPoint(), cleavage, _hits, _layerMask);
+            int hitCount = Physics.OverlapSphereNonAlloc(StartPoint(), _cleavage, _hits, _layerMask);
             hit = _hits.FirstOrDefault();
             return hitCount > 0;
         }
 
         private Vector3 StartPoint() =>
             new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z) +
-            transform.forward * effectiveDistance;
+            transform.forward * _effectiveDistance;
 
         private void UpdateCooldown()
         {
             if (!CoolDownIsUp())
-                _attackCooldown -= Time.deltaTime;
+                _currentAttackCooldown -= Time.deltaTime;
         }
 
         private bool CanAttack() =>
             _attackIsActive && !_isAttacking && CoolDownIsUp();
 
         private bool CoolDownIsUp() =>
-            _attackCooldown <= 0;
+            _currentAttackCooldown <= 0;
     }
-
-    internal interface IHealth
-    {
-    }
+    
 }

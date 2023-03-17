@@ -9,7 +9,7 @@ namespace Code.Character.Enemies
     {
         public EnemyHealth health;
         public EnemyAnimator animator;
-        public Attack attack;
+        public EnemyAttack enemyAttack;
         public AgentMoveToHero agent;
 
         public GameObject deathFX;
@@ -41,7 +41,7 @@ namespace Code.Character.Enemies
             animator.PlayDeath();
             
             agent.enabled = false;
-            attack.enabled = false;
+            enemyAttack.enabled = false;
             
             
             SpawnDeathFx();

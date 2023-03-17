@@ -2445,6 +2445,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
+      propertyPath: musicEventPath
+      value: event:/Music/Home
+      objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216097, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: m_Name
       value: AudioController

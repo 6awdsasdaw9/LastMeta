@@ -1,8 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
-
-//This script is used by both movement and jump to detect when the character is touching the ground
 
 namespace Code.Character.Hero
 {
@@ -20,9 +16,7 @@ namespace Code.Character.Hero
         [SerializeField] private float _ceilingLength = 0.95f;
         
         [SerializeField] private Vector3 _colliderOffset;
-
-      
-
+        
         private void Update()
         {
             onGround = GroundCheck();
@@ -48,7 +42,6 @@ namespace Code.Character.Hero
             _collider.direction = 0;
             _collider.center = new Vector3(0, 0.05f, 0);
             _collider.height = 1f;
-            
         }
 
         private void EnableStandCollider()
@@ -64,22 +57,19 @@ namespace Code.Character.Hero
 
         private bool CeilingCheck()
         {
-
             return Physics.Raycast(transform.position  + _colliderOffset, Vector2.up, _ceilingLength, _groundLayer)||
-               Physics.Raycast(transform.position - _colliderOffset, Vector2.up, _ceilingLength, _groundLayer);
+                   Physics.Raycast(transform.position - _colliderOffset, Vector2.up, _ceilingLength, _groundLayer);
         }
 
         private void OnDrawGizmos()
         {
-            /*if (onGround) { Gizmos.color = Color.green; } else*/ { Gizmos.color = Color.red; }
+            Gizmos.color = Color.green; 
+            
+            //ground
             Gizmos.DrawLine(transform.position, transform.position  + Vector3.down * _groundLength);
-            Gizmos.DrawLine(transform.position , transform.position  + Vector3.down * _groundLength);
-
-            Vector3 ceilingPoint = transform.position;
-            ceilingPoint.y += _collider.height;
-            Gizmos.DrawLine(transform.position + _colliderOffset,transform.position+ _colliderOffset + Vector3.up * _ceilingLength);
-            Gizmos.DrawLine(transform.position - _colliderOffset,transform.position- _colliderOffset + Vector3.up * _ceilingLength);
-      
+            //ceiling
+            Gizmos.DrawLine(transform.position + _colliderOffset,transform.position + _colliderOffset + Vector3.up * _ceilingLength);
+            Gizmos.DrawLine(transform.position - _colliderOffset,transform.position - _colliderOffset + Vector3.up * _ceilingLength);
         }
 
     }

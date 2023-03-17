@@ -1,4 +1,5 @@
 using System;
+using Code.Character.Interfaces;
 using Code.Data;
 using Code.Data.ProgressData;
 using Code.Data.Stats;
@@ -6,14 +7,6 @@ using UnityEngine;
 
 namespace Code.Character.Hero
 {
-    public interface IHealth
-    {
-        event Action HealthChanged;
-        float Current { get; set; }
-        float Max { get; set; }
-        void TakeDamage(float damage);
-    }
-
     public class HeroHealth : MonoBehaviour, IHealth, ISavedData
     {
         private HealthData _healthData;
