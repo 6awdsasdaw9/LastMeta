@@ -531,7 +531,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28232
+  m_Name: pb_Mesh28240
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1866,8 +1866,8 @@ MonoBehaviour:
       Data4: 0
     Path: 
   Event: 
-  PlayEvent: 1
-  StopEvent: 2
+  PlayEvent: 0
+  StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
