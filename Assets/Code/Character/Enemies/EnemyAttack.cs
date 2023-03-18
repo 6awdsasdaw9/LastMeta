@@ -44,7 +44,7 @@ namespace Code.Character.Enemies
 
         private void StartAttack()
         {
-            transform.LookAt(_heroTransform);
+            //transform.LookAt(_heroTransform);
             _animator.PlayAttack();
         }
 

@@ -20,7 +20,7 @@ namespace Code.Data.ProgressData
         
         private void NewProgress()
         {
-             savedData = new SavedData(initialScene: Constants.Scenes.Home.ToString());
+             savedData = new SavedData();
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
             _dataHandler.Save(savedData);
         }

@@ -1,5 +1,8 @@
 using System;
+using Code.Data.GameData;
 using Code.Data.Stats;
+using Code.Debugers;
+using Zenject;
 
 namespace Code.Data.ProgressData
 {
@@ -12,9 +15,12 @@ namespace Code.Data.ProgressData
 
         public float currentTime;
 
-        public SavedData(string initialScene)
+    
+        
+        public SavedData( )
         {
-            heroScenePositionData = new HeroScenePositionData(initialScene);
+            heroScenePositionData = new HeroScenePositionData(Constants.initialScene);
+            heroHealth = new HealthData(20);
         }
     }
 }

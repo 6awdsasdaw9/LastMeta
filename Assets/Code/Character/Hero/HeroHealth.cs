@@ -1,9 +1,10 @@
 using System;
 using Code.Character.Interfaces;
-using Code.Data;
 using Code.Data.ProgressData;
 using Code.Data.Stats;
+using Code.Debugers;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Character.Hero
 {
@@ -12,6 +13,12 @@ namespace Code.Character.Hero
         private HealthData _healthData;
         public event Action HealthChanged;
 
+        [Inject]
+        private void Construct(SavedDataCollection savedDataCollection)
+        {
+            savedDataCollection.Add(this);
+        }
+        
         public float Current
         {
             get => _healthData.currentHP;
@@ -44,6 +51,8 @@ namespace Code.Character.Hero
         public void LoadData(SavedData savedData)
         {
             _healthData = savedData.heroHealth;
+            Log.ColorLog("HP" + Current);
+            
             HealthChanged?.Invoke();
         }
 

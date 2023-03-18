@@ -1,5 +1,8 @@
 
 using System;
+using Code.Data.GameData;
+using Sirenix.Serialization;
+using Zenject;
 
 namespace Code.Data.Stats
 {
@@ -9,6 +12,12 @@ namespace Code.Data.Stats
         public float currentHP;
         public float maxHP;
 
+        public HealthData()
+        {
+ 
+            Reset();
+        }
+        
         public void Reset() => currentHP = maxHP;
     }
 }

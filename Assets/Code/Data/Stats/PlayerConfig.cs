@@ -8,6 +8,9 @@ namespace Code.Data.Stats
     [Serializable]
     public class PlayerConfig
     {
+        [Title("Health")]
+        public float maxHP = 20;
+        
         [Title("Move")]
         [Range(0f, 20f)] public float maxSpeed = 2.5f;
         [Range(0f, 1f)] public float crouchSpeed = 0.7f;
