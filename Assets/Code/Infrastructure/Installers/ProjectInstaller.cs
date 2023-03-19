@@ -21,25 +21,18 @@ namespace Code.Infrastructure.Installers
             
             BindFactory();
             BindStateMachine();
-            
         }
 
-        public void Initialize()
-        {
+        public void Initialize() => 
             Container.Resolve<GameStateMachine>().Enter<BootstrapState>();
-        }
 
         private void BindInterfaces() =>
             Container.BindInterfacesTo<ProjectInstaller>()
                 .FromInstance(this);
 
-        private void BindDataService()
-        {
+        private void BindDataService() => 
             Container.Bind<PersistentSavedDataService>().FromInstance(persistentSavedDataService).AsSingle().NonLazy();
-            persistentSavedDataService.LoadData();
-        }
-
-
+        
         private void BindFactory() => 
             Container.Bind<GameFactory>().AsSingle().NonLazy();
 

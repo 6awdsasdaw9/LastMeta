@@ -10,9 +10,9 @@ namespace Code.Character.Hero
         [SerializeField] private HeroAnimator _animator;
        
         [Inject]
-        private void Construct(InputController inputController)
+        private void Construct(InputService inputService)
         {
-            inputController.PlayerAttackEvent += Attack;
+            inputService.PlayerAttackEvent += Attack;
         }
 
         private void Attack()

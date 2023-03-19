@@ -1,7 +1,6 @@
 using Code.Infrastructure.StateMachine;
 using Code.Infrastructure.StateMachine.States;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Code.Logic
@@ -13,19 +12,16 @@ namespace Code.Logic
         private bool _triggered;
 
         [Inject]
-        public void Construct(GameStateMachine stateMachine) => 
+        public void Construct(GameStateMachine stateMachine) =>
             _stateMachine = stateMachine;
 
         private void OnTriggerEnter(Collider other)
         {
-            if(_triggered)
+            if (_triggered || !other.CompareTag(Constants.PlayerTag))
                 return;
-
-            if (other.CompareTag(Constants.PlayerTag))
-            {
-                _stateMachine.Enter<LoadLevelState, string>(_nextScene.ToString());
-                _triggered = true;
-            }
+            
+            _stateMachine.Enter<LoadLevelState, string>(_nextScene.ToString());
+            _triggered = true;
         }
     }
 }

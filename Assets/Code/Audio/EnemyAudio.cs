@@ -1,22 +1,29 @@
-using FMODUnity;
 using UnityEngine;
 
-public class EnemyAudio : MonoBehaviour
+namespace Code.Audio
 {
-   public StudioEventEmitter emitter;
+    public class EnemyAudio : MonoBehaviour
+    {
 
-   public void AudioPlayStep()
-   {
+        public string path;
 
-      emitter.EventReference = EventReference.Find("event:/SFX/Bullets/Bullet_Bubble");
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(path,gameObject.transform.position);
+            }
+       
+     
+        }
+
+        public void AudioPlayBreath()
+        {
+            //emitter.EventReference = EventReference.Find("vent:/SFX/Bullets/Bullet_Bubble");
+
       
-      emitter.Play();
-   }
-   
-   public void AudioPlayBreath()
-   {
-      emitter.Event = "event:/SFX/Bullets/Bullet_Bubble";
-   }
+        }
 
    
+    }
 }

@@ -15,38 +15,11 @@ MonoBehaviour:
   Path: ../LastMeta_audio/Audio/FMODproject/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638146213419152974
+  lastModified: 638147221062595843
   FileSizes:
   - Name: Desktop
     Value: 16278272
   Exists: 1
---- !u!114 &-6614325868416969401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Environment/Water/Waterfall 2
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/Environment/Water/Waterfall 2
-  Guid:
-    Data1: -795853312
-    Data2: 1171651829
-    Data3: 141586602
-    Data4: -937142045
-  Banks:
-  - {fileID: -5231750452691678465}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 9
-  Length: 22955
 --- !u!114 &-6298843794961917108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,10 +171,10 @@ MonoBehaviour:
   Path: ../LastMeta_audio/Audio/FMODproject/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638146213420320327
+  lastModified: 638147221063601714
   FileSizes:
   - Name: Desktop
-    Value: 8845952
+    Value: 8844064
   Exists: 1
 --- !u!114 &-3991333416500832371
 MonoBehaviour:
@@ -629,6 +602,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1375
+--- !u!114 &-168443017116403960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Test
+  m_EditorClassIdentifier: 
+  Path: event:/Test
+  Guid:
+    Data1: 1032834956
+    Data2: 1327689147
+    Data3: -287844184
+    Data4: 1929679338
+  Banks:
+  - {fileID: -5231750452691678465}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 97
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,13 +688,13 @@ MonoBehaviour:
   - {fileID: -1366688249667683751}
   - {fileID: 4270116294466475259}
   - {fileID: 3118358798235997707}
-  - {fileID: -6614325868416969401}
+  - {fileID: -168443017116403960}
   EditorParameters: []
   MasterBanks:
   - {fileID: -8877420638204659299}
   StringsBanks:
   - {fileID: 5179386392184932168}
-  cacheTime: 638146213420320327
+  cacheTime: 638147221063601714
   cacheVersion: 131601
 --- !u!114 &40569581148898882
 MonoBehaviour:
@@ -748,7 +748,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
-  MaxDistance: 20
+  MaxDistance: 0
   Length: 1905
 --- !u!114 &610941555791971628
 MonoBehaviour:
@@ -983,10 +983,10 @@ MonoBehaviour:
   Path: ../LastMeta_audio/Audio/FMODproject/Build/Desktop/Music.strings.bank
   Name: Music.strings
   StudioPath: bank:/Music.strings
-  lastModified: 638146213419167986
+  lastModified: 638147221062610861
   FileSizes:
   - Name: Desktop
-    Value: 3272
+    Value: 3264
   Exists: 1
 --- !u!114 &5264927100053069077
 MonoBehaviour:

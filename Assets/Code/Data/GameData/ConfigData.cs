@@ -1,4 +1,4 @@
-using Code.Data.Stats;
+using Code.Data.States;
 using UnityEngine;
 
 namespace Code.Data.GameData

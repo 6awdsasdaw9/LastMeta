@@ -1,5 +1,5 @@
 using Code.Data.GameData;
-using Code.Data.Stats;
+using Code.Data.States;
 using Code.Debugers;
 using Code.Services.Input;
 using UnityEngine;
@@ -36,7 +36,7 @@ namespace Code.Character.Hero
 
 
         [Inject]
-        private void Construct(InputController input, MovementLimiter limiter, ConfigData configData)
+        private void Construct(InputService input, MovementLimiter limiter, ConfigData configData)
         {
             input.PlayerJumpEvent += OnJump;
 

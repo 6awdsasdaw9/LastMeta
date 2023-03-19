@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c973dc534e48f28a99c18d603c627a, type: 3}
   m_Name: ConfigData
   m_EditorClassIdentifier: 
+  initialScene: 1
   playerConfig:
+    maxHP: 20
     maxSpeed: 2.5
     crouchSpeed: 0.7
     maxAcceleration: 16

@@ -34,11 +34,9 @@ namespace Code.Infrastructure.StateMachine.States
           
             var level = _persistentSavedDataService
                 .savedData
-                .heroScenePositionData
                 .heroPositionData
                 .level;
             
-            Log.ColorLog("Bootstrap " + level);
             _stateMachine.Enter<LoadLevelState, string>(level);
         }
     }

@@ -1,23 +1,20 @@
 using System;
-using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Code.Services.Input
 {
-    public interface IInputService
-    {
-    }
-
-    public class InputService : IInputService
+    public class InputService 
     {
         private readonly InputMaster _master;
-        
+
         private bool _isInteractPressed = false;
+
         public InputService()
         {
             _master = new InputMaster();
             EneblePlayerInput();
-            EnebleUIInput(true);
+            EnableUIInput(true);
 
             ConnectToEvents();
         }
@@ -35,16 +32,15 @@ namespace Code.Services.Input
         {
             _master.Player.Horizontal.performed += Movement;
             _master.Player.Horizontal.canceled += Movement;
-            
+
             _master.Player.Dash.started += Dash;
             _master.Player.Attack.started += Attack;
             _master.Player.Attack.canceled += StopAttack;
-            _master.Player.Jump.started  +=  Jump;
-            _master.Player.Crouch.started  +=  Crouch;
-            _master.Player.Crouch.canceled  +=  Crouch;
-            
-            
-            
+            _master.Player.Jump.started += Jump;
+            _master.Player.Crouch.started += Crouch;
+            _master.Player.Crouch.canceled += Crouch;
+
+
             _master.Player.Skill_One.started += SkillButton_One;
             _master.Player.Skill_Two.started += SkillButton_Two;
 
@@ -66,12 +62,11 @@ namespace Code.Services.Input
 
         #region Player input
 
-        public void EneblePlayerInput() => _master.Player.Enable();
+        private void EneblePlayerInput() => _master.Player.Enable();
         public void DisablePlayerInput() => _master.Player.Disable();
 
-        private void  Movement(InputAction.CallbackContext context)
+        private void Movement(InputAction.CallbackContext context)
         {
-            Debug.Log(context.ReadValue<float>());
             PlayerMovementEvent?.Invoke(context);
         }
 
@@ -87,10 +82,10 @@ namespace Code.Services.Input
 
         private void Attack(InputAction.CallbackContext context)
         {
-            /* if (_mainCamera?.ScreenToViewportPoint(Input.mousePosition).y >= 0.05f)*/
-            {
-                PlayerAttackEvent?.Invoke();
-            }
+            if(EventSystem.current.IsPointerOverGameObject())
+                return;
+                
+            PlayerAttackEvent?.Invoke();
         }
 
         public event Action PlayerAttackEvent;
@@ -106,18 +101,15 @@ namespace Code.Services.Input
 
         #region UI input
 
-        public void EnebleUIInput(bool activate)
+        private void EnableUIInput(bool activate)
         {
             if (activate) _master.UI.Enable();
             else _master.UI.Disable();
         }
 
-        private void OpenMenu(InputAction.CallbackContext context)
-        {
-            PauseEvent?.Invoke();
-        }
+        private void OpenMenu(InputAction.CallbackContext context) => OpenMenuEvent?.Invoke();
+        public event Action OpenMenuEvent;
 
-        public event Action PauseEvent;
 
         private void InteractButtonPressed(InputAction.CallbackContext context)
         {
@@ -126,8 +118,8 @@ namespace Code.Services.Input
             if (context.canceled) _isInteractPressed = false;
             InteractButtonEvent?.Invoke();
         }
-
         public event Action InteractButtonEvent;
+
 
         public bool GetInteractPressed()
         {

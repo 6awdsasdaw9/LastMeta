@@ -1,6 +1,7 @@
 using System.Linq;
 using Code.Character.Hero;
 using Code.Character.Interfaces;
+using Code.Debugers;
 using UnityEngine;
 using Zenject;
 
@@ -12,24 +13,16 @@ namespace Code.Character.Enemies
         [SerializeField] private EnemyAnimator _animator;
         [SerializeField] private float _damage = 10;
         [SerializeField] private float _attackCooldown = 3f;
-        [SerializeField] private float _cleavage;
-        [SerializeField] private float _effectiveDistance;
-
+        [SerializeField] private float _cleavage = 1;
+        [SerializeField] private float _effectiveHeight = 1;
         
-        private Transform _heroTransform;
         private float _currentAttackCooldown;
         private bool _isAttacking;
         private int _layerMask;
         private readonly Collider[] _hits = new Collider[1];
         private Vector3 startPoint;
         private bool _attackIsActive;
-
-        [Inject]
-        public void Construct(HeroMovement hero)
-        {
-            _heroTransform = hero.transform;
-        }
-
+        
         private void Awake()
         {
             _layerMask = 1 << LayerMask.NameToLayer("Player");
@@ -44,23 +37,27 @@ namespace Code.Character.Enemies
 
         private void StartAttack()
         {
-            //transform.LookAt(_heroTransform);
             _animator.PlayAttack();
         }
 
+        /// <summary>
+        /// Animation Event
+        /// </summary>
         private void OnAttack()
         {
             PhysicsDebug.DrawDebug(StartPoint(), _cleavage, 1);
-            if (Hit(out Collider hit))
+            if (!Hit(out Collider hit))
+                return;
+            
+            if (hit.gameObject.TryGetComponent(out IHealth heroHealth))
             {
-                //hit.transform.GetComponent<HeroHealth>().TakeDamage(damage);
-                if (hit.gameObject.TryGetComponent(out IHealth heroHealth))
-                {
-                    heroHealth.TakeDamage(_damage);
-                }
+                heroHealth.TakeDamage(_damage);
             }
         }
 
+        /// <summary>
+        /// Animation Event
+        /// </summary>
         private void OnAttackEnded()
         {
             _currentAttackCooldown = _attackCooldown;
@@ -81,8 +78,7 @@ namespace Code.Character.Enemies
         }
 
         private Vector3 StartPoint() =>
-            new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z) +
-            transform.forward * _effectiveDistance;
+            new Vector3(transform.position.x, transform.position.y + _effectiveHeight, transform.position.z);
 
         private void UpdateCooldown()
         {

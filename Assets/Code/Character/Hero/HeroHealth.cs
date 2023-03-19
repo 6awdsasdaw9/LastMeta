@@ -1,7 +1,7 @@
 using System;
 using Code.Character.Interfaces;
 using Code.Data.ProgressData;
-using Code.Data.Stats;
+using Code.Data.States;
 using Code.Debugers;
 using UnityEngine;
 using Zenject;

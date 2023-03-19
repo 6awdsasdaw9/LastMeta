@@ -1,6 +1,6 @@
 ﻿using Code.Data.GameData;
 using Code.Data.ProgressData;
-using Code.Data.Stats;
+using Code.Data.States;
 using Code.Debugers;
 using Code.Services.Input;
 using Sirenix.OdinInspector;
@@ -36,7 +36,7 @@ namespace Code.Character.Hero
         private bool pressingCrouch;
 
         [Inject]
-        private void Construct(InputController input, MovementLimiter limiter, ConfigData configData,
+        private void Construct(InputService input, MovementLimiter limiter, ConfigData configData,
             SavedDataCollection dataCollection)
         {
             input.PlayerCrochEvent += OnPressCrouch;
@@ -130,23 +130,22 @@ namespace Code.Character.Hero
 
             _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange) *
                           (isCrouch ? _config.crouchSpeed : 1);
-
-
+            
             _body.velocity = _velocity;
         }
 
         public void LoadData(SavedData savedData)
         {
-            if (savedData.heroScenePositionData.heroPositionData.level != CurrentLevel() ||
-                savedData.heroScenePositionData.heroPositionData.position.AsUnityVector() == Vector3.zero)
+            if (savedData.heroPositionData.level != CurrentLevel() ||
+                savedData.heroPositionData.position.AsUnityVector() == Vector3.zero)
                 return;
 
-            Vector3Data savedPosition = savedData.heroScenePositionData.heroPositionData.position;
+            Vector3Data savedPosition = savedData.heroPositionData.position;
             transform.position = savedPosition.AsUnityVector();
         }
 
         public void SaveData(SavedData savedData) =>
-            savedData.heroScenePositionData.heroPositionData =
+            savedData.heroPositionData =
                 new HeroPositionData(CurrentLevel(), transform.position.AsVectorData());
 
         private string CurrentLevel() =>
