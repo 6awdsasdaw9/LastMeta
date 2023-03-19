@@ -21,7 +21,7 @@ namespace Code.Character.Enemies
         private int _layerMask;
         private readonly Collider[] _hits = new Collider[1];
         private Vector3 startPoint;
-        private bool _attackIsActive;
+        public bool attackIsActive { get; private set; }
         
         private void Awake()
         {
@@ -65,10 +65,10 @@ namespace Code.Character.Enemies
         }
 
         public void DisableAttack() =>
-            _attackIsActive = false;
+            attackIsActive = false;
 
         public void EnableAttack() =>
-            _attackIsActive = true;
+            attackIsActive = true;
 
         private bool Hit(out Collider hit)
         {
@@ -87,7 +87,7 @@ namespace Code.Character.Enemies
         }
 
         private bool CanAttack() =>
-            _attackIsActive && !_isAttacking && CoolDownIsUp();
+            attackIsActive && !_isAttacking && CoolDownIsUp();
 
         private bool CoolDownIsUp() =>
             _currentAttackCooldown <= 0;

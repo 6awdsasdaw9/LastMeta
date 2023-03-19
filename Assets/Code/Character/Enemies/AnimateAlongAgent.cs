@@ -6,13 +6,14 @@ namespace Code.Character.Enemies
     [RequireComponent(typeof(NavMeshAgent)), RequireComponent(typeof(EnemyAnimator))]
     public class AnimateAlongAgent : MonoBehaviour
     {
+        [SerializeField] private NavMeshAgent agent;
+        [SerializeField] private  EnemyAnimator animator;
+        [SerializeField] private EnemyAttack _attack;
+        
         private const float minimalVelocity = 0.05f;
-        public NavMeshAgent agent;
-        public EnemyAnimator animator;
-
         private void Update()
         {
-            if (ShouldMove())
+            if (ShouldMove() && !_attack.attackIsActive)
             {
                 animator.PlayMove(agent.velocity.magnitude);
             }

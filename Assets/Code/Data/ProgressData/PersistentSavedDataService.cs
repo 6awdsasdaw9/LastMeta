@@ -79,7 +79,7 @@ namespace Code.Data.ProgressData
         {
             savedData = new SavedData();
             savedData.heroPositionData.level = _configData.initialScene.ToString();
-            savedData.heroHealth.maxHP = _configData.playerConfig.maxHP;
+            savedData.heroHealth.maxHP = _configData.heroConfig.maxHP;
             savedData.heroHealth.Reset();
             
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);

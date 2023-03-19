@@ -20,12 +20,18 @@ namespace Code
         }
         
         #endregion
-
-
+        
         #region Tag
         public const string InitialPointTag = "InitialPoint";
         public const string PlayerTag = "Player";
 
         #endregion
+
+        #region Layers
+
+        public const string HittableLayer = "Hittable";
+
+        #endregion
+
     }
 }

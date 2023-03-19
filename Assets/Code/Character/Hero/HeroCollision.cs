@@ -6,6 +6,7 @@ namespace Code.Character.Hero
     {
         public bool onGround { get; private set; }
         public bool underCeiling;
+        
         [SerializeField] private HeroMovement _hero;
         [SerializeField] private CapsuleCollider _collider;
         [SerializeField] private LayerMask _groundLayer;
@@ -29,22 +30,22 @@ namespace Code.Character.Hero
         {
             if (_hero.isCrouch)
             {
-                EnableCrouchCollider();
+                EnableHorizontalCollider();
             }
             else
             {
-                EnableStandCollider();
+                EnableVerticalCollider();
             }
         }
 
-        private void EnableCrouchCollider()
+        private void EnableHorizontalCollider()
         {
             _collider.direction = 0;
             _collider.center = new Vector3(0, 0.05f, 0);
             _collider.height = 1f;
         }
 
-        private void EnableStandCollider()
+        private void EnableVerticalCollider()
         {
             _collider.direction = 1;
             _collider.center = new Vector3(0, 0.65f, 0);

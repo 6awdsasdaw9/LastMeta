@@ -17,7 +17,6 @@ namespace Code.Services
         private void OnTriggerExit(Collider other)
         {
             TriggerExit?.Invoke(other);
-            
         }
     }
 }

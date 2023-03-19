@@ -7,5 +7,6 @@ namespace Code.Data.States
     {
         public float damage;
         public float damagedRadius;
+        
     }
 }

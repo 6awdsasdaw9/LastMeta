@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: ConfigData
   m_EditorClassIdentifier: 
   initialScene: 1
-  playerConfig:
+  heroConfig:
     maxHP: 20
+    power:
+      damage: 5
+      damagedRadius: 1.2
     maxSpeed: 2.5
     crouchSpeed: 0.7
     maxAcceleration: 16
@@ -27,7 +30,7 @@ MonoBehaviour:
     timeToJumpApex: 0.8
     upwardMovementMultiplier: 3
     downwardMovementMultiplier: 2
-    maxAirJumps: 1
+    maxAirJumps: 0
     jumpCutOff: 3
     speedLimit: 6.7
     coyoteTime: 0.1

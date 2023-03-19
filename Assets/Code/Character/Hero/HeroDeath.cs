@@ -16,13 +16,19 @@ namespace Code.Character.Hero
         [SerializeField] private HeroJump _jump;
         [SerializeField] private HeroAttack _attack;
 
+        [SerializeField] private CapsuleCollider _collider;
+        [SerializeField] private Rigidbody _rb;
+        
         private GameObject _deathFx;
+        private bool _isDeath;
+        private MovementLimiter _limiter;
 
         [Inject]
-        private void Construct(PrefabsData prefabsData)
+        private void Construct(PrefabsData prefabsData,MovementLimiter limiter)
         {
             _deathFx = prefabsData.fx_PlayerDeath;    
             _health.HealthChanged += HealthChanged;
+            _limiter = limiter;
         }
 
         private void OnDestroy() => 
@@ -30,18 +36,21 @@ namespace Code.Character.Hero
 
         private void HealthChanged()
         {
-            if (_health.Current <= 0)
+            if (_health.Current <= 0 && !_isDeath)
                 Die();
         }
 
         private void Die()
         {
+            _isDeath = true;
             _movement.enabled = false;
             _jump.enabled = false;
             _attack.enabled = false;
-
+            transform.position -= new Vector3(0,0,0.2f);
+            
             _animator.PlayDeath();
             Instantiate(_deathFx, transform.position, Quaternion.identity);
+            _limiter.DisableMovement();
         }
     }
 }

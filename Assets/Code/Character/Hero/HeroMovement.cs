@@ -1,7 +1,6 @@
 ﻿using Code.Data.GameData;
 using Code.Data.ProgressData;
 using Code.Data.States;
-using Code.Debugers;
 using Code.Services.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -11,11 +10,11 @@ using Zenject;
 
 namespace Code.Character.Hero
 {
-    [RequireComponent(typeof(Rigidbody), typeof(HeroCollision))]
+    [RequireComponent(typeof(HeroCollision))]
     public class HeroMovement : MonoBehaviour, ISavedData
     {
         private MovementLimiter _movementLimiter;
-        private PlayerConfig _config;
+        private HeroConfig _config;
 
         [Title("Components")] 
         [SerializeField] private Rigidbody _body;
@@ -45,8 +44,8 @@ namespace Code.Character.Hero
             _movementLimiter = limiter;
             _movementLimiter.OnDisableMovementMode += StopMovement;
 
-            _config = configData.playerConfig;
-            _maxSpeed = configData.playerConfig.maxSpeed;
+            _config = configData.heroConfig;
+            _maxSpeed = configData.heroConfig.maxSpeed;
 
             dataCollection.Add(this);
         }
@@ -100,9 +99,10 @@ namespace Code.Character.Hero
         private void SetDesiredVelocity() =>
             _desiredVelocity = new Vector2(directionX, 0f) * _maxSpeed;
 
-        private void StopMovement()
+        public void StopMovement()
         {
             directionX = 0;
+            _body.velocity = Vector3.zero;
             pressingCrouch = false;
             pressingMove = false;
         }

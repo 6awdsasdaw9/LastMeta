@@ -9,11 +9,11 @@ using Sirenix.OdinInspector;
 
 namespace Code.Character.Hero
 {
-    [RequireComponent(typeof(Rigidbody), typeof(HeroCollision))]
+    [RequireComponent(typeof(HeroCollision))]
     public class HeroJump : MonoBehaviour
     {
         private MovementLimiter _movementLimiter;
-        private PlayerConfig _config;
+        private HeroConfig _config;
 
         [Title("Components")] 
         [SerializeField] private HeroMovement _move;
@@ -41,10 +41,10 @@ namespace Code.Character.Hero
             input.PlayerJumpEvent += OnJump;
 
             _movementLimiter = limiter;
-            _config = configData.playerConfig;
+            _config = configData.heroConfig;
 
-            _jumpHeight = configData.playerConfig.jumpHeight;
-            _maxAirJumps = configData.playerConfig.maxAirJumps;
+            _jumpHeight = configData.heroConfig.jumpHeight;
+            _maxAirJumps = configData.heroConfig.maxAirJumps;
         }
 
         private void Update()

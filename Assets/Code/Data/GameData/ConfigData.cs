@@ -7,7 +7,7 @@ namespace Code.Data.GameData
     public class ConfigData : ScriptableObject
     {
         public Constants.Scenes initialScene;
-        public PlayerConfig playerConfig;
+        public HeroConfig heroConfig;
 
     }
 }
