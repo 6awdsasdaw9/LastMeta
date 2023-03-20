@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: isRealHero
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6659652504158788560, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
+      propertyPath: _attack
+      value: 
+      objectReference: {fileID: 3188653826641931529}
     - target: {fileID: 6659652504158788561, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
       propertyPath: _ceilingLength
       value: 1.5

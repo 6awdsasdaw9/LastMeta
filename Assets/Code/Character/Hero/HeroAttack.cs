@@ -1,4 +1,3 @@
-using System;
 using Code.Character.Interfaces;
 using Code.Data.GameData;
 using Code.Data.States;
@@ -12,12 +11,11 @@ namespace Code.Character.Hero
     public class HeroAttack : MonoBehaviour
     {
         [SerializeField] private HeroAnimator _animator;
-
         private InputService _inputService;
         private PowerData _power;
-        private Collider[] _hits = new Collider[3];
+        private Collider[] _hits = new Collider[7];
+        public bool attackIsActive { get; private set; }
         private int _layerMask;
-
 
         [Inject]
         private void Construct(InputService inputService, ConfigData configData)
@@ -35,28 +33,42 @@ namespace Code.Character.Hero
 
         private void Attack()
         {
+            if (attackIsActive)
+                return;
+
             _animator.PlayAttack();
+            attackIsActive = true;
         }
-        
-        public void OnAttack()
+
+        /// <summary>
+        /// Animation Event
+        /// </summary>
+        private void OnAttack()
         {
-            PhysicsDebug.DrawDebug(StartPoint() + transform.forward, _power.damagedRadius, 1.0f);
-            
+            Log.ColorLog("On Attack");
+            PhysicsDebug.DrawDebug(StartPoint(), _power.damagedRadius, 1.0f);
             for (int i = 0; i < Hit(); ++i)
             {
-                _hits[i].GetComponentInParent<IHealth>().TakeDamage(_power.damage);
+                    Log.ColorLog("Hit");
+             _hits[i].GetComponent<IHealth>().TakeDamage(_power.damage);
+                /*if (_hits[i].TryGetComponent(out IHealth health))
+                {
+                    Log.ColorLog("On Hit");
+                    health.TakeDamage(_power.damage);
+                }*/
             }
         }
 
-
-        /*
-        public void LoadProgress(PlayerProgress progress) =>
-            _stats = progress.heroStats;*/
+        /// <summary>
+        /// Animation Event
+        /// </summary>
+        private void OnAttackEnded() => attackIsActive = false;
 
         private int Hit() =>
-            Physics.OverlapSphereNonAlloc(StartPoint() + transform.localScale ,_power.damagedRadius, _hits, _layerMask);
+            Physics.OverlapSphereNonAlloc(StartPoint() , _power.damagedRadius, _hits, _layerMask);
 
         private Vector3 StartPoint() =>
-            new Vector3(transform.position.x + transform.localScale.x * 0.5f, transform.position.y + 1f, transform.position.z);
+            new Vector3(transform.position.x + transform.localScale.x * 0.1f, transform.position.y + 0.7f,
+                transform.position.z);
     }
 }

@@ -16,13 +16,14 @@ GameObject:
   - component: {fileID: 1950002331292781488}
   - component: {fileID: 9130910169763028603}
   - component: {fileID: 7713104559713070439}
+  - component: {fileID: 2530404836229206354}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy_WhiteVoid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2530404835865111170
 Transform:
   m_ObjectHideFlags: 0
@@ -153,6 +154,23 @@ MonoBehaviour:
   _follows:
   - {fileID: 1950002331292781488}
   - {fileID: 9130910169763028603}
+--- !u!114 &2530404836229206354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2530404835865111172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9e379ef1d672e4a9d87f7a42225a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 5414901859867563713}
+  _damage: 10
+  _attackCooldown: 4
+  _cleavage: 0
+  _effectiveHeight: 1
 --- !u!1 &2530404836282691478
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,7 +33,6 @@ namespace Code.Infrastructure.StateMachine.States
 
         private void OnLoaded()
         {
-            Log.ColorLog("LoadLevelState");
             _stateMachine.Enter<GameLoopState>();
         }
         

@@ -2,6 +2,8 @@ using System;
 
 namespace Code.Character
 {
+    //Все классы, которым нужно остановить функционирование при паузе/смерти подписываются на ивенты этого класса,
+    //экземляр которого создается в SceneContext как AsSingle 
     public class MovementLimiter
     {
         public bool charactersCanMove { get; private set; }

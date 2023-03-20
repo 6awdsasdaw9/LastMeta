@@ -10,15 +10,15 @@ using Zenject;
 
 namespace Code.Character.Hero
 {
-    [RequireComponent(typeof(HeroCollision))]
+    [RequireComponent(typeof(Rigidbody), typeof(HeroCollision))]
     public class HeroMovement : MonoBehaviour, ISavedData
     {
         private MovementLimiter _movementLimiter;
         private HeroConfig _config;
 
-        [Title("Components")] 
-        [SerializeField] private Rigidbody _body;
+        [Title("Components")] [SerializeField] private Rigidbody _body;
         [SerializeField] private HeroCollision _collision;
+        [SerializeField] private HeroAttack _attack;
 
         [HideInInspector] public float directionX;
         private float _maxSpeed = 10f;
@@ -67,27 +67,25 @@ namespace Code.Character.Hero
         private void OnPressMovement(InputAction.CallbackContext context)
         {
             if (_movementLimiter.charactersCanMove)
+            {
                 directionX = context.ReadValue<float>();
 
+                if (_attack && _attack.attackIsActive) 
+                    directionX = 0;
+            }
             pressingMove = directionX != 0;
         }
 
 
-        private void OnPressCrouch(InputAction.CallbackContext context)
-        {
+        private void OnPressCrouch(InputAction.CallbackContext context) =>
             pressingCrouch = context.started;
-        }
 
         private void Crouch()
         {
             if (pressingCrouch && _collision.onGround)
-            {
                 isCrouch = true;
-            }
-            else if(!_collision.underCeiling)
-            {
+            else if (!_collision.underCeiling)
                 isCrouch = false;
-            }
         }
 
         private void Rotation()
@@ -99,23 +97,22 @@ namespace Code.Character.Hero
         private void SetDesiredVelocity() =>
             _desiredVelocity = new Vector2(directionX, 0f) * _maxSpeed;
 
-        public void StopMovement()
+        private void StopMovement()
         {
             directionX = 0;
-            _body.velocity = Vector3.zero;
             pressingCrouch = false;
             pressingMove = false;
+            _body.velocity = Vector3.zero;
         }
 
 
-        
         private void MoveWithAcceleration()
         {
             _acceleration = _collision.onGround ? _config.maxAcceleration : _config.maxAirAcceleration;
             _deceleration = _collision.onGround ? _config.maxDeceleration : _config.maxAirDeceleration;
             _turnSpeed = _collision.onGround ? _config.maxTurnSpeed : _config.maxAirTurnSpeed;
-            
-            
+
+
             if (pressingMove)
             {
                 if (Mathf.Sign(directionX) != Mathf.Sign(_velocity.x))
@@ -130,7 +127,7 @@ namespace Code.Character.Hero
 
             _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange) *
                           (isCrouch ? _config.crouchSpeed : 1);
-            
+
             _body.velocity = _velocity;
         }
 

@@ -1,5 +1,4 @@
 using System;
-using Code.Character.Hero;
 using Code.Character.Interfaces;
 using UnityEngine;
 
@@ -8,8 +7,6 @@ namespace Code.Character.Enemies
     [RequireComponent((typeof(EnemyAnimator)))]
     public class EnemyHealth : MonoBehaviour, IHealth
     {
-        public EnemyAnimator animator;
-
         [SerializeField] private float _current;
         [SerializeField] private float _max;
 
@@ -31,9 +28,6 @@ namespace Code.Character.Enemies
         {
             Current -= damage;
             Debug.Log(_current);
-            
-          //  animator.PlayHit();
-            
             HealthChanged?.Invoke();
         }
     }

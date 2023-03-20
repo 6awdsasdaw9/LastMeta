@@ -1,4 +1,5 @@
 using Code.Character.Interfaces;
+using Code.Debugers;
 using UnityEngine;
 
 namespace Code.UI
@@ -8,10 +9,11 @@ namespace Code.UI
         protected HpBar _hpBar;
         private IHealth _health;
         
-        private void Start()
+        protected  void Start()
         {
             _health = GetComponent<IHealth>();
             _health.HealthChanged += UpdateHpBar;
+         
         }
         
         private void OnDestroy()

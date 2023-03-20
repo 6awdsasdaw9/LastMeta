@@ -37,6 +37,11 @@ namespace Code.Character.Enemies
 
         private void StartAttack()
         {
+            Log.ColorLog("Start Attack");
+            if(_isAttacking)
+                return;
+            
+            _isAttacking = true;
             _animator.PlayAttack();
         }
 

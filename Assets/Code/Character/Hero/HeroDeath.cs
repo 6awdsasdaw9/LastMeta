@@ -43,14 +43,16 @@ namespace Code.Character.Hero
         private void Die()
         {
             _isDeath = true;
+            _limiter.DisableMovement();
+            
+            transform.position -= new Vector3(0,0,0.2f);
+           
             _movement.enabled = false;
             _jump.enabled = false;
             _attack.enabled = false;
-            transform.position -= new Vector3(0,0,0.2f);
             
             _animator.PlayDeath();
             Instantiate(_deathFx, transform.position, Quaternion.identity);
-            _limiter.DisableMovement();
         }
     }
 }

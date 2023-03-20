@@ -10,7 +10,7 @@ namespace Code.Character.Enemies
         [SerializeField] private Animator _animator;
         private static readonly int Speed_f = Animator.StringToHash("Speed");
         private static readonly int Attack_t = Animator.StringToHash("Attack");
-        private static readonly int death_t = Animator.StringToHash("Death");
+        private static readonly int death_t = Animator.StringToHash("Die");
         private static readonly int win_t = Animator.StringToHash("Win");
         private static readonly int isMoving_b = Animator.StringToHash("IsMoving");
 

@@ -17,7 +17,7 @@ MonoBehaviour:
     maxHP: 20
     power:
       damage: 5
-      damagedRadius: 1.2
+      damagedRadius: 0.5
     maxSpeed: 2.5
     crouchSpeed: 0.7
     maxAcceleration: 16

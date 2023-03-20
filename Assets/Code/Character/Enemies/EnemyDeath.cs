@@ -12,7 +12,6 @@ namespace Code.Character.Enemies
         public EnemyAttack enemyAttack;
         public AgentMoveToHero agent;
 
-        public GameObject deathFX;
 
         public event Action Happened;
 
@@ -44,17 +43,12 @@ namespace Code.Character.Enemies
             enemyAttack.enabled = false;
             
             
-            SpawnDeathFx();
-            
             StartCoroutine(DestroyTimer());
             
             Happened?.Invoke();
         }
 
-        private void SpawnDeathFx()
-        {
-            Instantiate(deathFX, transform.position, Quaternion.identity);
-        }
+
 
         private IEnumerator DestroyTimer()
         {
