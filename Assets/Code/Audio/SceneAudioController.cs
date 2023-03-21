@@ -4,9 +4,19 @@ using UnityEngine;
 
 namespace Code.Audio
 {
-    public class AudioController : MonoBehaviour
+    public class SceneAudioController : MonoBehaviour
     {
-        [SerializeField] private string musicEventPath;
+        private const string dirPath = "event:/Music/";
+        private enum AudioEventPath
+        {
+            EnterMetaPark,
+            Home,
+            Music_0,
+            Music_1,
+            Music_2
+        }
+        
+        [SerializeField] private AudioEventPath audioEvent;
 
         private EventInstance music;
     
@@ -18,9 +28,7 @@ namespace Code.Audio
     
         private void Start()
         {
-            if (musicEventPath == string.Empty)
-                return;
-            music = FMODUnity.RuntimeManager.CreateInstance(musicEventPath);
+            music = FMODUnity.RuntimeManager.CreateInstance(dirPath + audioEvent);
             music.start();
         }
 
