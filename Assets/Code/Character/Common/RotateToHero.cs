@@ -2,7 +2,7 @@ using Code.Character.Hero;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Character.Enemies
+namespace Code.Character.Common
 {
     public class RotateToHero : Follow
     {

@@ -1,8 +1,7 @@
 using Code.Character.Interfaces;
-using Code.Debugers;
 using UnityEngine;
 
-namespace Code.UI
+namespace Code.UI.Actors
 {
     public class ActorUI : MonoBehaviour
     {

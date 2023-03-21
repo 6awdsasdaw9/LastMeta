@@ -1,6 +1,6 @@
 using System;
 
-namespace Code.Character
+namespace Code.Services
 {
     //Все классы, которым нужно остановить функционирование при паузе/смерти подписываются на ивенты этого класса,
     //экземляр которого создается в SceneContext как AsSingle 

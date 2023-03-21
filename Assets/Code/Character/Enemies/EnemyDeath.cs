@@ -10,7 +10,7 @@ namespace Code.Character.Enemies
         public EnemyHealth health;
         public EnemyAnimator animator;
         public EnemyAttack enemyAttack;
-        public AgentMoveToHero agent;
+        public EnemyMovement agent;
 
 
         public event Action Happened;

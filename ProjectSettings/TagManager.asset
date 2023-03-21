@@ -16,7 +16,7 @@ TagManager:
   - PlayerObserver
   - Player
   - Hittable
-  - 
+  - Enemy
   - 
   - 
   - 

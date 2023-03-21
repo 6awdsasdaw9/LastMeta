@@ -36,8 +36,8 @@ namespace Code.Character.Hero
             if (attackIsActive)
                 return;
 
-            _animator.PlayAttack();
             attackIsActive = true;
+            _animator.PlayAttack();
         }
 
         /// <summary>
@@ -45,18 +45,9 @@ namespace Code.Character.Hero
         /// </summary>
         private void OnAttack()
         {
-            Log.ColorLog("On Attack");
             PhysicsDebug.DrawDebug(StartPoint(), _power.damagedRadius, 1.0f);
-            for (int i = 0; i < Hit(); ++i)
-            {
-                    Log.ColorLog("Hit");
-             _hits[i].GetComponent<IHealth>().TakeDamage(_power.damage);
-                /*if (_hits[i].TryGetComponent(out IHealth health))
-                {
-                    Log.ColorLog("On Hit");
-                    health.TakeDamage(_power.damage);
-                }*/
-            }
+            for (int i = 0; i < Hit(); ++i) 
+                _hits[i].GetComponent<IHealth>().TakeDamage(_power.damage);
         }
 
         /// <summary>

@@ -1,9 +1,7 @@
 using System.Linq;
-using Code.Character.Hero;
 using Code.Character.Interfaces;
 using Code.Debugers;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Character.Enemies
 {
@@ -37,7 +35,6 @@ namespace Code.Character.Enemies
 
         private void StartAttack()
         {
-            Log.ColorLog("Start Attack");
             if(_isAttacking)
                 return;
             

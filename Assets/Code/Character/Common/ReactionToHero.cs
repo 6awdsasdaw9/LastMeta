@@ -2,9 +2,9 @@ using System.Collections;
 using Code.Services;
 using UnityEngine;
 
-namespace Code.Character.Enemies
+namespace Code.Character.Common
 {
-    public class Aggro : MonoBehaviour
+    public class ReactionToHero : MonoBehaviour
     {
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private float _cooldown;
@@ -35,7 +35,7 @@ namespace Code.Character.Enemies
                 return;
             
             _hasAggroTarget = true;
-            StopAggroCoroutine();
+            StopReactionCoroutine();
             SwitchFollowOn();
         }
 
@@ -46,7 +46,7 @@ namespace Code.Character.Enemies
             SwitchFollowOff();
         }
 
-        private void StopAggroCoroutine()
+        private void StopReactionCoroutine()
         {
             if (_aggroCoroutine == null) 
                 return;

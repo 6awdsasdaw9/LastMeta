@@ -1,7 +1,5 @@
 using Code.Data.ProgressData;
-using Code.Debugers;
 using Code.Services;
-using FMOD;
 
 namespace Code.Infrastructure.StateMachine.States
 {
@@ -21,7 +19,7 @@ namespace Code.Infrastructure.StateMachine.States
 
         public void Enter()
         {
-            _sceneLoader.Load(Constants.initialScene, onLoaded: EnterLoadLevel);
+            _sceneLoader.Load(Constants.Scenes.Initial.ToString(), onLoaded: EnterLoadLevel);
         }
 
         public void Exit()

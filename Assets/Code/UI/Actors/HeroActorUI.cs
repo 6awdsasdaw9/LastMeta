@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace Code.UI
+namespace Code.UI.Actors
 {
     public class HeroActorUI : ActorUI
     {

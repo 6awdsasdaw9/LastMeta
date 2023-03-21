@@ -6,8 +6,9 @@ namespace Code.Character.Enemies
 {
     public class EnemyAnimator : MonoBehaviour
     {
-        [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private Animator _animator;
+        [SerializeField] private NavMeshAgent _agent;
+        
         private static readonly int Speed_f = Animator.StringToHash("Speed");
         private static readonly int Attack_t = Animator.StringToHash("Attack");
         private static readonly int death_t = Animator.StringToHash("Die");
@@ -23,11 +24,9 @@ namespace Code.Character.Enemies
         public void PlayWin() => _animator.SetTrigger(win_t);
         public void PlayAttack() => _animator.SetTrigger(Attack_t);
 
-        public void PlayMove(float speed)
-        {
+        private void PlayMove(float speed) => 
             _animator.SetFloat(Speed_f,speed);
-        }
-    
+
         public void StopMoving() =>  _animator.SetBool(isMoving_b,false);
 
     }
