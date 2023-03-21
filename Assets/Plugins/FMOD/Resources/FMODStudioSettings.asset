@@ -426,8 +426,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../LastMeta_audio/Audio/FMODproject/FMODproject.fspro
-  sourceBankPath: ../LastMeta_audio/Audio/FMODproject/Build
+  sourceProjectPath: Assets/Audio/FMODproject/FMODproject.fspro
+  sourceBankPath: Assets/Audio/FMODproject/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
