@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{1d6dad8c-b6d6-485c-90bf-21b66e5ce768}">
+		<property name="assetPath">
+			<value>UI/ElectronicForChat/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a2b22535-fc28-4e84-b401-116d973852d8}</destination>
+		</relationship>
+	</object>
+</objects>

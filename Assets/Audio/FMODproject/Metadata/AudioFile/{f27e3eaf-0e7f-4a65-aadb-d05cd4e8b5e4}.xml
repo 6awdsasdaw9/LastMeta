@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{f27e3eaf-0e7f-4a65-aadb-d05cd4e8b5e4}">
+		<property name="assetPath">
+			<value>Bonus/Bonus/Bonus_1_1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.5</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a2b22535-fc28-4e84-b401-116d973852d8}</destination>
+		</relationship>
+	</object>
+</objects>

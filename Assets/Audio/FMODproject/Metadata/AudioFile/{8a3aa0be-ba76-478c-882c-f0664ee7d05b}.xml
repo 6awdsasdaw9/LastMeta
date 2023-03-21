@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{8a3aa0be-ba76-478c-882c-f0664ee7d05b}">
+		<property name="assetPath">
+			<value>Character/MrWhite/09/RealyButtonsClick_0.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.2825396825396824</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a2b22535-fc28-4e84-b401-116d973852d8}</destination>
+		</relationship>
+	</object>
+</objects>
