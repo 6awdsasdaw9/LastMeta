@@ -1294,7 +1294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5907823467843071397, guid: bb228830be456474db5134492cbf334c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6212503193679453620, guid: bb228830be456474db5134492cbf334c, type: 3}
       propertyPath: m_StoppingDistance
@@ -1379,7 +1379,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh28524
+  m_Name: pb_Mesh96452
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2385,7 +2385,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-111020
+  m_Name: pb_Mesh-555166
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3292,7 +3292,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-55970
+  m_Name: pb_Mesh-555152
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

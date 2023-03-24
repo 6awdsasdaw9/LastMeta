@@ -22,6 +22,7 @@ namespace Code
         public const string HittableLayer = "Hittable";
         public const string PlayerLayer = "Player";
         public const string EnemyLayer = "Enemy";
+        public const string StopCameraLayer = "StopCamera";
         #endregion
 
         #region Sprite Layer Position

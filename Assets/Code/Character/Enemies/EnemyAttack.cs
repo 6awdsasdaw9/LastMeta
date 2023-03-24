@@ -23,7 +23,7 @@ namespace Code.Character.Enemies
         
         private void Awake()
         {
-            _layerMask = 1 << LayerMask.NameToLayer("Player");
+            _layerMask = 1 << LayerMask.NameToLayer(Constants.PlayerLayer);
         }
 
         private void Update()

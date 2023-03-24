@@ -8,7 +8,7 @@ namespace Code.Data.ProgressData
     {
         public HealthData heroHealth;
         public PositionData heroPositionData;
-        public CameraPositionData cameraPositionData;
+        public PositionData cameraPositionData;
         
         public PowerData heroPowerData;
 
@@ -16,7 +16,7 @@ namespace Code.Data.ProgressData
         public SavedData()
         {
             heroPositionData = new PositionData();
-            cameraPositionData = new CameraPositionData();
+            cameraPositionData = new PositionData();
             heroHealth = new HealthData();
         }
     }
