@@ -27,6 +27,12 @@ namespace Code.Debugers
                     return new Color32(0, 255, 255, alpha);
                 case ColliderType.LevelTransferTrigger:
                     return new Color32(100, 100, 255, alpha);
+                case ColliderType.Obstruction:
+                    return new Color32(255, 0, 150, alpha);
+                case ColliderType.StopCamera:
+                    return new Color32(0, 100, 100, alpha);
+                case ColliderType.Joint:
+                    return new Color32(255, 100, 255, alpha);
             }
             return new Color32(0, 0, 0, 0);
         }
@@ -36,7 +42,10 @@ namespace Code.Debugers
             Ground,
             Wall,
             SaveTrigger,
-            LevelTransferTrigger
+            LevelTransferTrigger,
+            Obstruction,
+            StopCamera,
+            Joint
         }
     }
 }

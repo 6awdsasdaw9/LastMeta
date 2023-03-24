@@ -78,9 +78,12 @@ namespace Code.Data.ProgressData
         private void NewProgress()
         {
             savedData = new SavedData();
+            
             savedData.heroPositionData.level = _configData.initialScene.ToString();
             savedData.heroHealth.maxHP = _configData.heroConfig.maxHP;
             savedData.heroHealth.Reset();
+            
+            savedData.cameraPositionData.level = _configData.initialScene.ToString();
             
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
             _dataHandler.Save(savedData);

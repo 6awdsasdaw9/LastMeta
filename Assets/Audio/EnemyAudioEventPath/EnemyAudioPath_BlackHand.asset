@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breathPath: 
   stepPath: 
-  attackStartPath: 
+  attackStartPath: event:/SFX/Enemy/BlackHand/AttackStart
   attackPath: 
   attackEndPath: 
   deathPath: 

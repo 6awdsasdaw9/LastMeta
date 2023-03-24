@@ -1,10 +1,14 @@
+using System;
 using Code.Character.Hero;
+using Code.Data.ProgressData;
+using Code.Data.States;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Code.Logic.CameraLogic
 {
-    public class CameraFollow : MonoBehaviour
+    public class CameraFollow : MonoBehaviour, ISavedData
     {
         [SerializeField] private float _dampTime = 0.75f;
         [SerializeField] private bool _isCanLookDown = true;
@@ -19,54 +23,58 @@ namespace Code.Logic.CameraLogic
         private const float offsetX = 0.5f;
         private const float offsetY = 1.6f;
 
-        [SerializeField] private bool isHavingBounds;
-        [SerializeField] private float distanceBoundsX, distanceBoundsY;
-        private Vector2 minBounds, maxBounds;
-
-
+        [SerializeField] private LayerMask stopLayer;
+        
+        
         [Inject]
-        private void Construct(HeroMovement hero)
+        private void Construct(HeroMovement hero, SavedDataCollection dataCollection)
         {
             _following = hero.transform;
+            dataCollection.Add(this);
         }
 
-        private void Awake()
+        /*private void Awake()
         {
             if (!_isCanMoveY)
                 startPosY = transform.position.y;
 
-            minBounds = new Vector2(-distanceBoundsX - offsetX, -distanceBoundsY);
-            maxBounds = new Vector2(distanceBoundsX + offsetX, distanceBoundsY);
-         
-            _target = GetFollowingPosition();
-            transform.position = _target;
+
+            if (_isCanMove)
+            {
+                _target = GetFollowingPosition();
+                transform.position = _target;
+            }
+        }*/
+
+        private void Update()
+        {
+         var ray =  Physics.Raycast(_following.position + Vector3.forward * -2, Vector3.forward, 2, stopLayer);
+         Debug.DrawRay(_following.position  + Vector3.forward * -2, Vector3.forward * 2);
+         Debug.Log(ray);
+         CameraHandler(!ray);
         }
 
         private void LateUpdate()
         {
-            if (_following == null || !_isCanMove)
-            {
+            if (_following == null)
                 return;
-            }
+
 
             var x = _following.position.x + _cameraOffset.x;
-            var y = _following.position.y + _cameraOffset.y;
+            var y = _isCanMoveY ? _following.position.y + _cameraOffset.y : startPosY;
             var z = _cameraOffset.z;
 
-            if (isHavingBounds)
+            if (_isCanMove)
             {
-                CheckBounds(ref x, ref y);
+                Debug.Log("Is can move");
+                _target = new Vector3(x, y, z);
+                
             }
+                
 
-            _target = new Vector3(x, y, z);
             transform.position = Vector3.SmoothDamp(transform.position, _target, ref _velocity, _dampTime);
         }
 
-        private void CheckBounds(ref float x, ref float y)
-        {
-            x = Mathf.Clamp(x, minBounds.x, maxBounds.x);
-            y = _isCanMoveY ? Mathf.Clamp(y, minBounds.y, maxBounds.y) : startPosY;
-        }
 
         private Vector3 GetFollowingPosition()
         {
@@ -85,18 +93,29 @@ namespace Code.Logic.CameraLogic
             _following = following.transform;
         }
 
-        private void OnDrawGizmos()
+        public void LoadData(SavedData savedData)
         {
-            if (!isHavingBounds)
-            {
+            Debug.Log("aaaa Load camera");
+            if (savedData.cameraPositionData.level != CurrentLevel() ||
+                savedData.cameraPositionData.position.AsUnityVector() == Vector3.zero)
                 return;
-            }
 
-            Gizmos.color = new Color32(150, 150, 0, 255);
-            Gizmos.DrawRay(Vector3.zero, Vector3.up * distanceBoundsY);
-            Gizmos.DrawRay(Vector3.zero, Vector3.down * distanceBoundsY);
-            Gizmos.DrawRay(Vector3.zero, Vector3.left * distanceBoundsX);
-            Gizmos.DrawRay(Vector3.zero, Vector3.right * distanceBoundsX);
+            Vector3Data savedPosition = savedData.cameraPositionData.position;
+            //transform.position = savedPosition.AsUnityVector();
+            
+            Debug.Log("Load camera");
+            _target = savedPosition.AsUnityVector();
+            _isCanMove = savedData.cameraPositionData.isCanMove;
         }
+
+        public void SaveData(SavedData savedData)
+        {
+            savedData.cameraPositionData =
+                new CameraPositionData(CurrentLevel(), _target.AsVectorData(),_isCanMove);
+            Debug.Log("Save camera");
+        }
+        
+        private string CurrentLevel() =>
+            SceneManager.GetActiveScene().name;
     }
 }

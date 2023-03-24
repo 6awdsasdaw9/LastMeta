@@ -7,14 +7,19 @@ namespace Code.Data.ProgressData
     public class SavedData
     {
         public HealthData heroHealth;
-        public HeroPositionData heroPositionData;
+        public PositionData heroPositionData;
+        public CameraPositionData cameraPositionData;
+        
         public PowerData heroPowerData;
 
         public float currentTime;
         public SavedData()
         {
-            heroPositionData = new HeroPositionData();
+            heroPositionData = new PositionData();
+            cameraPositionData = new CameraPositionData();
             heroHealth = new HealthData();
         }
     }
+
+
 }

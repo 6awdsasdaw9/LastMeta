@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1427034856, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 13400000, guid: d815cddd93c0d304cb1eec9fc0c61526, type: 2}
     - target: {fileID: 4355872365580197732, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
       propertyPath: m_Controller
       value: 
@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -7328827357566209818, guid: a2876c2b01b58e347868e41427ad31d5, type: 3}
+    - target: {fileID: 6659652505123971940, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
 --- !u!114 &2929443425413194310 stripped
@@ -144,8 +148,6 @@ MonoBehaviour:
   _movement: {fileID: 2929443425413194324}
   _jump: {fileID: 2929443425413194326}
   _attack: {fileID: 3188653826641931529}
-  _collider: {fileID: 8416295236388088684}
-  _rb: {fileID: 3600266311637066592}
 --- !u!114 &3188653826641931529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,13 +185,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af0ab3470254e33899f95aeda7b6a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &3600266311637066592 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 4988326818585598692, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
-  m_PrefabInstance: {fileID: 8416295237243615620}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &8416295236388088684 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 1427034856, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
-  m_PrefabInstance: {fileID: 8416295237243615620}
-  m_PrefabAsset: {fileID: 0}

@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Zenject;
 
+
 namespace Code.Character.Hero
 {
     [RequireComponent(typeof(Rigidbody), typeof(HeroCollision))]
@@ -25,6 +26,7 @@ namespace Code.Character.Hero
         private float _maxSpeed = 10f;
         private Vector2 _desiredVelocity;
         private Vector2 _velocity;
+        private Vector2 _supportVelocity;
         private float _maxSpeedChange;
         private float _acceleration;
         private float _deceleration;
@@ -34,6 +36,34 @@ namespace Code.Character.Hero
 
         private bool pressingMove;
         private bool pressingCrouch;
+
+        private const float _maxSupportVelocity = 1f;
+        private const float _supportVelocityMultiplayer = 0.15f;
+
+        public void SetSupportVelocity(Vector2 supportVelocity)
+        {
+            if (directionX != 0)
+            {
+                if ((directionX > 0 && supportVelocity.x > 0) ||(directionX < 0 && supportVelocity.x < 0))
+                {
+                    _supportVelocity = new Vector2(supportVelocity.x,0) * _supportVelocityMultiplayer * 0.7f;
+                    
+                }
+                else
+                {
+                    _supportVelocity = new Vector2(supportVelocity.x,0) * _supportVelocityMultiplayer;
+                    
+                }
+                
+            }
+            else 
+                _supportVelocity = new Vector2(supportVelocity.x,0);
+            
+            if (_supportVelocity.x > _maxSupportVelocity)
+                _supportVelocity = new Vector2(_maxSupportVelocity, 0);
+            else if(_supportVelocity.x < -_maxSupportVelocity)
+                _supportVelocity = new Vector2(-_maxSupportVelocity,0);
+        }
 
         [Inject]
         private void Construct(InputService input, MovementLimiter limiter, ConfigData configData,
@@ -98,6 +128,7 @@ namespace Code.Character.Hero
         private void SetDesiredVelocity() =>
             _desiredVelocity = new Vector2(directionX, 0f) * _maxSpeed;
 
+       
         private void StopMovement()
         {
             directionX = 0;
@@ -129,7 +160,7 @@ namespace Code.Character.Hero
             _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange) *
                           (isCrouch ? _config.crouchSpeed : 1);
 
-            _body.velocity = _velocity;
+            _body.velocity = _velocity + _supportVelocity;
         }
 
         public void LoadData(SavedData savedData)
@@ -144,7 +175,7 @@ namespace Code.Character.Hero
 
         public void SaveData(SavedData savedData) =>
             savedData.heroPositionData =
-                new HeroPositionData(CurrentLevel(), transform.position.AsVectorData());
+                new PositionData(CurrentLevel(), transform.position.AsVectorData());
 
         private string CurrentLevel() =>
             SceneManager.GetActiveScene().name;

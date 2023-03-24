@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -656409840, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
+    - target: {fileID: 1397218061088283510, guid: c064c150e2252014b9443291d50b48b3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5702138767582540881, guid: c064c150e2252014b9443291d50b48b3, type: 3}
       propertyPath: m_Name
       value: Enemy_BlackHand

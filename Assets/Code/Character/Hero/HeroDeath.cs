@@ -16,9 +16,6 @@ namespace Code.Character.Hero
         [SerializeField] private HeroMovement _movement;
         [SerializeField] private HeroJump _jump;
         [SerializeField] private HeroAttack _attack;
-
-        [SerializeField] private CapsuleCollider _collider;
-        [SerializeField] private Rigidbody _rb;
         
         private GameObject _deathFx;
         private bool _isDeath;
@@ -46,7 +43,7 @@ namespace Code.Character.Hero
             _isDeath = true;
             _limiter.DisableMovement();
             
-            transform.position -= new Vector3(0,0,0.2f);
+            transform.position = new Vector3(transform.position.x,transform.position.y,Constants.twoLayer);
            
             _movement.enabled = false;
             _jump.enabled = false;
