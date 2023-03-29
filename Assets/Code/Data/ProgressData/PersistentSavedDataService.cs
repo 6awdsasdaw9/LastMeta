@@ -1,3 +1,4 @@
+using System.Linq;
 using Code.Data.GameData;
 using Code.Debugers;
 using Sirenix.OdinInspector;
@@ -79,11 +80,14 @@ namespace Code.Data.ProgressData
         {
             savedData = new SavedData();
             
-            savedData.heroPositionData.level = _configData.initialScene.ToString();
+            savedData.heroPositionData.scene = _configData.initialScene.ToString();
             savedData.heroHealth.maxHP = _configData.heroConfig.maxHP;
             savedData.heroHealth.Reset();
             
-            savedData.cameraPositionData.level = _configData.initialScene.ToString();
+            savedData.heroParamData.speed = _configData.heroConfig.Config
+                .FirstOrDefault(s => s.Param == ParamType.Speed && s.Lvl == 0)?.Value ?? 1;
+            
+            savedData.cameraPositionData.scene = _configData.initialScene.ToString();
             
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
             _dataHandler.Save(savedData);

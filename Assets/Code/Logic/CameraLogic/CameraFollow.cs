@@ -85,7 +85,7 @@ namespace Code.Logic.CameraLogic
         
         public void LoadData(SavedData savedData)
         {
-            if (savedData.cameraPositionData.level != CurrentLevel() ||
+            if (savedData.cameraPositionData.scene != CurrentLevel() ||
                 savedData.cameraPositionData.position.AsUnityVector() == Vector3.zero)
                 return;
 

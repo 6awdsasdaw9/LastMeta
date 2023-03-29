@@ -35,3 +35,10 @@ MonoBehaviour:
     speedLimit: 6.7
     coyoteTime: 0.1
     jumpBuffer: 0.3
+    Config:
+    - Lvl: 0
+      Param: 0
+      Value: 2.5
+    - Lvl: 1
+      Param: 0
+      Value: 3

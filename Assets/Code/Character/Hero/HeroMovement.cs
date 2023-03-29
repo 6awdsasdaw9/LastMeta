@@ -1,4 +1,5 @@
-﻿using Code.Data.GameData;
+﻿using System.Linq;
+using Code.Data.GameData;
 using Code.Data.ProgressData;
 using Code.Data.States;
 using Code.Services;
@@ -23,7 +24,7 @@ namespace Code.Character.Hero
         [SerializeField] private HeroAttack _attack;
 
         [HideInInspector] public float directionX;
-        private float _maxSpeed = 10f;
+        private float _maxSpeed;
         private Vector2 _desiredVelocity;
         private Vector2 _velocity;
         private Vector2 _supportVelocity;
@@ -31,7 +32,8 @@ namespace Code.Character.Hero
         private float _acceleration;
         private float _deceleration;
         private float _turnSpeed;
-
+        private float _bonusSpeed;
+        
         public bool isCrouch { get; private set; }
 
         private bool pressingMove;
@@ -47,12 +49,10 @@ namespace Code.Character.Hero
                 if ((directionX > 0 && supportVelocity.x > 0) ||(directionX < 0 && supportVelocity.x < 0))
                 {
                     _supportVelocity = new Vector2(supportVelocity.x,0) * _supportVelocityMultiplayer * 0.7f;
-                    
                 }
                 else
                 {
                     _supportVelocity = new Vector2(supportVelocity.x,0) * _supportVelocityMultiplayer;
-                    
                 }
                 
             }
@@ -76,7 +76,11 @@ namespace Code.Character.Hero
             _movementLimiter.OnDisableMovementMode += StopMovement;
 
             _config = configData.heroConfig;
-            _maxSpeed = configData.heroConfig.maxSpeed;
+            //_maxSpeed = configData.heroConfig.maxSpeed;
+
+            /*
+            _bonusSpeed = configData.heroConfig.Config
+                .FirstOrDefault(s => s.Param == BonusConfig.ParamType.Speed && s.Lvl == 1)?.Value ?? 1;*/
 
             dataCollection.Add(this);
         }
@@ -163,9 +167,17 @@ namespace Code.Character.Hero
             _body.velocity = _velocity + _supportVelocity;
         }
 
+        [Button]
+        public void LevelUpSpeed()
+        {
+            _maxSpeed = _config.Config
+                .FirstOrDefault(s => s.Param == ParamType.Speed && s.Lvl == 1)?.Value ?? 1;
+        }
         public void LoadData(SavedData savedData)
         {
-            if (savedData.heroPositionData.level != CurrentLevel() ||
+            _maxSpeed = savedData.heroParamData.speed;
+            
+            if (savedData.heroPositionData.scene != CurrentLevel() ||
                 savedData.heroPositionData.position.AsUnityVector() == Vector3.zero)
                 return;
 
