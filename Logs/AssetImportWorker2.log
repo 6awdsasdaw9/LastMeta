@@ -1,23 +1,23 @@
 Using pre-set license
-Built from '2021.3/release' branch; Version is '2021.3.12f1 (8af3c3e441b1) revision 9106371'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19044) 64bit Core' Language: 'ru' Physical Memory: 16309 MB
+Built from '2021.3/staging' branch; Version is '2021.3.21f1 (1b156197d683) revision 1774945'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'ru' Physical Memory: 14264 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
 
 COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\2021.3.12f1\Editor\Unity.exe
+F:\Engines\Unity\2021.3.21f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker2
 -projectPath
-D:/GitHub/LastMeta
+F:/Engines/Projects/LastMeta
 -logFile
 Logs/AssetImportWorker2.log
 -srvPort
-56195
-Successfully changed project path to: D:/GitHub/LastMeta
-D:/GitHub/LastMeta
+64465
+Successfully changed project path to: F:/Engines/Projects/LastMeta
+F:/Engines/Projects/LastMeta
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,68 +47,562 @@ D:/GitHub/LastMeta
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 315.21 ms, found 5 plugins.
+Player connection [3668] Host "[IP] 192.168.1.5 [Port] 0 [Flags] 2 [Guid] 1843057719 [EditorId] 1843057719 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-GKTPU0D) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [3668] Host "[IP] 192.168.1.5 [Port] 0 [Flags] 2 [Guid] 1843057719 [EditorId] 1843057719 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-GKTPU0D) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 178.74 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Initialize engine version: 2021.3.12f1 (8af3c3e441b1)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.12f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path D:/GitHub/LastMeta/Assets
+Initialize engine version: 2021.3.21f1 (1b156197d683)
+[Subsystems] Discovering subsystems at path F:/Engines/Unity/2021.3.21f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path F:/Engines/Projects/LastMeta/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: Radeon RX 570 Series (ID=0x67df)
+    Renderer: AMD Radeon(TM) RX Vega 11 Graphics (ID=0x15d8)
     Vendor:   ATI
-    VRAM:     8172 MB
-    Driver:   26.20.13002.133
+    VRAM:     7132 MB
+    Driver:   31.0.14043.1000
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.12f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.12f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.12f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56112
+Mono path[0] = 'F:/Engines/Unity/2021.3.21f1/Editor/Data/Managed'
+Mono path[1] = 'F:/Engines/Unity/2021.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'F:/Engines/Unity/2021.3.21f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56716
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.12f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.12f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.117874 seconds.
+Register platform support module: F:/Engines/Unity/2021.3.21f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: F:/Engines/Unity/2021.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.005206 seconds.
 Native extension for WindowsStandalone target not found
-[usbmuxd] Start listen thread
-[usbmuxd] Listen thread started
-[usbmuxd] Send listen message
-Native extension for iOS target not found
-Refreshing native plugins compatible for Editor in 66.32 ms, found 5 plugins.
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 136.21 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.771 seconds
+- Completed reload, in  0.929 seconds
 Domain Reload Profiling:
-	ReloadAssembly (3771ms)
-		BeginReloadAssembly (2517ms)
+	ReloadAssembly (930ms)
+		BeginReloadAssembly (114ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (881ms)
-			LoadAssemblies (2519ms)
+		EndReloadAssembly (684ms)
+			LoadAssemblies (113ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (533ms)
+			SetupTypeCache (143ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (18ms)
-			SetupLoadedEditorAssemblies (287ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (430ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (100ms)
+				InitializePlatformSupportModulesInManaged (10ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (66ms)
+				RefreshPlugins (136ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (86ms)
-				ProcessInitializeOnLoadMethodAttributes (34ms)
+				ProcessInitializeOnLoadAttributes (205ms)
+				ProcessInitializeOnLoadMethodAttributes (77ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.007894 seconds.
+Registered in 0.010451 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Native extension for iOS target not found
-Refreshing native plugins compatible for Editor in 83.63 ms, found 5 plugins.
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 133.31 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
+The ShaderGraph Variant Limit is currently set to a value of 128. The ProPixelizer appearance shader will not compile unless this variant is raised, and your shaders will appear pink. Please increase this limit, e.g. to 256, by changing Preferences > ShaderGraph > Shader Variant Limit. Afterwards, reimport the ProPixelizer folder.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+ProPixelizer.ProPixelizerVerification:Check () (at Assets/ProPixelizer/Tools/Package/ProPixelizerVerification.cs:61)
+PixelisationFeature:Create () (at Assets/ProPixelizer/SRP/PixelisationFeature.cs:40)
+UnityEngine.Rendering.Universal.ScriptableRendererFeature:OnValidate () (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/ScriptableRendererFeature.cs:46)
+UnityEngine.Rendering.GraphicsSettings:get_currentRenderPipeline ()
+UnityEditor.CustomEditorAttributes:FindCustomEditorTypeByType (System.Type,bool)
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs:573)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/ProPixelizer/Tools/Package/ProPixelizerVerification.cs Line: 61)
+
+The ShaderGraph Variant Limit is currently set to a value of 128. The ProPixelizer appearance shader will not compile unless this variant is raised, and your shaders will appear pink. Please increase this limit, e.g. to 256, by changing Preferences > ShaderGraph > Shader Variant Limit. Afterwards, reimport the ProPixelizer folder.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+ProPixelizer.ProPixelizerVerification:Check () (at Assets/ProPixelizer/Tools/Package/ProPixelizerVerification.cs:61)
+PixelisationFeature:Create () (at Assets/ProPixelizer/SRP/PixelisationFeature.cs:40)
+UnityEngine.Rendering.Universal.ScriptableRendererFeature:OnEnable () (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/ScriptableRendererFeature.cs:41)
+UnityEngine.Rendering.GraphicsSettings:get_currentRenderPipeline ()
+UnityEditor.CustomEditorAttributes:FindCustomEditorTypeByType (System.Type,bool)
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs:573)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/ProPixelizer/Tools/Package/ProPixelizerVerification.cs Line: 61)
+
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Mono: successfully reloaded assembly
+- Completed reload, in  2.994 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2995ms)
+		BeginReloadAssembly (157ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (8ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (2682ms)
+			LoadAssemblies (141ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (460ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (102ms)
+			SetupLoadedEditorAssemblies (1917ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (133ms)
+				BeforeProcessingInitializeOnLoad (122ms)
+				ProcessInitializeOnLoadAttributes (1265ms)
+				ProcessInitializeOnLoadMethodAttributes (384ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Refreshing native plugins compatible for Editor in 1.92 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5087 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 253 unused Assets / (3.0 MB). Loaded Objects now: 5520.
+Memory consumption went from 228.3 MB to 225.2 MB.
+Total: 27.726600 ms (FindLiveObjects: 0.610700 ms CreateObjectMapping: 0.444300 ms MarkObjects: 25.564600 ms  DeleteObjects: 1.105200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 293908.328521 seconds.
+  path: Assets/Resources/Character/Enemies/OLD_Enemy_WhiteVoid.prefab
+  artifactKey: Guid(eafb241bbc1ccc9499fca622f34b651e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Character/Enemies/OLD_Enemy_WhiteVoid.prefab using Guid(eafb241bbc1ccc9499fca622f34b651e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) The ShaderGraph Variant Limit is currently set to a value of 128. The ProPixelizer appearance shader will not compile unless this variant is raised, and your shaders will appear pink. Please increase this limit, e.g. to 256, by changing Preferences > ShaderGraph > Shader Variant Limit. Afterwards, reimport the ProPixelizer folder.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+ProPixelizer.ProPixelizerVerification:Check () (at Assets/ProPixelizer/Tools/Package/ProPixelizerVerification.cs:61)
+PixelisationFeature:Create () (at Assets/ProPixelizer/SRP/PixelisationFeature.cs:40)
+UnityEngine.Rendering.Universal.ScriptableRenderer:.ctor (UnityEngine.Rendering.Universal.ScriptableRendererData) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/ScriptableRenderer.cs:539)
+UnityEngine.Rendering.Universal.UniversalRenderer:.ctor (UnityEngine.Rendering.Universal.UniversalRendererData) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/UniversalRenderer.cs:169)
+UnityEngine.Rendering.Universal.UniversalRendererData:Create () (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/UniversalRendererData.cs:129)
+UnityEngine.Rendering.Universal.ScriptableRendererData:InternalCreateRenderer () (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/ScriptableRendererData.cs:72)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:CreateRenderers () (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/Data/UniversalRenderPipelineAsset.cs:526)
+UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset:CreatePipeline () (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/Data/UniversalRenderPipelineAsset.cs:476)
+UnityEngine.Rendering.RenderPipelineAsset:InternalCreatePipeline ()
+UnityEngine.Rendering.RenderPipelineManager:PrepareRenderPipeline (UnityEngine.Rendering.RenderPipelineAsset)
+UnityEngine.Rendering.RenderPipelineManager:DoRenderLoop_Internal (UnityEngine.Rendering.RenderPipelineAsset,intptr,System.Collections.Generic.List`1<UnityEngine.Camera/RenderRequest>,Unity.Collections.LowLevel.Unsafe.AtomicSafetyHandle)
+UnityEditor.PreviewRenderUtility:Render (bool,bool)
+UnityEditor.GameObjectInspector:DoRenderPreview ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+(Filename: Assets/ProPixelizer/Tools/Package/ProPixelizerVerification.cs Line: 61)
+
+ -> (artifact id: '41003179f4d13d9585db0912cb724334') in 0.369605 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Graphics/2D/TileMap/TilePalette.prefab
+  artifactKey: Guid(ce02118e856f32c408e975355f6c313a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/2D/TileMap/TilePalette.prefab using Guid(ce02118e856f32c408e975355f6c313a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e406e91df7bc226eea9d8ca48ce649d5') in 0.023987 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 20.698532 seconds.
+  path: Packages/com.unity.2d.animation
+  artifactKey: Guid(bb5c94055a953b6081dfc49350569eb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation using Guid(bb5c94055a953b6081dfc49350569eb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '006ff742cd89b9b14ee48ea89a845e03') in 0.001122 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.774205 seconds.
+  path: Packages/com.unity.2d.animation/package.json
+  artifactKey: Guid(9e83c20a8293f44ec8a375d3805f477d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/package.json using Guid(9e83c20a8293f44ec8a375d3805f477d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdce0b48a8899c51024fc72f6cde18a7') in 0.003368 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.876674 seconds.
+  path: Packages/com.unity.2d.animation/Editor
+  artifactKey: Guid(164d22a8da00e422a93e091c7bd338df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Editor using Guid(164d22a8da00e422a93e091c7bd338df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf7f3161d57ca465032ec62c64308612') in 0.001281 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.079058 seconds.
+  path: Packages/com.unity.2d.animation/Editor/Unity.2D.Animation.Editor.asmdef
+  artifactKey: Guid(7e93558c536f24149a3181fbe0a14523) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Editor/Unity.2D.Animation.Editor.asmdef using Guid(7e93558c536f24149a3181fbe0a14523) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '412de5316a9f9ca0b2eef2533028290c') in 0.006363 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.687955 seconds.
+  path: Packages/com.unity.2d.animation/Editor/LayoutOverlay
+  artifactKey: Guid(5806d81149b303c46b440badec89bf56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Editor/LayoutOverlay using Guid(5806d81149b303c46b440badec89bf56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33c26f5d2a03b6264439276752e527ab') in 0.001310 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.150419 seconds.
+  path: Packages/com.unity.2d.animation/Editor/ClipperLib
+  artifactKey: Guid(d775c763bd71c56499292f26a2a0e44b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Editor/ClipperLib using Guid(d775c763bd71c56499292f26a2a0e44b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1cd560ec9c0da90dcc8f8aab4e572aee') in 0.001663 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.799584 seconds.
+  path: Packages/com.unity.2d.animation/Runtime/Unity.2D.Animation.Runtime.asmdef
+  artifactKey: Guid(41524c21c95e5fe4dbc5b48bd21995a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Runtime/Unity.2D.Animation.Runtime.asmdef using Guid(41524c21c95e5fe4dbc5b48bd21995a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a62b039614ff8073f021c614c141deff') in 0.001206 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 32.352882 seconds.
+  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/9-Sliced.png
+  artifactKey: Guid(71ebafeef3c03457483266a33ab2b270) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/9-Sliced.png using Guid(71ebafeef3c03457483266a33ab2b270) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eac97f51f0979a491938e805714ebdd0') in 0.106685 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/HexagonPointed-TopWithBorder.png
+  artifactKey: Guid(4b2a04fdbe0ef4d8da8f90eaca817cd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/HexagonPointed-TopWithBorder.png using Guid(4b2a04fdbe0ef4d8da8f90eaca817cd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f43538c76083cddce5458d839cc8f604') in 0.034704 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/Capsule.png
+  artifactKey: Guid(bd3cb4af8406d4436a2ae8c2aafe1f8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/Capsule.png using Guid(bd3cb4af8406d4436a2ae8c2aafe1f8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ad407b876f72c1ffd35c6dea12520c2') in 0.025440 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/CircleMask.png
+  artifactKey: Guid(87aaca0a643d54397ba969dab4fc8875) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/CircleMask.png using Guid(87aaca0a643d54397ba969dab4fc8875) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b398b9dc9dc0a0fbe346047a9b4024c') in 0.019005 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/CircleWithBorder.png
+  artifactKey: Guid(4adeaf2d2b1c7417e89f026626d8264f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/CircleWithBorder.png using Guid(4adeaf2d2b1c7417e89f026626d8264f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ea5df616c291f55051ea2984314b31b') in 0.023518 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/IsometricDiamond.png
+  artifactKey: Guid(045b15ec09bba42448d89db77fa6f20a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/IsometricDiamond.png using Guid(045b15ec09bba42448d89db77fa6f20a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'caf1d43a06514e188317fd4d7fa124db') in 0.018128 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/IsometricDiamondWithBorder.png
+  artifactKey: Guid(0d267bc78a0864eb48358689b29ed20a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.sprite/Editor/ObjectMenuCreation/DefaultAssets/Textures/IsometricDiamondWithBorder.png using Guid(0d267bc78a0864eb48358689b29ed20a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ceee15bc5628a7d2aaf6be86e00378f') in 0.014798 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.335040 seconds.
+  path: Packages/com.unity.2d.sprite/package.json
+  artifactKey: Guid(7dc5f1e5d04ac8549ac21802071e983b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.sprite/package.json using Guid(7dc5f1e5d04ac8549ac21802071e983b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'faab86028356ad11fc925f9b2f500779') in 0.001714 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 12.219624 seconds.
+  path: Packages/com.unity.2d.animation/Editor/Assets
+  artifactKey: Guid(4cdf803ccba4203428cf760a394d701f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Editor/Assets using Guid(4cdf803ccba4203428cf760a394d701f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ca4acc5722594ceebb9cf2511ad0c42') in 0.001488 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.609316 seconds.
+  path: Packages/com.unity.2d.animation/Editor/SkinningModule
+  artifactKey: Guid(0c5c95ab5cf49784c86dc247663d026e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Editor/SkinningModule using Guid(0c5c95ab5cf49784c86dc247663d026e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7541e8ea62d50c9367a229b314ad99df') in 0.001151 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.378096 seconds.
+  path: Packages/com.unity.2d.animation/Editor/SpriteLib
+  artifactKey: Guid(812e6d50069f481418d0b7aa82a45408) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Editor/SpriteLib using Guid(812e6d50069f481418d0b7aa82a45408) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8ee46de4924a3d1b6653ec6dc09c054') in 0.001184 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.281420 seconds.
+  path: Packages/com.unity.2d.animation/Editor/SpriteSkin
+  artifactKey: Guid(620c158a2e9b847248f3f7ebb6738323) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Editor/SpriteSkin using Guid(620c158a2e9b847248f3f7ebb6738323) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c46ea8578277ba5191d47f840cf97bd') in 0.001217 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 19.611138 seconds.
+  path: Packages/com.unity.2d.animation/IK
+  artifactKey: Guid(350d0a33d0eff469e827fca813d0a6ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/IK using Guid(350d0a33d0eff469e827fca813d0a6ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a478c89b957fce2ec844a92c8640df3') in 0.001339 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.457926 seconds.
+  path: Packages/com.unity.2d.animation/Runtime
+  artifactKey: Guid(b5e13ffaa298c414091b9cdb6e0c2b9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Runtime using Guid(b5e13ffaa298c414091b9cdb6e0c2b9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53cfa9cfdd03a60c5bb86c1220710eac') in 0.001183 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.764309 seconds.
+  path: Packages/com.unity.2d.animation/Runtime/AssemblyInfo.cs
+  artifactKey: Guid(7974be9b5f0db0f41a7acc758375c6a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Runtime/AssemblyInfo.cs using Guid(7974be9b5f0db0f41a7acc758375c6a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec9e7b7d0085ed6953bdbb57e45f4207') in 0.007386 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.418759 seconds.
+  path: Packages/com.unity.2d.animation/Runtime/Bone.cs
+  artifactKey: Guid(bc661bae4b47f53408bb626c55018a0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.2d.animation/Runtime/Bone.cs using Guid(bc661bae4b47f53408bb626c55018a0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3b75cc49a3eccdce4a7b077295ad61e') in 0.001251 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 22.048392 seconds.
+  path: Assets/Graphics/2D/Animation/ObjectAnimation
+  artifactKey: Guid(f830be65a4917aa49a7d875b66ed8000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/2D/Animation/ObjectAnimation using Guid(f830be65a4917aa49a7d875b66ed8000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '231bcdf61e8030f4ffcb5d8975bd67e4') in 0.001308 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.107141 seconds.
+  path: Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_Crouch_End.anim
+  artifactKey: Guid(eb7e3410262e2ed479276af24505ba8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_Crouch_End.anim using Guid(eb7e3410262e2ed479276af24505ba8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74fc06716866434531269623b8be05fc') in 0.003010 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.619529 seconds.
+  path: Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_Crouch_Idle.anim
+  artifactKey: Guid(f434ef9ef4b14134293a993c37e4a02e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_Crouch_Idle.anim using Guid(f434ef9ef4b14134293a993c37e4a02e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd27e400537efaf963c9af3a21077297') in 0.001930 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.616501 seconds.
+  path: Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_Crouch_Move.anim
+  artifactKey: Guid(1498b32d5dd6f5f4891d2cfc534bbf28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_Crouch_Move.anim using Guid(1498b32d5dd6f5f4891d2cfc534bbf28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '381112984e8c13cdf2c6f1728b1f7901') in 0.001675 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.535614 seconds.
+  path: Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_Crouch_Start.anim
+  artifactKey: Guid(9cfee1fc3f0ca474fbc9d96e43e5da2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_Crouch_Start.anim using Guid(9cfee1fc3f0ca474fbc9d96e43e5da2f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fcddf64825e78a90b0c4699cb272c5a3') in 0.002012 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.484832 seconds.
+  path: Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_Idle.anim
+  artifactKey: Guid(74f8f8816e0c6a7458800dee33338cf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_Idle.anim using Guid(74f8f8816e0c6a7458800dee33338cf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a77adf4e08530657e7bcf899b58b691d') in 0.001639 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.719382 seconds.
+  path: Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_Jump.anim
+  artifactKey: Guid(d79fd5547e4982c4da088afd24c71f6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_Jump.anim using Guid(d79fd5547e4982c4da088afd24c71f6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d45759cfac08cc14f5f96140548d4e2') in 0.002021 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.089224 seconds.
+  path: Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_LandOn.anim
+  artifactKey: Guid(16acd6ebc4bbd84458d7148b14da131e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_LandOn.anim using Guid(16acd6ebc4bbd84458d7148b14da131e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1aa801bbb9091b369a338e7735e0c19d') in 0.002010 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.046198 seconds.
+  path: Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_Walk.anim
+  artifactKey: Guid(3a7eb55963d4afd4cb6f4b3100ef333f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/2D/Animation/HeroAnimation/RealHero/r_Walk.anim using Guid(3a7eb55963d4afd4cb6f4b3100ef333f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '543d986e5ede219c00b043d373f88170') in 0.001883 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.195303 seconds.
+  path: Assets/Graphics/2D/Animation/HeroAnimation/RealHero/RealHero.controller
+  artifactKey: Guid(d7d8a6a4f5b63244cac8c1039de89ad8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/2D/Animation/HeroAnimation/RealHero/RealHero.controller using Guid(d7d8a6a4f5b63244cac8c1039de89ad8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e6bf8232c9384b9ff6b6d352698ac7e') in 0.006003 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 20.719137 seconds.
+  path: Assets/Graphics/2D/Animation/HeroAnimation/Hero/Default/g_Attack.anim
+  artifactKey: Guid(5b0ad745fdb8e4343b2f23d18c6ae345) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/2D/Animation/HeroAnimation/Hero/Default/g_Attack.anim using Guid(5b0ad745fdb8e4343b2f23d18c6ae345) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3e1646325a059d37f93c8ab65346bba') in 0.001990 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.404343 seconds.
+  path: Assets/Graphics/2D/Animation/HeroAnimation/Hero/Default/g_Crouch_End.anim
+  artifactKey: Guid(67fd8a3bb955aa04a9cf34ad0543eb06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/2D/Animation/HeroAnimation/Hero/Default/g_Crouch_End.anim using Guid(67fd8a3bb955aa04a9cf34ad0543eb06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '338ccac7b5908acaa4884915a6abc46b') in 0.001892 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 500.844813 seconds.
+  path: Assets/Scenes/Home/HomeLightingSettings.lighting
+  artifactKey: Guid(f5ef22c7de3d5c948b35f6f13a07117c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Home/HomeLightingSettings.lighting using Guid(f5ef22c7de3d5c948b35f6f13a07117c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8d77d6a214f4753033028fa397ea70f') in 0.003199 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 35.969281 seconds.
+  path: Assets/Scenes/EnterMetaPark.unity
+  artifactKey: Guid(bdf32b5fe551f11489113f856f1282f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/EnterMetaPark.unity using Guid(bdf32b5fe551f11489113f856f1282f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b6a9dcada88ea9d1ff636075b4e719f') in 0.001012 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.012348 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 2.45 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs:575)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs line 575]
+
+ProPixelizerRenderer is missing RendererFeatures
+This could be due to missing scripts or compile error.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogError (object,UnityEngine.Object)
+UnityEngine.Rendering.Universal.ScriptableRendererData:ValidateRendererFeatures () (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/ScriptableRendererData.cs:185)
+UnityEngine.Rendering.Universal.ScriptableRendererData:OnValidate () (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/ScriptableRendererData.cs:80)
+UnityEngine.Rendering.Universal.UniversalRendererData:OnValidate () (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/UniversalRendererData.cs:282)
+
+(Filename: Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/ScriptableRendererData.cs Line: 185)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.098 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2099ms)
+		BeginReloadAssembly (215ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (14ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (70ms)
+		EndReloadAssembly (1760ms)
+			LoadAssemblies (123ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (359ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (62ms)
+			SetupLoadedEditorAssemblies (1100ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (8ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (3ms)
+				BeforeProcessingInitializeOnLoad (86ms)
+				ProcessInitializeOnLoadAttributes (721ms)
+				ProcessInitializeOnLoadMethodAttributes (276ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (32ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 11.02 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4906 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 105 unused Assets / (2.9 MB). Loaded Objects now: 5607.
+Memory consumption went from 222.0 MB to 219.1 MB.
+Total: 24.009600 ms (FindLiveObjects: 0.482900 ms CreateObjectMapping: 0.298700 ms MarkObjects: 22.415500 ms  DeleteObjects: 0.810600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.008365 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.70 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs:575)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs line 575]
+
+ProPixelizerRenderer is missing RendererFeatures
+This could be due to missing scripts or compile error.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogError (object,UnityEngine.Object)
+UnityEngine.Rendering.Universal.ScriptableRendererData:ValidateRendererFeatures () (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/ScriptableRendererData.cs:185)
+UnityEngine.Rendering.Universal.ScriptableRendererData:OnValidate () (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/ScriptableRendererData.cs:80)
+UnityEngine.Rendering.Universal.UniversalRendererData:OnValidate () (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/UniversalRendererData.cs:282)
+
+(Filename: Library/PackageCache/com.unity.render-pipelines.universal@12.1.10/Runtime/ScriptableRendererData.cs Line: 185)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.127 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2128ms)
+		BeginReloadAssembly (203ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (8ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (71ms)
+		EndReloadAssembly (1796ms)
+			LoadAssemblies (113ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (394ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (72ms)
+			SetupLoadedEditorAssemblies (1096ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (2ms)
+				BeforeProcessingInitializeOnLoad (82ms)
+				ProcessInitializeOnLoadAttributes (748ms)
+				ProcessInitializeOnLoadMethodAttributes (252ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (35ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 8.20 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4907 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 103 unused Assets / (2.9 MB). Loaded Objects now: 5610.
+Memory consumption went from 222.3 MB to 219.4 MB.
+Total: 21.551700 ms (FindLiveObjects: 0.500800 ms CreateObjectMapping: 0.292000 ms MarkObjects: 19.889100 ms  DeleteObjects: 0.867900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 

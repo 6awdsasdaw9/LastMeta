@@ -317,11 +317,8 @@
 		<property name="feedback">
 			<value>44.5</value>
 		</property>
-		<property name="level">
-			<value>-6.5</value>
-		</property>
 		<property name="dryLevel">
-			<value>-14</value>
+			<value>-6</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{aa47d118-2595-41d5-a0ff-f8a49c74e96d}">

@@ -90,7 +90,7 @@
 	<object class="MixerBusPanner" id="{89dbfbc3-68d2-4e06-9448-ba675764baa9}" />
 	<object class="MultiSound" id="{fe0c2903-7487-4314-9ad2-dda9032fba4c}">
 		<property name="length">
-			<value>0.3359375</value>
+			<value>0.35999999999999999</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{13e5608c-3817-425e-86f4-7b6a82531c7c}</destination>
@@ -107,7 +107,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{f8e3f474-0b24-4aab-8fe8-3d36040c334a}">
 		<property name="volume">
-			<value>-3</value>
+			<value>-19.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -163,8 +163,8 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{c78168d4-6937-464f-a978-20081993842a}">
 		<relationship name="effects">
+			<destination>{aa995857-9c29-4906-a68a-8e20a4d75629}</destination>
 			<destination>{80888bfb-7279-46a6-b125-55922e02a04e}</destination>
-			<destination>{8ca45552-152f-4ae6-8e91-5143d447abca}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a37c38c2-aae3-441d-bdf8-6be56e23fbf9}" />
@@ -190,7 +190,7 @@
 	</object>
 	<object class="AutomationPoint" id="{bcae1dde-b629-44c4-b46f-b255ffb7f8d0}">
 		<property name="position">
-			<value>0.265625</value>
+			<value>0.17999999999999999</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -201,7 +201,7 @@
 	</object>
 	<object class="AutomationPoint" id="{654636fa-5b56-4ec4-8fdf-9c7b11b6fa6f}">
 		<property name="position">
-			<value>0.3359375</value>
+			<value>0.35999999999999999</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -212,87 +212,21 @@
 			<value>startOffset</value>
 		</property>
 	</object>
-	<object class="MixerBusFader" id="{80888bfb-7279-46a6-b125-55922e02a04e}" />
-	<object class="TremoloEffect" id="{8ca45552-152f-4ae6-8e91-5143d447abca}">
-		<property name="frequency">
-			<value>3</value>
-		</property>
-		<property name="depth">
-			<value>0.714999974</value>
-		</property>
-		<property name="shape">
-			<value>0.38499999</value>
-		</property>
-		<property name="phase">
-			<value>0.275000006</value>
-		</property>
-		<property name="spread">
-			<value>0.359999985</value>
+	<object class="PitchShifterEffect" id="{aa995857-9c29-4906-a68a-8e20a4d75629}">
+		<property name="pitch">
+			<value>1</value>
 		</property>
 		<relationship name="modulators">
-			<destination>{e2596aa3-0d1d-4580-9fcc-2c25b95a1e48}</destination>
-			<destination>{31d43c84-0035-4a1d-98f4-d04d2dda54c5}</destination>
-			<destination>{d5b59b00-d4b7-4ca6-a7c8-2ccf87022496}</destination>
-			<destination>{dccdb012-d79c-46dd-934b-fe3fb9a1601f}</destination>
-			<destination>{f4b2d21a-d7ce-4cfd-8f59-a9ec7526e455}</destination>
-			<destination>{c3814b9a-959a-40b2-96c6-eabf318e075a}</destination>
-			<destination>{30459859-294b-4525-9f3d-76058adfaa00}</destination>
+			<destination>{88a02cfb-2600-43c8-a28d-4cd69a620673}</destination>
 		</relationship>
 	</object>
-	<object class="RandomizerModulator" id="{e2596aa3-0d1d-4580-9fcc-2c25b95a1e48}">
+	<object class="MixerBusFader" id="{80888bfb-7279-46a6-b125-55922e02a04e}" />
+	<object class="RandomizerModulator" id="{88a02cfb-2600-43c8-a28d-4cd69a620673}">
 		<property name="nameOfPropertyBeingModulated">
-			<value>skew</value>
+			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>29.5</value>
-		</property>
-	</object>
-	<object class="RandomizerModulator" id="{31d43c84-0035-4a1d-98f4-d04d2dda54c5}">
-		<property name="nameOfPropertyBeingModulated">
-			<value>square</value>
-		</property>
-		<property name="amount">
-			<value>38.5</value>
-		</property>
-	</object>
-	<object class="RandomizerModulator" id="{d5b59b00-d4b7-4ca6-a7c8-2ccf87022496}">
-		<property name="nameOfPropertyBeingModulated">
-			<value>depth</value>
-		</property>
-		<property name="amount">
-			<value>39</value>
-		</property>
-	</object>
-	<object class="RandomizerModulator" id="{dccdb012-d79c-46dd-934b-fe3fb9a1601f}">
-		<property name="nameOfPropertyBeingModulated">
-			<value>frequency</value>
-		</property>
-		<property name="amount">
-			<value>39.5</value>
-		</property>
-	</object>
-	<object class="RandomizerModulator" id="{f4b2d21a-d7ce-4cfd-8f59-a9ec7526e455}">
-		<property name="nameOfPropertyBeingModulated">
-			<value>shape</value>
-		</property>
-		<property name="amount">
-			<value>36</value>
-		</property>
-	</object>
-	<object class="RandomizerModulator" id="{c3814b9a-959a-40b2-96c6-eabf318e075a}">
-		<property name="nameOfPropertyBeingModulated">
-			<value>phase</value>
-		</property>
-		<property name="amount">
-			<value>26</value>
-		</property>
-	</object>
-	<object class="RandomizerModulator" id="{30459859-294b-4525-9f3d-76058adfaa00}">
-		<property name="nameOfPropertyBeingModulated">
-			<value>spread</value>
-		</property>
-		<property name="amount">
-			<value>12</value>
+			<value>3.5</value>
 		</property>
 	</object>
 </objects>

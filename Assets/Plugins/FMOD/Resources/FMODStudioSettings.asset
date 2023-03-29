@@ -429,7 +429,7 @@ MonoBehaviour:
   sourceProjectPath: Assets/Plugins/FMOD/FMODproject/FMODproject.fspro
   sourceBankPath: Assets/Plugins/FMOD/FMODproject/Build
   sourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
+  BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
   AutomaticEventLoading: 1
   BankLoadType: 0
