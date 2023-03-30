@@ -33,7 +33,7 @@ namespace Code.Infrastructure.StateMachine.States
             var level = _persistentSavedDataService
                 .savedData
                 .heroPositionData
-                .level;
+                .scene;
             
             _stateMachine.Enter<LoadLevelState, string>(level);
         }

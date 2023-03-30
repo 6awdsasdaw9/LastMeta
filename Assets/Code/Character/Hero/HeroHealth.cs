@@ -38,6 +38,7 @@ namespace Code.Character.Hero
         }
 
 
+
         public void TakeDamage(float damage)
         {
             if (Current <= 0)

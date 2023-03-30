@@ -6,16 +6,16 @@ namespace Code.Data.ProgressData
     [Serializable]
     public class PositionData
     {
-        public string level;
+        public string scene;
         public Vector3Data position;
 
         public PositionData()
         {
         }
 
-        public PositionData(string level, Vector3Data position)
+        public PositionData(string scene, Vector3Data position)
         {
-            this.level = level;
+            this.scene = scene;
             this.position = position;
         }
     }

@@ -8,6 +8,6 @@ namespace Code.Data.GameData
     {
         public Constants.Scenes initialScene;
         public HeroConfig heroConfig;
-
+    
     }
 }

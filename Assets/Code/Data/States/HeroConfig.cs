@@ -1,4 +1,5 @@
 using System;
+using Code.Data.GameData;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -51,5 +52,8 @@ namespace Code.Data.States
 
         [Range(0f, 0.3f), Tooltip("Как далеко от земли кушируется прыжок?")]
         public float jumpBuffer = 0.3f;
+
+        public HeroParamConfig[] Config;
+
     }
 }
