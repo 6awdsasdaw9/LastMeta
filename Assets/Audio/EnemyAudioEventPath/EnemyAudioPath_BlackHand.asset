@@ -28,11 +28,11 @@ MonoBehaviour:
     Path: 
   attackStartPath:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 45334174
+      Data2: 1315286520
+      Data3: 839302029
+      Data4: 879265072
+    Path: event:/SFX/Enemy/BlackHand/AttackStart
   attackPath:
     Guid:
       Data1: 0
@@ -56,11 +56,11 @@ MonoBehaviour:
     Path: 
   screamPath:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -844055285
+      Data2: 1285480652
+      Data3: -1098948675
+      Data4: 331941294
+    Path: event:/SFX/Enemy/BlackHand/Death
   SFX:
     Guid:
       Data1: 0
