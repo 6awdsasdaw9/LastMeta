@@ -79,9 +79,15 @@ shadercompiler-UnityShaderCompiler.exe11.log
 # FMOD 1.10.x (Legacy)
 /Assets/Audio/FMODAssets/*
 /Assets/Audio/FMODStudioCache.meta
+
+*.log
+fmod_editor.log
+Logs/AssetImportWorker3.log
 Logs/AssetImportWorker0-prev.log
-Logs/AssetImportWorker0-prev.log
-Logs/AssetImportWorker0-prev.log
-Logs/AssetImportWorker0.log
-Logs/AssetImportWorker1-prev.log
-Logs/AssetImportWorker1.log
+Logs/AssetImportWorker2-prev.log
+
+Logs/AssetImportWorker3-prev.log
+Logs/AssetImportWorker4-prev.log
+Logs/AssetImportWorker5-prev.log
+Logs/shadercompiler-UnityShaderCompiler.exe0.log
+*.log
