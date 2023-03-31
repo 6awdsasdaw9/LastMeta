@@ -1,3 +1,4 @@
+using System;
 using FMODUnity;
 using UnityEngine;
 
@@ -6,13 +7,14 @@ namespace Code.Audio
     [CreateAssetMenu(fileName = "EnemyAudioPath", menuName = "ScriptableObjects/Audio/EnemyAudioPath")]
     public class EnemyAudioPath : ScriptableObject
     {
-        public string breathPath;
-        public string stepPath;
-        public string attackStartPath;
-        public string attackPath;
-        public string attackEndPath;
-        public string deathPath;
-        public string screamPath;
-        public string SFX;
+        public EventReference breathPath;
+        public EventReference stepPath;
+        public EventReference attackStartPath;
+        public EventReference attackPath;
+        public EventReference attackEndPath;
+        public EventReference deathPath;
+        public EventReference screamPath;
+        public EventReference SFX;
+
     }
 }

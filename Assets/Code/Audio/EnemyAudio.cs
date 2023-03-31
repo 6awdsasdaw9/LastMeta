@@ -1,3 +1,5 @@
+using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Code.Audio
@@ -9,22 +11,22 @@ namespace Code.Audio
     {
         [SerializeField] private EnemyAudioPath _enemyAudioPath;
 
-        private void AudioPlayBreath() => PlayAudio(_enemyAudioPath.breathPath);
+        private void AudioPlayBreath() => PlayAudio(_enemyAudioPath.breathPath.Path);
 
-        private void AudioPlayStep() => PlayAudio(_enemyAudioPath.stepPath);
+        private void AudioPlayStep() => PlayAudio(_enemyAudioPath.stepPath.Path);
 
-        private void AudioPlayAttackStart() => PlayAudio(_enemyAudioPath.attackStartPath);
+        private void AudioPlayAttackStart() => PlayAudio(_enemyAudioPath.attackStartPath.Path);
 
-        private void AudioPlayAttack() => PlayAudio(_enemyAudioPath.attackPath);
+        private void AudioPlayAttack() => PlayAudio(_enemyAudioPath.attackPath.Path);
         
-        private void AudioPlayAttackEnd() => PlayAudio(_enemyAudioPath.attackEndPath);
+        private void AudioPlayAttackEnd() => PlayAudio(_enemyAudioPath.attackEndPath.Path);
 
-        private void AudioPlayDeath() => PlayAudio(_enemyAudioPath.deathPath);
+        private void AudioPlayDeath() => PlayAudio(_enemyAudioPath.deathPath.Path);
 
-        private void AudioPlayScream() => PlayAudio(_enemyAudioPath.screamPath);
+        private void AudioPlayScream() => PlayAudio(_enemyAudioPath.screamPath.Path);
 
-        private void AudioPlaySFX() => PlayAudio(_enemyAudioPath.SFX);
-
+        private void AudioPlaySFX() => PlayAudio(_enemyAudioPath.SFX.Path);
+        
         private void PlayAudio(string path)
         {
             if(path == string.Empty)
