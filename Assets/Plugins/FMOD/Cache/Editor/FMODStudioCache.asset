@@ -1,32 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8214383518413221087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/Music_2
-  m_EditorClassIdentifier: 
-  Path: event:/Music/Music_2
-  Guid:
-    Data1: -132126768
-    Data2: 1154217400
-    Data3: 670356884
-    Data4: 579700412
-  Banks:
-  - {fileID: -4084332893328918959}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 204816
 --- !u!114 &-6833672644581394412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,10 +15,10 @@ MonoBehaviour:
   Path: Assets/Plugins/FMOD/FMODproject/Build/Desktop/Music.strings.bank
   Name: Music.strings
   StudioPath: bank:/Music.strings
-  lastModified: 638157338080000000
+  lastModified: 638159013806545542
   FileSizes:
   - Name: Desktop
-    Value: 3296
+    Value: 3344
   Exists: 1
 --- !u!114 &-6298843794961917108
 MonoBehaviour:
@@ -89,10 +62,10 @@ MonoBehaviour:
   Path: Assets/Plugins/FMOD/FMODproject/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638157341860000000
+  lastModified: 638159013808880776
   FileSizes:
   - Name: Desktop
-    Value: 9133664
+    Value: 9283808
   Exists: 1
 --- !u!114 &-6077564532940564420
 MonoBehaviour:
@@ -175,7 +148,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 132
---- !u!114 &-4099360873402250373
+--- !u!114 &-5311716485117081237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,21 +157,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/EnterMetaPark/DayNormilize
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Enemy/BlackHand/Death
   m_EditorClassIdentifier: 
-  Name: DayNormilize
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2771397485
-    data2: 2493122580
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
+  Path: event:/SFX/Enemy/BlackHand/Death
+  Guid:
+    Data1: -844055285
+    Data2: 1285480652
+    Data3: -1098948675
+    Data4: 331941294
+  Banks:
+  - {fileID: -6159094678745286690}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2500
 --- !u!114 &-4084332893328918959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +190,7 @@ MonoBehaviour:
   Path: Assets/Plugins/FMOD/FMODproject/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638157338080000000
+  lastModified: 638159013806535546
   FileSizes:
   - Name: Desktop
     Value: 16286048
@@ -300,34 +276,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1031
---- !u!114 &-3381063347154086729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/EnterMetaPark
-  m_EditorClassIdentifier: 
-  Path: event:/Music/EnterMetaPark
-  Guid:
-    Data1: 2050525325
-    Data2: 1217164241
-    Data3: 876140209
-    Data4: -403891229
-  Banks:
-  - {fileID: -4084332893328918959}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -4099360873402250373}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 110024
 --- !u!114 &-3315454058084257278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +303,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1875
+--- !u!114 &-2584744338706126214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/Pause
+  m_EditorClassIdentifier: 
+  Name: Pause
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2698144406
+    data2: 2522288433
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-2557441375422710879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,6 +489,33 @@ MonoBehaviour:
   MinDistance: 7.2000003
   MaxDistance: 3000
   Length: 32000
+--- !u!114 &-1260538577408370852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Music_0
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Music_0
+  Guid:
+    Data1: -227023009
+    Data2: 1225225925
+    Data3: -1931876694
+    Data4: 2139672087
+  Banks:
+  - {fileID: -4084332893328918959}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 288000
 --- !u!114 &-1227733774228393566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,7 +570,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1375
---- !u!114 &-221766120762652172
+--- !u!114 &-697879610567315641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -650,20 +649,21 @@ MonoBehaviour:
   - {fileID: 2140876307984340192}
   - {fileID: -1227733774228393566}
   - {fileID: -1366688249667683751}
-  - {fileID: 3704426205209407907}
-  - {fileID: -221766120762652172}
-  - {fileID: 4276877799835512032}
-  - {fileID: 1300703922132284110}
-  - {fileID: -3381063347154086729}
-  - {fileID: -8214383518413221087}
-  - {fileID: 7361417624234678392}
   - {fileID: 8632961690483092139}
+  - {fileID: 2277646060631629162}
+  - {fileID: -697879610567315641}
+  - {fileID: 100002437894585693}
+  - {fileID: -1260538577408370852}
+  - {fileID: 4220551979859479474}
+  - {fileID: 3952836796609392474}
+  - {fileID: 2576330149822982440}
+  - {fileID: -5311716485117081237}
   EditorParameters: []
   MasterBanks:
   - {fileID: -4084332893328918959}
   StringsBanks:
   - {fileID: -6833672644581394412}
-  cacheTime: 638157341860000000
+  cacheTime: 638159013808880776
   cacheVersion: 131601
 --- !u!114 &40569581148898882
 MonoBehaviour:
@@ -692,6 +692,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 375
+--- !u!114 &100002437894585693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Home
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Home
+  Guid:
+    Data1: -679186606
+    Data2: 1171737619
+    Data3: -1235007557
+    Data4: -1447113874
+  Banks:
+  - {fileID: -4084332893328918959}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 4432420776769223850}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 92250
 --- !u!114 &142109998433658243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,7 +801,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2302
---- !u!114 &1300703922132284110
+--- !u!114 &1051738041312092138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -782,24 +810,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/Music_0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/EnterMetaPark/DayNormilize
   m_EditorClassIdentifier: 
-  Path: event:/Music/Music_0
-  Guid:
-    Data1: -227023009
-    Data2: 1225225925
-    Data3: -1931876694
-    Data4: 2139672087
-  Banks:
-  - {fileID: -4084332893328918959}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 288000
+  Name: DayNormilize
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2771397485
+    data2: 2493122580
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &2140876307984340192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,6 +852,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 6.6
   Length: 1094
+--- !u!114 &2277646060631629162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Music
+  Guid:
+    Data1: -363081196
+    Data2: 1291305132
+    Data3: -721500285
+    Data4: -192579583
+  Banks:
+  - {fileID: -4084332893328918959}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -2584744338706126214}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 414354
 --- !u!114 &2293289960178474915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -854,7 +907,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 20
   Length: 375
---- !u!114 &2969093229075393244
+--- !u!114 &2576330149822982440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -863,21 +916,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Home/DayNormilize
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI/SoundTestMusic
   m_EditorClassIdentifier: 
-  Name: DayNormilize
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2771397485
-    data2: 2493122580
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
+  Path: event:/SFX/UI/SoundTestMusic
+  Guid:
+    Data1: -1593380651
+    Data2: 1257292989
+    Data3: -513884995
+    Data4: 1762478343
+  Banks:
+  - {fileID: -4084332893328918959}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 374
 --- !u!114 &3662727162661692081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,7 +961,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 93
---- !u!114 &3704426205209407907
+--- !u!114 &3952836796609392474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -915,25 +971,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/Music
+  m_Name: event:/Music/Music_2
   m_EditorClassIdentifier: 
-  Path: event:/Music/Music
+  Path: event:/Music/Music_2
   Guid:
-    Data1: -363081196
-    Data2: 1291305132
-    Data3: -721500285
-    Data4: -192579583
+    Data1: -132126768
+    Data2: 1154217400
+    Data3: 670356884
+    Data4: 579700412
   Banks:
   - {fileID: -4084332893328918959}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
-  Parameters:
-  - {fileID: 7277351278639295266}
+  Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 414354
---- !u!114 &4276877799835512032
+  Length: 204816
+--- !u!114 &4220551979859479474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -943,24 +998,48 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/Home
+  m_Name: event:/Music/EnterMetaPark
   m_EditorClassIdentifier: 
-  Path: event:/Music/Home
+  Path: event:/Music/EnterMetaPark
   Guid:
-    Data1: -679186606
-    Data2: 1171737619
-    Data3: -1235007557
-    Data4: -1447113874
+    Data1: 2050525325
+    Data2: 1217164241
+    Data3: 876140209
+    Data4: -403891229
   Banks:
   - {fileID: -4084332893328918959}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 2969093229075393244}
+  - {fileID: 1051738041312092138}
   MinDistance: 1
   MaxDistance: 20
-  Length: 92250
+  Length: 110024
+--- !u!114 &4432420776769223850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Home/DayNormilize
+  m_EditorClassIdentifier: 
+  Name: DayNormilize
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2771397485
+    data2: 2493122580
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &4605523704776682483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,57 +1121,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 375
---- !u!114 &7277351278639295266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Music/Pause
-  m_EditorClassIdentifier: 
-  Name: Pause
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 2698144406
-    data2: 2522288433
-  Type: 0
-  IsGlobal: 0
-  Labels: []
-  Exists: 1
---- !u!114 &7361417624234678392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/UI/SoundTestMusic
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/UI/SoundTestMusic
-  Guid:
-    Data1: -1593380651
-    Data2: 1257292989
-    Data3: -513884995
-    Data4: 1762478343
-  Banks:
-  - {fileID: -4084332893328918959}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 374
 --- !u!114 &7396778597945127242
 MonoBehaviour:
   m_ObjectHideFlags: 0

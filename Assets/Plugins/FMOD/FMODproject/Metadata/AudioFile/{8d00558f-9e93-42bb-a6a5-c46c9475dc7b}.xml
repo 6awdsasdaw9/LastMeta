@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{8d00558f-9e93-42bb-a6a5-c46c9475dc7b}">
 		<property name="assetPath">
-			<value>CMD_Dron_0.wav</value>
+			<value>Content Updates/CMD_Dron_0.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

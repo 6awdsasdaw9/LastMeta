@@ -91,3 +91,4 @@ Logs/AssetImportWorker4-prev.log
 Logs/AssetImportWorker5-prev.log
 Logs/shadercompiler-UnityShaderCompiler.exe0.log
 *.log
+fmod_editor.log

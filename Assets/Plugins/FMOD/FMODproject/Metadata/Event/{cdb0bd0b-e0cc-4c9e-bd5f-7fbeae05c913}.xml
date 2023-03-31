@@ -34,9 +34,12 @@
 		<relationship name="timeline">
 			<destination>{e4ae8ef0-f6bb-4793-a3ce-f634bec177ef}</destination>
 		</relationship>
+<<<<<<< Updated upstream
 		<relationship name="banks">
 			<destination>{2dac429b-6708-42fa-8ea4-dc62498c55ba}</destination>
 		</relationship>
+=======
+>>>>>>> Stashed changes
 	</object>
 	<object class="EventMixer" id="{7545745c-0c73-4209-9bd2-05cf5e71a27c}">
 		<relationship name="masterBus">
