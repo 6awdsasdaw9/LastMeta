@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Code.Character.Enemies
 {
-    public class EnemyMovement : Follow
+    public class EnemyMovement : FollowTriggerObserver
     {
         [SerializeField] private EnemyAttack _attack;
         [SerializeField] private NavMeshAgent _agent;

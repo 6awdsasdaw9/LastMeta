@@ -17,24 +17,18 @@ namespace Code.Debugers
 
         private Color32 GetColor()
         {
-            switch (type)
+            return type switch
             {
-                case ColliderType.Ground:
-                    return new Color32(30, 200, 30, alpha);
-                case ColliderType.Wall:
-                    return new Color32(255, 255, 0, alpha);
-                case ColliderType.SaveTrigger:
-                    return new Color32(0, 255, 255, alpha);
-                case ColliderType.LevelTransferTrigger:
-                    return new Color32(100, 100, 255, alpha);
-                case ColliderType.Obstruction:
-                    return new Color32(255, 0, 150, alpha);
-                case ColliderType.StopCamera:
-                    return new Color32(0, 100, 100, alpha);
-                case ColliderType.Joint:
-                    return new Color32(255, 100, 255, alpha);
-            }
-            return new Color32(0, 0, 0, 0);
+                ColliderType.Ground => new Color32(30, 200, 30, alpha),
+                ColliderType.Wall => new Color32(255, 255, 0, alpha),
+                ColliderType.SaveTrigger => new Color32(0, 255, 255, alpha),
+                ColliderType.LevelTransferTrigger => new Color32(100, 100, 255, alpha),
+                ColliderType.Obstruction => new Color32(255, 0, 150, alpha),
+                ColliderType.InteractableObject => new Color32(100, 150, 200, alpha),
+                ColliderType.StopCamera => new Color32(0, 100, 100, alpha),
+                ColliderType.Joint => new Color32(255, 100, 255, alpha),
+                _ => new Color32(0, 0, 0, 0)
+            };
         }
         
         private enum ColliderType
@@ -44,6 +38,7 @@ namespace Code.Debugers
             SaveTrigger,
             LevelTransferTrigger,
             Obstruction,
+            InteractableObject,
             StopCamera,
             Joint
         }

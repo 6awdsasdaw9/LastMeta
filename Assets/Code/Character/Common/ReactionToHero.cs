@@ -8,10 +8,10 @@ namespace Code.Character.Common
     {
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private float _cooldown;
-        [SerializeField] private Follow[] _follows;
+        [SerializeField] private FollowTriggerObserver[] _follows;
         
-        private Coroutine _aggroCoroutine;
-        private bool _hasAggroTarget;
+        private Coroutine _reactionCoroutine;
+        private bool _hasReactionTarget;
         private void Start()
         {
             _triggerObserver.TriggerEnter += TriggerEnter;
@@ -22,19 +22,19 @@ namespace Code.Character.Common
 
         private void TriggerExit(Collider obj)
         {
-            if (!_hasAggroTarget) 
+            if (!_hasReactionTarget) 
                 return;
             
-            _aggroCoroutine = StartCoroutine(SwitchFollowOffAfterCooldown());
-            _hasAggroTarget = false;
+            _reactionCoroutine = StartCoroutine(SwitchFollowOffAfterCooldown());
+            _hasReactionTarget = false;
         }
 
         private void TriggerEnter(Collider obj)
         {
-            if (_hasAggroTarget)
+            if (_hasReactionTarget)
                 return;
             
-            _hasAggroTarget = true;
+            _hasReactionTarget = true;
             StopReactionCoroutine();
             SwitchFollowOn();
         }
@@ -48,10 +48,10 @@ namespace Code.Character.Common
 
         private void StopReactionCoroutine()
         {
-            if (_aggroCoroutine == null) 
+            if (_reactionCoroutine == null) 
                 return;
-            StopCoroutine(_aggroCoroutine);
-            _aggroCoroutine = null;
+            StopCoroutine(_reactionCoroutine);
+            _reactionCoroutine = null;
         }
 
         private void SwitchFollowOn()

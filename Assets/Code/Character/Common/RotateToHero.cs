@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Code.Character.Common
 {
-    public class RotateToHero : Follow
+    public class RotateToHero : FollowTriggerObserver
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
         private Transform _heroTransform;

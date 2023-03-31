@@ -12,9 +12,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995c65ff16fc4a46b599a98a636f251b, type: 3}
   m_Name: EnemyAudioPath_BlackHand
   m_EditorClassIdentifier: 
-  breathPath: 
-  stepPath: 
-  attackStartPath: event:/SFX/Enemy/BlackHand/AttackStart
-  attackPath: 
-  attackEndPath: 
-  deathPath: 
+  breathPath:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  stepPath:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  attackStartPath:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  attackPath:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  attackEndPath:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  deathPath:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  screamPath:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  SFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
