@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 namespace Code.Audio
@@ -11,6 +12,7 @@ namespace Code.Audio
         public string attackPath;
         public string attackEndPath;
         public string deathPath;
-        
+        public string screamPath;
+        public string SFX;
     }
 }
