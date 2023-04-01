@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 2929443425413194310}
+  _movement: {fileID: 2929443425413194324}
 --- !u!114 &3527845220663908717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +179,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c2732f08c64811aabaf416f0bfff62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5869404379240297964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929443425413194330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2dbdf1e2d08c43478e48176917df8c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 2929443424245635808}
 --- !u!114 &6554104898581862592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,19 +206,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heroAudio: {fileID: 7407501786901000246}
   _spriteFX: {fileID: 5869404379240297964}
---- !u!114 &5869404379240297964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2929443425413194330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2dbdf1e2d08c43478e48176917df8c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 2929443424245635808}
 --- !u!114 &7407501786901000246 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1297059016546552242, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}

@@ -1,21 +1,24 @@
 using System;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using Zenject;
 
 namespace Code.Services.Input
 {
-    public class InputService 
+    public class InputService : ITickable
     {
         private readonly InputMaster _master;
+        private readonly EventSystem _eventSystem;
 
-        private bool _isInteractPressed = false;
+        private bool _isInteractPressed;
+        private bool _isPressedOnUI;
 
         public InputService()
         {
             _master = new InputMaster();
+            _eventSystem = EventSystem.current;
             EneblePlayerInput();
             EnableUIInput(true);
-
             ConnectToEvents();
         }
 
@@ -27,6 +30,11 @@ namespace Code.Services.Input
         }
         */
 
+
+        public void Tick()
+        {
+            _isPressedOnUI = _eventSystem.IsPointerOverGameObject();
+        }
 
         private void ConnectToEvents()
         {
@@ -60,9 +68,11 @@ namespace Code.Services.Input
             else if (horizontal == 0) horizontal = -1;
         }*/
 
+
         #region Player input
 
         private void EneblePlayerInput() => _master.Player.Enable();
+
         public void DisablePlayerInput() => _master.Player.Disable();
 
         private void Movement(InputAction.CallbackContext context)
@@ -71,30 +81,40 @@ namespace Code.Services.Input
         }
 
         public event Action<InputAction.CallbackContext> PlayerMovementEvent;
+
         private void Crouch(InputAction.CallbackContext context) => PlayerCrochEvent?.Invoke(context);
+
         public event Action<InputAction.CallbackContext> PlayerCrochEvent;
 
         private void Jump(InputAction.CallbackContext context) => PlayerJumpEvent?.Invoke(context);
+
         public event Action<InputAction.CallbackContext> PlayerJumpEvent;
 
         private void Dash(InputAction.CallbackContext context) => PlayerDashEvent?.Invoke();
+
         public event Action PlayerDashEvent;
 
         private void Attack(InputAction.CallbackContext context)
         {
-            if(EventSystem.current.IsPointerOverGameObject())
+            if (_isPressedOnUI)
                 return;
-                
+
             PlayerAttackEvent?.Invoke();
         }
+
 
         public event Action PlayerAttackEvent;
 
         private void SkillButton_One(InputAction.CallbackContext context) => SkillButton_1_Event?.Invoke();
+
         public event Action SkillButton_1_Event;
+
         private void SkillButton_Two(InputAction.CallbackContext context) => SkillButton_2_Event?.Invoke();
+
         public event Action SkillButton_2_Event;
+
         private void StopAttack(InputAction.CallbackContext context) => PlayerStopShootEvent?.Invoke();
+
         public event Action PlayerStopShootEvent;
 
         #endregion
@@ -108,6 +128,7 @@ namespace Code.Services.Input
         }
 
         private void OpenMenu(InputAction.CallbackContext context) => OpenMenuEvent?.Invoke();
+
         public event Action OpenMenuEvent;
 
 
@@ -118,6 +139,7 @@ namespace Code.Services.Input
             if (context.canceled) _isInteractPressed = false;
             InteractButtonEvent?.Invoke();
         }
+
         public event Action InteractButtonEvent;
 
 

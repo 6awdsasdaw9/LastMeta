@@ -1,7 +1,10 @@
 using System.Linq;
+using System.Threading.Tasks;
+using Code.Character.Hero;
 using Code.Character.Interfaces;
 using Code.Debugers;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Character.Enemies
 {
@@ -13,18 +16,27 @@ namespace Code.Character.Enemies
         [SerializeField] private float _attackCooldown = 3f;
         [SerializeField] private float _cleavage = 1;
         [SerializeField] private float _effectiveHeight = 1;
-        
+        [SerializeField] private float _pushForce = 3;
+
+        private HeroMovement _heroMovement;
+        private IHealth _heroHealth;
+
         private float _currentAttackCooldown;
         private bool _isAttacking;
         private int _layerMask;
         private readonly Collider[] _hits = new Collider[1];
         private Vector3 startPoint;
         public bool attackIsActive { get; private set; }
-        
-        private void Awake()
+
+        [Inject]
+        private void Construct(HeroMovement heroMovement)
         {
+            _heroMovement = heroMovement;
+            _heroHealth = heroMovement.GetComponent<IHealth>();
+
             _layerMask = 1 << LayerMask.NameToLayer(Constants.PlayerLayer);
         }
+
 
         private void Update()
         {
@@ -35,9 +47,9 @@ namespace Code.Character.Enemies
 
         private void StartAttack()
         {
-            if(_isAttacking)
+            if (_isAttacking)
                 return;
-            
+
             _isAttacking = true;
             _animator.PlayAttack();
         }
@@ -50,11 +62,18 @@ namespace Code.Character.Enemies
             PhysicsDebug.DrawDebug(StartPoint(), _cleavage, 1);
             if (!Hit(out Collider hit))
                 return;
-            
-            if (hit.gameObject.TryGetComponent(out IHealth heroHealth))
-            {
-                heroHealth.TakeDamage(_damage);
-            }
+
+            _heroHealth.TakeDamage(_damage);
+            Push();
+        }
+
+        private async void Push()
+        {
+            if (_pushForce == 0)
+                return;
+            _heroMovement.SetSupportVelocity(-transform.localScale * _pushForce);
+            await Task.Delay(500);
+            _heroMovement.SetSupportVelocity(Vector2.zero);
         }
 
         /// <summary>
@@ -94,5 +113,4 @@ namespace Code.Character.Enemies
         private bool CoolDownIsUp() =>
             _currentAttackCooldown <= 0;
     }
-    
 }

@@ -153,9 +153,6 @@ MonoBehaviour:
   _dampTime: 0.75
   _isCanLookDown: 1
   _isCanMoveY: 1
-  isHavingBounds: 0
-  distanceBoundsX: 0
-  distanceBoundsY: 0
 --- !u!114 &1830403187388026034
 MonoBehaviour:
   m_ObjectHideFlags: 0

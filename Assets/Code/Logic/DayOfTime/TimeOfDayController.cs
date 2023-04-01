@@ -13,7 +13,7 @@ namespace Code.Logic.DayOfTime
         private float _currentSecondsOfDay;
         public float dayTimeNormalized => _currentSecondsOfDay / _dayTimeInSeconds;
 
-        public TimeOfDay currentTimeOfDay { get; private set; }
+        private TimeOfDay currentTimeOfDay { get; set; }
 
         public delegate void TimeOfDayEvent();
 
@@ -22,7 +22,7 @@ namespace Code.Logic.DayOfTime
         public event TimeOfDayEvent OnNight;
 
 
-        private float _morningTime, _eveningTime, _nightTime;
+        private float  _eveningTime, _nightTime;
         
 
         [Inject]
@@ -30,7 +30,7 @@ namespace Code.Logic.DayOfTime
         {
             _dayTimeInSeconds = settingsData.dayTimeInSeconds;
            
-            _morningTime = 0;
+         
             _eveningTime = settingsData.durationOfDayTime;
             _nightTime =  settingsData.durationOfDayTime * 2;
             

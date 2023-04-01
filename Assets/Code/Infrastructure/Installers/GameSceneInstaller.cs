@@ -1,4 +1,3 @@
-using Code.Character;
 using Code.Character.Hero;
 using Code.Data.GameData;
 using Code.Data.ProgressData;
@@ -13,16 +12,16 @@ namespace Code.Infrastructure.Installers
 {
     public class GameSceneInstaller : MonoInstaller,IInitializable
     {
+        public PrefabsData prefabsData;
         public override void InstallBindings()
         {
             BindSaveData();
             BindTimeOfDayController();
-            BindHud();
             
+            BindHud();
             BindMovementLimiter();
             BindInput();
             BindHero();
-            
             BindInterfaces();
         }
 
@@ -54,7 +53,7 @@ namespace Code.Infrastructure.Installers
 
         private void BindHud()
         {
-            var prefabsData = Container.Resolve<PrefabsData>();
+            
             Hud hud = Container.InstantiatePrefabForComponent<Hud>(
                 prefabsData.hud,
                 Vector3.zero, 
@@ -65,8 +64,6 @@ namespace Code.Infrastructure.Installers
         
         private void BindHero()
         {
-            var prefabsData = Container.Resolve<PrefabsData>();
-            
             HeroMovement heroPrefab = prefabsData.hero;
             Vector3 initialPoint = GameObject.FindGameObjectWithTag(Constants.InitialPointTag).transform.position;
 
@@ -78,6 +75,7 @@ namespace Code.Infrastructure.Installers
             
             Container.Bind<HeroMovement>().FromInstance(hero).AsSingle().NonLazy();
         }
+        
         private void LoadGameProgress()
         {
             PersistentSavedDataService dataService = Container.Resolve<PersistentSavedDataService>();

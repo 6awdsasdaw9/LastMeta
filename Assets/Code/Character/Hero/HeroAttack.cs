@@ -1,3 +1,4 @@
+using System;
 using Code.Character.Interfaces;
 using Code.Data.GameData;
 using Code.Data.States;
@@ -11,6 +12,8 @@ namespace Code.Character.Hero
     public class HeroAttack : MonoBehaviour
     {
         [SerializeField] private HeroAnimator _animator;
+        [SerializeField] private HeroMovement _movement;
+        
         private InputService _inputService;
         private PowerData _power;
         private Collider[] _hits = new Collider[7];
@@ -21,15 +24,12 @@ namespace Code.Character.Hero
         private void Construct(InputService inputService, ConfigData configData)
         {
             _inputService = inputService;
-            _inputService.PlayerAttackEvent += Attack;
             _power = configData.heroConfig.power;
             _layerMask = 1 << LayerMask.NameToLayer(Constants.HittableLayer);
         }
 
-        private void OnDestroy()
-        {
-            _inputService.PlayerAttackEvent -= Attack;
-        }
+        private void Start() => _inputService.PlayerAttackEvent += Attack;
+        private void OnDestroy() => _inputService.PlayerAttackEvent -= Attack;
 
         private void Attack()
         {
@@ -38,6 +38,7 @@ namespace Code.Character.Hero
 
             attackIsActive = true;
             _animator.PlayAttack();
+            _movement.BlockMovement();
         }
 
         /// <summary>
@@ -53,7 +54,11 @@ namespace Code.Character.Hero
         /// <summary>
         /// Animation Event
         /// </summary>
-        private void OnAttackEnded() => attackIsActive = false;
+        private void OnAttackEnded()
+        {
+            attackIsActive = false;
+            _movement.UnBlockMovement();
+        }
 
         private int Hit() =>
             Physics.OverlapSphereNonAlloc(StartPoint() , _power.damagedRadius, _hits, _layerMask);

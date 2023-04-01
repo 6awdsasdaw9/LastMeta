@@ -2,6 +2,7 @@ using Code.Character;
 using Code.Character.Hero;
 using Code.Data.GameData;
 using Code.Data.ProgressData;
+using Code.Logic.CameraLogic;
 using Code.Logic.DayOfTime;
 using Code.Services;
 using Code.Services.Input;
@@ -12,6 +13,7 @@ namespace Code.Infrastructure.Installers
 {
     public class RealSceneInstaller : MonoInstaller, IInitializable
     {
+
         public override void InstallBindings()
         {
             BindSaveData();
@@ -76,6 +78,9 @@ namespace Code.Infrastructure.Installers
 
             Container.Bind<HeroMovement>().FromInstance(hero).AsSingle().NonLazy();
         }
+        
+
+
 
         private void LoadGameProgress()
         {

@@ -1,6 +1,6 @@
+using System;
 using Code.Data.GameData;
 using Code.Data.States;
-using Code.Debugers;
 using Code.Services;
 using Code.Services.Input;
 using UnityEngine;
@@ -13,6 +13,7 @@ namespace Code.Character.Hero
     [RequireComponent(typeof(HeroCollision))]
     public class HeroJump : MonoBehaviour
     {
+        private InputService _input;
         private MovementLimiter _movementLimiter;
         private HeroConfig _config;
 
@@ -39,7 +40,7 @@ namespace Code.Character.Hero
         [Inject]
         private void Construct(InputService input, MovementLimiter limiter, ConfigData configData)
         {
-            input.PlayerJumpEvent += OnJump;
+            _input = input;
 
             _movementLimiter = limiter;
             _config = configData.heroConfig;
@@ -48,11 +49,18 @@ namespace Code.Character.Hero
             _maxAirJumps = configData.heroConfig.maxAirJumps;
         }
 
+        private void Start() => 
+            _input.PlayerJumpEvent += OnJump;
+
         private void Update()
         {
             CheckJumpBuffer();
             CheckCoyoteTime();
         }
+
+        private void OnDestroy() => 
+            _input.PlayerJumpEvent -= OnJump;
+        
 
         private void OnJump(InputAction.CallbackContext context)
         {

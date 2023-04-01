@@ -10,8 +10,8 @@ namespace Code.Logic.CameraLogic
     public class CameraFollow : MonoBehaviour, ISavedData
     {
         [SerializeField] private float _dampTime = 0.75f;
-        [SerializeField] private bool _isCanLookDown = true;
         [SerializeField] private bool _isCanMoveY = true;
+        //[SerializeField] private bool _isCanLookDown = true;
       
         private float startPosY;
         private bool _isCanMove = true;
