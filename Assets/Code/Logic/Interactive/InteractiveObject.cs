@@ -7,11 +7,12 @@ using Zenject;
 
 namespace Code.Logic
 {
+    [RequireComponent(typeof(ReactionToHero))]
     public class InteractiveObject: FollowTriggerObserver
     {
-      
         [SerializeField] private InteractiveIconAnimation _iconAnimation;
         [SerializeField] private InteractiveType _type;
+        [SerializeField] private IInteractive _interactive;
         private InputService _input;
 
         [Inject]
@@ -25,7 +26,6 @@ namespace Code.Logic
             ShowIcon();
         }
         
-
         private void Update()
         {
             if (_input.GetInteractPressed())

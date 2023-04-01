@@ -1,4 +1,8 @@
+using System;
+using Code.Data.GameData;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Character.Hero
 {
@@ -10,14 +14,26 @@ namespace Code.Character.Hero
         [SerializeField] private HeroMovement _hero;
         [SerializeField] private CapsuleCollider _collider;
         [SerializeField] private LayerMask _groundLayer;
-        
-        
-        [Space, Header("Collider Settings")]
+
+        [Space, Title("Collider Settings")]
         [SerializeField] private float _groundLength = 0.95f;
         [SerializeField] private float _ceilingLength = 0.95f;
-        
         [SerializeField] private Vector3 _colliderOffset;
-        
+        private PhysicMaterial _noFrictionMaterial;
+        private PhysicMaterial _frictionMaterial;
+
+        [Inject]
+        private void Construct(ConfigData configData)
+        {
+            _frictionMaterial = configData.heroConfig.FrictionMaterial;
+            _noFrictionMaterial = configData.heroConfig.NoFrictionMaterial;
+        }
+
+        private void Start()
+        {
+            SetNoFrictionPhysicsMaterial();
+        }
+
         private void Update()
         {
             onGround = GroundCheck();
@@ -25,7 +41,12 @@ namespace Code.Character.Hero
             SetCollision();
         }
 
-        
+        public void SetFrictionPhysicsMaterial() => 
+            _collider.material = _frictionMaterial;
+
+        public void SetNoFrictionPhysicsMaterial() =>
+            _collider.material = _noFrictionMaterial;
+
         private void SetCollision()
         {
             if (_hero.isCrouch)
@@ -37,7 +58,7 @@ namespace Code.Character.Hero
                 EnableVerticalCollider();
             }
         }
-
+        
         private void EnableHorizontalCollider()
         {
             _collider.direction = 0;
@@ -54,8 +75,7 @@ namespace Code.Character.Hero
 
         private bool GroundCheck() =>
             Physics.Raycast(transform.position, Vector2.down, _groundLength, _groundLayer);
-
-
+        
         private bool CeilingCheck()
         {
             return Physics.Raycast(transform.position  + _colliderOffset, Vector2.up, _ceilingLength, _groundLayer)||

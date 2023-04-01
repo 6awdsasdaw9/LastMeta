@@ -12,7 +12,6 @@ namespace Code.UI.Actors
         {
             _health = GetComponent<IHealth>();
             _health.HealthChanged += UpdateHpBar;
-         
         }
         
         private void OnDestroy()

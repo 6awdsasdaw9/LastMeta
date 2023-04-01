@@ -27,7 +27,6 @@ namespace Code.Character.Enemies
         public void TakeDamage(float damage)
         {
             Current -= damage;
-            Debug.Log(_current);
             HealthChanged?.Invoke();
         }
     }

@@ -45,11 +45,7 @@ namespace Code.Character.Hero
         private const float _supportVelocityMultiplayer = 0.15f;
 
         [Inject]
-        private void Construct(
-            InputService input,
-            MovementLimiter limiter,
-            ConfigData configData,
-            SavedDataCollection dataCollection)
+        private void Construct(InputService input, MovementLimiter limiter, ConfigData configData, SavedDataCollection dataCollection)
         {
             _input = input;
             _movementLimiter = limiter;
@@ -124,6 +120,7 @@ namespace Code.Character.Hero
             };
         }
 
+ 
         private void SubscribeToEvent(bool flag)
         {
             if (flag)

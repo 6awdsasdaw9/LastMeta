@@ -26,6 +26,8 @@ MonoBehaviour:
     maxAirAcceleration: 30
     maxAirDeceleration: 45
     maxAirTurnSpeed: 60
+    NoFrictionMaterial: {fileID: 13400000, guid: fcfcf8c2d4b646646b44fcc6be381bd9, type: 2}
+    FrictionMaterial: {fileID: 13400000, guid: d815cddd93c0d304cb1eec9fc0c61526, type: 2}
     jumpHeight: 3
     timeToJumpApex: 0.8
     upwardMovementMultiplier: 3
