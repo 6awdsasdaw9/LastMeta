@@ -18,6 +18,7 @@ namespace Code.Character.Hero
     {
         private MovementLimiter _movementLimiter;
         private HeroConfig _config;
+        private InputService _input;
 
         [Title("Components")] [SerializeField] private Rigidbody _body;
         [SerializeField] private HeroCollision _collision;
@@ -42,6 +43,53 @@ namespace Code.Character.Hero
         private const float _maxSupportVelocity = 1f;
         private const float _supportVelocityMultiplayer = 0.15f;
 
+        [Inject]
+        private void Construct(InputService input, MovementLimiter limiter, ConfigData configData,
+            SavedDataCollection dataCollection)
+        {
+            _input = input;
+            _movementLimiter = limiter;
+
+            _input.PlayerCrochEvent += OnPressCrouch;
+            _input.PlayerMovementEvent += OnPressMovement;
+            _movementLimiter.OnDisableMovementMode += StopMovement;
+
+            _config = configData.heroConfig;
+            //_maxSpeed = configData.heroConfig.maxSpeed;
+
+            /*
+            _bonusSpeed = configData.heroConfig.Config
+                .FirstOrDefault(s => s.Param == BonusConfig.ParamType.Speed && s.Lvl == 1)?.Value ?? 1;*/
+
+            dataCollection.Add(this);
+        }
+        private void Update()
+        {
+            SetDesiredVelocity();
+            Rotation();
+            Crouch();
+        }
+
+        private void FixedUpdate()
+        {
+            _velocity = _body.velocity;
+            MoveWithAcceleration();
+        }
+
+        private void OnDestroy()
+        {
+            _input.PlayerCrochEvent -= OnPressCrouch;
+            _input.PlayerMovementEvent -= OnPressMovement;
+            _movementLimiter.OnDisableMovementMode -= StopMovement;
+        }
+
+        [Button]
+        public void LevelUpSpeed()
+        {
+            _maxSpeed = _config.Config
+                .FirstOrDefault(s => s.Param == ParamType.Speed && s.Lvl == 1)?.Value ?? 1;
+        }
+
         public void SetSupportVelocity(Vector2 supportVelocity)
         {
             if (directionX != 0)
@@ -65,39 +113,7 @@ namespace Code.Character.Hero
                 _supportVelocity = new Vector2(-_maxSupportVelocity,0);
         }
 
-        [Inject]
-        private void Construct(InputService input, MovementLimiter limiter, ConfigData configData,
-            SavedDataCollection dataCollection)
-        {
-            input.PlayerCrochEvent += OnPressCrouch;
-            input.PlayerMovementEvent += OnPressMovement;
 
-            _movementLimiter = limiter;
-            _movementLimiter.OnDisableMovementMode += StopMovement;
-
-            _config = configData.heroConfig;
-            //_maxSpeed = configData.heroConfig.maxSpeed;
-
-            /*
-            _bonusSpeed = configData.heroConfig.Config
-                .FirstOrDefault(s => s.Param == BonusConfig.ParamType.Speed && s.Lvl == 1)?.Value ?? 1;*/
-
-            dataCollection.Add(this);
-        }
-
-
-        private void Update()
-        {
-            SetDesiredVelocity();
-            Rotation();
-            Crouch();
-        }
-
-        private void FixedUpdate()
-        {
-            _velocity = _body.velocity;
-            MoveWithAcceleration();
-        }
 
         private void OnPressMovement(InputAction.CallbackContext context)
         {
@@ -167,12 +183,6 @@ namespace Code.Character.Hero
             _body.velocity = _velocity + _supportVelocity;
         }
 
-        [Button]
-        public void LevelUpSpeed()
-        {
-            _maxSpeed = _config.Config
-                .FirstOrDefault(s => s.Param == ParamType.Speed && s.Lvl == 1)?.Value ?? 1;
-        }
         public void LoadData(SavedData savedData)
         {
             _maxSpeed = savedData.heroParamData.speed;

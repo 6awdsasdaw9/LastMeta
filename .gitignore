@@ -1,7 +1,3 @@
-# This .gitignore file should be placed at the root of your Unity project directory
-#
-# Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
-#
 [Ll]ibrary/
 [Tt]emp/
 [Tt]emp.meta
@@ -58,10 +54,23 @@ sysinfo.txt
 /[Aa]ssets/**/FMODStudioCache.asset.meta
 /[Aa]ssets/Plugins/FMOD/Cache.meta
 /[Aa]ssets/Plugins/FMOD/Cache/Editor.meta
+# FMOD 1.10.x (Legacy)
+/Assets/Audio/FMODAssets/*
+/Assets/Audio/FMODStudioCache.meta
+Assets/Plugins/FMOD/Cache
+Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
 
 # Log-files
+*.log
 fmod.log
 fmod_editor.log
+Logs/AssetImportWorker3.log
+Logs/AssetImportWorker0-prev.log
+Logs/AssetImportWorker1-prev.log
+Logs/AssetImportWorker2-prev.log
+Logs/AssetImportWorker3-prev.log
+Logs/AssetImportWorker4-prev.log
+Logs/AssetImportWorker5-prev.log
 shadercompiler-AssetImportWorker0.log
 shadercompiler-UnityShaderCompiler.exe0.log
 shadercompiler-UnityShaderCompiler.exe1.log
@@ -75,20 +84,5 @@ shadercompiler-UnityShaderCompiler.exe8.log
 shadercompiler-UnityShaderCompiler.exe9.log
 shadercompiler-UnityShaderCompiler.exe10.log
 shadercompiler-UnityShaderCompiler.exe11.log
-
-# FMOD 1.10.x (Legacy)
-/Assets/Audio/FMODAssets/*
-/Assets/Audio/FMODStudioCache.meta
-
-*.log
-fmod_editor.log
-Logs/AssetImportWorker3.log
-Logs/AssetImportWorker0-prev.log
-Logs/AssetImportWorker2-prev.log
-
-Logs/AssetImportWorker3-prev.log
-Logs/AssetImportWorker4-prev.log
-Logs/AssetImportWorker5-prev.log
 Logs/shadercompiler-UnityShaderCompiler.exe0.log
 *.log
-
