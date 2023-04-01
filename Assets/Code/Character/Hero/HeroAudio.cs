@@ -25,5 +25,8 @@ namespace Code.Character.Hero
         
         public void PlayPunchAudio() => 
             FMODUnity.RuntimeManager.PlayOneShot(pathPunch,gameObject.transform.position);
+
+        public void PlayDamageAudio() => 
+            FMODUnity.RuntimeManager.PlayOneShot(pathTakeDamage,gameObject.transform.position);
     }
 }

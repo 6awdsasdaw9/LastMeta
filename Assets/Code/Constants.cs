@@ -1,3 +1,5 @@
+using UnityEngine;
+
 
 namespace Code
 {
@@ -42,6 +44,18 @@ namespace Code
         public const float twoLayer = -0.2f;
         //Fance Front
         public const float treeLayer = -0.3f;
+        #endregion
+        
+        #region Colors
+        public static Color RedColor =  new Color(1, 0.75f, 0.85f, 1);
+        public static Color OrangeColor =  new Color(1, 0.85f, 0.75f, 1);
+        public static Color YellowColor =  new Color(1, 0.95f, 0.75f, 1);
+        public static Color GreenColor =  new Color(0.8f, 1, 0.75f, 1);
+        public static Color BlueColor =  new Color(0.75f, 0.95f, 1, 1);
+        public static Color DarkBlueColor =  new Color(0.75f, 0.85f, 1, 1);
+        public static Color VioletColor =  new Color(0.85f, 0.74f, 1, 1);
+        public static Color[] RainbowColor = new Color[]
+            { RedColor,OrangeColor,YellowColor,GreenColor,BlueColor,DarkBlueColor,VioletColor};
         #endregion
 
     }

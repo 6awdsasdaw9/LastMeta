@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialScene: 1
   heroConfig:
-    maxHP: 20
+    maxHP: 3
     power:
       damage: 5
       damagedRadius: 0.5

@@ -10,6 +10,8 @@ namespace Code.Character.Hero
 {
     public class HeroHealth : MonoBehaviour, IHealth, ISavedData
     {
+        [SerializeField] private HeroAudio _heroAudio;
+        [SerializeField] private SpriteFX _spriteFX;
         private HealthData _healthData;
         public event Action HealthChanged;
 
@@ -44,6 +46,9 @@ namespace Code.Character.Hero
             if (Current <= 0)
                 return;
 
+            _heroAudio.PlayDamageAudio();
+            _spriteFX.RedColorize();
+            
             Current -= damage;
 
             HealthChanged?.Invoke();

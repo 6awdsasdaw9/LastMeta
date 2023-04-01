@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: Assets/Plugins/FMOD/FMODproject/Build/Desktop/Music.strings.bank
   Name: Music.strings
   StudioPath: bank:/Music.strings
-  lastModified: 638159013806545542
+  lastModified: 638157338080000000
   FileSizes:
   - Name: Desktop
-    Value: 3344
+    Value: 3296
   Exists: 1
 --- !u!114 &-6298843794961917108
 MonoBehaviour:
@@ -62,10 +62,10 @@ MonoBehaviour:
   Path: Assets/Plugins/FMOD/FMODproject/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638159013808880776
+  lastModified: 638157341860000000
   FileSizes:
   - Name: Desktop
-    Value: 9283808
+    Value: 9133664
   Exists: 1
 --- !u!114 &-6077564532940564420
 MonoBehaviour:
@@ -148,33 +148,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 132
---- !u!114 &-5311716485117081237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Enemy/BlackHand/Death
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/Enemy/BlackHand/Death
-  Guid:
-    Data1: -844055285
-    Data2: 1285480652
-    Data3: -1098948675
-    Data4: 331941294
-  Banks:
-  - {fileID: -6159094678745286690}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 2500
 --- !u!114 &-4084332893328918959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,7 +163,7 @@ MonoBehaviour:
   Path: Assets/Plugins/FMOD/FMODproject/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638159013806535546
+  lastModified: 638157338080000000
   FileSizes:
   - Name: Desktop
     Value: 16286048
@@ -657,13 +630,12 @@ MonoBehaviour:
   - {fileID: 4220551979859479474}
   - {fileID: 3952836796609392474}
   - {fileID: 2576330149822982440}
-  - {fileID: -5311716485117081237}
   EditorParameters: []
   MasterBanks:
   - {fileID: -4084332893328918959}
   StringsBanks:
   - {fileID: -6833672644581394412}
-  cacheTime: 638159013808880776
+  cacheTime: 638157341860000000
   cacheVersion: 131601
 --- !u!114 &40569581148898882
 MonoBehaviour:
