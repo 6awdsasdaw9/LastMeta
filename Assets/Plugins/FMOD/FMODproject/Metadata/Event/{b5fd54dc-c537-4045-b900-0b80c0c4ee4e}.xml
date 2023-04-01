@@ -287,6 +287,12 @@
 		<property name="lowGain">
 			<value>-11</value>
 		</property>
+		<property name="midGain">
+			<value>-3</value>
+		</property>
+		<property name="highGain">
+			<value>-10</value>
+		</property>
 		<property name="crossoverSlope">
 			<value>0</value>
 		</property>
