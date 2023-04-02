@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Code.UI.Actors
 {
-    public class HeroActorUI : ActorUI
+    public class HeroHpBarAdapter : HpBarAdapter
     {
         [Inject]
         private void Construct(Hud hud)

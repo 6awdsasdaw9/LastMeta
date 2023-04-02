@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Character.Common
+namespace Code.Logic.Triggers
 {
     /// <summary>
     /// The class that listens to TriggerObserver,

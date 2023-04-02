@@ -7,7 +7,12 @@ namespace Code
     {
         public const float epsilon = 0.001f;
         public const float distance = 1f;
-        
+
+        public enum TypeOfScene
+        {
+            Real,
+            Game
+        }
         public enum Scenes
         {
             Initial,
@@ -28,7 +33,6 @@ namespace Code
         #endregion
 
         #region Sprite Layer Position
-
         //BackGround
         public const float minusNineLayer = 0.9f;
         public const float minusEightLayer = 0.8f;

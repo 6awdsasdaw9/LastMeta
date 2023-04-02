@@ -1,6 +1,6 @@
 namespace Code.UI.Actors
 {
-    public class EnemyActorUI : ActorUI
+    public class EnemyHpBarAdapter : HpBarAdapter
     {
         protected new void Start()
         {

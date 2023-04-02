@@ -55,7 +55,7 @@ namespace Code.Infrastructure.Installers
         {
             
             Hud hud = Container.InstantiatePrefabForComponent<Hud>(
-                prefabsData.hud,
+                prefabsData.gameHUD,
                 Vector3.zero, 
                 Quaternion.identity,
                 null);

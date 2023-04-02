@@ -1,18 +1,21 @@
 using Code.Services;
 using UnityEngine;
 
-public class Luke : MonoBehaviour
+namespace Code.Objects
 {
-    [SerializeField] private TriggerObserver _triggerObserver;
-    [SerializeField] private GameObject _groundCollider;
-
-    private void Start()
+    public class Luke : MonoBehaviour
     {
-        _triggerObserver.TriggerEnter += TriggerEnter;
-    }
+        [SerializeField] private TriggerObserver _triggerObserver;
+        [SerializeField] private GameObject _groundCollider;
 
-    private void TriggerEnter(Collider obj)
-    {
-        _groundCollider.SetActive(false);
+        private void Start()
+        {
+            _triggerObserver.TriggerEnter += TriggerEnter;
+        }
+
+        private void TriggerEnter(Collider obj)
+        {
+            _groundCollider.SetActive(false);
+        }
     }
 }

@@ -1,4 +1,5 @@
 using Code.Character.Hero;
+using Code.Logic.Triggers;
 using UnityEngine;
 using Zenject;
 

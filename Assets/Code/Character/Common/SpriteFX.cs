@@ -1,17 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Code;
 using UnityEngine;
 
-public class SpriteFX : MonoBehaviour
+namespace Code.Character.Common
 {
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-    
-    public async void RedColorize()
+    public class SpriteFX : MonoBehaviour
     {
-        _spriteRenderer.color = Constants.RedColor;
-        await Task.Delay(500);
-        _spriteRenderer.color = Color.white;
-    }  
+        [SerializeField] private SpriteRenderer _spriteRenderer;
+    
+        public async void RedColorize()
+        {
+            _spriteRenderer.color = Constants.RedColor;
+            await Task.Delay(500);
+            _spriteRenderer.color = Color.white;
+        }  
+    }
 }

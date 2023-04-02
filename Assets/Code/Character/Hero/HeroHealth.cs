@@ -1,4 +1,5 @@
 using System;
+using Code.Character.Common;
 using Code.Character.Interfaces;
 using Code.Data.ProgressData;
 using Code.Data.States;

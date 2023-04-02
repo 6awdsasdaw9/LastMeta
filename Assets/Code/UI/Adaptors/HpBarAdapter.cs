@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.UI.Actors
 {
-    public class ActorUI : MonoBehaviour
+    public class HpBarAdapter : MonoBehaviour
     {
         protected HpBar _hpBar;
         private IHealth _health;

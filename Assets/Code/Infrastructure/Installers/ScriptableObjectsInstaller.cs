@@ -4,8 +4,8 @@ using Zenject;
 
 namespace Code.Infrastructure.Installers
 {
-    [CreateAssetMenu(fileName = "DataInstaller", menuName = "ScriptableObjects/GameSettings/DataInstaller")]
-    public class DataInstaller: ScriptableObjectInstaller<DataInstaller>
+    [CreateAssetMenu(fileName = "ScriptableObjectsInstaller", menuName = "ScriptableObjects/GameSettings/ScriptableObjectsInstaller")]
+    public class ScriptableObjectsInstaller: ScriptableObjectInstaller<ScriptableObjectsInstaller>
     {
         public SettingsData settingsData;
         public ConfigData configData;

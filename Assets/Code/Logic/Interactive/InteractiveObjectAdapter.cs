@@ -1,14 +1,12 @@
-using System;
-using Code.Character.Common;
-using Code.Services;
+using Code.Logic.Triggers;
 using Code.Services.Input;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic
+namespace Code.Logic.Interactive
 {
-    [RequireComponent(typeof(ReactionToHero))]
-    public class InteractiveObject: FollowTriggerObserver
+    [RequireComponent(typeof(TriggerObserverAdapter))]
+    public class InteractiveObjectAdapter: FollowTriggerObserver
     {
         [SerializeField] private InteractiveIconAnimation _iconAnimation;
         [SerializeField] private InteractiveType _type;

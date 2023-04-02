@@ -3,7 +3,7 @@ using Code.Infrastructure.StateMachine.States;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic
+namespace Code.Logic.Triggers
 {
     public class LevelTransferTrigger : MonoBehaviour
     {

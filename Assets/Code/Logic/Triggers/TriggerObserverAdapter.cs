@@ -2,13 +2,13 @@ using System.Collections;
 using Code.Services;
 using UnityEngine;
 
-namespace Code.Character.Common
+namespace Code.Logic.Triggers
 {
-    public class ReactionToHero : MonoBehaviour
+    public class TriggerObserverAdapter : MonoBehaviour
     {
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private float _cooldown;
-        [SerializeField] private FollowTriggerObserver[] _follows;
+        [SerializeField] private FollowTriggerObserver[] _followTriggerObserver;
         
         private Coroutine _reactionCoroutine;
         private bool _hasReactionTarget;
@@ -56,13 +56,13 @@ namespace Code.Character.Common
 
         private void SwitchFollowOn()
         {
-            foreach (var f in _follows)
+            foreach (var f in _followTriggerObserver)
                 f.enabled = true;
         }
 
         private void SwitchFollowOff()
         {
-            foreach (var f in _follows)
+            foreach (var f in _followTriggerObserver)
                 f.enabled = false;
         }
     }

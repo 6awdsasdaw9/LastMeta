@@ -3,7 +3,7 @@ using Code.Debugers;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic
+namespace Code.Logic.Triggers
 {
     public class SaveTrigger : MonoBehaviour
     {

@@ -10,11 +10,11 @@ namespace Code.Data.GameData
     {
         [Title("Real Scenes")]
         public HeroMovement realHero;
-        public GameObject realHud;
+        public Hud realHUD;
         
         [Space,Title("Game Scenes")]
         public HeroMovement hero;
-        public Hud hud;
+        public Hud gameHUD;
         
         [Title("FX")] 
         public GameObject fx_PlayerDeath;

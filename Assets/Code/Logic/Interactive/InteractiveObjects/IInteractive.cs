@@ -1,4 +1,4 @@
-namespace Code.Logic
+namespace Code.Logic.Interactive
 {
     public interface IInteractive
     {

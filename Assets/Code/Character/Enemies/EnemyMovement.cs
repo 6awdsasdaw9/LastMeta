@@ -1,5 +1,6 @@
 using Code.Character.Common;
 using Code.Character.Hero;
+using Code.Logic.Triggers;
 using Code.Services;
 using UnityEngine;
 using UnityEngine.AI;
