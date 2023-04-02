@@ -54,12 +54,12 @@ namespace Code.Infrastructure.Installers
         private void BindHud()
         {
             
-            Hud hud = Container.InstantiatePrefabForComponent<Hud>(
+            HUD hud = Container.InstantiatePrefabForComponent<HUD>(
                 prefabsData.gameHUD,
                 Vector3.zero, 
                 Quaternion.identity,
                 null);
-            Container.Bind<Hud>().FromInstance(hud).AsSingle().NonLazy();
+            Container.Bind<HUD>().FromInstance(hud).AsSingle().NonLazy();
         }
         
         private void BindHero()

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Code.Character.Hero;
 using Code.Character.Interfaces;
 using Code.Debugers;
+using Code.Services;
 using UnityEngine;
 using Zenject;
 
@@ -12,8 +13,8 @@ namespace Code.Character.Enemies
     public class EnemyAttack : MonoBehaviour
     {
         [SerializeField] private EnemyAnimator _animator;
+        [SerializeField] private Cooldown _attackCooldown;
         [SerializeField] private float _damage = 10;
-        [SerializeField] private float _attackCooldown = 3f;
         [SerializeField] private float _cleavage = 1;
         [SerializeField] private float _effectiveHeight = 1;
         [SerializeField] private float _pushForce = 3;
@@ -21,7 +22,7 @@ namespace Code.Character.Enemies
         private HeroMovement _heroMovement;
         private IHealth _heroHealth;
 
-        private float _currentAttackCooldown;
+     
         private bool _isAttacking;
         private int _layerMask;
         private readonly Collider[] _hits = new Collider[1];
@@ -40,7 +41,7 @@ namespace Code.Character.Enemies
 
         private void Update()
         {
-            UpdateCooldown();
+            _attackCooldown.UpdateCooldown();
             if (CanAttack())
                 StartAttack();
         }
@@ -81,7 +82,7 @@ namespace Code.Character.Enemies
         /// </summary>
         private void OnAttackEnded()
         {
-            _currentAttackCooldown = _attackCooldown;
+            _attackCooldown.ResetCooldown();
             _isAttacking = false;
         }
 
@@ -101,16 +102,11 @@ namespace Code.Character.Enemies
         private Vector3 StartPoint() =>
             new Vector3(transform.position.x, transform.position.y + _effectiveHeight, transform.position.z);
 
-        private void UpdateCooldown()
-        {
-            if (!CoolDownIsUp())
-                _currentAttackCooldown -= Time.deltaTime;
-        }
+
 
         private bool CanAttack() =>
-            attackIsActive && !_isAttacking && CoolDownIsUp();
+            attackIsActive && !_isAttacking &&   _attackCooldown.IsUp();
 
-        private bool CoolDownIsUp() =>
-            _currentAttackCooldown <= 0;
+
     }
 }

@@ -188,8 +188,8 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 7948913253675025850}
   - {fileID: 7948913254538217900}
-  - {fileID: 7948913252850770648}
   - {fileID: 7948913253373618298}
+  - {fileID: 7948913252850770648}
   - {fileID: 7948913253443974237}
   - {fileID: 7948913253268715925}
   _installerPrefabs: []

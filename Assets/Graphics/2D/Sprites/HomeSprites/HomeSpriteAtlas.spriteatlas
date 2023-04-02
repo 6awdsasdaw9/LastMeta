@@ -54,6 +54,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 52bbddb4b3984784599ddb0a8e7d34ea, type: 3}
     - {fileID: 2800000, guid: 6e8ef9d5f84affd4fb102ec450c09b24, type: 3}
     - {fileID: 2800000, guid: e7dfc6286fcc44b45a4ef0b01493fa9d, type: 3}
+    - {fileID: 2800000, guid: 9af51df35ed7e0347a1797460d72b0aa, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -63,6 +64,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 129b0952939eeff47bc7302167e3ff0f, type: 3}
   - {fileID: 21300000, guid: 9e883c621b7149745ae9d2d9f0cc5ae9, type: 3}
   - {fileID: 21300000, guid: 78ace172e079a4741956d8590b6d8fea, type: 3}
+  - {fileID: 21300000, guid: 9af51df35ed7e0347a1797460d72b0aa, type: 3}
   - {fileID: -1373445033, guid: 52bbddb4b3984784599ddb0a8e7d34ea, type: 3}
   - {fileID: 591214474, guid: 52bbddb4b3984784599ddb0a8e7d34ea, type: 3}
   - {fileID: -832721061, guid: 52bbddb4b3984784599ddb0a8e7d34ea, type: 3}
@@ -148,6 +150,7 @@ SpriteAtlas:
   - KitchenTable
   - Laptop
   - Background_Windows
+  - PhotoOfFamily
   - Lola_40
   - Lola_41
   - Lola_42

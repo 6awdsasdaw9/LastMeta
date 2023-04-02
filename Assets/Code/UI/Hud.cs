@@ -1,31 +1,20 @@
 using System;
 using Code.UI.Actors;
+using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Code.UI
 {
     [RequireComponent(typeof(HudAdapter))]
-    public class Hud : MonoBehaviour
+    public class HUD : MonoBehaviour
     {
-        public Image InteractiveImage; 
+        [Title("Common HUD")]
+        public InteractiveHudImage InteractiveImage;
+        
+        [Title("Game HUD")]
         public HpBar HeroHpBar;
-
+        
         public Action OnUIWindowShown;
         public Action OnUIWindowHidden;
-        
-        
-        public void ShowInteractiveImage(Sprite sprite)
-        {
-            InteractiveImage.sprite = sprite;
-            InteractiveImage.gameObject.SetActive(true);
-            OnUIWindowHidden?.Invoke();
-        }
-
-        public void HideInteractiveImage()
-        {
-            InteractiveImage.gameObject.SetActive(false);
-            OnUIWindowHidden?.Invoke();
-        }
     }
 }

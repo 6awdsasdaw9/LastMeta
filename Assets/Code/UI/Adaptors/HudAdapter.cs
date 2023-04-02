@@ -1,18 +1,32 @@
+using System;
 using Code.Services;
 using UnityEngine;
+using Zenject;
 
 namespace Code.UI.Actors
 {
     public class HudAdapter: MonoBehaviour
     {
-        private readonly MovementLimiter _movementLimiter;
-
-        public HudAdapter(Hud hud, MovementLimiter movementLimiter)
+        [SerializeField] private HUD _hud;
+        private  MovementLimiter _movementLimiter;
+        
+        
+        [Inject]
+        public void Construct( MovementLimiter movementLimiter)
         {
             _movementLimiter = movementLimiter;
-            
-            hud.OnUIWindowShown += OnUIWindowShown;
-            hud.OnUIWindowHidden += OnUIWindowHidden;
+        }
+
+        private void OnEnable()
+        {
+            _hud.OnUIWindowShown += OnUIWindowShown;
+            _hud.OnUIWindowHidden += OnUIWindowHidden;
+        }
+
+        private void OnDisable()
+        {
+            _hud.OnUIWindowShown -= OnUIWindowShown;
+            _hud.OnUIWindowHidden -= OnUIWindowHidden;
         }
 
         private void OnUIWindowHidden()

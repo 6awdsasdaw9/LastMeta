@@ -17,14 +17,16 @@ namespace Code.Infrastructure.Installers
 
         private void BindHUD()
         {
-            Hud hud = Container.InstantiatePrefabForComponent<Hud>(
+            HUD hud = Container.InstantiatePrefabForComponent<HUD>(
                 GetHudPrefabs(),
                 Vector3.zero,
                 Quaternion.identity,
                 null);
+            
+            Container.Bind<HUD>().FromInstance(hud).AsSingle().NonLazy();
         }
 
-        private Hud GetHudPrefabs()
+        private HUD GetHudPrefabs()
         {
             switch (_typeOfScene)
             {

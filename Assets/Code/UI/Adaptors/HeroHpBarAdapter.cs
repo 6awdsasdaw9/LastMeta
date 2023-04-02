@@ -5,7 +5,7 @@ namespace Code.UI.Actors
     public class HeroHpBarAdapter : HpBarAdapter
     {
         [Inject]
-        private void Construct(Hud hud)
+        private void Construct(HUD hud)
         {
             _hpBar = hud.HeroHpBar;
         }
