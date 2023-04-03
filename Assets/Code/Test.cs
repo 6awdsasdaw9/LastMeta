@@ -1,5 +1,6 @@
 using System;
 using Code.Logic.Interactive;
+using Code.Logic.Interactive.InteractiveObjects;
 using UnityEngine;
 
 namespace Code

@@ -1,9 +1,8 @@
-using System;
 using Code.Services;
 using UnityEngine;
 using Zenject;
 
-namespace Code.UI.Actors
+namespace Code.UI.Adaptors
 {
     public class HudAdapter: MonoBehaviour
     {

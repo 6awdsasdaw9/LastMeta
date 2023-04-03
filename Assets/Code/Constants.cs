@@ -51,15 +51,15 @@ namespace Code
         #endregion
         
         #region Colors
-        public static Color RedColor =  new Color(1, 0.75f, 0.85f, 1);
-        public static Color OrangeColor =  new Color(1, 0.85f, 0.75f, 1);
-        public static Color YellowColor =  new Color(1, 0.95f, 0.75f, 1);
-        public static Color GreenColor =  new Color(0.8f, 1, 0.75f, 1);
-        public static Color BlueColor =  new Color(0.75f, 0.95f, 1, 1);
-        public static Color DarkBlueColor =  new Color(0.75f, 0.85f, 1, 1);
-        public static Color VioletColor =  new Color(0.85f, 0.74f, 1, 1);
-        public static Color[] RainbowColor = new Color[]
-            { RedColor,OrangeColor,YellowColor,GreenColor,BlueColor,DarkBlueColor,VioletColor};
+        public static Color DarkRedColor =  new(1, 0.3f, 0.5f, 1);
+        public static Color RedColor =  new(1, 0.75f, 0.85f, 1);
+        public static Color OrangeColor =  new(1, 0.85f, 0.75f, 1);
+        public static Color YellowColor =  new(1, 0.95f, 0.75f, 1);
+        public static Color GreenColor =  new(0.8f, 1, 0.75f, 1);
+        public static Color BlueColor =  new(0.75f, 0.95f, 1, 1);
+        public static Color DarkBlueColor =  new(0.75f, 0.85f, 1, 1);
+        public static Color VioletColor =  new(0.85f, 0.74f, 1, 1);
+        public static Color[] RainbowColor = { RedColor,OrangeColor,YellowColor,GreenColor,BlueColor,DarkBlueColor,VioletColor};
         #endregion
 
     }

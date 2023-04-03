@@ -2,7 +2,7 @@ using Code.Character.Hero;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Objects
+namespace Code.Logic.Objects
 {
     public class PlatformFriction : MonoBehaviour
     {

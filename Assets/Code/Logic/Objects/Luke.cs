@@ -1,7 +1,7 @@
-using Code.Services;
+using Code.Logic.Triggers;
 using UnityEngine;
 
-namespace Code.Objects
+namespace Code.Logic.Objects
 {
     public class Luke : MonoBehaviour
     {

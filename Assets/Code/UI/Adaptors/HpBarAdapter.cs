@@ -1,7 +1,7 @@
 using Code.Character.Interfaces;
 using UnityEngine;
 
-namespace Code.UI.Actors
+namespace Code.UI.Adaptors
 {
     public class HpBarAdapter : MonoBehaviour
     {

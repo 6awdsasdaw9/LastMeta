@@ -10,6 +10,7 @@ namespace Code.Services.Input
         private readonly InputMaster _master;
         private readonly EventSystem _eventSystem;
 
+        public bool IsEnterPressed { get; private set; }
         private bool _isInteractPressed;
         private bool _isPressedOnUI;
 
@@ -54,8 +55,13 @@ namespace Code.Services.Input
 
 
             _master.UI.MenuPause.started += OpenMenu;
+            
             _master.UI.Interact.performed += InteractButtonPressed;
             _master.UI.Interact.canceled += InteractButtonPressed;
+            
+            _master.UI.Enter.performed += EnterButtonPressed;
+            _master.UI.Enter.canceled += EnterButtonPressed;
+            
 
             /*EventManager.OnControlAllowedEvent += EneblePlayerInput;
             EventManager.OnControlProhibitedEvent += DisablePlayerInput;*/
@@ -134,19 +140,26 @@ namespace Code.Services.Input
 
         private void InteractButtonPressed(InputAction.CallbackContext context)
         {
-            /*if (context.started || context.performed)*/
-            _isInteractPressed = true;
-            if (context.canceled) _isInteractPressed = false;
-            InteractButtonEvent?.Invoke();
+            
+                _isInteractPressed = true;
+           if (context.canceled) _isInteractPressed = false;
+        
         }
-
-        public event Action InteractButtonEvent;
-
 
         public bool GetInteractPressed()
         {
             bool result = _isInteractPressed;
             _isInteractPressed = false;
+            return result;
+        }
+
+        private void EnterButtonPressed(InputAction.CallbackContext context) => 
+            IsEnterPressed = context.performed;
+
+        public bool GetEnterPressed()
+        {
+            bool result = IsEnterPressed;
+            IsEnterPressed = false;
             return result;
         }
 

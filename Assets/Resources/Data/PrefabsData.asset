@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: PrefabsData
   m_EditorClassIdentifier: 
   realHero: {fileID: 6659652504158788560, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
-  realHUD: {fileID: 4590295659727660109, guid: 72103a4a3845e7f43abfc322564ac1e2, type: 3}
   hero: {fileID: 2929443425413194324, guid: 231f3597919323245ba45cfb13628748, type: 3}
-  gameHUD: {fileID: 7281473980765438915, guid: 1cc260bbc5d148b4c879996d198d66e6, type: 3}
   fx_PlayerDeath: {fileID: 133562983179559606, guid: 9b632883970053048893a6daed222162, type: 3}
+  realHUD: {fileID: 4590295659727660109, guid: 72103a4a3845e7f43abfc322564ac1e2, type: 3}
+  gameHUD: {fileID: 7281473980765438915, guid: 1cc260bbc5d148b4c879996d198d66e6, type: 3}
+  DialogueCloud: {fileID: 3248997084928144512, guid: 13f963d938e779148a2db7d40f8b9c69, type: 3}

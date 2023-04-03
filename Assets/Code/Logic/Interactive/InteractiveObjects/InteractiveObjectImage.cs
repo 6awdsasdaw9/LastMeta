@@ -2,7 +2,7 @@ using Code.UI;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.Interactive
+namespace Code.Logic.Interactive.InteractiveObjects
 {
     public class InteractiveObjectImage :MonoBehaviour, IInteractive
     {

@@ -370,6 +370,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Enter",
+                    "type": "Button",
+                    "id": "af9f1e1a-333f-4f24-bd36-0beaf0c1d386",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Point",
                     "type": "PassThrough",
                     "id": "75b9e99d-7d91-4828-b806-cd6f41d39d8b",
@@ -483,6 +492,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "ScrollWheel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "730bf410-d686-45e0-8adc-8f99f446f2fc",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardAndMouse",
+                    "action": "Enter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

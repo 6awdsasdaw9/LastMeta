@@ -10,12 +10,13 @@ namespace Code.Infrastructure.Installers
         public SettingsData settingsData;
         public ConfigData configData;
         public PrefabsData prefabsData;
-
+        public TextData textData;
         public override void InstallBindings()
         {
             Container.BindInstance(settingsData);
             Container.BindInstance(configData);
             Container.BindInstance(prefabsData);
+            Container.BindInstance(textData);
         }
     }
 }

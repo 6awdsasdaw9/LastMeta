@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace Code.UI.Actors
+namespace Code.UI.Adaptors
 {
     public class HeroHpBarAdapter : HpBarAdapter
     {

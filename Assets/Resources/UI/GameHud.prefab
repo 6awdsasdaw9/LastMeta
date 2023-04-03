@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 8184810113273167464}
   - component: {fileID: 7508229148832512761}
   m_Layer: 5
-  m_Name: Boarder
+  m_Name: Boarder_HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

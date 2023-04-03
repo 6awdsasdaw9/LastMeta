@@ -1,5 +1,5 @@
 using System;
-using Code.UI.Actors;
+using Code.UI.Adaptors;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -9,7 +9,7 @@ namespace Code.UI
     public class HUD : MonoBehaviour
     {
         [Title("Common HUD")]
-        public InteractiveHudImage InteractiveImage;
+        public InteractiveImage InteractiveImage;
         
         [Title("Game HUD")]
         public HpBar HeroHpBar;

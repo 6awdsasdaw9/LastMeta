@@ -1,4 +1,4 @@
-namespace Code.UI.Actors
+namespace Code.UI.Adaptors
 {
     public class EnemyHpBarAdapter : HpBarAdapter
     {

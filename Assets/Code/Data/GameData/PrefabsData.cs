@@ -5,18 +5,19 @@ using UnityEngine;
 
 namespace Code.Data.GameData
 {
-    [CreateAssetMenu(fileName = "PrefabsData", menuName = "ScriptableObjects/GameSettings/PrefabsData")]
+    [CreateAssetMenu(fileName = "PrefabsData", menuName = "ScriptableObjects/GameData/PrefabsData")]
     public class PrefabsData : ScriptableObject
     {
-        [Title("Real Scenes")]
+        [Title("Heroes")]
         public HeroMovement realHero;
-        public HUD realHUD;
-        
-        [Space,Title("Game Scenes")]
         public HeroMovement hero;
-        public HUD gameHUD;
         
         [Title("FX")] 
         public GameObject fx_PlayerDeath;
+        
+        [Title("UI")]
+        public HUD realHUD;
+        public HUD gameHUD;
+        public DialogueCloud DialogueCloud;
     }
 }

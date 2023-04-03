@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Code.Logic.Interactive
+namespace Code.Logic.Interactive.InteractiveObjects
 {
     public interface IInteractive 
     {

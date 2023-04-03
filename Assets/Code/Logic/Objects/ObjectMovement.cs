@@ -1,8 +1,7 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
-namespace Code.Objects
+namespace Code.Logic.Objects
 {
     public class ObjectMovement : MonoBehaviour
     {
