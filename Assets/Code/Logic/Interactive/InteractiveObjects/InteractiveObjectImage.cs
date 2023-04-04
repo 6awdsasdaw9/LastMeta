@@ -7,22 +7,23 @@ namespace Code.Logic.Interactive.InteractiveObjects
     public class InteractiveObjectImage :MonoBehaviour, IInteractive
     {
         [SerializeField] private Sprite _sprite;
-        private HUD _hud;
+        private InteractiveImageWindow _imageHud;
 
         [Inject]
         private void Construct(HUD hud)
         {
-            _hud = hud;
+            _imageHud = hud.InteractiveImageWindow;
         }
 
         public  void StartInteractive()
         {
-            _hud.InteractiveImage.ShowInteractiveImage(_sprite);     
+            _imageHud.SetSprite(_sprite);
+            _imageHud.ShowWindow();     
         }
 
         public  void StopInteractive()
         {
-          _hud.InteractiveImage.HideInteractiveImage();
+          _imageHud.HideWindow();
         }
     }
 }

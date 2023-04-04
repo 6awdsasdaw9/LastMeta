@@ -1,10 +1,16 @@
 namespace Code.Logic.Interactive
 {
-    public enum InteractiveType {
+    public enum InteractiveIconType {
         Void,
         Exclamation,
         Interaction,
         Question,
         Shop
+    }
+
+    public enum InteractiveObjectType
+    {
+        Image,
+        Laptop
     }
 }

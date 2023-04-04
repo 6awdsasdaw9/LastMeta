@@ -11,7 +11,7 @@ namespace Code.Logic.Interactive
     [RequireComponent(typeof(TriggerObserverAdapter))]
     public class InteractiveObjectHandler : FollowTriggerObserver
     {
-        [SerializeField] private InteractiveType _type;
+        [SerializeField] private InteractiveIconType iconType = InteractiveIconType.Interaction;
         [SerializeField] private InteractiveIconAnimation _iconAnimation;
         
         private IInteractive _interactiveObject;
@@ -50,7 +50,7 @@ namespace Code.Logic.Interactive
                 else
                     StartInteractive();
 
-                _cooldown.ResetCooldown();
+                    _cooldown.ResetCooldown();
             }
             
             _cooldown.UpdateCooldown();
@@ -77,7 +77,7 @@ namespace Code.Logic.Interactive
 
         private void ShowIcon()
         {
-            _iconAnimation.PlayType(_type);
+            _iconAnimation.PlayType(iconType);
         }
 
         private void HideIcon()

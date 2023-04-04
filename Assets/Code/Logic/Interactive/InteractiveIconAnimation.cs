@@ -16,6 +16,6 @@ namespace Code.Logic.Interactive
         public void PlayInteraction() => _animator.SetTrigger(interaction_t);
         public void PlayQuestion() => _animator.SetTrigger(question_t);
         public void PlayShop() => _animator.SetTrigger(shop_t);
-        public void PlayType(InteractiveType type) => _animator.SetTrigger(type.ToString());
+        public void PlayType(InteractiveIconType iconType) => _animator.SetTrigger(iconType.ToString());
     }
 }

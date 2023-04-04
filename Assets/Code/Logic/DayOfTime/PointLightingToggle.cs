@@ -17,7 +17,7 @@ namespace Code.Logic.DayOfTime
         private void Construct(TimeOfDayController timeOfDayController, SettingsData settingsData)
         {
             _timeOfDayController = timeOfDayController;
-            _animationDuration = settingsData.durationOfDayTime * 0.1f;
+            _animationDuration = settingsData.DurationOfDayTime * 0.1f;
         }
 
         private void Start()

@@ -28,11 +28,11 @@ namespace Code.Logic.DayOfTime
         [Inject]
         private void Construct(SettingsData settingsData, SavedDataCollection savedDataCollection)
         {
-            _dayTimeInSeconds = settingsData.dayTimeInSeconds;
+            _dayTimeInSeconds = settingsData.DayTimeInSeconds;
            
          
-            _eveningTime = settingsData.durationOfDayTime;
-            _nightTime =  settingsData.durationOfDayTime * 2;
+            _eveningTime = settingsData.DurationOfDayTime;
+            _nightTime =  settingsData.DurationOfDayTime * 2;
             
             savedDataCollection.Add(this);
         }

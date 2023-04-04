@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8205250932641174758}
   - component: {fileID: 7641904827583886448}
   m_Layer: 5
-  m_Name: Image
+  m_Name: InteractiveImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ CanvasGroup:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197091326686305262}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
@@ -99,7 +99,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2437083252309661853}
   - component: {fileID: 4864163859377911935}
+  - component: {fileID: 8867453888629773514}
   - component: {fileID: 3795707945643544140}
+  - component: {fileID: 7024427982102923514}
   m_Layer: 5
   m_Name: InteractiveImage
   m_TagString: Untagged
@@ -114,7 +116,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697769638918595447}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -136,6 +138,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697769638918595447}
   m_CullTransparentMesh: 1
+--- !u!225 &8867453888629773514
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697769638918595447}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &3795707945643544140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +162,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da66f6539fd142f0a3bb1461aff7a2e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvasGroup: {fileID: 7641904827583886448}
-  _hud: {fileID: 0}
   _interactiveImage: {fileID: 8205250932641174758}
+  _animation: {fileID: 7024427982102923514}
+--- !u!114 &7024427982102923514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697769638918595447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a14ed6c4cf243fc8c9f9f545afa8a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hud: {fileID: 0}
+  _animatedObject: {fileID: 1129525837431410135}
+  _canvasGroup: {fileID: 8867453888629773514}

@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957a180e785540399d934d2a2fbe28b8, type: 3}
   m_Name: SettingsData
   m_EditorClassIdentifier: 
-  dayTimeInSeconds: 50
-  lightingSettings:
+  DayTimeInSeconds: 50
+  LightingSettings:
     morningIntensity: 0.9
-    eveningIntensity: 0.7
+    eveningIntensity: 0.9
     nightIntensity: 0.2
-    morningAngle: {x: -6, y: -20, z: 0}
-    eveningAngle: {x: -6, y: 0, z: 0}
-    nightAngle: {x: -6, y: 20, z: 0}
+    morningAngle: {x: 0, y: 0.5, z: 0}
+    eveningAngle: {x: 70, y: 0.5, z: 0}
+    nightAngle: {x: 70, y: 0.5, z: 0}
+  InteractiveCooldownTime: 1
+  InteractiveObjectDownPos: {x: 0, y: -600, z: 0}
+  InteractiveObjectCenterPos: {x: 0, y: 0, z: 0}
+  InteractiveObjectTimeToHide: 0.8
+  InteractiveObjectTimeToShow: 0.8

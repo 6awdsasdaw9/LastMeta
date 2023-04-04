@@ -18,8 +18,8 @@ namespace Code.Logic.DayOfTime
         private void Construct(TimeOfDayController timeOfDayController, SettingsData settingsData)
         {
             _timeOfDayController = timeOfDayController;
-            _lightingSettings = settingsData.lightingSettings;
-            _animationDuration = settingsData.durationOfDayTime;
+            _lightingSettings = settingsData.LightingSettings;
+            _animationDuration = settingsData.DurationOfDayTime;
         }
 
         private void Start()
