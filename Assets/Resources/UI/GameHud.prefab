@@ -209,7 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429a244dd2c5418db09e832583e2e936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractiveImage: {fileID: 85876442561728134}
+  InteractiveImageWindow: {fileID: 85876442561728134}
+  InteractiveObjectWindows: []
   HeroHpBar: {fileID: 3250748225871163076}
 --- !u!114 &7548078381783518470
 MonoBehaviour:
