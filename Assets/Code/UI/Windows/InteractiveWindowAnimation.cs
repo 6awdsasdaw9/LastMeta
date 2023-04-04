@@ -17,6 +17,8 @@ namespace Code.UI
         private  float timeToHide;
         private  float timeToShow;
 
+        private const int cycleSteps = 100;
+        private const float oneStep = 1 / (float)cycleSteps; 
         public bool isMove { get; private set; }
 
         [Inject]
@@ -32,6 +34,7 @@ namespace Code.UI
         {
             _animatedObject.anchoredPosition = downPos; 
             _canvasGroup.alpha = 0;
+           
             _animatedObject.gameObject.SetActive(true);
             
             StartCoroutine(ShowCoroutine());
@@ -48,33 +51,32 @@ namespace Code.UI
         private IEnumerator ShowCoroutine()
         {
             isMove = true;
+            
             _animatedObject.DOAnchorPos(centerPos, timeToShow);
+            
+            var speed = oneStep / (1 / timeToShow);
 
-            var time = 0f;
-            float step = timeToShow * 0.1f;
-            while (_canvasGroup.alpha < 1)
+            for (int i = 0; i < cycleSteps; i++)
             {
-                _canvasGroup.alpha += step;
-                time += 0.01f;
-                Debug.Log(time);
-                yield return new WaitForSeconds(step);
+                _canvasGroup.alpha += oneStep;
+                yield return new WaitForSeconds(speed);
             }
+
             isMove = false;
         }
 
         private IEnumerator HideCoroutine()
         {
-     
             isMove = true;
             _animatedObject.DOAnchorPos(downPos, timeToHide);
-            while (_canvasGroup.alpha > 0)
+            
+            var speed = oneStep / (1 / timeToHide);
+            for (int i = 0; i < cycleSteps; i++)
             {
-                _canvasGroup.alpha -= 0.03f;
-                yield return new WaitForSeconds(0.03f);
+                _canvasGroup.alpha -= oneStep;
+                yield return new WaitForSeconds(speed);
             }
-
-            yield return new WaitForSeconds(timeToHide);
-            _animatedObject.DOAnchorPos(downPos, 0);
+            
             isMove = false;
             _animatedObject.gameObject.SetActive(false);
         }

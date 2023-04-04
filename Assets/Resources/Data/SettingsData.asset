@@ -21,7 +21,7 @@ MonoBehaviour:
     eveningAngle: {x: 70, y: 0.5, z: 0}
     nightAngle: {x: 70, y: 0.5, z: 0}
   InteractiveCooldownTime: 1
-  InteractiveObjectDownPos: {x: 0, y: -600, z: 0}
+  InteractiveObjectDownPos: {x: 0, y: -1000, z: 0}
   InteractiveObjectCenterPos: {x: 0, y: 0, z: 0}
-  InteractiveObjectTimeToHide: 0.8
-  InteractiveObjectTimeToShow: 0.8
+  InteractiveObjectTimeToHide: 0.5
+  InteractiveObjectTimeToShow: 0.9
