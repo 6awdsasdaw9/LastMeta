@@ -138,8 +138,11 @@ SpriteAtlas:
   - {fileID: 2030030009, guid: 6e8ef9d5f84affd4fb102ec450c09b24, type: 3}
   - {fileID: -837348394, guid: 6e8ef9d5f84affd4fb102ec450c09b24, type: 3}
   - {fileID: 21300000, guid: a76c71370bcd3ae4799278cf4e5f69b9, type: 3}
+  - {fileID: -115663448, guid: e7dfc6286fcc44b45a4ef0b01493fa9d, type: 3}
+  - {fileID: 1458437418, guid: e7dfc6286fcc44b45a4ef0b01493fa9d, type: 3}
   - {fileID: -2141682693, guid: e7dfc6286fcc44b45a4ef0b01493fa9d, type: 3}
   - {fileID: -131349134, guid: e7dfc6286fcc44b45a4ef0b01493fa9d, type: 3}
+  - {fileID: 1552483365, guid: e7dfc6286fcc44b45a4ef0b01493fa9d, type: 3}
   - {fileID: 5965509891523526486, guid: 24233cd8dae3d8744b535992843a0700, type: 3}
   - {fileID: 4585228979031474018, guid: 24233cd8dae3d8744b535992843a0700, type: 3}
   - {fileID: -1476385452536074112, guid: 24233cd8dae3d8744b535992843a0700, type: 3}
@@ -224,8 +227,11 @@ SpriteAtlas:
   - SmallObjects_3
   - SmallObjects_2
   - Guitar
+  - Door_2
+  - Door_3
   - Door_0
   - Door_1
+  - Door_4
   - Quadrocopter_1
   - Quadrocopter_0
   - Quadrocopter_3

@@ -11,6 +11,7 @@ namespace Code.Logic.Interactive
     public enum InteractiveObjectType
     {
         Image,
-        Laptop
+        Laptop,
+        Door
     }
 }

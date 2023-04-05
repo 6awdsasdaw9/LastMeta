@@ -9,6 +9,7 @@ namespace Code.Logic.Interactive.InteractiveObjects.Laptop
         private IWindow _presentationWindow;
         private bool _isWindowNull;
         
+        
         [Inject]
         private void Construct(HUD hud)
         {
