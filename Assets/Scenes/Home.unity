@@ -333,6 +333,11 @@ MonoBehaviour:
   - {fileID: 609031609}
   - {fileID: 0}
   - {fileID: 634591149}
+--- !u!1 &235171893 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4872066251640911738, guid: bfb074873a9d89a408490fb599b803a4, type: 3}
+  m_PrefabInstance: {fileID: 2546490478319995915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &303747454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,6 +1129,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 585639454214020956, guid: 90722d1603f784642a80e9565bf33301, type: 3}
   m_PrefabInstance: {fileID: 585639454391224597}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &687320675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 687320676}
+  - component: {fileID: 687320677}
+  m_Layer: 0
+  m_Name: Event_Laptop Active Door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &687320676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687320675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1832236256}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &687320677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687320675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1fbe33933394e749f7f8fdb4ebc798f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactivity: {fileID: 1488669213}
+  _interactivityFollows:
+  - {fileID: 235171893}
 --- !u!1 &717957090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,7 +1926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ecdbec0be034aecac6a93c2e7d8471e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 1
+  Type: 1
 --- !u!1 &1496734641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2143,7 +2195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684206814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.875, y: -0.007, z: 0}
+  m_LocalPosition: {x: -5.835, y: -0.007, z: 0}
   m_LocalScale: {x: 6.2502003, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2285,7 +2337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4872066251640911738, guid: bfb074873a9d89a408490fb599b803a4, type: 3}
       propertyPath: m_Name
-      value: InteractiveTrigger
+      value: InteractiveTrigger_Laptop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfb074873a9d89a408490fb599b803a4, type: 3}
@@ -2529,7 +2581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f77a2658734fdc82f96436adabf8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconType: 0
+  iconType: 2
   _iconAnimation: {fileID: 780484138}
 --- !u!114 &1799923397
 MonoBehaviour:
@@ -2547,6 +2599,38 @@ MonoBehaviour:
   _cooldown: 0
   _followTriggerObserver:
   - {fileID: 1799923396}
+--- !u!1 &1832236255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1832236256}
+  m_Layer: 0
+  m_Name: -Events-
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1832236256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832236255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 687320676}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1840414362 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4022333030982744832, guid: 923b3128721dc534e80ab008bcdc9199, type: 3}
@@ -3215,7 +3299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4872066251640911738, guid: bfb074873a9d89a408490fb599b803a4, type: 3}
       propertyPath: m_Name
-      value: InteractiveTrigger
+      value: InteractiveTrigger_Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfb074873a9d89a408490fb599b803a4, type: 3}
@@ -3362,6 +3446,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 633599616}
     m_Modifications:
+    - target: {fileID: 3387475098685765173, guid: e40646fb240c9794193027bba664747d, type: 3}
+      propertyPath: m_Name
+      value: InteractiveTrigger_Photo
+      objectReference: {fileID: 0}
     - target: {fileID: 7827173510910224225, guid: e40646fb240c9794193027bba664747d, type: 3}
       propertyPath: m_Name
       value: Photo

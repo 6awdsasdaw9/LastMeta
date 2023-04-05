@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Logic.Interactive.InteractiveObjects.Laptop
 {
-    public class WindowLaptopMessenger : MonoBehaviour, IWindow
+    public class LaptopMessengerWindow : MonoBehaviour, IWindow
     {
         public void ShowOrHide()
         {

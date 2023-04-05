@@ -12,7 +12,7 @@ namespace Code.Logic.Triggers
         
         private Coroutine _reactionCoroutine;
         private bool _hasReactionTarget;
-        private void Start()
+        private void Awake()
         {
             _triggerObserver.TriggerEnter += TriggerEnter;
             _triggerObserver.TriggerExit += TriggerExit;

@@ -5,12 +5,11 @@ using UnityEngine.UI;
 namespace Code.UI
 {
     [RequireComponent(typeof(InteractiveWindowAnimation))]
-    public class InteractiveImageWindow : InteractiveObjectWindow
+    public class InteractiveImageWindow : InteractiveObjectWindow, IImageWindow
     {
         [SerializeField] private Image _interactiveImage;
         
-        public void SetSprite(Sprite sprite) => 
-            _interactiveImage.sprite = sprite;
-        
+        public void SetImage(Sprite image) => 
+            _interactiveImage.sprite = image;
     }
 }

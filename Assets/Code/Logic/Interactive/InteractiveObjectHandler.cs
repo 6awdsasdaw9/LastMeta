@@ -13,22 +13,22 @@ namespace Code.Logic.Interactive
     {
         [SerializeField] private InteractiveIconType iconType = InteractiveIconType.Interaction;
         [SerializeField] private InteractiveIconAnimation _iconAnimation;
-        
+
         private IInteractive _interactiveObject;
         private InputService _input;
         private Cooldown _cooldown;
-        
+
         private bool _onInteractive;
         private float _currentCooldown;
-        
+
         [Inject]
-        private void Construct(InputService inputService,SettingsData settingsData)
+        private void Construct(InputService inputService, SettingsData settingsData)
         {
             _input = inputService;
-            
+
             _cooldown = new Cooldown();
             _cooldown.SetTime(settingsData.InteractiveCooldownTime);
-            
+
             _interactiveObject = GetComponent<IInteractive>();
         }
 
@@ -39,20 +39,20 @@ namespace Code.Logic.Interactive
 
         private void Update()
         {
-            if(_interactiveObject == null)
+            if (_interactiveObject == null)
                 return;
-            
+
             if (_input.GetInteractPressed() && _cooldown.IsUp())
             {
                 if (_onInteractive)
                     StopInteractive();
-                
+
                 else
                     StartInteractive();
 
-                    _cooldown.ResetCooldown();
+                _cooldown.ResetCooldown();
             }
-            
+
             _cooldown.UpdateCooldown();
         }
 

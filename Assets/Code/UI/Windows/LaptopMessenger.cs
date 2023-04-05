@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Code.Logic.Interactive.InteractiveObjects.Laptop
 {
-    public class LaptopMessengerDialogue : MonoBehaviour
+    public class LaptopMessenger : MonoBehaviour
     {
         [SerializeField] private ScrollRect _scrollRect;
         [SerializeField] private TMP_InputField _inputField;
@@ -38,7 +38,7 @@ namespace Code.Logic.Interactive.InteractiveObjects.Laptop
         }
 
 
-        public void SendMessage()
+        private void SendMessage()
         {
             DialogueCloud cloud = Instantiate(_dialogueCloudPrefab, _scrollRect.content);
             cloud.SetRightRotation();

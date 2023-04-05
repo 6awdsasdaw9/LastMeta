@@ -19,7 +19,7 @@ namespace Code.UI
         [Title("Common HUD")]
         public InteractiveImageWindow InteractiveImageWindow;
 
-        public List<TypedInteractiveObjectWindow> InteractiveObjectWindows;
+        public List<InteractiveObjectWindowData> InteractiveObjectWindows;
 
         [Title("Game HUD")]
         public HpBar HeroHpBar;
