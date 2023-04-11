@@ -1,7 +1,8 @@
 using System;
+using Code.Data.States;
 using UnityEngine;
 
-namespace Code.Data.States
+namespace Code.Services
 {
     public static class Extensions
     {

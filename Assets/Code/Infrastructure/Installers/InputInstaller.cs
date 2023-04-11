@@ -10,9 +10,9 @@ namespace Code.Infrastructure.Installers
             BindInput();
         }
         
-        private void BindInput() =>
-            Container.Bind<InputService>()
-                .AsSingle()
-                .NonLazy();
+        private void BindInput()
+        {
+            Container.Bind<InputService>().AsSingle().NonLazy();
+        }
     }
 }

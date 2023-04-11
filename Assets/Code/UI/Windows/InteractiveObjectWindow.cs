@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Code.UI.Windows
 {
     [RequireComponent(typeof(InteractiveWindowAnimation))]
-    public class InteractiveObjectWindow : MonoBehaviour,IWindow
+    public class InteractiveObjectWindow : MonoBehaviour, IWindow
     {
         [SerializeField] private HUD _hud;
         [SerializeField] private InteractiveWindowAnimation _animation;

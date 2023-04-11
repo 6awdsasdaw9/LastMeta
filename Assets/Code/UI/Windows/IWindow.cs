@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.UI
+namespace Code.UI.Windows
 {
     public interface IWindow
     {
@@ -11,5 +11,10 @@ namespace Code.UI
     public interface IImageWindow : IWindow
     {
         void SetImage(Sprite image);
+    }
+
+    public interface INoteWindow : IImageWindow
+    {
+        void SetText(string message);
     }
 }

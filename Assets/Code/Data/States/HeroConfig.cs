@@ -47,7 +47,7 @@ namespace Code.Data.States
         public float coyoteTime = 0.1f;
         [Range(0f, 0.3f), Tooltip("Как далеко от земли кушируется прыжок?")]
         public float jumpBuffer = 0.3f;
-        public HeroParamConfig[] Config;
+        public GameData.HeroParamData[] Config;
 
     }
 }

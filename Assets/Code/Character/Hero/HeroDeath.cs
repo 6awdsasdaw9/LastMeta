@@ -1,3 +1,4 @@
+using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Services;
 using Sirenix.OdinInspector;

@@ -12,6 +12,8 @@ namespace Code.Logic.Interactive
     {
         Image,
         Laptop,
-        Door
+        Door,
+        Note,
+        Hero
     }
 }

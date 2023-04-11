@@ -1,8 +1,9 @@
 using System.Linq;
 using Code.UI;
+using Code.UI.Windows;
 using Zenject;
 
-namespace Code.Logic.Interactive.InteractiveObjects.Laptop
+namespace Code.Logic.Interactive.InteractiveObjects
 {
     public class InteractiveObject : Interactivity
     {

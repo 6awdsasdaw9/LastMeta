@@ -1,3 +1,4 @@
+using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Logic.Interactive.InteractiveObjects;
 using Code.Logic.Triggers;
@@ -8,11 +9,12 @@ using Zenject;
 
 namespace Code.Logic.Interactive
 {
-    [RequireComponent(typeof(TriggerObserverAdapter))]
+
     public class InteractiveObjectHandler : FollowTriggerObserver
     {
         [SerializeField] private InteractiveIconType iconType = InteractiveIconType.Interaction;
         [SerializeField] private InteractiveIconAnimation _iconAnimation;
+        [SerializeField] private bool _isStartOnEnable;
 
         private IInteractive _interactiveObject;
         private InputService _input;
@@ -22,19 +24,26 @@ namespace Code.Logic.Interactive
         private float _currentCooldown;
 
         [Inject]
-        private void Construct(InputService inputService, SettingsData settingsData)
+        private void Construct(InputService inputService, GameSettings gameSettings)
         {
             _input = inputService;
 
             _cooldown = new Cooldown();
-            _cooldown.SetTime(settingsData.InteractiveCooldownTime);
+            _cooldown.SetTime(gameSettings.InteractiveCooldownTime);
 
             _interactiveObject = GetComponent<IInteractive>();
         }
 
         private void OnEnable()
         {
-            ShowIcon();
+            if (_isStartOnEnable)
+            {
+                StartInteractive();
+            }
+            else
+            {
+                ShowIcon();
+            }
         }
 
         private void Update()
@@ -77,12 +86,12 @@ namespace Code.Logic.Interactive
 
         private void ShowIcon()
         {
-            _iconAnimation.PlayType(iconType);
+            _iconAnimation?.PlayType(iconType);
         }
 
         private void HideIcon()
         {
-            _iconAnimation.PlayVoid();
+            _iconAnimation?.PlayVoid();
         }
     }
 }

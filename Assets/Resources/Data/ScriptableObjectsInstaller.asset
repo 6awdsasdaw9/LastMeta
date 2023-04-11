@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c165e05881e42068159b1c2e3e8a86e, type: 3}
   m_Name: ScriptableObjectsInstaller
   m_EditorClassIdentifier: 
-  settingsData: {fileID: 11400000, guid: 5d9ad4c1249e56a46b5a80d0287dec74, type: 2}
-  configData: {fileID: 11400000, guid: b026f2898c8d20844aa583fde4bac51c, type: 2}
-  prefabsData: {fileID: 11400000, guid: a59aef7bee20b3540aa4eadf47ae7d1c, type: 2}
-  textData: {fileID: 11400000, guid: a21bd99348ce93e41953dc6f6ab214ef, type: 2}
+  GameSettings: {fileID: 11400000, guid: 5d9ad4c1249e56a46b5a80d0287dec74, type: 2}
+  GameConfig: {fileID: 11400000, guid: b026f2898c8d20844aa583fde4bac51c, type: 2}
+  PrefabsData: {fileID: 11400000, guid: a59aef7bee20b3540aa4eadf47ae7d1c, type: 2}
+  TextConfig: {fileID: 11400000, guid: a21bd99348ce93e41953dc6f6ab214ef, type: 2}

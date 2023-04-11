@@ -3,7 +3,7 @@ using Code.UI;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Code.Data.GameData
+namespace Code.Data.Configs
 {
     [CreateAssetMenu(fileName = "PrefabsData", menuName = "ScriptableObjects/GameData/PrefabsData")]
     public class PrefabsData : ScriptableObject

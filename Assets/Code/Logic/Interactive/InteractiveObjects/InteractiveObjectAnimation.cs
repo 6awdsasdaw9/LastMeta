@@ -17,6 +17,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
         public override void StopInteractive()
         {
             _animator.SetTrigger(End_t);
+            OnEndInteractive?.Invoke();
         }
     }
 }

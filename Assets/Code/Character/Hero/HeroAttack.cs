@@ -1,5 +1,6 @@
 using System;
 using Code.Character.Interfaces;
+using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Data.States;
 using Code.Debugers;
@@ -24,11 +25,11 @@ namespace Code.Character.Hero
         private int _layerMask;
 
         [Inject]
-        private void Construct(MovementLimiter movementLimiter, InputService inputService, ConfigData configData)
+        private void Construct(MovementLimiter movementLimiter, InputService inputService, GameConfig gameConfig)
         {
             _movementLimiter = movementLimiter;
             _inputService = inputService;
-            _power = configData.heroConfig.power;
+            _power = gameConfig.heroConfig.power;
         }
 
         private void OnEnable()

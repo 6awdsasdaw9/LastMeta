@@ -1,4 +1,5 @@
 using System;
+using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Data.States;
 using Code.Services;
@@ -38,15 +39,15 @@ namespace Code.Character.Hero
 
 
         [Inject]
-        private void Construct(InputService input, MovementLimiter limiter, ConfigData configData)
+        private void Construct(InputService input, MovementLimiter limiter, GameConfig gameConfig)
         {
             _input = input;
 
             _movementLimiter = limiter;
-            _config = configData.heroConfig;
+            _config = gameConfig.heroConfig;
 
-            _jumpHeight = configData.heroConfig.jumpHeight;
-            _maxAirJumps = configData.heroConfig.maxAirJumps;
+            _jumpHeight = gameConfig.heroConfig.jumpHeight;
+            _maxAirJumps = gameConfig.heroConfig.maxAirJumps;
         }
 
         private void Start() => 

@@ -1,3 +1,4 @@
+using Code.Data.Configs;
 using Code.Data.GameData;
 using DG.Tweening;
 using UnityEngine;
@@ -15,11 +16,11 @@ namespace Code.Logic.DayOfTime
 
 
         [Inject]
-        private void Construct(TimeOfDayController timeOfDayController, SettingsData settingsData)
+        private void Construct(TimeOfDayController timeOfDayController, GameSettings gameSettings)
         {
             _timeOfDayController = timeOfDayController;
-            _lightingSettings = settingsData.LightingSettings;
-            _animationDuration = settingsData.DurationOfDayTime;
+            _lightingSettings = gameSettings.LightingSettings;
+            _animationDuration = gameSettings.DurationOfDayTime;
         }
 
         private void Start()

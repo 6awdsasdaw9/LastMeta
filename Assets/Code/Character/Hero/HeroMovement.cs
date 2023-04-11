@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Data.ProgressData;
 using Code.Data.States;
@@ -45,19 +46,13 @@ namespace Code.Character.Hero
         private const float _supportVelocityMultiplayer = 0.15f;
 
         [Inject]
-        private void Construct(InputService input, MovementLimiter limiter, ConfigData configData, SavedDataCollection dataCollection)
+        private void Construct(InputService input, MovementLimiter limiter, GameConfig gameConfig, SavedDataCollection dataCollection)
         {
             _input = input;
             _movementLimiter = limiter;
-            _config = configData.heroConfig;
+            _config = gameConfig.heroConfig;
 
             dataCollection.Add(this);
-
-            //_maxSpeed = configData.heroConfig.maxSpeed;
-
-            /*
-            _bonusSpeed = configData.heroConfig.Config
-                .FirstOrDefault(s => s.Param == BonusConfig.ParamType.Speed && s.Lvl == 1)?.Value ?? 1;*/
         }
 
         private void Start() =>

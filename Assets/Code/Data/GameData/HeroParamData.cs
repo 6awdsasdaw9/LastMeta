@@ -9,7 +9,7 @@ namespace Code.Data.GameData
     }
 
     [Serializable]
-    public class HeroParamConfig
+    public class HeroParamData
     {
         public int Lvl;
         public ParamType Param;

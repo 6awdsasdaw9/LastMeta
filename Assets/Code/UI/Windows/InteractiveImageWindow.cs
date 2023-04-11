@@ -1,8 +1,7 @@
-using Code.UI.Windows;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Code.UI
+namespace Code.UI.Windows
 {
     [RequireComponent(typeof(InteractiveWindowAnimation))]
     public class InteractiveImageWindow : InteractiveObjectWindow, IImageWindow

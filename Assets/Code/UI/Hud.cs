@@ -7,17 +7,13 @@ using UnityEngine;
 
 namespace Code.UI
 {
-    public interface IHUD
-    {
-        public Action OnUIWindowShown { get; }
-        public Action OnUIWindowHidden{ get; }
-    }
 
     [RequireComponent(typeof(HudAdapter))]
     public class HUD : MonoBehaviour
     {
         [Title("Common HUD")]
         public InteractiveImageWindow InteractiveImageWindow;
+        public InteractiveNoteWindow InteractiveNoteWindow;
 
         public List<InteractiveObjectWindowData> InteractiveObjectWindows;
 

@@ -1,5 +1,4 @@
 using System.Collections;
-using Code.Services;
 using UnityEngine;
 
 namespace Code.Logic.Triggers
@@ -7,6 +6,7 @@ namespace Code.Logic.Triggers
     public class TriggerObserverAdapter : MonoBehaviour
     {
         [SerializeField] private TriggerObserver _triggerObserver;
+        [SerializeField] private float _delay;
         [SerializeField] private float _cooldown;
         [SerializeField] private FollowTriggerObserver[] _followTriggerObserver;
         
@@ -20,15 +20,6 @@ namespace Code.Logic.Triggers
             SwitchFollowOff();
         }
 
-        private void TriggerExit(Collider obj)
-        {
-            if (!_hasReactionTarget) 
-                return;
-            
-            _reactionCoroutine = StartCoroutine(SwitchFollowOffAfterCooldown());
-            _hasReactionTarget = false;
-        }
-
         private void TriggerEnter(Collider obj)
         {
             if (_hasReactionTarget)
@@ -36,10 +27,24 @@ namespace Code.Logic.Triggers
             
             _hasReactionTarget = true;
             StopReactionCoroutine();
-            SwitchFollowOn();
+            StartCoroutine(SwitchFollowOnAfterDelay());
         }
 
+        private void TriggerExit(Collider obj)
+        {
+            if (!_hasReactionTarget) 
+                return;
+            
+            StopCoroutine(SwitchFollowOnAfterDelay());
+            _reactionCoroutine = StartCoroutine(SwitchFollowOffAfterCooldown());
+            _hasReactionTarget = false;
+        }
 
+        private IEnumerator SwitchFollowOnAfterDelay()
+        {
+            yield return new WaitForSeconds(_delay);
+            SwitchFollowOn();
+        }
         private IEnumerator SwitchFollowOffAfterCooldown()
         {
             yield return new WaitForSeconds(_cooldown);

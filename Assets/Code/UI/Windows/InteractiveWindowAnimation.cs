@@ -1,10 +1,10 @@
 using System.Collections;
-using Code.Data.GameData;
+using Code.Data.Configs;
 using DG.Tweening;
 using UnityEngine;
 using Zenject;
 
-namespace Code.UI
+namespace Code.UI.Windows
 {
     [RequireComponent(typeof(CanvasGroup))]
     public class InteractiveWindowAnimation : MonoBehaviour
@@ -22,12 +22,12 @@ namespace Code.UI
         public bool isMove { get; private set; }
 
         [Inject]
-        private void Construct( SettingsData settingsData)
+        private void Construct( GameSettings gameSettings)
         {
-            downPos = settingsData.InteractiveObjectDownPos;
-            centerPos = settingsData.InteractiveObjectCenterPos;
-            timeToHide = settingsData.InteractiveObjectTimeToHide;
-            timeToShow = settingsData.InteractiveObjectTimeToShow;
+            downPos = gameSettings.InteractiveObjectDownPos;
+            centerPos = gameSettings.InteractiveObjectCenterPos;
+            timeToHide = gameSettings.InteractiveObjectTimeToHide;
+            timeToShow = gameSettings.InteractiveObjectTimeToShow;
         }
         
         public void PlayShow()

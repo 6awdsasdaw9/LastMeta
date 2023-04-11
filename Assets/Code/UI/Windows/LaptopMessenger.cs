@@ -1,13 +1,12 @@
 using System;
-using Code.Data.GameData;
+using Code.Data.Configs;
 using Code.Services.Input;
-using Code.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Code.Logic.Interactive.InteractiveObjects.Laptop
+namespace Code.UI.Windows
 {
     public class LaptopMessenger : MonoBehaviour
     {
@@ -20,11 +19,11 @@ namespace Code.Logic.Interactive.InteractiveObjects.Laptop
         private string _errorMessage;
         
         [Inject]
-        private void Construct(InputService inputService,PrefabsData prefabsData, TextData textData)
+        private void Construct(InputService inputService,PrefabsData prefabsData, TextConfig textConfig)
         {
             _inputService = inputService;
             _dialogueCloudPrefab = prefabsData.DialogueCloud;
-            _errorMessage = textData.DialogueErrorMessage;
+            _errorMessage = textConfig.DialogueErrorMessage;
             _buttonSend.onClick.AddListener(SendMessage);
         }
         

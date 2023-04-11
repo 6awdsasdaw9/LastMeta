@@ -1,4 +1,5 @@
 using Code.Character.Hero;
+using Code.Data.Configs;
 using Code.Data.GameData;
 using UnityEngine;
 using Zenject;

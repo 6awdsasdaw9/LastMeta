@@ -1,3 +1,4 @@
+using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Data.ProgressData;
 using Code.Debugers;
@@ -26,13 +27,13 @@ namespace Code.Logic.DayOfTime
         
 
         [Inject]
-        private void Construct(SettingsData settingsData, SavedDataCollection savedDataCollection)
+        private void Construct(GameSettings gameSettings, SavedDataCollection savedDataCollection)
         {
-            _dayTimeInSeconds = settingsData.DayTimeInSeconds;
+            _dayTimeInSeconds = gameSettings.DayTimeInSeconds;
            
          
-            _eveningTime = settingsData.DurationOfDayTime;
-            _nightTime =  settingsData.DurationOfDayTime * 2;
+            _eveningTime = gameSettings.DurationOfDayTime;
+            _nightTime =  gameSettings.DurationOfDayTime * 2;
             
             savedDataCollection.Add(this);
         }

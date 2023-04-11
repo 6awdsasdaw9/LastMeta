@@ -1,6 +1,7 @@
 using System;
 using Code.Data.GameData;
 using Code.Data.States;
+using HeroParamData = Code.Data.States.HeroParamData;
 
 namespace Code.Data.ProgressData
 {

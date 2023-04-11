@@ -1,7 +1,6 @@
-using Code.UI;
 using UnityEngine;
 
-namespace Code.Logic.Interactive.InteractiveObjects.Laptop
+namespace Code.UI.Windows
 {
     public class LaptopMessengerWindow : MonoBehaviour, IWindow
     {

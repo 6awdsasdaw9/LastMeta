@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Character.Hero
 {
-    [RequireComponent(typeof(Animator), typeof(HeroMovement),typeof(HeroCollision))]
+    [RequireComponent(typeof(Animator))]
     public class HeroAnimator : MonoBehaviour
     {
         [Title("Components")]
@@ -21,6 +21,7 @@ namespace Code.Character.Hero
         
         private void Update()
         {
+            
             PlayMove();
             PlayCrouch();
             PlayJump();

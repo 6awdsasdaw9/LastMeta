@@ -1,4 +1,5 @@
 using System;
+using Code.Data.Configs;
 using Code.Data.GameData;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -23,10 +24,10 @@ namespace Code.Character.Hero
         private PhysicMaterial _frictionMaterial;
 
         [Inject]
-        private void Construct(ConfigData configData)
+        private void Construct(GameConfig gameConfig)
         {
-            _frictionMaterial = configData.heroConfig.FrictionMaterial;
-            _noFrictionMaterial = configData.heroConfig.NoFrictionMaterial;
+            _frictionMaterial = gameConfig.heroConfig.FrictionMaterial;
+            _noFrictionMaterial = gameConfig.heroConfig.NoFrictionMaterial;
         }
 
         private void Start()

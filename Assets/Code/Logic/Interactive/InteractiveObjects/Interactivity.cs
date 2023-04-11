@@ -7,6 +7,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
     {
         [SerializeField] protected InteractiveObjectType Type;
         public Action OnStartInteractive;
+        public Action OnEndInteractive;
         public virtual void StartInteractive()
         {
            
