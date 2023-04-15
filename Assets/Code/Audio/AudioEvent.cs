@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
-using FMODUnity;
+
 using UnityEngine;
 
 namespace Code.Audio
 {
     public class AudioEvent : MonoBehaviour
     {
-        [SerializeField] private EventReference _audioPath;
+        [SerializeField] private FMODUnity.EventReference _audioPath;
         [SerializeField] private float _repeatDelay = 5;
         [SerializeField] private float _delayBeforeStarting = 15;
         
@@ -47,7 +47,7 @@ namespace Code.Audio
             
             while (_isPlaying)
             {
-                RuntimeManager.PlayOneShot(_audioPath.Path);
+                FMODUnity.RuntimeManager.PlayOneShot(_audioPath.Path);
                 yield return new WaitForSeconds(_repeatDelay);
             }
         }
