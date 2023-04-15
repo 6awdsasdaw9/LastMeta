@@ -4,17 +4,19 @@ using Code.Logic.Interactive.InteractiveObjects;
 using Code.Logic.Triggers;
 using Code.Services;
 using Code.Services.Input;
+using Mono.Cecil.Cil;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Logic.Interactive
 {
-
     public class InteractiveObjectHandler : FollowTriggerObserver
     {
         [SerializeField] private InteractiveIconType iconType = InteractiveIconType.Interaction;
         [SerializeField] private InteractiveIconAnimation _iconAnimation;
+
         [SerializeField] private bool _isStartOnEnable;
+
 
         private IInteractive _interactiveObject;
         private InputService _input;
@@ -54,16 +56,21 @@ namespace Code.Logic.Interactive
             if (_input.GetInteractPressed() && _cooldown.IsUp())
             {
                 if (_onInteractive)
+                {
                     StopInteractive();
-
+                }
                 else
+                {
                     StartInteractive();
+                }
 
                 _cooldown.ResetCooldown();
             }
 
+
             _cooldown.UpdateCooldown();
         }
+
 
         private void OnDisable()
         {
@@ -72,8 +79,8 @@ namespace Code.Logic.Interactive
 
         private void StopInteractive()
         {
-            _interactiveObject.StopInteractive();
             _onInteractive = false;
+            _interactiveObject.StopInteractive();
             ShowIcon();
         }
 
@@ -84,14 +91,10 @@ namespace Code.Logic.Interactive
             HideIcon();
         }
 
-        private void ShowIcon()
-        {
+        private void ShowIcon() =>
             _iconAnimation?.PlayType(iconType);
-        }
 
-        private void HideIcon()
-        {
+        private void HideIcon() =>
             _iconAnimation?.PlayVoid();
-        }
     }
 }

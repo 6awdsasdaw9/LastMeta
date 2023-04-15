@@ -20,6 +20,12 @@ namespace Code.Logic.Triggers
             SwitchFollowOff();
         }
 
+        private void OnDisable()
+        {
+            SwitchFollowOff();
+        }
+
+        #region Triggers
         private void TriggerEnter(Collider obj)
         {
             if (_hasReactionTarget)
@@ -39,7 +45,9 @@ namespace Code.Logic.Triggers
             _reactionCoroutine = StartCoroutine(SwitchFollowOffAfterCooldown());
             _hasReactionTarget = false;
         }
+        #endregion
 
+        #region Coroutines
         private IEnumerator SwitchFollowOnAfterDelay()
         {
             yield return new WaitForSeconds(_delay);
@@ -58,7 +66,9 @@ namespace Code.Logic.Triggers
             StopCoroutine(_reactionCoroutine);
             _reactionCoroutine = null;
         }
+        #endregion
 
+        #region Methods for followers 
         private void SwitchFollowOn()
         {
             foreach (var f in _followTriggerObserver)
@@ -70,5 +80,6 @@ namespace Code.Logic.Triggers
             foreach (var f in _followTriggerObserver)
                 f.enabled = false;
         }
+        #endregion
     }
 }
