@@ -1,10 +1,8 @@
 using Code.Data.Configs;
-using Code.Data.GameData;
 using Code.Logic.Interactive.InteractiveObjects;
 using Code.Logic.Triggers;
 using Code.Services;
 using Code.Services.Input;
-using Mono.Cecil.Cil;
 using UnityEngine;
 using Zenject;
 

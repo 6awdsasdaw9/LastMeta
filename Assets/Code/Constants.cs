@@ -33,7 +33,10 @@ namespace Code
         #endregion
 
         #region Sprite Layer Position
+        
         //BackGround
+        public const float minusTenLayer = 1;
+        //BackGround Decor
         public const float minusNineLayer = 0.9f;
         public const float minusEightLayer = 0.8f;
         public const float minusSevenLayer = 0.7f;
@@ -42,6 +45,9 @@ namespace Code
         //Fance back
         public const float minusFiveLayer = 0.5f;
         //Decor Back
+        public const float minusFourLayer = 0.4f;
+        public const float minusTreeLayer = 0.3f;
+        public const float minusTwoLayer = 0.2f;
         public const float minusOneLayer = 0.1f;
         //Decor Front
         public const float oneLayer = -0.1f;

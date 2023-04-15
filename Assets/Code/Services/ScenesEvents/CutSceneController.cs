@@ -10,23 +10,32 @@ namespace Code.Services.ScenesEvents
     {
       [SerializeField] private PlayableDirector _timelime;
       [SerializeField] private CameraFollow _cameraFollow;
-      [Inject] private HeroMovement _heroMovement; 
+      
+      private HeroMovement _heroMovement;
+      private MovementLimiter _movementLimiter;
+
+      [Inject]
+      private void Construct(MovementLimiter limiter,HeroMovement hero)
+      {
+          _movementLimiter = limiter;
+          _heroMovement = hero;
+      }
       
       private void OnEnable()
       {
           PlayCutScene();
       }
-
-
       private void PlayCutScene()
       {
+          _movementLimiter.DisableMovement();
           _cameraFollow.enabled = false;
           _timelime.Play();
       }
 
-      public void DisableHero()
-      {
+      /// <summary>
+      /// Timeline Event
+      /// </summary>
+      public void DisableHero() => 
           _heroMovement.gameObject.SetActive(false);
-      }
     }
 }

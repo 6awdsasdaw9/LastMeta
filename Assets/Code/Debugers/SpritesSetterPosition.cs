@@ -30,28 +30,24 @@ namespace Code.Debugers
             SpriteRenderer[] test = FindObjectsOfType<SpriteRenderer>();
             foreach (var t in test)
             {
-                if (t.sortingOrder == -9)
-                    t.transform.position = GetVector(t.transform.position, Constants.minusNineLayer);
-                else if(t.sortingOrder == -8)
-                    t.transform.position = GetVector(t.transform.position, Constants.minusEightLayer);
-                else if(t.sortingOrder == -7)
-                    t.transform.position = GetVector(t.transform.position, Constants.minusSevenLayer);
-                else if(t.sortingOrder == -6)
-                    t.transform.position = GetVector(t.transform.position, Constants.minusSixLayer);
-                else if(t.sortingOrder == -5)
-                    t.transform.position = GetVector(t.transform.position, Constants.minusFiveLayer);
-                else if(t.sortingOrder == -1)
-                    t.transform.position = GetVector(t.transform.position, Constants.minusOneLayer);
-                else if(t.sortingOrder == 1)
-                    t.transform.position = GetVector(t.transform.position, Constants.oneLayer);
-                else if(t.sortingOrder == 2)
-                    t.transform.position = GetVector(t.transform.position, Constants.twoLayer);
-                else if(t.sortingOrder == 3)
-                    t.transform.position = GetVector(t.transform.position, Constants.treeLayer);
-
-            
+                t.transform.position = t.sortingOrder switch
+                {
+                    -10 => GetVector(t.transform.position, Constants.minusTenLayer),
+                    -9 => GetVector(t.transform.position, Constants.minusNineLayer),
+                    -8 => GetVector(t.transform.position, Constants.minusEightLayer),
+                    -7 => GetVector(t.transform.position, Constants.minusSevenLayer),
+                    -6 => GetVector(t.transform.position, Constants.minusSixLayer),
+                    -5 => GetVector(t.transform.position, Constants.minusFiveLayer),
+                    -4 => GetVector(t.transform.position, Constants.minusFourLayer),
+                    -3 => GetVector(t.transform.position, Constants.minusTreeLayer),
+                    -2 => GetVector(t.transform.position, Constants.minusTwoLayer),
+                    -1 => GetVector(t.transform.position, Constants.minusOneLayer),
+                    1 => GetVector(t.transform.position, Constants.oneLayer),
+                    2 => GetVector(t.transform.position, Constants.twoLayer),
+                    3 => GetVector(t.transform.position, Constants.treeLayer),
+                    _ => t.transform.position
+                };
             }
-     
         }
 
     
