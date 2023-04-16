@@ -28,9 +28,10 @@ namespace Code.Audio
         
         private void PlayAudio(string path)
         {
-            if(path == string.Empty)
-                return;
+            /*if(path == string.Empty)
+                return;*/
             FMODUnity.RuntimeManager.PlayOneShotAttached(path, gameObject);
+            
         }
     }
 }

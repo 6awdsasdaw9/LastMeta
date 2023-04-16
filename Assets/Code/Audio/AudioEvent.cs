@@ -25,8 +25,8 @@ namespace Code.Audio
 
         private void PlayAudio()
         {
-            if(_audioPath.Path == string.Empty)
-                return;
+            /*if(_audioPath.Path == string.Empty)
+                return;*/
             
             _isPlaying = true;
             StartCoroutine(RepeatCoroutine());
@@ -34,8 +34,8 @@ namespace Code.Audio
 
         private void StopAudio()
         {
-            if(_audioPath.Path == string.Empty)
-                return;
+            /*if(_audioPath.Path == string.Empty)
+                return;*/
             
             _isPlaying = false;
             StopAllCoroutines();

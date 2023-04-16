@@ -1,3 +1,4 @@
+using System.Collections;
 using Code.Character.Hero;
 using Code.Data.ProgressData;
 using Code.Data.States;
@@ -10,8 +11,13 @@ namespace Code.Logic.CameraLogic
 {
     public class CameraFollow : MonoBehaviour, ISavedData
     {
-        [SerializeField] private float _dampTime = 0.75f;
         [SerializeField] private bool _isCanMoveY = true;
+        
+        [SerializeField] private float _dampTime = 0.75f;
+        private float _maxDampTime = 1.5f;
+        private float _currentDampTime;
+        
+        
         //[SerializeField] private bool _isCanLookDown = true;
       
         private float startPosY;
@@ -24,45 +30,18 @@ namespace Code.Logic.CameraLogic
         private readonly Vector3 _cameraOffset = new(0.5f,  1.6f, -60f);
         private Vector3 _followingPosition => _following.position + _cameraOffset;
 
-        private LayerMask _stopCameraLayer; 
+        private Coroutine _dampTimeCoroutine;
+
 
         [Inject]
         private void Construct(HeroMovement hero, SavedDataCollection dataCollection)
         {
             _following = hero.transform;
-           
-            _stopCameraLayer = 1 << LayerMask.NameToLayer(Constants.StopCameraLayer);
             
             dataCollection.Add(this);
+            _currentDampTime = _dampTime;
         }
         
-        private void Update()
-        {
-             CheckCameraBoarder();
-        }
-
-
-        private void CheckCameraBoarder()
-        {
-            if (HeroInsideTheBorder() && CameraInsideTheBorder())
-            {
-                _isCanMove = false;
-            }
-            else if (!HeroInsideTheBorder())
-            {
-                _isCanMove = true;
-            }
-        }
-        
-        
-        private bool HeroInsideTheBorder() => 
-            Physics.Raycast(_following.position + Vector3.forward * - 2, Vector3.forward, 2, _stopCameraLayer);
-        
-        private bool CameraInsideTheBorder()
-        {
-            Debug.DrawRay(transform.position,Vector3.forward * 65);
-            return Physics.Raycast(transform.position, Vector3.forward, 65, _stopCameraLayer);
-        }
 
         private void LateUpdate()
         {
@@ -81,7 +60,32 @@ namespace Code.Logic.CameraLogic
                 _target = transform.position;
             }
             
-            transform.position = Vector3.SmoothDamp(transform.position, _target, ref _velocity, _dampTime);
+            transform.position = Vector3.SmoothDamp(transform.position, _target, ref _velocity, _currentDampTime);
+        }
+
+        public void StopFollow()
+        {
+            _isCanMove = false;
+            _dampTimeCoroutine = null;
+            _currentDampTime = _maxDampTime;
+        }
+
+        public void StartFollow()
+        {
+            _isCanMove = true;
+
+            _dampTimeCoroutine ??= StartCoroutine(ResetDampTimeCoroutine());
+        }
+
+        private IEnumerator ResetDampTimeCoroutine()
+        {
+            while (_currentDampTime > _dampTime)
+            {
+                _currentDampTime -= 0.01f;
+                yield return new WaitForSeconds(0.01f);
+            }
+
+            _dampTimeCoroutine = null;
         }
         
         public void LoadData(SavedData savedData)
