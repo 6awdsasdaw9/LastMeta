@@ -14,7 +14,9 @@ namespace Code.Data.ProgressData
         public FileDataHandler(string dataDirPath, string dataFileName, bool useEncryption)
         {
             this.dataDirPath = dataDirPath;
+            Debug.Log(dataDirPath);
             this.dataFileName = dataFileName;
+            Debug.Log(dataFileName);
             this.useEncryption = useEncryption;
         }
 
@@ -122,7 +124,6 @@ namespace Code.Data.ProgressData
             if (File.Exists(fullPath))
             { 
                 File.Delete(fullPath);
-                Console.WriteLine("File deleted.");
             }
         }
     

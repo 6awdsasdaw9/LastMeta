@@ -14,12 +14,9 @@ namespace Code.Logic.CameraLogic
         [SerializeField] private bool _isCanMoveY = true;
         
         [SerializeField] private float _dampTime = 0.75f;
-        private float _maxDampTime = 1.5f;
+        private readonly float _maxDampTime = 1.5f;
         private float _currentDampTime;
-        
-        
-        //[SerializeField] private bool _isCanLookDown = true;
-      
+
         private float startPosY;
         private bool _isCanMove = true;
 
@@ -37,12 +34,11 @@ namespace Code.Logic.CameraLogic
         private void Construct(HeroMovement hero, SavedDataCollection dataCollection)
         {
             _following = hero.transform;
+            _currentDampTime = _dampTime;
             
             dataCollection.Add(this);
-            _currentDampTime = _dampTime;
         }
         
-
         private void LateUpdate()
         {
             if (_following == null)
@@ -73,7 +69,6 @@ namespace Code.Logic.CameraLogic
         public void StartFollow()
         {
             _isCanMove = true;
-
             _dampTimeCoroutine ??= StartCoroutine(ResetDampTimeCoroutine());
         }
 
@@ -84,10 +79,10 @@ namespace Code.Logic.CameraLogic
                 _currentDampTime -= 0.01f;
                 yield return new WaitForSeconds(0.01f);
             }
-
             _dampTimeCoroutine = null;
         }
-        
+
+        #region Save Progress
         public void LoadData(SavedData savedData)
         {
             if (savedData.cameraPositionData.scene != CurrentLevel() ||
@@ -107,5 +102,7 @@ namespace Code.Logic.CameraLogic
         
         private string CurrentLevel() =>
             SceneManager.GetActiveScene().name;
+       
+        #endregion
     }
 }

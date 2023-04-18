@@ -11,8 +11,8 @@ namespace Code.Data.ProgressData
     public class PersistentSavedDataService : MonoBehaviour
     {
         //C:\Users\awdsasdaw\AppData\LocalLow\DefaultCompany\LastMeta
-        [Title("File Storage Config")] [SerializeField]
-        private string _fileName;
+        [Title("File Storage Config")] 
+        private readonly string _fileName = Constants.saveProgressFileName;
 
         [SerializeField] private bool _useEncryption;
         private FileDataHandler _dataHandler;

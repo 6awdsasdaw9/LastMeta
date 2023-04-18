@@ -8,6 +8,7 @@ namespace Code.Logic.CameraLogic
     public class CameraLimiter : MonoBehaviour
     {
         [SerializeField] private CameraFollow _cameraFollow;
+        [SerializeField] private Camera _camera;
 
         [SerializeField] private float _cameraRaycastDistance = 0.2f;
         [SerializeField] private float _heroRaycastDistance = 4;
@@ -15,52 +16,49 @@ namespace Code.Logic.CameraLogic
         [SerializeField] private Cooldown _cooldown;
 
         private LayerMask _stopLayerMask;
-        private Camera _camera;
         private Transform _hero;
-
-
-        public bool _heroRaycast, _cameraRaycast;
+        
+        private bool _heroRaycast, _cameraRaycast;
 
         [Inject]
         private void Construct(HeroMovement heroMovement)
         {
             _hero = heroMovement.transform;
+            _stopLayerMask = 1 << LayerMask.NameToLayer(Constants.StopCameraLayer);
         }
 
         private void Start()
         {
-            _camera = Camera.main;
-            _stopLayerMask = 1 << LayerMask.NameToLayer(Constants.StopCameraLayer);
+            _cameraFollow.StopFollow();
+            _cameraFollow.StartFollow();
         }
 
         private void LateUpdate()
         {
             if (_cooldown.IsUp())
             {
-                CheckHero();
+                VerifyBoundaries();
             }
             else
             {
                 _cooldown.UpdateCooldown();
             }
-            // CheckLeftSide();
-            // CheckRightSide();
         }
 
         #region Two Side
 
-        private void CheckHero()
+        private void VerifyBoundaries()
         {
             _heroRaycast = Physics.Raycast(_hero.position, Vector3.left, _heroRaycastDistance, _stopLayerMask)
                            || Physics.Raycast(_hero.position, Vector3.right, _heroRaycastDistance, _stopLayerMask);
 
             _cameraRaycast = Physics.Raycast(GetLeftPoint(), Vector3.left, _cameraRaycastDistance, _stopLayerMask)
                              || Physics.Raycast(GetRightPoint(), Vector3.right, _cameraRaycastDistance, _stopLayerMask);
+            
             if (_cameraRaycast)
             {
                 _cameraFollow.StopFollow();
             }
-
             if (!_heroRaycast)
             {
                 _cameraFollow.StartFollow();
@@ -74,7 +72,7 @@ namespace Code.Logic.CameraLogic
         #endregion
 
 
-        #region Left Side
+        #region Limiting points
 
         private Vector3 GetLeftPoint()
         {
@@ -82,8 +80,7 @@ namespace Code.Logic.CameraLogic
             leftPoint.z = 0;
             return leftPoint;
         }
-
-
+        
         private Vector3 GetRightPoint()
         {
             var rightPoint = _camera.ScreenToWorldPoint(new Vector3(_camera.pixelWidth, _camera.pixelHeight / 2, 0));

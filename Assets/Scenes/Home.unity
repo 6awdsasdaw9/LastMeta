@@ -2918,12 +2918,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraFollow: {fileID: 1466150598}
+  _camera: {fileID: 1466150618}
   _cameraRaycastDistance: 2
   _heroRaycastDistance: 6
   _cooldown:
     _cooldown: 0.2
-  _heroRaycast: 0
-  _cameraRaycast: 0
+--- !u!20 &1466150618 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1830403187388025929, guid: 94631a162632ef146a88b41e18debe86, type: 3}
+  m_PrefabInstance: {fileID: 385631155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1488669208
 GameObject:
   m_ObjectHideFlags: 0
@@ -4474,7 +4478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 585639454214020956, guid: 90722d1603f784642a80e9565bf33301, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.29
+      value: -4.04
       objectReference: {fileID: 0}
     - target: {fileID: 585639454214020956, guid: 90722d1603f784642a80e9565bf33301, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5075,7 +5079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6839795549722937538, guid: 26024cc3907eb874ea3dd39456b1a68a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.25
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 6839795549722937538, guid: 26024cc3907eb874ea3dd39456b1a68a, type: 3}
       propertyPath: m_LocalPosition.y
