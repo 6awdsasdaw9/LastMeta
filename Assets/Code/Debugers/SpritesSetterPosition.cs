@@ -5,25 +5,6 @@ namespace Code.Debugers
 {
     public class SpritesSetterPosition : MonoBehaviour
     {
-
-        /*public List<SpriteRenderer> minusNineLayer;
-    public List<SpriteRenderer> minusEightLayer;
-    public List<SpriteRenderer> minusSevenLayer;
-    public List<SpriteRenderer> minusSixLayer;
-    public List<SpriteRenderer> minusFiveLayer;
-    public List<SpriteRenderer> minusFourLayer;
-    public List<SpriteRenderer> minusThreeLayer;
-    public List<SpriteRenderer> minusTwoLayer;
-    public List<SpriteRenderer> minusOneLayer;
-    public List<SpriteRenderer> oneLayer;
-    public List<SpriteRenderer> twoLayer;
-    public List<SpriteRenderer> treeLayer;
-    public List<SpriteRenderer> fourLayer;
-    public List<SpriteRenderer> fiveLayer;
-    public List<SpriteRenderer> sixLayer;*/
-
-
-
         [Button]
         public void SetSpriteDistance()
         {
@@ -45,6 +26,9 @@ namespace Code.Debugers
                     1 => GetVector(t.transform.position, Constants.oneLayer),
                     2 => GetVector(t.transform.position, Constants.twoLayer),
                     3 => GetVector(t.transform.position, Constants.treeLayer),
+                    4 => GetVector(t.transform.position, Constants.fourLayer),
+                    5 => GetVector(t.transform.position, Constants.fiveLayer),
+                    6 => GetVector(t.transform.position, Constants.sixLayer),
                     _ => t.transform.position
                 };
             }

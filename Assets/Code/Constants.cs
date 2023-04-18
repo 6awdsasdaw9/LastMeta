@@ -38,24 +38,28 @@ namespace Code
         
         //BackGround
         public const float minusTenLayer = 1;
-        //BackGround Decor
+        //BackGround Decoration
         public const float minusNineLayer = 0.9f;
         public const float minusEightLayer = 0.8f;
         public const float minusSevenLayer = 0.7f;
         //Ground
         public const float minusSixLayer = 0.6f;
-        //Fance back
+        //Back Fance 
         public const float minusFiveLayer = 0.5f;
-        //Decor Back
+        //Back Decoration 
         public const float minusFourLayer = 0.4f;
         public const float minusTreeLayer = 0.3f;
         public const float minusTwoLayer = 0.2f;
         public const float minusOneLayer = 0.1f;
-        //Decor Front
+        //Front Decor
         public const float oneLayer = -0.1f;
         public const float twoLayer = -0.2f;
-        //Fance Front
+        //Front Fance 
         public const float treeLayer = -0.3f;
+        //Front Decoration
+        public const float  fourLayer = -0.4f;
+        public const float  fiveLayer = -0.5f;
+        public const float  sixLayer = -0.6f;
         #endregion
         
         #region Colors
