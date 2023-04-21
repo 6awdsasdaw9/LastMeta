@@ -7,27 +7,27 @@ namespace Code.Character.Enemies
     [RequireComponent(typeof(EnemyHealth),typeof(EnemyAnimator))]
     public class EnemyDeath : MonoBehaviour
     {
-        public EnemyHealth health;
-        public EnemyAnimator animator;
-        public EnemyAttack enemyAttack;
-        public EnemyMovement agent;
-
-
+        [SerializeField] private Collider _collider;
+        [SerializeField] private EnemyHealth _health;
+        [SerializeField] private EnemyAnimator _animator;
+        [SerializeField] private EnemyAttack _enemyAttack;
+        [SerializeField] private EnemyMovement _agent;
+        
         public event Action Happened;
 
         private void Start()
         {
-            health.HealthChanged += OnHealthChanged;
+            _health.HealthChanged += OnHealthChanged;
         }
 
         private void OnDestroy()
         {
-            health.HealthChanged -= OnHealthChanged;
+            _health.HealthChanged -= OnHealthChanged;
         }
 
         private void OnHealthChanged()
         {
-            if (health.Current <= 0)
+            if (_health.Current <= 0)
             {
                 Die();
             }
@@ -35,12 +35,12 @@ namespace Code.Character.Enemies
 
         private void Die()
         {
-            health.HealthChanged -= OnHealthChanged;
+            _health.HealthChanged -= OnHealthChanged;
             
-            animator.PlayDeath();
+            _animator.PlayDeath();
             
-            agent.enabled = false;
-            enemyAttack.enabled = false;
+            _agent.enabled = false;
+            _enemyAttack.enabled = false;
             
             
             StartCoroutine(DestroyTimer());
@@ -52,6 +52,7 @@ namespace Code.Character.Enemies
 
         private IEnumerator DestroyTimer()
         {
+            _collider.enabled = false;       
             yield return new WaitForSeconds(3);
             Destroy(gameObject);
         }

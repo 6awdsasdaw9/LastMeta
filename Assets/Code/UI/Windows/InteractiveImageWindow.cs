@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Code.UI.Windows
 {
-    [RequireComponent(typeof(InteractiveWindowAnimation))]
+    [RequireComponent(typeof(VerticalWindowAnimation))]
     public class InteractiveImageWindow : InteractiveObjectWindow, IImageWindow
     {
         [SerializeField] private Image _interactiveImage;

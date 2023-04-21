@@ -1,43 +1,17 @@
-using System.Linq;
-using Code.UI;
-using Code.UI.Windows;
-using Zenject;
+using UnityEngine;
 
 namespace Code.Logic.Interactive.InteractiveObjects
 {
-    public class InteractiveObject : Interactivity
+    public class InteractiveObject : MonoBehaviour, IInteractive
     {
-        private IWindow _presentationWindow;
-        private bool _isWindowNull;
-        
-        
-        [Inject]
-        private void Construct(HUD hud)
+        public void StartInteractive()
         {
-            hud.InteractiveObjectWindows
-                .FirstOrDefault(w => w.Type == Type)?
-                .InteractiveObjectWindow
-                .TryGetComponent(out _presentationWindow);
-           
-            _isWindowNull = _presentationWindow == null;
-        }
-        
-        public override void StartInteractive()
-        {
-            if(_isWindowNull)
-                return;
-            
-            _presentationWindow.ShowWindow();
-            OnStartInteractive?.Invoke();
+            throw new System.NotImplementedException();
         }
 
-        public override void StopInteractive()
+        public void StopInteractive()
         {
-            if(_isWindowNull)
-                return;
-            _presentationWindow.HideWindow();
+            throw new System.NotImplementedException();
         }
-        
-        
     }
 }

@@ -4,17 +4,17 @@ namespace Code.Services.ScenesEvents
     {
         private void Start()
         {
-            _interactivity.OnEndInteractive += OnEndInteractive;
+            _interactivityHandler.OnEndInteractive += OnEndInteractive;
         }
 
         private void OnDestroy()
         {
-            _interactivity.OnEndInteractive -= OnEndInteractive;
+            _interactivityHandler.OnEndInteractive -= OnEndInteractive;
         }
 
         private void OnEndInteractive()
         {
-            _interactivity.OnStartInteractive -= OnEndInteractive;
+            _interactivityHandler.OnStartInteractive -= OnEndInteractive;
 
             EnableFollows(_objectsToEnable);
             DisableFollows(_objectsToDisable);

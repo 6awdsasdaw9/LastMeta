@@ -192,7 +192,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5702138767582540884
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -209,7 +209,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!136 &5702138767582540885
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -259,10 +260,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerObserver: {fileID: 4865313110132346455}
+  _delay: 0
   _cooldown: 0
-  _follows:
-  - {fileID: 8588384264464487781}
-  - {fileID: 1335422147629940910}
+  _followTriggerObserver: []
 --- !u!114 &1335422147629940910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,10 +317,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 2817641175816865812}
+  _attackCooldown:
+    _cooldown: 1
   _damage: 1
-  _attackCooldown: 5
   _cleavage: 1
   _effectiveHeight: 1
+  _pushForce: 3
 --- !u!114 &1335422147629940909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,10 +363,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12777eac0bb87404a8de61a669a0cf25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 1335422147629940899}
-  animator: {fileID: 2817641175816865812}
-  enemyAttack: {fileID: 7800196302827944487}
-  agent: {fileID: 8588384264464487781}
+  _collider: {fileID: 5702138767582540885}
+  _health: {fileID: 1335422147629940899}
+  _animator: {fileID: 2817641175816865812}
+  _enemyAttack: {fileID: 7800196302827944487}
+  _agent: {fileID: 8588384264464487781}
 --- !u!114 &1335422147629940898
 MonoBehaviour:
   m_ObjectHideFlags: 0

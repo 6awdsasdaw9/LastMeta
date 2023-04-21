@@ -6,7 +6,7 @@ namespace Code.Services.ScenesEvents
 {
     public class InteractiveEvent : MonoBehaviour
     {
-        [SerializeField] protected Interactivity _interactivity;
+        [SerializeField] protected Interactivity _interactivityHandler;
         [SerializeField] protected List<GameObject> _objectsToEnable;
         [SerializeField] protected List<GameObject> _objectsToDisable;
 

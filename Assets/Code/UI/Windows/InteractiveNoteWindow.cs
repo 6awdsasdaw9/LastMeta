@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.UI.Windows
 {
-    [RequireComponent(typeof(InteractiveWindowAnimation))]
+    [RequireComponent(typeof(VerticalWindowAnimation))]
     public class InteractiveNoteWindow: InteractiveImageWindow, INoteWindow
     {
         [SerializeField] private TextMeshProUGUI _text;

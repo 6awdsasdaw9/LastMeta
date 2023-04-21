@@ -2,24 +2,24 @@ using UnityEngine;
 
 namespace Code.UI.Windows
 {
-    [RequireComponent(typeof(InteractiveWindowAnimation))]
+    [RequireComponent(typeof(VerticalWindowAnimation))]
     public class InteractiveObjectWindow : MonoBehaviour, IWindow
     {
         [SerializeField] private HUD _hud;
-        [SerializeField] private InteractiveWindowAnimation _animation;
+        [SerializeField] private WindowAnimation _animation;
         
-        public void ShowWindow()
+        public virtual void ShowWindow()
         {
-            if(_animation.isMove)
+            if(_animation.IsPlay)
                 return;
 
             _animation.PlayShow();
             _hud.OnUIWindowShown?.Invoke();
         }
 
-        public void HideWindow()
+        public virtual  void HideWindow()
         {
-            if(_animation.isMove)
+            if(_animation.IsPlay)
                 return;
             
             _animation.PlayHide();

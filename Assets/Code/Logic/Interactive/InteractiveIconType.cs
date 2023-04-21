@@ -14,6 +14,7 @@ namespace Code.Logic.Interactive
         Laptop,
         Door,
         Note,
-        Hero
+        Hero,
+        LoadingCurtain
     }
 }

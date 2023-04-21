@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Code.Logic.Interactive.InteractiveObjects
 {
-    public class InteractiveObjectNote : Interactivity
+    public class HUDInteractiveObjectNote : Interactivity
     {
         [SerializeField] private int _id;
         
