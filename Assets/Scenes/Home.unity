@@ -1569,6 +1569,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactivityHandler: {fileID: 1061556021}
+  _enableDelayTime: 0
+  _disableDelayTime: 0
   _objectsToEnable:
   - {fileID: 1280876709}
   _objectsToDisable: []
@@ -1977,11 +1979,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactivityHandler: {fileID: 44336995}
+  _enableDelayTime: 0
+  _disableDelayTime: 0
   _objectsToEnable:
   - {fileID: 235171893}
   - {fileID: 2079056225}
   - {fileID: 19162731}
   _objectsToDisable: []
+--- !u!1 &720423509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 585639454214020944, guid: 5888b8ae7b14d494b850c49285803409, type: 3}
+  m_PrefabInstance: {fileID: 1789487424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &741645512 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387475098685765173, guid: e40646fb240c9794193027bba664747d, type: 3}
@@ -2740,7 +2749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 4
   _animator: {fileID: 4821489839570287462}
-  _animationDuration: 0.5
+  _animationDuration: 0.2
 --- !u!114 &1280876712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3179,6 +3188,56 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: -9
   m_TargetDisplay: 0
+--- !u!1 &1461312968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1461312969}
+  - component: {fileID: 1461312970}
+  m_Layer: 0
+  m_Name: Start_IneractiveEvent_LoadingCurtain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1461312969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461312968}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1832236256}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1461312970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461312968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1fbe33933394e749f7f8fdb4ebc798f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactivityHandler: {fileID: 71038271}
+  _enableDelayTime: 5
+  _disableDelayTime: 0
+  _objectsToEnable:
+  - {fileID: 720423509}
+  _objectsToDisable: []
 --- !u!1 &1466150596 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1830403187388025931, guid: 94631a162632ef146a88b41e18debe86, type: 3}
@@ -3446,6 +3505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactivityHandler: {fileID: 2079056227}
+  _enableDelayTime: 0
+  _disableDelayTime: 0
   _objectsToEnable:
   - {fileID: 1925740522}
   - {fileID: 4969837495901675151}
@@ -3924,11 +3985,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 585639454214020956, guid: 5888b8ae7b14d494b850c49285803409, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.014362
+      value: 4.5143623
       objectReference: {fileID: 0}
     - target: {fileID: 585639454214020956, guid: 5888b8ae7b14d494b850c49285803409, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2073729
+      value: -1.35
       objectReference: {fileID: 0}
     - target: {fileID: 585639454214020956, guid: 5888b8ae7b14d494b850c49285803409, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4031,6 +4092,7 @@ Transform:
   - {fileID: 1671014042}
   - {fileID: 630076128}
   - {fileID: 2098038391}
+  - {fileID: 1461312969}
   - {fileID: 1925740523}
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -4335,7 +4397,7 @@ Transform:
   m_Children:
   - {fileID: 109134462}
   m_Father: {fileID: 1832236256}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &1925740524
 PlayableDirector:
@@ -4724,6 +4786,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactivityHandler: {fileID: 1280876711}
+  _enableDelayTime: 0
+  _disableDelayTime: 0
   _objectsToEnable:
   - {fileID: 1838502871}
   _objectsToDisable: []

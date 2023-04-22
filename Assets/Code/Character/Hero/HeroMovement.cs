@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Data.ProgressData;
@@ -19,16 +18,17 @@ namespace Code.Character.Hero
     public class HeroMovement : MonoBehaviour, ISavedData
     {
         private MovementLimiter _movementLimiter;
-        private HeroConfig _config;
+        private HeroConfig _heroConfig;
         private InputService _input;
 
-        [Title("Components")] [SerializeField] private Rigidbody _body;
+        [Title("Components")] 
+        [SerializeField] private Rigidbody _body;
         [SerializeField] private HeroCollision _collision;
 
+        #region Values
         public bool isCrouch { get; private set; }
         [HideInInspector] public float directionX;
 
-        private float _maxSpeed;
         private Vector2 _desiredVelocity;
         private Vector2 _velocity;
         private Vector2 _supportVelocity;
@@ -36,7 +36,7 @@ namespace Code.Character.Hero
         private float _acceleration;
         private float _deceleration;
         private float _turnSpeed;
-        private float _bonusSpeed;
+        private float _upgradeSpeed;
 
         private bool _heroCanMove = true;
         private bool _pressingMove;
@@ -44,18 +44,21 @@ namespace Code.Character.Hero
 
         private const float _maxSupportVelocity = 1f;
         private const float _supportVelocityMultiplayer = 0.15f;
+        
+        #endregion
+
+        #region Run Time
 
         [Inject]
         private void Construct(InputService input, MovementLimiter limiter, GameConfig gameConfig, SavedDataCollection dataCollection)
         {
             _input = input;
             _movementLimiter = limiter;
-            _config = gameConfig.heroConfig;
+            _heroConfig = gameConfig.heroConfig;
 
             dataCollection.Add(this);
         }
-
-        private void Start() =>
+        private void OnEnable() => 
             SubscribeToEvent(true);
 
         private void Update()
@@ -73,24 +76,50 @@ namespace Code.Character.Hero
 
         private void OnDestroy() =>
             SubscribeToEvent(false);
+        
 
-
-        [Button] //!!!!!!!!!!!!!!!!!
-        public void LevelUpSpeed()
+        #endregion
+        
+        #region Events
+        private void SubscribeToEvent(bool flag)
         {
-            _maxSpeed = _config.Config
-                .FirstOrDefault(s => s.Param == ParamType.Speed && s.Lvl == 1)?.Value ?? 1;
+            if (flag)
+            {
+                _input.PlayerCrochEvent += OnPressCrouch;
+                _input.PlayerMovementEvent += OnPressMovement;
+                _movementLimiter.OnDisableMovementMode += StopMovement;
+            }
+            else
+            {
+                _input.PlayerCrochEvent -= OnPressCrouch;
+                _input.PlayerMovementEvent -= OnPressMovement;
+                _movementLimiter.OnDisableMovementMode -= StopMovement;
+            }
         }
-
-        public void BlockMovement()
-        {
-            _heroCanMove = false;
+        public void BlockMovement() => 
             StopMovement();
-        }
 
         public void UnBlockMovement() =>
             _heroCanMove = true;
+        
+        #endregion
 
+        #region Input
+        private void OnPressMovement(InputAction.CallbackContext context)
+        {
+            if (_movementLimiter.charactersCanMove && _heroCanMove)
+            {
+                directionX = context.ReadValue<float>();
+            }
+
+            _pressingMove = directionX != 0;
+        }
+        private void OnPressCrouch(InputAction.CallbackContext context) =>
+            _pressingCrouch = context.started;
+        
+        #endregion
+
+        #region Velocity
         public void SetSupportVelocity(Vector2 otherObjectVelocity)
         {
             if (directionX != 0)
@@ -115,70 +144,28 @@ namespace Code.Character.Hero
             };
         }
 
- 
-        private void SubscribeToEvent(bool flag)
-        {
-            if (flag)
-            {
-                _input.PlayerCrochEvent += OnPressCrouch;
-                _input.PlayerMovementEvent += OnPressMovement;
-                _movementLimiter.OnDisableMovementMode += StopMovement;
-            }
-            else
-            {
-                _input.PlayerCrochEvent -= OnPressCrouch;
-                _input.PlayerMovementEvent -= OnPressMovement;
-                _movementLimiter.OnDisableMovementMode -= StopMovement;
-            }
-        }
-
-
-        private void OnPressMovement(InputAction.CallbackContext context)
-        {
-            if (_movementLimiter.charactersCanMove && _heroCanMove)
-            {
-                directionX = context.ReadValue<float>();
-            }
-
-            _pressingMove = directionX != 0;
-        }
-
-
-        private void OnPressCrouch(InputAction.CallbackContext context) =>
-            _pressingCrouch = context.started;
-
-        private void Crouch()
-        {
-            if (_pressingCrouch && _collision.onGround)
-                isCrouch = true;
-            else if (!_collision.underCeiling)
-                isCrouch = false;
-        }
-
-        private void Rotation()
-        {
-            if (directionX != 0)
-                transform.localScale = new Vector3(directionX > 0 ? 1 : -1, 1, 1);
-        }
+        public void SetUpgradeSpeed(float value) => 
+            _upgradeSpeed = value;
 
         private void SetDesiredVelocity() =>
-            _desiredVelocity = new Vector2(directionX, 0f) * _maxSpeed;
-
-
+            _desiredVelocity = new Vector2(directionX, 0f) * (_heroConfig.maxSpeed + _upgradeSpeed);
+        
+        #endregion
+        
+        #region Movement 
         private void StopMovement()
         {
             directionX = 0;
+            _heroCanMove = false;
             _pressingCrouch = false;
             _pressingMove = false;
             _body.velocity = Vector3.zero;
         }
-
-
         private void MoveWithAcceleration()
         {
-            _acceleration = _collision.onGround ? _config.maxAcceleration : _config.maxAirAcceleration;
-            _deceleration = _collision.onGround ? _config.maxDeceleration : _config.maxAirDeceleration;
-            _turnSpeed = _collision.onGround ? _config.maxTurnSpeed : _config.maxAirTurnSpeed;
+            _acceleration = _collision.onGround ? _heroConfig.maxAcceleration : _heroConfig.maxAirAcceleration;
+            _deceleration = _collision.onGround ? _heroConfig.maxDeceleration : _heroConfig.maxAirDeceleration;
+            _turnSpeed = _collision.onGround ? _heroConfig.maxTurnSpeed : _heroConfig.maxAirTurnSpeed;
 
             if (_pressingMove)
             {
@@ -193,7 +180,7 @@ namespace Code.Character.Hero
             }
 
             _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange) *
-                          (isCrouch ? _config.crouchSpeed : 1);
+                          (isCrouch ? _heroConfig.crouchSpeed : 1);
 
             if (_heroCanMove)
             {
@@ -201,9 +188,25 @@ namespace Code.Character.Hero
             }
         }
 
+        private void Rotation()
+        {
+            if (directionX != 0)
+                transform.localScale = new Vector3(directionX > 0 ? 1 : -1, 1, 1);
+        }
+        
+        private void Crouch()
+        {
+            if (_pressingCrouch && _collision.onGround)
+                isCrouch = true;
+            else if (!_collision.underCeiling)
+                isCrouch = false;
+        }
+        #endregion
+        
+        #region Save and Load
+
         public void LoadData(SavedData savedData)
         {
-            _maxSpeed = savedData.heroParamData.speed;
 
             if (savedData.heroPositionData.scene != CurrentLevel() ||
                 savedData.heroPositionData.position.AsUnityVector() == Vector3.zero)
@@ -219,5 +222,7 @@ namespace Code.Character.Hero
 
         private string CurrentLevel() =>
             SceneManager.GetActiveScene().name;
+        
+        #endregion
     }
 }

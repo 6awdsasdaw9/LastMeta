@@ -1,7 +1,10 @@
+using UnityEngine;
+
 namespace Code.Services.ScenesEvents
 {
     public class StartInteractiveEvents : InteractiveEvent
     {
+        
         private void Start()
         {
             _interactivityHandler.OnStartInteractive += OnStartInteractive;

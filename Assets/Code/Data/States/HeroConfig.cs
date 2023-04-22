@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Code.Data.GameData;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -47,7 +48,29 @@ namespace Code.Data.States
         public float coyoteTime = 0.1f;
         [Range(0f, 0.3f), Tooltip("Как далеко от земли кушируется прыжок?")]
         public float jumpBuffer = 0.3f;
-        public GameData.HeroParamData[] Config;
+        public HeroParamData[] UpgradeParams;
 
+    }
+
+    [Serializable]
+    public class HeroParamData
+    {
+        public UpgradeParamType Type;
+        //TODO Переделать в айди
+        public List<UpgradeParamData> Params;
+    }
+
+    public enum UpgradeParamType
+    {
+        Speed,
+        JumpHeight
+    }
+
+    [Serializable]
+    public class UpgradeParamData
+    {
+        //TODO Переделать в айди
+        public int Lvl;
+        public float Value;
     }
 }

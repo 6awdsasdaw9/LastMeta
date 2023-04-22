@@ -85,9 +85,6 @@ namespace Code.Data.ProgressData
             savedData.heroHealth.maxHP = _gameConfig.heroConfig.maxHP;
             savedData.heroHealth.Reset();
             
-            savedData.heroParamData.speed = _gameConfig.heroConfig.Config
-                .FirstOrDefault(s => s.Param == ParamType.Speed && s.Lvl == 0)?.Value ?? 1;
-            
             savedData.cameraPositionData.scene = _gameConfig.initialScene.ToString();
             
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
