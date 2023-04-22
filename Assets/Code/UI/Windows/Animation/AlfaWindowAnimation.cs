@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using Code.Data.Configs;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -24,29 +26,50 @@ namespace Code.UI.Windows
             _timeToShow = gameSettings.InteractiveObjectTimeToShow;
         }
         
-        public override void PlayShow()
+        public override void PlayShow(Action WindowShowed = null)
         {
-            IsPlay = true;
+            ShowAnimation(WindowShowed);
         }
 
-        public override void PlayHide()
+        public override void PlayHide(Action WindowHidden = null)
         {
-            
-            IsPlay = true;
+            HideAnimation(WindowHidden);
         }
         
-        private IEnumerator ShowCoroutine()
+        private async void ShowAnimation(Action WindowShowed)
+        {
+            _canvasGroup.gameObject.SetActive(true);
+            IsPlay = true;
+
+            _canvasGroup.alpha = 0;
+            var speed = ONE_STEP / (1 / _timeToShow);
+            
+            for (var i = 0; i < CYCLE_STEPS; i++)
+            {
+                _canvasGroup.alpha += ONE_STEP;
+                await UniTask.Delay(TimeSpan.FromSeconds(speed));
+            }
+
+            WindowShowed?.Invoke();
+            IsPlay = false;
+        }
+        
+        private async void HideAnimation(Action WindowHidden)
         {
             IsPlay = true;
             
-            var speed = ONE_STEP / (1 / _timeToShow);
-            for (int i = 0; i < CYCLE_STEPS; i++)
+            var speed = ONE_STEP / (1 / _timeToHide);
+            _canvasGroup.alpha = 1;
+            
+            for (var i = 0; i < CYCLE_STEPS; i++)
             {
-                _canvasGroup.alpha += ONE_STEP;
-                yield return new WaitForSeconds(speed);
+                _canvasGroup.alpha -= ONE_STEP;
+                await UniTask.Delay(TimeSpan.FromSeconds(speed));
             }
 
             IsPlay = false;
+            WindowHidden?.Invoke();
+            _canvasGroup.gameObject.SetActive(false);
         }
     }
 }

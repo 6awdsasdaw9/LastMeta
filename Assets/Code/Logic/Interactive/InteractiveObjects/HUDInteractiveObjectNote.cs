@@ -1,6 +1,5 @@
 using System.Linq;
 using Code.Data.Configs;
-using Code.Data.GameData;
 using Code.UI;
 using Code.UI.Windows;
 using Ink.Runtime;
@@ -12,11 +11,9 @@ namespace Code.Logic.Interactive.InteractiveObjects
     public class HUDInteractiveObjectNote : Interactivity
     {
         [SerializeField] private int _id;
-        
+
         private Sprite _noteImage;
         private TextAsset _inkJSON;
-      
-        
         private INoteWindow _presentationWindow;
 
         private bool _isNull;
@@ -39,11 +36,13 @@ namespace Code.Logic.Interactive.InteractiveObjects
 
             var message = new Story(_inkJSON.text).ContinueMaximally();
             
+            OnProcess = true;
+            
+            OnStartInteractive?.Invoke();
+            
             _presentationWindow.SetText(message);
             _presentationWindow.SetImage(_noteImage);
-            
-            _presentationWindow.ShowWindow();
-            OnStartInteractive?.Invoke();
+            _presentationWindow.ShowWindow(() => OnProcess = false);
         }
 
         public override void StopInteractive()
@@ -51,8 +50,9 @@ namespace Code.Logic.Interactive.InteractiveObjects
             if (_isNull)
                 return;
 
-            _presentationWindow.HideWindow();
+            OnProcess = true;
             OnEndInteractive?.Invoke();
+            _presentationWindow.HideWindow(() => OnProcess = false);
         }
     }
 }

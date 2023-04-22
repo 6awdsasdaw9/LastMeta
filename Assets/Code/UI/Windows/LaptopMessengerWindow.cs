@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 namespace Code.UI.Windows
 {
     public class LaptopMessengerWindow : MonoBehaviour, IWindow
     {
+        [SerializeField] private GameObject _body;
         public void ShowOrHide()
         {
             if (gameObject.activeSelf)
@@ -12,10 +14,16 @@ namespace Code.UI.Windows
                 ShowWindow();
         }
 
-        public void ShowWindow() =>
-            gameObject.SetActive(true);
+        public void ShowWindow(Action WindowShowed = null)
+        {
+            WindowShowed?.Invoke();
+            _body.SetActive(true);
+        }
 
-        public void HideWindow() =>
-            gameObject.SetActive(false);
+        public void HideWindow(Action WindowHidden = null)
+        {
+            WindowHidden?.Invoke();
+            _body.SetActive(false);
+        }
     }
 }

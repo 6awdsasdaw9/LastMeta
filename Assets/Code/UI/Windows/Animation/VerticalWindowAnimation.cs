@@ -1,15 +1,15 @@
-using System.Collections;
+using System;
 using Code.Data.Configs;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 using Zenject;
 
 namespace Code.UI.Windows
 {
-    [RequireComponent(typeof(CanvasGroup))]
     public class VerticalWindowAnimation : WindowAnimation
     {
-        [SerializeField] private RectTransform _animatedObject;
+        [SerializeField] private RectTransform _body;
         [SerializeField] private CanvasGroup _canvasGroup;
         
         private  Vector3 _downPos;
@@ -20,15 +20,6 @@ namespace Code.UI.Windows
         private const int CYCLE_STEPS = 100;
         private const float ONE_STEP = 1 / (float)CYCLE_STEPS;
         
-        
-        private Coroutine _animationCoroutine;
-
-        private void KillMePleas()
-        {
-            _animationCoroutine = StartCoroutine(ShowCoroutine());
-        }
-        
-        
         [Inject]
         private void Construct( GameSettings gameSettings)
         {
@@ -38,56 +29,56 @@ namespace Code.UI.Windows
             _timeToShow = gameSettings.InteractiveObjectTimeToShow;
         }
         
-        public override void PlayShow()
+        public override void PlayShow(Action WindowShowed)
         {
-            _animatedObject.anchoredPosition = _downPos; 
+            _body.anchoredPosition = _downPos; 
             _canvasGroup.alpha = 0;
            
-            _animatedObject.gameObject.SetActive(true);
+            _body.gameObject.SetActive(true);
             
-           _animationCoroutine = StartCoroutine(ShowCoroutine());
+           ShowAnimation(WindowShowed);
         }
 
-        public override void PlayHide()
+        public override void PlayHide(Action WindowHidden)
         {
-            _animatedObject.anchoredPosition = _centerPos; 
+            _body.anchoredPosition = _centerPos; 
             _canvasGroup.alpha = 1;
-            
-            _animationCoroutine = StartCoroutine(HideCoroutine());
+
+            HideAnimation(WindowHidden);
         }
 
-        private IEnumerator ShowCoroutine()
+        private async void ShowAnimation(Action WindowHidden)
         {
             IsPlay = true;
-            
-            _animatedObject.DOAnchorPos(_centerPos, _timeToShow);
+            _body.DOAnchorPos(_centerPos, _timeToShow);
             
             var speed = ONE_STEP / (1 / _timeToShow);
 
             for (int i = 0; i < CYCLE_STEPS; i++)
             {
                 _canvasGroup.alpha += ONE_STEP;
-                yield return new WaitForSeconds(speed);
+                await UniTask.Delay(TimeSpan.FromSeconds(speed));
             }
 
+            WindowHidden?.Invoke();
             IsPlay = false;
         }
 
-        private IEnumerator HideCoroutine()
+        private async void HideAnimation(Action WindowHidden)
         {
             IsPlay = true;
-            _animatedObject.DOAnchorPos(_downPos, _timeToHide);
+            _body.DOAnchorPos(_downPos, _timeToHide);
             
             var speed = ONE_STEP / (1 / _timeToHide);
             for (int i = 0; i < CYCLE_STEPS; i++)
             {
                 _canvasGroup.alpha -= ONE_STEP;
-                yield return new WaitForSeconds(speed);
+                await UniTask.Delay(TimeSpan.FromSeconds(speed));
             }
             
             IsPlay = false;
-            _animatedObject.gameObject.SetActive(false);
+            WindowHidden?.Invoke();
+            _body.gameObject.SetActive(false);
         }
-
     }
 }

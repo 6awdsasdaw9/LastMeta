@@ -1,11 +1,12 @@
+using System;
 using UnityEngine;
 
 namespace Code.UI.Windows
 {
     public interface IWindow
     {
-        void ShowWindow();
-        void HideWindow();
+        void ShowWindow(Action WindowShowed = null);
+        void HideWindow(Action WindowHidden = null);
     }
 
     public interface IImageWindow : IWindow

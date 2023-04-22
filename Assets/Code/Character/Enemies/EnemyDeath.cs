@@ -41,16 +41,16 @@ namespace Code.Character.Enemies
             
             _agent.enabled = false;
             _enemyAttack.enabled = false;
+            _collider.enabled = false;
             
-            
-            StartCoroutine(DestroyTimer());
+            StartCoroutine(DestroyCoroutine());
             
             Happened?.Invoke();
         }
 
 
 
-        private IEnumerator DestroyTimer()
+        private IEnumerator DestroyCoroutine()
         {
             _collider.enabled = false;       
             yield return new WaitForSeconds(3);

@@ -25,16 +25,20 @@ namespace Code.Logic.Interactive.InteractiveObjects
         {
             if(_isWindowNull)
                 return;
-            
-            _presentationWindow.ShowWindow();
+
+            OnProcess = true;
             OnStartInteractive?.Invoke();
+            _presentationWindow.ShowWindow(() => OnProcess = false);
         }
 
         public override void StopInteractive()
         {
             if(_isWindowNull)
                 return;
-            _presentationWindow.HideWindow();
+            
+            OnProcess = true;
+            OnEndInteractive?.Invoke();
+            _presentationWindow.HideWindow(() => OnProcess = false);
         }
         
         

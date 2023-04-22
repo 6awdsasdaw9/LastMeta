@@ -16,7 +16,6 @@ namespace Code.Logic.Interactive.InteractiveObjects
         private void Construct(HUD hud)
         {
             hud.InteractiveImageWindow.TryGetComponent(out _presentationWindow);
-
             _isWindowNull = _presentationWindow == null;
         }
 
@@ -25,9 +24,10 @@ namespace Code.Logic.Interactive.InteractiveObjects
             if (_isWindowNull)
                 return;
 
-            _presentationWindow.SetImage(_sprite);
-            _presentationWindow.ShowWindow();
+            OnProcess = true;
             OnStartInteractive?.Invoke();
+            _presentationWindow.SetImage(_sprite);
+            _presentationWindow.ShowWindow(() => OnProcess = false);
         }
 
         public override void StopInteractive()
@@ -35,7 +35,9 @@ namespace Code.Logic.Interactive.InteractiveObjects
             if (_isWindowNull)
                 return;
 
-            _presentationWindow.HideWindow();
+            OnProcess = true;
+            OnEndInteractive?.Invoke();
+            _presentationWindow.HideWindow(() => OnProcess = false);
         }
     }
 }

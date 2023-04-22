@@ -19,6 +19,14 @@ PrefabInstance:
       propertyPath: _followTriggerObserver.Array.data[1]
       value: 
       objectReference: {fileID: 7633266188420172945}
+    - target: {fileID: 1335422147629940909, guid: c064c150e2252014b9443291d50b48b3, type: 3}
+      propertyPath: _enemyAttack
+      value: 
+      objectReference: {fileID: 8277901911783564243}
+    - target: {fileID: 1335422147629940909, guid: c064c150e2252014b9443291d50b48b3, type: 3}
+      propertyPath: _triggerObserver
+      value: 
+      objectReference: {fileID: 8277901912101813350}
     - target: {fileID: 1397218061088283508, guid: c064c150e2252014b9443291d50b48b3, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -117,5 +125,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43c414b48fa2f404091d2dd06f2a83f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8277901911783564243 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7800196302827944487, guid: c064c150e2252014b9443291d50b48b3, type: 3}
+  m_PrefabInstance: {fileID: 2224460302059903476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9e379ef1d672e4a9d87f7a42225a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8277901912101813350 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7800196302107043218, guid: c064c150e2252014b9443291d50b48b3, type: 3}
+  m_PrefabInstance: {fileID: 2224460302059903476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428fd2050f56a984791176e3ce28c388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

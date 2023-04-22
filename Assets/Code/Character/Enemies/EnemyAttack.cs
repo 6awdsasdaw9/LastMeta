@@ -22,7 +22,6 @@ namespace Code.Character.Enemies
         private HeroMovement _heroMovement;
         private IHealth _heroHealth;
 
-     
         private bool _isAttacking;
         private int _layerMask;
         private readonly Collider[] _hits = new Collider[1];
@@ -72,6 +71,7 @@ namespace Code.Character.Enemies
         {
             if (_pushForce == 0)
                 return;
+            //TODO не работает если герой стоит справа
             _heroMovement.SetSupportVelocity(-transform.localScale * _pushForce);
             await Task.Delay(500);
             _heroMovement.SetSupportVelocity(Vector2.zero);
@@ -106,7 +106,6 @@ namespace Code.Character.Enemies
 
         private bool CanAttack() =>
             attackIsActive && !_isAttacking &&   _attackCooldown.IsUp();
-
 
     }
 }

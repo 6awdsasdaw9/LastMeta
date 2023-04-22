@@ -7,6 +7,7 @@ namespace Code.Services
     public class MovementLimiter
     {
         public bool charactersCanMove { get; private set; }
+        
         public Action OnDisableMovementMode;
         public Action OnEnableMovementMode;
 

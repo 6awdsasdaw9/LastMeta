@@ -7,37 +7,46 @@ namespace Code.Character.Enemies
 {
     public class CheckAttackRange : MonoBehaviour
     {
-        public EnemyAttack enemyAttack;
-        public TriggerObserver triggerObserver;
-        [Inject] private MovementLimiter _limiter;
-
+        [SerializeField] private EnemyAttack _enemyAttack;
+        [SerializeField] private TriggerObserver _triggerObserver;
+        private MovementLimiter _limiter;
         
-        private void Start()
+        [Inject]
+        private void Coroutine(MovementLimiter limiter)
         {
-            triggerObserver.TriggerEnter += TriggerEnter;
-            triggerObserver.TriggerExit += TriggerExit;
-            _limiter.OnDisableMovementMode += Disable;
-            enemyAttack.DisableAttack();
+            _limiter = limiter;
+        }
+        
+        private void OnEnable()
+        {
+            _triggerObserver.TriggerEnter += TriggerEnter;
+            _triggerObserver.TriggerExit += TriggerExit;
+            _limiter.OnDisableMovementMode += StopCheck;
+            
+            _enemyAttack.DisableAttack();
+        }
+
+        private void OnDisable()
+        {
+            _triggerObserver.TriggerEnter -= TriggerEnter;
+            _triggerObserver.TriggerExit -= TriggerExit;
+            _limiter.OnDisableMovementMode -= StopCheck;
         }
 
         private void TriggerEnter(Collider obj)
         {
-            enemyAttack.EnableAttack();
+            _enemyAttack.EnableAttack();
         }
 
         private void TriggerExit(Collider obj)
         {
-            enemyAttack.DisableAttack();
+            _enemyAttack.DisableAttack();
         }
 
-        private void Disable()
+        private void StopCheck()
         {
-            triggerObserver.TriggerEnter -= TriggerEnter;
-            triggerObserver.TriggerExit -= TriggerExit;
-            _limiter.OnDisableMovementMode -= Disable;
-            enemyAttack.enabled = false;
-            enabled = false;
-            //enabled = false;
+            _enemyAttack.enabled = false;
+            this.enabled = false;
         }
     }
 }
