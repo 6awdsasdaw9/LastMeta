@@ -47,7 +47,7 @@ namespace Code.UI.Windows
             HideAnimation(WindowHidden);
         }
 
-        private async void ShowAnimation(Action WindowHidden)
+        private async UniTaskVoid ShowAnimation(Action WindowHidden)
         {
             IsPlay = true;
             _body.DOAnchorPos(_centerPos, _timeToShow);
@@ -64,7 +64,7 @@ namespace Code.UI.Windows
             IsPlay = false;
         }
 
-        private async void HideAnimation(Action WindowHidden)
+        private async UniTaskVoid HideAnimation(Action WindowHidden)
         {
             IsPlay = true;
             _body.DOAnchorPos(_downPos, _timeToHide);

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using Code.Data.Configs;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -21,7 +20,6 @@ namespace Code.UI.Windows
         [Inject]
         private void Construct( GameSettings gameSettings)
         {
-
             _timeToHide = gameSettings.InteractiveObjectTimeToHide;
             _timeToShow = gameSettings.InteractiveObjectTimeToShow;
         }
@@ -36,7 +34,7 @@ namespace Code.UI.Windows
             HideAnimation(WindowHidden);
         }
         
-        private async void ShowAnimation(Action WindowShowed)
+        private async UniTaskVoid ShowAnimation(Action WindowShowed)
         {
             _canvasGroup.gameObject.SetActive(true);
             IsPlay = true;
@@ -54,7 +52,7 @@ namespace Code.UI.Windows
             IsPlay = false;
         }
         
-        private async void HideAnimation(Action WindowHidden)
+        private async UniTaskVoid HideAnimation(Action WindowHidden)
         {
             IsPlay = true;
             
