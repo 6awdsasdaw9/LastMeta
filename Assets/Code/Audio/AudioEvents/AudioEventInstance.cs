@@ -10,7 +10,6 @@ namespace Code.Audio
         [SerializeField] private EventReference _event;
         private EventInstance _instance;
         
-        
         private void OnEnable()
         {
             PlayEvent();

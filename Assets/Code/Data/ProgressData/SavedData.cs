@@ -1,4 +1,5 @@
 using System;
+using Code.Character.Hero;
 using Code.Data.GameData;
 using Code.Data.States;
 using HeroParamData = Code.Data.States.HeroParamData;
@@ -9,11 +10,11 @@ namespace Code.Data.ProgressData
     public class SavedData
     {
         public HealthData heroHealth;
+        public HeroUpgradesData HeroUpgradesData;
         public PositionData heroPositionData;
         public PositionData cameraPositionData;
         public PowerData heroPowerData;
 
-        public HeroParamData heroParamData;
 
         public float currentTime;
         public SavedData()
@@ -21,9 +22,8 @@ namespace Code.Data.ProgressData
             heroPositionData = new PositionData();
             cameraPositionData = new PositionData();
             heroHealth = new HealthData();
-            heroParamData = new HeroParamData();
+            HeroUpgradesData = new HeroUpgradesData();
         }
     }
-
 
 }

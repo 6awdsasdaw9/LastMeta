@@ -1,6 +1,4 @@
-using System;
 using Code.Data.Configs;
-using Code.Data.GameData;
 using Code.Data.States;
 using Code.Services;
 using Code.Services.Input;
@@ -23,21 +21,24 @@ namespace Code.Character.Hero
         [SerializeField] private HeroCollision _collision;
         [SerializeField] private Rigidbody _body;
 
-        [Title("Jumping Stats")] private float _jumpHeight = 7.3f;
+        #region Values
+        
+        private float _jumpHeight = 7.3f;
         private int _maxAirJumps;
 
         //Calculations
-        private const float _defaultGravityScale = 1;
         private Vector2 _velocity;
         private float _jumpSpeed;
-        private float _gravMultiplier;
         private bool _desiredJump;
         private float _jumpBufferCounter;
         private float _coyoteTimeCounter;
         private bool _currentlyJumping;
         private bool _canJumpAgain;
+        private float _upgradeJumpHeight;
 
+        #endregion
 
+        #region Run Time
         [Inject]
         private void Construct(InputService input, MovementLimiter limiter, GameConfig gameConfig)
         {
@@ -58,11 +59,27 @@ namespace Code.Character.Hero
             CheckJumpBuffer();
             CheckCoyoteTime();
         }
+        private void FixedUpdate()
+        {
+            _velocity = _body.velocity;
+
+            if (_desiredJump)
+            {
+                Jump();
+                _body.velocity = _velocity;
+                return;
+            }
+
+            CalculateGravity();
+        }
 
         private void OnDestroy() => 
             _input.PlayerJumpEvent -= OnJump;
         
+        #endregion
 
+        #region Input
+        
         private void OnJump(InputAction.CallbackContext context)
         {
             if (!_movementLimiter.charactersCanMove || _move.isCrouch) 
@@ -74,7 +91,14 @@ namespace Code.Character.Hero
             }
 
         }
+        #endregion
 
+        #region Conditions
+        private bool IsCanJump()
+        {
+            return _collision.onGround || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < _config.coyoteTime) ||
+                   _canJumpAgain;
+        }
         private void CheckCoyoteTime()
         {
             if (!_currentlyJumping && !_collision.onGround)
@@ -96,39 +120,28 @@ namespace Code.Character.Hero
                 _jumpBufferCounter = 0;
             }
         }
+        
+        #endregion
 
+        #region Ser Params
 
-        private void FixedUpdate()
-        {
-            _velocity = _body.velocity;
+        public void SetUpgradeJumpHeight(float value) => 
+            _upgradeJumpHeight = value;
 
-            if (_desiredJump)
-            {
-                Jump();
-                _body.velocity = _velocity;
-                return;
-            }
+        public void SetMaxAirJump(int maxJump) => 
+            _maxAirJumps = maxJump;
 
-            CalculateGravity();
-        }
-
-
-   
         private void CalculateGravity()
         {
             switch (_body.velocity.y)
             {
                 case > 0.01f when _collision.onGround:
-                    _gravMultiplier = _defaultGravityScale;
                     break;
                 case > 0.01f:
-                    _gravMultiplier = _config.upwardMovementMultiplier;
                     break;
                 case < -0.01f when _collision.onGround:
-                    _gravMultiplier = _defaultGravityScale;
                     break;
                 case < -0.01f:
-                    _gravMultiplier = _config.downwardMovementMultiplier;
                     break;
                 default:
                 {
@@ -137,12 +150,14 @@ namespace Code.Character.Hero
                         _currentlyJumping = false;
                     }
 
-                    _gravMultiplier = _defaultGravityScale;
                     break;
                 }
             }
             _body.velocity = new Vector3(_velocity.x, Mathf.Clamp(_velocity.y, -_config.speedLimit, 100));
         }
+
+        #endregion
+        
 
         private void Jump()
         {
@@ -151,10 +166,8 @@ namespace Code.Character.Hero
             _desiredJump = false;
             _jumpBufferCounter = 0;
             _coyoteTimeCounter = 0;
-            _jumpSpeed = _jumpHeight;
-
-  
-            _canJumpAgain = _maxAirJumps == 1 && _canJumpAgain == false;
+            
+            _canJumpAgain = _maxAirJumps >= 1 && _canJumpAgain == false;
 
             switch (_velocity.y)
             {
@@ -166,14 +179,8 @@ namespace Code.Character.Hero
                     break;
             }
             
-            _velocity.y += _jumpSpeed;
+            _velocity.y += _jumpHeight + _upgradeJumpHeight;
             _currentlyJumping = true;
-        }
-
-        private bool IsCanJump()
-        {
-            return _collision.onGround || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < _config.coyoteTime) ||
-                   _canJumpAgain;
         }
     }
 }

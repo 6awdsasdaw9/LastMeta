@@ -47,6 +47,8 @@ namespace Code.Data.States
         public float coyoteTime = 0.1f;
         [Range(0f, 0.3f), Tooltip("Как далеко от земли кушируется прыжок?")]
         public float jumpBuffer = 0.3f;
+        
+        [Space]
         public HeroParamData[] UpgradeParams;
 
     }
@@ -56,20 +58,14 @@ namespace Code.Data.States
     {
         public UpgradeParamType Type;
         //TODO Переделать в айди
-        public List<UpgradeParamData> Params;
+        public List<float> Values;
     }
 
     public enum UpgradeParamType
     {
         Speed,
-        JumpHeight
+        JumpHeight,
+        AirJump
     }
-
-    [Serializable]
-    public class UpgradeParamData
-    {
-        //TODO Переделать в айди
-        public int Lvl;
-        public float Value;
-    }
+    
 }

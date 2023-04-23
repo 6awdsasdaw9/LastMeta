@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 
 using UnityEngine;
 
 namespace Code.Audio
 {
-    public class AudioEvent : MonoBehaviour
+    public class RepeatAudioEvent : MonoBehaviour
     {
         [SerializeField] private FMODUnity.EventReference _audioPath;
         [SerializeField] private float _repeatDelay = 5;

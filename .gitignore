@@ -24,6 +24,7 @@ ExportedObj/
 *.svd
 *.pdb
 *.opendb
+*.fobj
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -64,6 +65,7 @@ fmod_editor.log
 /Assets/FMODStudioCache.meta
 
 # Log-files
+*.log
 Logs/AssetImportWorker3.log
 Logs/AssetImportWorker0-prev.log
 Logs/AssetImportWorker1-prev.log

@@ -4379,7 +4379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1925740523
 Transform:
   m_ObjectHideFlags: 0
@@ -4422,6 +4422,8 @@ PlayableDirector:
   - key: {fileID: 1515137045806103277, guid: 80330460bba38ed47afd90171309a4cf, type: 2}
     value: {fileID: 0}
   - key: {fileID: 844743059204399516, guid: 80330460bba38ed47afd90171309a4cf, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 8394568044726656658, guid: 80330460bba38ed47afd90171309a4cf, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References:
@@ -5025,7 +5027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _ambienceEvent.Path
-      value: event:/Ambience/Home_Ambiece
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _musicEvent.Guid.Data1
@@ -5045,19 +5047,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _ambienceEvent.Guid.Data1
-      value: 874724570
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _ambienceEvent.Guid.Data2
-      value: 1314933864
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _ambienceEvent.Guid.Data3
-      value: -1762680390
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _ambienceEvent.Guid.Data4
-      value: 1508453363
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216097, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: m_Name
