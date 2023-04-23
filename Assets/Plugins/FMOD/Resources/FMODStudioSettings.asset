@@ -205,8 +205,8 @@ MonoBehaviour:
   - 52eb9df5db46521439908db3a29a1bbb
   - 46fbfdf3fc43db0458918377fd40293e
   - fd7c55dab0fce234b8c25f6ffca523c1
-  - c88d16e5272a4e241b0ef0ac2e53b73d
   - 2c5177b11d81d824dbb064f9ac8527da
+  - c88d16e5272a4e241b0ef0ac2e53b73d
   codecChannels:
     Value: []
     HasValue: 0
@@ -450,6 +450,7 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Music
+  - Master
   Banks:
   - SFX
   BanksToLoad: []
