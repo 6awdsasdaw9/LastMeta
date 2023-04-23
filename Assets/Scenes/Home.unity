@@ -4382,7 +4382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1925740523
 Transform:
   m_ObjectHideFlags: 0
@@ -4423,6 +4423,8 @@ PlayableDirector:
   - key: {fileID: -6827310795559181470, guid: 80330460bba38ed47afd90171309a4cf, type: 2}
     value: {fileID: 4821489839570287462}
   - key: {fileID: 1515137045806103277, guid: 80330460bba38ed47afd90171309a4cf, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 844743059204399516, guid: 80330460bba38ed47afd90171309a4cf, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References:
