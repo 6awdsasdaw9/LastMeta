@@ -37,5 +37,7 @@ namespace Code.Character.Hero
 
             RuntimeManager.PlayOneShot(path, gameObject.transform.position);
         }
+        
+
     }
 }
