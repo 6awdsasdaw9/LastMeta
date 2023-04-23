@@ -1,8 +1,9 @@
+using System;
+using FMODUnity;
 using UnityEngine;
 
 namespace Code.Character.Hero
 {
-
     public class HeroAudio : MonoBehaviour
     {
         private const string pathStep = "event:/SFX/Player/Player_Step";
@@ -13,20 +14,28 @@ namespace Code.Character.Hero
         private const string pathPunch = "event:/SFX/Player/Player_Punch";
         private const string pathShoot = "event:/SFX/Player/Player_Shoot";
         private const string pathStunned = "event:/SFX/Player/Player_Stunned";
-        
-        public void PlayStepSound() => 
-            FMODUnity.RuntimeManager.PlayOneShot(pathStep,gameObject.transform.position);
-        
-        public void PlaySoftStepSound() => 
-            FMODUnity.RuntimeManager.PlayOneShot(pathSoftStep,gameObject.transform.position);
 
-        public void PlayOnLandAudio() => 
-            FMODUnity.RuntimeManager.PlayOneShot(pathOnLand,gameObject.transform.position);
-        
-        public void PlayPunchAudio() => 
-            FMODUnity.RuntimeManager.PlayOneShot(pathPunch,gameObject.transform.position);
+        public void PlayStepSound() =>
+            RuntimeManager.PlayOneShot(pathStep, gameObject.transform.position);
 
-        public void PlayDamageAudio() => 
-            FMODUnity.RuntimeManager.PlayOneShot(pathTakeDamage,gameObject.transform.position);
+        public void PlaySoftStepSound() =>
+            RuntimeManager.PlayOneShot(pathSoftStep, gameObject.transform.position);
+
+        public void PlayOnLandAudio() =>
+            RuntimeManager.PlayOneShot(pathOnLand, gameObject.transform.position);
+
+        public void PlayPunchAudio() =>
+            RuntimeManager.PlayOneShot(pathPunch, gameObject.transform.position);
+
+        public void PlayDamageAudio() =>
+            RuntimeManager.PlayOneShot(pathTakeDamage, gameObject.transform.position);
+
+        public void PlayOneShotAudio(string path)
+        {
+            if (path == String.Empty)
+                return;
+
+            RuntimeManager.PlayOneShot(path, gameObject.transform.position);
+        }
     }
 }
