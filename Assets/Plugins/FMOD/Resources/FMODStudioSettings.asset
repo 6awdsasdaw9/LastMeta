@@ -451,8 +451,9 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
-  - Music
-  - SFX
+  - Home Cut Scene
+  - Music+Ambience
+  - Player Sounds
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

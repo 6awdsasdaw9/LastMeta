@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="Bank" id="{01d8a8c0-3747-4c7d-8ce2-de432d14a600}">
+		<property name="name">
+			<value>Home Cut Scene</value>
+		</property>
+		<relationship name="folder">
+			<destination>{f690d76b-77c0-47ec-bd0e-2c3770a2ba30}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -33,7 +33,7 @@
 			<destination>{677f9136-4b55-4231-b178-c50b8b523095}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{a0f34664-ae96-4f72-80b6-b8447efd4c2c}</destination>
+			<destination>{4882e7b5-2e73-406f-80bc-1aab3892aa7b}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{34a30292-5aee-420c-83c1-f61cb9b41910}">
@@ -180,6 +180,8 @@
 			<destination>{c8448b76-31c3-4e9a-a08f-1b2684d08ece}</destination>
 			<destination>{ba9371d9-f30b-493d-84f2-f46f3cf79419}</destination>
 			<destination>{5ed0d622-79be-4ad3-9212-587f315e8246}</destination>
+			<destination>{4cd5cda3-fdf1-408e-aad5-0766be3f12d8}</destination>
+			<destination>{f10b107f-3fa3-4bef-a9bb-1d8ed0bb0203}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{32d51c81-af4c-4cda-a2bf-c7e83c0b1444}" />
@@ -285,13 +287,13 @@
 	</object>
 	<object class="ThreeEQEffect" id="{c8448b76-31c3-4e9a-a08f-1b2684d08ece}">
 		<property name="lowGain">
-			<value>-15</value>
+			<value>-38</value>
 		</property>
 		<property name="midGain">
-			<value>-21</value>
+			<value>-37</value>
 		</property>
 		<property name="highGain">
-			<value>-17.5</value>
+			<value>-28.5</value>
 		</property>
 		<property name="crossoverSlope">
 			<value>0</value>
@@ -301,6 +303,16 @@
 	<object class="GainEffect" id="{5ed0d622-79be-4ad3-9212-587f315e8246}">
 		<property name="gain">
 			<value>10</value>
+		</property>
+	</object>
+	<object class="GainEffect" id="{4cd5cda3-fdf1-408e-aad5-0766be3f12d8}">
+		<property name="gain">
+			<value>10</value>
+		</property>
+	</object>
+	<object class="GainEffect" id="{f10b107f-3fa3-4bef-a9bb-1d8ed0bb0203}">
+		<property name="gain">
+			<value>3.5</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{ae5490c8-4dbd-4885-a822-d0ba06f01a9a}">
@@ -383,7 +395,7 @@
 			<value>-41</value>
 		</property>
 		<property name="highGain">
-			<value>-3</value>
+			<value>-12</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{a46110fa-ce8a-4849-8fd3-446d4dd6f77f}" />

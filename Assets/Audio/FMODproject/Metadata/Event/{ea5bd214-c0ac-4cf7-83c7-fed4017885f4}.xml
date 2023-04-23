@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{ea5bd214-c0ac-4cf7-83c7-fed4017885f4}">
 		<property name="name">
-			<value>Music</value>
+			<value>Music_00</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -35,9 +35,6 @@
 		<relationship name="parameters">
 			<destination>{107130a4-a439-4213-b48b-fbd7c39d7ad2}</destination>
 		</relationship>
-		<relationship name="banks">
-			<destination>{81975eb6-017d-49ef-9c66-ec12d7cf3679}</destination>
-		</relationship>
 	</object>
 	<object class="EventMixer" id="{2b985d6b-ca57-4258-966e-527e5714383a}">
 		<relationship name="masterBus">
@@ -61,7 +58,7 @@
 			<destination>{138d4aa4-7120-48b5-87fb-21b5fdf0cdee}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{855ca47e-5e97-43f1-b3df-09c3d823ae96}</destination>
+			<destination>{bb376797-3768-4f0a-a32c-d97bc7ea1a10}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{578efb33-41db-4f6d-8846-de9fd93f69db}" />
