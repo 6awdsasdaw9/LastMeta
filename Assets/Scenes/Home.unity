@@ -2226,6 +2226,7 @@ GameObject:
   - component: {fileID: 981615835}
   - component: {fileID: 981615836}
   - component: {fileID: 981615837}
+  - component: {fileID: 981615838}
   m_Layer: 0
   m_Name: Sprite_Door
   m_TagString: Untagged
@@ -2321,6 +2322,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &981615838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981615834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94d8e5cd7338314aaa9e99783df8bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventReference:
+    Guid:
+      Data1: -166520773
+      Data2: 1328743442
+      Data3: -505498697
+      Data4: -1212292559
+    Path: event:/SFX/Environment/Door/Door Open
 --- !u!1 &1003486604
 GameObject:
   m_ObjectHideFlags: 0
@@ -5027,7 +5047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _ambienceEvent.Path
-      value: 
+      value: event:/Ambience/Home_Ambiece
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _musicEvent.Guid.Data1
@@ -5047,19 +5067,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _ambienceEvent.Guid.Data1
-      value: 0
+      value: 874724570
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _ambienceEvent.Guid.Data2
-      value: 0
+      value: 1314933864
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _ambienceEvent.Guid.Data3
-      value: 0
+      value: -1762680390
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _ambienceEvent.Guid.Data4
-      value: 0
+      value: 1508453363
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216097, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: m_Name

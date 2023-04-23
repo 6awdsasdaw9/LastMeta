@@ -106,8 +106,8 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: PlayStepSound
-    data: 
+    functionName: PlayOneShotAudio
+    data: event:/SFX/Environment/Helmet
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

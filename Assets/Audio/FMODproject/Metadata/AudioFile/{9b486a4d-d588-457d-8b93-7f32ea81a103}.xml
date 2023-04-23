@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9b486a4d-d588-457d-8b93-7f32ea81a103}">
+		<property name="assetPath">
+			<value>BEEPAppl_Oven Beep On 01_B00M_ONE.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.67367708333333332</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a2b22535-fc28-4e84-b401-116d973852d8}</destination>
+		</relationship>
+	</object>
+</objects>

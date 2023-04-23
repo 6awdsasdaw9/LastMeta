@@ -173,6 +173,7 @@
 			<destination>{f4ceb2b6-e8ff-4b72-9978-6a797fecd06b}</destination>
 			<destination>{f428b767-2780-40a7-83b0-a2f2bbc76d60}</destination>
 			<destination>{1de88902-0325-40e1-b82c-6dd3ee3de6c9}</destination>
+			<destination>{fd3d063f-ad03-44ce-b42f-a1dde4e6c6b7}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{7a27f8fc-902a-4c45-8ccc-a0fa897fa535}" />
@@ -226,6 +227,17 @@
 	<object class="ThreeEQEffect" id="{1de88902-0325-40e1-b82c-6dd3ee3de6c9}">
 		<property name="highGain">
 			<value>-14</value>
+		</property>
+	</object>
+	<object class="MultibandEqEffect" id="{fd3d063f-ad03-44ce-b42f-a1dde4e6c6b7}">
+		<property name="filterTypeA">
+			<value>9</value>
+		</property>
+		<property name="frequencyA">
+			<value>277.844482</value>
+		</property>
+		<property name="gainA">
+			<value>-13</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{351f7d7b-ac7b-461a-bf85-b82b89655b3c}">
