@@ -242,7 +242,7 @@
 			<value>400</value>
 		</property>
 		<property name="gain">
-			<value>17.5</value>
+			<value>18.5</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{adb1857c-b032-49d2-b882-2946b675be0f}">

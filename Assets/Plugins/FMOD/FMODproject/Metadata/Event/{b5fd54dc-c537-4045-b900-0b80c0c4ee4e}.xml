@@ -288,10 +288,10 @@
 			<value>-15</value>
 		</property>
 		<property name="midGain">
-			<value>-14</value>
+			<value>-21</value>
 		</property>
 		<property name="highGain">
-			<value>-15.5</value>
+			<value>-17.5</value>
 		</property>
 		<property name="crossoverSlope">
 			<value>0</value>
@@ -300,7 +300,7 @@
 	<object class="MixerBusFader" id="{ba9371d9-f30b-493d-84f2-f46f3cf79419}" />
 	<object class="GainEffect" id="{5ed0d622-79be-4ad3-9212-587f315e8246}">
 		<property name="gain">
-			<value>3.5</value>
+			<value>10</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{ae5490c8-4dbd-4885-a822-d0ba06f01a9a}">

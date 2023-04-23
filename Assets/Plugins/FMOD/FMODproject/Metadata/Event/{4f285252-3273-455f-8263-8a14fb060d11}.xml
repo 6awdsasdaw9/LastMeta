@@ -169,6 +169,7 @@
 			<destination>{6df3ee1c-ffb2-4a8f-80dc-75a182124c4f}</destination>
 			<destination>{1a06d4e8-d338-4293-920c-5b591fb82d3c}</destination>
 			<destination>{363dd53f-8569-4ad7-99a4-ebd870e96d6f}</destination>
+			<destination>{0db25d10-7c88-4869-8822-cb004c71be32}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{237d0d7e-d673-47c8-82ea-78cfbd2725ef}">
@@ -197,6 +198,9 @@
 		<property name="volume">
 			<value>-7</value>
 		</property>
+		<property name="pitch">
+			<value>-7</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{03dcaf4e-9c08-46c9-a1f5-2e5abe41f595}</destination>
 		</relationship>
@@ -208,13 +212,19 @@
 		<property name="volume">
 			<value>-14.5</value>
 		</property>
+		<property name="pitch">
+			<value>-11.5</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{ac76915a-fdbf-4a72-bb9f-bd4aac1e7f76}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{69528899-0fc6-47fe-8d03-dd527f8114ba}">
 		<property name="volume">
-			<value>1.5</value>
+			<value>-3</value>
+		</property>
+		<property name="pitch">
+			<value>6</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{4fdd55db-8b59-4025-82c5-e9b92368f052}</destination>
@@ -274,7 +284,7 @@
 	<object class="GainEffect" id="{6df3ee1c-ffb2-4a8f-80dc-75a182124c4f}" />
 	<object class="ThreeEQEffect" id="{1a06d4e8-d338-4293-920c-5b591fb82d3c}">
 		<property name="lowGain">
-			<value>-19</value>
+			<value>-15.5</value>
 		</property>
 		<property name="midGain">
 			<value>-18</value>
@@ -287,6 +297,20 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{363dd53f-8569-4ad7-99a4-ebd870e96d6f}" />
+	<object class="CompressorEffect" id="{0db25d10-7c88-4869-8822-cb004c71be32}">
+		<property name="threshold">
+			<value>-57.5</value>
+		</property>
+		<property name="ratio">
+			<value>4.5</value>
+		</property>
+		<property name="attackTime">
+			<value>9.80000019</value>
+		</property>
+		<property name="gain">
+			<value>7.5</value>
+		</property>
+	</object>
 	<object class="RandomizerModulator" id="{59f20e07-b25e-4071-98b7-da3249a7083d}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>stereoPan</value>
