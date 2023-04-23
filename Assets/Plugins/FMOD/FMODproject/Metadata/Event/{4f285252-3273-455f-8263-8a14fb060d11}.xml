@@ -82,6 +82,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{a6563284-e05f-4c90-810c-39b2be05147d}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{765b9767-72c2-4f33-b044-dfee9971f1d2}</destination>
 		</relationship>
@@ -118,6 +121,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{9d0eff5a-d44a-4900-9195-9b6b29332e73}">
+		<property name="volume">
+			<value>4</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -133,7 +139,7 @@
 	</object>
 	<object class="MultiSound" id="{81831903-de85-4f89-b4fa-d56c9afcc435}">
 		<property name="length">
-			<value>0.20000000000000001</value>
+			<value>0.12</value>
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{ae464c6a-0f48-48bb-a6a5-8c69a6d9d069}</destination>
@@ -145,9 +151,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{fcf73bd8-8655-4f4d-9193-8a29e7518f29}">
-		<property name="volume">
-			<value>-9</value>
-		</property>
 		<property name="name">
 			<value>Audio 2</value>
 		</property>
@@ -164,8 +167,8 @@
 	<object class="MixerBusEffectChain" id="{765b9767-72c2-4f33-b044-dfee9971f1d2}">
 		<relationship name="effects">
 			<destination>{6df3ee1c-ffb2-4a8f-80dc-75a182124c4f}</destination>
-			<destination>{363dd53f-8569-4ad7-99a4-ebd870e96d6f}</destination>
 			<destination>{1a06d4e8-d338-4293-920c-5b591fb82d3c}</destination>
+			<destination>{363dd53f-8569-4ad7-99a4-ebd870e96d6f}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{237d0d7e-d673-47c8-82ea-78cfbd2725ef}">
@@ -192,7 +195,7 @@
 	</object>
 	<object class="SingleSound" id="{2f382ff2-36f2-46ed-9195-2ae3ae1d053b}">
 		<property name="volume">
-			<value>-10</value>
+			<value>-7</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{03dcaf4e-9c08-46c9-a1f5-2e5abe41f595}</destination>
@@ -203,7 +206,7 @@
 			<value>16.5</value>
 		</property>
 		<property name="volume">
-			<value>-17</value>
+			<value>-14.5</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{ac76915a-fdbf-4a72-bb9f-bd4aac1e7f76}</destination>
@@ -269,21 +272,21 @@
 	</object>
 	<object class="MixerBusPanner" id="{b7e823fa-9828-4b99-8dba-d41ae2a045ac}" />
 	<object class="GainEffect" id="{6df3ee1c-ffb2-4a8f-80dc-75a182124c4f}" />
-	<object class="MixerBusFader" id="{363dd53f-8569-4ad7-99a4-ebd870e96d6f}" />
 	<object class="ThreeEQEffect" id="{1a06d4e8-d338-4293-920c-5b591fb82d3c}">
 		<property name="lowGain">
-			<value>-3</value>
+			<value>-19</value>
 		</property>
 		<property name="midGain">
-			<value>-5</value>
+			<value>-18</value>
 		</property>
 		<property name="highGain">
-			<value>-1</value>
+			<value>-6.5</value>
 		</property>
 		<property name="crossoverSlope">
 			<value>2</value>
 		</property>
 	</object>
+	<object class="MixerBusFader" id="{363dd53f-8569-4ad7-99a4-ebd870e96d6f}" />
 	<object class="RandomizerModulator" id="{59f20e07-b25e-4071-98b7-da3249a7083d}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>stereoPan</value>
@@ -315,8 +318,11 @@
 		</property>
 	</object>
 	<object class="ThreeEQEffect" id="{e1813931-09e1-4504-be59-a5819f2d4f9b}">
+		<property name="midGain">
+			<value>-24</value>
+		</property>
 		<property name="highGain">
-			<value>-10</value>
+			<value>-29</value>
 		</property>
 		<property name="crossoverSlope">
 			<value>2</value>
@@ -325,7 +331,7 @@
 	<object class="MixerBusFader" id="{bda50526-cda3-48d0-885a-6380b7648e48}" />
 	<object class="AutomationPoint" id="{ba64bf70-5588-4c38-b04e-45023338330a}">
 		<property name="position">
-			<value>0.10500000000000002</value>
+			<value>0.025000000000000008</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -336,13 +342,19 @@
 	</object>
 	<object class="AutomationPoint" id="{6a035902-99cd-4d0d-a051-8cacb06ace62}">
 		<property name="position">
-			<value>0.20000000000000001</value>
+			<value>0.12</value>
 		</property>
 		<property name="value">
 			<value>0</value>
 		</property>
 	</object>
 	<object class="ThreeEQEffect" id="{9ca58897-4fc3-43af-ac44-e7691c4a6163}">
+		<property name="midGain">
+			<value>-43</value>
+		</property>
+		<property name="highGain">
+			<value>-22</value>
+		</property>
 		<property name="crossoverSlope">
 			<value>0</value>
 		</property>
