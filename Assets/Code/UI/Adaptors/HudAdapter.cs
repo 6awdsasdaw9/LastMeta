@@ -30,11 +30,13 @@ namespace Code.UI.Adaptors
 
         private void OnUIWindowHidden()
         {
+            Debug.Log("Disable");
             _movementLimiter.EnableMovement();
         }
 
         private void OnUIWindowShown()
         {
+            Debug.Log("Enable");
             _movementLimiter.DisableMovement();
         }
         

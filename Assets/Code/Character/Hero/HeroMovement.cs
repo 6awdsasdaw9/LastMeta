@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using Code.Data.Configs;
-using Code.Data.GameData;
+﻿using Code.Data.Configs;
 using Code.Data.ProgressData;
 using Code.Data.States;
 using Code.Services;
@@ -87,13 +85,15 @@ namespace Code.Character.Hero
             {
                 _input.PlayerCrochEvent += OnPressCrouch;
                 _input.PlayerMovementEvent += OnPressMovement;
-                _movementLimiter.OnDisableMovementMode += StopMovement;
+                _movementLimiter.OnDisableMovementMode += BlockMovement;
+                _movementLimiter.OnEnableMovementMode += UnBlockMovement;
             }
             else
             {
                 _input.PlayerCrochEvent -= OnPressCrouch;
                 _input.PlayerMovementEvent -= OnPressMovement;
-                _movementLimiter.OnDisableMovementMode -= StopMovement;
+                _movementLimiter.OnDisableMovementMode -= BlockMovement;
+                _movementLimiter.OnEnableMovementMode -= UnBlockMovement;
             }
         }
         public void BlockMovement() => 
