@@ -54,16 +54,16 @@ sysinfo.txt
 /[Aa]ssets/**/FMODStudioCache.asset.meta
 /[Aa]ssets/Plugins/FMOD/Cache.meta
 /[Aa]ssets/Plugins/FMOD/Cache/Editor.meta
-# FMOD 1.10.x (Legacy)
-# /Assets/Audio/FMODAssets/*
-/Assets/Audio/FMODStudioCache.meta
-Assets/Plugins/FMOD/Cache
-Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
 
 # Log-files
-*.log
 fmod.log
 fmod_editor.log
+
+# FMOD 1.10.x (Legacy)
+/Assets/FMODAssets/*
+/Assets/FMODStudioCache.meta
+
+# Log-files
 Logs/AssetImportWorker3.log
 Logs/AssetImportWorker0-prev.log
 Logs/AssetImportWorker1-prev.log
@@ -85,4 +85,3 @@ shadercompiler-UnityShaderCompiler.exe9.log
 shadercompiler-UnityShaderCompiler.exe10.log
 shadercompiler-UnityShaderCompiler.exe11.log
 Logs/shadercompiler-UnityShaderCompiler.exe0.log
-*.log
