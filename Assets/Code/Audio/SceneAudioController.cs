@@ -1,44 +1,57 @@
-using System;
 using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
+using STOP_MODE = FMOD.Studio.STOP_MODE;
+
 
 namespace Code.Audio
 {
     public class SceneAudioController : MonoBehaviour
     {
-        private const string dirPath = "event:/Music/";
-        private enum AudioEventPath
-        {
-            EnterMetaPark,
-            Home,
-            Music_0,
-            Music_1,
-            Music_2
-        }
+        [SerializeField] private EventReference _ambienceEvent;
+        [SerializeField] private EventReference _musicEvent;
         
-        [SerializeField] private AudioEventPath audioEvent;
-
-        private EventInstance music;
-    
+        private EventInstance _ambience;
+        private EventInstance _music;
+        
         private PARAMETER_DESCRIPTION _parameterDescription;
         private PARAMETER_ID _parameterID;
 
         private Bus Music_Volume;
         private Bus Effect_Volume;
-    
+        
         private void Start()
         {
-            music = FMODUnity.RuntimeManager.CreateInstance(dirPath + audioEvent);
-            music.start();
+            PlayMusic();
+            PlayAmbience();
         }
 
         private void OnDisable()
         {
-            music.stop(STOP_MODE.ALLOWFADEOUT);
+           _ambience.stop(STOP_MODE.ALLOWFADEOUT);
+           _music.stop(STOP_MODE.ALLOWFADEOUT);
         }
 
-        #region Param
+        
+        private void PlayAmbience()
+        {
+            if(_ambienceEvent.IsNull)
+                return;
+            
+            _ambience = RuntimeManager.CreateInstance(_ambienceEvent);
+            _ambience.start();
+        }
 
+        private void PlayMusic()
+        {
+            if(_musicEvent.IsNull)
+                return;
+            
+            _music = RuntimeManager.CreateInstance(_musicEvent);
+            _music.start();
+        }
+        
+        #region Param
         private void SetParam()
         {
             string nameParam = "";
