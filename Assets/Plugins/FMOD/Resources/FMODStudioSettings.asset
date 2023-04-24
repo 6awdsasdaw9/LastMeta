@@ -451,8 +451,12 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Ambience_Level_01
+  - Enemy_Sounds_Level_01
   - Home Cut Scene
+  - Music_Level_01
   - Music+Ambience
+  - Payer_Sounds_Level_01
   - Player Sounds
   BanksToLoad: []
   LiveUpdatePort: 9264
