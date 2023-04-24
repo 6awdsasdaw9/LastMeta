@@ -287,13 +287,13 @@
 	</object>
 	<object class="ThreeEQEffect" id="{c8448b76-31c3-4e9a-a08f-1b2684d08ece}">
 		<property name="lowGain">
-			<value>-38</value>
+			<value>-42</value>
 		</property>
 		<property name="midGain">
-			<value>-37</value>
+			<value>-48</value>
 		</property>
 		<property name="highGain">
-			<value>-28.5</value>
+			<value>-38</value>
 		</property>
 		<property name="crossoverSlope">
 			<value>0</value>
@@ -312,7 +312,7 @@
 	</object>
 	<object class="GainEffect" id="{f10b107f-3fa3-4bef-a9bb-1d8ed0bb0203}">
 		<property name="gain">
-			<value>3.5</value>
+			<value>10</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{ae5490c8-4dbd-4885-a822-d0ba06f01a9a}">

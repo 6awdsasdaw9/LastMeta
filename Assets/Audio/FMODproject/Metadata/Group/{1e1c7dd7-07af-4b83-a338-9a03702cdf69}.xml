@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="MixerGroup" id="{1e1c7dd7-07af-4b83-a338-9a03702cdf69}">
+		<property name="color">
+			<value>Purple</value>
+		</property>
 		<property name="name">
 			<value>Music</value>
 		</property>
@@ -11,7 +14,7 @@
 			<destination>{36f3efba-248e-44e5-a23a-caf5982b21c5}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{bb376797-3768-4f0a-a32c-d97bc7ea1a10}</destination>
+			<destination>{0e89ba69-8d38-4a88-a305-6b2354787b35}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{e32df14b-c0b0-425a-85a3-15b0cb31f44e}">

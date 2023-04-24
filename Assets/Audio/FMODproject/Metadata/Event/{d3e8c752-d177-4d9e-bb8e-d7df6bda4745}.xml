@@ -110,7 +110,7 @@
 	<object class="MixerBusPanner" id="{89dbfbc3-68d2-4e06-9448-ba675764baa9}" />
 	<object class="MultiSound" id="{fe0c2903-7487-4314-9ad2-dda9032fba4c}">
 		<property name="length">
-			<value>0.45000000000000001</value>
+			<value>0.35999999999999999</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{13e5608c-3817-425e-86f4-7b6a82531c7c}</destination>
@@ -127,7 +127,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{f8e3f474-0b24-4aab-8fe8-3d36040c334a}">
 		<property name="volume">
-			<value>-19.5</value>
+			<value>-23.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -155,7 +155,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{35f9efb0-c236-4354-bffe-318c72b6a0e5}">
 		<property name="volume">
-			<value>-10</value>
+			<value>-11</value>
 		</property>
 		<property name="name">
 			<value>Audio 2</value>
@@ -241,6 +241,8 @@
 		<relationship name="effects">
 			<destination>{aa995857-9c29-4906-a68a-8e20a4d75629}</destination>
 			<destination>{80888bfb-7279-46a6-b125-55922e02a04e}</destination>
+			<destination>{38c57f66-e5bb-4ecc-90fa-8f8882c04a7d}</destination>
+			<destination>{f4ed4e48-c529-4343-807e-406373d216b8}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a37c38c2-aae3-441d-bdf8-6be56e23fbf9}" />
@@ -295,7 +297,7 @@
 	</object>
 	<object class="AutomationPoint" id="{bcae1dde-b629-44c4-b46f-b255ffb7f8d0}">
 		<property name="position">
-			<value>0.10000000000000001</value>
+			<value>0.12999999999999998</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -306,7 +308,7 @@
 	</object>
 	<object class="AutomationPoint" id="{654636fa-5b56-4ec4-8fdf-9c7b11b6fa6f}">
 		<property name="position">
-			<value>0.45000000000000001</value>
+			<value>0.35999999999999999</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -326,6 +328,43 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{80888bfb-7279-46a6-b125-55922e02a04e}" />
+	<object class="MultibandEqEffect" id="{38c57f66-e5bb-4ecc-90fa-8f8882c04a7d}">
+		<property name="filterTypeA">
+			<value>9</value>
+		</property>
+		<property name="filterTypeB">
+			<value>9</value>
+		</property>
+		<property name="filterTypeE">
+			<value>2</value>
+		</property>
+		<property name="frequencyA">
+			<value>17556.0352</value>
+		</property>
+		<property name="frequencyB">
+			<value>78.6856613</value>
+		</property>
+		<property name="frequencyE">
+			<value>14874.4463</value>
+		</property>
+		<property name="qualityA">
+			<value>0.319999993</value>
+		</property>
+		<property name="qualityE">
+			<value>0.100000001</value>
+		</property>
+		<property name="gainA">
+			<value>8.79310417</value>
+		</property>
+		<property name="gainB">
+			<value>-11.3793106</value>
+		</property>
+	</object>
+	<object class="PitchShifterEffect" id="{f4ed4e48-c529-4343-807e-406373d216b8}">
+		<property name="pitch">
+			<value>0.979999959</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{38274b13-6112-4ffb-b472-61f993049490}">
 		<property name="position">
 			<value>0.20000000000000001</value>
