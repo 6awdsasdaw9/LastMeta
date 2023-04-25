@@ -1,6 +1,7 @@
 using System;
 using Code.Data.Configs;
 using Code.Data.GameData;
+using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -15,6 +16,7 @@ namespace Code.Character.Hero
         [SerializeField] private HeroMovement _hero;
         [SerializeField] private CapsuleCollider _collider;
         [SerializeField] private LayerMask _groundLayer;
+        [SerializeField] private LayerMask _waterLayer;
 
         [Space, Title("Collider Settings")]
         [SerializeField] private float _groundLength = 0.95f;
@@ -23,6 +25,8 @@ namespace Code.Character.Hero
         private PhysicMaterial _noFrictionMaterial;
         private PhysicMaterial _frictionMaterial;
 
+        public Action OnWater;
+        
         [Inject]
         private void Construct(GameConfig gameConfig)
         {
@@ -33,8 +37,9 @@ namespace Code.Character.Hero
         private void Start()
         {
             SetNoFrictionPhysicsMaterial();
+            CheckWater();
         }
-
+        
         private void Update()
         {
             onGround = GroundCheck();
@@ -48,6 +53,11 @@ namespace Code.Character.Hero
         public void SetNoFrictionPhysicsMaterial() =>
             _collider.material = _noFrictionMaterial;
 
+        private async UniTaskVoid CheckWater()
+        {
+            await UniTask.WaitUntil(WaterCheck, cancellationToken: this.GetCancellationTokenOnDestroy());
+            OnWater?.Invoke();
+        }
         private void SetCollision()
         {
             if (_hero.isCrouch)
@@ -74,14 +84,19 @@ namespace Code.Character.Hero
             _collider.height = 1.5f;
         }
 
-        private bool GroundCheck() =>
-            Physics.Raycast(transform.position, Vector2.down, _groundLength, _groundLayer);
-        
+        private bool GroundCheck()
+        {
+            return Physics.Raycast(transform.position, Vector2.down, _groundLength, _groundLayer);
+        }
+
         private bool CeilingCheck()
         {
             return Physics.Raycast(transform.position  + _colliderOffset, Vector2.up, _ceilingLength, _groundLayer)||
                    Physics.Raycast(transform.position - _colliderOffset, Vector2.up, _ceilingLength, _groundLayer);
         }
+        
+        private bool WaterCheck() => 
+            Physics.Raycast(transform.position, Vector2.down, _groundLength, _waterLayer);
 
         private void OnDrawGizmos()
         {
@@ -94,5 +109,6 @@ namespace Code.Character.Hero
             Gizmos.DrawLine(transform.position - _colliderOffset,transform.position - _colliderOffset + Vector3.up * _ceilingLength);
         }
 
+        
     }
 }

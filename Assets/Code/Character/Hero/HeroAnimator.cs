@@ -16,6 +16,7 @@ namespace Code.Character.Hero
         private readonly int Attack_t = Animator.StringToHash("Attack");
         private readonly int Dash_t = Animator.StringToHash("Dash");
         private readonly int Die_t = Animator.StringToHash("Death");
+        private readonly int WaterDie_t = Animator.StringToHash("DeathOnWater");
         private readonly int Crouch_b = Animator.StringToHash("Crouch");
         private readonly int GunMode_b = Animator.StringToHash("Gun");
         
@@ -41,6 +42,9 @@ namespace Code.Character.Hero
 
         public void PlayDeath() => 
             _animator.SetTrigger(Die_t);
+        
+        public void PlayDeathOnWater() => 
+            _animator.SetTrigger(WaterDie_t);
         
     }
 }

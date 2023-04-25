@@ -35,6 +35,10 @@ PrefabInstance:
       propertyPath: _colliderOffset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6659652504158788561, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
+      propertyPath: _waterLayer.m_Bits
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 6659652504158788562, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
       propertyPath: _heroAudio
       value: 
@@ -124,6 +128,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffee832078bead4f8e5ba8d174f2e0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2929443425413194325 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6659652504158788561, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
+  m_PrefabInstance: {fileID: 8416295237243615620}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929443425413194330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 079bd03092cea444581fbf3cc51923b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2929443425413194326 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6659652504158788562, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
@@ -154,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 6554104898581862592}
   _animator: {fileID: 2929443425413194310}
+  _collision: {fileID: 2929443425413194325}
   _movement: {fileID: 2929443425413194324}
   _jump: {fileID: 2929443425413194326}
   _attack: {fileID: 3188653826641931529}
@@ -171,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 2929443425413194310}
   _movement: {fileID: 2929443425413194324}
+  _heroJump: {fileID: 2929443425413194326}
 --- !u!114 &3527845220663908717
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Code.Data.Configs;
-using Code.Data.GameData;
 using DG.Tweening;
 using UnityEngine;
 using Zenject;
@@ -63,12 +62,14 @@ namespace Code.Logic.DayOfTime
         private void TurnOnLight(Light light)
         {
             var targetIntensity = 1;
-            light.DOIntensity(targetIntensity, _animationDuration);
+            light.DOIntensity(targetIntensity, _animationDuration)
+                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
 
         private void TurnOffLight(Light light)
         {
-            light.DOIntensity(0, _animationDuration);
+            light.DOIntensity(0, _animationDuration)
+                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
     }
 }

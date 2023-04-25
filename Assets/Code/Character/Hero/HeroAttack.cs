@@ -15,6 +15,7 @@ namespace Code.Character.Hero
     {
         [SerializeField] private HeroAnimator _animator;
         [SerializeField] private HeroMovement _movement;
+        [SerializeField] private HeroJump _heroJump;
 
         private MovementLimiter _movementLimiter;
         private InputService _inputService;
@@ -45,7 +46,7 @@ namespace Code.Character.Hero
 
         private void Attack()
         {
-            if (_attackIsActive)
+            if (_attackIsActive || _heroJump.CurrentlyJumping)
                 return;
 
             _attackIsActive = true;

@@ -25,16 +25,17 @@ namespace Code.Character.Hero
         #region Values
         private float _jumpHeight = 7.3f;
 
-        private int _maxAirJumps, _currentAirJump;
+        private int _maxAirJumps;
         //Calculations
         private Vector2 _velocity;
         private float _jumpSpeed;
         private bool _desiredJump;
         private float _jumpBufferCounter;
         private float _coyoteTimeCounter;
-        private bool _currentlyJumping;
         private bool _canJumpAgain;
         private float _upgradeJumpHeight;
+
+        public bool CurrentlyJumping { get; private set; }
 
         #endregion
 
@@ -101,7 +102,7 @@ namespace Code.Character.Hero
         }
         private void CheckCoyoteTime()
         {
-            if (!_currentlyJumping && !_collision.onGround)
+            if (!CurrentlyJumping && !_collision.onGround)
                 _coyoteTimeCounter += Time.deltaTime;
             else
                 _coyoteTimeCounter = 0;
@@ -147,7 +148,7 @@ namespace Code.Character.Hero
                 {
                     if (_collision.onGround)
                     {
-                        _currentlyJumping = false;
+                        CurrentlyJumping = false;
                     }
 
                     break;
@@ -164,7 +165,7 @@ namespace Code.Character.Hero
             if (!IsCanJump()) 
                 return;
             
-            if(!_currentlyJumping)
+            if(!CurrentlyJumping)
                 _heroAudio.PlayJump();
             
             _desiredJump = false;
@@ -185,7 +186,7 @@ namespace Code.Character.Hero
             }
             
             _velocity.y += _jumpHeight + _upgradeJumpHeight;
-            _currentlyJumping = true;
+            CurrentlyJumping = true;
         }
     }
 }
