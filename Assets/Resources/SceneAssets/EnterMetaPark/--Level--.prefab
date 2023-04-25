@@ -76,7 +76,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3920771342244881507
 Transform:
   m_ObjectHideFlags: 0
@@ -4743,7 +4743,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2999
+  m_VersionIndex: 3008
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5352,7 +5352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4305211027275864156, guid: 9317f6086325051499932d3463876be7, type: 3}
       propertyPath: m_VersionIndex
-      value: 2339
+      value: 2369
       objectReference: {fileID: 0}
     - target: {fileID: 4305211027275864159, guid: 9317f6086325051499932d3463876be7, type: 3}
       propertyPath: m_Mesh
@@ -5372,7 +5372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4305211027589010401, guid: 9317f6086325051499932d3463876be7, type: 3}
       propertyPath: m_VersionIndex
-      value: 2336
+      value: 2366
       objectReference: {fileID: 0}
     - target: {fileID: 4305211028953091168, guid: 9317f6086325051499932d3463876be7, type: 3}
       propertyPath: m_RootOrder
