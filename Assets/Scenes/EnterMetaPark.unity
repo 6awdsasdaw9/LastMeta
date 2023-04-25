@@ -2762,6 +2762,46 @@ PrefabInstance:
       propertyPath: musicEventPath
       value: event:/Music/EnterMetaPark
       objectReference: {fileID: 0}
+    - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
+      propertyPath: _musicEvent.Path
+      value: event:/Music/EnterMetaPark
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
+      propertyPath: _ambienceEvent.Path
+      value: event:/Ambience/Wind_Level_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
+      propertyPath: _musicEvent.Guid.Data1
+      value: 2050525325
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
+      propertyPath: _musicEvent.Guid.Data2
+      value: 1217164241
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
+      propertyPath: _musicEvent.Guid.Data3
+      value: 876140209
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
+      propertyPath: _musicEvent.Guid.Data4
+      value: -403891229
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
+      propertyPath: _ambienceEvent.Guid.Data1
+      value: 1240592419
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
+      propertyPath: _ambienceEvent.Guid.Data2
+      value: 1143234125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
+      propertyPath: _ambienceEvent.Guid.Data3
+      value: -1700461924
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
+      propertyPath: _ambienceEvent.Guid.Data4
+      value: 7084308
+      objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216097, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: m_Name
       value: SceneAudioController
@@ -4277,6 +4317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2079709547}
+  - component: {fileID: 2079709548}
   m_Layer: 0
   m_Name: -Audio-
   m_TagString: Untagged
@@ -4292,7 +4333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079709546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.89905083, y: 0.9197918, z: 6.581333}
+  m_LocalPosition: {x: -2.89, y: 0.9197918, z: 6.581333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4300,6 +4341,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2079709548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079709546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 635363269
+      Data2: 1155976301
+      Data3: 1294462122
+      Data4: -52545766
+    Path: event:/Ambience/Water_Emitter
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 2.39
+  OverrideMaxDistance: 14.39
 --- !u!1 &2110794238
 GameObject:
   m_ObjectHideFlags: 0
