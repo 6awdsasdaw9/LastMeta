@@ -1,5 +1,6 @@
 using UnityEngine;
 using FMOD;
+using FMODUnity;
 
 namespace Code.Audio
 {
@@ -10,28 +11,28 @@ namespace Code.Audio
     {
         [SerializeField] private EnemyAudioPath _enemyAudioPath;
 
-        private void AudioPlayBreath() => PlayAudio(_enemyAudioPath.breathPath.Path);
+        private void AudioPlayBreath() => PlayAudio(_enemyAudioPath.breathPath);
 
-        private void AudioPlayStep() => PlayAudio(_enemyAudioPath.stepPath.Path);
+        private void AudioPlayStep() => PlayAudio(_enemyAudioPath.stepPath);
 
-        private void AudioPlayAttackStart() => PlayAudio(_enemyAudioPath.attackStartPath.Path);
+        private void AudioPlayAttackStart() => PlayAudio(_enemyAudioPath.attackStartPath);
 
-        private void AudioPlayAttack() => PlayAudio(_enemyAudioPath.attackPath.Path);
+        private void AudioPlayAttack() => PlayAudio(_enemyAudioPath.attackPath);
         
-        private void AudioPlayAttackEnd() => PlayAudio(_enemyAudioPath.attackEndPath.Path);
+        private void AudioPlayAttackEnd() => PlayAudio(_enemyAudioPath.attackEndPath);
 
-        private void AudioPlayDeath() => PlayAudio(_enemyAudioPath.deathPath.Path);
+        private void AudioPlayDeath() => PlayAudio(_enemyAudioPath.deathPath);
 
-        private void AudioPlayScream() => PlayAudio(_enemyAudioPath.screamPath.Path);
+        private void AudioPlayScream() => PlayAudio(_enemyAudioPath.screamPath);
 
-        private void AudioPlaySFX() => PlayAudio(_enemyAudioPath.SFX.Path);
+        private void AudioPlaySFX() => PlayAudio(_enemyAudioPath.SFX);
         
-        private void PlayAudio(string path)
+  
+        private void PlayAudio(EventReference audioEvent)
         {
-            /*if(path == string.Empty)
-                return;*/
-            FMODUnity.RuntimeManager.PlayOneShotAttached(path, gameObject);
-            
+            if(audioEvent.IsNull)
+                return;
+            RuntimeManager.PlayOneShotAttached(audioEvent.Guid, gameObject);
         }
     }
 }

@@ -19,13 +19,13 @@ namespace Code.Character.Hero
         [Title("Components")] 
         [SerializeField] private HeroMovement _move;
         [SerializeField] private HeroCollision _collision;
+        [SerializeField] private HeroAudio _heroAudio;
         [SerializeField] private Rigidbody _body;
 
         #region Values
-        
         private float _jumpHeight = 7.3f;
-        private int _maxAirJumps;
 
+        private int _maxAirJumps, _currentAirJump;
         //Calculations
         private Vector2 _velocity;
         private float _jumpSpeed;
@@ -161,7 +161,11 @@ namespace Code.Character.Hero
 
         private void Jump()
         {
-            if (!IsCanJump()) return;
+            if (!IsCanJump()) 
+                return;
+            
+            if(!_currentlyJumping)
+                _heroAudio.PlayJump();
             
             _desiredJump = false;
             _jumpBufferCounter = 0;
@@ -176,6 +180,7 @@ namespace Code.Character.Hero
                     break;
                 case < 0f:
                     _jumpSpeed += Mathf.Abs(_body.velocity.y);
+
                     break;
             }
             

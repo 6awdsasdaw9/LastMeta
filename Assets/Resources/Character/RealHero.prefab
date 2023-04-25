@@ -42,7 +42,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4355872365580197732
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -59,7 +59,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!54 &4988326818585598692
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -140,9 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _body: {fileID: 4988326818585598692}
   _collision: {fileID: 6659652504158788561}
-  _attack: {fileID: 0}
   directionX: 0
-  _desiredVelocity: {x: 0, y: 0}
 --- !u!114 &6659652504158788562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _move: {fileID: 6659652504158788560}
   _collision: {fileID: 6659652504158788561}
+  _heroAudio: {fileID: 1297059016546552242}
   _body: {fileID: 4988326818585598692}
 --- !u!114 &1297059016546552242
 MonoBehaviour:
