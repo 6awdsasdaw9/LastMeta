@@ -64,20 +64,15 @@ namespace Code.Logic.DayOfTime
         {
             var targetIntensity = 1;
             
-            if(_lightTween is { active: true })
-                _lightTween.Kill();
-            
-            _lightTween = light.DOIntensity(targetIntensity, _animationDuration)
-                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
+
+            /*_lightTween =*/ light.DOIntensity(targetIntensity, _animationDuration)
+                .SetLink(gameObject, LinkBehaviour.KillOnDisable);
         }
 
         private void TurnOffLight(Light light)
         {
-            if(_lightTween is { active: true })
-                _lightTween.Kill();
-            
-            _lightTween = light.DOIntensity(0, _animationDuration)
-                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
+            /*_lightTween =*/ light.DOIntensity(0, _animationDuration)
+                .SetLink(gameObject, LinkBehaviour.KillOnDisable);
         }
     }
 }
