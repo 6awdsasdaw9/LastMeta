@@ -318,7 +318,7 @@
 			<value>10</value>
 		</property>
 		<property name="length">
-			<value>11.5</value>
+			<value>10</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{afc8c41f-f16f-47de-aa18-f719b5e6be82}</destination>
@@ -429,7 +429,7 @@
 	<object class="MixerBusFader" id="{8641664b-c4bd-4fce-b080-ef1372eb120e}" />
 	<object class="PannerEffect" id="{8df164e6-a187-40f1-b626-3b62613fba23}">
 		<property name="stereoPan">
-			<value>-80</value>
+			<value>-68</value>
 		</property>
 		<property name="overridingOutputFormat">
 			<value>1</value>

@@ -160,6 +160,9 @@
 		<property name="volume">
 			<value>-19.5</value>
 		</property>
+		<property name="pitch">
+			<value>-1.20000005</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{508656db-bfe8-465a-82e5-8884560c0fea}</destination>
 		</relationship>
@@ -218,7 +221,7 @@
 	<object class="MixerBusPanner" id="{876c9b76-e9e6-4d90-8068-2ae28f5992bf}" />
 	<object class="ThreeEQEffect" id="{c663179d-94d1-4366-a586-3aa2e7cf1d68}">
 		<property name="lowGain">
-			<value>-47</value>
+			<value>-42</value>
 		</property>
 		<property name="midGain">
 			<value>-56</value>
@@ -255,7 +258,7 @@
 	</object>
 	<object class="AutomationPoint" id="{adb1857c-b032-49d2-b882-2946b675be0f}">
 		<property name="position">
-			<value>0.084999999999999992</value>
+			<value>0.125</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -293,16 +296,16 @@
 			<value>9</value>
 		</property>
 		<property name="frequencyA">
-			<value>17157.1074</value>
+			<value>8659.71094</value>
 		</property>
 		<property name="frequencyB">
-			<value>187.428619</value>
+			<value>272.147003</value>
 		</property>
 		<property name="qualityA">
-			<value>0.100000001</value>
+			<value>0.267448276</value>
 		</property>
 		<property name="gainB">
-			<value>-21.7241383</value>
+			<value>-22.7586212</value>
 		</property>
 	</object>
 </objects>

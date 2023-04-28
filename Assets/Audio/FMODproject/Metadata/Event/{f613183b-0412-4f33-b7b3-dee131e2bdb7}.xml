@@ -313,11 +313,7 @@
 			<value>1</value>
 		</property>
 	</object>
-	<object class="ThreeEQEffect" id="{5d2b9e82-0a70-464a-8921-2747110bfe1e}">
-		<property name="lowGain">
-			<value>-5.5</value>
-		</property>
-	</object>
+	<object class="ThreeEQEffect" id="{5d2b9e82-0a70-464a-8921-2747110bfe1e}" />
 	<object class="AutomationPoint" id="{237a0ab5-82a5-4bb6-a9bd-d2ef175b0cbc}">
 		<property name="position">
 			<value>0</value>
