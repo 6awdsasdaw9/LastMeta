@@ -15,7 +15,7 @@ namespace Code.Character.Hero
     {
         [SerializeField] private HeroAnimator _animator;
         [SerializeField] private HeroMovement _movement;
-        [SerializeField] private HeroJump _heroJump;
+        [SerializeField] private HeroCollision _collision;
 
         private MovementLimiter _movementLimiter;
         private InputService _inputService;
@@ -45,8 +45,9 @@ namespace Code.Character.Hero
         }
 
         private void Attack()
-        {
-            if (_attackIsActive || _heroJump.CurrentlyJumping)
+        { 
+            Log.ColorLog($"ATTACK: {_attackIsActive} || { _collision.onGround}");
+            if (_attackIsActive || !_collision.onGround)
                 return;
 
             _attackIsActive = true;

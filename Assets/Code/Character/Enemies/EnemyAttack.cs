@@ -1,9 +1,11 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Code.Character.Hero;
 using Code.Character.Interfaces;
 using Code.Debugers;
 using Code.Services;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -67,13 +69,13 @@ namespace Code.Character.Enemies
             Push();
         }
 
-        private async void Push()
+        private async UniTaskVoid Push()
         {
             if (_pushForce == 0)
                 return;
             //TODO не работает если герой стоит справа
-            _heroMovement.SetSupportVelocity(-transform.localScale * _pushForce);
-            await Task.Delay(500);
+            _heroMovement.SetSupportVelocity(_heroMovement.transform.localScale * _pushForce );
+            await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
             _heroMovement.SetSupportVelocity(Vector2.zero);
         }
 

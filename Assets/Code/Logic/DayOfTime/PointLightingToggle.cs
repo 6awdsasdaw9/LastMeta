@@ -9,7 +9,8 @@ namespace Code.Logic.DayOfTime
     public class PointLightingToggle : MonoBehaviour
     {
         [SerializeField] private List<Light> _lights;
-        
+
+        private Tween _lightTween;
         private TimeOfDayController _timeOfDayController;
         private float _animationDuration;
         
@@ -62,13 +63,20 @@ namespace Code.Logic.DayOfTime
         private void TurnOnLight(Light light)
         {
             var targetIntensity = 1;
-            light.DOIntensity(targetIntensity, _animationDuration)
+            
+            if(_lightTween is { active: true })
+                _lightTween.Kill();
+            
+            _lightTween = light.DOIntensity(targetIntensity, _animationDuration)
                 .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
 
         private void TurnOffLight(Light light)
         {
-            light.DOIntensity(0, _animationDuration)
+            if(_lightTween is { active: true })
+                _lightTween.Kill();
+            
+            _lightTween = light.DOIntensity(0, _animationDuration)
                 .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
     }

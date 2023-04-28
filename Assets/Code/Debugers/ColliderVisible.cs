@@ -4,15 +4,23 @@ namespace Code.Debugers
 {
     public class ColliderVisible : MonoBehaviour
     {
+        [SerializeField] private BoxCollider _collider;
         [SerializeField] private ColliderType type;
         [SerializeField] private bool isVisible;
         [SerializeField] private byte alpha = 130;
-        
+
         private void OnDrawGizmos()
         {
-            if(!isVisible)return;
+            if (!isVisible) return;
             Gizmos.color = GetColor();
-            Gizmos.DrawCube(transform.position, transform.localScale);
+            if (_collider)
+            {
+                Gizmos.DrawCube(transform.position + _collider.center, _collider.size);
+            }
+            else
+            {
+                Gizmos.DrawCube(transform.position, transform.localScale);
+            }
         }
 
         private Color32 GetColor()
@@ -30,7 +38,7 @@ namespace Code.Debugers
                 _ => new Color32(0, 0, 0, 0)
             };
         }
-        
+
         private enum ColliderType
         {
             Ground,

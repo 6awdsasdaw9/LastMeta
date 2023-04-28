@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 2929443425413194310}
   _movement: {fileID: 2929443425413194324}
-  _heroJump: {fileID: 2929443425413194326}
+  _collision: {fileID: 2929443425413194325}
 --- !u!114 &3527845220663908717
 MonoBehaviour:
   m_ObjectHideFlags: 0

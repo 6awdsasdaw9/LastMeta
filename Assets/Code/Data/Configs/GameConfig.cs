@@ -9,4 +9,6 @@ namespace Code.Data.Configs
         public Constants.Scenes initialScene;
         public HeroConfig heroConfig;
     }
+
+
 }

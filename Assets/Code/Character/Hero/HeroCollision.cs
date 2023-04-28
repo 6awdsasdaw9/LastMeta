@@ -1,6 +1,5 @@
 using System;
 using Code.Data.Configs;
-using Code.Data.GameData;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -45,6 +44,14 @@ namespace Code.Character.Hero
             onGround = GroundCheck();
             underCeiling = CeilingCheck();
             SetCollision();
+        }
+
+        public void DisableCollision()
+        {
+            _collider.enabled = false;
+         
+            if (TryGetComponent(out Rigidbody rigidbody)) 
+                rigidbody.constraints = RigidbodyConstraints.FreezeAll;
         }
 
         public void SetFrictionPhysicsMaterial() => 

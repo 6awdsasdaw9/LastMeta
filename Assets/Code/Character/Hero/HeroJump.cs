@@ -24,19 +24,17 @@ namespace Code.Character.Hero
 
         #region Values
         private float _jumpHeight = 7.3f;
-
         private int _maxAirJumps;
         //Calculations
         private Vector2 _velocity;
         private float _jumpSpeed;
-        private bool _desiredJump;
         private float _jumpBufferCounter;
         private float _coyoteTimeCounter;
-        private bool _canJumpAgain;
         private float _upgradeJumpHeight;
-
-        public bool CurrentlyJumping { get; private set; }
-
+        //States
+        private bool _isCanJumpAgain;
+        private bool _isDesiredJump;
+        private bool _isCurrentlyJumping;
         #endregion
 
         #region Run Time
@@ -64,7 +62,7 @@ namespace Code.Character.Hero
         {
             _velocity = _body.velocity;
 
-            if (_desiredJump)
+            if (_isDesiredJump)
             {
                 Jump();
                 _body.velocity = _velocity;
@@ -88,7 +86,7 @@ namespace Code.Character.Hero
 
             if (context.started)
             {
-                _desiredJump = true;
+                _isDesiredJump = true;
             }
 
         }
@@ -98,11 +96,11 @@ namespace Code.Character.Hero
         private bool IsCanJump()
         {
             return _collision.onGround || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < _config.coyoteTime) ||
-                   _canJumpAgain;
+                   _isCanJumpAgain;
         }
         private void CheckCoyoteTime()
         {
-            if (!CurrentlyJumping && !_collision.onGround)
+            if (!_isCurrentlyJumping && !_collision.onGround)
                 _coyoteTimeCounter += Time.deltaTime;
             else
                 _coyoteTimeCounter = 0;
@@ -110,14 +108,14 @@ namespace Code.Character.Hero
 
         private void CheckJumpBuffer()
         {
-            if (!(_config.jumpBuffer > 0) || !_desiredJump) 
+            if (!(_config.jumpBuffer > 0) || !_isDesiredJump) 
                 return;
             
             _jumpBufferCounter += Time.deltaTime;
 
             if (_jumpBufferCounter > _config.jumpBuffer)
             {
-                _desiredJump = false;
+                _isDesiredJump = false;
                 _jumpBufferCounter = 0;
             }
         }
@@ -148,7 +146,7 @@ namespace Code.Character.Hero
                 {
                     if (_collision.onGround)
                     {
-                        CurrentlyJumping = false;
+                        _isCurrentlyJumping = false;
                     }
 
                     break;
@@ -165,14 +163,14 @@ namespace Code.Character.Hero
             if (!IsCanJump()) 
                 return;
             
-            if(!CurrentlyJumping)
+            if(!_isCurrentlyJumping)
                 _heroAudio.PlayJump();
             
-            _desiredJump = false;
+            _isDesiredJump = false;
             _jumpBufferCounter = 0;
             _coyoteTimeCounter = 0;
             
-            _canJumpAgain = _maxAirJumps >= 1 && _canJumpAgain == false;
+            _isCanJumpAgain = _maxAirJumps >= 1 && _isCanJumpAgain == false;
 
             switch (_velocity.y)
             {
@@ -186,7 +184,7 @@ namespace Code.Character.Hero
             }
             
             _velocity.y += _jumpHeight + _upgradeJumpHeight;
-            CurrentlyJumping = true;
+            _isCurrentlyJumping = true;
         }
     }
 }
