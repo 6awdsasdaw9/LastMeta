@@ -69,7 +69,7 @@ MonoBehaviour:
     m_Start: 5.01666669845581
     m_ClipIn: 0
     m_Asset: {fileID: 871923400727755701}
-    m_Duration: 11.183333333333326
+    m_Duration: 11.166666634877522
     m_TimeScale: 1
     m_ParentTrack: {fileID: -6827310795559181470}
     m_EaseInDuration: 0
@@ -131,11 +131,11 @@ MonoBehaviour:
     m_Recordable: 0
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
-    m_PostExtrapolationTime: 0.03839279641398008
+    m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 5.01666669845581
     m_DisplayName: r_Walk_Box
   - m_Version: 1
-    m_Start: 16.238392828203118
+    m_Start: 16.183333333333334
     m_ClipIn: 0
     m_Asset: {fileID: -6860053561333801381}
     m_Duration: 2.5166666666666666
@@ -1213,7 +1213,7 @@ MonoBehaviour:
     m_Start: 5.016666666666667
     m_ClipIn: 0
     m_Asset: {fileID: -8335867725694367928}
-    m_Duration: 11.983333333333333
+    m_Duration: 11.166666666666668
     m_TimeScale: 1
     m_ParentTrack: {fileID: 8858234625754942841}
     m_EaseInDuration: 0
