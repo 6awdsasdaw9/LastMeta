@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Code.Data.ProgressData
@@ -72,7 +73,7 @@ namespace Code.Data.ProgressData
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
-                string dataToStore = JsonUtility.ToJson(savedData, true);
+                string dataToStore = JsonConvert.SerializeObject(savedData);
 
                 using (FileStream stream = new FileStream(fullPath,FileMode.Create))
                 {
@@ -81,7 +82,6 @@ namespace Code.Data.ProgressData
                         writer.Write(dataToStore);
                     }
                 }
-
             }
             catch (Exception e)
             {
@@ -104,7 +104,7 @@ namespace Code.Data.ProgressData
                             dataToLoad = reader.ReadToEnd();
                         }
                     }
-                    loadedSavedData = JsonUtility.FromJson<SavedData>(dataToLoad);
+                    loadedSavedData = JsonConvert.DeserializeObject<SavedData>(dataToLoad);
                 }
                 catch (Exception e)
                 {

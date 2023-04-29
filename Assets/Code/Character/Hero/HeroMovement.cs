@@ -229,7 +229,7 @@ namespace Code.Character.Hero
                 return;
 
             Vector3Data savedPosition = savedData.heroPositionData.position;
-            transform.position = savedPosition.AsUnityVector();
+            transform.position = savedPosition.AsUnityVector() + Vector3.up;
         }
 
         public void SaveData(SavedData savedData) =>

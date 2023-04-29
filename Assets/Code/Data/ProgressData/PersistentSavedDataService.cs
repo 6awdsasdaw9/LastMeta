@@ -48,6 +48,7 @@ namespace Code.Data.ProgressData
                 NewProgress();
             }
         }
+      
 
         [Button]
         public void SaveProgress()
@@ -62,6 +63,7 @@ namespace Code.Data.ProgressData
             
             foreach (ISavedData dataPersistenceObj in dataCollection.Data)
             {
+                Log.ColorLog($"Save :{dataPersistenceObj.GetType().ToString()}",ColorType.Red);
                 dataPersistenceObj.SaveData(savedData);
             }
 

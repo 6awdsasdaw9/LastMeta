@@ -1526,8 +1526,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerObserver: {fileID: 4305211027087727592}
+  _lidLukeObject: {fileID: 4305211027283154971}
   _groundCollider: {fileID: 4305211028703045383}
-  _id: {fileID: 3563056950966757049}
+  _uniqueId: {fileID: 3563056950966757049}
 --- !u!114 &3563056950966757049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1540,7 +1541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82fdd1c421d4affb0c54c7e735c507a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: 
+  Id: BigLuke_902ed733-365f-49e9-a695-c02a6e2906a3
 --- !u!1 &4305211029147636509
 GameObject:
   m_ObjectHideFlags: 0

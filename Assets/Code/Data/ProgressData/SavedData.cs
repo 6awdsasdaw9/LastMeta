@@ -14,7 +14,7 @@ namespace Code.Data.ProgressData
         public PositionData heroPositionData;
         public PositionData cameraPositionData;
         public PowerData heroPowerData;
-        public Dictionary<UniqueId, Vector3Data> ObjectsPosition;
+        public Dictionary<string, Vector3Data> ObjectsPosition;
 
         public float currentTime;
         public SavedData()
@@ -23,6 +23,7 @@ namespace Code.Data.ProgressData
             cameraPositionData = new PositionData();
             heroHealth = new HealthData();
             HeroUpgradesData = new HeroUpgradesData();
+            ObjectsPosition = new Dictionary<string, Vector3Data>();
         }
     }
 
