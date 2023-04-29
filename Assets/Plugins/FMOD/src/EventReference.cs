@@ -8,8 +8,8 @@ namespace FMODUnity
     {
         public FMOD.GUID Guid;
 
-        public string Path;
 #if UNITY_EDITOR
+        public string Path;
 
         public static Func<string, FMOD.GUID> GuidLookupDelegate;
 

@@ -6,7 +6,8 @@ namespace FMODUnity
     [AddComponentMenu("FMOD Studio/FMOD Studio Listener")]
     public class StudioListener : MonoBehaviour
     {
-        public GameObject attenuationObject { get; set; }
+
+        public GameObject attenuationObject = null;
 
 #if UNITY_PHYSICS_EXIST
         private Rigidbody rigidBody;
@@ -15,7 +16,7 @@ namespace FMODUnity
         private Rigidbody2D rigidBody2D;
 #endif
 
-        private static List<StudioListener> listeners = new();
+        private static List<StudioListener> listeners = new List<StudioListener>();
 
         public static int ListenerCount
         {
