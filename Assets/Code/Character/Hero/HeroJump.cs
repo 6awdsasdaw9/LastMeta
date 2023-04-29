@@ -1,5 +1,6 @@
 using Code.Data.Configs;
 using Code.Data.States;
+using Code.Debugers;
 using Code.Services;
 using Code.Services.Input;
 using UnityEngine;
@@ -14,21 +15,21 @@ namespace Code.Character.Hero
 
         private IHero _hero;
         private InputService _input;
-        private MovementLimiter _movementLimiter;
         private HeroConfig _config;
 
         #region Values
-        
+
         private float _jumpHeight = 7.3f;
         private int _maxAirJumps;
-        
+
         //Calculations
         private Vector2 _velocity;
         private float _jumpSpeed;
         private float _jumpBufferCounter;
         private float _coyoteTimeCounter;
-        
+
         //States
+        private bool _isCanJump = true;
         private bool _isCanJumpAgain;
         private bool _isDesiredJump;
         private bool _isCurrentlyJumping;
@@ -38,23 +39,18 @@ namespace Code.Character.Hero
         #region Run Time
 
         [Inject]
-        private void Construct(InputService input, MovementLimiter limiter, GameConfig gameConfig)
+        private void Construct(InputService input, GameConfig gameConfig)
         {
             _hero = GetComponent<IHero>();
             _input = input;
-
-            _movementLimiter = limiter;
             _config = gameConfig.heroConfig;
-
             _jumpHeight = gameConfig.heroConfig.jumpHeight;
             _maxAirJumps = gameConfig.heroConfig.maxAirJumps;
         }
 
-        private void OnEnable()
-        {
-            _input.PlayerJumpEvent += OnJump;
-        }
-        
+        private void OnEnable() => 
+            Enable();
+
         private void Update()
         {
             CheckJumpBuffer();
@@ -75,10 +71,8 @@ namespace Code.Character.Hero
             CalculateGravity();
         }
 
-        private void OnDisable()
-        {
-            _input.PlayerJumpEvent -= OnJump;
-        }
+        private void OnDisable() => 
+            Disable();
 
         #endregion
 
@@ -86,13 +80,11 @@ namespace Code.Character.Hero
 
         private void OnJump(InputAction.CallbackContext context)
         {
-            if (!_movementLimiter.charactersCanMove || _hero.Movement.IsCrouch)
+            if (_hero.Movement.IsCrouch)
                 return;
 
             if (context.started)
-            {
                 _isDesiredJump = true;
-            }
         }
 
         #endregion
@@ -100,8 +92,8 @@ namespace Code.Character.Hero
         #region Conditions
 
         private bool IsCanJump() =>
-            _hero.Collision.OnGround 
-            || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < _config.coyoteTime) 
+            _hero.Collision.OnGround
+            || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < _config.coyoteTime)
             || _isCanJumpAgain;
 
         private void CheckCoyoteTime()
@@ -129,6 +121,7 @@ namespace Code.Character.Hero
         #endregion
 
         #region Jumping
+
         private void CalculateGravity()
         {
             switch (_body.velocity.y)
@@ -154,6 +147,7 @@ namespace Code.Character.Hero
 
             _body.velocity = new Vector3(_velocity.x, Mathf.Clamp(_velocity.y, -_config.speedLimit, 100));
         }
+
         private void Jump()
         {
             if (!IsCanJump())
@@ -172,7 +166,8 @@ namespace Code.Character.Hero
             {
                 airJump += _hero.Upgrade.BonusAirJump;
             }
-            _isCanJumpAgain =  airJump >= 1 && _isCanJumpAgain == false;
+
+            _isCanJumpAgain = airJump >= 1 && _isCanJumpAgain == false;
 
             switch (_velocity.y)
             {
@@ -191,11 +186,11 @@ namespace Code.Character.Hero
         }
 
         #endregion
-        
-        public void Disable() =>
-            enabled = false;
 
-        public void Enable() =>
-            enabled = true;
+        public void Disable() => 
+            _input.PlayerJumpEvent -= OnJump;
+
+        public void Enable() => 
+            _input.PlayerJumpEvent += OnJump;
     }
 }

@@ -12,8 +12,7 @@ namespace Code.Character.Hero
         [SerializeField] private HeroMovement _movement;
         [SerializeField] private HeroJump _jump;
         [SerializeField] private HeroCollision _collision;
-        [Space]
-        [SerializeField] private HeroAttack _attack;
+        [Space] [SerializeField] private HeroAttack _attack;
         [SerializeField] private HeroBuff _buff;
         [SerializeField] private HeroDeath _death;
         [SerializeField] private HeroHealth _health;
@@ -32,7 +31,7 @@ namespace Code.Character.Hero
         public IHeroUpgrade Upgrade => _upgrade;
 
         private MovementLimiter _movementLimiter;
-        
+
         [Inject]
         private void Construct(MovementLimiter movementLimiter)
         {
@@ -46,15 +45,13 @@ namespace Code.Character.Hero
             _movement.Enable();
             _jump.Enable();
             _attack?.Enable();
-            _collision.Enable();
         }
 
         private void OnDisableMovementMode()
         {
             _movement.Disable();
             _jump.Disable();
-            _attack?.Disable();//TODO непотребство
-            _collision.Disable();
+            _attack?.Disable(); //TODO непотребство
         }
     }
 }
