@@ -21,9 +21,9 @@ namespace Code.Logic.CameraLogic
         private bool _heroRaycast, _cameraRaycast;
 
         [Inject]
-        private void Construct(HeroMovement heroMovement)
+        private void Construct(IHero hero)
         {
-            _hero = heroMovement.transform;
+            _hero = hero.Transform;
             _stopLayerMask = 1 << LayerMask.NameToLayer(Constants.StopCameraLayer);
         }
 

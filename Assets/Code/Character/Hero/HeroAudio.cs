@@ -1,17 +1,16 @@
 using System;
-using Cysharp.Threading.Tasks;
 using FMODUnity;
 using UnityEngine;
 
 namespace Code.Character.Hero
 {
-    public class HeroAudio : MonoBehaviour
+    public class HeroAudio : MonoBehaviour, IHeroAudio
     {
         private const string pathStep = "event:/SFX/Player/Player_Step";
         private const string pathSoftStep = "event:/SFX/Player/Player_StepSoft";
         private const string pathTakeDamage = "event:/SFX/Player/Player_Damage";
         private const string pathDash = "event:/SFX/Player/Player_Dash";
-        
+
         private const string pathJump = "event:/SFX/Player/Player_Jump";
         private const string pathOnLand = "event:/SFX/Player/Player_OnLand";
         private const string pathPunch = "event:/SFX/Player/Player_Punch";
@@ -36,7 +35,7 @@ namespace Code.Character.Hero
         public void PlayDamageAudio() =>
             RuntimeManager.PlayOneShot(pathTakeDamage, gameObject.transform.position);
 
-        public  void PlayJump()
+        public void PlayJump()
         {
             RuntimeManager.PlayOneShot(pathJump, gameObject.transform.position);
         }
@@ -48,7 +47,5 @@ namespace Code.Character.Hero
 
             RuntimeManager.PlayOneShot(path, gameObject.transform.position);
         }
-        
-
     }
 }

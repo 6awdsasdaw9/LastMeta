@@ -21,8 +21,7 @@ namespace Code.Character.Enemies
         [SerializeField] private float _effectiveHeight = 1;
         [SerializeField] private float _pushForce = 3;
 
-        private HeroMovement _heroMovement;
-        private IHealth _heroHealth;
+        private IHero _hero;
 
         private bool _isAttacking;
         private int _layerMask;
@@ -31,11 +30,9 @@ namespace Code.Character.Enemies
         public bool attackIsActive { get; private set; }
 
         [Inject]
-        private void Construct(HeroMovement heroMovement)
+        private void Construct(IHero hero)
         {
-            _heroMovement = heroMovement;
-            _heroHealth = heroMovement.GetComponent<IHealth>();
-
+            _hero = hero;
             _layerMask = 1 << LayerMask.NameToLayer(Constants.PlayerLayer);
         }
 
@@ -65,7 +62,7 @@ namespace Code.Character.Enemies
             if (!Hit(out Collider hit))
                 return;
 
-            _heroHealth.TakeDamage(_damage);
+            _hero.Health.TakeDamage(_damage);
             Push();
         }
 
@@ -74,9 +71,9 @@ namespace Code.Character.Enemies
             if (_pushForce == 0)
                 return;
             //TODO не работает если герой стоит справа
-            _heroMovement.SetSupportVelocity(_heroMovement.transform.localScale * _pushForce );
+            _hero.Movement.SetSupportVelocity(_hero.Transform.localScale * _pushForce);
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
-            _heroMovement.SetSupportVelocity(Vector2.zero);
+            _hero.Movement.SetSupportVelocity(Vector2.zero);
         }
 
         /// <summary>

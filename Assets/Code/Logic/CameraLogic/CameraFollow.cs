@@ -31,9 +31,9 @@ namespace Code.Logic.CameraLogic
 
 
         [Inject]
-        private void Construct(HeroMovement hero, SavedDataCollection dataCollection)
+        private void Construct(IHero hero, SavedDataCollection dataCollection)
         {
-            _following = hero.transform;
+            _following = hero.Transform;
             _currentDampTime = _dampTime;
             
             dataCollection.Add(this);

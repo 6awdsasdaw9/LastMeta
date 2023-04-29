@@ -18,24 +18,24 @@ namespace Code.Infrastructure.Installers
         
         private void BindHero()
         {
-            HeroMovement hero = Container.InstantiatePrefabForComponent<HeroMovement>(
+            Hero hero = Container.InstantiatePrefabForComponent<Hero>(
                 GetHeroPrefabs(),
                 GetInitialPoint(),
                 Quaternion.identity,
                 null);
 
-            Container.Bind<HeroMovement>().FromInstance(hero).AsSingle().NonLazy();
+            Container.BindInterfacesTo<Hero>().FromInstance(hero).AsSingle().NonLazy();
         }
 
-        private HeroMovement GetHeroPrefabs()
+        private Hero GetHeroPrefabs()
         {
             switch (_typeOfScene)
             {
                 case Constants.TypeOfScene.Game:
-                    return _prefabsData.hero;
+                    return _prefabsData.HeroPrefab;
                 case Constants.TypeOfScene.Real:
                 default:
-                    return _prefabsData.realHero;
+                    return _prefabsData.RealHeroPrefab;
             }
         }
 

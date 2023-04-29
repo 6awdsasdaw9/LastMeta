@@ -1,23 +1,16 @@
-using System;
 using Code.Character.Interfaces;
 using Code.Data.Configs;
-using Code.Data.GameData;
 using Code.Data.States;
 using Code.Debugers;
-using Code.Services;
 using Code.Services.Input;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Character.Hero
 {
-    public class HeroAttack : MonoBehaviour
+    public class HeroAttack : MonoBehaviour, IHeroAttack
     {
-        [SerializeField] private HeroAnimator _animator;
-        [SerializeField] private HeroMovement _movement;
-        [SerializeField] private HeroCollision _collision;
-
-        private MovementLimiter _movementLimiter;
+        private IHero _hero;
         private InputService _inputService;
         private PowerData _power;
 
@@ -26,17 +19,17 @@ namespace Code.Character.Hero
         private int _layerMask;
 
         [Inject]
-        private void Construct(MovementLimiter movementLimiter, InputService inputService, GameConfig gameConfig)
+        private void Construct(InputService inputService, GameConfig gameConfig)
         {
-            _movementLimiter = movementLimiter;
+            _hero = GetComponent<IHero>();
             _inputService = inputService;
             _power = gameConfig.heroConfig.power;
+            _layerMask = 1 << LayerMask.NameToLayer(Constants.HittableLayer);
         }
 
         private void OnEnable()
         {
             _inputService.PlayerAttackEvent += Attack;
-            _layerMask = 1 << LayerMask.NameToLayer(Constants.HittableLayer);
         }
 
         private void OnDisable()
@@ -44,21 +37,20 @@ namespace Code.Character.Hero
             _inputService.PlayerAttackEvent -= Attack;
         }
 
-        private void Attack()
-        { 
-            Log.ColorLog($"ATTACK: {_attackIsActive} || { _collision.onGround}");
-            if (_attackIsActive || !_collision.onGround)
+        public void Attack()
+        {
+            if (_attackIsActive || !_hero.Collision.OnGround)
                 return;
 
             _attackIsActive = true;
-            _animator.PlayAttack();
-            _movement.BlockMovement();
+            _hero.Animator.PlayAttack();
+            _hero.Movement.BlockMovement(unblockCondition: !_attackIsActive);
         }
 
         /// <summary>
         /// Animation Event
         /// </summary>
-        private void OnAttack()
+        public void OnAttack()
         {
             PhysicsDebug.DrawDebug(StartPoint(), _power.damagedRadius, 1.0f);
             for (int i = 0; i < Hit(); ++i)
@@ -68,17 +60,23 @@ namespace Code.Character.Hero
         /// <summary>
         /// Animation Event
         /// </summary>
-        private void OnAttackEnded()
+        public void OnAttackEnded()
         {
             _attackIsActive = false;
-            _movement.UnBlockMovement();
         }
-
+        
         private int Hit() =>
             Physics.OverlapSphereNonAlloc(StartPoint(), _power.damagedRadius, _hits, _layerMask);
-
+        
         private Vector3 StartPoint() =>
-            new Vector3(transform.position.x + transform.localScale.x * 0.1f, transform.position.y + 0.7f,
+            new(transform.position.x + transform.localScale.x * 0.1f, transform.position.y + 0.7f,
                 transform.position.z);
+        
+        
+        public void Disable() => 
+            enabled = false;
+        
+        public void Enable() => 
+            enabled = true;
     }
 }

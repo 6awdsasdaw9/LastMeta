@@ -6144,7 +6144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _musicEvent.Path
-      value: event:/Music/Home
+      value: event:/Music/Loop test
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _ambienceEvent.Path
@@ -6152,19 +6152,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _musicEvent.Guid.Data1
-      value: -679186606
+      value: 492783442
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _musicEvent.Guid.Data2
-      value: 1171737619
+      value: 1301200461
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _musicEvent.Guid.Data3
-      value: -1235007557
+      value: -1493820014
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _musicEvent.Guid.Data4
-      value: -1447113874
+      value: 1745945372
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _ambienceEvent.Guid.Data1

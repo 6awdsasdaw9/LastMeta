@@ -32,10 +32,10 @@ namespace Code.Infrastructure.Installers
             switch (_typeOfScene)
             {
                 case Constants.TypeOfScene.Real:
-                    return _prefabsData.realHUD;
+                    return _prefabsData.RealHUD;
                 case Constants.TypeOfScene.Game:
                 default:
-                    return _prefabsData.gameHUD;
+                    return _prefabsData.GameHUD;
             }
         }
     }

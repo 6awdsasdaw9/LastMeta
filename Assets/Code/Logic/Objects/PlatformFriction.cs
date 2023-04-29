@@ -8,31 +8,29 @@ namespace Code.Logic.Objects
     {
         [SerializeField] private Rigidbody _platformRb;
     
-        private HeroMovement _heroMovement;
-        private HeroCollision _heroCollision;
+        private IHero _hero;
         private Rigidbody _connectRb;
-    
+
         [Inject]
-        private void Construct(HeroMovement heroMovement)
+        private void Construct(IHero hero)
         {
-            _heroMovement = heroMovement;
-            _heroCollision = heroMovement.GetComponent<HeroCollision>();
+            _hero = hero;
         }
+        
         private void OnCollisionEnter(Collision collision)
         {
             if (!collision.gameObject.CompareTag(Constants.PlayerTag)) 
                 return;
-        
-            collision.gameObject.TryGetComponent(out _connectRb);
-            _heroCollision.SetFrictionPhysicsMaterial();
+      
+            _hero.Collision.SetFrictionPhysicsMaterial();
         }
 
         private void OnCollisionStay(Collision collision)
         {
-            if (!_connectRb)
+            if (!collision.gameObject.CompareTag(Constants.PlayerTag)) 
                 return;
         
-            _heroMovement.SetSupportVelocity(_platformRb.velocity);
+            _hero.Movement.SetSupportVelocity(_platformRb.velocity);
         }
 
         private void OnCollisionExit(Collision collision)
@@ -40,9 +38,8 @@ namespace Code.Logic.Objects
             if (!collision.gameObject.CompareTag(Constants.PlayerTag)) 
                 return;
         
-            _heroMovement.SetSupportVelocity(Vector2.zero);
-            _heroCollision.SetNoFrictionPhysicsMaterial();
-        
+            _hero.Movement.SetSupportVelocity(Vector2.zero);
+            _hero.Collision.SetNoFrictionPhysicsMaterial();
         }
     }
 }

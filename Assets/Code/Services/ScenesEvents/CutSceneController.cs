@@ -11,14 +11,14 @@ namespace Code.Services.ScenesEvents
       [SerializeField] private PlayableDirector _timelime;
       [SerializeField] private CameraFollow _cameraFollow;
       
-      private HeroMovement _heroMovement;
+      private IHero _hero;
       private MovementLimiter _movementLimiter;
 
       [Inject]
-      private void Construct(MovementLimiter limiter,HeroMovement hero)
+      private void Construct(MovementLimiter limiter,IHero hero)
       {
           _movementLimiter = limiter;
-          _heroMovement = hero;
+          _hero = hero;
       }
       
       private void OnEnable()
@@ -36,6 +36,6 @@ namespace Code.Services.ScenesEvents
       /// Timeline Event
       /// </summary>
       public void DisableHero() => 
-          _heroMovement.gameObject.SetActive(false);
+          _hero.Transform.gameObject.SetActive(false);
     }
 }

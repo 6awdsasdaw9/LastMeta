@@ -11,9 +11,9 @@ namespace Code.Audio
         [SerializeField] private StudioListener _listener;
         
         [Inject]
-        private void Construct(HeroMovement hero)
+        private void Construct(IHero hero)
         {
-            _listener.attenuationObject = hero.gameObject;
+            _listener.attenuationObject = hero.Transform.gameObject;
         }
     }
 }

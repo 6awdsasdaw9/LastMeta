@@ -3,7 +3,7 @@ using Code.Data.ProgressData;
 using Code.Data.States;
 using Code.Services;
 using Code.Services.Input;
-using Sirenix.OdinInspector;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -12,21 +12,21 @@ using Zenject;
 
 namespace Code.Character.Hero
 {
-    [RequireComponent(typeof(Rigidbody), typeof(HeroCollision))]
-    public class HeroMovement : MonoBehaviour, ISavedData
+    [RequireComponent(typeof(Rigidbody))]
+    public class HeroMovement : MonoBehaviour, ISavedData, IHeroMovement
     {
-        private MovementLimiter _movementLimiter;
+        [SerializeField] private Rigidbody _body;
+
+        private IHero _hero;
         private HeroConfig _heroConfig;
         private InputService _input;
 
-        [Title("Components")] 
-        [SerializeField] private Rigidbody _body;
-        [SerializeField] private HeroCollision _collision;
-
         #region Values
-        public bool isCrouch { get; private set; }
-        [HideInInspector] public float directionX;
 
+        public bool IsCrouch { get; private set; }
+        public float DirectionX => _directionX;
+
+        private float _directionX;
         private Vector2 _desiredVelocity;
         private Vector2 _velocity;
         private Vector2 _supportVelocity;
@@ -34,7 +34,6 @@ namespace Code.Character.Hero
         private float _acceleration;
         private float _deceleration;
         private float _turnSpeed;
-        private float _upgradeSpeed;
 
         private bool _heroCanMove = true;
         private bool _pressingMove;
@@ -42,21 +41,21 @@ namespace Code.Character.Hero
 
         private const float _maxSupportVelocity = 1f;
         private const float _supportVelocityMultiplayer = 0.15f;
-        
         #endregion
+
 
         #region Run Time
 
         [Inject]
-        private void Construct(InputService input, MovementLimiter limiter, GameConfig gameConfig, SavedDataCollection dataCollection)
+        private void Construct(InputService input, GameConfig gameConfig,SavedDataCollection dataCollection)
         {
+            _hero = GetComponent<IHero>();
             _input = input;
-            _movementLimiter = limiter;
             _heroConfig = gameConfig.heroConfig;
-
             dataCollection.Add(this);
         }
-        private void OnEnable() => 
+
+        private void OnEnable() =>
             SubscribeToEvent(true);
 
         private void Update()
@@ -74,57 +73,60 @@ namespace Code.Character.Hero
 
         private void OnDestroy() =>
             SubscribeToEvent(false);
-        
 
         #endregion
-        
+
         #region Events
+
         private void SubscribeToEvent(bool flag)
         {
             if (flag)
             {
                 _input.PlayerCrochEvent += OnPressCrouch;
                 _input.PlayerMovementEvent += OnPressMovement;
-                _movementLimiter.OnDisableMovementMode += BlockMovement;
-                _movementLimiter.OnEnableMovementMode += UnBlockMovement;
+
             }
             else
             {
                 _input.PlayerCrochEvent -= OnPressCrouch;
                 _input.PlayerMovementEvent -= OnPressMovement;
-                _movementLimiter.OnDisableMovementMode -= BlockMovement;
-                _movementLimiter.OnEnableMovementMode -= UnBlockMovement;
-            }
+            }       
         }
-        public void BlockMovement() => 
-            StopMovement();
 
-        public void UnBlockMovement() =>
+        public async UniTaskVoid BlockMovement(bool unblockCondition)
+        {
+            StopMovement();
+            await UniTask.WaitUntil(() => unblockCondition, cancellationToken: this.GetCancellationTokenOnDestroy());
             _heroCanMove = true;
+        }
         
+
         #endregion
 
         #region Input
+
         private void OnPressMovement(InputAction.CallbackContext context)
         {
-            if (_movementLimiter.charactersCanMove && _heroCanMove)
+            if (_heroCanMove)
             {
-                directionX = context.ReadValue<float>();
+                _directionX = context.ReadValue<float>();
             }
 
-            _pressingMove = directionX != 0;
+            _pressingMove = DirectionX != 0;
         }
+
         private void OnPressCrouch(InputAction.CallbackContext context) =>
             _pressingCrouch = context.started;
-        
+
         #endregion
 
         #region Velocity
+
         public void SetSupportVelocity(Vector2 otherObjectVelocity)
         {
-            if (directionX != 0)
+            if (_directionX != 0)
             {
-                if ((directionX > 0 && otherObjectVelocity.x > 0) || (directionX < 0 && otherObjectVelocity.x < 0))
+                if ((_directionX > 0 && otherObjectVelocity.x > 0) || (DirectionX < 0 && otherObjectVelocity.x < 0))
                 {
                     _supportVelocity = new Vector2(otherObjectVelocity.x, 0) * _supportVelocityMultiplayer * 0.7f;
                 }
@@ -144,32 +146,33 @@ namespace Code.Character.Hero
             };
         }
 
-        public void SetUpgradeSpeed(float value) => 
-            _upgradeSpeed = value;
-
+        //TODO переделать. Этот параметр должен находится в отдельном классе, из которого берется значение 
+   
         private void SetDesiredVelocity() =>
-            _desiredVelocity = new Vector2(directionX, 0f) * (_heroConfig.maxSpeed + _upgradeSpeed);
-        
+            _desiredVelocity = new Vector2(DirectionX, 0f) * (_heroConfig.maxSpeed + _hero.Upgrade.BonusSpeed);
+
         #endregion
-        
-        #region Movement 
+
+        #region Movement
+
         private void StopMovement()
         {
-            directionX = 0;
+            _directionX = 0;
             _heroCanMove = false;
             _pressingCrouch = false;
             _pressingMove = false;
             _body.velocity = Vector3.zero;
         }
+
         private void MoveWithAcceleration()
         {
-            _acceleration = _collision.onGround ? _heroConfig.maxAcceleration : _heroConfig.maxAirAcceleration;
-            _deceleration = _collision.onGround ? _heroConfig.maxDeceleration : _heroConfig.maxAirDeceleration;
-            _turnSpeed = _collision.onGround ? _heroConfig.maxTurnSpeed : _heroConfig.maxAirTurnSpeed;
+            _acceleration = _hero.Collision.OnGround ? _heroConfig.maxAcceleration : _heroConfig.maxAirAcceleration;
+            _deceleration = _hero.Collision.OnGround ? _heroConfig.maxDeceleration : _heroConfig.maxAirDeceleration;
+            _turnSpeed = _hero.Collision.OnGround ? _heroConfig.maxTurnSpeed : _heroConfig.maxAirTurnSpeed;
 
             if (_pressingMove)
             {
-                if (Mathf.Sign(directionX) != Mathf.Sign(_velocity.x))
+                if (Mathf.Sign(DirectionX) != Mathf.Sign(_velocity.x))
                     _maxSpeedChange = _turnSpeed * Time.deltaTime;
                 else
                     _maxSpeedChange = _acceleration * Time.deltaTime;
@@ -180,7 +183,7 @@ namespace Code.Character.Hero
             }
 
             _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange) *
-                          (isCrouch ? _heroConfig.crouchSpeed : 1);
+                          (IsCrouch ? _heroConfig.crouchSpeed : 1);
 
             if (_heroCanMove)
             {
@@ -190,24 +193,24 @@ namespace Code.Character.Hero
 
         private void Rotation()
         {
-            if (directionX != 0)
-                transform.localScale = new Vector3(directionX > 0 ? 1 : -1, 1, 1);
+            if (DirectionX != 0)
+                transform.localScale = new Vector3(DirectionX > 0 ? 1 : -1, 1, 1);
         }
-        
+
         private void Crouch()
         {
-            if (_pressingCrouch && _collision.onGround)
-                isCrouch = true;
-            else if (!_collision.underCeiling)
-                isCrouch = false;
+            if (_pressingCrouch && _hero.Collision.OnGround)
+                IsCrouch = true;
+            else if (!_hero.Collision.UnderCeiling)
+                IsCrouch = false;
         }
+
         #endregion
-        
+
         #region Save and Load
 
         public void LoadData(SavedData savedData)
         {
-
             if (savedData.heroPositionData.scene != CurrentLevel() ||
                 savedData.heroPositionData.position.AsUnityVector() == Vector3.zero)
                 return;
@@ -222,7 +225,20 @@ namespace Code.Character.Hero
 
         private string CurrentLevel() =>
             SceneManager.GetActiveScene().name;
-        
+
         #endregion
+
+        public void Disable()
+        {
+            StopMovement();
+            _heroCanMove = false;
+            enabled = false;
+        }
+
+        public void Enable()
+        {
+            enabled = true;
+            _heroCanMove = true;
+        }
     }
 }

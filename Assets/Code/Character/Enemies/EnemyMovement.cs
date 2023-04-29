@@ -19,9 +19,9 @@ namespace Code.Character.Enemies
         private float _minimalDistance;
         
         [Inject]
-        private void Construct(HeroMovement hero,MovementLimiter limiter)
+        private void Construct(IHero hero,MovementLimiter limiter)
         {
-            _heroTransform = hero.transform;
+            _heroTransform = hero.Transform;
             _limiter = limiter;
 
             _minimalDistance = _agent.stoppingDistance;

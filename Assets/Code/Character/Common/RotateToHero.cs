@@ -11,8 +11,8 @@ namespace Code.Character.Common
         private Transform _heroTransform;
 
         [Inject]
-        private void Construct(HeroMovement hero)
-            => _heroTransform = hero.transform;
+        private void Construct(IHero hero)
+            => _heroTransform = hero.Transform;
     
         private void Update()
         {

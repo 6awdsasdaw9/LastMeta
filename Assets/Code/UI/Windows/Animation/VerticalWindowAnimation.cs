@@ -1,6 +1,5 @@
 using System;
 using Code.Data.Configs;
-using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 using Zenject;
@@ -11,74 +10,61 @@ namespace Code.UI.Windows
     {
         [SerializeField] private RectTransform _body;
         [SerializeField] private CanvasGroup _canvasGroup;
-        
-        private  Vector3 _downPos;
-        private  Vector3 _centerPos;
-        private  float _timeToHide;
-        private  float _timeToShow;
 
-        private const int CYCLE_STEPS = 100;
-        private const float ONE_STEP = 1 / (float)CYCLE_STEPS;
-        
+        private Vector3 _downPos;
+        private Vector3 _centerPos;
+        private float _timeToHide;
+        private float _timeToShow;
+
+
         [Inject]
-        private void Construct( GameSettings gameSettings)
+        private void Construct(GameSettings gameSettings)
         {
             _downPos = gameSettings.InteractiveObjectDownPos;
             _centerPos = gameSettings.InteractiveObjectCenterPos;
             _timeToHide = gameSettings.InteractiveObjectTimeToHide;
             _timeToShow = gameSettings.InteractiveObjectTimeToShow;
         }
-        
+
         public override void PlayShow(Action WindowShowed)
         {
-            _body.anchoredPosition = _downPos; 
+            _body.anchoredPosition = _downPos;
             _canvasGroup.alpha = 0;
-           
+
             _body.gameObject.SetActive(true);
-            
-           ShowAnimation(WindowShowed);
+
+            IsPlay = true;
+
+            _body.DOAnchorPos(_centerPos, _timeToShow)
+                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
+
+            _canvasGroup.DOFade(1, _timeToShow)
+                .SetLink(gameObject, LinkBehaviour.KillOnDestroy)
+                .OnComplete(() =>
+                {
+                    WindowShowed?.Invoke();
+                    IsPlay = false;
+                });
         }
 
         public override void PlayHide(Action WindowHidden)
         {
-            _body.anchoredPosition = _centerPos; 
+            _body.anchoredPosition = _centerPos;
             _canvasGroup.alpha = 1;
 
-            HideAnimation(WindowHidden);
-        }
-
-        private async UniTaskVoid ShowAnimation(Action WindowHidden)
-        {
             IsPlay = true;
-            _body.DOAnchorPos(_centerPos, _timeToShow);
-            
-            var speed = ONE_STEP / (1 / _timeToShow);
 
-            for (int i = 0; i < CYCLE_STEPS; i++)
-            {
-                _canvasGroup.alpha += ONE_STEP;
-                await UniTask.Delay(TimeSpan.FromSeconds(speed));
-            }
+            _body.DOAnchorPos(_downPos, _timeToHide)
+                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
 
-            WindowHidden?.Invoke();
-            IsPlay = false;
-        }
-
-        private async UniTaskVoid HideAnimation(Action WindowHidden)
-        {
-            IsPlay = true;
-            _body.DOAnchorPos(_downPos, _timeToHide);
-            
-            var speed = ONE_STEP / (1 / _timeToHide);
-            for (int i = 0; i < CYCLE_STEPS; i++)
-            {
-                _canvasGroup.alpha -= ONE_STEP;
-                await UniTask.Delay(TimeSpan.FromSeconds(speed));
-            }
-            
-            IsPlay = false;
-            WindowHidden?.Invoke();
-            _body.gameObject.SetActive(false);
+            _canvasGroup.DOFade(0, _timeToHide)
+                .SetLink(gameObject, LinkBehaviour.KillOnDestroy)
+                .OnComplete(() =>
+                {
+                    IsPlay = false;
+                    WindowHidden?.Invoke();
+                    _body.gameObject.SetActive(false);
+                });
         }
     }
 }

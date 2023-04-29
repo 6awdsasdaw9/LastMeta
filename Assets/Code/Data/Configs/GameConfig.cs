@@ -1,3 +1,4 @@
+using System.Collections;
 using Code.Data.States;
 using UnityEngine;
 
@@ -9,6 +10,5 @@ namespace Code.Data.Configs
         public Constants.Scenes initialScene;
         public HeroConfig heroConfig;
     }
-
 
 }

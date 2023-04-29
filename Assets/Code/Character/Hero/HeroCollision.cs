@@ -7,30 +7,35 @@ using Zenject;
 
 namespace Code.Character.Hero
 {
-    public class HeroCollision : MonoBehaviour
+    public class HeroCollision : MonoBehaviour, IHeroCollision
     {
-        public bool onGround { get; private set; }
-        public bool underCeiling;
-        
-        [SerializeField] private HeroMovement _hero;
+        public bool OnGround { get; private set; }
+        public bool UnderCeiling { get; private set; }
+        public event Action OnWater;
+
         [SerializeField] private CapsuleCollider _collider;
+        [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private LayerMask _waterLayer;
 
-        [Space, Title("Collider Settings")]
+        [Space, Title("Collider Settings")] 
         [SerializeField] private float _groundLength = 0.95f;
+
         [SerializeField] private float _ceilingLength = 0.95f;
         [SerializeField] private Vector3 _colliderOffset;
         private PhysicMaterial _noFrictionMaterial;
         private PhysicMaterial _frictionMaterial;
 
-        public Action OnWater;
-        
+        private IHero _hero;
+
+        #region Run Time
+
         [Inject]
         private void Construct(GameConfig gameConfig)
         {
             _frictionMaterial = gameConfig.heroConfig.FrictionMaterial;
             _noFrictionMaterial = gameConfig.heroConfig.NoFrictionMaterial;
+            _hero = GetComponent<IHero>();
         }
 
         private void Start()
@@ -38,36 +43,30 @@ namespace Code.Character.Hero
             SetNoFrictionPhysicsMaterial();
             CheckWater();
         }
-        
+
         private void Update()
         {
-            onGround = GroundCheck();
-            underCeiling = CeilingCheck();
+            OnGround = GroundRaycast();
+            UnderCeiling = CeilingRaycast();
             SetCollision();
         }
+        
+        #endregion
 
-        public void DisableCollision()
-        {
-            _collider.enabled = false;
-         
-            if (TryGetComponent(out Rigidbody rigidbody)) 
-                rigidbody.constraints = RigidbodyConstraints.FreezeAll;
-        }
+        #region Physics Material
 
-        public void SetFrictionPhysicsMaterial() => 
+        public void SetFrictionPhysicsMaterial() =>
             _collider.material = _frictionMaterial;
 
         public void SetNoFrictionPhysicsMaterial() =>
             _collider.material = _noFrictionMaterial;
+        
+        #endregion
 
-        private async UniTaskVoid CheckWater()
-        {
-            await UniTask.WaitUntil(WaterCheck, cancellationToken: this.GetCancellationTokenOnDestroy());
-            OnWater?.Invoke();
-        }
+        #region Collision Mode
         private void SetCollision()
         {
-            if (_hero.isCrouch)
+            if (_hero.Movement.IsCrouch)
             {
                 EnableHorizontalCollider();
             }
@@ -76,7 +75,7 @@ namespace Code.Character.Hero
                 EnableVerticalCollider();
             }
         }
-        
+
         private void EnableHorizontalCollider()
         {
             _collider.direction = 0;
@@ -90,32 +89,52 @@ namespace Code.Character.Hero
             _collider.center = new Vector3(0, 0.65f, 0);
             _collider.height = 1.5f;
         }
+        
 
-        private bool GroundCheck()
-        {
-            return Physics.Raycast(transform.position, Vector2.down, _groundLength, _groundLayer);
-        }
+        #endregion
 
-        private bool CeilingCheck()
+        #region Check Surface
+        private async UniTaskVoid CheckWater()
         {
-            return Physics.Raycast(transform.position  + _colliderOffset, Vector2.up, _ceilingLength, _groundLayer)||
-                   Physics.Raycast(transform.position - _colliderOffset, Vector2.up, _ceilingLength, _groundLayer);
+            await UniTask.WaitUntil(WaterRaycast, cancellationToken: this.GetCancellationTokenOnDestroy());
+            OnWater?.Invoke();
         }
         
-        private bool WaterCheck() => 
+        private bool GroundRaycast() => 
+            Physics.Raycast(transform.position, Vector2.down, _groundLength, _groundLayer);
+
+        private bool CeilingRaycast() =>
+            Physics.Raycast(transform.position + _colliderOffset, Vector2.up, _ceilingLength, _groundLayer) ||
+            Physics.Raycast(transform.position - _colliderOffset, Vector2.up, _ceilingLength, _groundLayer);
+
+        private bool WaterRaycast() =>
             Physics.Raycast(transform.position, Vector2.down, _groundLength, _waterLayer);
+        
+        #endregion
+        
+        public void Disable()
+        {
+            _collider.enabled = false;
+            _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        }
+
+        public void Enable()
+        {
+            _collider.enabled = true;
+            _rigidbody.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        }
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.green; 
-            
-            //ground
-            Gizmos.DrawLine(transform.position, transform.position  + Vector3.down * _groundLength);
-            //ceiling
-            Gizmos.DrawLine(transform.position + _colliderOffset,transform.position + _colliderOffset + Vector3.up * _ceilingLength);
-            Gizmos.DrawLine(transform.position - _colliderOffset,transform.position - _colliderOffset + Vector3.up * _ceilingLength);
-        }
+            Gizmos.color = Color.green;
 
-        
+            //ground
+            Gizmos.DrawLine(transform.position, transform.position + Vector3.down * _groundLength);
+            //ceiling
+            Gizmos.DrawLine(transform.position + _colliderOffset,
+                transform.position + _colliderOffset + Vector3.up * _ceilingLength);
+            Gizmos.DrawLine(transform.position - _colliderOffset,
+                transform.position - _colliderOffset + Vector3.up * _ceilingLength);
+        }
     }
 }

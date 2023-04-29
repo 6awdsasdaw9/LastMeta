@@ -1,74 +1,78 @@
+using System;
 using Code.Data.Configs;
-using Code.Data.GameData;
 using Code.Services;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
 
 namespace Code.Character.Hero
 {
-    public class HeroDeath : MonoBehaviour
+    public class HeroDeath : MonoBehaviour, IHeroDeath
     {
-        [SerializeField] private HeroHealth _health;
-        [SerializeField] private HeroAnimator _animator;
-
-        [Space, Title("Disable Components")] [SerializeField]
-        private HeroCollision _collision;
-
-        [SerializeField] private HeroMovement _movement;
-        [SerializeField] private HeroJump _jump;
-        [SerializeField] private HeroAttack _attack;
-
-        private GameObject _deathFx;
-        private bool _isDeath;
+        public event Action OnDeath;
+        
+        private IHero _hero;
         private MovementLimiter _limiter;
+        private bool _isDeath;
+
+        //TODO вытащить в отдельных класс VFX игрока
+        private GameObject _deathFx;
 
         [Inject]
         private void Construct(PrefabsData prefabsData, MovementLimiter limiter)
         {
-            _deathFx = prefabsData.fx_PlayerDeath;
-            _health.HealthChanged += HealthChanged;
-            _collision.OnWater += DeathOnWater;
+            _hero = GetComponent<IHero>();
+            _deathFx = prefabsData.VFX_PlayerDeath;
+            _hero.Health.HealthChanged += HealthChanged;
+            _hero.Collision.OnWater += DeathOnWater;
             _limiter = limiter;
         }
 
         private void OnDestroy()
         {
-            _health.HealthChanged -= HealthChanged;
-            _collision.OnWater -= DeathOnWater;
+            _hero.Health.HealthChanged -= HealthChanged;
+            _hero.Collision.OnWater -= DeathOnWater;
         }
 
         private void HealthChanged()
         {
-            if (_health.Current <= 0 && !_isDeath)
+            if (_hero.Health.Current <= 0 && !_isDeath)
+            {
                 Die();
+            }
         }
 
         private void Die()
         {
+            OnDeath?.Invoke();
+            _hero.Animator.PlayDeath();
             DisableHero();
 
-            _animator.PlayDeath();
+            PlayDeathVFX();
+        }
+
+        private void PlayDeathVFX()
+        {
             var vfx = Instantiate(_deathFx, transform.position, Quaternion.identity);
             vfx.transform.position -= Vector3.right * transform.localScale.x * 0.5f;
         }
 
         private void DeathOnWater()
         {
+            OnDeath?.Invoke();
+            _hero.Animator.PlayDeathOnWater();
             DisableHero();
-            _animator.PlayDeathOnWater();
         }
 
         private void DisableHero()
         {
             _isDeath = true;
+
+            _hero.Collision.Disable();
+            _hero.Movement.Disable();
+            _hero.Jump.Disable();
+            _hero.Attack.Disable();
             _limiter.DisableMovement();
-            
-            _collision.DisableCollision();
-            _movement.enabled = false;
-            _jump.enabled = false;
-            _attack.enabled = false;
 
             transform.position = new Vector3(transform.position.x, transform.position.y, Constants.twoLayer);
         }

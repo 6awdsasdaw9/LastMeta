@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4355872365580197732}
   - component: {fileID: 4988326818585598692}
   - component: {fileID: 1427034856}
+  - component: {fileID: 7280351799685329201}
   - component: {fileID: 6659652504158788561}
   - component: {fileID: 6659652504158788546}
   - component: {fileID: 6659652504158788560}
@@ -91,6 +92,28 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.65, z: 0}
+--- !u!114 &7280351799685329201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659652504158788574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc8c6223ba74088ab6f9c100291ac65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 6659652504158788546}
+  _audio: {fileID: 1297059016546552242}
+  _movement: {fileID: 6659652504158788560}
+  _jump: {fileID: 6659652504158788562}
+  _collision: {fileID: 6659652504158788561}
+  _attack: {fileID: 0}
+  _buff: {fileID: 0}
+  _death: {fileID: 0}
+  _health: {fileID: 0}
+  _upgrade: {fileID: 0}
 --- !u!114 &6659652504158788561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,12 +126,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079bd03092cea444581fbf3cc51923b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  underCeiling: 0
-  _hero: {fileID: 6659652504158788560}
   _collider: {fileID: 1427034856}
+  _rigidbody: {fileID: 4988326818585598692}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  _waterLayer:
+    serializedVersion: 2
+    m_Bits: 16
   _groundLength: 0.15
   _ceilingLength: 0.95
   _colliderOffset: {x: 0, y: 0, z: 0}
@@ -125,8 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 4355872365580197732}
-  _hero: {fileID: 6659652504158788560}
-  _collision: {fileID: 6659652504158788561}
 --- !u!114 &6659652504158788560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,8 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _body: {fileID: 4988326818585598692}
-  _collision: {fileID: 6659652504158788561}
-  directionX: 0
 --- !u!114 &6659652504158788562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,9 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2e5c134a2b4334ab9eec2bbc2f640a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _move: {fileID: 6659652504158788560}
-  _collision: {fileID: 6659652504158788561}
-  _heroAudio: {fileID: 1297059016546552242}
   _body: {fileID: 4988326818585598692}
 --- !u!114 &1297059016546552242
 MonoBehaviour:

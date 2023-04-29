@@ -60,6 +60,7 @@ namespace Code.Logic.DayOfTime
             }
         }
 
+     
         private void TurnOnLight(Light light)
         {
             var targetIntensity = 1;

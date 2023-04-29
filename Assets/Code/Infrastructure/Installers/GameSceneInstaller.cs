@@ -56,7 +56,7 @@ namespace Code.Infrastructure.Installers
         {
             
             HUD hud = Container.InstantiatePrefabForComponent<HUD>(
-                prefabsData.gameHUD,
+                prefabsData.GameHUD,
                 Vector3.zero, 
                 Quaternion.identity,
                 null);
@@ -65,16 +65,16 @@ namespace Code.Infrastructure.Installers
         
         private void BindHero()
         {
-            HeroMovement heroPrefab = prefabsData.hero;
+            Hero heroPrefab = prefabsData.HeroPrefab;
             Vector3 initialPoint = GameObject.FindGameObjectWithTag(Constants.InitialPointTag).transform.position;
 
-            HeroMovement hero = Container.InstantiatePrefabForComponent<HeroMovement>(
+            IHero hero = Container.InstantiatePrefabForComponent<IHero>(
                 heroPrefab,
                 initialPoint,
                 Quaternion.identity,
                 null);
             
-            Container.Bind<HeroMovement>().FromInstance(hero).AsSingle().NonLazy();
+            Container.Bind<IHero>().FromInstance(hero).AsSingle().NonLazy();
         }
         
         private void LoadGameProgress()

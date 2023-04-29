@@ -9,15 +9,15 @@ namespace Code.Data.Configs
     public class PrefabsData : ScriptableObject
     {
         [Title("Heroes")]
-        public HeroMovement realHero;
-        public HeroMovement hero;
+        public Hero RealHeroPrefab;
+        public Hero HeroPrefab;
         
         [Title("FX")] 
-        public GameObject fx_PlayerDeath;
+        public GameObject VFX_PlayerDeath;
         
         [Title("UI")]
-        public HUD realHUD;
-        public HUD gameHUD;
+        public HUD RealHUD;
+        public HUD GameHUD;
         public DialogueCloud DialogueCloud;
     }
 }

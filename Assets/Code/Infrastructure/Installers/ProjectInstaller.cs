@@ -21,7 +21,7 @@ namespace Code.Infrastructure.Installers
             BindDataService();
             
             BindFactory();
-           BindStateMachine();
+            BindStateMachine();
         }
 
         public void Initialize() => 

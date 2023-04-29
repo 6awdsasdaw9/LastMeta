@@ -3,25 +3,23 @@ using System.Linq;
 using Code.Data.Configs;
 using Code.Data.ProgressData;
 using Code.Data.States;
-using Code.Services;
-using Code.Services.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Character.Hero
 {
-    public class HeroUpgrade : MonoBehaviour, ISavedData
+    public class HeroUpgrade : MonoBehaviour, ISavedData, IHeroUpgrade
     {
-        [Header("Components")] 
-        [SerializeField] private HeroMovement _heroMovement;
-        [SerializeField] private HeroJump _heroJump;
-
         private HeroConfig _heroConfig;
         private HeroUpgradesData _upgradesData;
 
+        public float BonusSpeed { get; private set; }
+        public float BonusHeightJump { get; private set; }
+        public int BonusAirJump { get; private set; }
+
         [Inject]
-        private void Construct(InputService input, MovementLimiter limiter, GameConfig gameConfig, SavedDataCollection dataCollection)
+        private void Construct(GameConfig gameConfig, SavedDataCollection dataCollection)
         {
             _heroConfig = gameConfig.heroConfig;
             dataCollection.Add(this);
@@ -49,15 +47,21 @@ namespace Code.Character.Hero
             SetAirJump();
         }
 
-        private void SetSpeed() => 
-            _heroMovement.SetUpgradeSpeed(GetUpgradeParam(UpgradeParamType.Speed, _upgradesData.SpeedLevel));
+        private void SetSpeed()
+        {
+            BonusSpeed = GetUpgradeParam(UpgradeParamType.Speed, _upgradesData.SpeedLevel);
+        }
 
-        private void SetHeightJump() => 
-            _heroJump.SetUpgradeJumpHeight(GetUpgradeParam(UpgradeParamType.JumpHeight, _upgradesData.JumpHeightLevel));
+        private void SetHeightJump()
+        {
+            BonusHeightJump = GetUpgradeParam(UpgradeParamType.JumpHeight, _upgradesData.JumpHeightLevel);
+        }
 
 
-        private void SetAirJump() => 
-            _heroJump.SetMaxAirJump(Convert.ToInt32(GetUpgradeParam(UpgradeParamType.AirJump, _upgradesData.AirJumpLevel)));
+        private void SetAirJump()
+        {
+            BonusAirJump = Convert.ToInt32(GetUpgradeParam(UpgradeParamType.AirJump, _upgradesData.AirJumpLevel));
+        }
 
         private float GetUpgradeParam(UpgradeParamType paramType, int level)
         {
@@ -67,10 +71,10 @@ namespace Code.Character.Hero
 
             if (values == null)
                 return 0;
-            
+
             if (level > values.Count - 1)
                 level = values.Count - 1;
-            
+
             return values[level];
         }
 
@@ -84,10 +88,10 @@ namespace Code.Character.Hero
 
         public void SaveData(SavedData savedData)
         {
-            savedData.HeroUpgradesData = _upgradesData; 
+            savedData.HeroUpgradesData = _upgradesData;
         }
     }
-    
+
     [Serializable]
     public class HeroUpgradesData
     {
