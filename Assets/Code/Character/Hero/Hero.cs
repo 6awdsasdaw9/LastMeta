@@ -30,7 +30,7 @@ namespace Code.Character.Hero
         public IHeroMovement Movement => _movement;
         public IHeroJump Jump => _jump;
         public IHeroUpgrade Upgrade => _upgrade;
-        
+
         private MovementLimiter _movementLimiter;
         
         [Inject]
@@ -45,7 +45,7 @@ namespace Code.Character.Hero
         {
             _movement.Enable();
             _jump.Enable();
-            _attack.Enable();
+            _attack?.Enable();
             _collision.Enable();
         }
 
@@ -53,7 +53,7 @@ namespace Code.Character.Hero
         {
             _movement.Disable();
             _jump.Disable();
-            _attack.Disable();
+            _attack?.Disable();//TODO непотребство
             _collision.Disable();
         }
     }

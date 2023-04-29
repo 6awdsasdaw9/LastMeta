@@ -1,5 +1,6 @@
 using Code.Character.Hero;
 using Code.UI;
+using Code.UI.HeadUpDisplay;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Code.UI.Windows
+namespace Code.UI.Windows.Animation
 {
     public abstract class WindowAnimation : MonoBehaviour
     {

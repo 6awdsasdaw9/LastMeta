@@ -5,7 +5,7 @@ using Code.UI.Windows;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Code.UI
+namespace Code.UI.HeadUpDisplay
 {
 
     [RequireComponent(typeof(HudAdapter))]

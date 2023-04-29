@@ -1,3 +1,4 @@
+using Code.UI.HeadUpDisplay;
 using Zenject;
 
 namespace Code.UI.Adaptors

@@ -18,12 +18,13 @@ namespace Code.Services
 
         public IEnumerator LoadSceneAsync(string nextScene, Action onLoaded = null)
         {
-
+            /*
             if (SceneManager.GetActiveScene().name == nextScene)
             {
                 onLoaded?.Invoke();
                 yield break;
             }
+            */
 
             AsyncOperation waitNextScene = SceneManager.LoadSceneAsync(nextScene);
 
@@ -32,6 +33,11 @@ namespace Code.Services
 
             onLoaded?.Invoke();
         }
-     
+
+        /*public void ReloadCurrentScene(string sceneName)
+        {
+            SceneManager.LoadSceneAsync(sceneName);
+        }*/
+
     }
 } 

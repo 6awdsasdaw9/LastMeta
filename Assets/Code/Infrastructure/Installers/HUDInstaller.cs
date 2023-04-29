@@ -1,6 +1,7 @@
 using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.UI;
+using Code.UI.HeadUpDisplay;
 using UnityEngine;
 using Zenject;
 

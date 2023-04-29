@@ -1,4 +1,5 @@
 using Code.Services;
+using Code.UI.HeadUpDisplay;
 using UnityEngine;
 using Zenject;
 

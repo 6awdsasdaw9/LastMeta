@@ -1,4 +1,6 @@
 using System;
+using Code.UI.HeadUpDisplay;
+using Code.UI.Windows.Animation;
 using UnityEngine;
 
 namespace Code.UI.Windows

@@ -1,5 +1,6 @@
 using System.Linq;
 using Code.UI;
+using Code.UI.HeadUpDisplay;
 using Code.UI.Windows;
 using Zenject;
 

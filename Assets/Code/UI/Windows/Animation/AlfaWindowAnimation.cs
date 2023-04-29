@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
-namespace Code.UI.Windows
+namespace Code.UI.Windows.Animation
 {
     public class AlfaWindowAnimation : WindowAnimation
     {

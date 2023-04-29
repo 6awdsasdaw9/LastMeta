@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using Zenject;
 
-namespace Code.UI.Windows
+namespace Code.UI.Windows.Animation
 {
     public class VerticalWindowAnimation : WindowAnimation
     {
