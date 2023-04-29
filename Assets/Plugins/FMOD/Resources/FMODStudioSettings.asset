@@ -131,15 +131,15 @@ MonoBehaviour:
     HasValue: 0
   displaySortOrder: 0
   childIdentifiers:
-  - c88d16e5272a4e241b0ef0ac2e53b73d
-  - fd7c55dab0fce234b8c25f6ffca523c1
+  - 46fbfdf3fc43db0458918377fd40293e
+  - 52eb9df5db46521439908db3a29a1bbb
   - 2c5177b11d81d824dbb064f9ac8527da
   - e7a046c753c3c3d4aacc91f6597f310d
-  - 52eb9df5db46521439908db3a29a1bbb
-  - b7716510a1f36934c87976f3a81dbf3d
-  - 0f8eb3f400726694eb47beb1a9f94ce8
-  - 46fbfdf3fc43db0458918377fd40293e
+  - c88d16e5272a4e241b0ef0ac2e53b73d
   - 2fea114e74ecf3c4f920e1d5cc1c4c40
+  - b7716510a1f36934c87976f3a81dbf3d
+  - fd7c55dab0fce234b8c25f6ffca523c1
+  - 0f8eb3f400726694eb47beb1a9f94ce8
   codecChannels:
     Value: []
     HasValue: 0
@@ -293,7 +293,7 @@ MonoBehaviour:
   HasSourceProject: 0
   HasPlatforms: 0
   sourceProjectPath: 
-  sourceBankPath: Assets/StreamingAssets
+  sourceBankPath: Assets/Audio/AudioBanks/Desktop
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -315,25 +315,23 @@ MonoBehaviour:
   RealChannelSettings: []
   Plugins: []
   MasterBanks:
-  - Desktop/Master
+  - Master
   Banks:
-  - Desktop/Ambience_Level_01
-  - Desktop/Ambience_Level_01.assets
-  - Desktop/Enemy_Sounds_Level_01
-  - Desktop/Enemy_Sounds_Level_01.assets
-  - Desktop/Home Cut Scene
-  - Desktop/Home Cut Scene.assets
-  - Desktop/Master.assets
-  - Desktop/Music_Level_01
-  - Desktop/Music_Level_01.assets
-  - Desktop/Music+Ambience
-  - Desktop/Music+Ambience.assets
-  - Desktop/Payer_Sounds_Level_01
-  - Desktop/Payer_Sounds_Level_01.assets
-  - Desktop/Player Sounds
-  - Desktop/Player Sounds.assets
-  - Desktop/TestBank
-  - Desktop/TestBank.assets
+  - Ambience_Level_01
+  - Ambience_Level_01.assets
+  - Enemy_Sounds_Level_01
+  - Enemy_Sounds_Level_01.assets
+  - Home Cut Scene
+  - Home Cut Scene.assets
+  - Master.assets
+  - Music_Level_01
+  - Music_Level_01.assets
+  - Music+Ambience
+  - Music+Ambience.assets
+  - Payer_Sounds_Level_01
+  - Payer_Sounds_Level_01.assets
+  - Player Sounds
+  - Player Sounds.assets
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
@@ -348,17 +346,17 @@ MonoBehaviour:
   HideSetupWizard: 1
   LastEventReferenceScanVersion: 131601
   Platforms:
-  - {fileID: -5886081178597366646}
+  - {fileID: -6346572104717534490}
   - {fileID: -6098169414426767640}
-  - {fileID: 455893951336157843}
-  - {fileID: 3058175462696124757}
+  - {fileID: -5886081178597366646}
+  - {fileID: -4972922210750159182}
   - {fileID: 38108892873912829}
   - {fileID: 217347771297137564}
-  - {fileID: -4972922210750159182}
-  - {fileID: 1931432640507889783}
-  - {fileID: 7495684116348550306}
-  - {fileID: -6346572104717534490}
+  - {fileID: 455893951336157843}
   - {fileID: 616782594733178318}
+  - {fileID: 1931432640507889783}
+  - {fileID: 3058175462696124757}
+  - {fileID: 7495684116348550306}
   MigratedPlatforms: 0c000000150000000b0000000a00000009000000120000000800000005000000060000000200000001000000
 --- !u!114 &38108892873912829
 MonoBehaviour:
