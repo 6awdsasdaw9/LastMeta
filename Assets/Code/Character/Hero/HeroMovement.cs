@@ -1,6 +1,7 @@
 ﻿using Code.Data.Configs;
 using Code.Data.ProgressData;
 using Code.Data.States;
+using Code.Debugers;
 using Code.Services;
 using Code.Services.Input;
 using Cysharp.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace Code.Character.Hero
 
         public bool IsCrouch { get; private set; }
         public float DirectionX => _directionX;
+   
 
         private float _directionX;
         private Vector2 _desiredVelocity;
@@ -95,11 +97,25 @@ namespace Code.Character.Hero
 
         public async UniTaskVoid BlockMovement(bool unblockCondition)
         {
-            StopMovement();
+            Log.ColorLog($"HERO CAN MOVE {_heroCanMove}",ColorType.Red);
             await UniTask.WaitUntil(() => unblockCondition, cancellationToken: this.GetCancellationTokenOnDestroy());
             _heroCanMove = true;
+            Log.ColorLog($"HERO CAN MOVE {_heroCanMove}",ColorType.Red);
         }
         
+        public void BlockMovement()
+        {
+            _directionX = 0;
+            _heroCanMove = false;
+            _pressingCrouch = false;
+            _pressingMove = false;
+            _body.velocity = Vector3.zero;
+        }
+
+        public void UnBlockMovement()
+        {
+            _heroCanMove = true; 
+        }
 
         #endregion
 
@@ -155,14 +171,6 @@ namespace Code.Character.Hero
 
         #region Movement
 
-        private void StopMovement()
-        {
-            _directionX = 0;
-            _heroCanMove = false;
-            _pressingCrouch = false;
-            _pressingMove = false;
-            _body.velocity = Vector3.zero;
-        }
 
         private void MoveWithAcceleration()
         {
@@ -230,8 +238,7 @@ namespace Code.Character.Hero
 
         public void Disable()
         {
-            StopMovement();
-            _heroCanMove = false;
+            BlockMovement();
             enabled = false;
         }
 

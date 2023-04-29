@@ -44,7 +44,7 @@ namespace Code.Character.Hero
 
             _attackIsActive = true;
             _hero.Animator.PlayAttack();
-            _hero.Movement.BlockMovement(unblockCondition: !_attackIsActive);
+            _hero.Movement.BlockMovement();
         }
 
         /// <summary>
@@ -63,6 +63,7 @@ namespace Code.Character.Hero
         public void OnAttackEnded()
         {
             _attackIsActive = false;
+            _hero.Movement.UnBlockMovement();
         }
         
         private int Hit() =>
@@ -71,8 +72,7 @@ namespace Code.Character.Hero
         private Vector3 StartPoint() =>
             new(transform.position.x + transform.localScale.x * 0.1f, transform.position.y + 0.7f,
                 transform.position.z);
-        
-        
+
         public void Disable() => 
             enabled = false;
         

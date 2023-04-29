@@ -8,7 +8,8 @@ namespace Code.Character.Hero
     {
         bool IsCrouch { get; }
         float DirectionX { get; }
-        public UniTaskVoid BlockMovement(bool unblockCondition);
+        public void  BlockMovement();
+        public void  UnBlockMovement();
         public void SetSupportVelocity(Vector2 otherObjectVelocity);
     }
 }
