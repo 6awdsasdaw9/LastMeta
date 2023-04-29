@@ -166,7 +166,13 @@ namespace Code.Character.Hero
             _jumpBufferCounter = 0;
             _coyoteTimeCounter = 0;
 
-            _isCanJumpAgain = _maxAirJumps + _hero.Upgrade.BonusAirJump >= 1 && _isCanJumpAgain == false;
+            //TODO непотребство 
+            var airJump = _maxAirJumps;
+            if (_hero.Upgrade != null)
+            {
+                airJump += _hero.Upgrade.BonusAirJump;
+            }
+            _isCanJumpAgain =  airJump >= 1 && _isCanJumpAgain == false;
 
             switch (_velocity.y)
             {
@@ -179,7 +185,8 @@ namespace Code.Character.Hero
                     break;
             }
 
-            _velocity.y += _jumpHeight + _hero.Upgrade.BonusHeightJump;
+            //TODO непотребство
+            _velocity.y += _jumpHeight /* + _hero.Upgrade.BonusHeightJump*/;
             _isCurrentlyJumping = true;
         }
 

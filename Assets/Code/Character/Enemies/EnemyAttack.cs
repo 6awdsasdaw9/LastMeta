@@ -70,7 +70,6 @@ namespace Code.Character.Enemies
         {
             if (_pushForce == 0)
                 return;
-            //TODO не работает если герой стоит справа
             _hero.Movement.SetSupportVelocity(_hero.Transform.localScale * _pushForce);
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
             _hero.Movement.SetSupportVelocity(Vector2.zero);

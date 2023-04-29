@@ -24,10 +24,8 @@ namespace Code.Character.Hero
 
         #region Values
 
-        public bool IsCrouch { get; private set; }
+        public bool IsCrouch { get; private set; } 
         public float DirectionX => _directionX;
-   
-
         private float _directionX;
         private Vector2 _desiredVelocity;
         private Vector2 _velocity;
@@ -164,8 +162,15 @@ namespace Code.Character.Hero
 
         //TODO переделать. Этот параметр должен находится в отдельном классе, из которого берется значение 
    
-        private void SetDesiredVelocity() =>
-            _desiredVelocity = new Vector2(DirectionX, 0f) * (_heroConfig.maxSpeed + _hero.Upgrade.BonusSpeed);
+        private void SetDesiredVelocity()
+        {
+            //TODO Непотребство
+            var speedMultiplayer = _heroConfig.maxSpeed;
+            if (_hero.Upgrade != null)
+                speedMultiplayer += _hero.Upgrade.BonusSpeed;
+            _desiredVelocity = new Vector2(_directionX, 0f) * speedMultiplayer;
+    
+        }
 
         #endregion
 

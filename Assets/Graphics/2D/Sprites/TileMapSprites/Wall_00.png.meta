@@ -217,12 +217,12 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 767
+        y: 768
         width: 256
         height: 256
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
-      border: {x: 78, y: 48, z: 78, w: 54}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -243,7 +243,7 @@ TextureImporter:
         height: 256
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
-      border: {x: 78, y: 48, z: 78, w: 54}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -258,13 +258,13 @@ TextureImporter:
       name: Wall_00_2
       rect:
         serializedVersion: 2
-        x: 590
-        y: 815
-        width: 100
-        height: 154
+        x: 512
+        y: 768
+        width: 256
+        height: 256
       alignment: 9
-      pivot: {x: 0.5, y: 0.017}
-      border: {x: 1, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -279,12 +279,12 @@ TextureImporter:
       name: Wall_00_3
       rect:
         serializedVersion: 2
-        x: 844
-        y: 814
-        width: 14
-        height: 153
+        x: 768
+        y: 768
+        width: 256
+        height: 256
       alignment: 9
-      pivot: {x: 4, y: 0.02}
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -306,7 +306,7 @@ TextureImporter:
         height: 256
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
-      border: {x: 165, y: 52, z: 77, w: 61}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -321,12 +321,12 @@ TextureImporter:
       name: Wall_00_5
       rect:
         serializedVersion: 2
-        x: 334
-        y: 563
-        width: 100
-        height: 50
+        x: 256
+        y: 512
+        width: 256
+        height: 256
       alignment: 9
-      pivot: {x: 0.5, y: 0}
+      pivot: {x: 0.5, y: 0.2}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -369,7 +369,7 @@ TextureImporter:
         height: 256
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
-      border: {x: 78, y: 48, z: 78, w: 54}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -390,7 +390,7 @@ TextureImporter:
         height: 256
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
-      border: {x: 78, y: 48, z: 78, w: 54}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -411,7 +411,7 @@ TextureImporter:
         height: 256
       alignment: 9
       pivot: {x: 0.5, y: 0.2}
-      border: {x: 78, y: 48, z: 78, w: 54}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -426,28 +426,7 @@ TextureImporter:
       name: Wall_00_10
       rect:
         serializedVersion: 2
-        x: 590
-        y: 303
-        width: 99
-        height: 77
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 937455bfff98c81b0800000000000000
-      internalID: -5652991699730479303
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wall_00_11
-      rect:
-        serializedVersion: 2
-        x: 768
+        x: 512
         y: 256
         width: 256
         height: 256
@@ -458,92 +437,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f64252c1d3b14580800000000000000
-      internalID: -8844590479689234704
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wall_00_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a9b07d3fb8d2e18f0800000000000000
-      internalID: -567966423887443046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wall_00_13
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f30f648dc2680900800000000000000
-      internalID: 650878780984722422
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wall_00_14
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 27c8dabe92f284980800000000000000
-      internalID: -8554535635096073102
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wall_00_15
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a3aab9eb8be361bf0800000000000000
-      internalID: -354026557509227974
+      spriteID: 937455bfff98c81b0800000000000000
+      internalID: -5652991699730479303
       vertices: []
       indices: 
       edges: []
@@ -562,11 +457,6 @@ TextureImporter:
       Wall_00_0: -8109883669847644133
       Wall_00_1: 3042339992596477242
       Wall_00_10: -5652991699730479303
-      Wall_00_11: -8844590479689234704
-      Wall_00_12: -567966423887443046
-      Wall_00_13: 650878780984722422
-      Wall_00_14: -8554535635096073102
-      Wall_00_15: -354026557509227974
       Wall_00_2: -1386191265631827503
       Wall_00_3: -6068931109522980252
       Wall_00_4: 9090094704559877715
