@@ -1,6 +1,6 @@
 using Code.Character.Interfaces;
 using Code.Data.Configs;
-using Code.Data.States;
+using Code.Data.GameData;
 using Code.Debugers;
 using Code.Services.Input;
 using UnityEngine;

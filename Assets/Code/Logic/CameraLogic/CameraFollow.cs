@@ -1,7 +1,7 @@
 using System.Collections;
 using Code.Character.Hero;
+using Code.Data.GameData;
 using Code.Data.ProgressData;
-using Code.Data.States;
 using Code.Services;
 using UnityEngine;
 using UnityEngine.SceneManagement;

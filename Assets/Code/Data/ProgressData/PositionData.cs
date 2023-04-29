@@ -1,5 +1,5 @@
 using System;
-using Code.Data.States;
+using Code.Data.GameData;
 
 namespace Code.Data.ProgressData
 {

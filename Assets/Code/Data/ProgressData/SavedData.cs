@@ -1,8 +1,8 @@
 using System;
+using System.Collections.Generic;
 using Code.Character.Hero;
 using Code.Data.GameData;
-using Code.Data.States;
-using HeroParamData = Code.Data.States.HeroParamData;
+using HeroParamData = Code.Data.GameData.HeroParamData;
 
 namespace Code.Data.ProgressData
 {
@@ -14,7 +14,7 @@ namespace Code.Data.ProgressData
         public PositionData heroPositionData;
         public PositionData cameraPositionData;
         public PowerData heroPowerData;
-
+        public Dictionary<UniqueId, Vector3Data> ObjectsPosition;
 
         public float currentTime;
         public SavedData()

@@ -5,6 +5,7 @@ namespace Code.Logic.Interactive
     public class InteractiveIconAnimation : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
+        
         private readonly int void_t = Animator.StringToHash("Void");
         private readonly int exclamation_t = Animator.StringToHash("Exclamation");//!
         private readonly int interaction_t = Animator.StringToHash("Interaction");

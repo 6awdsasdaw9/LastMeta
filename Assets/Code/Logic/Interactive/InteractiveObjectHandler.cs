@@ -4,7 +4,6 @@ using Code.Logic.Triggers;
 using Code.Services;
 using Code.Services.Input;
 using Cysharp.Threading.Tasks;
-using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -14,9 +13,10 @@ namespace Code.Logic.Interactive
     {
         [SerializeField] private InteractiveIconType iconType = InteractiveIconType.Interaction;
         [SerializeField] private InteractiveIconAnimation _iconAnimation;
+        [SerializeField] private AudioEvent _audioEvent;
 
         [SerializeField] private bool _isStartOnEnable;
-        
+
         private IInteractive _interactiveObject;
         private InputService _input;
         private Cooldown _cooldown;
@@ -52,7 +52,7 @@ namespace Code.Logic.Interactive
             if (_interactiveObject == null)
                 return;
 
-            if ( _input.GetInteractPressed()  && IsReady())
+            if (_input.GetInteractPressed() && IsReady())
             {
                 if (_onInteractive)
                 {
@@ -63,9 +63,14 @@ namespace Code.Logic.Interactive
                     StartInteractive();
                 }
 
+                if (_audioEvent != null)
+                {
+                    _audioEvent?.PlayAudioEvent();
+                }
+
                 _cooldown.ResetCooldown();
             }
-            
+
             _cooldown.UpdateCooldown();
         }
 

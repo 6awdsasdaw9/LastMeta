@@ -1,4 +1,3 @@
-using System;
 using FMODUnity;
 using UnityEngine;
 
@@ -14,9 +13,8 @@ public class AudioEvent : MonoBehaviour
             PlayAudioEvent();
         }
     }
-
-
-    private void PlayAudioEvent()
+    
+    public void PlayAudioEvent()
     {
         if (_eventReference.IsNull)
         {

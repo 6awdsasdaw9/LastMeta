@@ -1,5 +1,5 @@
 using System.Collections;
-using Code.Data.States;
+using Code.Data.GameData;
 using UnityEngine;
 
 namespace Code.Data.Configs

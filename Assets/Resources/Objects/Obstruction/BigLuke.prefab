@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbdeaae193ef504eb1012a39b1cccd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 0}
   type: 4
   isVisible: 1
   alpha: 130
@@ -1482,6 +1483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4305211028953091168}
   - component: {fileID: 4305211028953091175}
+  - component: {fileID: 3563056950966757049}
   m_Layer: 0
   m_Name: BigLuke
   m_TagString: Untagged
@@ -1525,6 +1527,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _triggerObserver: {fileID: 4305211027087727592}
   _groundCollider: {fileID: 4305211028703045383}
+  _id: {fileID: 3563056950966757049}
+--- !u!114 &3563056950966757049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4305211028953091169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82fdd1c421d4affb0c54c7e735c507a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Id: 
 --- !u!1 &4305211029147636509
 GameObject:
   m_ObjectHideFlags: 0

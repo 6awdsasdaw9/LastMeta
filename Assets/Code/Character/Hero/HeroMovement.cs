@@ -1,6 +1,6 @@
 ﻿using Code.Data.Configs;
+using Code.Data.GameData;
 using Code.Data.ProgressData;
-using Code.Data.States;
 using Code.Debugers;
 using Code.Services;
 using Code.Services.Input;

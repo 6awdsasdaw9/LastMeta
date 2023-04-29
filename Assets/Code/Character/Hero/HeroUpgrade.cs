@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
 using Code.Data.Configs;
+using Code.Data.GameData;
 using Code.Data.ProgressData;
-using Code.Data.States;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;

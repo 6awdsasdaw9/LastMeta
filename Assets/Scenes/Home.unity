@@ -147,13 +147,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19162731}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1799923395}
-  m_RootOrder: 2
+  m_Father: {fileID: 828458078}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &19162733
 MonoBehaviour:
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 44336996}
   - component: {fileID: 44336995}
   m_Layer: 0
-  m_Name: InteractoveHandler_Laptop
+  m_Name: InteractoveHandler_HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +206,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1488669210}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &44336995
 MonoBehaviour:
@@ -235,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 1667982887}
+  _audioEvent: {fileID: 0}
   _isStartOnEnable: 0
 --- !u!114 &44336997
 MonoBehaviour:
@@ -314,6 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 467556617}
+  _audioEvent: {fileID: 0}
   _isStartOnEnable: 1
 --- !u!114 &71038273
 MonoBehaviour:
@@ -2360,6 +2362,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 585639454214020956, guid: 5888b8ae7b14d494b850c49285803409, type: 3}
   m_PrefabInstance: {fileID: 1789487424}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &828458077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 828458078}
+  m_Layer: 0
+  m_Name: Elements
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &828458078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828458077}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 19162732}
+  - {fileID: 981615835}
+  m_Father: {fileID: 1799923395}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &843570506
 GameObject:
   m_ObjectHideFlags: 0
@@ -2585,8 +2620,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1799923395}
-  m_RootOrder: 0
+  m_Father: {fileID: 828458078}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &981615836
 SpriteRenderer:
@@ -2765,6 +2800,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1024138062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1024138063}
+  m_Layer: 0
+  m_Name: Elements
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1024138063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024138062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1848815748}
+  - {fileID: 1374903762}
+  m_Father: {fileID: 1488669210}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1035121556 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7827173510910224230, guid: e40646fb240c9794193027bba664747d, type: 3}
@@ -2914,6 +2982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 4969837497167689892}
+  _audioEvent: {fileID: 0}
   _isStartOnEnable: 1
 --- !u!114 &1061556023
 MonoBehaviour:
@@ -3124,6 +3193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 0}
+  _audioEvent: {fileID: 0}
   _isStartOnEnable: 1
 --- !u!1 &1357980388
 GameObject:
@@ -3186,11 +3256,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374903761}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: -0.12}
+  m_LocalPosition: {x: 0, y: 0.19999999, z: -0.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1488669210}
+  m_Father: {fileID: 1024138063}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1374903763
@@ -3704,7 +3774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1488669210}
   m_Layer: 0
-  m_Name: InteractiveObject_Laptop
+  m_Name: InteractiveObject_HUDWindow_Laptop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3722,9 +3792,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1024138063}
   - {fileID: 44336994}
-  - {fileID: 1374903762}
-  - {fileID: 1848815748}
   - {fileID: 1059875649}
   m_Father: {fileID: 276117300}
   m_RootOrder: 1
@@ -4657,7 +4726,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 616444430166610560, guid: bfb074873a9d89a408490fb599b803a4, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 616444430166610560, guid: bfb074873a9d89a408490fb599b803a4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5060,7 +5129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1799923395}
   m_Layer: 0
-  m_Name: InteractiveObject_Door
+  m_Name: InteractiveObject_Animation_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5078,9 +5147,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 981615835}
+  - {fileID: 828458078}
   - {fileID: 2079056226}
-  - {fileID: 19162732}
   m_Father: {fileID: 276117300}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5183,13 +5251,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848815747}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1488669210}
-  m_RootOrder: 2
+  m_Father: {fileID: 1024138063}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1848815749
 SpriteRenderer:
@@ -5712,7 +5780,7 @@ GameObject:
   - component: {fileID: 2079056228}
   - component: {fileID: 2079056227}
   m_Layer: 0
-  m_Name: InteractoveHandler_Door
+  m_Name: InteractoveHandler_Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5763,6 +5831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 780484138}
+  _audioEvent: {fileID: 0}
   _isStartOnEnable: 0
 --- !u!114 &2079056229
 MonoBehaviour:
@@ -6787,7 +6856,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7827173510910224225, guid: e40646fb240c9794193027bba664747d, type: 3}
       propertyPath: m_Name
-      value: InteractiveImage_Photo
+      value: InteractiveObject_HUDImage_Photo
       objectReference: {fileID: 0}
     - target: {fileID: 7827173510910224230, guid: e40646fb240c9794193027bba664747d, type: 3}
       propertyPath: m_RootOrder
