@@ -16,7 +16,7 @@ namespace Code.Logic.CameraLogic
         [SerializeField] private float _dampTime = 0.75f;
         private readonly float _maxDampTime = 1.5f;
         private float _currentDampTime;
-        private readonly Vector3 _cameraOffset = new(0.5f,  1.6f, -60f);
+        private readonly Vector3 _cameraOffset = new(0.5f, 1.6f, -60f);
 
         private float startPosY;
         private bool _isCanMove = true;
@@ -24,7 +24,7 @@ namespace Code.Logic.CameraLogic
         private IHero _hero;
         private Vector3 _velocity = Vector3.zero;
         private Vector3 _target;
-        
+
         private Vector3 _followingPosition => _hero.Transform.position + _cameraOffset;
 
         private Coroutine _dampTimeCoroutine;
@@ -32,34 +32,44 @@ namespace Code.Logic.CameraLogic
 
 
         [Inject]
-        private void Construct(IHero hero,InputService inputService ,SavedDataCollection dataCollection)
+        private void Construct(IHero hero, InputService inputService, SavedDataCollection dataCollection)
         {
             _hero = hero;
+
             _currentDampTime = _dampTime;
             _input = inputService;
-            
+
             dataCollection.Add(this);
         }
-        
+
         private void LateUpdate()
         {
             if (_hero == null)
                 return;
-
-            var x = _followingPosition.x;
-            var y = _isCanMoveY  ? _followingPosition.y  : startPosY;
-            y += _isCanMoveY && _hero.Movement.IsCrouch ? -1 : 0; 
-            var z = _cameraOffset.z;
-
-            if (_isCanMove) 
-                _target = new Vector3(x, y, z);
-          
-            else
-            {
-                _target = transform.position;
-            }
             
-            transform.position = Vector3.SmoothDamp(transform.position, _target, ref _velocity, _currentDampTime);
+            _target = _isCanMove ? GetTarget() : transform.position;
+
+            CameraMove();
+        }
+
+        private void CameraMove()
+        {
+            Vector3 horizontalTarget = new Vector3(_target.x, transform.position.y, _cameraOffset.z);
+            transform.position = Vector3.SmoothDamp(transform.position, horizontalTarget, ref _velocity, _currentDampTime);
+            
+            Vector3 verticalTarget = new Vector3(transform.position.x, _target.y, _cameraOffset.z);
+            var verticalDampTime = _target.y > transform.position.y ? _currentDampTime : _currentDampTime * 0.7f;
+            transform.position = Vector3.SmoothDamp(transform.position, verticalTarget, ref _velocity,verticalDampTime);
+        }
+
+        private Vector3 GetTarget()
+        {
+     
+            var y = _isCanMoveY ? _followingPosition.y : startPosY;
+           
+            y += _isCanMoveY && _hero.Movement.IsCrouch ? -1 : 0;
+          
+            return new Vector3(_followingPosition.x,y,_cameraOffset.z);
         }
 
         public void StopFollow()
@@ -82,10 +92,12 @@ namespace Code.Logic.CameraLogic
                 _currentDampTime -= 0.01f;
                 yield return new WaitForSeconds(0.01f);
             }
+
             _dampTimeCoroutine = null;
         }
 
         #region Save Progress
+
         public void LoadData(SavedData savedData)
         {
             if (savedData.cameraPositionData.scene != CurrentLevel() ||
@@ -102,10 +114,10 @@ namespace Code.Logic.CameraLogic
             savedData.cameraPositionData =
                 new PositionData(CurrentLevel(), _target.AsVectorData());
         }
-        
+
         private string CurrentLevel() =>
             SceneManager.GetActiveScene().name;
-       
+
         #endregion
     }
 }

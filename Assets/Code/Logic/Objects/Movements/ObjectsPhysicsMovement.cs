@@ -114,13 +114,15 @@ namespace Code.Logic.Objects
             switch (CurrentAxis)
             {
                 case Axis.X:
-                    _collider.material = physicsMaterials.PlatformFrictionMaterial;
+                    _collider.material = physicsMaterials.FrictionMaterial;
+                    _rigidbody.useGravity = true;
                     _rigidbody.constraints = RigidbodyConstraints.FreezePositionY |
                                              RigidbodyConstraints.FreezeRotationZ |
                                              RigidbodyConstraints.FreezeRotation;
                     break;
                 case Axis.Y:
                     _friction.enabled = false;
+                    _rigidbody.useGravity = false;
                     _collider.material = physicsMaterials.NoFrictionMaterial;
                     _rigidbody.constraints = RigidbodyConstraints.FreezePositionX |
                                              RigidbodyConstraints.FreezeRotationZ |

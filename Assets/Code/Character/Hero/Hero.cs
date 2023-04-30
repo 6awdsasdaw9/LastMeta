@@ -7,12 +7,15 @@ namespace Code.Character.Hero
 {
     public class Hero : MonoBehaviour, IHero
     {
+        //Common
         [SerializeField] private HeroAnimator _animator;
         [SerializeField] private HeroAudio _audio;
         [SerializeField] private HeroMovement _movement;
         [SerializeField] private HeroJump _jump;
         [SerializeField] private HeroCollision _collision;
-        [Space] [SerializeField] private HeroAttack _attack;
+       
+        [Space] //Game Hero
+        [SerializeField] private HeroAttack _attack;
         [SerializeField] private HeroBuff _buff;
         [SerializeField] private HeroDeath _death;
         [SerializeField] private HeroHealth _health;

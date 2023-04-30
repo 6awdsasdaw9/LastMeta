@@ -4,7 +4,6 @@ using Code.Data.ProgressData;
 using Code.Debugers;
 using Code.Services;
 using Code.Services.Input;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -102,7 +101,7 @@ namespace Code.Character.Hero
             _heroCanMove = false;
             _pressingCrouch = false;
             _pressingMove = false;
-             _body.velocity = Vector3.zero;
+            _body.velocity = Vector3.zero;
         }
 
         public void UnBlockMovement()
@@ -155,22 +154,21 @@ namespace Code.Character.Hero
             };
         }
 
-        //TODO переделать. Этот параметр должен находится в отдельном классе, из которого берется значение 
-   
+
         private void SetDesiredVelocity()
         {
             //TODO Непотребство
             var speedMultiplayer = _heroConfig.maxSpeed;
+            
             if (_hero.Upgrade != null)
                 speedMultiplayer += _hero.Upgrade.BonusSpeed;
+            
             _desiredVelocity = new Vector2(_directionX, 0f) * speedMultiplayer;
-    
         }
 
         #endregion
 
         #region Movement
-
 
         private void MoveWithAcceleration()
         {

@@ -1438,7 +1438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4305211028703045382}
   - component: {fileID: 4305211028703045381}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GroundCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -7,14 +7,17 @@ namespace Code.Character.Hero
     {
         Transform Transform { get; }
         IHeroAnimator Animator { get; }
-        IHeroAttack Attack { get; }
         IHeroAudio Audio { get; }
-        IHeroBuff Buff { get; }
-        IHeroCollision Collision { get; }
-        IHeroDeath Death { get; }
-        IHealth Health { get; }
+        IHeroCollision Collision { get;  }
         IHeroMovement Movement { get; }
         IHeroJump Jump { get; }
+        
+        
+        IHeroAttack Attack { get; }
+        IHeroBuff Buff { get; }
+        IHealth Health { get; }
+        IHeroDeath Death { get; }
         IHeroUpgrade Upgrade { get; }
     }
+    
 }

@@ -28,6 +28,7 @@ namespace Code.Character.Enemies
         private readonly Collider[] _hits = new Collider[1];
         private Vector3 startPoint;
         public bool attackIsActive { get; private set; }
+        
 
         [Inject]
         private void Construct(IHero hero)
@@ -35,8 +36,7 @@ namespace Code.Character.Enemies
             _hero = hero;
             _layerMask = 1 << LayerMask.NameToLayer(Constants.PlayerLayer);
         }
-
-
+        
         private void Update()
         {
             _attackCooldown.UpdateCooldown();
