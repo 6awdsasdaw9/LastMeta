@@ -9,6 +9,7 @@ namespace Code.Data.ProgressData
     [Serializable]
     public class SavedData
     {
+        public string Scene;
         public HealthData heroHealth;
         public HeroUpgradesData HeroUpgradesData;
         public PositionData heroPositionData;

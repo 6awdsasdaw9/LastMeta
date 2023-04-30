@@ -1,5 +1,6 @@
 using Code.Data.ProgressData;
 using Code.Services;
+using Zenject;
 
 namespace Code.Infrastructure.StateMachine.States
 {
@@ -10,11 +11,11 @@ namespace Code.Infrastructure.StateMachine.States
         private readonly SceneLoader _sceneLoader;
         private readonly PersistentSavedDataService _persistentSavedDataService;
 
-        public BootstrapState(GameStateMachine stateMachine, SceneLoader sceneLoader,PersistentSavedDataService persistentSavedDataService)
+        public BootstrapState(GameStateMachine stateMachine,DiContainer container)
         {
             _stateMachine = stateMachine;
-            _sceneLoader = sceneLoader;
-            _persistentSavedDataService = persistentSavedDataService;
+            _sceneLoader = container.Resolve<SceneLoader>();
+            _persistentSavedDataService = container.Resolve<PersistentSavedDataService>();
         }
 
         public void Enter()
@@ -29,11 +30,8 @@ namespace Code.Infrastructure.StateMachine.States
         private void EnterLoadLevel()
         {
             _persistentSavedDataService.LoadData();
-          
-            var level = _persistentSavedDataService
-                .savedData
-                .heroPositionData
-                .scene;
+
+            var level = _persistentSavedDataService.savedData.Scene;
             
             _stateMachine.Enter<LoadLevelState, string>(level);
         }

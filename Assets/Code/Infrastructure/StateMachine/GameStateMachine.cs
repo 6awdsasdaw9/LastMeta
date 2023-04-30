@@ -5,6 +5,7 @@ using Code.Infrastructure.StateMachine.States;
 using Code.Logic;
 using Code.Services;
 using Code.UI;
+using Zenject;
 
 namespace Code.Infrastructure.StateMachine
 {
@@ -14,13 +15,12 @@ namespace Code.Infrastructure.StateMachine
         private readonly Dictionary<Type, IExitableState> _states;
         private IExitableState _activeState;
 
-        public GameStateMachine(SceneLoader sceneLoader, LoadingCurtain loadingCurtain,
-            PersistentSavedDataService persistentSavedDataService)
+        public GameStateMachine(DiContainer container)
         {
             _states = new Dictionary<Type, IExitableState>
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader,persistentSavedDataService),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, loadingCurtain, persistentSavedDataService),
+                [typeof(BootstrapState)] = new BootstrapState(this,container),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, container),
                 [typeof(GameLoopState)] = new GameLoopState(this),
             };
         }
