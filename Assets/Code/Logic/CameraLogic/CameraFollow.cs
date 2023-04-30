@@ -3,6 +3,7 @@ using Code.Character.Hero;
 using Code.Data.GameData;
 using Code.Data.ProgressData;
 using Code.Services;
+using Code.Services.Input;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -12,7 +13,6 @@ namespace Code.Logic.CameraLogic
     public class CameraFollow : MonoBehaviour, ISavedData
     {
         [SerializeField] private bool _isCanMoveY = true;
-        
         [SerializeField] private float _dampTime = 0.75f;
         private readonly float _maxDampTime = 1.5f;
         private float _currentDampTime;
@@ -20,32 +20,35 @@ namespace Code.Logic.CameraLogic
         private float startPosY;
         private bool _isCanMove = true;
 
-        private Transform _following;
+        private IHero _hero;
         private Vector3 _velocity = Vector3.zero;
         private Vector3 _target;
         
         private readonly Vector3 _cameraOffset = new(0.5f,  1.6f, -60f);
-        private Vector3 _followingPosition => _following.position + _cameraOffset;
+        private Vector3 _followingPosition => _hero.Transform.position + _cameraOffset;
 
         private Coroutine _dampTimeCoroutine;
+        private InputService _input;
 
 
         [Inject]
-        private void Construct(IHero hero, SavedDataCollection dataCollection)
+        private void Construct(IHero hero,InputService inputService ,SavedDataCollection dataCollection)
         {
-            _following = hero.Transform;
+            _hero = hero;
             _currentDampTime = _dampTime;
+            _input = inputService;
             
             dataCollection.Add(this);
         }
         
         private void LateUpdate()
         {
-            if (_following == null)
+            if (_hero == null)
                 return;
 
             var x = _followingPosition.x;
-            var y = _isCanMoveY ? _followingPosition.y : startPosY;
+            var y = _isCanMoveY  ? _followingPosition.y  : startPosY;
+            y += _isCanMoveY && _hero.Movement.IsCrouch ? -1 : 0; 
             var z = _cameraOffset.z;
 
             if (_isCanMove) 

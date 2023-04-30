@@ -33,12 +33,9 @@ namespace Code.Logic.Objects
 
         public void LoadData(SavedData savedData)
         {
-            Log.ColorLog($"LOAD: luke position  {savedData.ObjectsPosition.ContainsKey(_uniqueId.Id)}",
-                ColorType.Purple);
             if (savedData.ObjectsPosition.ContainsKey(_uniqueId.Id))
             {
                 _lidLukeObject.position = savedData.ObjectsPosition[_uniqueId.Id].AsUnityVector();
-                Log.ColorLog($"LOAD: luke position = {_lidLukeObject.position}", ColorType.Purple);
             }
         }
 
@@ -47,15 +44,12 @@ namespace Code.Logic.Objects
             if (!savedData.ObjectsPosition.ContainsKey(_uniqueId.Id))
             {
                 savedData.ObjectsPosition.Add(_uniqueId.Id, _lidLukeObject.position.AsVectorData());
-                Log.ColorLog($"IF || SAVED DATA: luke position = {savedData.ObjectsPosition[_uniqueId.Id].AsUnityVector()}", ColorType.Orange);
+              
             }
             else
             {
-                savedData.ObjectsPosition[_uniqueId.Id] = _lidLukeObject.position.AsVectorData();
-                Log.ColorLog($"ELSE || SAVED DATA: luke position = {savedData.ObjectsPosition[_uniqueId.Id].AsUnityVector()}", ColorType.Orange);
+                savedData.ObjectsPosition[_uniqueId.Id] = _lidLukeObject.position.AsVectorData(); Log.ColorLog($"ELSE || SAVED DATA: luke position = {savedData.ObjectsPosition[_uniqueId.Id].AsUnityVector()}", ColorType.Orange);
             }
-
-            Log.ColorLog($"SAVE: luke position = {_lidLukeObject.position}", ColorType.Magenta);
         }
     }
 }

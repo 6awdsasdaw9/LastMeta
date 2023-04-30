@@ -63,6 +63,7 @@ namespace Code.Character.Hero
             SetDesiredVelocity();
             Rotation();
             Crouch();
+            Log.ColorLog($"MOVEMENTS: is crouch {IsCrouch}",ColorType.Teal);
         }
 
         private void FixedUpdate()
@@ -93,13 +94,7 @@ namespace Code.Character.Hero
             }       
         }
 
-        public async UniTaskVoid BlockMovement(bool unblockCondition)
-        {
-            Log.ColorLog($"HERO CAN MOVE {_heroCanMove}",ColorType.Red);
-            await UniTask.WaitUntil(() => unblockCondition, cancellationToken: this.GetCancellationTokenOnDestroy());
-            _heroCanMove = true;
-            Log.ColorLog($"HERO CAN MOVE {_heroCanMove}",ColorType.Red);
-        }
+   
         
         public void BlockMovement()
         {
@@ -229,7 +224,7 @@ namespace Code.Character.Hero
                 return;
 
             Vector3Data savedPosition = savedData.heroPositionData.position;
-            transform.position = savedPosition.AsUnityVector() + Vector3.up;
+            transform.position = savedPosition.AsUnityVector();
         }
 
         public void SaveData(SavedData savedData) =>

@@ -57,13 +57,12 @@ namespace Code.Data.ProgressData
 
             if (savedData == null)
             {
-                Log.ColorLog("No data was found.A new Game nees to be started before data can be saved",LogStyle.Warning);
+               Log.ColorLog("No data was found.A new Game nees to be started before data can be saved",LogStyle.Warning);
                 return;
             }
             
             foreach (ISavedData dataPersistenceObj in dataCollection.Data)
-            {
-                Log.ColorLog($"Save :{dataPersistenceObj.GetType().ToString()}",ColorType.Red);
+            { 
                 dataPersistenceObj.SaveData(savedData);
             }
 
