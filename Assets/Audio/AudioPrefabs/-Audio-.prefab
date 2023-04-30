@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1273476746477932404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7886717719208627757}
+  - component: {fileID: 1335529277587263431}
+  m_Layer: 0
+  m_Name: Emitter_Water (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7886717719208627757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273476746477932404}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.38, y: -6.97, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1351340621727312305}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1335529277587263431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273476746477932404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 635363269
+      Data2: 1155976301
+      Data3: 1294462122
+      Data4: -52545766
+    Path: event:/Ambience/Water_Emitter
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 11.3
+  OverrideMaxDistance: 11.3
 --- !u!1 &1351340621727312304
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,6 +92,7 @@ Transform:
   m_Children:
   - {fileID: 513622171884781608}
   - {fileID: 231537997985957088}
+  - {fileID: 7886717719208627757}
   - {fileID: 7976391343797172167}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,8 +157,8 @@ MonoBehaviour:
   Preload: 0
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 3.28
-  OverrideMaxDistance: 12.98
+  OverrideMinDistance: 3.58
+  OverrideMaxDistance: 13.1
 --- !u!1 &9015978583950557437
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,12 +184,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9015978583950557437}
   m_LocalRotation: {x: -0, y: 0.000010442221, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04, y: -10.67, z: -6.52}
+  m_LocalPosition: {x: -0.04, y: -9.72, z: -6.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1351340621727312305}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0.001, z: 0}
 --- !u!114 &2718997654068151330
 MonoBehaviour:
@@ -156,8 +219,8 @@ MonoBehaviour:
   Preload: 0
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 5.7
-  OverrideMaxDistance: 11.28
+  OverrideMinDistance: 6.4
+  OverrideMaxDistance: 17.32
 --- !u!1001 &1351340622333380811
 PrefabInstance:
   m_ObjectHideFlags: 0
