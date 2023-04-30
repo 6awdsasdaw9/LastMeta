@@ -33,11 +33,6 @@ namespace Code.Services
 
             onLoaded?.Invoke();
         }
-
-        /*public void ReloadCurrentScene(string sceneName)
-        {
-            SceneManager.LoadSceneAsync(sceneName);
-        }*/
-
+        
     }
 } 

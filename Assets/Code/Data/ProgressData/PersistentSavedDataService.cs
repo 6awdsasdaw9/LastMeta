@@ -2,6 +2,7 @@ using Code.Data.Configs;
 using Code.Debugers;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Code.Data.ProgressData
@@ -61,11 +62,11 @@ namespace Code.Data.ProgressData
                 return;
             }
 
+            savedData.Scene = SceneManager.GetActiveScene().name;
             foreach (ISavedData dataPersistenceObj in dataCollection.Data)
             {
                 dataPersistenceObj.SaveData(savedData);
             }
-
             _dataHandler.Save(savedData);
         }
 
