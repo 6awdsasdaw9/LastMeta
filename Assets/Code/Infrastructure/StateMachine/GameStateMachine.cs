@@ -1,15 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Code.Data.ProgressData;
 using Code.Infrastructure.StateMachine.States;
-using Code.Logic;
-using Code.Services;
-using Code.UI;
 using Zenject;
 
 namespace Code.Infrastructure.StateMachine
 {
-    //Create in Game
     public class GameStateMachine
     {
         private readonly Dictionary<Type, IExitableState> _states;

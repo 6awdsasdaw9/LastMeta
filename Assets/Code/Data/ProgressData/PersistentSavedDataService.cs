@@ -26,7 +26,6 @@ namespace Code.Data.ProgressData
 
         public void LoadProgress()
         {
-            Log.ColorLog("LOAD PROGRESS", ColorType.Lime);
             LoadData();
 
             foreach (ISavedData dataPersistenceObj in dataCollection.Data)
@@ -52,7 +51,6 @@ namespace Code.Data.ProgressData
         [Button]
         public void SaveProgress()
         {
-            Log.ColorLog("SAVE PROGRESS", ColorType.Lime);
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
 
             if (savedData == null)
@@ -81,14 +79,19 @@ namespace Code.Data.ProgressData
 
         private void NewProgress()
         {
-            savedData = new SavedData();
+            _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
 
-            savedData.Scene = _gameConfig.initialScene.ToString();
-            
-            savedData.heroHealth.maxHP = _gameConfig.heroConfig.maxHP;
+            savedData = new SavedData
+            {
+                Scene = _gameConfig.initialScene.ToString(),
+                heroHealth =
+                {
+                    maxHP = _gameConfig.heroConfig.maxHP
+                }
+            };
+
             savedData.heroHealth.Reset();
             
-            _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
             _dataHandler.Save(savedData);
         }
     }

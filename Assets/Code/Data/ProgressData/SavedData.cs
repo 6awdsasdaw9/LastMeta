@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Code.Character.Hero;
 using Code.Data.GameData;
-using HeroParamData = Code.Data.GameData.HeroParamData;
 
 namespace Code.Data.ProgressData
 {
