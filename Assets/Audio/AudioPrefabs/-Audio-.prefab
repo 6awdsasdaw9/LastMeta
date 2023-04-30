@@ -94,8 +94,8 @@ MonoBehaviour:
   Preload: 0
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 3.43
-  OverrideMaxDistance: 8.46
+  OverrideMinDistance: 3.28
+  OverrideMaxDistance: 12.98
 --- !u!1 &9015978583950557437
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,8 +156,8 @@ MonoBehaviour:
   Preload: 0
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 6.85
-  OverrideMaxDistance: 12.94
+  OverrideMinDistance: 5.7
+  OverrideMaxDistance: 11.28
 --- !u!1001 &1351340622333380811
 PrefabInstance:
   m_ObjectHideFlags: 0
