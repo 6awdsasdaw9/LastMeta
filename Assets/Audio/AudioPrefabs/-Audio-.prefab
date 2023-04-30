@@ -175,7 +175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _musicEvent.Path
-      value: event:/Music/EnterMetaPark
+      value: event:/Music/EnterMetaPark_01
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _ambienceEvent.Path
@@ -183,19 +183,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _musicEvent.Guid.Data1
-      value: 2050525325
+      value: 1135316722
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _musicEvent.Guid.Data2
-      value: 1217164241
+      value: 1218674839
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _musicEvent.Guid.Data3
-      value: 876140209
+      value: -605189982
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _musicEvent.Guid.Data4
-      value: -403891229
+      value: -784427565
       objectReference: {fileID: 0}
     - target: {fileID: 1576309924123216096, guid: f97ae91f1f707474b9d652756b6c054a, type: 3}
       propertyPath: _ambienceEvent.Guid.Data1
