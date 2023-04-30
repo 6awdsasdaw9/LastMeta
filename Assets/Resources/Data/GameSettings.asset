@@ -25,3 +25,7 @@ MonoBehaviour:
   InteractiveObjectCenterPos: {x: 0, y: 0, z: 0}
   InteractiveObjectTimeToHide: 0.4
   InteractiveObjectTimeToShow: 0.9
+  PhysicMaterial:
+    NoFrictionMaterial: {fileID: 13400000, guid: 2e03c14fda3a7cc4197277f7a5c1972e, type: 2}
+    FrictionMaterial: {fileID: 13400000, guid: 560df127aa2aa6d4bba7dfd4eaf77f85, type: 2}
+    PlatformFrictionMaterial: {fileID: 13400000, guid: 3c785d7b9ae77704f8d3c4484c3028f0, type: 2}

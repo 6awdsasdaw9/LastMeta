@@ -1,4 +1,5 @@
 using DG.Tweening;
+using UnityEngine;
 
 namespace Code.Logic.Objects
 {
@@ -33,6 +34,19 @@ namespace Code.Logic.Objects
         protected override void StopMove()
         {
             _moveTween.Kill();
+        }
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.black;
+            switch (CurrentAxis)
+            {
+                case Axis.X:
+                    Gizmos.DrawRay(transform.position, Vector3.right * Distance);
+                    break;
+                case Axis.Y:
+                    Gizmos.DrawRay(transform.position, Vector3.up * Distance);
+                    break;
+            }
         }
     }
 }

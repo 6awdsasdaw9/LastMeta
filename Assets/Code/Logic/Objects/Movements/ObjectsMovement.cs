@@ -31,18 +31,6 @@ namespace Code.Logic.Objects
         protected abstract void Move();
         protected abstract void StopMove();
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.black;
-            switch (CurrentAxis)
-            {
-                case Axis.X:
-                    Gizmos.DrawRay(transform.position, Vector3.right * Distance);
-                    break;
-                case Axis.Y:
-                    Gizmos.DrawRay(transform.position, Vector3.up * Distance);
-                    break;
-            }
-        }
+      
     }
 }

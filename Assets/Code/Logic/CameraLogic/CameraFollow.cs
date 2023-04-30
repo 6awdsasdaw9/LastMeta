@@ -16,6 +16,7 @@ namespace Code.Logic.CameraLogic
         [SerializeField] private float _dampTime = 0.75f;
         private readonly float _maxDampTime = 1.5f;
         private float _currentDampTime;
+        private readonly Vector3 _cameraOffset = new(0.5f,  1.6f, -60f);
 
         private float startPosY;
         private bool _isCanMove = true;
@@ -24,7 +25,6 @@ namespace Code.Logic.CameraLogic
         private Vector3 _velocity = Vector3.zero;
         private Vector3 _target;
         
-        private readonly Vector3 _cameraOffset = new(0.5f,  1.6f, -60f);
         private Vector3 _followingPosition => _hero.Transform.position + _cameraOffset;
 
         private Coroutine _dampTimeCoroutine;
