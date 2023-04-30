@@ -52,6 +52,7 @@ namespace Code.Character.Hero
             _input = input;
             _heroConfig = gameConfig.heroConfig;
             dataCollection.Add(this);
+            Log.ColorLog("HERO ADD COLLECTIOn",ColorType.Red);
         }
 
         private void OnEnable() =>
@@ -62,7 +63,6 @@ namespace Code.Character.Hero
             SetDesiredVelocity();
             Rotation();
             Crouch();
-            Log.ColorLog($"MOVEMENTS: is crouch {IsCrouch}",ColorType.Teal);
         }
 
         private void FixedUpdate()
@@ -221,13 +221,16 @@ namespace Code.Character.Hero
                 savedData.heroPositionData.position.AsUnityVector() == Vector3.zero)
                 return;
 
+            Log.ColorLog("HERO LOAD",ColorType.Red);
             Vector3Data savedPosition = savedData.heroPositionData.position;
             transform.position = savedPosition.AsUnityVector();
         }
 
-        public void SaveData(SavedData savedData) =>
-            savedData.heroPositionData =
-                new PositionData(CurrentLevel(), transform.position.AsVectorData());
+        public void SaveData(SavedData savedData)
+        {
+            savedData.heroPositionData = new PositionData(CurrentLevel(), transform.position.AsVectorData());
+            Log.ColorLog($"HERO SAVE: {  savedData.heroPositionData}");
+        }
 
         private string CurrentLevel() =>
             SceneManager.GetActiveScene().name;

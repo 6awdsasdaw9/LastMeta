@@ -29,11 +29,15 @@ namespace Code.Infrastructure.StateMachine.States
             _sceneLoader.Load(sceneName, OnLoaded);
         }
 
-        public void Exit() =>
+        public void Exit()
+        {
             _loadingCurtain.Hide();
+        }
 
         private void OnLoaded()
         {
+            Log.ColorLog("LOAD LEVEL STATE",ColorType.Red);
+            _dataService.LoadProgress();
             _stateMachine.Enter<GameLoopState>();
         }
         

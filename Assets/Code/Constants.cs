@@ -19,7 +19,8 @@ namespace Code
         {
             Initial,
             Home,
-            EnterMetaPark
+            EnterMetaPark,
+            EnterMetaPark_Room
         }
         
         #region Tag

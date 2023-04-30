@@ -1,6 +1,7 @@
 using Code.Character.Hero;
 using Code.Data.Configs;
 using Code.Data.GameData;
+using Code.Debugers;
 using UnityEngine;
 using Zenject;
 
@@ -23,7 +24,7 @@ namespace Code.Infrastructure.Installers
                 GetInitialPoint(),
                 Quaternion.identity,
                 null);
-
+            Log.ColorLog("Hero Bind",ColorType.Red);
             Container.BindInterfacesTo<Hero>().FromInstance(hero).AsSingle().NonLazy();
         }
 

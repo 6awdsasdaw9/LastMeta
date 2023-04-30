@@ -28,10 +28,12 @@ namespace Code.Data.ProgressData
 
         public void LoadProgress()
         {
+            Log.ColorLog("LOAD PROGRESS",ColorType.Lime);
             LoadData();
 
             foreach (ISavedData dataPersistenceObj in dataCollection.Data)
             {
+                
                 dataPersistenceObj.LoadData(savedData);
             }
         }
@@ -53,6 +55,7 @@ namespace Code.Data.ProgressData
         [Button]
         public void SaveProgress()
         {
+            Log.ColorLog("SAVE PROGRESS",ColorType.Lime);
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
 
             if (savedData == null)
