@@ -4,7 +4,6 @@ namespace Code.Services.ScenesEvents
 {
     public class StartInteractiveEvents : InteractiveEvent
     {
-        
         private void Start()
         {
             _interactivityHandler.OnStartInteractive += OnStartInteractive;
@@ -19,8 +18,8 @@ namespace Code.Services.ScenesEvents
         {
             _interactivityHandler.OnStartInteractive -= OnStartInteractive;
 
-            EnableFollows(_objectsToEnable);
-            DisableFollows(_objectsToDisable);
+            EnableFollows(_objectsToEnable).Forget();
+            DisableFollows(_objectsToDisable).Forget();
 
             Destroy(gameObject);
         }

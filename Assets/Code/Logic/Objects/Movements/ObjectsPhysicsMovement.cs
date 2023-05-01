@@ -40,7 +40,7 @@ namespace Code.Logic.Objects
         {
             if (_isMove)
             {
-                MovementCycle();
+                MovementCycle().Forget();
             }
         }
 

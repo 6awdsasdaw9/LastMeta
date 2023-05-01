@@ -28,14 +28,7 @@ namespace Code.Logic.Interactive
         private void Construct(InputService inputService, GameSettings gameSettings)
         {
             _input = inputService;
-            _input.OnPressEsc += () =>
-            {
-                if (IsReady() && _onInteractive)
-                {
-                    PlayAudioEvent();
-                    StopInteractive();
-                }
-            };
+            _input.OnPressEsc += OnPressEsc;
 
             _cooldown = new Cooldown();
             _cooldown.SetTime(gameSettings.InteractiveCooldownTime);
@@ -71,7 +64,7 @@ namespace Code.Logic.Interactive
                     StartInteractive();
                 }
 
-                PlayAudioEvent();
+               
                 _cooldown.ResetCooldown();
             }
 
@@ -82,30 +75,33 @@ namespace Code.Logic.Interactive
         {
             HideIcon();
 
-            _input.OnPressEsc -= () =>
-            {
-                if (IsReady() && _onInteractive)
-                {
-                    PlayAudioEvent();
-                    StopInteractive();
-                }
-            };
+            _input.OnPressEsc -=  OnPressEsc; 
         }
 
         private bool IsReady() => _cooldown.IsUp() && !_interactiveObject.OnProcess;
-        
-        private void StopInteractive()
-        {
-            _onInteractive = false;
-            _interactiveObject.StopInteractive();
-            ShowIcon();
-        }
 
         private void StartInteractive()
         {
             _interactiveObject.StartInteractive();
             _onInteractive = true;
             HideIcon();
+            PlayAudioEvent();
+        }
+
+        private void StopInteractive()
+        {
+            _onInteractive = false;
+            _interactiveObject.StopInteractive();
+            ShowIcon();
+            PlayAudioEvent();
+        }
+
+        private void OnPressEsc()
+        {
+            if (IsReady() && _onInteractive)
+            {
+                StopInteractive();
+            }
         }
 
         private async void ShowIcon()

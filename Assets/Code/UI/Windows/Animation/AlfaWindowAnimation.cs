@@ -26,12 +26,12 @@ namespace Code.UI.Windows.Animation
         
         public override void PlayShow(Action WindowShowed = null)
         {
-            ShowAnimation(WindowShowed);
+            ShowAnimation(WindowShowed).Forget();
         }
 
         public override void PlayHide(Action WindowHidden = null)
         {
-            HideAnimation(WindowHidden);
+            HideAnimation(WindowHidden).Forget();
         }
         
         private async UniTaskVoid ShowAnimation(Action WindowShowed)

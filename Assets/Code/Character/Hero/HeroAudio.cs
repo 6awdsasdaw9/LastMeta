@@ -16,8 +16,7 @@ namespace Code.Character.Hero
         private const string pathPunch = "event:/SFX/Player/Player_Punch";
         private const string pathShoot = "event:/SFX/Player/Player_Shoot";
         private const string pathStunned = "event:/SFX/Player/Player_Stunned";
-
-        private float _jumpCooldown = 1.5f, _currentJumpCooldown;
+        
 
 
         public void PlayStepSound() =>

@@ -52,7 +52,6 @@ namespace Code.Character.Hero
             _input = input;
             _heroConfig = gameConfig.heroConfig;
             dataCollection.Add(this);
-            Log.ColorLog("HERO ADD COLLECTIOn", ColorType.Red);
         }
 
         private void OnEnable() =>

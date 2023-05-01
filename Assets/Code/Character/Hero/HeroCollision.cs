@@ -41,7 +41,7 @@ namespace Code.Character.Hero
         private void Start()
         {
             SetNoFrictionPhysicsMaterial();
-            CheckWater();
+            CheckWater().Forget();
         }
 
         private void Update()

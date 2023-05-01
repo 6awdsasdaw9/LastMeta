@@ -15,10 +15,9 @@ namespace Code.Services.ScenesEvents
         private void OnEndInteractive()
         {
             _interactivityHandler.OnStartInteractive -= OnEndInteractive;
-
-            EnableFollows(_objectsToEnable);
-            DisableFollows(_objectsToDisable);
-
+            
+            EnableFollows(_objectsToEnable).Forget();
+            DisableFollows(_objectsToDisable).Forget();
             Destroy(gameObject);
         }
     }

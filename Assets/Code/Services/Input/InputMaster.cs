@@ -508,17 +508,6 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c9069c5c-279a-4790-82b7-3df993e97b9d"",
-                    ""path"": ""<VirtualMouse>/scroll"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""ScrollWheel"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""730bf410-d686-45e0-8adc-8f99f446f2fc"",
                     ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
