@@ -31,7 +31,6 @@ namespace Code.Audio
            _ambience.stop(STOP_MODE.ALLOWFADEOUT);
            _music.stop(STOP_MODE.ALLOWFADEOUT);
         }
-
         
         private void PlayAmbience()
         {
