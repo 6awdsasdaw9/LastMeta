@@ -245,6 +245,7 @@ GameObject:
   - component: {fileID: 8781077287222518407}
   - component: {fileID: 8781077287222518406}
   - component: {fileID: 8781077287222518401}
+  - component: {fileID: 3250919217695619674}
   m_Layer: 0
   m_Name: InteractoveHandler_HUDWindow
   m_TagString: Untagged
@@ -298,7 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 4878345571651421973}
-  _audioEvent: {fileID: 0}
+  _audioEvent: {fileID: 3250919217695619674}
   _isStartOnEnable: 0
 --- !u!114 &8781077287222518401
 MonoBehaviour:
@@ -313,6 +314,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
+--- !u!114 &3250919217695619674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8781077287222518403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94d8e5cd7338314aaa9e99783df8bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventReference:
+    Guid:
+      Data1: 1743186394
+      Data2: 1120882342
+      Data3: -704084845
+      Data4: 625795077
+    Path: event:/Press_E
+  _playOnAwake: 0
 --- !u!1 &8781077288218902188
 GameObject:
   m_ObjectHideFlags: 0

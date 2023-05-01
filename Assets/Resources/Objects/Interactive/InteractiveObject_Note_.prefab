@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 336111217241573677}
   - component: {fileID: 336111217241573676}
   - component: {fileID: 336111217241573679}
+  - component: {fileID: 16590248627981373}
   m_Layer: 0
   m_Name: InteractiveHandler_Note
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 8808347868190830553}
-  _audioEvent: {fileID: 0}
+  _audioEvent: {fileID: 16590248627981373}
   _isStartOnEnable: 1
 --- !u!114 &336111217241573679
 MonoBehaviour:
@@ -81,6 +82,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 3
   _id: 0
+--- !u!114 &16590248627981373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336111217241573673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94d8e5cd7338314aaa9e99783df8bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventReference:
+    Guid:
+      Data1: 1743186394
+      Data2: 1120882342
+      Data3: -704084845
+      Data4: 625795077
+    Path: event:/Press_E
+  _playOnAwake: 0
 --- !u!1 &4634893961005209749
 GameObject:
   m_ObjectHideFlags: 0

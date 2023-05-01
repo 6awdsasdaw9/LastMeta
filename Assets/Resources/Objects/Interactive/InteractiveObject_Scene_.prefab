@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 3277892978411625963}
   - component: {fileID: 3277892978411625962}
   - component: {fileID: 158201092009306197}
+  - component: {fileID: 8334268751405434150}
   m_Layer: 0
   m_Name: InteractoveHandler_Scene
   m_TagString: Untagged
@@ -258,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 3766245025369825767}
-  _audioEvent: {fileID: 0}
+  _audioEvent: {fileID: 8334268751405434150}
   _isStartOnEnable: 0
 --- !u!114 &158201092009306197
 MonoBehaviour:
@@ -275,6 +276,26 @@ MonoBehaviour:
   Type: 6
   _interactiveScene: 3
   _exitPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &8334268751405434150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3277892978411625967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94d8e5cd7338314aaa9e99783df8bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventReference:
+    Guid:
+      Data1: 1743186394
+      Data2: 1120882342
+      Data3: -704084845
+      Data4: 625795077
+    Path: event:/Press_E
+  _playOnAwake: 0
 --- !u!1001 &1021078870540857477
 PrefabInstance:
   m_ObjectHideFlags: 0
