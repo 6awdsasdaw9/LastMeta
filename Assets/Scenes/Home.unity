@@ -5788,11 +5788,11 @@ MonoBehaviour:
   _pressButtonAudioEvent:
     _eventReference:
       Guid:
-        Data1: 1743186394
-        Data2: 1120882342
-        Data3: -704084845
-        Data4: 625795077
-      Path: event:/Buttons/Press_E
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
     _playOnAwake: 0
 --- !u!114 &2079056229
 MonoBehaviour:
@@ -5825,11 +5825,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _eventReference:
     Guid:
-      Data1: 1743186394
-      Data2: 1120882342
-      Data3: -704084845
-      Data4: 625795077
-    Path: event:/Press_E
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   _playOnAwake: 0
 --- !u!1 &2093533908
 GameObject:
