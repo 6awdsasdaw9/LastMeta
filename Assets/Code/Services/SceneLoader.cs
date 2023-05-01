@@ -16,7 +16,7 @@ namespace Code.Services
         public void Load(string name, Action onLoaded = null) =>
             _coroutineRunner.StartCoroutine(LoadSceneAsync(name, onLoaded));
 
-        public IEnumerator LoadSceneAsync(string nextScene, Action onLoaded = null)
+        private IEnumerator LoadSceneAsync(string nextScene, Action onLoaded = null)
         {
             /*
             if (SceneManager.GetActiveScene().name == nextScene)
@@ -33,11 +33,6 @@ namespace Code.Services
 
             onLoaded?.Invoke();
         }
-
-        /*public void ReloadCurrentScene(string sceneName)
-        {
-            SceneManager.LoadSceneAsync(sceneName);
-        }*/
-
+        
     }
 } 

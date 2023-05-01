@@ -32,7 +32,6 @@ namespace Code.Character.Hero
             PlayMove();
             PlayCrouch();
             PlayJump();
-            Log.ColorLog($"ANIMATION: is crouch {_hero.Movement.IsCrouch}",ColorType.Purple);
         }
 
         public void PlayJump() => 

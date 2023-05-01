@@ -71,8 +71,8 @@ namespace Code.Logic.DayOfTime
 
         private void SetLighting(Vector3 angle, float intensity)
         {
-            _directionLight.transform.DOLocalRotate(angle, _animationDuration);
-            _directionLight.DOIntensity(intensity, _animationDuration);
+            _directionLight.transform.DOLocalRotate(angle, _animationDuration).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
+            _directionLight.DOIntensity(intensity, _animationDuration).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
 
         private void SetLighting(float dayTimeNormalized)
@@ -80,11 +80,11 @@ namespace Code.Logic.DayOfTime
             var targetAngle = Mathf.Lerp(_lightingSettings.morningAngle.y, _lightingSettings.eveningAngle.y,
                 dayTimeNormalized);
             _directionLight.transform.DOLocalRotate(
-                new Vector3(targetAngle, _lightingSettings.morningAngle.x, _lightingSettings.morningAngle.z), 0).Kill(true);
+                new Vector3(targetAngle, _lightingSettings.morningAngle.x, _lightingSettings.morningAngle.z), 0).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
 
             var targetIntensity = Mathf.Lerp(_lightingSettings.morningIntensity, _lightingSettings.nightIntensity,
                 dayTimeNormalized);
-            _directionLight.DOIntensity(targetIntensity, 0).Kill(true);
+            _directionLight.DOIntensity(targetIntensity, 0).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
     }
 }

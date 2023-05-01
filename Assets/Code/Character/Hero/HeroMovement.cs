@@ -23,7 +23,7 @@ namespace Code.Character.Hero
 
         #region Values
 
-        public bool IsCrouch { get; private set; } 
+        public bool IsCrouch { get; private set; }
         public float DirectionX => _directionX;
         private float _directionX;
         private Vector2 _desiredVelocity;
@@ -40,18 +40,19 @@ namespace Code.Character.Hero
 
         private const float _maxSupportVelocity = 1f;
         private const float _supportVelocityMultiplayer = 0.15f;
+
         #endregion
-
-
+        
         #region Run Time
 
         [Inject]
-        private void Construct(InputService input, GameConfig gameConfig,SavedDataCollection dataCollection)
+        private void Construct(InputService input, GameConfig gameConfig, SavedDataCollection dataCollection)
         {
             _hero = GetComponent<IHero>();
             _input = input;
             _heroConfig = gameConfig.heroConfig;
             dataCollection.Add(this);
+            Log.ColorLog("HERO ADD COLLECTIOn", ColorType.Red);
         }
 
         private void OnEnable() =>
@@ -62,7 +63,6 @@ namespace Code.Character.Hero
             SetDesiredVelocity();
             Rotation();
             Crouch();
-            Log.ColorLog($"MOVEMENTS: is crouch {IsCrouch}",ColorType.Teal);
         }
 
         private void FixedUpdate()
@@ -84,17 +84,15 @@ namespace Code.Character.Hero
             {
                 _input.PlayerCrochEvent += OnPressCrouch;
                 _input.PlayerMovementEvent += OnPressMovement;
-
             }
             else
             {
                 _input.PlayerCrochEvent -= OnPressCrouch;
                 _input.PlayerMovementEvent -= OnPressMovement;
-            }       
+            }
         }
 
-   
-        
+
         public void BlockMovement()
         {
             _directionX = 0;
@@ -106,7 +104,7 @@ namespace Code.Character.Hero
 
         public void UnBlockMovement()
         {
-            _heroCanMove = true; 
+            _heroCanMove = true;
         }
 
         #endregion
@@ -159,10 +157,10 @@ namespace Code.Character.Hero
         {
             //TODO Непотребство
             var speedMultiplayer = _heroConfig.maxSpeed;
-            
+
             if (_hero.Upgrade != null)
                 speedMultiplayer += _hero.Upgrade.BonusSpeed;
-            
+
             _desiredVelocity = new Vector2(_directionX, 0f) * speedMultiplayer;
         }
 
@@ -217,17 +215,24 @@ namespace Code.Character.Hero
 
         public void LoadData(SavedData savedData)
         {
-            if (savedData.heroPositionData.scene != CurrentLevel() ||
-                savedData.heroPositionData.position.AsUnityVector() == Vector3.zero)
+            if (!savedData.heroPositionData.positionInScene.ContainsKey(CurrentLevel()))
                 return;
 
-            Vector3Data savedPosition = savedData.heroPositionData.position;
+            Vector3Data savedPosition = savedData.heroPositionData.positionInScene[CurrentLevel()];
             transform.position = savedPosition.AsUnityVector();
         }
 
-        public void SaveData(SavedData savedData) =>
-            savedData.heroPositionData =
-                new PositionData(CurrentLevel(), transform.position.AsVectorData());
+        public void SaveData(SavedData savedData)
+        {
+            if (savedData.heroPositionData.positionInScene.ContainsKey(CurrentLevel()))
+            {
+                savedData.heroPositionData.positionInScene[CurrentLevel()] = transform.position.AsVectorData();
+            }
+            else
+            {
+                savedData.heroPositionData.AddPosition(CurrentLevel(), transform.position.AsVectorData());
+            }
+        }
 
         private string CurrentLevel() =>
             SceneManager.GetActiveScene().name;

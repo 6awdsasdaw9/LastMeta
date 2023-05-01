@@ -48,7 +48,7 @@ namespace Code.Logic.Objects
             }
             else
             {
-                savedData.ObjectsPosition[_uniqueId.Id] = _lidLukeObject.position.AsVectorData(); Log.ColorLog($"ELSE || SAVED DATA: luke position = {savedData.ObjectsPosition[_uniqueId.Id].AsUnityVector()}", ColorType.Orange);
+                savedData.ObjectsPosition[_uniqueId.Id] = _lidLukeObject.position.AsVectorData();
             }
         }
     }

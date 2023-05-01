@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace Code.Logic.Interactive.InteractiveObjects
 {
-    public class InteractiveObjectAnimation: Interactivity
+    public class InteractiveObjectAnimation : Interactivity
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private float _animationDuration = 0.5f;
-        
-        
+
+
         private readonly int Start_t = Animator.StringToHash("Start");
         private readonly int End_t = Animator.StringToHash("End");
-        
+
         public override void StartInteractive()
         {
             _animator.SetTrigger(Start_t);
@@ -33,6 +33,5 @@ namespace Code.Logic.Interactive.InteractiveObjects
             await UniTask.Delay(TimeSpan.FromSeconds(_animationDuration));
             OnProcess = false;
         }
-        
     }
 }

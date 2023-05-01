@@ -5,7 +5,6 @@ namespace Code.Infrastructure.Installers
 {
     public class SaveDataInstaller:MonoInstaller, IInitializable
     {
-
         public override void InstallBindings()
         {
             BindInterfaces();

@@ -18,6 +18,9 @@ namespace Code.Infrastructure.Installers
         {
             BindInterfaces();
             
+            BindSceneLoader();
+            BindLoadingCurtain();
+            
             BindDataService();
             
             BindFactory();
@@ -31,6 +34,16 @@ namespace Code.Infrastructure.Installers
             Container.BindInterfacesTo<ProjectInstaller>()
                 .FromInstance(this);
 
+        private void BindSceneLoader() => 
+            Container.Bind<SceneLoader>()
+                .AsSingle()
+                .WithArguments(this)
+                .NonLazy();
+
+        private void BindLoadingCurtain()
+        {
+            Container.Bind<LoadingCurtain>().FromInstance(curtain).AsSingle().NonLazy();
+        }
         private void BindDataService() => 
             Container.Bind<PersistentSavedDataService>().FromInstance(persistentSavedDataService).AsSingle().NonLazy();
         
@@ -39,7 +52,7 @@ namespace Code.Infrastructure.Installers
 
         private void BindStateMachine() =>
             Container.BindInterfacesAndSelfTo<GameStateMachine>()
-                .AsSingle().WithArguments(new SceneLoader(this), curtain, persistentSavedDataService).NonLazy();
+                .AsSingle().WithArguments(Container).NonLazy();
 
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Code.Data.GameData;
 
 namespace Code.Data.ProgressData
@@ -6,17 +7,11 @@ namespace Code.Data.ProgressData
     [Serializable]
     public class PositionData
     {
-        public string scene;
-        public Vector3Data position;
+        public Dictionary<string, Vector3Data> positionInScene = new();
 
-        public PositionData()
+        public void AddPosition(string scene, Vector3Data position)
         {
-        }
-
-        public PositionData(string scene, Vector3Data position)
-        {
-            this.scene = scene;
-            this.position = position;
+            positionInScene.Add(scene,position);
         }
     }
 }

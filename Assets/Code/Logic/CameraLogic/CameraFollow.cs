@@ -100,19 +100,23 @@ namespace Code.Logic.CameraLogic
 
         public void LoadData(SavedData savedData)
         {
-            if (savedData.cameraPositionData.scene != CurrentLevel() ||
-                savedData.cameraPositionData.position?.AsUnityVector() == Vector3.zero)
+            if (!savedData.cameraPositionData.positionInScene.ContainsKey(CurrentLevel()))
                 return;
 
-            Vector3Data savedPosition = savedData.cameraPositionData.position;
-            _target = savedPosition.AsUnityVector();
-            transform.position = _target;
+            Vector3Data savedPosition = savedData.cameraPositionData.positionInScene[CurrentLevel()];
+            transform.position = savedPosition.AsUnityVector();
         }
 
         public void SaveData(SavedData savedData)
         {
-            savedData.cameraPositionData =
-                new PositionData(CurrentLevel(), _target.AsVectorData());
+            if (savedData.cameraPositionData.positionInScene.ContainsKey(CurrentLevel()))
+            {
+                savedData.cameraPositionData.positionInScene[CurrentLevel()] = transform.position.AsVectorData();
+            }
+            else
+            {
+                savedData.cameraPositionData.AddPosition(CurrentLevel(), transform.position.AsVectorData());
+            }
         }
 
         private string CurrentLevel() =>
