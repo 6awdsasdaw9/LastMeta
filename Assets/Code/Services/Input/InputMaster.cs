@@ -383,7 +383,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""MenuPause"",
+                    ""name"": ""Esc"",
                     ""type"": ""Button"",
                     ""id"": ""84716755-0296-45bf-8585-d7a6c74fdb59"",
                     ""expectedControlType"": ""Button"",
@@ -458,7 +458,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardAndMouse"",
-                    ""action"": ""MenuPause"",
+                    ""action"": ""Esc"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -469,7 +469,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""MenuPause"",
+                    ""action"": ""Esc"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -578,7 +578,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Interact = m_UI.FindAction("Interact", throwIfNotFound: true);
-        m_UI_MenuPause = m_UI.FindAction("MenuPause", throwIfNotFound: true);
+        m_UI_Esc = m_UI.FindAction("Esc", throwIfNotFound: true);
         m_UI_Enter = m_UI.FindAction("Enter", throwIfNotFound: true);
         m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
         m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
@@ -739,7 +739,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Interact;
-    private readonly InputAction m_UI_MenuPause;
+    private readonly InputAction m_UI_Esc;
     private readonly InputAction m_UI_Enter;
     private readonly InputAction m_UI_Point;
     private readonly InputAction m_UI_Click;
@@ -749,7 +749,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         private @InputMaster m_Wrapper;
         public UIActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_UI_Interact;
-        public InputAction @MenuPause => m_Wrapper.m_UI_MenuPause;
+        public InputAction @Esc => m_Wrapper.m_UI_Esc;
         public InputAction @Enter => m_Wrapper.m_UI_Enter;
         public InputAction @Point => m_Wrapper.m_UI_Point;
         public InputAction @Click => m_Wrapper.m_UI_Click;
@@ -766,9 +766,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
-            @MenuPause.started += instance.OnMenuPause;
-            @MenuPause.performed += instance.OnMenuPause;
-            @MenuPause.canceled += instance.OnMenuPause;
+            @Esc.started += instance.OnEsc;
+            @Esc.performed += instance.OnEsc;
+            @Esc.canceled += instance.OnEsc;
             @Enter.started += instance.OnEnter;
             @Enter.performed += instance.OnEnter;
             @Enter.canceled += instance.OnEnter;
@@ -788,9 +788,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
-            @MenuPause.started -= instance.OnMenuPause;
-            @MenuPause.performed -= instance.OnMenuPause;
-            @MenuPause.canceled -= instance.OnMenuPause;
+            @Esc.started -= instance.OnEsc;
+            @Esc.performed -= instance.OnEsc;
+            @Esc.canceled -= instance.OnEsc;
             @Enter.started -= instance.OnEnter;
             @Enter.performed -= instance.OnEnter;
             @Enter.canceled -= instance.OnEnter;
@@ -851,7 +851,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnInteract(InputAction.CallbackContext context);
-        void OnMenuPause(InputAction.CallbackContext context);
+        void OnEsc(InputAction.CallbackContext context);
         void OnEnter(InputAction.CallbackContext context);
         void OnPoint(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);

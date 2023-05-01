@@ -28,6 +28,14 @@ namespace Code.Logic.Interactive
         private void Construct(InputService inputService, GameSettings gameSettings)
         {
             _input = inputService;
+            _input.OnPressEsc += () =>
+            {
+                if (IsReady() && _onInteractive)
+                {
+                    PlayAudioEvent();
+                    StopInteractive();
+                }
+            };
 
             _cooldown = new Cooldown();
             _cooldown.SetTime(gameSettings.InteractiveCooldownTime);
@@ -63,25 +71,29 @@ namespace Code.Logic.Interactive
                     StartInteractive();
                 }
 
-                if (_audioEvent != null)
-                {
-                    _audioEvent?.PlayAudioEvent();
-                }
-
+                PlayAudioEvent();
                 _cooldown.ResetCooldown();
             }
 
             _cooldown.UpdateCooldown();
         }
 
-        private bool IsReady() => _cooldown.IsUp() && !_interactiveObject.OnProcess;
-
-
         private void OnDisable()
         {
             HideIcon();
+
+            _input.OnPressEsc -= () =>
+            {
+                if (IsReady() && _onInteractive)
+                {
+                    PlayAudioEvent();
+                    StopInteractive();
+                }
+            };
         }
 
+        private bool IsReady() => _cooldown.IsUp() && !_interactiveObject.OnProcess;
+        
         private void StopInteractive()
         {
             _onInteractive = false;
@@ -104,5 +116,13 @@ namespace Code.Logic.Interactive
 
         private void HideIcon() =>
             _iconAnimation?.PlayVoid();
+
+        private void PlayAudioEvent()
+        {
+            if (_audioEvent != null)
+            {
+                _audioEvent?.PlayAudioEvent();
+            }
+        }
     }
 }
