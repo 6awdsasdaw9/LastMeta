@@ -11,7 +11,8 @@ namespace Code.Logic.Interactive.InteractiveObjects
 {
     public class HUDInteractiveObjectNote : Interactivity
     {
-        [SerializeField] private int _id;
+        [SerializeField] private int _noteId;
+        [SerializeField] private AudioEvent _layerAudioEvent;
 
         private Sprite _noteImage;
         private TextAsset _inkJSON;
@@ -24,8 +25,8 @@ namespace Code.Logic.Interactive.InteractiveObjects
         {
             hud.InteractiveNoteWindow.TryGetComponent(out _presentationWindow);
 
-            _inkJSON = textConfig.Notes.FirstOrDefault(n => n.Id == _id)!.inkJSON;
-            _noteImage = textConfig.Notes.FirstOrDefault(n => n.Id == _id)!.NoteImage;
+            _inkJSON = textConfig.Notes.FirstOrDefault(n => n.Id == _noteId)!.inkJSON;
+            _noteImage = textConfig.Notes.FirstOrDefault(n => n.Id == _noteId)!.NoteImage;
             
             _isNull = _presentationWindow == null || _inkJSON == null;
         }
@@ -38,9 +39,9 @@ namespace Code.Logic.Interactive.InteractiveObjects
             var message = new Story(_inkJSON.text).ContinueMaximally();
             
             OnProcess = true;
-            
             OnStartInteractive?.Invoke();
             
+            _layerAudioEvent.PlayAudioEvent();
             _presentationWindow.SetText(message);
             _presentationWindow.SetImage(_noteImage);
             _presentationWindow.ShowWindow(() => OnProcess = false);
@@ -52,7 +53,9 @@ namespace Code.Logic.Interactive.InteractiveObjects
                 return;
 
             OnProcess = true;
+            
             OnEndInteractive?.Invoke();
+            _layerAudioEvent.PlayAudioEvent();
             _presentationWindow.HideWindow(() => OnProcess = false);
         }
     }

@@ -222,6 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
+  LayerAudioEvent: {fileID: 0}
 --- !u!114 &44336996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 1667982887}
-  _audioEvent: {fileID: 44336998}
+  _pressButtonAudioEvent: {fileID: 44336998}
   _isStartOnEnable: 0
 --- !u!114 &44336997
 MonoBehaviour:
@@ -322,6 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 5
+  LayerAudioEvent: {fileID: 0}
 --- !u!114 &71038272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 467556617}
-  _audioEvent: {fileID: 0}
+  _pressButtonAudioEvent: {fileID: 0}
   _isStartOnEnable: 1
 --- !u!114 &71038273
 MonoBehaviour:
@@ -3090,6 +3092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 3
+  LayerAudioEvent: {fileID: 0}
   _id: 0
 --- !u!114 &1061556022
 MonoBehaviour:
@@ -3105,7 +3108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 4969837497167689892}
-  _audioEvent: {fileID: 0}
+  _pressButtonAudioEvent: {fileID: 0}
   _isStartOnEnable: 1
 --- !u!114 &1061556023
 MonoBehaviour:
@@ -3300,6 +3303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 4
+  LayerAudioEvent: {fileID: 0}
   _animator: {fileID: 4821489839570287462}
   _animationDuration: 0.2
 --- !u!114 &1280876712
@@ -3316,7 +3320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 0}
-  _audioEvent: {fileID: 0}
+  _pressButtonAudioEvent: {fileID: 0}
   _isStartOnEnable: 1
 --- !u!1 &1357980388
 GameObject:
@@ -5730,6 +5734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 2
+  LayerAudioEvent: {fileID: 0}
   _animator: {fileID: 981615837}
   _animationDuration: 0.5
 --- !u!114 &2079056228
@@ -5746,7 +5751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 780484138}
-  _audioEvent: {fileID: 2079056230}
+  _pressButtonAudioEvent: {fileID: 0}
   _isStartOnEnable: 0
 --- !u!114 &2079056229
 MonoBehaviour:
@@ -6777,7 +6782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 1762186688}
-  _audioEvent: {fileID: 7894554220028232371}
+  _pressButtonAudioEvent: {fileID: 7894554220028232371}
   _isStartOnEnable: 0
 --- !u!1001 &6839795549708427925
 PrefabInstance:
@@ -6957,6 +6962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  LayerAudioEvent: {fileID: 0}
   _sprite: {fileID: 21300000, guid: 9af51df35ed7e0347a1797460d72b0aa, type: 3}
 --- !u!114 &7894554220028232371
 MonoBehaviour:

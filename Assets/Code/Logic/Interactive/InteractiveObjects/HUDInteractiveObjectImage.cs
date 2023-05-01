@@ -9,6 +9,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
     public class HUDInteractiveObjectImage : Interactivity
     {
         [SerializeField] private Sprite _sprite;
+        [SerializeField] private AudioEvent _layerAudio;
         private IImageWindow _presentationWindow;
 
         private bool _isWindowNull;
@@ -27,6 +28,8 @@ namespace Code.Logic.Interactive.InteractiveObjects
 
             OnProcess = true;
             OnStartInteractive?.Invoke();
+            
+            _layerAudio.PlayAudioEvent();
             _presentationWindow.SetImage(_sprite);
             _presentationWindow.ShowWindow(() => OnProcess = false);
         }
@@ -38,6 +41,8 @@ namespace Code.Logic.Interactive.InteractiveObjects
 
             OnProcess = true;
             OnEndInteractive?.Invoke();
+            
+            _layerAudio.PlayAudioEvent(); 
             _presentationWindow.HideWindow(() => OnProcess = false);
         }
     }

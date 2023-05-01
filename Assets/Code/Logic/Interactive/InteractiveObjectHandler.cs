@@ -4,6 +4,7 @@ using Code.Logic.Triggers;
 using Code.Services;
 using Code.Services.Input;
 using Cysharp.Threading.Tasks;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
@@ -13,11 +14,13 @@ namespace Code.Logic.Interactive
     {
         [SerializeField] private InteractiveIconType iconType = InteractiveIconType.Interaction;
         [SerializeField] private InteractiveIconAnimation _iconAnimation;
-        [SerializeField] private AudioEvent _audioEvent;
 
+        [Space,Title("Optional")]
         [SerializeField] private bool _isStartOnEnable;
+        [SerializeField] private AudioEvent _pressButtonAudioEvent;
 
-        private IInteractive _interactiveObject;
+        
+        private Interactivity _interactiveObject;
         private InputService _input;
         private Cooldown _cooldown;
 
@@ -32,7 +35,7 @@ namespace Code.Logic.Interactive
             _cooldown = new Cooldown();
             _cooldown.SetTime(gameSettings.InteractiveCooldownTime);
 
-            _interactiveObject = GetComponent<IInteractive>();
+            _interactiveObject = GetComponent<Interactivity>();
         }
 
         private void OnEnable()
@@ -83,7 +86,8 @@ namespace Code.Logic.Interactive
             _interactiveObject.StartInteractive();
             _onInteractive = true;
             HideIcon();
-            PlayAudioEvent();
+            _pressButtonAudioEvent.PlayAudioEvent();
+
         }
 
         private void StopInteractive()
@@ -91,7 +95,7 @@ namespace Code.Logic.Interactive
             _onInteractive = false;
             _interactiveObject.StopInteractive();
             ShowIcon().Forget();
-            PlayAudioEvent();
+            _pressButtonAudioEvent.PlayAudioEvent();
         }
 
         private void OnPressEsc()
@@ -111,12 +115,6 @@ namespace Code.Logic.Interactive
         private void HideIcon() =>
             _iconAnimation?.PlayVoid();
 
-        private void PlayAudioEvent()
-        {
-            if (_audioEvent != null)
-            {
-                _audioEvent?.PlayAudioEvent();
-            }
-        }
+
     }
 }

@@ -6,6 +6,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
 {
     public class InteractiveObjectAnimation : Interactivity
     {
+        [Space,Header("Interactive Components")]
         [SerializeField] private Animator _animator;
         [SerializeField] private float _animationDuration = 0.5f;
 
