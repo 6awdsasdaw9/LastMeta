@@ -186,7 +186,6 @@ GameObject:
   - component: {fileID: 44336997}
   - component: {fileID: 44336996}
   - component: {fileID: 44336995}
-  - component: {fileID: 44336998}
   m_Layer: 0
   m_Name: InteractoveHandler_HUDWindow
   m_TagString: Untagged
@@ -222,7 +221,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
-  LayerAudioEvent: {fileID: 0}
+  _layerAudioEvent:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
 --- !u!114 &44336996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,8 +244,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 1667982887}
-  _pressButtonAudioEvent: {fileID: 44336998}
   _isStartOnEnable: 0
+  _pressButtonAudioEvent:
+    _eventReference:
+      Guid:
+        Data1: 1743186394
+        Data2: 1120882342
+        Data3: -704084845
+        Data4: 625795077
+      Path: event:/Buttons/Press_E
+    _playOnAwake: 0
 --- !u!114 &44336997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,26 +271,6 @@ MonoBehaviour:
   _cooldown: 0
   _followTriggerObserver:
   - {fileID: 44336996}
---- !u!114 &44336998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44336993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e94d8e5cd7338314aaa9e99783df8bba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _eventReference:
-    Guid:
-      Data1: 1743186394
-      Data2: 1120882342
-      Data3: -704084845
-      Data4: 625795077
-    Path: event:/Press_E
-  _playOnAwake: 0
 --- !u!1 &71038269
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +318,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 5
-  LayerAudioEvent: {fileID: 0}
+  _layerAudioEvent:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
 --- !u!114 &71038272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,8 +341,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 467556617}
-  _pressButtonAudioEvent: {fileID: 0}
   _isStartOnEnable: 1
+  _pressButtonAudioEvent:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
 --- !u!114 &71038273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3092,8 +3103,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 3
-  LayerAudioEvent: {fileID: 0}
-  _id: 0
+  _noteId: 0
+  _layerAudioEvent:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
 --- !u!114 &1061556022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3108,8 +3127,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 4969837497167689892}
-  _pressButtonAudioEvent: {fileID: 0}
   _isStartOnEnable: 1
+  _pressButtonAudioEvent:
+    _eventReference:
+      Guid:
+        Data1: 761754033
+        Data2: 1159206776
+        Data3: 1163809195
+        Data4: 646572522
+      Path: event:/Grab Objects/Paper
+    _playOnAwake: 0
 --- !u!114 &1061556023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3303,7 +3330,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 4
-  LayerAudioEvent: {fileID: 0}
   _animator: {fileID: 4821489839570287462}
   _animationDuration: 0.2
 --- !u!114 &1280876712
@@ -3320,8 +3346,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 0}
-  _pressButtonAudioEvent: {fileID: 0}
   _isStartOnEnable: 1
+  _pressButtonAudioEvent:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
 --- !u!1 &1357980388
 GameObject:
   m_ObjectHideFlags: 0
@@ -5734,7 +5768,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 2
-  LayerAudioEvent: {fileID: 0}
   _animator: {fileID: 981615837}
   _animationDuration: 0.5
 --- !u!114 &2079056228
@@ -5751,8 +5784,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 780484138}
-  _pressButtonAudioEvent: {fileID: 0}
   _isStartOnEnable: 0
+  _pressButtonAudioEvent:
+    _eventReference:
+      Guid:
+        Data1: 1743186394
+        Data2: 1120882342
+        Data3: -704084845
+        Data4: 625795077
+      Path: event:/Buttons/Press_E
+    _playOnAwake: 0
 --- !u!114 &2079056229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6760,7 +6801,6 @@ GameObject:
   - component: {fileID: 1470658883508715043}
   - component: {fileID: 6537943097082961972}
   - component: {fileID: 7846056328710084081}
-  - component: {fileID: 7894554220028232371}
   m_Layer: 0
   m_Name: InteractiveHandler_HUDImage
   m_TagString: Untagged
@@ -6782,8 +6822,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 1762186688}
-  _pressButtonAudioEvent: {fileID: 7894554220028232371}
   _isStartOnEnable: 0
+  _pressButtonAudioEvent:
+    _eventReference:
+      Guid:
+        Data1: -647310394
+        Data2: 1156078541
+        Data3: 528834230
+        Data4: -1207241307
+      Path: event:/Grab Objects/Grab
+    _playOnAwake: 0
 --- !u!1001 &6839795549708427925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6962,28 +7010,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
-  LayerAudioEvent: {fileID: 0}
   _sprite: {fileID: 21300000, guid: 9af51df35ed7e0347a1797460d72b0aa, type: 3}
---- !u!114 &7894554220028232371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5922184328479246553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e94d8e5cd7338314aaa9e99783df8bba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _eventReference:
-    Guid:
-      Data1: 1743186394
-      Data2: 1120882342
-      Data3: -704084845
-      Data4: 625795077
-    Path: event:/Press_E
-  _playOnAwake: 0
+  _layerAudio:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
 --- !u!1001 &7948913253638925408
 PrefabInstance:
   m_ObjectHideFlags: 0
