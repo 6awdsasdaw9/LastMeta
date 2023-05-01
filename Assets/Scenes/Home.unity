@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 44336997}
   - component: {fileID: 44336996}
   - component: {fileID: 44336995}
+  - component: {fileID: 44336998}
   m_Layer: 0
   m_Name: InteractoveHandler_HUDWindow
   m_TagString: Untagged
@@ -235,7 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 1667982887}
-  _audioEvent: {fileID: 0}
+  _audioEvent: {fileID: 44336998}
   _isStartOnEnable: 0
 --- !u!114 &44336997
 MonoBehaviour:
@@ -254,6 +255,26 @@ MonoBehaviour:
   _cooldown: 0
   _followTriggerObserver:
   - {fileID: 44336996}
+--- !u!114 &44336998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44336993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94d8e5cd7338314aaa9e99783df8bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventReference:
+    Guid:
+      Data1: 1743186394
+      Data2: 1120882342
+      Data3: -704084845
+      Data4: 625795077
+    Path: event:/Press_E
+  _playOnAwake: 0
 --- !u!1 &71038269
 GameObject:
   m_ObjectHideFlags: 0
@@ -5672,6 +5693,7 @@ GameObject:
   - component: {fileID: 2079056229}
   - component: {fileID: 2079056228}
   - component: {fileID: 2079056227}
+  - component: {fileID: 2079056230}
   m_Layer: 0
   m_Name: InteractoveHandler_Animation
   m_TagString: Untagged
@@ -5724,7 +5746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 780484138}
-  _audioEvent: {fileID: 0}
+  _audioEvent: {fileID: 2079056230}
   _isStartOnEnable: 0
 --- !u!114 &2079056229
 MonoBehaviour:
@@ -5743,6 +5765,26 @@ MonoBehaviour:
   _cooldown: 0
   _followTriggerObserver:
   - {fileID: 2079056228}
+--- !u!114 &2079056230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079056225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94d8e5cd7338314aaa9e99783df8bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventReference:
+    Guid:
+      Data1: 1743186394
+      Data2: 1120882342
+      Data3: -704084845
+      Data4: 625795077
+    Path: event:/Press_E
+  _playOnAwake: 0
 --- !u!1 &2093533908
 GameObject:
   m_ObjectHideFlags: 0

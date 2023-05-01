@@ -19,7 +19,7 @@ namespace Code.UI.Windows
             _hud.OnUIWindowShown?.Invoke();
         }
 
-        public virtual  void HideWindow(Action WindowHidden)
+        public virtual void HideWindow(Action WindowHidden)
         {
             if(_animation.IsPlay)
                 return;
