@@ -1,4 +1,5 @@
 using Code.Data.Configs;
+using Code.Debugers;
 using Code.Logic.Interactive.InteractiveObjects;
 using Code.Logic.Triggers;
 using Code.Services;
@@ -28,7 +29,6 @@ namespace Code.Logic.Interactive
         private void Construct(InputService inputService, GameSettings gameSettings)
         {
             _input = inputService;
-            _input.OnPressEsc += OnPressEsc;
 
             _cooldown = new Cooldown();
             _cooldown.SetTime(gameSettings.InteractiveCooldownTime);
@@ -38,6 +38,7 @@ namespace Code.Logic.Interactive
 
         private void OnEnable()
         {
+            _input.OnPressEsc += OnPressEsc;
             if (_isStartOnEnable)
             {
                 StartInteractive();
@@ -64,7 +65,6 @@ namespace Code.Logic.Interactive
                     StartInteractive();
                 }
 
-               
                 _cooldown.ResetCooldown();
             }
 
@@ -73,9 +73,8 @@ namespace Code.Logic.Interactive
 
         private void OnDisable()
         {
+            _input.OnPressEsc -= OnPressEsc;
             HideIcon();
-
-            _input.OnPressEsc -=  OnPressEsc; 
         }
 
         private bool IsReady() => _cooldown.IsUp() && !_interactiveObject.OnProcess;
@@ -92,7 +91,7 @@ namespace Code.Logic.Interactive
         {
             _onInteractive = false;
             _interactiveObject.StopInteractive();
-            ShowIcon();
+            ShowIcon().Forget();
             PlayAudioEvent();
         }
 
@@ -104,7 +103,7 @@ namespace Code.Logic.Interactive
             }
         }
 
-        private async void ShowIcon()
+        private async UniTaskVoid ShowIcon()
         {
             await UniTask.WaitUntil(() => _cooldown.IsUp());
             _iconAnimation?.PlayType(iconType);
