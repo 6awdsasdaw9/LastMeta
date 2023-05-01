@@ -29,7 +29,6 @@ namespace Code.Character.Hero
         private float _coyoteTimeCounter;
 
         //States
-        private bool _isCanJump = true;
         private bool _isCanJumpAgain;
         private bool _isDesiredJump;
         private bool _isCurrentlyJumping;

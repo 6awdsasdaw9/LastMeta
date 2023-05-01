@@ -24,7 +24,6 @@ namespace Code.Infrastructure.Installers
                 GetInitialPoint(),
                 Quaternion.identity,
                 null);
-            Log.ColorLog("Hero Bind",ColorType.Red);
             Container.BindInterfacesTo<Hero>().FromInstance(hero).AsSingle().NonLazy();
         }
 

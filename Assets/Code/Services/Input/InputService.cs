@@ -10,7 +10,7 @@ namespace Code.Services.Input
         private readonly InputMaster _master;
         private readonly EventSystem _eventSystem;
 
-        public bool IsEnterPressed { get; private set; }
+        private bool IsEnterPressed { get; set; }
         private bool _isInteractPressed;
         private bool _isPressedOnUI;
 
@@ -22,15 +22,7 @@ namespace Code.Services.Input
             EnableUIInput(true);
             ConnectToEvents();
         }
-
-        /*
-        private void OnDisable()
-        {
-            DisablePlayerInput();
-            EnebleUIInput(false);
-        }
-        */
-
+        
 
         public void Tick()
         {
@@ -48,13 +40,11 @@ namespace Code.Services.Input
             _master.Player.Jump.started += Jump;
             _master.Player.Crouch.started += Crouch;
             _master.Player.Crouch.canceled += Crouch;
-
-
+            
             _master.Player.Skill_One.started += SkillButton_One;
             _master.Player.Skill_Two.started += SkillButton_Two;
-
-
-            _master.UI.MenuPause.started += OpenMenu;
+            
+            _master.UI.Esc.started += PressEsc;
             
             _master.UI.Interact.performed += InteractButtonPressed;
             _master.UI.Interact.canceled += InteractButtonPressed;
@@ -133,17 +123,18 @@ namespace Code.Services.Input
             else _master.UI.Disable();
         }
 
-        private void OpenMenu(InputAction.CallbackContext context) => OpenMenuEvent?.Invoke();
+        private void PressEsc(InputAction.CallbackContext context)
+        {
+            if(context.started)
+                OnPressEsc?.Invoke();
+        }
 
-        public event Action OpenMenuEvent;
-
-
+        public event Action OnPressEsc;
+        
         private void InteractButtonPressed(InputAction.CallbackContext context)
         {
-            
-                _isInteractPressed = true;
+            _isInteractPressed = true;
            if (context.canceled) _isInteractPressed = false;
-        
         }
 
         public bool GetInteractPressed()

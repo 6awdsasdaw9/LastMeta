@@ -12,6 +12,7 @@ namespace Code.Logic.CameraLogic
 {
     public class CameraFollow : MonoBehaviour, ISavedData
     {
+        [SerializeField] private bool _isCanMove = true;
         [SerializeField] private bool _isCanMoveY = true;
         [SerializeField] private float _dampTime = 0.75f;
         private readonly float _maxDampTime = 1.5f;
@@ -19,7 +20,7 @@ namespace Code.Logic.CameraLogic
         private readonly Vector3 _cameraOffset = new(0.5f, 1.6f, -60f);
 
         private float startPosY;
-        private bool _isCanMove = true;
+
 
         private IHero _hero;
         private Vector3 _velocity = Vector3.zero;
@@ -34,6 +35,7 @@ namespace Code.Logic.CameraLogic
         [Inject]
         private void Construct(IHero hero, InputService inputService, SavedDataCollection dataCollection)
         {
+
             _hero = hero;
 
             _currentDampTime = _dampTime;
@@ -44,7 +46,7 @@ namespace Code.Logic.CameraLogic
 
         private void LateUpdate()
         {
-            if (_hero == null)
+            if (_hero == null || !_isCanMove)
                 return;
             
             _target = _isCanMove ? GetTarget() : transform.position;

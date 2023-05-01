@@ -1,4 +1,5 @@
 using Code.Data.Configs;
+using Code.Debugers;
 using Code.Logic.Interactive.InteractiveObjects;
 using Code.Logic.Triggers;
 using Code.Services;
@@ -37,6 +38,7 @@ namespace Code.Logic.Interactive
 
         private void OnEnable()
         {
+            _input.OnPressEsc += OnPressEsc;
             if (_isStartOnEnable)
             {
                 StartInteractive();
@@ -63,40 +65,45 @@ namespace Code.Logic.Interactive
                     StartInteractive();
                 }
 
-                if (_audioEvent != null)
-                {
-                    _audioEvent?.PlayAudioEvent();
-                }
-
                 _cooldown.ResetCooldown();
             }
 
             _cooldown.UpdateCooldown();
         }
 
-        private bool IsReady() => _cooldown.IsUp() && !_interactiveObject.OnProcess;
-
-
         private void OnDisable()
         {
+            _input.OnPressEsc -= OnPressEsc;
             HideIcon();
         }
 
-        private void StopInteractive()
-        {
-            _onInteractive = false;
-            _interactiveObject.StopInteractive();
-            ShowIcon();
-        }
+        private bool IsReady() => _cooldown.IsUp() && !_interactiveObject.OnProcess;
 
         private void StartInteractive()
         {
             _interactiveObject.StartInteractive();
             _onInteractive = true;
             HideIcon();
+            PlayAudioEvent();
         }
 
-        private async void ShowIcon()
+        private void StopInteractive()
+        {
+            _onInteractive = false;
+            _interactiveObject.StopInteractive();
+            ShowIcon().Forget();
+            PlayAudioEvent();
+        }
+
+        private void OnPressEsc()
+        {
+            if (IsReady() && _onInteractive)
+            {
+                StopInteractive();
+            }
+        }
+
+        private async UniTaskVoid ShowIcon()
         {
             await UniTask.WaitUntil(() => _cooldown.IsUp());
             _iconAnimation?.PlayType(iconType);
@@ -104,5 +111,13 @@ namespace Code.Logic.Interactive
 
         private void HideIcon() =>
             _iconAnimation?.PlayVoid();
+
+        private void PlayAudioEvent()
+        {
+            if (_audioEvent != null)
+            {
+                _audioEvent?.PlayAudioEvent();
+            }
+        }
     }
 }

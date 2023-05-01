@@ -1,8 +1,6 @@
 using System;
 using System.Linq;
-using System.Threading.Tasks;
 using Code.Character.Hero;
-using Code.Character.Interfaces;
 using Code.Debugers;
 using Code.Services;
 using Cysharp.Threading.Tasks;
@@ -44,6 +42,12 @@ namespace Code.Character.Enemies
                 StartAttack();
         }
 
+        private void OnDisable()
+        {
+            if(_isAttacking)
+                _hero.Movement.SetSupportVelocity(Vector2.zero);
+        }
+
         private void StartAttack()
         {
             if (_isAttacking)
@@ -63,7 +67,7 @@ namespace Code.Character.Enemies
                 return;
 
             _hero.Health.TakeDamage(_damage);
-            Push();
+            Push().Forget();
         }
 
         private async UniTaskVoid Push()
