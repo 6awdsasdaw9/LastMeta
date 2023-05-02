@@ -1,7 +1,9 @@
+using System;
 using FMODUnity;
 using UnityEngine;
 
-public class AudioEventComponent : MonoBehaviour
+[Serializable]
+public class AudioEvent
 {
     [SerializeField] private EventReference _eventReference;
     [SerializeField] private bool _playOnAwake;
@@ -21,6 +23,6 @@ public class AudioEventComponent : MonoBehaviour
             return;
         }
 
-        RuntimeManager.PlayOneShot(_eventReference, gameObject.transform.position);
+        RuntimeManager.PlayOneShot(_eventReference);
     }
 }

@@ -18,7 +18,6 @@ namespace Code.Logic.Interactive
         [Space,Title("Optional")]
         [SerializeField] private bool _isStartOnEnable;
         [SerializeField] private AudioEvent _pressButtonAudioEvent;
-
         
         private Interactivity _interactiveObject;
         private InputService _input;
@@ -83,19 +82,18 @@ namespace Code.Logic.Interactive
 
         private void StartInteractive()
         {
-            _interactiveObject.StartInteractive();
             _onInteractive = true;
-            HideIcon();
+            _interactiveObject.StartInteractive();
             _pressButtonAudioEvent.PlayAudioEvent();
-
+            HideIcon();
         }
 
         private void StopInteractive()
         {
             _onInteractive = false;
             _interactiveObject.StopInteractive();
-            ShowIcon().Forget();
             _pressButtonAudioEvent.PlayAudioEvent();
+            ShowIcon().Forget();
         }
 
         private void OnPressEsc()
@@ -114,7 +112,6 @@ namespace Code.Logic.Interactive
 
         private void HideIcon() =>
             _iconAnimation?.PlayVoid();
-
 
     }
 }

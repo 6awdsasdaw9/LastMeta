@@ -30,8 +30,9 @@ namespace Code.Logic.Interactive.InteractiveObjects
                 return;
 
             OnProcess = true;
-            _layerAudioEvent.PlayAudioEvent();
             OnStartInteractive?.Invoke();
+            
+            _layerAudioEvent.PlayAudioEvent();
             _presentationWindow.ShowWindow(() => OnProcess = false);
         }
 
@@ -41,8 +42,9 @@ namespace Code.Logic.Interactive.InteractiveObjects
                 return;
 
             OnProcess = true;
-            _layerAudioEvent.PlayAudioEvent();
             OnEndInteractive?.Invoke();
+            
+            _layerAudioEvent.PlayAudioEvent();
             _presentationWindow.HideWindow(() => OnProcess = false);
         }
     }
