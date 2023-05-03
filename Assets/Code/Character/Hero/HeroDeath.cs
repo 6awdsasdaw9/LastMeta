@@ -14,15 +14,11 @@ namespace Code.Character.Hero
         private IHero _hero;
         private MovementLimiter _limiter;
         private bool _isDeath;
-
-        //TODO вытащить в отдельных класс VFX игрока
-        private GameObject _deathFx;
-
+        
         [Inject]
         private void Construct(PrefabsData prefabsData, MovementLimiter limiter)
         {
             _hero = GetComponent<IHero>();
-            _deathFx = prefabsData.VFX_PlayerDeath;
             _hero.Health.HealthChanged += HealthChanged;
             _hero.Collision.OnWater += DeathOnWater;
             _limiter = limiter;
@@ -44,23 +40,19 @@ namespace Code.Character.Hero
 
         private void Die()
         {
-            OnDeath?.Invoke();
             _hero.Animator.PlayDeath();
+            _hero.VFX.PlayDeathVFX(vfxPosition: transform.position - Vector3.right * transform.localScale.x * 0.5f);
+            
+            OnDeath?.Invoke();
             DisableHero();
-
-            PlayDeathVFX();
         }
-
-        private void PlayDeathVFX()
-        {
-            var vfx = Instantiate(_deathFx, transform.position, Quaternion.identity);
-            vfx.transform.position -= Vector3.right * transform.localScale.x * 0.5f;
-        }
-
+        
         private void DeathOnWater()
         {
-            OnDeath?.Invoke();
             _hero.Animator.PlayDeathOnWater();
+            _hero.VFX.PlayDeathVFX();
+    
+            OnDeath?.Invoke();
             DisableHero();
         }
 

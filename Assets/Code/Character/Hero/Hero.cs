@@ -20,19 +20,23 @@ namespace Code.Character.Hero
         [SerializeField] private HeroDeath _death;
         [SerializeField] private HeroHealth _health;
         [SerializeField] private HeroUpgrade _upgrade;
+        [SerializeField] private HeroVFX _vfx;
 
         public Transform Transform => transform;
         public IHeroAnimator Animator => _animator;
-        public IHeroAttack Attack => _attack;
         public IHeroAudio Audio => _audio;
-        public IHeroBuff Buff => _buff;
-        public IHeroCollision Collision => _collision;
-        public IHeroDeath Death => _death;
-        public IHealth Health => _health;
         public IHeroMovement Movement => _movement;
         public IHeroJump Jump => _jump;
+        public IHeroCollision Collision => _collision;
+        
+        public IHeroAttack Attack => _attack;
+        
+        public IHeroBuff Buff => _buff;
+        public IHeroDeath Death => _death;
+        public IHealth Health => _health;
         public IHeroUpgrade Upgrade => _upgrade;
-
+        public IHeroVFX VFX => _vfx;
+        
         private MovementLimiter _movementLimiter;
 
         [Inject]

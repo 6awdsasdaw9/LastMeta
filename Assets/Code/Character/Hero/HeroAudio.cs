@@ -16,32 +16,39 @@ namespace Code.Character.Hero
         private const string pathPunch = "event:/SFX/Player/Player_Punch";
         private const string pathShoot = "event:/SFX/Player/Player_Shoot";
         private const string pathStunned = "event:/SFX/Player/Player_Stunned";
+        private const string pathWaterDeath = "event:/Shark Death";
+    
         
-
-
+        
         public void PlayStepSound() =>
-            RuntimeManager.PlayOneShot(pathStep, gameObject.transform.position);
+            RuntimeManager.PlayOneShot(pathStep, transform.position);
 
         public void PlaySoftStepSound() =>
-            RuntimeManager.PlayOneShot(pathSoftStep, gameObject.transform.position);
+            RuntimeManager.PlayOneShot(pathSoftStep, transform.position);
 
         public void PlayOnLandAudio() =>
-            RuntimeManager.PlayOneShot(pathOnLand, gameObject.transform.position);
+            RuntimeManager.PlayOneShot(pathOnLand, transform.position);
 
         public void PlayPunchAudio() =>
-            RuntimeManager.PlayOneShot(pathPunch, gameObject.transform.position);
+            RuntimeManager.PlayOneShot(pathPunch, transform.position);
 
         public void PlayDamageAudio() =>
-            RuntimeManager.PlayOneShot(pathTakeDamage, gameObject.transform.position);
+            RuntimeManager.PlayOneShot(pathTakeDamage, transform.position);
+        
 
         public void PlayJump()
         {
-            RuntimeManager.PlayOneShot(pathJump, gameObject.transform.position);
+            RuntimeManager.PlayOneShot(pathJump, transform.position);
         }
 
+        public void PlayWaterDeath()
+        {
+            RuntimeManager.PlayOneShot(pathWaterDeath, transform.position);
+        }
+        
         public void PlayOneShotAudio(string path)
         {
-            if (path == String.Empty)
+            if (path == string.Empty)
                 return;
 
             RuntimeManager.PlayOneShot(path, gameObject.transform.position);
