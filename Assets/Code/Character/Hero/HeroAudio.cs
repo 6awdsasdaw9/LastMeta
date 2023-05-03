@@ -16,7 +16,7 @@ namespace Code.Character.Hero
         private const string pathPunch = "event:/SFX/Player/Player_Punch";
         private const string pathShoot = "event:/SFX/Player/Player_Shoot";
         private const string pathStunned = "event:/SFX/Player/Player_Stunned";
-        private const string pathWaterDeath = "event:/Shark Death";
+        private const string pathWaterDeath = "event:/SFX/Player/Shark Death";
     
         
         
@@ -41,7 +41,7 @@ namespace Code.Character.Hero
             RuntimeManager.PlayOneShot(pathJump, transform.position);
         }
 
-        public void PlayWaterDeath()
+        public void PlayWaterDeathAudio()
         {
             RuntimeManager.PlayOneShot(pathWaterDeath, transform.position);
         }
