@@ -23,7 +23,6 @@ namespace Code.Infrastructure.StateMachine
         public void Enter<TState>() where TState : class, IState
         {
             IState state = ChangeState<TState>();
-
             state.Enter();
         }
 

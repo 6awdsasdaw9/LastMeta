@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ed918c40924c729b57f4be694815c1, type: 3}
+  m_Name: SceneAudioPath
+  m_EditorClassIdentifier: 
+  SceneAudioData:
+  - Scene: 1
+    Music:
+      Guid:
+        Data1: 492783442
+        Data2: 1301200461
+        Data3: -1493820014
+        Data4: 1745945372
+      Path: event:/Music/Music_Home
+    Ambience:
+      Guid:
+        Data1: 874724570
+        Data2: 1314933864
+        Data3: -1762680390
+        Data4: 1508453363
+      Path: event:/Ambience/Home_Ambiece
+  - Scene: 2
+    Music:
+      Guid:
+        Data1: -227023009
+        Data2: 1225225925
+        Data3: -1931876694
+        Data4: 2139672087
+      Path: event:/Music/Music_0
+    Ambience:
+      Guid:
+        Data1: 1240592419
+        Data2: 1143234125
+        Data3: -1700461924
+        Data4: 7084308
+      Path: event:/Ambience/Wind_Level_01

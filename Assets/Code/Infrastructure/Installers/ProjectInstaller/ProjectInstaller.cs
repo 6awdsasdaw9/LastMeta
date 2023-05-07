@@ -11,48 +11,48 @@ namespace Code.Infrastructure.Installers
 {
     public class ProjectInstaller : MonoInstaller<ProjectInstaller>, IInitializable, ICoroutineRunner
     {
-        public LoadingCurtain curtain;
-        public PersistentSavedDataService persistentSavedDataService;
-        
+        //TODO разделить на несколько инсталлеров
+        public LoadingCurtain Curtain;
+        public PersistentSavedDataService ProgressService;
+
         public override void InstallBindings()
         {
             BindInterfaces();
-            
+
             BindSceneLoader();
             BindLoadingCurtain();
-            
+
             BindDataService();
-            
+
             BindFactory();
             BindStateMachine();
         }
 
-        public void Initialize() => 
+        public void Initialize() =>
             Container.Resolve<GameStateMachine>().Enter<BootstrapState>();
 
         private void BindInterfaces() =>
             Container.BindInterfacesTo<ProjectInstaller>()
                 .FromInstance(this);
 
-        private void BindSceneLoader() => 
+        private void BindSceneLoader() =>
             Container.Bind<SceneLoader>()
                 .AsSingle()
                 .WithArguments(this)
                 .NonLazy();
 
-        private void BindLoadingCurtain()
-        {
-            Container.Bind<LoadingCurtain>().FromInstance(curtain).AsSingle().NonLazy();
-        }
-        private void BindDataService() => 
-            Container.Bind<PersistentSavedDataService>().FromInstance(persistentSavedDataService).AsSingle().NonLazy();
-        
-        private void BindFactory() => 
+        private void BindLoadingCurtain() =>
+            Container.Bind<LoadingCurtain>().FromInstance(Curtain).AsSingle().NonLazy();
+
+
+        private void BindDataService() =>
+            Container.Bind<PersistentSavedDataService>().FromInstance(ProgressService).AsSingle().NonLazy();
+
+        private void BindFactory() =>
             Container.Bind<GameFactory>().AsSingle().NonLazy();
 
         private void BindStateMachine() =>
             Container.BindInterfacesAndSelfTo<GameStateMachine>()
                 .AsSingle().WithArguments(Container).NonLazy();
-
     }
 }

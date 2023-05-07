@@ -12,14 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957a180e785540399d934d2a2fbe28b8, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
+  RealCamera:
+    IsCanMoveY: 1
+    DampTime: 0.75
+    MaxDampTime: 1.5
+    CameraOffset: {x: 0.5, y: 1.6, z: -60}
+  GameCamera:
+    IsCanMoveY: 1
+    DampTime: 0.75
+    MaxDampTime: 1.5
+    CameraOffset: {x: 0.5, y: 1.6, z: -60}
   DayTimeInSeconds: 50
   LightingSettings:
     morningIntensity: 0.9
     eveningIntensity: 0.9
     nightIntensity: 0.2
-    morningAngle: {x: 0, y: 0.5, z: 0}
-    eveningAngle: {x: 70, y: 0.5, z: 0}
-    nightAngle: {x: 70, y: 0.5, z: 0}
+    morningAngle: {x: -5, y: 0.5, z: 0}
+    eveningAngle: {x: 5, y: 0.8, z: 0}
+    nightAngle: {x: 10, y: 1.1, z: 0}
   InteractiveCooldownTime: 1.1
   InteractiveObjectDownPos: {x: 0, y: -1000, z: 0}
   InteractiveObjectCenterPos: {x: 0, y: 0, z: 0}
