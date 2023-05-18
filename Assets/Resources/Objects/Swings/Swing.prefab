@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbdeaae193ef504eb1012a39b1cccd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 0}
   type: 4
   isVisible: 1
   alpha: 130
@@ -425,7 +426,7 @@ GameObject:
   - component: {fileID: 4847775716278156828}
   m_Layer: 3
   m_Name: Right
-  m_TagString: Untagged
+  m_TagString: NotEditPosition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -511,7 +512,7 @@ GameObject:
   - component: {fileID: 4847775716303447829}
   m_Layer: 11
   m_Name: Chain_R
-  m_TagString: Untagged
+  m_TagString: NotEditPosition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -697,6 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbdeaae193ef504eb1012a39b1cccd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 0}
   type: 4
   isVisible: 1
   alpha: 130
@@ -813,7 +815,7 @@ GameObject:
   - component: {fileID: 4847775716749577868}
   m_Layer: 11
   m_Name: Chain_L
-  m_TagString: Untagged
+  m_TagString: NotEditPosition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -950,7 +952,7 @@ GameObject:
   - component: {fileID: 4847775716802171854}
   m_Layer: 3
   m_Name: Left
-  m_TagString: Untagged
+  m_TagString: NotEditPosition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1034,7 +1036,7 @@ GameObject:
   - component: {fileID: 4847775716902029495}
   m_Layer: 3
   m_Name: Down
-  m_TagString: Untagged
+  m_TagString: NotEditPosition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1118,7 +1120,7 @@ GameObject:
   - component: {fileID: 4847775717068493857}
   m_Layer: 3
   m_Name: Top
-  m_TagString: Untagged
+  m_TagString: NotEditPosition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

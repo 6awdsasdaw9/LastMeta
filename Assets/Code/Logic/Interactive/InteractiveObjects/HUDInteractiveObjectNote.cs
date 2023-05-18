@@ -23,7 +23,9 @@ namespace Code.Logic.Interactive.InteractiveObjects
         [Inject]
         private void Construct(HUD hud,TextConfig textConfig)
         {
-            hud.InteractiveNoteWindow.TryGetComponent(out _presentationWindow);
+            _presentationWindow = (INoteWindow)hud.InteractiveObjectWindows
+                .FirstOrDefault(w => w.Type == Type)?
+                .InteractiveObjectWindow;
 
             _inkJSON = textConfig.Notes.FirstOrDefault(n => n.Id == _noteId)!.inkJSON;
             _noteImage = textConfig.Notes.FirstOrDefault(n => n.Id == _noteId)!.NoteImage;

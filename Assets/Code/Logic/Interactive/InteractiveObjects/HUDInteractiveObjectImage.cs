@@ -1,3 +1,4 @@
+using System.Linq;
 using Code.UI;
 using Code.UI.HeadUpDisplay;
 using Code.UI.Windows;
@@ -17,7 +18,10 @@ namespace Code.Logic.Interactive.InteractiveObjects
         [Inject]
         private void Construct(HUD hud)
         {
-            hud.InteractiveImageWindow.TryGetComponent(out _presentationWindow);
+            _presentationWindow = (IImageWindow)hud.InteractiveObjectWindows
+                .FirstOrDefault(w => w.Type == Type)?
+                .InteractiveObjectWindow;
+            
             _isWindowNull = _presentationWindow == null;
         }
 

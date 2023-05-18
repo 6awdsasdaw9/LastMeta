@@ -40,10 +40,11 @@ namespace Code
         #region Sprite Layer Position
         
         //BackGround
-        public const float minusTenLayer = 900;
+        public const float minusElevenLayer = 900;
         //BackGround Decoration
-        public const float minusNineLayer = 0.9f;
-        public const float minusEightLayer = 0.8f;
+        public const float minusTenLayer = 1; //inside home
+        public const float minusNineLayer = 0.9f; //outside dark home 
+        public const float minusEightLayer = 0.8f;//outside light home 
         public const float minusSevenLayer = 0.7f;
         //Ground
         public const float minusSixLayer = 0.6f;
@@ -75,6 +76,7 @@ namespace Code
         public static Color DarkBlueColor =  new(0.75f, 0.85f, 1, 1);
         public static Color VioletColor =  new(0.85f, 0.74f, 1, 1);
         public static Color[] RainbowColor = { RedColor,OrangeColor,YellowColor,GreenColor,BlueColor,DarkBlueColor,VioletColor};
+
         #endregion
 
     }

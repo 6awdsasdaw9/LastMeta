@@ -1,5 +1,6 @@
 using System;
 using Code.Data.Configs;
+using Code.Debugers;
 using DG.Tweening;
 using UnityEngine;
 using Zenject;
@@ -28,6 +29,7 @@ namespace Code.UI.Windows.Animation
 
         public override void PlayShow(Action WindowShowed)
         {
+            Log.ColorLog($"{gameObject.name}  play show");
             _body.anchoredPosition = _downPos;
             _canvasGroup.alpha = 0;
 

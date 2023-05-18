@@ -11,10 +11,6 @@ namespace Code.UI.HeadUpDisplay
     [RequireComponent(typeof(HudAdapter))]
     public class HUD : MonoBehaviour
     {
-        [Title("Common HUD")]
-        public InteractiveImageWindow InteractiveImageWindow;
-        public InteractiveNoteWindow InteractiveNoteWindow;
-
         public List<InteractiveObjectWindowData> InteractiveObjectWindows;
 
         [Title("Game HUD")]

@@ -19,6 +19,6 @@ namespace Code.Data.Configs
         [Title("UI")]
         public HUD RealHUD;
         public HUD GameHUD;
-        public DialogueCloud DialogueCloud;
+        public LaptopDialogueCloud DialogueCloud;
     }
 }

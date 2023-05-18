@@ -10,7 +10,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
     public class InteractiveObjectScene : Interactivity
     {
         [SerializeField] private Constants.Scenes _interactiveScene;
-        [SerializeField] private Vector3 _exitPosition;
+        [SerializeField] private int _spawnPointID;
         
         private GameStateMachine _stateMachine;
         private PersistentSavedDataService _dataService;

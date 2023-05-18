@@ -1363,13 +1363,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429a244dd2c5418db09e832583e2e936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractiveImageWindow: {fileID: 7231219690935756269}
-  InteractiveNoteWindow: {fileID: 2083318917806723674}
   InteractiveObjectWindows:
   - Type: 1
     InteractiveObjectWindow: {fileID: 7147161388867585675}
   - Type: 5
     InteractiveObjectWindow: {fileID: 2372904412032829619}
+  - Type: 0
+    InteractiveObjectWindow: {fileID: 7231219690935756269}
+  - Type: 3
+    InteractiveObjectWindow: {fileID: 2083318917806723674}
   HeroHpBar: {fileID: 0}
 --- !u!114 &2865704773615269371
 MonoBehaviour:

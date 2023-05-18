@@ -1,6 +1,4 @@
 using Code.Data.Configs;
-using Code.Data.GameData;
-using Code.UI;
 using Code.UI.HeadUpDisplay;
 using UnityEngine;
 using Zenject;
@@ -9,8 +7,8 @@ namespace Code.Infrastructure.Installers
 {
     public class HUDInstaller : MonoInstaller
     {
-        [Inject] private PrefabsData _prefabsData;
         [SerializeField] private Constants.TypeOfScene _typeOfScene;
+        [Inject] private PrefabsData _prefabsData;
 
         public override void InstallBindings()
         {

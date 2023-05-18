@@ -48,6 +48,7 @@ namespace Code.Infrastructure.StateMachine.States
         {
             SceneAudioData audioData =
                 _sceneAudioPath.SceneAudioData.FirstOrDefault(d => d.Scene.ToString() == sceneName);
+          
             if (audioData == null)
                 return;
 

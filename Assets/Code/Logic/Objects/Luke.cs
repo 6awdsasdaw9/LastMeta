@@ -3,6 +3,7 @@ using Code.Data.ProgressData;
 using Code.Debugers;
 using Code.Logic.Triggers;
 using Code.Services;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -11,7 +12,7 @@ namespace Code.Logic.Objects
     public class Luke : MonoBehaviour, ISavedData
     {
         [SerializeField] private TriggerObserver _triggerObserver;
-        [SerializeField] private Transform _lidLukeObject;
+        [SerializeField] private Rigidbody _lidLukeObject;
         [SerializeField] private GameObject _groundCollider;
         [SerializeField] private UniqueId _uniqueId;
 
@@ -30,6 +31,8 @@ namespace Code.Logic.Objects
         {
             _groundCollider.SetActive(false);
         }
+
+ 
 
         public void LoadData(SavedData savedData)
         {

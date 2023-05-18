@@ -16,6 +16,7 @@ namespace Code.Logic.Interactive
         Note,
         Hero,
         LoadingCurtain,
-        Scene
+        Scene,
+        Dialogue
     }
 }

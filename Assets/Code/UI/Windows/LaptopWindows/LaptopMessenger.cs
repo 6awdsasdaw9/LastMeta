@@ -14,7 +14,7 @@ namespace Code.UI.Windows
         [SerializeField] private TMP_InputField _inputField;
         [SerializeField] private Button _buttonSend;
         
-        private DialogueCloud _dialogueCloudPrefab;
+        private LaptopDialogueCloud _dialogueCloudPrefab;
         private InputService _inputService;
         private string _errorMessage;
         
@@ -39,7 +39,7 @@ namespace Code.UI.Windows
 
         private void SendMessage()
         {
-            DialogueCloud cloud = Instantiate(_dialogueCloudPrefab, _scrollRect.content);
+            LaptopDialogueCloud cloud = Instantiate(_dialogueCloudPrefab, _scrollRect.content);
             cloud.SetRightRotation();
             cloud.SetErrorMessage(_errorMessage);
             _scrollRect.content.sizeDelta += _dialogueCloudPrefab.size + Vector2.up * 30;

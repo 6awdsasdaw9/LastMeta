@@ -1,4 +1,5 @@
 using System;
+using Code.UI.Windows.DialogueWindows;
 using UnityEngine;
 
 namespace Code.UI.Windows
@@ -17,5 +18,10 @@ namespace Code.UI.Windows
     public interface INoteWindow : IImageWindow
     {
         void SetText(string message);
+    }
+
+    public interface IDialogueWindow : IWindow
+    {
+        DialogueController DialogueController { get; }
     }
 }

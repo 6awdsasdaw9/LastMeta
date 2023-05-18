@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Code.UI
 {
-    public class DialogueCloud:MonoBehaviour
+    public class LaptopDialogueCloud:MonoBehaviour
     {
         [SerializeField] private RectTransform _cloudTransform;
         [SerializeField] private Image _image;

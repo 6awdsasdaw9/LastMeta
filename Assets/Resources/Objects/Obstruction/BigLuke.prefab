@@ -1526,7 +1526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerObserver: {fileID: 4305211027087727592}
-  _lidLukeObject: {fileID: 4305211027283154971}
+  _lidLukeObject: {fileID: 4305211027283154968}
   _groundCollider: {fileID: 4305211028703045383}
   _uniqueId: {fileID: 3563056950966757049}
 --- !u!114 &3563056950966757049

@@ -5,14 +5,20 @@ namespace Code.Debugers
 {
     public class SpritesSetterPosition : MonoBehaviour
     {
+        private const string NotEditTag = "NotEditPosition";
+        
         [Button]
         public void SetSpriteDistance()
         {
-            SpriteRenderer[] test = FindObjectsOfType<SpriteRenderer>();
+            Renderer[] test = FindObjectsOfType<Renderer>();
             foreach (var t in test)
             {
+                if(t.CompareTag(NotEditTag))
+                    continue;
+                
                 t.transform.position = t.sortingOrder switch
                 {
+                    -11 => GetVector(t.transform.position, Constants.minusElevenLayer),
                     -10 => GetVector(t.transform.position, Constants.minusTenLayer),
                     -9 => GetVector(t.transform.position, Constants.minusNineLayer),
                     -8 => GetVector(t.transform.position, Constants.minusEightLayer),
