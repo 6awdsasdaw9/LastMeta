@@ -106,7 +106,7 @@ namespace Code.Logic.Interactive
 
         private async UniTaskVoid ShowIcon()
         {
-            await UniTask.WaitUntil(() => _cooldown.IsUp());
+            await UniTask.WaitUntil(() => _cooldown.IsUp(), cancellationToken: gameObject.GetCancellationTokenOnDestroy());
             _iconAnimation?.PlayType(iconType);
         }
 

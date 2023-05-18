@@ -10,9 +10,7 @@ namespace Code.UI.Windows.DialogueWindows
         [SerializeField] private HUD _hud;
         [SerializeField] private WindowAnimation _animation;
         [SerializeField] private DialogueController _dialogueController;
-
-
-
+        
         public DialogueController DialogueController => _dialogueController; 
         
         public virtual void ShowWindow(Action WindowShowed)

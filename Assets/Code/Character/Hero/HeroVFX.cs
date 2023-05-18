@@ -32,7 +32,7 @@ namespace Code.Character.Hero
 
         private async UniTaskVoid PlayVFXWithDelay(GameObject VFX, float delay)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(delay));
+            await UniTask.Delay(TimeSpan.FromSeconds(delay), cancellationToken: gameObject.GetCancellationTokenOnDestroy());
             Instantiate(VFX, transform.position, Quaternion.identity);
         }
     }
