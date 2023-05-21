@@ -40,13 +40,13 @@ namespace Code.Logic.Interactive.InteractiveObjects
 
             var message = new Story(_inkJSON.text).ContinueMaximally();
             
-            OnProcess = true;
+            OnAnimationProcess = true;
             OnStartInteractive?.Invoke();
             
             _layerAudioEvent.PlayAudioEvent();
             _presentationWindow.SetText(message);
             _presentationWindow.SetImage(_noteImage);
-            _presentationWindow.ShowWindow(() => OnProcess = false);
+            _presentationWindow.ShowWindow(() => OnAnimationProcess = false);
         }
 
         public override void StopInteractive()
@@ -54,11 +54,11 @@ namespace Code.Logic.Interactive.InteractiveObjects
             if (_isNull)
                 return;
 
-            OnProcess = true;
+            OnAnimationProcess = true;
             
             OnEndInteractive?.Invoke();
             _layerAudioEvent.PlayAudioEvent();
-            _presentationWindow.HideWindow(() => OnProcess = false);
+            _presentationWindow.HideWindow(() => OnAnimationProcess = false);
         }
     }
 }

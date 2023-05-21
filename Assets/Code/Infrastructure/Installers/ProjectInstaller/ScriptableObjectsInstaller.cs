@@ -13,6 +13,7 @@ namespace Code.Infrastructure.Installers
         public PrefabsData PrefabsData;
         public TextConfig TextConfig;
         public SceneAudioPath SceneAudioPath;
+        public HudSettings HudSettings;
         public override void InstallBindings()
         {
             Container.BindInstance(GameSettings);
@@ -20,6 +21,7 @@ namespace Code.Infrastructure.Installers
             Container.BindInstance(PrefabsData);
             Container.BindInstance(TextConfig);
             Container.BindInstance(SceneAudioPath);
+            Container.BindInstance(HudSettings);
         }
     }
 }

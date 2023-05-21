@@ -19,12 +19,12 @@ namespace Code.UI.Windows.Animation
 
 
         [Inject]
-        private void Construct(GameSettings gameSettings)
+        private void Construct(HudSettings hudSettings)
         {
-            _downPos = gameSettings.InteractiveObjectDownPos;
-            _centerPos = gameSettings.InteractiveObjectCenterPos;
-            _timeToHide = gameSettings.InteractiveObjectTimeToHide;
-            _timeToShow = gameSettings.InteractiveObjectTimeToShow;
+            _downPos = hudSettings.InteractiveUIParams.InteractiveObjectDownPos;
+            _centerPos =  hudSettings.InteractiveUIParams.InteractiveObjectCenterPos;
+            _timeToHide =  hudSettings.InteractiveUIParams.InteractiveObjectTimeToHide;
+            _timeToShow =  hudSettings.InteractiveUIParams.InteractiveObjectTimeToShow;
         }
 
         public override void PlayShow(Action WindowShowed)

@@ -1,17 +1,12 @@
 using System;
-using Code.UI.HeadUpDisplay;
-using Code.UI.Windows.Animation;
 using UnityEngine;
 
 namespace Code.UI.Windows.DialogueWindows
 {
     public class InteractiveDialogueWindow : InteractiveObjectWindow, IDialogueWindow
     {
-        [SerializeField] private HUD _hud;
-        [SerializeField] private WindowAnimation _animation;
-        [SerializeField] private DialogueController _dialogueController;
-        
         public DialogueController DialogueController => _dialogueController; 
+        [SerializeField] private DialogueController _dialogueController;
         
         public virtual void ShowWindow(Action WindowShowed)
         {
@@ -28,6 +23,7 @@ namespace Code.UI.Windows.DialogueWindows
                 return;
             
             //TODO StopStory
+            _dialogueController.StopDialogue();
       
             _animation.PlayHide(WindowHidden);
             _hud.OnUIWindowHidden?.Invoke();

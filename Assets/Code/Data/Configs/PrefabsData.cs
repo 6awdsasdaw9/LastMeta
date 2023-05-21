@@ -16,9 +16,6 @@ namespace Code.Data.Configs
         [Title("FX")] 
         public GameObject VFX_PlayerDeath;
         
-        [Title("UI")]
-        public HUD RealHUD;
-        public HUD GameHUD;
-        public LaptopDialogueCloud DialogueCloud;
+  
     }
 }

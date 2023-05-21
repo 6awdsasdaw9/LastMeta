@@ -27,12 +27,12 @@ namespace Code.Logic.Interactive
         private float _currentCooldown;
 
         [Inject]
-        private void Construct(InputService inputService, GameSettings gameSettings)
+        private void Construct(InputService inputService, HudSettings hudSettings)
         {
             _input = inputService;
 
             _cooldown = new Cooldown();
-            _cooldown.SetTime(gameSettings.InteractiveCooldownTime);
+            _cooldown.SetTime(hudSettings.InteractiveUIParams.InteractiveCooldownTime);
 
             _interactiveObject = GetComponent<Interactivity>();
         }
@@ -78,7 +78,7 @@ namespace Code.Logic.Interactive
             HideIcon();
         }
 
-        private bool IsReady() => _cooldown.IsUp() && !_interactiveObject.OnProcess;
+        private bool IsReady() => _cooldown.IsUp() && !_interactiveObject.OnAnimationProcess;
 
         private void StartInteractive()
         {
@@ -106,12 +106,15 @@ namespace Code.Logic.Interactive
 
         private async UniTaskVoid ShowIcon()
         {
-            await UniTask.WaitUntil(() => _cooldown.IsUp(), cancellationToken: gameObject.GetCancellationTokenOnDestroy());
-            _iconAnimation?.PlayType(iconType);
+            await UniTask.WaitUntil(
+                () => _cooldown.IsUp(), 
+                cancellationToken: gameObject.GetCancellationTokenOnDestroy());
+            
+            _iconAnimation.PlayType(iconType);
         }
 
         private void HideIcon() =>
-            _iconAnimation?.PlayVoid();
+            _iconAnimation.PlayVoid();
 
     }
 }

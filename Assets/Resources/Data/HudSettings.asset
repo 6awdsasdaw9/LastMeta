@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb911e487e24242a8ca75ea5d9c6be1, type: 3}
+  m_Name: HudSettings
+  m_EditorClassIdentifier: 
+  RealHUD: {fileID: 4590295659727660109, guid: 72103a4a3845e7f43abfc322564ac1e2, type: 3}
+  GameHUD: {fileID: 7281473980765438915, guid: 1cc260bbc5d148b4c879996d198d66e6, type: 3}
+  InteractiveUIParams:
+    InteractiveCooldownTime: 1.1
+    InteractiveObjectDownPos: {x: 0, y: -1600, z: 0}
+    InteractiveObjectCenterPos: {x: 0, y: 0, z: 0}
+    InteractiveObjectTimeToHide: 0.35
+    InteractiveObjectTimeToShow: 0.5
+  DialogueParams:
+    DeleteZeroMessage: 1
+    FreezeTime: 0.5
+    TypingSpeed: 0.08
+    TypingAudioEvent:
+      _eventReference:
+        Guid:
+          Data1: -771136411
+          Data2: 1250133404
+          Data3: 92437648
+          Data4: -533275393
+        Path: event:/SFX/UI/Message
+      _playOnAwake: 0
+    ChoiceAudioEvent:
+      _eventReference:
+        Guid:
+          Data1: 1279305251
+          Data2: 1150356142
+          Data3: -1703000396
+          Data4: -477725866
+        Path: event:/SFX/UI/Choise
+      _playOnAwake: 0
+    MessageBoxPrefab: {fileID: 2244307402555797556, guid: 1dc4b707012f31e4e878463a050d90c1, type: 3}
+    ChoiceButtonPrefab: {fileID: 874590692292462238, guid: 4f8600b52f2c91546ac11e663c2f5e52, type: 3}

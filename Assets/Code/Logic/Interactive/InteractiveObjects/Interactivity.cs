@@ -11,7 +11,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
         public Action OnStartInteractive;
         public Action OnEndInteractive;
         
-        public bool OnProcess { get; protected set; }
+        public bool OnAnimationProcess { get; protected set; }
 
         public abstract void StartInteractive();
 

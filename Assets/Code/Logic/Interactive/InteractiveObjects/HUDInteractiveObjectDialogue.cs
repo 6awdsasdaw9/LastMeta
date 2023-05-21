@@ -32,7 +32,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
                 return;
 
             Log.ColorLog("Start interactive");
-            OnProcess = true;
+            OnAnimationProcess = true;
             OnStartInteractive?.Invoke();
             
             _layerAudio.PlayAudioEvent();
@@ -41,8 +41,8 @@ namespace Code.Logic.Interactive.InteractiveObjects
 
         private void WindowShowed()
         {
-             OnProcess = false;
-            _presentationWindow.DialogueController.StartStory(_textAsset);
+             OnAnimationProcess = false;
+            _presentationWindow.DialogueController.StartDialogue(_textAsset);
         }
 
         public override void StopInteractive()
@@ -50,12 +50,12 @@ namespace Code.Logic.Interactive.InteractiveObjects
             if (_isWindowNull)
                 return;
 
-            OnProcess = true;
+            OnAnimationProcess = true;
             OnEndInteractive?.Invoke();
             
             _layerAudio.PlayAudioEvent(); 
             //TODO stopDialogue
-            _presentationWindow.HideWindow(() => OnProcess = false);
+            _presentationWindow.HideWindow(() => OnAnimationProcess = false);
         }
     }
 }

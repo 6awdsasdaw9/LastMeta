@@ -7,9 +7,15 @@ namespace Code.Infrastructure.Installers
 {
     public class HUDInstaller : MonoInstaller
     {
-        [SerializeField] private Constants.TypeOfScene _typeOfScene;
-        [Inject] private PrefabsData _prefabsData;
+        [SerializeField] private Constants.TypeOfScene _typeOfScene; 
+        private HudSettings _hudSettings;
 
+        [Inject]
+        private void Construct(HudSettings hudSettings)
+        {
+            _hudSettings = hudSettings;
+        }
+        
         public override void InstallBindings()
         {
             BindHUD();
@@ -31,10 +37,10 @@ namespace Code.Infrastructure.Installers
             switch (_typeOfScene)
             {
                 case Constants.TypeOfScene.Real:
-                    return _prefabsData.RealHUD;
+                    return _hudSettings.RealHUD;
                 case Constants.TypeOfScene.Game:
                 default:
-                    return _prefabsData.GameHUD;
+                    return _hudSettings.GameHUD;
             }
         }
     }

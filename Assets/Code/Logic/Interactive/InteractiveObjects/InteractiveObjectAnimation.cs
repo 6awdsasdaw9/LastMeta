@@ -31,9 +31,9 @@ namespace Code.Logic.Interactive.InteractiveObjects
 
         private async void UpdateProgress()
         {
-            OnProcess = true;
+            OnAnimationProcess = true;
             await UniTask.Delay(TimeSpan.FromSeconds(_animationDuration));
-            OnProcess = false;
+            OnAnimationProcess = false;
         }
     }
 }

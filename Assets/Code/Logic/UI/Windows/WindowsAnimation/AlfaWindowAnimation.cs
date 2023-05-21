@@ -18,10 +18,10 @@ namespace Code.UI.Windows.Animation
 
         
         [Inject]
-        private void Construct( GameSettings gameSettings)
+        private void Construct( HudSettings hudSettings)
         {
-            _timeToHide = gameSettings.InteractiveObjectTimeToHide;
-            _timeToShow = gameSettings.InteractiveObjectTimeToShow;
+            _timeToHide = hudSettings.InteractiveUIParams.InteractiveObjectTimeToHide;
+            _timeToShow = hudSettings.InteractiveUIParams.InteractiveObjectTimeToShow;
         }
         
         public override void PlayShow(Action WindowShowed = null)

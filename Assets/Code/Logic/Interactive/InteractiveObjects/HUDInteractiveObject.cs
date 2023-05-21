@@ -29,11 +29,11 @@ namespace Code.Logic.Interactive.InteractiveObjects
             if (_isWindowNull)
                 return;
 
-            OnProcess = true;
+            OnAnimationProcess = true;
             OnStartInteractive?.Invoke();
             
             _layerAudioEvent.PlayAudioEvent();
-            _presentationWindow.ShowWindow(() => OnProcess = false);
+            _presentationWindow.ShowWindow(() => OnAnimationProcess = false);
         }
 
         public override void StopInteractive()
@@ -41,11 +41,11 @@ namespace Code.Logic.Interactive.InteractiveObjects
             if (_isWindowNull)
                 return;
 
-            OnProcess = true;
+            OnAnimationProcess = true;
             OnEndInteractive?.Invoke();
             
             _layerAudioEvent.PlayAudioEvent();
-            _presentationWindow.HideWindow(() => OnProcess = false);
+            _presentationWindow.HideWindow(() => OnAnimationProcess = false);
         }
     }
 }

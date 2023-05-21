@@ -14,15 +14,15 @@ namespace Code.UI.Windows
         [SerializeField] private TMP_InputField _inputField;
         [SerializeField] private Button _buttonSend;
         
-        private LaptopDialogueCloud _dialogueCloudPrefab;
+        private MessageBox _messageBoxPrefab;
         private InputService _inputService;
         private string _errorMessage;
         
         [Inject]
-        private void Construct(InputService inputService,PrefabsData prefabsData, TextConfig textConfig)
+        private void Construct(InputService inputService,HudSettings hudSettings, TextConfig textConfig)
         {
             _inputService = inputService;
-            _dialogueCloudPrefab = prefabsData.DialogueCloud;
+            _messageBoxPrefab = hudSettings.DialogueParams.MessageBoxPrefab;
             _errorMessage = textConfig.DialogueErrorMessage;
             _buttonSend.onClick.AddListener(SendMessage);
         }
@@ -39,10 +39,10 @@ namespace Code.UI.Windows
 
         private void SendMessage()
         {
-            LaptopDialogueCloud cloud = Instantiate(_dialogueCloudPrefab, _scrollRect.content);
-            cloud.SetRightRotation();
-            cloud.SetErrorMessage(_errorMessage);
-            _scrollRect.content.sizeDelta += _dialogueCloudPrefab.size + Vector2.up * 30;
+            MessageBox messageBox = Instantiate(_messageBoxPrefab, _scrollRect.content);
+            messageBox.SetRightRotation();
+            messageBox.SetErrorMessage(_errorMessage);
+            _scrollRect.content.sizeDelta += _messageBoxPrefab.size + Vector2.up * 30;
             _scrollRect.normalizedPosition = Vector2.zero;
             _inputField.text = "";
         }
