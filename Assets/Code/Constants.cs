@@ -1,11 +1,9 @@
 using UnityEngine;
 
-
 namespace Code
 {
     public static class Constants
     {
-
         public const string saveProgressFileName = "ProgressData";
         public const float epsilon = 0.001f;
         public const float distance = 1f;
@@ -15,8 +13,7 @@ namespace Code
             Real,
             Game
         }
-
-  
+        
         public enum Scenes
         {
             Initial,
@@ -39,7 +36,7 @@ namespace Code
 
         #region Sprite Layer Position
         
-        //BackGround
+        /*//BackGround
         public const float minusElevenLayer = 1.1f ;
         //BackGround Decoration
         public const float minusTenLayer = 1; //inside home
@@ -54,16 +51,16 @@ namespace Code
         public const float minusFourLayer = 0.4f;
         public const float minusTreeLayer = 0.3f;
         public const float minusTwoLayer = 0.2f;
-        public const float minusOneLayer = 0.1f;
+        public const float minusOneLayer = 0.1f;*/
         //Front Decor
         public const float oneLayer = -0.1f;
         public const float twoLayer = -0.2f;
-        //Front Fance 
+        /*//Front Fance 
         public const float treeLayer = -0.3f;
         //Front Decoration
         public const float  fourLayer = -0.4f;
         public const float  fiveLayer = -0.5f;
-        public const float  sixLayer = -0.6f;
+        public const float  sixLayer = -0.6f;*/
         #endregion
         
         #region Colors

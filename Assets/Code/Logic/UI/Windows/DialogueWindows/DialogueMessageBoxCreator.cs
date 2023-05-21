@@ -95,7 +95,6 @@ namespace Code.UI.Windows.DialogueWindows
         private MessageBox CreateMessageBox()
         {
             var messageBox = Object.Instantiate(_params.MessageBoxPrefab, _canvasText.transform, false);
-            messageBox.SetText("");
             return messageBox;
         }
         

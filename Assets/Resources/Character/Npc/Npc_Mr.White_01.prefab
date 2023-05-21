@@ -140,6 +140,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 179160631, guid: 78f225b16088a3843b2d725f90f14300, type: 3}
+    - target: {fileID: 1397218061088283510, guid: b695cc5c1d403824dbd15e5a4f09e4d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.099
+      objectReference: {fileID: 0}
     - target: {fileID: 5702138767582540881, guid: b695cc5c1d403824dbd15e5a4f09e4d5, type: 3}
       propertyPath: m_Name
       value: Npc_Mr.White_01
