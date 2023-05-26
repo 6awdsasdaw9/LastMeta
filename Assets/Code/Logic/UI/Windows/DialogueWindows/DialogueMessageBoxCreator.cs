@@ -25,6 +25,11 @@ namespace Code.UI.Windows.DialogueWindows
         private AudioEvent _typingAudioEvent;
 
         private const string SPEAKER_TAG = "speaker";
+        private string _fullText;
+        private string _currentText;
+        private MessageBox _currentMessageBox;
+
+        private CancellationTokenSource _cancellationToken;
 
         public void Init(DialogueParams param)
         {
@@ -37,31 +42,31 @@ namespace Code.UI.Windows.DialogueWindows
         {
             if(!story.canContinue)
                 return;
-
+            
             RemoveChildrenOfMessages();
-            var cancellationToken = new CancellationTokenSource();
-    
-            var fullText = story.Continue();
-            var currentText = "";
-            var messageBox = CreateMessageBox();
+            _cancellationToken = new CancellationTokenSource();
+
+            _fullText = story.Continue();
+            _currentText = ""; 
+            _currentMessageBox = CreateMessageBox();
 
             if(rightRotate)
-                messageBox.SetRightRotation();
+                _currentMessageBox.SetRightRotation();
             
-            HandleTags(story.currentTags, messageBox);
+            HandleTags(story.currentTags, _currentMessageBox);
             
-            await UniTask.Delay(TimeSpan.FromSeconds(_params.FreezeTime), cancellationToken: cancellationToken.Token);
+            await UniTask.Delay(TimeSpan.FromSeconds(_params.FreezeTime), cancellationToken: _cancellationToken.Token);
             
-            foreach (var letter in fullText)
+            foreach (var letter in _fullText)
             {
-                currentText += letter;
-                messageBox.SetText(currentText);
+                _currentText += letter;
+                _currentMessageBox.SetText(_currentText);
                 _typingAudioEvent.PlayAudioEvent();
-                await UniTask.Delay(TimeSpan.FromSeconds(_params.TypingSpeed), cancellationToken: cancellationToken.Token);
+                await UniTask.Delay(TimeSpan.FromSeconds(_params.TypingSpeed), cancellationToken: _cancellationToken.Token);
             }
             
             OnWriteMessage?.Invoke();
-            cancellationToken.Cancel();
+            _cancellationToken.Cancel();
         }
 
         public void CreatePlayersAnswer(Story story, Choice choice)
@@ -75,6 +80,16 @@ namespace Code.UI.Windows.DialogueWindows
             WriteMessage(story, rightRotate: true);
         }
 
+        public void SkipMessage()
+        {
+            _cancellationToken.Cancel();
+            
+            _currentMessageBox.SetText(_fullText);
+            _typingAudioEvent.PlayAudioEvent();
+            
+            OnWriteMessage?.Invoke();
+            Log.ColorLog("Skip Story");
+        }
         public void ClearAllMessage()
         {
             for (int i = 0; i < _canvasText.childCount; i++)
@@ -95,6 +110,7 @@ namespace Code.UI.Windows.DialogueWindows
         private MessageBox CreateMessageBox()
         {
             var messageBox = Object.Instantiate(_params.MessageBoxPrefab, _canvasText.transform, false);
+            messageBox.SetText("");
             return messageBox;
         }
         

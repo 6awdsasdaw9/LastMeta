@@ -1,4 +1,5 @@
 using System;
+using Code.Services;
 using UnityEngine;
 
 namespace Code.UI.Windows.DialogueWindows
@@ -28,5 +29,6 @@ namespace Code.UI.Windows.DialogueWindows
             _animation.PlayHide(WindowHidden);
             _hud.OnUIWindowHidden?.Invoke();
         }
+
     }
 }

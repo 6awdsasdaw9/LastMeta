@@ -9,11 +9,13 @@ using Zenject;
 
 namespace Code.Character.Hero
 {
-    public class HeroUpgrade : MonoBehaviour, ISavedData, IHeroUpgrade
+    public class HeroUpgrade : MonoBehaviour,  IHeroUpgrade
     {
         private HeroConfig _heroConfig;
+        
+        public HeroUpgradesData UpgradesLevel => _upgradesData;
         private HeroUpgradesData _upgradesData;
-
+        
         public float BonusSpeed { get; private set; }
         public float BonusHeightJump { get; private set; }
         public int BonusAirJump { get; private set; }
@@ -22,7 +24,16 @@ namespace Code.Character.Hero
         private void Construct(GameConfig gameConfig, SavedDataCollection dataCollection)
         {
             _heroConfig = gameConfig.heroConfig;
-            dataCollection.Add(this);
+           // dataCollection.Add(this);
+        }
+
+
+        public void Init(HeroUpgradesData heroUpgradesData)
+        {
+            _upgradesData = heroUpgradesData;
+            SetSpeed();
+            SetHeightJump();
+            SetAirJump();
         }
 
         [Button]
@@ -78,7 +89,7 @@ namespace Code.Character.Hero
             return values[level];
         }
 
-        public void LoadData(SavedData savedData)
+        /*public void LoadData(SavedData savedData)
         {
             _upgradesData = savedData.HeroUpgradesData;
             SetSpeed();
@@ -89,7 +100,8 @@ namespace Code.Character.Hero
         public void SaveData(SavedData savedData)
         {
             savedData.HeroUpgradesData = _upgradesData;
-        }
+        }*/
+        
     }
 
     [Serializable]

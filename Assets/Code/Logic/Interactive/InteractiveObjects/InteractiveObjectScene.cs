@@ -13,19 +13,19 @@ namespace Code.Logic.Interactive.InteractiveObjects
         [SerializeField] private int _spawnPointID;
         
         private GameStateMachine _stateMachine;
-        private PersistentSavedDataService _dataService;
+        private SavedService _service;
 
 
         [Inject]
-        private void Construct(GameStateMachine stateMachine,PersistentSavedDataService dataService)
+        private void Construct(GameStateMachine stateMachine,SavedService service)
         {
             _stateMachine = stateMachine;
-            _dataService = dataService;
+            _service = service;
         }
 
         public override void StartInteractive()
         {
-            _dataService.SaveProgress();
+            _service.SaveProgress();
             Log.ColorLog($"Enter to {_interactiveScene.ToString()} || Progress Save ",ColorType.Orange);
             _stateMachine.Enter<LoadLevelState, string>(_interactiveScene.ToString());
             StopInteractive();

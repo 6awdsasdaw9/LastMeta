@@ -13,7 +13,7 @@ namespace Code.Infrastructure.Installers
     {
         //TODO разделить на несколько инсталлеров
         public LoadingCurtain Curtain;
-        public PersistentSavedDataService ProgressService;
+        public SavedService ProgressService;
 
         public override void InstallBindings()
         {
@@ -46,7 +46,7 @@ namespace Code.Infrastructure.Installers
 
 
         private void BindDataService() =>
-            Container.Bind<PersistentSavedDataService>().FromInstance(ProgressService).AsSingle().NonLazy();
+            Container.Bind<SavedService>().FromInstance(ProgressService).AsSingle().NonLazy();
 
         private void BindFactory() =>
             Container.Bind<GameFactory>().AsSingle().NonLazy();

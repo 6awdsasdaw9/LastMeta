@@ -1,5 +1,6 @@
+using System;
 using System.Collections;
-
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Code.Audio
@@ -28,7 +29,7 @@ namespace Code.Audio
                 return;*/
             
             _isPlaying = true;
-            StartCoroutine(RepeatCoroutine());
+            RepeatAudio().Forget();
         }
 
         private void StopAudio()
@@ -37,18 +38,16 @@ namespace Code.Audio
                 return;*/
             
             _isPlaying = false;
-            StopAllCoroutines();
         }
 
-        private IEnumerator RepeatCoroutine()
+        private async UniTaskVoid RepeatAudio()
         {
-            yield return new WaitForSeconds(_delayBeforeStarting);
+            await UniTask.Delay(TimeSpan.FromSeconds(_delayBeforeStarting));
             
             while (_isPlaying)
             {
-                FMODUnity.RuntimeManager.PlayOneShot(_audioPath.Path);
-                yield return new WaitForSeconds(_repeatDelay);
-            }
+                FMODUnity.RuntimeManager.PlayOneShot(_audioPath.Guid, transform.position);
+             await UniTask.Delay(TimeSpan.FromSeconds(_repeatDelay)); }
         }
     }
 }

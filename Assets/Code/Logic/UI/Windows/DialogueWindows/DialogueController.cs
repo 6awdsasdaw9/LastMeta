@@ -2,6 +2,8 @@ using System;
 using System.Threading;
 using Code.Data.Configs;
 using Code.Debugers;
+using Code.Services;
+using Code.UI.Buttons;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Ink.Runtime;
@@ -9,9 +11,12 @@ using Zenject;
 
 namespace Code.UI.Windows.DialogueWindows
 {
-    public class DialogueController : MonoBehaviour
+    public class DialogueController : MonoBehaviour, IEventSubscriber
     {
-        public DialogueChoiceButtonCreator choiceButtonCreator => _choiceButtonCreator;
+        [SerializeField] private HudButton _buttonSkip;
+        [SerializeField] private HudButton _buttonClose;
+        
+        public DialogueChoiceButtonCreator ChoiceButtonCreator => _choiceButtonCreator;
         [SerializeField] private DialogueChoiceButtonCreator _choiceButtonCreator;
         public DialogueMessageBoxCreator MessageBoxCreator => _messageBoxCreator;
         [SerializeField] private DialogueMessageBoxCreator _messageBoxCreator;
@@ -23,19 +28,27 @@ namespace Code.UI.Windows.DialogueWindows
         private Story _story;
         private string _dialogueText;
 
-        private bool _test;
+        private bool _isActive;
+
+        public Action OnStartDialogue;
+        public Action OnStopDialogue;
         [Inject]
         private void Construct(HudSettings hudSettings)
         {
             _params = hudSettings.DialogueParams;
             _choiceButtonCreator.Init(_params);
             _messageBoxCreator.Init(_params);
-            _messageBoxCreator.OnWriteMessage += () => StartDialogueStep().Forget();
+            
         }
 
-        private void OnDestroy()
+        private void OnEnable()
         {
-            _messageBoxCreator.OnWriteMessage -= () => StartDialogueStep().Forget();
+            SubscribeToEvent(true);
+        }
+
+        private void OnDisable()
+        {
+            SubscribeToEvent(false);
         }
 
         public void StartDialogue(TextAsset story)
@@ -51,9 +64,11 @@ namespace Code.UI.Windows.DialogueWindows
         {
             Log.ColorLog("AllStepsOfDialogue", ColorType.Aqua);
 
-            if(_test)
+            if(_isActive)
                 return;
-            _test = true;
+            
+            OnStartDialogue?.Invoke();
+            _isActive = true;
             _writeTokenSource = new CancellationTokenSource();
             
             _choiceButtonCreator.RemoveAllChildrenOfChoices();
@@ -61,7 +76,8 @@ namespace Code.UI.Windows.DialogueWindows
 
             await _messageBoxCreator.WriteMessage(_story, rightRotate: false);
 
-                Log.ColorLog($"_story.currentChoices.Count {_story.currentChoices.Count}", ColorType.Aqua);
+            Log.ColorLog($"_story.currentChoices.Count {_story.currentChoices.Count}", ColorType.Aqua);
+           
             if (_story.currentChoices.Count > 0)
             {
                 Log.ColorLog($"CreateChoice", ColorType.Aqua);
@@ -74,16 +90,39 @@ namespace Code.UI.Windows.DialogueWindows
                     cancellationToken: _writeTokenSource.Token);
                 StopDialogue();
             }
-            _test = false;
+            _isActive = false;
             
         }
 
         public void StopDialogue()
         {
+            _isActive = false;
             _writeTokenSource.Cancel();
             _messageBoxCreator.ClearAllMessage();
+            OnStopDialogue?.Invoke();
             Log.ColorLog("Stop Dialogue", ColorType.Aqua);
-            
+        }
+
+        private void SkipMessage()
+        {
+            _isActive = false;
+            _writeTokenSource.Cancel();
+            _messageBoxCreator.SkipMessage();
+        }
+        public void SubscribeToEvent(bool flag)
+        {
+            if (flag)
+            {
+                _messageBoxCreator.OnWriteMessage += () => StartDialogueStep().Forget();
+                _buttonClose.OnStartTap += StopDialogue;
+                _buttonSkip.OnStartTap += SkipMessage;
+            }
+            else
+            {
+                _messageBoxCreator.OnWriteMessage -= () => StartDialogueStep().Forget();
+                _buttonClose.OnStartTap -= StopDialogue;
+                _buttonSkip.OnStartTap -=  SkipMessage;
+            }
         }
     }
 }

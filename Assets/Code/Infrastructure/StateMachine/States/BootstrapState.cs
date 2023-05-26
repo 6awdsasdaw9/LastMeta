@@ -8,13 +8,13 @@ namespace Code.Infrastructure.StateMachine.States
     {
         private readonly GameStateMachine _stateMachine;
         private readonly SceneLoader _sceneLoader;
-        private readonly PersistentSavedDataService _persistentSavedDataService;
+        private readonly SavedService _savedService;
 
         public BootstrapState(GameStateMachine stateMachine, DiContainer container)
         {
             _stateMachine = stateMachine;
             _sceneLoader = container.Resolve<SceneLoader>();
-            _persistentSavedDataService = container.Resolve<PersistentSavedDataService>();
+            _savedService = container.Resolve<SavedService>();
         }
 
         public void Enter()
@@ -28,9 +28,9 @@ namespace Code.Infrastructure.StateMachine.States
 
         private void EnterLoadLevel()
         {
-            _persistentSavedDataService.LoadData();
+            _savedService.LoadData();
 
-            var level = _persistentSavedDataService.savedData.Scene;
+            var level = _savedService.SavedData.CurrentScene;
 
             _stateMachine.Enter<LoadLevelState, string>(level);
         }

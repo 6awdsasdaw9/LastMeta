@@ -5,15 +5,14 @@ namespace Code.Data.GameData
     [Serializable]
     public class HealthData
     {
-        public float currentHP;
-        public float maxHP;
+        public float CurrentHP;
+        public float MaxHP;
 
         public HealthData()
         {
- 
             Reset();
         }
-        
-        public void Reset() => currentHP = maxHP;
+
+        public void Reset() => CurrentHP = MaxHP;
     }
 }

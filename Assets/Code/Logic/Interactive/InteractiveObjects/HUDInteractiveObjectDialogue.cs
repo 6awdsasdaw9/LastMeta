@@ -41,8 +41,12 @@ namespace Code.Logic.Interactive.InteractiveObjects
 
         private void WindowShowed()
         {
+            if (_isWindowNull)
+                return;
+            
              OnAnimationProcess = false;
             _presentationWindow.DialogueController.StartDialogue(_textAsset);
+            _presentationWindow.DialogueController.OnStopDialogue += StopInteractive;
         }
 
         public override void StopInteractive()
@@ -50,6 +54,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
             if (_isWindowNull)
                 return;
 
+            _presentationWindow.DialogueController.OnStopDialogue -= StopInteractive;
             OnAnimationProcess = true;
             OnEndInteractive?.Invoke();
             

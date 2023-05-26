@@ -3,8 +3,15 @@ using Zenject;
 
 namespace Code.Infrastructure.Installers
 {
-    public class SaveDataInstaller:MonoInstaller, IInitializable
+    public class SaveDataInstaller: MonoInstaller, IInitializable
     {
+        private SavedService _savedService;
+        
+        [Inject]
+        private void Construct(SavedService savedService)
+        {
+            _savedService = savedService;
+        }
         public override void InstallBindings()
         {
             BindInterfaces();
@@ -23,9 +30,7 @@ namespace Code.Infrastructure.Installers
         
         private void LoadGameProgress()
         {
-            PersistentSavedDataService dataService = Container.Resolve<PersistentSavedDataService>();
-            dataService.SetSavedDataCollection(Container.Resolve<SavedDataCollection>());
-            dataService.LoadProgress();
+            _savedService.SetSavedDataCollection(Container.Resolve<SavedDataCollection>());
         }
     }
 }

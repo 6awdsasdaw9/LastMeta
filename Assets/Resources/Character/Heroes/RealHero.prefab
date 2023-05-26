@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6659652504158788560}
   - component: {fileID: 6659652504158788562}
   - component: {fileID: 1297059016546552242}
+  - component: {fileID: 2552236340610498394}
   m_Layer: 8
   m_Name: RealHero
   m_TagString: Player
@@ -187,6 +188,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33ba9089bd2749c18a769f57eb3a932b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2552236340610498394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6659652504158788574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dff29611b6f456bab5e7d71e603e14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6659652505123971937

@@ -1,7 +1,6 @@
 ﻿using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Data.ProgressData;
-using Code.Debugers;
 using Code.Services;
 using Code.Services.Input;
 using UnityEngine;
@@ -13,7 +12,7 @@ using Zenject;
 namespace Code.Character.Hero
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class HeroMovement : MonoBehaviour, ISavedData, IHeroMovement
+    public class HeroMovement : MonoBehaviour,  IHeroMovement
     {
         [SerializeField] private Rigidbody _body;
 
@@ -51,7 +50,7 @@ namespace Code.Character.Hero
             _hero = GetComponent<IHero>();
             _input = input;
             _heroConfig = gameConfig.heroConfig;
-            dataCollection.Add(this);
+            //dataCollection.Add(this);
         }
 
         private void OnEnable() =>
@@ -210,7 +209,7 @@ namespace Code.Character.Hero
 
         #endregion
 
-        #region Save and Load
+        /*#region Save and Load
 
         public void LoadData(SavedData savedData)
         {
@@ -236,7 +235,7 @@ namespace Code.Character.Hero
         private string CurrentLevel() =>
             SceneManager.GetActiveScene().name;
 
-        #endregion
+        #endregion*/
 
         public void Disable()
         {

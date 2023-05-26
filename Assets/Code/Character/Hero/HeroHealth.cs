@@ -2,45 +2,35 @@ using System;
 using Code.Character.Common;
 using Code.Character.Interfaces;
 using Code.Data.GameData;
-using Code.Data.ProgressData;
-using Code.Debugers;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Character.Hero
 {
-    public class HeroHealth : MonoBehaviour, IHealth, ISavedData
+    public class HeroHealth : MonoBehaviour, IHealth
     {
         [SerializeField] private HeroAudio _heroAudio;
         [SerializeField] private SpriteVFX spriteVFX;
         private HealthData _healthData;
         public event Action HealthChanged;
-
-        [Inject]
-        private void Construct(SavedDataCollection savedDataCollection)
-        {
-            savedDataCollection.Add(this);
-        }
         
-        public float Current
+        public float Current => _healthData.CurrentHP;
+        public float Max => _healthData.MaxHP;
+        
+        public void Set(float currentHealth, float maxHealth)
         {
-            get => _healthData.currentHP;
-            set
+            _healthData = new HealthData()
             {
-                if (_healthData.currentHP != value)
-                {
-                    _healthData.currentHP = value;
-                }
-            }
+                CurrentHP = currentHealth,
+                MaxHP = maxHealth
+            };
+            HealthChanged?.Invoke();
         }
 
-        public float Max
+        public void Reset()
         {
-            get => _healthData.maxHP;
-            set => _healthData.maxHP = value;
+            _healthData.Reset();
+            HealthChanged?.Invoke();
         }
-
-
 
         public void TakeDamage(float damage)
         {
@@ -50,23 +40,11 @@ namespace Code.Character.Hero
             _heroAudio.PlayDamageAudio();
             spriteVFX.RedColorize();
             
-            Current -= damage;
-
-            HealthChanged?.Invoke();
-        }
-
-        public void LoadData(SavedData savedData)
-        {
-            _healthData = savedData.heroHealth;
-            Log.ColorLog("HP" + Current);
+            //TODO можно уйти в минус.
+            _healthData.CurrentHP -= damage;
             
             HealthChanged?.Invoke();
         }
-
-        public void SaveData(SavedData savedData)
-        {
-            savedData.heroHealth.currentHP = Current;
-            savedData.heroHealth.maxHP = Max;
-        }
+        
     }
 }

@@ -1,9 +1,13 @@
 namespace Code.Data.ProgressData
 {
-    public interface ISavedData
+    public interface ISavedData : ISavedDataReader
     {
-        void LoadData(SavedData savedData);
-
         void SaveData(SavedData savedData);
     }
+
+    public interface ISavedDataReader
+    {
+        void LoadData(SavedData savedData);
+    }
+
 }

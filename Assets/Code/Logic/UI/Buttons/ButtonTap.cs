@@ -10,11 +10,11 @@ namespace Code.UI.Buttons
         
         public event Action OnStartTap;
 
-        private void OnEnable()
+        protected void OnEnable()
         {
             _button.onClick.AddListener(InvokeEvent);
         }
-        private void OnDisable()
+        protected  void OnDisable()
         {
             _button.onClick.RemoveListener(InvokeEvent);
         }

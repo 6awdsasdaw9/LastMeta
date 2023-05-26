@@ -19,6 +19,8 @@ namespace Code.Character.Hero
         IHeroDeath Death { get; }
         IHeroUpgrade Upgrade { get; }
         IHeroVFX VFX { get; }
+
+    
     }
     
 }

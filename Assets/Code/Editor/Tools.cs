@@ -9,7 +9,7 @@ public class Tools
     [MenuItem("Tools/Delete Progress Data")]
     public static void DeleteProgressData()
     {
-        string fullPath = Path.Combine(Application.persistentDataPath, Constants.saveProgressFileName);
+        string fullPath = Path.Combine(Application.persistentDataPath, Constants.SaveProgressFileName);
         if (File.Exists(fullPath))
         {
             File.Delete(fullPath);

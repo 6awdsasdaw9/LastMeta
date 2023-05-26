@@ -24,6 +24,16 @@ namespace Code.Character.Enemies
             set => _max = value;
         }
 
+        //TODO допилить
+        public void Set(float currentHealth, float maxHealth)
+        {
+            
+        }
+
+        public void Reset()
+        {
+        }
+
         public void TakeDamage(float damage)
         {
             Current -= damage;

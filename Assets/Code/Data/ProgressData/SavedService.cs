@@ -7,16 +7,14 @@ using Zenject;
 
 namespace Code.Data.ProgressData
 {
-    public class PersistentSavedDataService : MonoBehaviour
+    public class SavedService : MonoBehaviour
     {
-        //C:\Users\awdsasdaw\AppData\LocalLow\DefaultCompany\LastMeta
-        [Title("File Storage Config")] private readonly string _fileName = Constants.saveProgressFileName;
-
         [SerializeField] private bool _useEncryption;
+        private const string _fileName = Constants.SaveProgressFileName;
         private FileDataHandler _dataHandler;
-        public SavedData savedData { get; private set; }
-        SavedDataCollection dataCollection;
+        private SavedDataCollection _dataCollection;
         private GameConfig _gameConfig;
+        public SavedData SavedData { get; private set; }
 
         [Inject]
         private void Construct(GameConfig gameConfig)
@@ -24,13 +22,18 @@ namespace Code.Data.ProgressData
             _gameConfig = gameConfig;
         }
 
+        public void SetSavedDataCollection(SavedDataCollection collection)
+        {
+            _dataCollection = collection;
+        }
+
         public void LoadProgress()
         {
             LoadData();
 
-            foreach (ISavedData dataPersistenceObj in dataCollection.Data)
+            foreach (ISavedData dataPersistenceObj in _dataCollection.Data)
             {
-                dataPersistenceObj.LoadData(savedData);
+                dataPersistenceObj.LoadData(SavedData);
             }
         }
 
@@ -38,9 +41,9 @@ namespace Code.Data.ProgressData
         {
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
 
-            savedData = _dataHandler.Load();
+            SavedData = _dataHandler.Load();
 
-            if (savedData == null)
+            if (SavedData == null)
             {
                 Log.ColorLog("No data was found. Initializing data to defaults.", ColorType.Olive);
                 NewProgress();
@@ -53,46 +56,43 @@ namespace Code.Data.ProgressData
         {
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
 
-            if (savedData == null)
+            if (SavedData == null)
             {
                 Log.ColorLog("No data was found.A new Game nees to be started before data can be saved",
                     LogStyle.Warning);
                 return;
             }
 
-            savedData.Scene = SceneManager.GetActiveScene().name;
-            foreach (ISavedData dataPersistenceObj in dataCollection.Data)
+            SavedData.CurrentScene = SceneManager.GetActiveScene().name;
+            foreach (ISavedData dataPersistenceObj in _dataCollection.Data)
             {
-                dataPersistenceObj.SaveData(savedData);
+                dataPersistenceObj.SaveData(SavedData);
             }
-            _dataHandler.Save(savedData);
-        }
-
-        public void SetSavedDataCollection(SavedDataCollection collection)
-        {
-            dataCollection = collection;
+            _dataHandler.Save(SavedData);
         }
 
         [Button]
-        public void DeleteProgress() =>
+        public void DeleteProgress()
+        {
             _dataHandler.DeleteGame();
+        }
 
         private void NewProgress()
         {
             _dataHandler ??= new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
 
-            savedData = new SavedData
+            SavedData = new SavedData
             {
-                Scene = _gameConfig.initialScene.ToString(),
-                heroHealth =
+                CurrentScene = _gameConfig.initialScene.ToString(),
+                HeroHealth =
                 {
-                    maxHP = _gameConfig.heroConfig.maxHP
+                    MaxHP = _gameConfig.heroConfig.maxHP
                 }
             };
 
-            savedData.heroHealth.Reset();
+            SavedData.HeroHealth.Reset();
             
-            _dataHandler.Save(savedData);
+            _dataHandler.Save(SavedData);
         }
     }
 }

@@ -1,4 +1,6 @@
-using System.Collections;
+using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Code.Logic.Triggers
@@ -9,9 +11,10 @@ namespace Code.Logic.Triggers
         [SerializeField] private float _delay;
         [SerializeField] private float _cooldown;
         [SerializeField] private FollowTriggerObserver[] _followTriggerObserver;
-        
-        private Coroutine _reactionCoroutine;
+
+        private CancellationTokenSource _tokenSource;
         private bool _hasReactionTarget;
+
         private void Awake()
         {
             _triggerObserver.TriggerEnter += TriggerEnter;
@@ -26,49 +29,48 @@ namespace Code.Logic.Triggers
         }
 
         #region Triggers
+
         private void TriggerEnter(Collider obj)
         {
             if (_hasReactionTarget)
                 return;
-            
+
             _hasReactionTarget = true;
-            StopReactionCoroutine();
-            StartCoroutine(SwitchFollowOnAfterDelay());
+            _tokenSource = new CancellationTokenSource();
+            SwitchFollowOnAfterDelay().Forget();
         }
 
         private void TriggerExit(Collider obj)
         {
-            if (!_hasReactionTarget) 
+            if (!_hasReactionTarget)
                 return;
-            
-            StopCoroutine(SwitchFollowOnAfterDelay());
-            _reactionCoroutine = StartCoroutine(SwitchFollowOffAfterCooldown());
+
+            _tokenSource?.Cancel();
+            _tokenSource = new CancellationTokenSource();
             _hasReactionTarget = false;
+            SwitchFollowOffAfterCooldown().Forget();
         }
+
         #endregion
 
         #region Coroutines
-        private IEnumerator SwitchFollowOnAfterDelay()
+
+        private async UniTaskVoid SwitchFollowOnAfterDelay()
         {
-            yield return new WaitForSeconds(_delay);
+            await UniTask.Delay(TimeSpan.FromSeconds(_delay), cancellationToken: _tokenSource.Token);
             SwitchFollowOn();
         }
-        private IEnumerator SwitchFollowOffAfterCooldown()
+
+        private async UniTaskVoid SwitchFollowOffAfterCooldown()
         {
-            yield return new WaitForSeconds(_cooldown);
+            await UniTask.Delay(TimeSpan.FromSeconds(_cooldown), cancellationToken: _tokenSource.Token);
             SwitchFollowOff();
         }
 
-        private void StopReactionCoroutine()
-        {
-            if (_reactionCoroutine == null) 
-                return;
-            StopCoroutine(_reactionCoroutine);
-            _reactionCoroutine = null;
-        }
         #endregion
 
-        #region Methods for followers 
+        #region Methods for followers
+
         private void SwitchFollowOn()
         {
             foreach (var f in _followTriggerObserver)
@@ -80,6 +82,7 @@ namespace Code.Logic.Triggers
             foreach (var f in _followTriggerObserver)
                 f.enabled = false;
         }
+
         #endregion
     }
 }

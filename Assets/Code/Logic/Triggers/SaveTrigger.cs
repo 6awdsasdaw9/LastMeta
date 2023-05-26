@@ -7,17 +7,17 @@ namespace Code.Logic.Triggers
 {
     public class SaveTrigger : MonoBehaviour
     {
-        private PersistentSavedDataService _dataService;
+        private SavedService _service;
 
         [Inject]
-        private void Construct(PersistentSavedDataService dataService)
+        private void Construct(SavedService service)
         {
-            _dataService = dataService;
+            _service = service;
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            _dataService.SaveProgress();
+            _service.SaveProgress();
             Log.ColorLog("Progress Save In Trigger",ColorType.Aqua);
             gameObject.SetActive(false);
         }

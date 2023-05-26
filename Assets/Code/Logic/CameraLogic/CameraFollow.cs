@@ -102,22 +102,22 @@ namespace Code.Logic.CameraLogic
 
         public void LoadData(SavedData savedData)
         {
-            if (!savedData.cameraPositionData.positionInScene.ContainsKey(CurrentLevel()))
+            if (!savedData.CameraPosition.positionInScene.ContainsKey(CurrentLevel()))
                 return;
 
-            Vector3Data savedPosition = savedData.cameraPositionData.positionInScene[CurrentLevel()];
+            Vector3Data savedPosition = savedData.CameraPosition.positionInScene[CurrentLevel()];
             transform.position = savedPosition.AsUnityVector();
         }
 
         public void SaveData(SavedData savedData)
         {
-            if (savedData.cameraPositionData.positionInScene.ContainsKey(CurrentLevel()))
+            if (savedData.CameraPosition.positionInScene.ContainsKey(CurrentLevel()))
             {
-                savedData.cameraPositionData.positionInScene[CurrentLevel()] = transform.position.AsVectorData();
+                savedData.CameraPosition.positionInScene[CurrentLevel()] = transform.position.AsVectorData();
             }
             else
             {
-                savedData.cameraPositionData.AddPosition(CurrentLevel(), transform.position.AsVectorData());
+                savedData.CameraPosition.AddPosition(CurrentLevel(), transform.position.AsVectorData());
             }
         }
 

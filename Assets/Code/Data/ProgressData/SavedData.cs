@@ -8,21 +8,20 @@ namespace Code.Data.ProgressData
     [Serializable]
     public class SavedData
     {
-        public string Scene;
-        public HealthData heroHealth;
-        public HeroUpgradesData HeroUpgradesData;
-        public PositionData heroPositionData;
-        public PositionData cameraPositionData;
-        public PowerData heroPowerData;
+        public string CurrentScene;
+        public HealthData HeroHealth;
+        public HeroUpgradesData HeroUpgradesLevel;
+        public PositionData HeroPosition;
+        public PositionData CameraPosition;
         public Dictionary<string, Vector3Data> ObjectsPosition;
 
         public float currentTime;
         public SavedData()
         {
-            heroPositionData = new PositionData();
-            cameraPositionData = new PositionData();
-            heroHealth = new HealthData();
-            HeroUpgradesData = new HeroUpgradesData();
+            HeroPosition = new PositionData();
+            CameraPosition = new PositionData();
+            HeroHealth = new HealthData();
+            HeroUpgradesLevel = new HeroUpgradesData();
             ObjectsPosition = new Dictionary<string, Vector3Data>();
         }
     }

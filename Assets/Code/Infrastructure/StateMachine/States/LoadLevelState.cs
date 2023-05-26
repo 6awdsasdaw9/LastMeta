@@ -1,5 +1,6 @@
 using System.Linq;
 using Code.Audio;
+using Code.Data.ProgressData;
 using Code.Services;
 using Code.UI;
 using Zenject;
@@ -14,6 +15,7 @@ namespace Code.Infrastructure.StateMachine.States
 
         private readonly SceneAudioController _sceneAudioController;
         private readonly SceneAudioPath _sceneAudioPath;
+        private readonly SavedService _savedService;
 
         public LoadLevelState(GameStateMachine gameStateMachine, DiContainer container)
         {
@@ -24,6 +26,7 @@ namespace Code.Infrastructure.StateMachine.States
 
             _sceneAudioController = container.Resolve<SceneAudioController>();
             _sceneAudioPath = container.Resolve<SceneAudioPath>();
+            _savedService = container.Resolve<SavedService>();
         }
 
         public void Enter(string sceneName)
@@ -42,6 +45,7 @@ namespace Code.Infrastructure.StateMachine.States
         private void OnLoaded()
         {
             _stateMachine.Enter<GameLoopState>();
+            _savedService.LoadProgress();;
         }
 
         private void SetSceneMusic(string sceneName)
