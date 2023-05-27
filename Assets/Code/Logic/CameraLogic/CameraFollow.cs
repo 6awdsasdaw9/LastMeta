@@ -1,10 +1,8 @@
-using System;
 using System.Collections;
 using Code.Character.Hero;
 using Code.Data.GameData;
 using Code.Data.ProgressData;
 using Code.Services;
-using Code.Services.Input;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -22,8 +20,7 @@ namespace Code.Logic.CameraLogic
         private readonly Vector3 _cameraOffset = new(0.5f, 1.6f, -60f);
 
         private float startPosY;
-
-
+        
         private IHero _hero;
         private Vector3 _velocity = Vector3.zero;
         private Vector3 _target;
@@ -31,25 +28,12 @@ namespace Code.Logic.CameraLogic
         private Vector3 _followingPosition => _hero.Transform.position + _cameraOffset;
 
         private Coroutine _dampTimeCoroutine;
-        private InputService _input;
-
-
-        private void OnEnable()
-        {
-            if (_isTeleportToPlayerOnAwake)
-            {
-                transform.position = GetTarget();
-            }
-        }
-
+        
         [Inject]
-        private void Construct(IHero hero, InputService inputService, SavedDataCollection dataCollection)
+        private void Construct(IHero hero,SavedDataCollection dataCollection)
         {
             _hero = hero;
-
             _currentDampTime = _dampTime;
-            _input = inputService;
-
             dataCollection.Add(this);
         }
 
@@ -110,11 +94,16 @@ namespace Code.Logic.CameraLogic
 
         public void LoadData(SavedData savedData)
         {
-            if (!savedData.CameraPosition.positionInScene.ContainsKey(CurrentLevel()) || _isTeleportToPlayerOnAwake)
+            if (!savedData.CameraPosition.positionInScene.ContainsKey(CurrentLevel()))
                 return;
 
             Vector3Data savedPosition = savedData.CameraPosition.positionInScene[CurrentLevel()];
             transform.position = savedPosition.AsUnityVector();
+            
+            if (_isTeleportToPlayerOnAwake)
+            {
+                transform.position = _followingPosition;
+            }
         }
 
         public void SaveData(SavedData savedData)
