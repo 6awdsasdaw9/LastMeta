@@ -1,15 +1,14 @@
 using System;
-using Code.Services;
 using UnityEngine;
 
 namespace Code.UI.Windows.DialogueWindows
 {
-    public class InteractiveDialogueWindow : InteractiveObjectWindow, IDialogueWindow
+    public sealed class InteractiveDialogueWindow : InteractiveObjectWindow, IDialogueWindow
     {
         public DialogueController DialogueController => _dialogueController; 
         [SerializeField] private DialogueController _dialogueController;
         
-        public virtual void ShowWindow(Action WindowShowed)
+        public override void ShowWindow(Action WindowShowed)
         {
             if(_animation.IsPlay)
                 return;
@@ -18,7 +17,7 @@ namespace Code.UI.Windows.DialogueWindows
             _hud.OnUIWindowShown?.Invoke();
         }
 
-        public virtual void HideWindow(Action WindowHidden)
+        public override void HideWindow(Action WindowHidden)
         {
             if(_animation.IsPlay)
                 return;

@@ -87,7 +87,7 @@ namespace Code.Data.ProgressData
                 HeroHealth =
                 {
                     MaxHP = _gameConfig.heroConfig.maxHP
-                }
+                },
             };
 
             SavedData.HeroHealth.Reset();

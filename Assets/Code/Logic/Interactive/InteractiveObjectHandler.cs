@@ -40,13 +40,14 @@ namespace Code.Logic.Interactive
         private void OnEnable()
         {
             _input.OnPressEsc += OnPressEsc;
+            
             if (_isStartOnEnable)
             {
                 StartInteractive();
             }
             else
             {
-                ShowIcon();
+                ShowIcon().Forget();
             }
         }
 

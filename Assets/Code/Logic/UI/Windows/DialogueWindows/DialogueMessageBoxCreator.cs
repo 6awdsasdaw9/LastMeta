@@ -35,10 +35,9 @@ namespace Code.UI.Windows.DialogueWindows
         {
             _params = param;
             _typingAudioEvent = _params.TypingAudioEvent;
-            OnWriteMessage += () => Log.ColorLog("Write Message");
         }
 
-        public async Task WriteMessage(Story story, bool rightRotate)
+        public async UniTask WriteMessage(Story story, bool rightRotate)
         {
             if(!story.canContinue)
                 return;
@@ -77,7 +76,7 @@ namespace Code.UI.Windows.DialogueWindows
             var messageBox = Object.Instantiate(_params.MessageBoxPrefab, _canvasText.transform, false);
             messageBox.SetText(story.Continue()); 
             
-            WriteMessage(story, rightRotate: true);
+            WriteMessage(story, rightRotate: true).Forget();
         }
 
         public void SkipMessage()

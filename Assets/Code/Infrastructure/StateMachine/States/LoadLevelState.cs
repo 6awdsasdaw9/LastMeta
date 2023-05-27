@@ -1,8 +1,10 @@
+using System;
 using System.Linq;
 using Code.Audio;
 using Code.Data.ProgressData;
 using Code.Services;
 using Code.UI;
+using Cysharp.Threading.Tasks;
 using Zenject;
 
 namespace Code.Infrastructure.StateMachine.States
@@ -33,7 +35,6 @@ namespace Code.Infrastructure.StateMachine.States
         {
             _loadingCurtain.Show();
             _sceneLoader.Load(sceneName, OnLoaded);
-
             SetSceneMusic(sceneName);
         }
 
@@ -45,7 +46,14 @@ namespace Code.Infrastructure.StateMachine.States
         private void OnLoaded()
         {
             _stateMachine.Enter<GameLoopState>();
-            _savedService.LoadProgress();;
+            _savedService.LoadProgress();
+            //Test().Forget();
+        }
+
+        private async UniTaskVoid Test()
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(2));
+            _savedService.LoadProgress();
         }
 
         private void SetSceneMusic(string sceneName)

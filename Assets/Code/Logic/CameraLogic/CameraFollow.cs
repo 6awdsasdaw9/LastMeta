@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Code.Character.Hero;
 using Code.Data.GameData;
@@ -12,6 +13,7 @@ namespace Code.Logic.CameraLogic
 {
     public class CameraFollow : MonoBehaviour, ISavedData
     {
+        [SerializeField] private bool _isTeleportToPlayerOnAwake =true;
         [SerializeField] private bool _isCanMove = true;
         [SerializeField] private bool _isCanMoveY = true;
         [SerializeField] private float _dampTime = 0.75f;
@@ -32,10 +34,17 @@ namespace Code.Logic.CameraLogic
         private InputService _input;
 
 
+        private void OnEnable()
+        {
+            if (_isTeleportToPlayerOnAwake)
+            {
+                transform.position = GetTarget();
+            }
+        }
+
         [Inject]
         private void Construct(IHero hero, InputService inputService, SavedDataCollection dataCollection)
         {
-
             _hero = hero;
 
             _currentDampTime = _dampTime;
@@ -66,7 +75,6 @@ namespace Code.Logic.CameraLogic
 
         private Vector3 GetTarget()
         {
-     
             var y = _isCanMoveY ? _followingPosition.y : startPosY;
            
             y += _isCanMoveY && _hero.Movement.IsCrouch ? -1 : 0;
@@ -102,7 +110,7 @@ namespace Code.Logic.CameraLogic
 
         public void LoadData(SavedData savedData)
         {
-            if (!savedData.CameraPosition.positionInScene.ContainsKey(CurrentLevel()))
+            if (!savedData.CameraPosition.positionInScene.ContainsKey(CurrentLevel()) || _isTeleportToPlayerOnAwake)
                 return;
 
             Vector3Data savedPosition = savedData.CameraPosition.positionInScene[CurrentLevel()];

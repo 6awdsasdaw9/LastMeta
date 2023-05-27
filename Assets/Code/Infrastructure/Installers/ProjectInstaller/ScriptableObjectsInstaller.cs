@@ -14,6 +14,7 @@ namespace Code.Infrastructure.Installers
         public TextConfig TextConfig;
         public SceneAudioPath SceneAudioPath;
         public HudSettings HudSettings;
+        public SpawnPointsConfig SpawnPointsConfig;
         public override void InstallBindings()
         {
             Container.BindInstance(GameSettings);
@@ -22,6 +23,7 @@ namespace Code.Infrastructure.Installers
             Container.BindInstance(TextConfig);
             Container.BindInstance(SceneAudioPath);
             Container.BindInstance(HudSettings);
+            Container.BindInstance(SpawnPointsConfig);
         }
     }
 }

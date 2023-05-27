@@ -24,6 +24,7 @@ namespace Code.Infrastructure.Installers
                 GetInitialPoint(),
                 Quaternion.identity,
                 null);
+            
             Container.BindInterfacesTo<Hero>().FromInstance(hero).AsSingle().NonLazy();
         }
 

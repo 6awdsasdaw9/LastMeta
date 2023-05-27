@@ -1,5 +1,6 @@
 using System;
 using Code.Character.Interfaces;
+using Code.Data.GameData;
 using UnityEngine;
 
 namespace Code.Character.Enemies
@@ -25,7 +26,7 @@ namespace Code.Character.Enemies
         }
 
         //TODO допилить
-        public void Set(float currentHealth, float maxHealth)
+        public void Set(HealthData healthData)
         {
             
         }

@@ -10,19 +10,29 @@ namespace Code.Character.Hero
     {
         [SerializeField] private HeroAudio _heroAudio;
         [SerializeField] private SpriteVFX spriteVFX;
-        private HealthData _healthData;
+        private HealthData _healthData = new HealthData();
         public event Action HealthChanged;
         
-        public float Current => _healthData.CurrentHP;
-        public float Max => _healthData.MaxHP;
-        
-        public void Set(float currentHealth, float maxHealth)
+        public float Current
         {
-            _healthData = new HealthData()
+            get => _healthData.CurrentHP;
+            set
             {
-                CurrentHP = currentHealth,
-                MaxHP = maxHealth
-            };
+                if (_healthData.CurrentHP != value)
+                {
+                    _healthData.CurrentHP = value;
+                }
+            }
+        }
+
+        public float Max
+        {
+            get => _healthData.MaxHP;
+            set => _healthData.MaxHP = value;
+        }
+        public void Set(HealthData healthData)
+        {
+            _healthData = healthData;
             HealthChanged?.Invoke();
         }
 

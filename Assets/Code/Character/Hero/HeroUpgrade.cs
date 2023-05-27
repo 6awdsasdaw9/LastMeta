@@ -14,7 +14,7 @@ namespace Code.Character.Hero
         private HeroConfig _heroConfig;
         
         public HeroUpgradesData UpgradesLevel => _upgradesData;
-        private HeroUpgradesData _upgradesData;
+        private HeroUpgradesData _upgradesData = new HeroUpgradesData();
         
         public float BonusSpeed { get; private set; }
         public float BonusHeightJump { get; private set; }

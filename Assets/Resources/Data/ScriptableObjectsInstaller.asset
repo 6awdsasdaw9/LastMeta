@@ -18,3 +18,4 @@ MonoBehaviour:
   TextConfig: {fileID: 11400000, guid: a21bd99348ce93e41953dc6f6ab214ef, type: 2}
   SceneAudioPath: {fileID: 11400000, guid: 917b863287e67ce4193cd756522b4a98, type: 2}
   HudSettings: {fileID: 11400000, guid: 2ff7d38ca5623d04db9a66d4bc4b88d7, type: 2}
+  SpawnPointsConfig: {fileID: 11400000, guid: 1ba694a2f15a1ee4cbadb7d990acaa1a, type: 2}

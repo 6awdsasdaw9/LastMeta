@@ -13,9 +13,31 @@ MonoBehaviour:
   m_Name: SpawnPointsData
   m_EditorClassIdentifier: 
   SceneSpawnPoints:
+  - Scene: 1
+    Points: []
   - Scene: 2
     Points:
     - ID: 0
-      Position: {x: -10, y: 6.25, z: 0}
+      Position: {x: -9.91, y: -0.97, z: 0}
+    - ID: 1
+      Position: {x: 0.48, y: -1.04, z: 0}
+    - ID: 2
+      Position: {x: 2.437, y: -6.737, z: 0}
+    - ID: 3
+      Position: {x: 27.59, y: -5.99, z: 0}
+    - ID: 4
+      Position: {x: 43.5, y: -5.99, z: 0}
+    - ID: 5
+      Position: {x: 21.48, y: -13.22, z: 0}
+    - ID: 6
+      Position: {x: -10.02, y: -6.847, z: 0}
+    - ID: 7
+      Position: {x: 2.9799995, y: -13.2, z: 0}
+    - ID: 8
+      Position: {x: 42.07, y: -12.77, z: 0}
+  - Scene: 3
+    Points:
     - ID: 0
-      Position: {x: 0, y: 0, z: 0}
+      Position: {x: 4.566, y: -1.248, z: 0}
+    - ID: 1
+      Position: {x: -4.934, y: -1.248, z: 0}

@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Code.Data.Configs
 {
-    [CreateAssetMenu(fileName = "SpawnPointsData", menuName = "ScriptableObjects/GameData/SpawnPoints")]
-    public class SpawnPointsData : ScriptableObject
+    [CreateAssetMenu(fileName = "SpawnPointsConfig", menuName = "ScriptableObjects/GameData/SpawnPointsConfig")]
+    public class SpawnPointsConfig : ScriptableObject
     {
         public List<ScenesSpawnPointsData> SceneSpawnPoints;
     }
