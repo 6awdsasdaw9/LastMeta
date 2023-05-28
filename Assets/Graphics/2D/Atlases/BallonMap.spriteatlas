@@ -233,7 +233,11 @@ SpriteAtlas:
   - {fileID: 45114066352573037, guid: d375be19267bf854988f5e8580fc7b53, type: 3}
   - {fileID: 3605956089457506416, guid: d375be19267bf854988f5e8580fc7b53, type: 3}
   - {fileID: 3540137862720715610, guid: d375be19267bf854988f5e8580fc7b53, type: 3}
+  - {fileID: -608750079, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
+  - {fileID: 1196613875, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
+  - {fileID: 462056329, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
   - {fileID: -5652991699730479303, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
+  - {fileID: -907834162, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
   - {fileID: -6068931109522980252, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
   - {fileID: -1386191265631827503, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
   - {fileID: 3042339992596477242, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
@@ -523,7 +527,11 @@ SpriteAtlas:
   - Vandalism_2
   - Vandalism_1
   - Vandalism_0
+  - Wall_00_14
+  - Wall_00_12
+  - Wall_00_13
   - Wall_00_10
+  - Wall_00_11
   - Wall_00_3
   - Wall_00_2
   - Wall_00_1

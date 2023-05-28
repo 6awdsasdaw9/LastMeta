@@ -43,3 +43,18 @@ MonoBehaviour:
         Data3: -1700461924
         Data4: 7084308
       Path: event:/Ambience/Wind_Level_01
+  - Scene: 3
+    Music:
+      Guid:
+        Data1: -227023009
+        Data2: 1225225925
+        Data3: -1931876694
+        Data4: 2139672087
+      Path: event:/Music/Music_0
+    Ambience:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 

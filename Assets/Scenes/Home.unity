@@ -1025,6 +1025,10 @@ PrefabInstance:
       propertyPath: stopLayer.m_Bits
       value: 128
       objectReference: {fileID: 0}
+    - target: {fileID: 1830403187388025935, guid: 94631a162632ef146a88b41e18debe86, type: 3}
+      propertyPath: _isTeleportToPlayerOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5607728018068407947, guid: 94631a162632ef146a88b41e18debe86, type: 3}
       propertyPath: sphere
       value: 
@@ -1043,7 +1047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5607728018068407947, guid: 94631a162632ef146a88b41e18debe86, type: 3}
       propertyPath: DefaultResolution.y
-      value: 1080.54
+      value: 1080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94631a162632ef146a88b41e18debe86, type: 3}
@@ -3123,7 +3127,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34890
+  m_Name: pb_Mesh170986
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: d6ca30399ff089543b18e53c370e7823
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Rubles
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 33285c3f3e300324cbda41bc34f80ef3, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

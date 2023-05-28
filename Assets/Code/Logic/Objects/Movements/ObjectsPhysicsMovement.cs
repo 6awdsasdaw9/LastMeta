@@ -1,3 +1,4 @@
+using System;
 using Code.Data.Configs;
 using Code.Services;
 using Cysharp.Threading.Tasks;
@@ -157,7 +158,7 @@ namespace Code.Logic.Objects
                     Gizmos.DrawRay(transform.position, Vector3.right * forward);
                     break;
                 case Axis.Y:
-                    Gizmos.color = new Color32(0, 100, 255, 20);
+                    Gizmos.color = new Color32(0, 100, 255, Convert.ToByte(100*Speed));
                     Gizmos.DrawCube(transform.position + Vector3.up * Distance / 2,
                         new Vector3(_collider.size.x, Distance));
                     break;

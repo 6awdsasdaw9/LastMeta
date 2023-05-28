@@ -64,12 +64,17 @@ namespace Code.Infrastructure.StateMachine.States
             if (audioData == null)
                 return;
 
-            if (!_sceneAudioController.IsCurrentAmbienceEvent(audioData.Ambience))
+            if (audioData.Ambience.IsNull)
+            {
+                _sceneAudioController.StopAmbience();
+            }
+            else if (!_sceneAudioController.IsCurrentAmbienceEvent(audioData.Ambience))
             {
                 _sceneAudioController.StopAmbience();
                 _sceneAudioController.SetAmbienceEvent(audioData.Ambience);
                 _sceneAudioController.PlayAmbience();
             }
+            
 
             if (!_sceneAudioController.IsCurrentMusicEvent(audioData.Music))
             {
