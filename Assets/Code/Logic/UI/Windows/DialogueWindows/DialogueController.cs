@@ -38,7 +38,6 @@ namespace Code.UI.Windows.DialogueWindows
             _params = hudSettings.DialogueParams;
             _choiceButtonCreator.Init(_params);
             _messageBoxCreator.Init(_params);
-            
         }
 
         private void OnEnable()
@@ -90,8 +89,8 @@ namespace Code.UI.Windows.DialogueWindows
                     cancellationToken: _writeTokenSource.Token);
                 StopDialogue();
             }
-            _isActive = false;
             
+            _isActive = false;
         }
 
         public void StopDialogue()
@@ -99,8 +98,8 @@ namespace Code.UI.Windows.DialogueWindows
             _isActive = false;
             _writeTokenSource.Cancel();
             _messageBoxCreator.ClearAllMessage();
+            _choiceButtonCreator.RemoveAllChildrenOfChoices();
             OnStopDialogue?.Invoke();
-            Log.ColorLog("Stop Dialogue", ColorType.Aqua);
         }
 
         private void SkipMessage()
@@ -114,14 +113,14 @@ namespace Code.UI.Windows.DialogueWindows
             if (flag)
             {
                 _messageBoxCreator.OnWriteMessage += () => StartDialogueStep().Forget();
-                _buttonClose.OnStartTap += StopDialogue;
-                _buttonSkip.OnStartTap += SkipMessage;
+                /*_buttonClose.OnStartTap += StopDialogue;
+                _buttonSkip.OnStartTap += SkipMessage;*/
             }
             else
             {
                 _messageBoxCreator.OnWriteMessage -= () => StartDialogueStep().Forget();
-                _buttonClose.OnStartTap -= StopDialogue;
-                _buttonSkip.OnStartTap -=  SkipMessage;
+                /*_buttonClose.OnStartTap -= StopDialogue;
+                _buttonSkip.OnStartTap -=  SkipMessage;*/
             }
         }
     }

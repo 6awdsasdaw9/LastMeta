@@ -1,14 +1,20 @@
 using System;
+using Code.UI.Buttons;
 using UnityEngine;
 
 namespace Code.UI.Windows.DialogueWindows
 {
     public sealed class InteractiveDialogueWindow : InteractiveObjectWindow, IDialogueWindow
     {
-        public DialogueController DialogueController => _dialogueController; 
+        public DialogueController DialogueController => _dialogueController;
         [SerializeField] private DialogueController _dialogueController;
+        public ButtonTap CloseButton => _buttonClose;
+        [SerializeField] private ButtonTap _buttonClose;
         
-        public override void ShowWindow(Action WindowShowed)
+        public ButtonTap SkipButton => _skipButton;
+        [SerializeField] private ButtonTap _skipButton;
+
+        public override void ShowWindow(Action WindowShowed )
         {
             if(_animation.IsPlay)
                 return;
@@ -28,6 +34,5 @@ namespace Code.UI.Windows.DialogueWindows
             _animation.PlayHide(WindowHidden);
             _hud.OnUIWindowHidden?.Invoke();
         }
-
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using Code.UI.Buttons;
 using Code.UI.Windows.DialogueWindows;
 using UnityEngine;
 
@@ -23,5 +24,8 @@ namespace Code.UI.Windows
     public interface IDialogueWindow : IWindow
     {
         DialogueController DialogueController { get; }
+
+        ButtonTap CloseButton { get; }
+        ButtonTap SkipButton { get; }
     }
 }

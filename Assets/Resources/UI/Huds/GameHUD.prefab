@@ -1062,6 +1062,8 @@ MonoBehaviour:
   _hud: {fileID: 7281473980765438915}
   _animation: {fileID: 1307979499033328797}
   _dialogueController: {fileID: 1337321253297943606}
+  _buttonClose: {fileID: 6823099518939937964}
+  _skipButton: {fileID: 5727027524016354877}
 --- !u!114 &1307979499033328797
 MonoBehaviour:
   m_ObjectHideFlags: 0

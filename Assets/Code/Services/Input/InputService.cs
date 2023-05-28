@@ -123,6 +123,11 @@ namespace Code.Services.Input
             else _master.UI.Disable();
         }
 
+        public void PressEsc()
+        {
+            OnPressEsc?.Invoke();
+        }
+
         private void PressEsc(InputAction.CallbackContext context)
         {
             if(context.started)

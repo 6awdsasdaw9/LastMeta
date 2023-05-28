@@ -19,9 +19,14 @@ namespace Code.UI.Buttons
             _button.onClick.RemoveListener(InvokeEvent);
         }
 
-        private void InvokeEvent()
+        protected virtual void InvokeEvent()
         {
             OnStartTap?.Invoke();
         }
+    }
+
+    public class EscButton : ButtonTap
+    {
+
     }
 }

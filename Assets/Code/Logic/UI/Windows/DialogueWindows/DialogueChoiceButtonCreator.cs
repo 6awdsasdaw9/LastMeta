@@ -1,9 +1,9 @@
 using System;
 using Code.Data.Configs;
-using Code.Debugers;
 using Code.Logic.UI.Windows.DialogueWindows;
 using Ink.Runtime;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Code.UI.Windows.DialogueWindows
 {
@@ -24,7 +24,6 @@ namespace Code.UI.Windows.DialogueWindows
 
         public void CreateChoice(Story story)
         {
-            Log.ColorLog("Create Choices",ColorType.Olive);
             foreach (var choice in story.currentChoices)
             {
                 ChoiceButton button = CreateChoiceView(choice.text.Trim());
@@ -40,20 +39,17 @@ namespace Code.UI.Windows.DialogueWindows
 
         private ChoiceButton CreateChoiceView(string text)
         {
-            Log.ColorLog("Create Choice View", ColorType.Olive);
-            ChoiceButton choice = GameObject.Instantiate(_buttonPrefab);
-            choice.transform.SetParent(_canvasButton, false);
+            ChoiceButton choice = Object.Instantiate(_buttonPrefab, _canvasButton, false);
             choice.SetText(text);
             return choice;
         }
 
         public void RemoveAllChildrenOfChoices()
         {
-            Log.ColorLog("Remove all choice children", ColorType.Olive);
             var childButtonCount = _canvasButton.childCount;
             for (var i = childButtonCount - 1; i >= 0; i--)
             {
-                GameObject.Destroy(_canvasButton.GetChild(i).gameObject);
+                Object.Destroy(_canvasButton.GetChild(i).gameObject);
             }
         }
     }
