@@ -14,7 +14,6 @@ namespace Code.UI.Windows.DialogueWindows
     public class DialogueController : MonoBehaviour, IEventSubscriber
     {
         [SerializeField] private HudButton _buttonSkip;
-        [SerializeField] private HudButton _buttonClose;
         
         public DialogueChoiceButtonCreator ChoiceButtonCreator => _choiceButtonCreator;
         [SerializeField] private DialogueChoiceButtonCreator _choiceButtonCreator;
@@ -85,6 +84,7 @@ namespace Code.UI.Windows.DialogueWindows
             }
             else
             {
+                Log.ColorLog("DIALOGUE FINISH");
                 await UniTask.Delay(TimeSpan.FromSeconds(_params.FreezeTime * 5),
                     cancellationToken: _writeTokenSource.Token);
                 StopDialogue();
@@ -113,14 +113,14 @@ namespace Code.UI.Windows.DialogueWindows
             if (flag)
             {
                 _messageBoxCreator.OnWriteMessage += () => StartDialogueStep().Forget();
-                /*_buttonClose.OnStartTap += StopDialogue;
-                _buttonSkip.OnStartTap += SkipMessage;*/
+                //_buttonClose.OnStartTap += StopDialogue;
+                _buttonSkip.OnStartTap += SkipMessage;
             }
             else
             {
                 _messageBoxCreator.OnWriteMessage -= () => StartDialogueStep().Forget();
-                /*_buttonClose.OnStartTap -= StopDialogue;
-                _buttonSkip.OnStartTap -=  SkipMessage;*/
+                //_buttonClose.OnStartTap -= StopDialogue;
+                _buttonSkip.OnStartTap -=  SkipMessage;
             }
         }
     }

@@ -26,6 +26,5 @@ namespace Code.UI.Windows
         DialogueController DialogueController { get; }
 
         ButtonTap CloseButton { get; }
-        ButtonTap SkipButton { get; }
     }
 }

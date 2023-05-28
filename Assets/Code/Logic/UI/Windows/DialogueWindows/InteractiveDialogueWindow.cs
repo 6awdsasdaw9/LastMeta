@@ -11,8 +11,7 @@ namespace Code.UI.Windows.DialogueWindows
         public ButtonTap CloseButton => _buttonClose;
         [SerializeField] private ButtonTap _buttonClose;
         
-        public ButtonTap SkipButton => _skipButton;
-        [SerializeField] private ButtonTap _skipButton;
+       
 
         public override void ShowWindow(Action WindowShowed )
         {
