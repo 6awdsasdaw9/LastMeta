@@ -225,6 +225,8 @@ SpriteAtlas:
   - {fileID: 4585228979031474018, guid: 24233cd8dae3d8744b535992843a0700, type: 3}
   - {fileID: -1476385452536074112, guid: 24233cd8dae3d8744b535992843a0700, type: 3}
   - {fileID: 1545511920404164020, guid: 24233cd8dae3d8744b535992843a0700, type: 3}
+  - {fileID: -122203978, guid: d375be19267bf854988f5e8580fc7b53, type: 3}
+  - {fileID: 1942512694, guid: d375be19267bf854988f5e8580fc7b53, type: 3}
   - {fileID: -8087710802928536466, guid: d375be19267bf854988f5e8580fc7b53, type: 3}
   - {fileID: -1293637196412746825, guid: d375be19267bf854988f5e8580fc7b53, type: 3}
   - {fileID: 3370370061560189363, guid: d375be19267bf854988f5e8580fc7b53, type: 3}
@@ -233,6 +235,8 @@ SpriteAtlas:
   - {fileID: 45114066352573037, guid: d375be19267bf854988f5e8580fc7b53, type: 3}
   - {fileID: 3605956089457506416, guid: d375be19267bf854988f5e8580fc7b53, type: 3}
   - {fileID: 3540137862720715610, guid: d375be19267bf854988f5e8580fc7b53, type: 3}
+  - {fileID: 1859238612, guid: d375be19267bf854988f5e8580fc7b53, type: 3}
+  - {fileID: -1173671919, guid: d375be19267bf854988f5e8580fc7b53, type: 3}
   - {fileID: -608750079, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
   - {fileID: 1196613875, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
   - {fileID: 462056329, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
@@ -519,6 +523,8 @@ SpriteAtlas:
   - Quadrocopter_0
   - Quadrocopter_3
   - Quadrocopter_2
+  - Vandalism_9
+  - Vandalism_8
   - Vandalism_7
   - Vandalism_6
   - Vandalism_5
@@ -527,6 +533,8 @@ SpriteAtlas:
   - Vandalism_2
   - Vandalism_1
   - Vandalism_0
+  - Vandalism_10
+  - Vandalism_11
   - Wall_00_14
   - Wall_00_12
   - Wall_00_13
