@@ -27,7 +27,6 @@ namespace Code.UI.Windows.DialogueWindows
             if(_animation.IsPlay)
                 return;
             
-            //TODO StopStory
             _dialogueController.StopDialogue();
       
             _animation.PlayHide(WindowHidden);

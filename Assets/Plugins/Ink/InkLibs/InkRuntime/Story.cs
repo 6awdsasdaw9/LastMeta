@@ -1657,7 +1657,7 @@ namespace Ink.Runtime
         /// index. Internally, this sets the current content path to that
         /// pointed to by the Choice, ready to continue story evaluation.
         /// </summary>
-        public void ChooseChoiceIndex(int choiceIdx)
+        public void ChooseAnswerIndex(int choiceIdx)
         {
             var choices = currentChoices;
             Assert (choiceIdx >= 0 && choiceIdx < choices.Count, "choice out of range");

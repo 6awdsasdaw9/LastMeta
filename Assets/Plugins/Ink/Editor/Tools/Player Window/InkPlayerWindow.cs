@@ -78,7 +78,7 @@ namespace Ink.UnityIntegration {
 					EditorGUILayout.LabelField("Choice "+choice.index, choice.text);
 					EditorGUI.BeginDisabledGroup(true);
 					if(GUILayout.Button("Choose")) {
-						story.ChooseChoiceIndex(choice.index);
+						story.ChooseAnswerIndex(choice.index);
 					}
 					EditorGUI.EndDisabledGroup();
 					EditorGUILayout.EndHorizontal();
@@ -1586,7 +1586,7 @@ namespace Ink.UnityIntegration {
 		}
 
 		static void MakeChoice (Choice choice) {
-			story.ChooseChoiceIndex(choice.index);
+			story.ChooseAnswerIndex(choice.index);
 			if(!playerParams.disableUndoHistory) AddToStateHistory();
 			TryContinue();
 		}

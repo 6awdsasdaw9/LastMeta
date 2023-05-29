@@ -14,7 +14,7 @@ namespace Code.UI.Windows.DialogueWindows
     public class DialogueController : MonoBehaviour, IEventSubscriber
     {
         [SerializeField] private HudButton _buttonSkip;
-        
+
         public DialogueChoiceButtonCreator ChoiceButtonCreator => _choiceButtonCreator;
         [SerializeField] private DialogueChoiceButtonCreator _choiceButtonCreator;
         public DialogueMessageBoxCreator MessageBoxCreator => _messageBoxCreator;
@@ -31,6 +31,7 @@ namespace Code.UI.Windows.DialogueWindows
 
         public Action OnStartDialogue;
         public Action OnStopDialogue;
+
         [Inject]
         private void Construct(HudSettings hudSettings)
         {
@@ -62,65 +63,72 @@ namespace Code.UI.Windows.DialogueWindows
         {
             Log.ColorLog("AllStepsOfDialogue", ColorType.Aqua);
 
-            if(_isActive)
+            if (_isActive)
                 return;
-            
+
             OnStartDialogue?.Invoke();
             _isActive = true;
-            _writeTokenSource = new CancellationTokenSource();
             
-            _choiceButtonCreator.RemoveAllChildrenOfChoices();
-            _messageBoxCreator.RemoveChildrenOfMessages();
+            while (_story.canContinue)
+            {
+                _choiceButtonCreator.ClearButtonChoices();
+                _messageBoxCreator.RemoveExcessMessageBoxes();
 
-            await _messageBoxCreator.WriteMessage(_story, rightRotate: false);
-
-            Log.ColorLog($"_story.currentChoices.Count {_story.currentChoices.Count}", ColorType.Aqua);
-           
+                await _messageBoxCreator.WriteMessage(_story);
+            }
+            
             if (_story.currentChoices.Count > 0)
             {
                 Log.ColorLog($"CreateChoice", ColorType.Aqua);
                 _choiceButtonCreator.CreateChoice(_story);
-                _writeTokenSource.Cancel();
-            }
-            else
-            {
-                Log.ColorLog("DIALOGUE FINISH");
-                await UniTask.Delay(TimeSpan.FromSeconds(_params.FreezeTime * 5),
-                    cancellationToken: _writeTokenSource.Token);
-                StopDialogue();
             }
             
+            else if (!_story.canContinue)
+            {
+                Log.ColorLog("DIALOGUE FINISH", ColorType.Aqua);
+
+                _writeTokenSource?.Cancel();
+                _writeTokenSource = new CancellationTokenSource();
+
+                await UniTask.Delay(TimeSpan.FromSeconds(_params.FreezeTime * 5),
+                    cancellationToken: _writeTokenSource.Token);
+
+                StopDialogue();
+            }
+
             _isActive = false;
         }
 
         public void StopDialogue()
         {
-            _isActive = false;
-            _writeTokenSource.Cancel();
+            SkipMessage();
+
             _messageBoxCreator.ClearAllMessage();
-            _choiceButtonCreator.RemoveAllChildrenOfChoices();
+            _choiceButtonCreator.ClearButtonChoices();
+
             OnStopDialogue?.Invoke();
         }
 
         private void SkipMessage()
         {
+            if(_choiceButtonCreator.IsAwaitAnswer)
+                return;
             _isActive = false;
-            _writeTokenSource.Cancel();
             _messageBoxCreator.SkipMessage();
+            StartDialogueStep().Forget();
         }
+
         public void SubscribeToEvent(bool flag)
         {
             if (flag)
             {
                 _messageBoxCreator.OnWriteMessage += () => StartDialogueStep().Forget();
-                //_buttonClose.OnStartTap += StopDialogue;
                 _buttonSkip.OnStartTap += SkipMessage;
             }
             else
             {
                 _messageBoxCreator.OnWriteMessage -= () => StartDialogueStep().Forget();
-                //_buttonClose.OnStartTap -= StopDialogue;
-                _buttonSkip.OnStartTap -=  SkipMessage;
+                _buttonSkip.OnStartTap -= SkipMessage;
             }
         }
     }

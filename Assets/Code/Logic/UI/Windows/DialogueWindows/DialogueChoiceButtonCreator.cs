@@ -15,6 +15,8 @@ namespace Code.UI.Windows.DialogueWindows
         
         private ChoiceButton _buttonPrefab;
         private AudioEvent _choiceAudioEvent;
+        public bool IsAwaitAnswer => _canvasButton.childCount > 0;
+
 
         public void Init(DialogueParams dialogueParams)
         {
@@ -24,27 +26,30 @@ namespace Code.UI.Windows.DialogueWindows
 
         public void CreateChoice(Story story)
         {
+            if(IsAwaitAnswer)
+                return;
+            
             foreach (var choice in story.currentChoices)
             {
-                ChoiceButton button = CreateChoiceView(choice.text.Trim());
+                ChoiceButton button = CreateChoiceButton(choice.text.Trim());
 
                 button.OnStartTap += delegate
                 {
                     _dialogueController.MessageBoxCreator.CreatePlayersAnswer(story, choice);
                     _choiceAudioEvent.PlayAudioEvent();
-                    RemoveAllChildrenOfChoices();
+                    ClearButtonChoices();
                 };
             }
         }
 
-        private ChoiceButton CreateChoiceView(string text)
+        private ChoiceButton CreateChoiceButton(string text)
         {
             ChoiceButton choice = Object.Instantiate(_buttonPrefab, _canvasButton, false);
             choice.SetText(text);
             return choice;
         }
 
-        public void RemoveAllChildrenOfChoices()
+        public void ClearButtonChoices()
         {
             var childButtonCount = _canvasButton.childCount;
             for (var i = childButtonCount - 1; i >= 0; i--)

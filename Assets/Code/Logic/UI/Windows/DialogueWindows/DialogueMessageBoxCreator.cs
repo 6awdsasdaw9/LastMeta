@@ -18,9 +18,9 @@ namespace Code.UI.Windows.DialogueWindows
         [SerializeField] private bool _deleteZeroMessage;
         [SerializeField] private Transform _canvasText;
         [SerializeField] private int _maxMessage = 4;
-        
+
         public Action OnWriteMessage;
-        
+
         private DialogueParams _params;
         private AudioEvent _typingAudioEvent;
 
@@ -37,58 +37,69 @@ namespace Code.UI.Windows.DialogueWindows
             _typingAudioEvent = _params.TypingAudioEvent;
         }
 
-        public async UniTask WriteMessage(Story story, bool rightRotate)
+        public async UniTask WriteMessage(Story story)
         {
-            if(!story.canContinue)
+            Log.ColorLog($"WriteMessage: canContinue {story.canContinue}", ColorType.Purple);
+
+            if (!story.canContinue)
                 return;
-            
-            RemoveChildrenOfMessages();
-            _cancellationToken = new CancellationTokenSource();
 
-            _fullText = story.Continue();
-            _currentText = ""; 
-            _currentMessageBox = CreateMessageBox();
-
-            if(rightRotate)
-                _currentMessageBox.SetRightRotation();
-            
+            RemoveExcessMessageBoxes();
+            CreateNewMessageBox(story);
             HandleTags(story.currentTags, _currentMessageBox);
-            
-            await UniTask.Delay(TimeSpan.FromSeconds(_params.FreezeTime), cancellationToken: _cancellationToken.Token);
-            
+
             foreach (var letter in _fullText)
             {
+                Log.ColorLog($"WriteMessage: letter text {_currentText.Length} / {_fullText.Length}", ColorType.Purple);
+                _cancellationToken?.Cancel();
+                _cancellationToken = new CancellationTokenSource();
+
                 _currentText += letter;
                 _currentMessageBox.SetText(_currentText);
                 _typingAudioEvent.PlayAudioEvent();
-                await UniTask.Delay(TimeSpan.FromSeconds(_params.TypingSpeed), cancellationToken: _cancellationToken.Token);
+
+                await UniTask.Delay(TimeSpan.FromSeconds(_params.TypingSpeed),
+                    cancellationToken: _cancellationToken.Token);
             }
-            
+
             OnWriteMessage?.Invoke();
-            _cancellationToken.Cancel();
+            Log.ColorLog($"WriteMessage: After Event", ColorType.Purple);
+        }
+
+        private void CreateNewMessageBox(Story story)
+        {
+            _currentMessageBox = CreateBox();
+            _fullText = story.Continue();
+            _currentText = "";
+            _currentMessageBox.SetText(_currentText);
         }
 
         public void CreatePlayersAnswer(Story story, Choice choice)
         {
-            RemoveChildrenOfMessages();
-            story.ChooseChoiceIndex(choice.index);
-            
+            RemoveExcessMessageBoxes();
+            story.ChooseAnswerIndex(choice.index);
+            CreateNewMessageBox(story);
+            SkipMessage();
+        }
+
+        private MessageBox CreateBox()
+        {
             var messageBox = Object.Instantiate(_params.MessageBoxPrefab, _canvasText.transform, false);
-            messageBox.SetText(story.Continue()); 
-            
-            WriteMessage(story, rightRotate: true).Forget();
+            messageBox.SetText("");
+            return messageBox;
         }
 
         public void SkipMessage()
         {
             _cancellationToken.Cancel();
-            
             _currentMessageBox.SetText(_fullText);
             _typingAudioEvent.PlayAudioEvent();
-            
+
             OnWriteMessage?.Invoke();
-            Log.ColorLog("Skip Story");
+            
+            Log.ColorLog("Skip", ColorType.Purple);
         }
+
         public void ClearAllMessage()
         {
             for (int i = 0; i < _canvasText.childCount; i++)
@@ -97,23 +108,16 @@ namespace Code.UI.Windows.DialogueWindows
             }
         }
 
-        public void RemoveChildrenOfMessages()
+        public void RemoveExcessMessageBoxes()
         {
-            if (!_deleteZeroMessage||_canvasText.childCount < _maxMessage)
+            if (!_deleteZeroMessage || _canvasText.childCount < _maxMessage)
                 return;
-            
+
             _canvasText.GetChild(0).SetAsLastSibling();
             Object.Destroy(_canvasText.GetChild(_canvasText.childCount - 1).gameObject);
         }
 
-        private MessageBox CreateMessageBox()
-        {
-            var messageBox = Object.Instantiate(_params.MessageBoxPrefab, _canvasText.transform, false);
-            messageBox.SetText("");
-            return messageBox;
-        }
-        
-        private void HandleTags(List<string> currentTags,MessageBox messageBox)
+        private void HandleTags(List<string> currentTags, MessageBox messageBox)
         {
             foreach (string tag in currentTags)
             {
@@ -128,6 +132,7 @@ namespace Code.UI.Windows.DialogueWindows
                             case "Lola":
                                 messageBox.SetRightRotation();
                                 messageBox.SetColor(new Color32(177, 211, 255, 255));
+                                Log.ColorLog("LOLA's MESSAGE", ColorType.Orange);
                                 break;
                             case "01":
                                 messageBox.SetColor(new Color32(215, 255, 226, 255));
@@ -141,7 +146,5 @@ namespace Code.UI.Windows.DialogueWindows
                 }
             }
         }
-        
-        
     }
 }
