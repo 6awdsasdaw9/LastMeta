@@ -7,6 +7,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
+using Logger = Code.Debugers.Logger;
 
 namespace Code.Logic.Triggers
 {
@@ -42,7 +43,7 @@ namespace Code.Logic.Triggers
 
         private void OnTriggerEnter(Collider other)
         {
-            Log.ColorLog(other.name,ColorType.Orange);
+            Logger.ColorLog(other.name,ColorType.Orange);
             var currentScene = SceneManager.GetActiveScene().name;
             var pointData = new PointData
             {

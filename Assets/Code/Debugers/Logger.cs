@@ -26,7 +26,7 @@ namespace Code.Debugers
         Warning
     }
 
-    public static class Log
+    public static class Logger
     {
         /// <summary>
         /// Simple custom color Log massage

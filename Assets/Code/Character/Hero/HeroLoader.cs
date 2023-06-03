@@ -7,6 +7,7 @@ using Code.Services;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
+using Logger = Code.Debugers.Logger;
 
 namespace Code.Character.Hero
 {
@@ -45,8 +46,8 @@ namespace Code.Character.Hero
         private void HealthSaveData(SavedData savedData)
         {
         
-            Log.ColorLog($"s {savedData.HeroHealth == null} h {_hero.Health == null}",ColorType.Red);
-            Log.ColorLog($"s {savedData.HeroHealth.CurrentHP} h {_hero.Health.Current}",ColorType.Red);
+            Logger.ColorLog($"s {savedData.HeroHealth == null} h {_hero.Health == null}",ColorType.Red);
+            Logger.ColorLog($"s {savedData.HeroHealth.CurrentHP} h {_hero.Health.Current}",ColorType.Red);
            
             savedData.HeroHealth.CurrentHP = _hero.Health.Current;
             savedData.HeroHealth.MaxHP = _hero.Health.Max;
@@ -59,7 +60,7 @@ namespace Code.Character.Hero
 
             Vector3Data savedPosition = savedData.HeroPosition.positionInScene[CurrentLevel()];
             transform.position = savedPosition.AsUnityVector();*/
-            Log.ColorLog("Movement load data", ColorType.Green);
+            Logger.ColorLog("Movement load data", ColorType.Green);
             
             if (savedData.SceneSpawnPoints.ContainsKey(CurrentLevel()))
             {

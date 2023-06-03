@@ -14,7 +14,7 @@ namespace Code.Logic.DayOfTime
         private float _currentSecondsOfDay;
         public float dayTimeNormalized => _currentSecondsOfDay / _dayTimeInSeconds;
 
-        private TimeOfDay currentTimeOfDay { get; set; }
+        public TimeOfDay CurrentTimeOfDay { get;private set; }
 
         public delegate void TimeOfDayEvent();
 
@@ -53,15 +53,15 @@ namespace Code.Logic.DayOfTime
 
         private void CheckTimeOfDay()
         {
-            if ( _currentSecondsOfDay < _eveningTime && currentTimeOfDay != TimeOfDay.Morning)
+            if ( _currentSecondsOfDay < _eveningTime && CurrentTimeOfDay != TimeOfDay.Morning)
             {
                 SetCurrentTimeOfDay(TimeOfDay.Morning);
             }
-            else if (_currentSecondsOfDay > _eveningTime && _currentSecondsOfDay < _nightTime && currentTimeOfDay != TimeOfDay.Evening)
+            else if (_currentSecondsOfDay > _eveningTime && _currentSecondsOfDay < _nightTime && CurrentTimeOfDay != TimeOfDay.Evening)
             {
                 SetCurrentTimeOfDay(TimeOfDay.Evening);
             }
-            else if (_currentSecondsOfDay > _nightTime && currentTimeOfDay != TimeOfDay.Night)
+            else if (_currentSecondsOfDay > _nightTime && CurrentTimeOfDay != TimeOfDay.Night)
             {
                 SetCurrentTimeOfDay(TimeOfDay.Night);
             }
@@ -69,11 +69,11 @@ namespace Code.Logic.DayOfTime
 
         private void SetCurrentTimeOfDay(TimeOfDay newTimeOfDay)
         {
-            if (newTimeOfDay == currentTimeOfDay) return;
+            if (newTimeOfDay == CurrentTimeOfDay) return;
 
-            currentTimeOfDay = newTimeOfDay;
+            CurrentTimeOfDay = newTimeOfDay;
 
-            switch (currentTimeOfDay)
+            switch (CurrentTimeOfDay)
             {
                 case TimeOfDay.Morning:
                     OnMorning?.Invoke();

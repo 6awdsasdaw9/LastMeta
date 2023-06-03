@@ -3,6 +3,7 @@ using Code;
 using Code.Debugers;
 using UnityEditor;
 using UnityEngine;
+using Logger = Code.Debugers.Logger;
 
 public class Tools
 {
@@ -13,7 +14,7 @@ public class Tools
         if (File.Exists(fullPath))
         {
             File.Delete(fullPath);
-            Log.ColorLog("DELETE PROGRESS DATA");
+            Logger.ColorLog("DELETE PROGRESS DATA");
         }
     }
 

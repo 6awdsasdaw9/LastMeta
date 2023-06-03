@@ -6,6 +6,7 @@ using Code.Infrastructure.StateMachine;
 using Code.Infrastructure.StateMachine.States;
 using UnityEngine;
 using Zenject;
+using Logger = Code.Debugers.Logger;
 
 namespace Code.Logic.Interactive.InteractiveObjects
 {
@@ -30,7 +31,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
 
         public override void StartInteractive()
         {
-            Log.ColorLog($"Enter to {_interactiveScene.ToString()} || Progress Save ", ColorType.Orange);
+            Logger.ColorLog($"Enter to {_interactiveScene.ToString()} || Progress Save ", ColorType.Orange);
             SaveNewSpawnPoint();
 
             _stateMachine.Enter<LoadLevelState, string>(_interactiveScene.ToString());
@@ -42,14 +43,14 @@ namespace Code.Logic.Interactive.InteractiveObjects
             var points = _spawnPointsConfig.SceneSpawnPoints.FirstOrDefault(p => p.Scene == _interactiveScene).Points;
             if (points == null)
             {
-                Log.ColorLog("Interactive object scene: Can'not find points in Spawn Points Config", LogStyle.Error);
+                Logger.ColorLog("Interactive object scene: Can'not find points in Spawn Points Config", LogStyle.Error);
                 return;
             }
 
             var spawnPoint = points.FirstOrDefault(p => p.ID == _spawnPointID);
             if (spawnPoint == null)
             {
-                Log.ColorLog("Interactive object scene: Can'not find a spawn point by ID", LogStyle.Error);
+                Logger.ColorLog("Interactive object scene: Can'not find a spawn point by ID", LogStyle.Error);
                 return;
             }
 
@@ -67,7 +68,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
 
         public override void StopInteractive()
         {
-            Log.ColorLog($"Stop Scene Interactive  ", ColorType.Orange);
+            Logger.ColorLog($"Stop Scene Interactive  ", ColorType.Orange);
         }
     }
 }

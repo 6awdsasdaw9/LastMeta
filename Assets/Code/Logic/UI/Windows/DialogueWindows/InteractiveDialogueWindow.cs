@@ -11,8 +11,6 @@ namespace Code.UI.Windows.DialogueWindows
         public ButtonTap CloseButton => _buttonClose;
         [SerializeField] private ButtonTap _buttonClose;
         
-       
-
         public override void ShowWindow(Action WindowShowed )
         {
             if(_animation.IsPlay)

@@ -8,6 +8,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Ink.Runtime;
 using Zenject;
+using Logger = Code.Debugers.Logger;
 
 namespace Code.UI.Windows.DialogueWindows
 {
@@ -52,41 +53,51 @@ namespace Code.UI.Windows.DialogueWindows
 
         public void StartDialogue(TextAsset story)
         {
+            Logger.ColorLog($"1.DialogueController: StartDialogue", ColorType.Orange);
             _inkJSON = story;
             _story = new Story(_inkJSON.text);
 
-            StartDialogueStep().Forget();
-            Log.ColorLog("Start Dialogue", ColorType.Aqua);
+            _choiceButtonCreator.ClearButtonChoices();
+            
+            OnStartDialogue?.Invoke();
+            StartDialogueCircle().Forget();
         }
 
-        private async UniTaskVoid StartDialogueStep()
+        public void StopDialogue()
         {
-            Log.ColorLog("AllStepsOfDialogue", ColorType.Aqua);
+            _messageBoxCreator.SkipMessage();
 
-            if (_isActive)
-                return;
+            _messageBoxCreator.ClearAllMessage();
+            _choiceButtonCreator.ClearButtonChoices();
 
-            OnStartDialogue?.Invoke();
-            _isActive = true;
-            
+            OnStopDialogue?.Invoke();
+        }
+
+        private async UniTaskVoid StartDialogueCircle()
+        {
             while (_story.canContinue)
             {
-                _choiceButtonCreator.ClearButtonChoices();
+                Logger.ColorLog($"2.DialogueController: StartDialogueCircle -> " +
+                                $"story can continue {_story.canContinue}", ColorType.Orange);
                 _messageBoxCreator.RemoveExcessMessageBoxes();
-
                 await _messageBoxCreator.WriteMessage(_story);
+
+                Logger.ColorLog($"3.DialogueController: StartDialogueCircle -> " +
+                                $"currentChoices.Count {_story.currentChoices.Count}", ColorType.Orange);
+                
+               
             }
-            
+
             if (_story.currentChoices.Count > 0)
             {
-                Log.ColorLog($"CreateChoice", ColorType.Aqua);
+                Logger.ColorLog($"4.DialogueController: StartDialogueCircle -> " +
+                                $"Create Choice", ColorType.Orange);
                 _choiceButtonCreator.CreateChoice(_story);
             }
-            
-            else if (!_story.canContinue)
+     
+            else
+            if (!_story.canContinue)
             {
-                Log.ColorLog("DIALOGUE FINISH", ColorType.Aqua);
-
                 _writeTokenSource?.Cancel();
                 _writeTokenSource = new CancellationTokenSource();
 
@@ -95,39 +106,29 @@ namespace Code.UI.Windows.DialogueWindows
 
                 StopDialogue();
             }
-
-            _isActive = false;
-        }
-
-        public void StopDialogue()
-        {
-            SkipMessage();
-
-            _messageBoxCreator.ClearAllMessage();
-            _choiceButtonCreator.ClearButtonChoices();
-
-            OnStopDialogue?.Invoke();
         }
 
         private void SkipMessage()
         {
-            if(_choiceButtonCreator.IsAwaitAnswer)
+            if (_choiceButtonCreator.IsAwaitAnswer)
                 return;
+
             _isActive = false;
             _messageBoxCreator.SkipMessage();
-            StartDialogueStep().Forget();
+
+            StartDialogueCircle().Forget();
         }
 
         public void SubscribeToEvent(bool flag)
         {
             if (flag)
             {
-                _messageBoxCreator.OnWriteMessage += () => StartDialogueStep().Forget();
+                _messageBoxCreator.OnWriteMessage += () => StartDialogueCircle().Forget();
                 _buttonSkip.OnStartTap += SkipMessage;
             }
             else
             {
-                _messageBoxCreator.OnWriteMessage -= () => StartDialogueStep().Forget();
+                _messageBoxCreator.OnWriteMessage -= () => StartDialogueCircle().Forget();
                 _buttonSkip.OnStartTap -= SkipMessage;
             }
         }

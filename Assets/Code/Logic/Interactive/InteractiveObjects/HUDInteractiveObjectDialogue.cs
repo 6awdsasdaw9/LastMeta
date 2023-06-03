@@ -4,6 +4,7 @@ using Code.UI.HeadUpDisplay;
 using Code.UI.Windows;
 using UnityEngine;
 using Zenject;
+using Logger = Code.Debugers.Logger;
 
 namespace Code.Logic.Interactive.InteractiveObjects
 {
@@ -31,7 +32,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
             if (_isWindowNull)
                 return;
 
-            Log.ColorLog("Start interactive");
+            Logger.ColorLog("1. HUDInteractiveObjectDialogue: Start interactive",ColorType.Aqua);
             OnAnimationProcess = true;
             OnStartInteractive?.Invoke();
             
@@ -44,6 +45,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
             if (_isWindowNull)
                 return;
             
+            Logger.ColorLog("2. HUDInteractiveObjectDialogue: WindowShowed",ColorType.Aqua);
              OnAnimationProcess = false;
             _presentationWindow.DialogueController.StartDialogue(_textAsset);
             _presentationWindow.DialogueController.OnStopDialogue += StopInteractive;
@@ -54,6 +56,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
             if (_isWindowNull)
                 return;
 
+            Logger.ColorLog("2. HUDInteractiveObjectDialogue: Stop Interactive",ColorType.Aqua);
             _presentationWindow.DialogueController.OnStopDialogue -= StopInteractive;
             OnAnimationProcess = true;
             OnEndInteractive?.Invoke();

@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
+using Logger = Code.Debugers.Logger;
 
 namespace Code.Data.ProgressData
 {
@@ -45,7 +46,7 @@ namespace Code.Data.ProgressData
 
             if (SavedData == null)
             {
-                Log.ColorLog("No data was found. Initializing data to defaults.", ColorType.Olive);
+                Logger.ColorLog("No data was found. Initializing data to defaults.", ColorType.Olive);
                 NewProgress();
             }
         }
@@ -58,7 +59,7 @@ namespace Code.Data.ProgressData
 
             if (SavedData == null)
             {
-                Log.ColorLog("No data was found.A new Game nees to be started before data can be saved",
+                Logger.ColorLog("No data was found.A new Game nees to be started before data can be saved",
                     LogStyle.Warning);
                 return;
             }

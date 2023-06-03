@@ -8,6 +8,7 @@ using Cysharp.Threading.Tasks;
 using Ink.Runtime;
 using UnityEditor.Rendering;
 using UnityEngine;
+using Logger = Code.Debugers.Logger;
 using Object = UnityEngine.Object;
 
 namespace Code.UI.Windows.DialogueWindows
@@ -39,7 +40,7 @@ namespace Code.UI.Windows.DialogueWindows
 
         public async UniTask WriteMessage(Story story)
         {
-            Log.ColorLog($"WriteMessage: canContinue {story.canContinue}", ColorType.Purple);
+            Logger.ColorLog($"WriteMessage: canContinue {story.canContinue}", ColorType.Purple);
 
             if (!story.canContinue)
                 return;
@@ -50,7 +51,7 @@ namespace Code.UI.Windows.DialogueWindows
 
             foreach (var letter in _fullText)
             {
-                Log.ColorLog($"WriteMessage: letter text {_currentText.Length} / {_fullText.Length}", ColorType.Purple);
+                Logger.ColorLog($"WriteMessage: letter text {_currentText.Length} / {_fullText.Length}", ColorType.Purple);
                 _cancellationToken?.Cancel();
                 _cancellationToken = new CancellationTokenSource();
 
@@ -63,7 +64,7 @@ namespace Code.UI.Windows.DialogueWindows
             }
 
             OnWriteMessage?.Invoke();
-            Log.ColorLog($"WriteMessage: After Event", ColorType.Purple);
+            Logger.ColorLog($"WriteMessage: After Event", ColorType.Purple);
         }
 
         private void CreateNewMessageBox(Story story)
@@ -90,14 +91,16 @@ namespace Code.UI.Windows.DialogueWindows
         }
 
         public void SkipMessage()
-        {
-            _cancellationToken.Cancel();
+        { 
+            if(_currentMessageBox == null)
+                return;
+            
+            _cancellationToken?.Cancel();
             _currentMessageBox.SetText(_fullText);
             _typingAudioEvent.PlayAudioEvent();
-
             OnWriteMessage?.Invoke();
             
-            Log.ColorLog("Skip", ColorType.Purple);
+            Logger.ColorLog("Skip", ColorType.Purple);
         }
 
         public void ClearAllMessage()
@@ -132,7 +135,7 @@ namespace Code.UI.Windows.DialogueWindows
                             case "Lola":
                                 messageBox.SetRightRotation();
                                 messageBox.SetColor(new Color32(177, 211, 255, 255));
-                                Log.ColorLog("LOLA's MESSAGE", ColorType.Orange);
+                                Logger.ColorLog("LOLA's MESSAGE", ColorType.Orange);
                                 break;
                             case "01":
                                 messageBox.SetColor(new Color32(215, 255, 226, 255));
