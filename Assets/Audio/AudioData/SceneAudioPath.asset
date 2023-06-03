@@ -31,11 +31,11 @@ MonoBehaviour:
   - Scene: 2
     Music:
       Guid:
-        Data1: -227023009
-        Data2: 1225225925
-        Data3: -1931876694
-        Data4: 2139672087
-      Path: event:/Music/Music_0
+        Data1: -929877944
+        Data2: 1304179162
+        Data3: -1340336500
+        Data4: -375817776
+      Path: event:/Music/Music_1
     Ambience:
       Guid:
         Data1: 1240592419
@@ -53,8 +53,8 @@ MonoBehaviour:
       Path: event:/Music/Music_0
     Ambience:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 1258810080
+        Data2: 1128853209
+        Data3: -1582804586
+        Data4: 1314984703
+      Path: event:/Ambience/Waterfall_Indoor

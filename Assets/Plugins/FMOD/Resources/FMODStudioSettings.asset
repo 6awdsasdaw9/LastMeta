@@ -336,6 +336,8 @@ MonoBehaviour:
   - Payer_Sounds_Level_01.assets
   - Player Sounds
   - Player Sounds.assets
+  - UI_Voise_FX
+  - UI_Voise_FX.assets
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

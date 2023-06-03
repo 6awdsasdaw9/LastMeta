@@ -7,54 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2774514820148998729}
     m_Modifications:
-    - target: {fileID: 1309958864039530738, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: _layerAudio._eventReference.Path
-      value: event:/SFX/Environment/Helmet
-      objectReference: {fileID: 0}
-    - target: {fileID: 1309958864039530738, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: _layerAudio._eventReference.Guid.Data1
-      value: 1641743435
-      objectReference: {fileID: 0}
-    - target: {fileID: 1309958864039530738, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: _layerAudio._eventReference.Guid.Data2
-      value: 1287269527
-      objectReference: {fileID: 0}
-    - target: {fileID: 1309958864039530738, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: _layerAudio._eventReference.Guid.Data3
-      value: -934682482
-      objectReference: {fileID: 0}
-    - target: {fileID: 1309958864039530738, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: _layerAudio._eventReference.Guid.Data4
-      value: 1168686494
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442428136052928818, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: _triggerObserver
-      value: 
-      objectReference: {fileID: 5650846246784261413}
-    - target: {fileID: 6442428136052928819, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: iconType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442428136052928819, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: _pressButtonAudioEvent._eventReference.Path
-      value: event:/SFX/Environment/Helmet
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442428136052928819, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: _pressButtonAudioEvent._eventReference.Guid.Data1
-      value: 1641743435
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442428136052928819, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: _pressButtonAudioEvent._eventReference.Guid.Data2
-      value: 1287269527
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442428136052928819, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: _pressButtonAudioEvent._eventReference.Guid.Data3
-      value: -934682482
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442428136052928819, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: _pressButtonAudioEvent._eventReference.Guid.Data4
-      value: 1168686494
-      objectReference: {fileID: 0}
     - target: {fileID: 6442428136758279245, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -103,72 +55,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteractiveObject_HUDWindow_Dialogue
       objectReference: {fileID: 0}
-    - target: {fileID: 6442428137471772370, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6442428137471772372, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8808735038617128810, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8808735038617128812, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: _collider
-      value: 
-      objectReference: {fileID: 5650846246784261412}
-    - target: {fileID: 8808735038617128813, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8808735038617128813, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8808735038617128814, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
       propertyPath: m_Size.x
-      value: 2.0626392
+      value: 1.3690081
       objectReference: {fileID: 0}
     - target: {fileID: 8808735038617128814, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
       propertyPath: m_Size.y
-      value: 1.4230502
+      value: 1.3589014
       objectReference: {fileID: 0}
     - target: {fileID: 8808735038617128814, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
       propertyPath: m_Center.x
-      value: 0.010843277
+      value: -0.016773224
       objectReference: {fileID: 0}
     - target: {fileID: 8808735038617128814, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
       propertyPath: m_Center.y
-      value: -0.059719563
-      objectReference: {fileID: 0}
-    - target: {fileID: 9214847411077096037, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.015
-      objectReference: {fileID: 0}
-    - target: {fileID: 9214847411077096037, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.959
+      value: -0.17945069
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
---- !u!65 &5650846246784261412 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 8808735038617128814, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-  m_PrefabInstance: {fileID: 3770989944586326602}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5650846246784261413 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8808735038617128815, guid: 44aafae14ad1d5a4092b0aad75e80b5a, type: 3}
-  m_PrefabInstance: {fileID: 3770989944586326602}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 428fd2050f56a984791176e3ce28c388, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7611961296244966942
 PrefabInstance:
   m_ObjectHideFlags: 0
