@@ -8,9 +8,10 @@ namespace Code.Logic.DayOfTime
 {
     public class PointLightingToggle : MonoBehaviour
     {
+        [SerializeField] private TimeOfDay _timeOfEnable = TimeOfDay.Night;
+        [SerializeField, Range(0.05f, 1)] private float _durationMultiplayer = 0.6f;
         [SerializeField] private List<Light> _lightPoints;
-        ///[SerializeField] private float _durationMultiplayer
-        
+
         private Tween _lightTween;
         private TimeOfDayController _timeOfDayController;
         private float _animationDuration;
@@ -19,83 +20,99 @@ namespace Code.Logic.DayOfTime
         private void Construct(TimeOfDayController timeOfDayController, GameSettings gameSettings)
         {
             _timeOfDayController = timeOfDayController;
-            _animationDuration = gameSettings.DurationOfDayTime * 0.15f;
+            _animationDuration = gameSettings.DurationOfDayTime * _durationMultiplayer;
         }
 
         private void Start()
         {
             SetLighting();
-            SubscribeToEvent();
-        }
-
-        private void SetLighting()
-        {
-            if (_timeOfDayController.CurrentTimeOfDay == TimeOfDay.Night)
-            {
-                foreach (var nightLight in _lightPoints)
-                {
-                    nightLight.intensity = 1;
-                }
-            }
-            else
-            {
-                foreach (var nightLight in _lightPoints)
-                {
-                    nightLight.intensity = 0;
-                }
-            }
+            SubscribeToEvent(true);
         }
 
         private void OnDestroy()
         {
-            UnsubscribeToEvent();
+            SubscribeToEvent(false);
         }
 
-        private void SubscribeToEvent()
+        private void SubscribeToEvent(bool flag)
         {
-            _timeOfDayController.OnMorning += DisableEveningLights;
-            _timeOfDayController.OnNight += EnableEveningLights;
-        }
-
-        private void UnsubscribeToEvent()
-        {
-            _timeOfDayController.OnMorning -= DisableEveningLights;
-            _timeOfDayController.OnNight -= EnableEveningLights;
-        }
-
-
-        private void EnableEveningLights()
-        {
-            foreach (var light in _lightPoints)
+            if (flag)
             {
-                EnableLight(light);
+                _timeOfDayController.OnMorning += DisableLightPoints;
+                switch (_timeOfEnable)
+                {
+                    case TimeOfDay.Evening:
+                        _timeOfDayController.OnEvening += EnableLightPoints;
+                        break;
+                    case TimeOfDay.Night:
+                        _timeOfDayController.OnNight += EnableLightPoints;
+                        break;
+                    case TimeOfDay.Morning:
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                _timeOfDayController.OnMorning -= DisableLightPoints;
+                switch (_timeOfEnable)
+                {
+                    case TimeOfDay.Evening:
+                        _timeOfDayController.OnEvening -= EnableLightPoints;
+                        break;
+                    case TimeOfDay.Night:
+                        _timeOfDayController.OnNight -= EnableLightPoints;
+                        break;
+                    case TimeOfDay.Morning:
+                    default:
+                        break;
+                }
             }
         }
 
-        private void DisableEveningLights()
+        private void SetLighting()
         {
-            foreach (var light in _lightPoints)
+            var intensity = 0;
+            if (_timeOfDayController.CurrentTimeOfDay == _timeOfEnable)
             {
-                DisableLight(light);
+                intensity = 1;
+            }
+
+            foreach (var lightPoint in _lightPoints)
+            {
+                lightPoint.intensity = intensity;
+            }
+        }
+
+        private void EnableLightPoints()
+        {
+            foreach (var lightPoint in _lightPoints)
+            {
+                EnableLight(lightPoint);
+            }
+        }
+
+        private void DisableLightPoints()
+        {
+            foreach (var lightPoint in _lightPoints)
+            {
+                DisableLight(lightPoint);
             }
         }
 
 
-        private void EnableLight(Light light)
+        private void EnableLight(Light lightPoint)
         {
             var targetIntensity = 1;
 
-
-            /*_lightTween =*/
-            light.DOIntensity(targetIntensity, _animationDuration)
-                .SetLink(gameObject, LinkBehaviour.KillOnDisable);
+            lightPoint.DOIntensity(targetIntensity, _animationDuration)
+                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
 
-        private void DisableLight(Light light)
+        private void DisableLight(Light lightPoint)
         {
-            /*_lightTween =*/
-            light.DOIntensity(0, _animationDuration)
-                .SetLink(gameObject, LinkBehaviour.KillOnDisable);
+            lightPoint.DOIntensity(0, _animationDuration)
+                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
     }
 }

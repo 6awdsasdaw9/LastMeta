@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using System.Threading.Tasks;
 using Code.Data.Configs;
 using Code.Debugers;
 using Cysharp.Threading.Tasks;
 using Ink.Runtime;
-using UnityEditor.Rendering;
 using UnityEngine;
 using Logger = Code.Debugers.Logger;
 using Object = UnityEngine.Object;
@@ -40,18 +38,19 @@ namespace Code.UI.Windows.DialogueWindows
 
         public async UniTask WriteMessage(Story story)
         {
-            Logger.ColorLog($"WriteMessage: canContinue {story.canContinue}", ColorType.Purple);
+            Logger.ColorLog($"DialogueMessageBoxCreator -> 1. WriteMessage: canContinue {story.canContinue}", ColorType.Purple);
 
             if (!story.canContinue)
                 return;
 
+            IsTyping = true;
             RemoveExcessMessageBoxes();
             CreateNewMessageBox(story);
             HandleTags(story.currentTags, _currentMessageBox);
 
             foreach (var letter in _fullText)
-            {
-                Logger.ColorLog($"WriteMessage: letter text {_currentText.Length} / {_fullText.Length}", ColorType.Purple);
+            { 
+                Logger.ColorLog($"DialogueMessageBoxCreator -> {letter}", ColorType.Purple);
                 _cancellationToken?.Cancel();
                 _cancellationToken = new CancellationTokenSource();
 
@@ -63,8 +62,9 @@ namespace Code.UI.Windows.DialogueWindows
                     cancellationToken: _cancellationToken.Token);
             }
 
+            IsTyping = false;
             OnWriteMessage?.Invoke();
-            Logger.ColorLog($"WriteMessage: After Event", ColorType.Purple);
+            Logger.ColorLog($"DialogueMessageBoxCreator -> 3. WriteMessage: After Event", ColorType.Purple);
         }
 
         private void CreateNewMessageBox(Story story)
@@ -94,13 +94,15 @@ namespace Code.UI.Windows.DialogueWindows
         { 
             if(_currentMessageBox == null)
                 return;
+
+            IsTyping = false;
             
             _cancellationToken?.Cancel();
             _currentMessageBox.SetText(_fullText);
             _typingAudioEvent.PlayAudioEvent();
             OnWriteMessage?.Invoke();
             
-            Logger.ColorLog("Skip", ColorType.Purple);
+            Logger.ColorLog("DialogueMessageBoxCreator -> Skip", ColorType.Purple);
         }
 
         public void ClearAllMessage()
@@ -135,7 +137,6 @@ namespace Code.UI.Windows.DialogueWindows
                             case "Lola":
                                 messageBox.SetRightRotation();
                                 messageBox.SetColor(new Color32(177, 211, 255, 255));
-                                Logger.ColorLog("LOLA's MESSAGE", ColorType.Orange);
                                 break;
                             case "01":
                                 messageBox.SetColor(new Color32(215, 255, 226, 255));
@@ -149,5 +150,7 @@ namespace Code.UI.Windows.DialogueWindows
                 }
             }
         }
+
+        public bool IsTyping { get; private set; }
     }
 }

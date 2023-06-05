@@ -9,6 +9,10 @@ namespace Code.UI.Windows.DialogueWindows
         public DialogueController DialogueController => _dialogueController;
         [SerializeField] private DialogueController _dialogueController;
         public ButtonTap CloseButton => _buttonClose;
+        public ButtonTap SkipButton { get; }
+        public ButtonTap Button { get; }
+        public DialogueChoiceButtonCreator ChoiceButtonCreator { get; }
+        public DialogueMessageBoxCreator MessageBoxCreator { get; }
         [SerializeField] private ButtonTap _buttonClose;
         
         public override void ShowWindow(Action WindowShowed )

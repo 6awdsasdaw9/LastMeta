@@ -1,4 +1,5 @@
 using Code.Data.Configs;
+using Code.Debugers;
 using Code.Logic.Interactive.InteractiveObjects;
 using Code.Logic.Triggers;
 using Code.Services;
@@ -7,6 +8,7 @@ using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
+using Logger = Code.Debugers.Logger;
 
 namespace Code.Logic.Interactive
 {
@@ -15,7 +17,7 @@ namespace Code.Logic.Interactive
         [SerializeField] private InteractiveIconType iconType = InteractiveIconType.Interaction;
         [SerializeField] private InteractiveIconAnimation _iconAnimation;
 
-        [Space,Title("Optional")]
+        [Space, Title("Optional")] 
         [SerializeField] private bool _isStartOnEnable;
         [SerializeField] private AudioEvent _pressButtonAudioEvent;
         
@@ -40,7 +42,7 @@ namespace Code.Logic.Interactive
         private void OnEnable()
         {
             _input.OnPressEsc += OnPressEsc;
-            
+
             if (_isStartOnEnable)
             {
                 StartInteractive();
@@ -83,6 +85,7 @@ namespace Code.Logic.Interactive
 
         private void StartInteractive()
         {
+            Logger.ColorLog("Interactive Object Handler: Start Interactive", ColorType.Purple);
             _onInteractive = true;
             _interactiveObject.StartInteractive();
             _pressButtonAudioEvent.PlayAudioEvent();
@@ -91,6 +94,7 @@ namespace Code.Logic.Interactive
 
         private void StopInteractive()
         {
+            Logger.ColorLog("Interactive Object Handler: Stop Interactive", ColorType.Purple);
             _onInteractive = false;
             _interactiveObject.StopInteractive();
             _pressButtonAudioEvent.PlayAudioEvent();
@@ -101,6 +105,7 @@ namespace Code.Logic.Interactive
         {
             if (IsReady() && _onInteractive)
             {
+                Logger.ColorLog("Interactive Object Handler: On Press Esc -> Stop Interactive", ColorType.Purple);
                 StopInteractive();
             }
         }
@@ -108,14 +113,13 @@ namespace Code.Logic.Interactive
         private async UniTaskVoid ShowIcon()
         {
             await UniTask.WaitUntil(
-                () => _cooldown.IsUp(), 
+                () => _cooldown.IsUp(),
                 cancellationToken: gameObject.GetCancellationTokenOnDestroy());
-            
+
             _iconAnimation.PlayType(iconType);
         }
 
         private void HideIcon() =>
             _iconAnimation.PlayVoid();
-
     }
 }

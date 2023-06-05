@@ -66,7 +66,7 @@ namespace Code.Character.Hero
             _hero.Attack.Disable();
             _limiter.DisableMovement();
 
-            transform.position = new Vector3(transform.position.x, transform.position.y, Constants.twoLayer);
+            transform.position = new Vector3(transform.position.x, transform.position.y, Constants.SecondLayerPosition);
         }
     }
 }

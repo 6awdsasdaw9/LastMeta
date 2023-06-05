@@ -38,18 +38,18 @@ namespace Code.UI.Adaptors
                 _hud.OnUIWindowShown += DisableMovement;
                 _hud.OnUIWindowHidden += EnableMovement;
 
-                SubscribeDialogueWindow(true);
+                SubscribeDialogueWindowEvents(true);
             }
             else
             {
                 _hud.OnUIWindowShown -= DisableMovement;
                 _hud.OnUIWindowHidden -= EnableMovement;
 
-                SubscribeDialogueWindow(true);
+                SubscribeDialogueWindowEvents(true);
             }
         }
 
-        private void SubscribeDialogueWindow(bool flag)
+        private void SubscribeDialogueWindowEvents(bool flag)
         {
             var dialogueWindow = (IDialogueWindow)_hud.InteractiveObjectWindows
                 .FirstOrDefault(w => w.Type == InteractiveObjectType.Dialogue)
@@ -69,7 +69,7 @@ namespace Code.UI.Adaptors
         }
 
         private void SimulatePressingEsc() => 
-            _input.PressEsc();
+            _input.SimulatePressEsc();
 
         private void EnableMovement() => 
             _movementLimiter.EnableMovement();

@@ -35,32 +35,7 @@ namespace Code
         #endregion
 
         #region Sprite Layer Position
-        
-        /*//BackGround
-        public const float minusElevenLayer = 1.1f ;
-        //BackGround Decoration
-        public const float minusTenLayer = 1; //inside home
-        public const float minusNineLayer = 0.9f; //outside dark home 
-        public const float minusEightLayer = 0.8f;//outside light home 
-        public const float minusSevenLayer = 0.7f;
-        //Ground
-        public const float minusSixLayer = 0.6f;
-        //Back Fance 
-        public const float minusFiveLayer = 0.5f;
-        //Back Decoration 
-        public const float minusFourLayer = 0.4f;
-        public const float minusTreeLayer = 0.3f;
-        public const float minusTwoLayer = 0.2f;
-        public const float minusOneLayer = 0.1f;*/
-        //Front Decor
-        public const float oneLayer = -0.1f;
-        public const float twoLayer = -0.2f;
-        /*//Front Fance 
-        public const float treeLayer = -0.3f;
-        //Front Decoration
-        public const float  fourLayer = -0.4f;
-        public const float  fiveLayer = -0.5f;
-        public const float  sixLayer = -0.6f;*/
+        public const float SecondLayerPosition = -0.2f;
         #endregion
         
         #region Colors
@@ -74,6 +49,5 @@ namespace Code
         public static Color VioletColor =  new(0.85f, 0.74f, 1, 1);
         public static Color[] RainbowColors = { RedColor,OrangeColor,YellowColor,GreenColor,BlueColor,DarkBlueColor,VioletColor};             
         #endregion
-
     }
 }

@@ -22,7 +22,7 @@ namespace Code.UI.Windows.DialogueWindows
         [SerializeField] private DialogueMessageBoxCreator _messageBoxCreator;
 
         private DialogueParams _params;
-        private CancellationTokenSource _writeTokenSource;
+        private CancellationTokenSource _dialogueCancellationToken;
 
         private TextAsset _inkJSON;
         private Story _story;
@@ -48,75 +48,8 @@ namespace Code.UI.Windows.DialogueWindows
 
         private void OnDisable()
         {
+            StopDialogue();
             SubscribeToEvent(false);
-        }
-
-        public void StartDialogue(TextAsset story)
-        {
-            Logger.ColorLog($"1.DialogueController: StartDialogue", ColorType.Orange);
-            _inkJSON = story;
-            _story = new Story(_inkJSON.text);
-
-            _choiceButtonCreator.ClearButtonChoices();
-            
-            OnStartDialogue?.Invoke();
-            StartDialogueCircle().Forget();
-        }
-
-        public void StopDialogue()
-        {
-            _messageBoxCreator.SkipMessage();
-
-            _messageBoxCreator.ClearAllMessage();
-            _choiceButtonCreator.ClearButtonChoices();
-
-            OnStopDialogue?.Invoke();
-        }
-
-        private async UniTaskVoid StartDialogueCircle()
-        {
-            while (_story.canContinue)
-            {
-                Logger.ColorLog($"2.DialogueController: StartDialogueCircle -> " +
-                                $"story can continue {_story.canContinue}", ColorType.Orange);
-                _messageBoxCreator.RemoveExcessMessageBoxes();
-                await _messageBoxCreator.WriteMessage(_story);
-
-                Logger.ColorLog($"3.DialogueController: StartDialogueCircle -> " +
-                                $"currentChoices.Count {_story.currentChoices.Count}", ColorType.Orange);
-                
-               
-            }
-
-            if (_story.currentChoices.Count > 0)
-            {
-                Logger.ColorLog($"4.DialogueController: StartDialogueCircle -> " +
-                                $"Create Choice", ColorType.Orange);
-                _choiceButtonCreator.CreateChoice(_story);
-            }
-     
-            else
-            if (!_story.canContinue)
-            {
-                _writeTokenSource?.Cancel();
-                _writeTokenSource = new CancellationTokenSource();
-
-                await UniTask.Delay(TimeSpan.FromSeconds(_params.FreezeTime * 5),
-                    cancellationToken: _writeTokenSource.Token);
-
-                StopDialogue();
-            }
-        }
-
-        private void SkipMessage()
-        {
-            if (_choiceButtonCreator.IsAwaitAnswer)
-                return;
-
-            _isActive = false;
-            _messageBoxCreator.SkipMessage();
-
-            StartDialogueCircle().Forget();
         }
 
         public void SubscribeToEvent(bool flag)
@@ -128,9 +61,87 @@ namespace Code.UI.Windows.DialogueWindows
             }
             else
             {
-                _messageBoxCreator.OnWriteMessage -= () => StartDialogueCircle().Forget();
+                _messageBoxCreator.OnWriteMessage += () => StartDialogueCircle().Forget();
                 _buttonSkip.OnStartTap -= SkipMessage;
             }
+        }
+
+        public void StartDialogue(TextAsset story)
+        {
+            Logger.ColorLog($"1.DialogueController: StartDialogue", ColorType.Orange);
+            _inkJSON = story;
+            _story = new Story(_inkJSON.text);
+
+            Logger.ColorLog($"1.DialogueController: StartDialogue -> Clear Button Choices", ColorType.Orange);
+            _choiceButtonCreator.ClearButtonChoices();
+
+            OnStartDialogue?.Invoke();
+            Logger.ColorLog($"1.DialogueController: StartDialogue -> StartDialogueCircle().Forget()!!!!", ColorType.Orange);
+            StartDialogueCircle().Forget();
+        }
+
+        private async UniTaskVoid StartDialogueCircle()
+        {
+            Logger.ColorLog($"1.DialogueController: StartDialogueCircle ? story  == null {_story == null}", ColorType.Orange);
+            if (_story == null)
+                return;
+
+            Logger.ColorLog($"1.DialogueController:  " +
+                            $"story can continue {_story.canContinue}  " +
+                            $"_story.currentChoices.Count {_story.currentChoices.Count}", ColorType.Orange);
+        
+            _dialogueCancellationToken?.Cancel();
+            _dialogueCancellationToken = new CancellationTokenSource();
+            
+
+            while (_story.canContinue)
+            {
+                Logger.ColorLog($"2.DialogueController: StartDialogueCircle -> " +
+                                $"story can continue {_story.canContinue}", ColorType.Orange);
+                
+                await _messageBoxCreator.WriteMessage(_story);
+
+                Logger.ColorLog($"3.DialogueController: StartDialogueCircle -> " +
+                                $"currentChoices.Count {_story.currentChoices.Count}", ColorType.Orange);
+            }
+
+            await UniTask.WaitUntil(() => !_messageBoxCreator.IsTyping, cancellationToken: _dialogueCancellationToken.Token);
+
+            if (_story.currentChoices.Count > 0)
+            {
+                Logger.ColorLog($"4.DialogueController: StartDialogueCircle -> " +
+                                $"Create Choice", ColorType.Orange);
+                _choiceButtonCreator.CreateChoice(_story);
+            }
+            else if (!_story.canContinue)
+            {
+                await UniTask.Delay(TimeSpan.FromSeconds(_params.FreezeTime * 5),
+                    cancellationToken: _dialogueCancellationToken.Token);
+
+                StopDialogue();
+            }
+        }
+
+        public void StopDialogue()
+        {
+            _dialogueCancellationToken?.Cancel();
+            _messageBoxCreator.SkipMessage();
+            
+            _messageBoxCreator.ClearAllMessage();
+            _choiceButtonCreator.ClearButtonChoices();
+
+            OnStopDialogue?.Invoke();
+
+            Logger.ColorLog($"4.DialogueController: Stop Dialogue", ColorType.Orange);
+        }
+
+        private void SkipMessage()
+        {
+            if (_choiceButtonCreator.IsAwaitAnswer)
+                return;
+
+            _isActive = false;
+            _messageBoxCreator.SkipMessage();
         }
     }
 }

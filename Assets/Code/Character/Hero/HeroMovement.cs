@@ -80,12 +80,12 @@ namespace Code.Character.Hero
         {
             if (flag)
             {
-                _input.PlayerCrochEvent += OnPressCrouch;
+                _input.PlayerCrouchEvent += OnPressCrouch;
                 _input.PlayerMovementEvent += OnPressMovement;
             }
             else
             {
-                _input.PlayerCrochEvent -= OnPressCrouch;
+                _input.PlayerCrouchEvent -= OnPressCrouch;
                 _input.PlayerMovementEvent -= OnPressMovement;
             }
         }

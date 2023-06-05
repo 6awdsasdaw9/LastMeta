@@ -1,5 +1,4 @@
 using Code.Data.Configs;
-using Code.Data.GameData;
 using DG.Tweening;
 using UnityEngine;
 using Zenject;
@@ -25,28 +24,32 @@ namespace Code.Logic.DayOfTime
 
         private void Start()
         {
-            SubscribeToEvent();
+            SubscribeToEvent(true);
             SetLighting(_timeOfDayController.dayTimeNormalized);
         }
 
         private void OnDestroy()
         {
-            UnsubscribeToEvent();
+            SubscribeToEvent(false);
         }
 
-        private void SubscribeToEvent()
+        private void SubscribeToEvent(bool flag)
         {
-            _timeOfDayController.OnMorning += SetMorningLighting;
-            _timeOfDayController.OnEvening += SetEveningLighting;
-            _timeOfDayController.OnNight += SetNightLighting;
+            if (flag)
+            {
+                _timeOfDayController.OnMorning += SetMorningLighting;
+                _timeOfDayController.OnEvening += SetEveningLighting;
+                _timeOfDayController.OnNight += SetNightLighting;
+            }
+            else
+            {
+                _timeOfDayController.OnMorning -= SetMorningLighting;
+                _timeOfDayController.OnEvening -= SetEveningLighting;
+                _timeOfDayController.OnNight -= SetNightLighting;
+            }
         }
 
-        private void UnsubscribeToEvent()
-        {
-            _timeOfDayController.OnMorning -= SetMorningLighting;
-            _timeOfDayController.OnEvening -= SetEveningLighting;
-            _timeOfDayController.OnNight -= SetNightLighting;
-        }
+     
 
         private void SetMorningLighting()
         {
@@ -79,12 +82,16 @@ namespace Code.Logic.DayOfTime
         {
             var targetAngle = Mathf.Lerp(_lightingSettings.morningAngle.y, _lightingSettings.eveningAngle.y,
                 dayTimeNormalized);
+            
             _directionLight.transform.DOLocalRotate(
-                new Vector3(targetAngle, _lightingSettings.morningAngle.x, _lightingSettings.morningAngle.z), 0).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
+                new Vector3(targetAngle, _lightingSettings.morningAngle.x, _lightingSettings.morningAngle.z), 0)
+                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
 
             var targetIntensity = Mathf.Lerp(_lightingSettings.morningIntensity, _lightingSettings.nightIntensity,
                 dayTimeNormalized);
-            _directionLight.DOIntensity(targetIntensity, 0).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
+            
+            _directionLight.DOIntensity(targetIntensity, 0).
+                SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
     }
 }
