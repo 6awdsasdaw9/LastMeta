@@ -249,6 +249,10 @@ PrefabInstance:
       value: -Lighting-
       objectReference: {fileID: 0}
     - target: {fileID: 244853699811189029, guid: 384656fa2fa493a41a554985c5d4754d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 244853699811189029, guid: 384656fa2fa493a41a554985c5d4754d, type: 3}
       propertyPath: _lights.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -257,9 +261,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1281216922}
     - target: {fileID: 244853699811189029, guid: 384656fa2fa493a41a554985c5d4754d, type: 3}
+      propertyPath: _lightPoints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 244853699811189029, guid: 384656fa2fa493a41a554985c5d4754d, type: 3}
       propertyPath: _nightLights.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 244853699811189029, guid: 384656fa2fa493a41a554985c5d4754d, type: 3}
+      propertyPath: _lightPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1281216922}
     - target: {fileID: 244853699811189029, guid: 384656fa2fa493a41a554985c5d4754d, type: 3}
       propertyPath: _nightLights.Array.data[0]
       value: 
@@ -571,8 +583,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -1.82, z: -0.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1281216920}
+  m_Children: []
   m_Father: {fileID: 926156186873209205}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -841,7 +852,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000162740}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1168,13 +1179,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281216919}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.52, y: 0.26, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.52, y: -1.5600001, z: -0.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 494611997}
-  m_RootOrder: 0
+  m_Father: {fileID: 223284838}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1281216921
 MonoBehaviour:
@@ -1247,7 +1258,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -2696,7 +2707,7 @@ Tilemap:
       - {fileID: -3864683453581151824, guid: 5f301efe1e76db84ca4684510f069ad1, type: 3}
       - {fileID: 5023126639318610098, guid: 5f301efe1e76db84ca4684510f069ad1, type: 3}
       - {fileID: 441532158353815849, guid: 5f301efe1e76db84ca4684510f069ad1, type: 3}
-      m_AnimationSpeed: 3.2393565
+      m_AnimationSpeed: 3.813939
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -5279,7 +5290,7 @@ Tilemap:
       - {fileID: 6225564398857703131, guid: a6d5fd3e858dc984c97caf0edf0fdb80, type: 3}
       - {fileID: 6879808720649491513, guid: a6d5fd3e858dc984c97caf0edf0fdb80, type: 3}
       - {fileID: 4316972346314124055, guid: a6d5fd3e858dc984c97caf0edf0fdb80, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 3, y: 2, z: 0}

@@ -12,6 +12,7 @@ namespace Code.Logic.DayOfTime
         [SerializeField, Range(0.05f, 1)] private float _durationMultiplayer = 0.6f;
         [SerializeField] private List<Light> _lightPoints;
 
+        private bool _isEmptyToggle => _lightPoints.Count == 0;
         private Tween _lightTween;
         private TimeOfDayController _timeOfDayController;
         private float _animationDuration;
@@ -23,14 +24,21 @@ namespace Code.Logic.DayOfTime
             _animationDuration = gameSettings.DurationOfDayTime * _durationMultiplayer;
         }
 
-        private void Start()
+        private void OnEnable()
         {
+            if(_isEmptyToggle)
+                return;
+            
             SetLighting();
             SubscribeToEvent(true);
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
+            if(_isEmptyToggle)
+                return;
+            
+            _lightTween?.Kill();
             SubscribeToEvent(false);
         }
 
@@ -99,20 +107,19 @@ namespace Code.Logic.DayOfTime
                 DisableLight(lightPoint);
             }
         }
-
-
+        
         private void EnableLight(Light lightPoint)
         {
             var targetIntensity = 1;
 
-            lightPoint.DOIntensity(targetIntensity, _animationDuration)
-                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
+            _lightTween?.Kill();
+            _lightTween = lightPoint.DOIntensity(targetIntensity, _animationDuration);
         }
 
         private void DisableLight(Light lightPoint)
         {
-            lightPoint.DOIntensity(0, _animationDuration)
-                .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
+            _lightTween?.Kill();
+            _lightTween = lightPoint.DOIntensity(0, _animationDuration);
         }
     }
 }

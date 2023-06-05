@@ -32,6 +32,7 @@ namespace Code.UI.Windows.DialogueWindows
 
         public Action OnStartDialogue;
         public Action OnStopDialogue;
+        public Action OnDialogueIsEnd;
 
         [Inject]
         private void Construct(HudSettings hudSettings)
@@ -68,49 +69,32 @@ namespace Code.UI.Windows.DialogueWindows
 
         public void StartDialogue(TextAsset story)
         {
-            Logger.ColorLog($"1.DialogueController: StartDialogue", ColorType.Orange);
             _inkJSON = story;
             _story = new Story(_inkJSON.text);
 
-            Logger.ColorLog($"1.DialogueController: StartDialogue -> Clear Button Choices", ColorType.Orange);
             _choiceButtonCreator.ClearButtonChoices();
 
             OnStartDialogue?.Invoke();
-            Logger.ColorLog($"1.DialogueController: StartDialogue -> StartDialogueCircle().Forget()!!!!", ColorType.Orange);
             StartDialogueCircle().Forget();
         }
 
         private async UniTaskVoid StartDialogueCircle()
         {
-            Logger.ColorLog($"1.DialogueController: StartDialogueCircle ? story  == null {_story == null}", ColorType.Orange);
             if (_story == null)
                 return;
-
-            Logger.ColorLog($"1.DialogueController:  " +
-                            $"story can continue {_story.canContinue}  " +
-                            $"_story.currentChoices.Count {_story.currentChoices.Count}", ColorType.Orange);
-        
+            
             _dialogueCancellationToken?.Cancel();
             _dialogueCancellationToken = new CancellationTokenSource();
             
-
             while (_story.canContinue)
             {
-                Logger.ColorLog($"2.DialogueController: StartDialogueCircle -> " +
-                                $"story can continue {_story.canContinue}", ColorType.Orange);
-                
                 await _messageBoxCreator.WriteMessage(_story);
-
-                Logger.ColorLog($"3.DialogueController: StartDialogueCircle -> " +
-                                $"currentChoices.Count {_story.currentChoices.Count}", ColorType.Orange);
             }
 
             await UniTask.WaitUntil(() => !_messageBoxCreator.IsTyping, cancellationToken: _dialogueCancellationToken.Token);
 
             if (_story.currentChoices.Count > 0)
             {
-                Logger.ColorLog($"4.DialogueController: StartDialogueCircle -> " +
-                                $"Create Choice", ColorType.Orange);
                 _choiceButtonCreator.CreateChoice(_story);
             }
             else if (!_story.canContinue)
