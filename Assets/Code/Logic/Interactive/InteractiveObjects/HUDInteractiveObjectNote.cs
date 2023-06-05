@@ -56,7 +56,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
 
             OnAnimationProcess = true;
             
-            OnEndInteractive?.Invoke();
+            OnStopInteractive?.Invoke();
             _layerAudioEvent.PlayAudioEvent();
             _presentationWindow.HideWindow(() => OnAnimationProcess = false);
         }

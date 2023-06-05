@@ -9,6 +9,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
         [SerializeField] protected InteractiveObjectType Type;
         
         public Action OnStartInteractive;
+        public Action OnStopInteractive;
         public Action OnEndInteractive;
         
         public bool OnAnimationProcess { get; protected set; }

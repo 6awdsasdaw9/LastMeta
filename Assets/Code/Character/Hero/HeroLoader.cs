@@ -45,23 +45,12 @@ namespace Code.Character.Hero
 
         private void HealthSaveData(SavedData savedData)
         {
-        
-            Logger.ColorLog($"s {savedData.HeroHealth == null} h {_hero.Health == null}",ColorType.Red);
-            Logger.ColorLog($"s {savedData.HeroHealth.CurrentHP} h {_hero.Health.Current}",ColorType.Red);
-           
             savedData.HeroHealth.CurrentHP = _hero.Health.Current;
             savedData.HeroHealth.MaxHP = _hero.Health.Max;
         }
 
         private void MovementLoadData(SavedData savedData)
         {
-            /*if (!savedData.HeroPosition.positionInScene.ContainsKey(CurrentLevel()))
-                return;
-
-            Vector3Data savedPosition = savedData.HeroPosition.positionInScene[CurrentLevel()];
-            transform.position = savedPosition.AsUnityVector();*/
-            Logger.ColorLog("Movement load data", ColorType.Green);
-            
             if (savedData.SceneSpawnPoints.ContainsKey(CurrentLevel()))
             {
                 var points = _spawnPointsConfig.SceneSpawnPoints

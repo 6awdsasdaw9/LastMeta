@@ -44,7 +44,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
                 return;
 
             OnAnimationProcess = true;
-            OnEndInteractive?.Invoke();
+            OnStopInteractive?.Invoke();
             
             _layerAudio.PlayAudioEvent(); 
             _presentationWindow.HideWindow(() => OnAnimationProcess = false);

@@ -1,19 +1,19 @@
+using System;
 using System.Linq;
-using Code.Debugers;
+using Code.Services;
 using Code.UI.HeadUpDisplay;
 using Code.UI.Windows;
 using UnityEngine;
 using Zenject;
-using Logger = Code.Debugers.Logger;
 
 namespace Code.Logic.Interactive.InteractiveObjects
 {
-    public class HUDInteractiveObjectDialogue : Interactivity
+    public class HUDInteractiveObjectDialogue : Interactivity, IEventSubscriber
     {
         [SerializeField] private TextAsset _textAsset;
         [SerializeField] private AudioEvent _layerAudio;
-        private IDialogueWindow _presentationWindow;
 
+        private IDialogueWindow _presentationWindow;
         private bool _isWindowNull;
 
         [Inject]
@@ -23,8 +23,18 @@ namespace Code.Logic.Interactive.InteractiveObjects
                 .FirstOrDefault(w => w.Type == Type)?
                 .InteractiveObjectWindow
                 .TryGetComponent(out _presentationWindow);
-            
+
             _isWindowNull = _presentationWindow == null;
+        }
+
+        private void OnEnable()
+        {
+            SubscribeToEvent(true);
+        }
+
+        private void OnDisable()
+        {
+            SubscribeToEvent(false);
         }
 
         public override void StartInteractive()
@@ -32,10 +42,9 @@ namespace Code.Logic.Interactive.InteractiveObjects
             if (_isWindowNull)
                 return;
 
-            Logger.ColorLog("1. HUDInteractiveObjectDialogue: Start interactive",ColorType.Aqua);
             OnAnimationProcess = true;
             OnStartInteractive?.Invoke();
-            
+
             _layerAudio.PlayAudioEvent();
             _presentationWindow.ShowWindow(WindowShowed: WindowShowed);
         }
@@ -44,9 +53,8 @@ namespace Code.Logic.Interactive.InteractiveObjects
         {
             if (_isWindowNull)
                 return;
-            
-            Logger.ColorLog("2. HUDInteractiveObjectDialogue: WindowShowed",ColorType.Aqua);
-             OnAnimationProcess = false;
+
+            OnAnimationProcess = false;
             _presentationWindow.DialogueController.StartDialogue(_textAsset);
             _presentationWindow.DialogueController.OnStopDialogue += StopInteractive;
         }
@@ -56,14 +64,24 @@ namespace Code.Logic.Interactive.InteractiveObjects
             if (_isWindowNull)
                 return;
 
-            Logger.ColorLog("2. HUDInteractiveObjectDialogue: Stop Interactive",ColorType.Aqua);
             _presentationWindow.DialogueController.OnStopDialogue -= StopInteractive;
             OnAnimationProcess = true;
-            OnEndInteractive?.Invoke();
-            
-            _layerAudio.PlayAudioEvent(); 
-            //TODO stopDialogue
+            OnStopInteractive?.Invoke();
+
+            _layerAudio.PlayAudioEvent();
             _presentationWindow.HideWindow(() => OnAnimationProcess = false);
+        }
+
+        public void SubscribeToEvent(bool flag)
+        {
+            if (flag)
+            {
+                _presentationWindow.DialogueController.OnDialogueIsEnd += () => OnEndInteractive?.Invoke();
+            }
+            else
+            {
+                _presentationWindow.DialogueController.OnDialogueIsEnd -= () => OnEndInteractive?.Invoke();
+            }
         }
     }
 }

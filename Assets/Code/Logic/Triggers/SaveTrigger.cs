@@ -14,22 +14,11 @@ namespace Code.Logic.Triggers
     public class SaveTrigger : MonoBehaviour
     {
         public int ID;
-        private SavedService _service;
         [SerializeField] private BoxCollider _collider;
+        
+        private SavedService _service;
 
-        private void Awake()
-        {
-            EnableCollider().Forget();
-        }
-
-
-        private async UniTaskVoid EnableCollider()
-        {
-            _collider.enabled = false;
-            await UniTask.Delay(TimeSpan.FromSeconds(3),cancellationToken: gameObject.GetCancellationTokenOnDestroy());
-            _collider.enabled = true;
-        }
-        public PointData TriggerPointData => new PointData
+        public PointData TriggerPointData => new()
         {
             ID = ID,
             Position = transform.position
@@ -41,9 +30,20 @@ namespace Code.Logic.Triggers
             _service = service;
         }
 
+        private void Awake()
+        {
+            EnableCollider().Forget();
+        }
+
+        private async UniTaskVoid EnableCollider()
+        {
+            _collider.enabled = false;
+            await UniTask.Delay(TimeSpan.FromSeconds(3),cancellationToken: gameObject.GetCancellationTokenOnDestroy());
+            _collider.enabled = true;
+        }
+
         private void OnTriggerEnter(Collider other)
         {
-            Logger.ColorLog(other.name,ColorType.Orange);
             var currentScene = SceneManager.GetActiveScene().name;
             var pointData = new PointData
             {
@@ -63,27 +63,5 @@ namespace Code.Logic.Triggers
             gameObject.SetActive(false);
         }
         
-        /*public void SaveData(SavedData savedData)
-        {
-            var currentScene = SceneManager.GetActiveScene().name;
-            var pointData = new PointData
-            {
-                ID = ID,
-                Position = transform.position
-            };
-
-            if (savedData.SceneSpawnPoints.ContainsKey(currentScene))
-            {
-                savedData.SceneSpawnPoints[currentScene] = pointData;
-            }
-            else
-            {
-                savedData.SceneSpawnPoints.Add(currentScene, pointData);
-            }
-            
-            Log.ColorLog($"Progress Save In Trigger | {ID} | " +
-                         $"{pointData.ID} |" +
-                         $" {savedData.SceneSpawnPoints[currentScene].ID}", ColorType.Aqua);
-        }*/
     }
 }

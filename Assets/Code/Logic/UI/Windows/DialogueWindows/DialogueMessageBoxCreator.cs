@@ -38,8 +38,6 @@ namespace Code.UI.Windows.DialogueWindows
 
         public async UniTask WriteMessage(Story story)
         {
-            Logger.ColorLog($"DialogueMessageBoxCreator -> 1. WriteMessage: canContinue {story.canContinue}", ColorType.Purple);
-
             if (!story.canContinue)
                 return;
 
@@ -50,7 +48,6 @@ namespace Code.UI.Windows.DialogueWindows
 
             foreach (var letter in _fullText)
             { 
-                Logger.ColorLog($"DialogueMessageBoxCreator -> {letter}", ColorType.Purple);
                 _cancellationToken?.Cancel();
                 _cancellationToken = new CancellationTokenSource();
 
@@ -64,7 +61,6 @@ namespace Code.UI.Windows.DialogueWindows
 
             IsTyping = false;
             OnWriteMessage?.Invoke();
-            Logger.ColorLog($"DialogueMessageBoxCreator -> 3. WriteMessage: After Event", ColorType.Purple);
         }
 
         private void CreateNewMessageBox(Story story)
@@ -101,8 +97,6 @@ namespace Code.UI.Windows.DialogueWindows
             _currentMessageBox.SetText(_fullText);
             _typingAudioEvent.PlayAudioEvent();
             OnWriteMessage?.Invoke();
-            
-            Logger.ColorLog("DialogueMessageBoxCreator -> Skip", ColorType.Purple);
         }
 
         public void ClearAllMessage()

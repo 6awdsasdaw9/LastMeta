@@ -9,15 +9,12 @@ namespace Code.UI.Windows.DialogueWindows
         public DialogueController DialogueController => _dialogueController;
         [SerializeField] private DialogueController _dialogueController;
         public ButtonTap CloseButton => _buttonClose;
-        public ButtonTap SkipButton { get; }
-        public ButtonTap Button { get; }
-        public DialogueChoiceButtonCreator ChoiceButtonCreator { get; }
-        public DialogueMessageBoxCreator MessageBoxCreator { get; }
+
         [SerializeField] private ButtonTap _buttonClose;
-        
-        public override void ShowWindow(Action WindowShowed )
+
+        public override void ShowWindow(Action WindowShowed)
         {
-            if(_animation.IsPlay)
+            if (_animation.IsPlay)
                 return;
 
             _animation.PlayShow(WindowShowed);
@@ -26,11 +23,11 @@ namespace Code.UI.Windows.DialogueWindows
 
         public override void HideWindow(Action WindowHidden)
         {
-            if(_animation.IsPlay)
+            if (_animation.IsPlay)
                 return;
-            
+
             _dialogueController.StopDialogue();
-      
+
             _animation.PlayHide(WindowHidden);
             _hud.OnUIWindowHidden?.Invoke();
         }

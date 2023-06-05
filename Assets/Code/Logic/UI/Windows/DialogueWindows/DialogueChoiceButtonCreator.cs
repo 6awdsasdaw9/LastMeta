@@ -3,7 +3,6 @@ using Code.Data.Configs;
 using Code.Logic.UI.Windows.DialogueWindows;
 using Ink.Runtime;
 using UnityEngine;
-using Logger = Code.Debugers.Logger;
 using Object = UnityEngine.Object;
 
 namespace Code.UI.Windows.DialogueWindows
@@ -28,7 +27,6 @@ namespace Code.UI.Windows.DialogueWindows
         {
             if (IsAwaitAnswer)
                 return;
-            Logger.ColorLog($"DialogueChoiceButtonCreator: Create Choives");
 
             IsAwaitAnswer = true;
             foreach (var choice in story.currentChoices)
@@ -55,11 +53,9 @@ namespace Code.UI.Windows.DialogueWindows
         public void ClearButtonChoices()
         {
             var childButtonCount = _canvasButton.childCount - 1;
-            Logger.ColorLog($"DialogueChoiceButtonCreator: ClearButtonChoices {childButtonCount}");
             for (var i = childButtonCount; i >= 0; i--)
             {
                 Object.Destroy(_canvasButton.GetChild(i).gameObject);
-                Logger.ColorLog($"ClearButtonChoices delete #{i}");
             }
         }
     }

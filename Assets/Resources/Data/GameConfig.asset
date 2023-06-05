@@ -36,7 +36,7 @@ MonoBehaviour:
     jumpCutOff: 3
     speedLimit: 6.7
     coyoteTime: 0.1
-    jumpBuffer: 0.3
+    jumpBuffer: 0.1
     UpgradeParams:
     - Type: 0
       Values:

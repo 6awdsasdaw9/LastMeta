@@ -25,7 +25,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
         {
             _animator.SetTrigger(End_t);
             
-            OnEndInteractive?.Invoke();
+            OnStopInteractive?.Invoke();
             UpdateProgress();
         }
 

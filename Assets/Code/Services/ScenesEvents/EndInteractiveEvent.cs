@@ -1,3 +1,5 @@
+using Code.Debugers;
+
 namespace Code.Services.ScenesEvents
 {
     public class EndInteractiveEvent : InteractiveEvent
@@ -14,7 +16,8 @@ namespace Code.Services.ScenesEvents
 
         private void OnEndInteractive()
         {
-            _interactivityHandler.OnStartInteractive -= OnEndInteractive;
+            Logger.ColorLog("Event: OnEndInteractive",ColorType.Red);
+            _interactivityHandler.OnEndInteractive -= OnEndInteractive;
             
             EnableFollows(_objectsToEnable).Forget();
             DisableFollows(_objectsToDisable).Forget();

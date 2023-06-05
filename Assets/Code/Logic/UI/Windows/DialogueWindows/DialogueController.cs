@@ -102,6 +102,7 @@ namespace Code.UI.Windows.DialogueWindows
                 await UniTask.Delay(TimeSpan.FromSeconds(_params.FreezeTime * 5),
                     cancellationToken: _dialogueCancellationToken.Token);
 
+                OnDialogueIsEnd?.Invoke();
                 StopDialogue();
             }
         }
@@ -115,8 +116,6 @@ namespace Code.UI.Windows.DialogueWindows
             _choiceButtonCreator.ClearButtonChoices();
 
             OnStopDialogue?.Invoke();
-
-            Logger.ColorLog($"4.DialogueController: Stop Dialogue", ColorType.Orange);
         }
 
         private void SkipMessage()

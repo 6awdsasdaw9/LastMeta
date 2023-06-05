@@ -18,8 +18,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
         private GameStateMachine _stateMachine;
         private SavedService _savedService;
         private SpawnPointsConfig _spawnPointsConfig;
-
-
+        
         [Inject]
         private void Construct(GameStateMachine stateMachine, SavedService savedService,
             SpawnPointsConfig spawnPointsConfig)
@@ -31,16 +30,14 @@ namespace Code.Logic.Interactive.InteractiveObjects
 
         public override void StartInteractive()
         {
-            Logger.ColorLog($"Enter to {_interactiveScene.ToString()} || Progress Save ", ColorType.Orange);
             SaveNewSpawnPoint();
-
             _stateMachine.Enter<LoadLevelState, string>(_interactiveScene.ToString());
             StopInteractive();
         }
 
         private void SaveNewSpawnPoint()
         {
-            var points = _spawnPointsConfig.SceneSpawnPoints.FirstOrDefault(p => p.Scene == _interactiveScene).Points;
+            var points = _spawnPointsConfig.SceneSpawnPoints.FirstOrDefault(p => p.Scene == _interactiveScene)?.Points;
             if (points == null)
             {
                 Logger.ColorLog("Interactive object scene: Can'not find points in Spawn Points Config", LogStyle.Error);
@@ -68,7 +65,6 @@ namespace Code.Logic.Interactive.InteractiveObjects
 
         public override void StopInteractive()
         {
-            Logger.ColorLog($"Stop Scene Interactive  ", ColorType.Orange);
         }
     }
 }

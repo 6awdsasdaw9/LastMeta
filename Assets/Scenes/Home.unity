@@ -495,10 +495,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb0b811e464445c0982399f3ee6951d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lights:
-  - {fileID: 609031609}
-  - {fileID: 0}
-  - {fileID: 634591149}
+  _timeOfEnable: 2
+  _durationMultiplayer: 0.6
+  _lightPoints: []
 --- !u!1 &210534155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,7 +1594,7 @@ GameObject:
   - component: {fileID: 630076128}
   - component: {fileID: 630076129}
   m_Layer: 0
-  m_Name: End_IneractiveEvent_Note
+  m_Name: Stop_IneractiveEvent_Note
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3127,7 +3126,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh170986
+  m_Name: pb_Mesh64450
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
