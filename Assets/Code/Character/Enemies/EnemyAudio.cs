@@ -1,7 +1,5 @@
 using UnityEngine;
-using FMOD;
 using FMODUnity;
-using Debug = FMOD.Debug;
 
 namespace Code.Audio
 {

@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: 8deed2c7d7d183846b461b41350f1fec
+guid: 1f0280d6176136b45a01165e29d0b30d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7764622016355668229
-    second: InflatableTrampoline_0
+      213: -4202929448352821054
+    second: BigLuke_0
   - first:
-      213: 9012444324773615879
-    second: InflatableTrampoline_1
+      213: -3173727642570179718
+    second: BigLuke_1
   - first:
-      213: -7513829468950316946
-    second: InflatableTrampoline_2
+      213: -1700878373685998655
+    second: BigLuke_2
   - first:
-      213: -6029942357759347936
-    second: InflatableTrampoline_3
+      213: 5531558793418873792
+    second: BigLuke_3
+  - first:
+      213: -1379687837270340475
+    second: BigLuke_4
+  - first:
+      213: -2863810549576636324
+    second: BigLuke_5
+  - first:
+      213: 7996373628339820810
+    second: BigLuke_6
+  - first:
+      213: -6523231462892218522
+    second: BigLuke_7
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -79,7 +91,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -91,7 +103,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 512
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -103,7 +115,31 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
-    maxTextureSize: 512
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -117,85 +153,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: InflatableTrampoline_0
+      name: BigLuke_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.13}
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfe61f33a658e3490800000000000000
-      internalID: -7764622016355668229
+      spriteID: 2c0d6ee4fe13ca5c0800000000000000
+      internalID: -4202929448352821054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: InflatableTrampoline_1
+      name: BigLuke_1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 256
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.13}
+        x: 512
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 709dd180d52a21d70800000000000000
-      internalID: 9012444324773615879
+      spriteID: a7b34c23687a4f3d0800000000000000
+      internalID: -3173727642570179718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: InflatableTrampoline_2
+      name: BigLuke_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.13}
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e68ba5078e389b790800000000000000
-      internalID: -7513829468950316946
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: InflatableTrampoline_3
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.13}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0233ca5af57515ca0800000000000000
-      internalID: -6029942357759347936
+      spriteID: 1cb4d4a71244568e0800000000000000
+      internalID: -1700878373685998655
       vertices: []
       indices: 
       edges: []
@@ -211,10 +226,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      InflatableTrampoline_0: -7764622016355668229
-      InflatableTrampoline_1: 9012444324773615879
-      InflatableTrampoline_2: -7513829468950316946
-      InflatableTrampoline_3: -6029942357759347936
+      BigLuke_0: -4202929448352821054
+      BigLuke_1: -3173727642570179718
+      BigLuke_2: -1700878373685998655
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

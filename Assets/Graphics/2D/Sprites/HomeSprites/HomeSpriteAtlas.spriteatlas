@@ -45,15 +45,12 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 78ace172e079a4741956d8590b6d8fea, type: 3}
-    - {fileID: 2800000, guid: a76c71370bcd3ae4799278cf4e5f69b9, type: 3}
+    - {fileID: 2800000, guid: 9af51df35ed7e0347a1797460d72b0aa, type: 3}
     - {fileID: 2800000, guid: 129b0952939eeff47bc7302167e3ff0f, type: 3}
-    - {fileID: 2800000, guid: 9e883c621b7149745ae9d2d9f0cc5ae9, type: 3}
+    - {fileID: 2800000, guid: e7dfc6286fcc44b45a4ef0b01493fa9d, type: 3}
     - {fileID: 2800000, guid: 66b4d00254d493e43afdffd3129eed37, type: 3}
     - {fileID: 2800000, guid: 5cc7606d67435f5448f0727d24247f34, type: 3}
-    - {fileID: 2800000, guid: 24233cd8dae3d8744b535992843a0700, type: 3}
-    - {fileID: 2800000, guid: 9af51df35ed7e0347a1797460d72b0aa, type: 3}
-    - {fileID: 2800000, guid: 6e8ef9d5f84affd4fb102ec450c09b24, type: 3}
-    - {fileID: 2800000, guid: e7dfc6286fcc44b45a4ef0b01493fa9d, type: 3}
+    - {fileID: 2800000, guid: 193810577906f324d9350cac7edb9008, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -61,44 +58,26 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 66b4d00254d493e43afdffd3129eed37, type: 3}
   - {fileID: 21300000, guid: 129b0952939eeff47bc7302167e3ff0f, type: 3}
-  - {fileID: 21300000, guid: 9e883c621b7149745ae9d2d9f0cc5ae9, type: 3}
   - {fileID: 21300000, guid: 78ace172e079a4741956d8590b6d8fea, type: 3}
   - {fileID: 21300000, guid: 9af51df35ed7e0347a1797460d72b0aa, type: 3}
-  - {fileID: -1597421091, guid: 6e8ef9d5f84affd4fb102ec450c09b24, type: 3}
-  - {fileID: -838425681, guid: 6e8ef9d5f84affd4fb102ec450c09b24, type: 3}
-  - {fileID: 2030030009, guid: 6e8ef9d5f84affd4fb102ec450c09b24, type: 3}
-  - {fileID: -837348394, guid: 6e8ef9d5f84affd4fb102ec450c09b24, type: 3}
-  - {fileID: 21300000, guid: a76c71370bcd3ae4799278cf4e5f69b9, type: 3}
+  - {fileID: 21300000, guid: 193810577906f324d9350cac7edb9008, type: 3}
   - {fileID: -115663448, guid: e7dfc6286fcc44b45a4ef0b01493fa9d, type: 3}
   - {fileID: 1458437418, guid: e7dfc6286fcc44b45a4ef0b01493fa9d, type: 3}
   - {fileID: -2141682693, guid: e7dfc6286fcc44b45a4ef0b01493fa9d, type: 3}
   - {fileID: -131349134, guid: e7dfc6286fcc44b45a4ef0b01493fa9d, type: 3}
   - {fileID: 1552483365, guid: e7dfc6286fcc44b45a4ef0b01493fa9d, type: 3}
-  - {fileID: 5965509891523526486, guid: 24233cd8dae3d8744b535992843a0700, type: 3}
-  - {fileID: 4585228979031474018, guid: 24233cd8dae3d8744b535992843a0700, type: 3}
-  - {fileID: -1476385452536074112, guid: 24233cd8dae3d8744b535992843a0700, type: 3}
-  - {fileID: 1545511920404164020, guid: 24233cd8dae3d8744b535992843a0700, type: 3}
   - {fileID: 21300000, guid: 5cc7606d67435f5448f0727d24247f34, type: 3}
   m_PackedSpriteNamesToIndex:
   - Room
   - KitchenTable
-  - Laptop
   - Background_Windows
   - PhotoOfFamily
-  - SmallObjects_1
-  - SmallObjects_0
-  - SmallObjects_3
-  - SmallObjects_2
-  - Guitar
+  - HomeShelf
   - Door_2
   - Door_3
   - Door_0
   - Door_1
   - Door_4
-  - Quadrocopter_1
-  - Quadrocopter_0
-  - Quadrocopter_3
-  - Quadrocopter_2
   - Sofa
   m_RenderDataMap: {}
   m_Tag: HomeSpriteAtlas

@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 6246378cee923334082380125ad08e22
+guid: 8deed2c7d7d183846b461b41350f1fec
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8938819534478884857
-    second: Plate_0
+      213: -7764622016355668229
+    second: InflatableTrampoline_0
   - first:
-      213: 6267094128317942714
-    second: Plate_1
+      213: 9012444324773615879
+    second: InflatableTrampoline_1
   - first:
-      213: -2835850915887712782
-    second: Plate_2
+      213: -7513829468950316946
+    second: InflatableTrampoline_2
   - first:
-      213: -8699227911207064347
-    second: Plate_3
+      213: -6029942357759347936
+    second: InflatableTrampoline_3
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -79,7 +79,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -91,7 +91,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 256
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -103,7 +103,19 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
-    maxTextureSize: 256
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -117,85 +129,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Plate_0
+      name: InflatableTrampoline_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 126
-        width: 126
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70040184efee2f380800000000000000
-      internalID: -8938819534478884857
+      spriteID: bfe61f33a658e3490800000000000000
+      internalID: -7764622016355668229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Plate_1
+      name: InflatableTrampoline_1
       rect:
         serializedVersion: 2
-        x: 126
-        y: 126
-        width: 126
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abbc35cb7e039f650800000000000000
-      internalID: 6267094128317942714
+      spriteID: 709dd180d52a21d70800000000000000
+      internalID: 9012444324773615879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Plate_2
+      name: InflatableTrampoline_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 126
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f5fb82fd9805a8d0800000000000000
-      internalID: -2835850915887712782
+      spriteID: e68ba5078e389b790800000000000000
+      internalID: -7513829468950316946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Plate_3
+      name: InflatableTrampoline_3
       rect:
         serializedVersion: 2
-        x: 126
+        x: 256
         y: 0
-        width: 126
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 256
+        height: 256
+      alignment: 9
+      pivot: {x: 0.5, y: 0.13}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ece6542e42264780800000000000000
-      internalID: -8699227911207064347
+      spriteID: 0233ca5af57515ca0800000000000000
+      internalID: -6029942357759347936
       vertices: []
       indices: 
       edges: []
@@ -211,10 +223,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Plate_0: -8938819534478884857
-      Plate_1: 6267094128317942714
-      Plate_2: -2835850915887712782
-      Plate_3: -8699227911207064347
+      InflatableTrampoline_0: -7764622016355668229
+      InflatableTrampoline_1: 9012444324773615879
+      InflatableTrampoline_2: -7513829468950316946
+      InflatableTrampoline_3: -6029942357759347936
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

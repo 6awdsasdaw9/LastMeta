@@ -40,7 +40,7 @@ namespace Code.Character.Hero
 
         private void HealthLoadData(SavedData savedData)
         {
-            _hero.Health.Set(savedData.HeroHealth);
+            _hero.Health?.Set(savedData.HeroHealth);
         }
 
         private void HealthSaveData(SavedData savedData)
@@ -80,11 +80,11 @@ namespace Code.Character.Hero
 
         private void UpgradesLoadData(SavedData savedData)
         {
-            _hero.Upgrade.Init(savedData.HeroUpgradesLevel);
+            _hero.Upgrade?.Init(savedData.HeroUpgradesLevel);
         }
 
         private void UpgradesSaveData(SavedData savedData) =>
-            savedData.HeroUpgradesLevel = _hero.Upgrade.UpgradesLevel;
+            savedData.HeroUpgradesLevel = _hero.Upgrade?.UpgradesLevel;
 
         private string CurrentLevel() =>
             SceneManager.GetActiveScene().name;
