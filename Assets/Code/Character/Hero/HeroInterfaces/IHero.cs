@@ -5,6 +5,7 @@ namespace Code.Character.Hero
 {
     public interface IHero
     {
+        Constants.GameMode Mode { get; }
         Transform Transform { get; }
         IHeroAnimator Animator { get; }
         IHeroAudio Audio { get; }

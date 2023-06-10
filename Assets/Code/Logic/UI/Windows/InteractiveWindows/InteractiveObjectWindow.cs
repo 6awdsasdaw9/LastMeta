@@ -7,7 +7,7 @@ namespace Code.UI.Windows
 {
     public class InteractiveObjectWindow : MonoBehaviour, IWindow
     {
-        [SerializeField] protected HUD _hud;
+        [SerializeField] protected Hud _hud;
         [SerializeField] protected  WindowAnimation _animation;
         
         public virtual void ShowWindow(Action WindowShowed)

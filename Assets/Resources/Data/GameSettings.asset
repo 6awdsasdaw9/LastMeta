@@ -15,8 +15,8 @@ MonoBehaviour:
   DayTimeInSeconds: 50
   LightingSettings:
     morningIntensity: 0.9
-    eveningIntensity: 0.6
-    nightIntensity: 0.2
+    eveningIntensity: 0.45
+    nightIntensity: 0.15
     morningAngle: {x: 5, y: -2, z: 0}
     eveningAngle: {x: -35, y: 7, z: 0}
     nightAngle: {x: -55, y: 13, z: 0}

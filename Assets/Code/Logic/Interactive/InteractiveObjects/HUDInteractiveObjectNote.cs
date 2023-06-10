@@ -21,7 +21,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
         private bool _isNull;
 
         [Inject]
-        private void Construct(HUD hud,TextConfig textConfig)
+        private void Construct(Hud hud,TextConfig textConfig)
         {
             _presentationWindow = (INoteWindow)hud.InteractiveObjectWindows
                 .FirstOrDefault(w => w.Type == Type)?

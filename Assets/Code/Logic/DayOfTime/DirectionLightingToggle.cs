@@ -1,5 +1,7 @@
+using System;
 using Code.Data.Configs;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
@@ -25,7 +27,7 @@ namespace Code.Logic.DayOfTime
         private void Start()
         {
             SubscribeToEvent(true);
-            SetLighting(_timeOfDayController.dayTimeNormalized);
+            SetLighting(_timeOfDayController.DayTimeNormalized);
         }
 
         private void OnDestroy()
@@ -93,5 +95,41 @@ namespace Code.Logic.DayOfTime
             _directionLight.DOIntensity(targetIntensity, 0).
                 SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
+#if UNITY_EDITOR
+
+        [FoldoutGroup("Imitate on edit mode")]
+        [SerializeField] private  GameSettings testGameSettings;
+
+        [HorizontalGroup("Imitate on edit mode/Horizontal")]
+        [SerializeField, EnumToggleButtons] private TimeOfDay timeOfDay;
+       
+        [HorizontalGroup("Imitate on edit mode/Vertical")]
+        [Button]
+        private void ImitateLight()
+        {
+            var settings = testGameSettings.LightingSettings;
+   
+            switch (timeOfDay)
+            {
+                default:
+                case TimeOfDay.Morning:
+                    _directionLight.intensity = settings.morningIntensity;
+                    _directionLight.transform.rotation = Quaternion.Euler(settings.morningAngle);
+                    break;
+                case TimeOfDay.Evening:
+                    _directionLight.intensity = settings.eveningIntensity;
+                    _directionLight.transform.rotation = Quaternion.Euler(settings.eveningAngle);
+                    break;
+                case TimeOfDay.Night:
+                    _directionLight.intensity = settings.nightIntensity;
+                    _directionLight.transform.rotation = Quaternion.Euler(settings.nightAngle);
+                    break;
+            }
+     
+
+        }
+        
+#endif
+        
     }
 }

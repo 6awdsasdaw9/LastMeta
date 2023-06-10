@@ -12,7 +12,7 @@ namespace Code.Data.Configs
     {
         [TitleGroup("Day settings", "", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true,
             indent: false)]
-        public float DurationOfDayTime => DayTimeInSeconds / 3;
+        public float DurationOfDayTime => DayTimeInSeconds * 0.5f;
         public float DayTimeInSeconds = 50;
         public LightingSettings LightingSettings;
         

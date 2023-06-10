@@ -149,6 +149,7 @@ SpriteAtlas:
   - {fileID: 9012444324773615879, guid: 8deed2c7d7d183846b461b41350f1fec, type: 3}
   - {fileID: -7764622016355668229, guid: 8deed2c7d7d183846b461b41350f1fec, type: 3}
   - {fileID: -608750079, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
+  - {fileID: -1032092865, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
   - {fileID: 1196613875, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
   - {fileID: 462056329, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
   - {fileID: -5652991699730479303, guid: 82dff1f9f65038643844e9ad0fe24337, type: 3}
@@ -355,6 +356,7 @@ SpriteAtlas:
   - InflatableTrampoline_1
   - InflatableTrampoline_0
   - Wall_00_14
+  - Wall_00_15
   - Wall_00_12
   - Wall_00_13
   - Wall_00_10

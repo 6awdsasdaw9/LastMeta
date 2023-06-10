@@ -9,12 +9,15 @@ namespace Code.UI.HeadUpDisplay
 {
 
     [RequireComponent(typeof(HudAdapter))]
-    public class HUD : MonoBehaviour
+    public class Hud : MonoBehaviour
     {
+        [SerializeField] private Constants.GameMode _gameMode;
         public List<InteractiveObjectWindowData> InteractiveObjectWindows;
 
-        [Title("Game HUD")]
-        public HpBar HeroHpBar;
+        private bool _isGameHud => _gameMode == Constants.GameMode.Game;
+        [Space,Title("Game HUD")]
+        [ShowIf(nameof(_isGameHud))] public HpBar HeroHpBar;
+        [ShowIf(nameof(_isGameHud))] public SliderController SliderTimeOfDay;
 
         public Action OnUIWindowShown;
         public Action OnUIWindowHidden;

@@ -31,10 +31,10 @@ namespace Code.Character.Hero
         #region Run Time
 
         [Inject]
-        private void Construct(GameConfig gameConfig)
+        private void Construct(HeroConfig heroConfig)
         {
-            _frictionMaterial = gameConfig.heroConfig.FrictionMaterial;
-            _noFrictionMaterial = gameConfig.heroConfig.NoFrictionMaterial;
+            _frictionMaterial = heroConfig.heroConfig.FrictionMaterial;
+            _noFrictionMaterial = heroConfig.heroConfig.NoFrictionMaterial;
             _hero = GetComponent<IHero>();
         }
 
@@ -126,7 +126,7 @@ namespace Code.Character.Hero
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.green;
+            Gizmos.color = Color.red;
 
             //ground
             Gizmos.DrawLine(transform.position, transform.position + Vector3.down * _groundLength);

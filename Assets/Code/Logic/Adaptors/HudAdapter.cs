@@ -11,12 +11,11 @@ namespace Code.UI.Adaptors
 {
     public class HudAdapter : MonoBehaviour
     {
-        [SerializeField] private HUD _hud;
+        [SerializeField] private Hud _hud;
 
         private MovementLimiter _movementLimiter;
         private InputService _input;
-
-
+        
         [Inject]
         public void Construct(MovementLimiter movementLimiter, InputService inputService)
         {

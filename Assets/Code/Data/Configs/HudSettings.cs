@@ -10,8 +10,8 @@ namespace Code.Data.Configs
     [CreateAssetMenu(fileName = "HudSettings", menuName = "ScriptableObjects/GameData/HudSettings")]
     public class HudSettings : ScriptableObject
     {
-        public HUD RealHUD;
-        public HUD GameHUD;
+        public Hud RealHUD;
+        public Hud GameHUD;
    
         [Space] public InteractiveUIParams InteractiveUIParams;
 

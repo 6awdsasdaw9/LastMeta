@@ -6,12 +6,13 @@ using Code.Data.ProgressData;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
+using HeroConfig = Code.Data.Configs.HeroConfig;
 
 namespace Code.Character.Hero
 {
     public class HeroUpgrade : MonoBehaviour,  IHeroUpgrade
     {
-        private HeroConfig _heroConfig;
+        private Data.GameData.HeroConfig _heroConfig;
         
         public HeroUpgradesData UpgradesLevel => _upgradesData;
         private HeroUpgradesData _upgradesData = new HeroUpgradesData();
@@ -21,9 +22,9 @@ namespace Code.Character.Hero
         public int BonusAirJump { get; private set; }
 
         [Inject]
-        private void Construct(GameConfig gameConfig, SavedDataCollection dataCollection)
+        private void Construct(HeroConfig heroConfig, SavedDataCollection dataCollection)
         {
-            _heroConfig = gameConfig.heroConfig;
+            _heroConfig = heroConfig.heroConfig;
            // dataCollection.Add(this);
         }
 

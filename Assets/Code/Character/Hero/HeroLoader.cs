@@ -1,13 +1,10 @@
 using System.Linq;
 using Code.Data.Configs;
-using Code.Data.GameData;
 using Code.Data.ProgressData;
-using Code.Debugers;
 using Code.Services;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
-using Logger = Code.Debugers.Logger;
 
 namespace Code.Character.Hero
 {
@@ -40,11 +37,17 @@ namespace Code.Character.Hero
 
         private void HealthLoadData(SavedData savedData)
         {
-            _hero.Health?.Set(savedData.HeroHealth);
+            if(_hero.Mode == Constants.GameMode.Real)
+                return;
+            
+            _hero.Health.Set(savedData.HeroHealth);
         }
 
         private void HealthSaveData(SavedData savedData)
         {
+            if(_hero.Mode == Constants.GameMode.Real)
+                return;
+            
             savedData.HeroHealth.CurrentHP = _hero.Health.Current;
             savedData.HeroHealth.MaxHP = _hero.Health.Max;
         }
@@ -80,11 +83,19 @@ namespace Code.Character.Hero
 
         private void UpgradesLoadData(SavedData savedData)
         {
-            _hero.Upgrade?.Init(savedData.HeroUpgradesLevel);
+            if(_hero.Mode == Constants.GameMode.Real)
+                return;
+            
+            _hero.Upgrade.Init(savedData.HeroUpgradesLevel);
         }
 
-        private void UpgradesSaveData(SavedData savedData) =>
+        private void UpgradesSaveData(SavedData savedData)
+        {
+            if(_hero.Mode == Constants.GameMode.Real)
+                return;
+            
             savedData.HeroUpgradesLevel = _hero.Upgrade?.UpgradesLevel;
+        }
 
         private string CurrentLevel() =>
             SceneManager.GetActiveScene().name;

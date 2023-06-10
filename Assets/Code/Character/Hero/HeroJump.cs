@@ -6,6 +6,7 @@ using Code.Services.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
+using HeroConfig = Code.Data.Configs.HeroConfig;
 
 namespace Code.Character.Hero
 {
@@ -15,7 +16,7 @@ namespace Code.Character.Hero
 
         private IHero _hero;
         private InputService _input;
-        private HeroConfig _config;
+        private Data.GameData.HeroConfig _config;
 
         #region Values
 
@@ -38,13 +39,13 @@ namespace Code.Character.Hero
         #region Run Time
 
         [Inject]
-        private void Construct(InputService input, GameConfig gameConfig)
+        private void Construct(InputService input, HeroConfig heroConfig)
         {
             _hero = GetComponent<IHero>();
             _input = input;
-            _config = gameConfig.heroConfig;
-            _jumpHeight = gameConfig.heroConfig.jumpHeight;
-            _maxAirJumps = gameConfig.heroConfig.maxAirJumps;
+            _config = heroConfig.heroConfig;
+            _jumpHeight = heroConfig.heroConfig.jumpHeight;
+            _maxAirJumps = heroConfig.heroConfig.maxAirJumps;
         }
 
         private void OnEnable() => 

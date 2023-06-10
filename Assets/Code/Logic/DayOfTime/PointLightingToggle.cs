@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Code.Data.Configs;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
@@ -8,7 +9,7 @@ namespace Code.Logic.DayOfTime
 {
     public class PointLightingToggle : MonoBehaviour
     {
-        [SerializeField] private TimeOfDay _timeOfEnable = TimeOfDay.Night;
+        [SerializeField, EnumToggleButtons] private TimeOfDay _timeOfEnable = TimeOfDay.Night;
         [SerializeField, Range(0.05f, 1)] private float _durationMultiplayer = 0.6f;
         [SerializeField] private List<Light> _lightPoints;
 
@@ -112,14 +113,13 @@ namespace Code.Logic.DayOfTime
         {
             var targetIntensity = 1;
 
-            _lightTween?.Kill();
-            _lightTween = lightPoint.DOIntensity(targetIntensity, _animationDuration);
+
+             lightPoint.DOIntensity(targetIntensity, _animationDuration).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
 
         private void DisableLight(Light lightPoint)
         {
-            _lightTween?.Kill();
-            _lightTween = lightPoint.DOIntensity(0, _animationDuration);
+ lightPoint.DOIntensity(0, _animationDuration).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
     }
 }

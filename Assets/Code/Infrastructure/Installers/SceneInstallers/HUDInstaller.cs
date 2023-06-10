@@ -7,7 +7,7 @@ namespace Code.Infrastructure.Installers
 {
     public class HUDInstaller : MonoInstaller
     {
-        [SerializeField] private Constants.TypeOfScene _typeOfScene; 
+        [SerializeField] private Constants.GameMode gameMode; 
         private HudSettings _hudSettings;
 
         [Inject]
@@ -23,22 +23,22 @@ namespace Code.Infrastructure.Installers
 
         private void BindHUD()
         {
-            HUD hud = Container.InstantiatePrefabForComponent<HUD>(
+            Hud hud = Container.InstantiatePrefabForComponent<Hud>(
                 GetHudPrefabs(),
                 Vector3.zero,
                 Quaternion.identity,
                 null);
             
-            Container.Bind<HUD>().FromInstance(hud).AsSingle().NonLazy();
+            Container.Bind<Hud>().FromInstance(hud).AsSingle().NonLazy();
         }
 
-        private HUD GetHudPrefabs()
+        private Hud GetHudPrefabs()
         {
-            switch (_typeOfScene)
+            switch (gameMode)
             {
-                case Constants.TypeOfScene.Real:
+                case Constants.GameMode.Real:
                     return _hudSettings.RealHUD;
-                case Constants.TypeOfScene.Game:
+                case Constants.GameMode.Game:
                 default:
                     return _hudSettings.GameHUD;
             }

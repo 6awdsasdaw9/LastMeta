@@ -5,6 +5,7 @@ using Code.Debugers;
 using Code.Services.Input;
 using UnityEngine;
 using Zenject;
+using HeroConfig = Code.Data.Configs.HeroConfig;
 
 namespace Code.Character.Hero
 {
@@ -19,11 +20,11 @@ namespace Code.Character.Hero
         private int _layerMask;
 
         [Inject]
-        private void Construct(InputService inputService, GameConfig gameConfig)
+        private void Construct(InputService inputService, HeroConfig heroConfig)
         {
             _hero = GetComponent<IHero>();
             _inputService = inputService;
-            _power = gameConfig.heroConfig.power;
+            _power = heroConfig.heroConfig.power;
             _layerMask = 1 << LayerMask.NameToLayer(Constants.HittableLayer);
         }
 

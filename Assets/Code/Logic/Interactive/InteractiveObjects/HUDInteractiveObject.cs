@@ -14,7 +14,7 @@ namespace Code.Logic.Interactive.InteractiveObjects
         private bool _isWindowNull;
 
         [Inject]
-        private void Construct(HUD hud)
+        private void Construct(Hud hud)
         {
             hud.InteractiveObjectWindows
                 .FirstOrDefault(w => w.Type == Type)?

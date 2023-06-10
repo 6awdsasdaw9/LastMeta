@@ -9,7 +9,7 @@ namespace Code.Infrastructure.Installers
     public class ScriptableObjectsInstaller: ScriptableObjectInstaller<ScriptableObjectsInstaller>
     {
         public GameSettings GameSettings;
-        public GameConfig GameConfig;
+        public HeroConfig heroConfig;
         public PrefabsData PrefabsData;
         public TextConfig TextConfig;
         public SceneAudioPath SceneAudioPath;
@@ -18,7 +18,7 @@ namespace Code.Infrastructure.Installers
         public override void InstallBindings()
         {
             Container.BindInstance(GameSettings);
-            Container.BindInstance(GameConfig);
+            Container.BindInstance(heroConfig);
             Container.BindInstance(PrefabsData);
             Container.BindInstance(TextConfig);
             Container.BindInstance(SceneAudioPath);

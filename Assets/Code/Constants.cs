@@ -8,7 +8,7 @@ namespace Code
         public const float epsilon = 0.001f;
         public const float distance = 1f;
 
-        public enum TypeOfScene
+        public enum GameMode
         {
             Real,
             Game

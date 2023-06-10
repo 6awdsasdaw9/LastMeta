@@ -9,9 +9,22 @@ namespace Code.Debugers
 {
     public class DrawerSpawnPoints : MonoBehaviour
     {
+#if UNITY_EDITOR
+
         [SerializeField] private int _configIndex;
         [SerializeField] private SpawnPointsConfig _config;
 
+        [ShowInInspector]
+        private Constants.Scenes _selectedScene => 
+            _config.SceneSpawnPoints.Count <= _configIndex
+                ? Constants.Scenes.Initial
+                : _config.SceneSpawnPoints[_configIndex].Scene;
+        
+        
+        [ShowInInspector]
+        private List<PointData> points => _config.SceneSpawnPoints.Count <= _configIndex
+            ? null
+            : _config.SceneSpawnPoints[_configIndex].Points;
         private void OnDrawGizmos()
         {
             if (_config == null)
@@ -58,4 +71,6 @@ namespace Code.Debugers
             return xNumber.CompareTo(yNumber);
         }
     }
+            
+#endif
 }

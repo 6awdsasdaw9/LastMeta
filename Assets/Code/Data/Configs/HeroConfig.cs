@@ -1,0 +1,13 @@
+using Code.Data.GameData;
+using UnityEngine;
+
+namespace Code.Data.Configs
+{
+    [CreateAssetMenu(fileName = "HeroConfig", menuName = "ScriptableObjects/GameData/HeroConfig")]
+    public class HeroConfig : ScriptableObject
+    {
+        public Constants.Scenes initialScene;
+        public GameData.HeroConfig heroConfig;
+    }
+
+}

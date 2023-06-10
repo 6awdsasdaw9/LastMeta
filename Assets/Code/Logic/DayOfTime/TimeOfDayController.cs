@@ -1,7 +1,6 @@
+using System;
 using Code.Data.Configs;
-using Code.Data.GameData;
 using Code.Data.ProgressData;
-using Code.Debugers;
 using UnityEngine;
 using Zenject;
 
@@ -12,16 +11,15 @@ namespace Code.Logic.DayOfTime
     {
         private float _dayTimeInSeconds;
         private float _currentSecondsOfDay;
-        public float dayTimeNormalized => _currentSecondsOfDay / _dayTimeInSeconds;
+        public float DayTimeNormalized => _currentSecondsOfDay / _dayTimeInSeconds;
 
         public TimeOfDay CurrentTimeOfDay { get;private set; }
 
-        public delegate void TimeOfDayEvent();
 
+        public delegate void TimeOfDayEvent();
         public event TimeOfDayEvent OnMorning;
         public event TimeOfDayEvent OnEvening;
         public event TimeOfDayEvent OnNight;
-
 
         private float  _eveningTime, _nightTime;
         
@@ -30,10 +28,8 @@ namespace Code.Logic.DayOfTime
         private void Construct(GameSettings gameSettings, SavedDataCollection savedDataCollection)
         {
             _dayTimeInSeconds = gameSettings.DayTimeInSeconds;
-           
-         
-            _eveningTime = gameSettings.DurationOfDayTime;
-            _nightTime =  gameSettings.DurationOfDayTime * 2;
+            _eveningTime = gameSettings.DurationOfDayTime / 2;
+            _nightTime =  gameSettings.DurationOfDayTime;
             
             savedDataCollection.Add(this);
         }

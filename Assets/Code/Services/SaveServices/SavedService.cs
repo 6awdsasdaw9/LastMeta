@@ -14,13 +14,13 @@ namespace Code.Data.ProgressData
         private const string _fileName = Constants.SaveProgressFileName;
         private FileDataHandler _dataHandler;
         private SavedDataCollection _dataCollection;
-        private GameConfig _gameConfig;
+        private HeroConfig _heroConfig;
         public SavedData SavedData { get; private set; }
 
         [Inject]
-        private void Construct(GameConfig gameConfig)
+        private void Construct(HeroConfig heroConfig)
         {
-            _gameConfig = gameConfig;
+            _heroConfig = heroConfig;
         }
 
         public void SetSavedDataCollection(SavedDataCollection collection)
@@ -84,10 +84,10 @@ namespace Code.Data.ProgressData
 
             SavedData = new SavedData
             {
-                CurrentScene = _gameConfig.initialScene.ToString(),
+                CurrentScene = _heroConfig.initialScene.ToString(),
                 HeroHealth =
                 {
-                    MaxHP = _gameConfig.heroConfig.maxHP
+                    MaxHP = _heroConfig.heroConfig.maxHP
                 },
             };
 

@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Zenject;
+using HeroConfig = Code.Data.Configs.HeroConfig;
 
 
 namespace Code.Character.Hero
@@ -17,7 +18,7 @@ namespace Code.Character.Hero
         [SerializeField] private Rigidbody _body;
 
         private IHero _hero;
-        private HeroConfig _heroConfig;
+        private Data.GameData.HeroConfig _heroConfig;
         private InputService _input;
 
         #region Values
@@ -45,11 +46,11 @@ namespace Code.Character.Hero
         #region Run Time
 
         [Inject]
-        private void Construct(InputService input, GameConfig gameConfig, SavedDataCollection dataCollection)
+        private void Construct(InputService input, HeroConfig heroConfig, SavedDataCollection dataCollection)
         {
             _hero = GetComponent<IHero>();
             _input = input;
-            _heroConfig = gameConfig.heroConfig;
+            _heroConfig = heroConfig.heroConfig;
             //dataCollection.Add(this);
         }
 

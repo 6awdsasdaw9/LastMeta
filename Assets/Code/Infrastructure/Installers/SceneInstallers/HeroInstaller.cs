@@ -9,7 +9,7 @@ namespace Code.Infrastructure.Installers
 {
     public class HeroInstaller : MonoInstaller
     {
-        [SerializeField] private Constants.TypeOfScene _typeOfScene;
+        [SerializeField] private Constants.GameMode _gameMode;
         [Inject] private PrefabsData _prefabsData;
 
         public override void InstallBindings()
@@ -30,11 +30,11 @@ namespace Code.Infrastructure.Installers
 
         private Hero GetHeroPrefabs()
         {
-            switch (_typeOfScene)
+            switch (_gameMode)
             {
-                case Constants.TypeOfScene.Game:
+                case Constants.GameMode.Game:
                     return _prefabsData.HeroPrefab;
-                case Constants.TypeOfScene.Real:
+                case Constants.GameMode.Real:
                 default:
                     return _prefabsData.RealHeroPrefab;
             }
