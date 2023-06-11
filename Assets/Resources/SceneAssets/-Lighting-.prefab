@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _directionLight: {fileID: 244853700423049455}
+  testGameSettings: {fileID: 11400000, guid: 5d9ad4c1249e56a46b5a80d0287dec74, type: 2}
+  timeOfDay: 0
 --- !u!114 &244853699811189029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,7 +62,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb0b811e464445c0982399f3ee6951d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lights: []
+  _timeOfEnable: 2
+  _durationMultiplayer: 0.6
+  _lightPoints: []
 --- !u!1 &244853700002595894
 GameObject:
   m_ObjectHideFlags: 0

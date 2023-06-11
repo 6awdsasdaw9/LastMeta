@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EnterMetaPark_Room.unity
     guid: 2d8d564a6a2fe6347be953b1a34cf77e
+  - enabled: 1
+    path: Assets/Scenes/Polygon.unity
+    guid: 28e908f4448a7df46a96679e1f715941
   m_configObjects: {}

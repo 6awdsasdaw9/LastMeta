@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c973dc534e48f28a99c18d603c627a, type: 3}
   m_Name: HeroConfig
   m_EditorClassIdentifier: 
-  initialScene: 1
+  initialScene: 4
   heroConfig:
     maxHP: 3
     power:
