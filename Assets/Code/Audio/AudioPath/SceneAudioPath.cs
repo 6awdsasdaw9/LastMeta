@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FMODUnity;
 using UnityEngine;
 
-namespace Code.Audio
+namespace Code.Audio.AudioPath
 {
     [CreateAssetMenu(fileName = "SceneAudioPath", menuName = "ScriptableObjects/Audio/SceneAudioPath")]
     public class SceneAudioPath : ScriptableObject

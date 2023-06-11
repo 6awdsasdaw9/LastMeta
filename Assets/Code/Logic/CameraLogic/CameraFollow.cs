@@ -1,8 +1,10 @@
 using System.Collections;
 using Code.Character.Hero;
+using Code.Character.Hero.HeroInterfaces;
+using Code.Data;
 using Code.Data.GameData;
-using Code.Data.ProgressData;
 using Code.Services;
+using Code.Services.SaveServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -30,11 +32,11 @@ namespace Code.Logic.CameraLogic
         private Coroutine _dampTimeCoroutine;
         
         [Inject]
-        private void Construct(IHero hero,SavedDataCollection dataCollection)
+        private void Construct(IHero hero,SavedDataStorage dataStorage)
         {
             _hero = hero;
             _currentDampTime = _dampTime;
-            dataCollection.Add(this);
+            dataStorage.Add(this);
         }
 
         private void LateUpdate()

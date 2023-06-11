@@ -3,114 +3,117 @@ using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 
-public class SceneAudioController 
+namespace Code.Audio
 {
-    private EventReference _ambienceEvent;
-    private EventReference _musicEvent;
-
-    private EventInstance _ambience;
-    private EventInstance _music;
-
-    private PARAMETER_DESCRIPTION _parameterDescription;
-    private PARAMETER_ID _parameterID;
-
-    private Bus Music_Volume;
-    private Bus Effect_Volume;
-
-
-    #region Set Audio EventReference
-
-    public bool IsCurrentAmbienceEvent(EventReference ambienceEvent)
+    public class SceneAudioController 
     {
-        return _ambienceEvent.Guid == ambienceEvent.Guid;
-    }
+        private EventReference _ambienceEvent;
+        private EventReference _musicEvent;
 
-    public bool IsCurrentMusicEvent(EventReference musicEvent)
-    {
-        return _musicEvent.Guid == musicEvent.Guid;
-    }
+        private EventInstance _ambience;
+        private EventInstance _music;
 
-    public void SetAmbienceEvent(EventReference ambienceEvent)
-    {
-        _ambienceEvent = ambienceEvent;
-    }
+        private PARAMETER_DESCRIPTION _parameterDescription;
+        private PARAMETER_ID _parameterID;
 
-    public void SetMusicEvent(EventReference musicEvent)
-    {
-        _musicEvent = musicEvent;
-    }
+        private Bus Music_Volume;
+        private Bus Effect_Volume;
 
-    #endregion
 
-    #region Play
+        #region Set Audio EventReference
 
-    public void PlayAmbience()
-    {
-        if (_ambienceEvent.IsNull)
-            return;
+        public bool IsCurrentAmbienceEvent(EventReference ambienceEvent)
+        {
+            return _ambienceEvent.Guid == ambienceEvent.Guid;
+        }
 
-        _ambience = RuntimeManager.CreateInstance(_ambienceEvent);
-        _ambience.start();
-    }
+        public bool IsCurrentMusicEvent(EventReference musicEvent)
+        {
+            return _musicEvent.Guid == musicEvent.Guid;
+        }
 
-    public void PlayMusic()
-    {
-        if (_musicEvent.IsNull)
-            return;
+        public void SetAmbienceEvent(EventReference ambienceEvent)
+        {
+            _ambienceEvent = ambienceEvent;
+        }
 
-        _music = RuntimeManager.CreateInstance(_musicEvent);
-        _music.start();
-    }
+        public void SetMusicEvent(EventReference musicEvent)
+        {
+            _musicEvent = musicEvent;
+        }
 
-    #endregion
+        #endregion
 
-    #region Stop
+        #region Play
 
-    public void StopMusic()
-    {
-        _music.stop(STOP_MODE.ALLOWFADEOUT);
-    }
+        public void PlayAmbience()
+        {
+            if (_ambienceEvent.IsNull)
+                return;
 
-    public void StopAmbience()
-    {
-        _ambience.stop(STOP_MODE.ALLOWFADEOUT);
-    }
+            _ambience = RuntimeManager.CreateInstance(_ambienceEvent);
+            _ambience.start();
+        }
 
-    #endregion
+        public void PlayMusic()
+        {
+            if (_musicEvent.IsNull)
+                return;
+
+            _music = RuntimeManager.CreateInstance(_musicEvent);
+            _music.start();
+        }
+
+        #endregion
+
+        #region Stop
+
+        public void StopMusic()
+        {
+            _music.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+
+        public void StopAmbience()
+        {
+            _ambience.stop(STOP_MODE.ALLOWFADEOUT);
+        }
+
+        #endregion
     
     
     
-    #region Param
+        #region Param
 
-    private void SetParam()
-    {
-        string nameParam = "";
-        RuntimeManager.StudioSystem.getParameterDescriptionByName(nameParam, out _parameterDescription);
-        _parameterID = _parameterDescription.id;
+        private void SetParam()
+        {
+            string nameParam = "";
+            RuntimeManager.StudioSystem.getParameterDescriptionByName(nameParam, out _parameterDescription);
+            _parameterID = _parameterDescription.id;
+        }
+
+        //calue = 0 - 1
+        private void ChangeParam(float value)
+        {
+            RuntimeManager.StudioSystem.setParameterByID(_parameterID, value);
+        }
+
+        #endregion
+
+        #region Bus
+
+        private void SetBus()
+        {
+            // Path copy from FMOD
+            Music_Volume = RuntimeManager.GetBus("bus:/Master/Music");
+            Effect_Volume = RuntimeManager.GetBus("bus:/Master/Effect");
+        }
+
+        private void ChangeBusEffect(float volume)
+        {
+            Effect_Volume.setVolume(volume);
+        }
+
+        #endregion
+
     }
-
-    //calue = 0 - 1
-    private void ChangeParam(float value)
-    {
-        RuntimeManager.StudioSystem.setParameterByID(_parameterID, value);
-    }
-
-    #endregion
-
-    #region Bus
-
-    private void SetBus()
-    {
-        // Path copy from FMOD
-        Music_Volume = RuntimeManager.GetBus("bus:/Master/Music");
-        Effect_Volume = RuntimeManager.GetBus("bus:/Master/Effect");
-    }
-
-    private void ChangeBusEffect(float volume)
-    {
-        Effect_Volume.setVolume(volume);
-    }
-
-    #endregion
-
 }

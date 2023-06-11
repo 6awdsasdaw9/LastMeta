@@ -1,6 +1,6 @@
 using System;
 using Code.Data.Configs;
-using Code.Data.ProgressData;
+using Code.Services.SaveServices;
 using UnityEngine;
 using Zenject;
 
@@ -25,13 +25,13 @@ namespace Code.Logic.DayOfTime
         
 
         [Inject]
-        private void Construct(GameSettings gameSettings, SavedDataCollection savedDataCollection)
+        private void Construct(GameSettings gameSettings, SavedDataStorage savedDataStorage)
         {
             _dayTimeInSeconds = gameSettings.DayTimeInSeconds;
             _eveningTime = gameSettings.DurationOfDayTime / 2;
             _nightTime =  gameSettings.DurationOfDayTime;
             
-            savedDataCollection.Add(this);
+            savedDataStorage.Add(this);
         }
 
         public void Tick()

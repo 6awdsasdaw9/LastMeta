@@ -1,8 +1,9 @@
 using System;
 using System.Linq;
+using Code.Audio.AudioEvents;
+using Code.PresentationModel.HeadUpDisplay;
+using Code.PresentationModel.Windows;
 using Code.Services;
-using Code.UI.HeadUpDisplay;
-using Code.UI.Windows;
 using UnityEngine;
 using Zenject;
 

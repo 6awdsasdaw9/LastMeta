@@ -5,6 +5,8 @@ namespace Code.Debugers
 {
     public class SpritesSetterPosition : MonoBehaviour
     {
+#if UNITY_EDITOR
+        
         private const string NotEditTag = "NotEditPosition";
         
         [Button]
@@ -17,10 +19,12 @@ namespace Code.Debugers
                     continue;
                 
                 var distance = obj.sortingOrder * distanceBetweenLayer;
-                obj.transform.position = GetPositionZ(obj.transform.position, -distance);
+                obj.transform.position = GetPosition(obj.transform.position, -distance);
             }
         }
         
-        private Vector3 GetPositionZ(Vector3 position, float dis) => new(position.x, position.y, dis);
+        private Vector3 GetPosition(Vector3 position, float distance) => new(position.x, position.y, distance);
+        
+#endif
     }
 }

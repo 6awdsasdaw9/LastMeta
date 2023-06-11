@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 using Zenject;
 using Logger = Code.Debugers.Logger;
 
-namespace Code.Data.ProgressData
+namespace Code.Services.SaveServices
 {
     public class SavedService : MonoBehaviour
     {
         [SerializeField] private bool _useEncryption;
         private const string _fileName = Constants.SaveProgressFileName;
         private FileDataHandler _dataHandler;
-        private SavedDataCollection _dataCollection;
+        private SavedDataStorage _dataStorage;
         private HeroConfig _heroConfig;
         public SavedData SavedData { get; private set; }
 
@@ -23,16 +23,16 @@ namespace Code.Data.ProgressData
             _heroConfig = heroConfig;
         }
 
-        public void SetSavedDataCollection(SavedDataCollection collection)
+        public void SetSavedDataCollection(SavedDataStorage storage)
         {
-            _dataCollection = collection;
+            _dataStorage = storage;
         }
 
         public void LoadProgress()
         {
             LoadData();
 
-            foreach (ISavedData dataPersistenceObj in _dataCollection.Data)
+            foreach (ISavedData dataPersistenceObj in _dataStorage.Data)
             {
                 dataPersistenceObj.LoadData(SavedData);
             }
@@ -65,7 +65,7 @@ namespace Code.Data.ProgressData
             }
 
             SavedData.CurrentScene = SceneManager.GetActiveScene().name;
-            foreach (ISavedData dataPersistenceObj in _dataCollection.Data)
+            foreach (ISavedData dataPersistenceObj in _dataStorage.Data)
             {
                 dataPersistenceObj.SaveData(SavedData);
             }

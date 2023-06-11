@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Code.Audio
+namespace Code.Audio.AudioEvents
 {
     public class RepeatAudioEvent : MonoBehaviour
     {

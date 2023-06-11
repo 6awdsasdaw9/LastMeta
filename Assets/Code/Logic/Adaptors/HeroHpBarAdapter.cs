@@ -1,7 +1,7 @@
-using Code.UI.HeadUpDisplay;
+using Code.PresentationModel.HeadUpDisplay;
 using Zenject;
 
-namespace Code.UI.Adaptors
+namespace Code.Logic.Adaptors
 {
     public class HeroHpBarAdapter : HpBarAdapter
     {

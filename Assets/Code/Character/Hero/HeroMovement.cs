@@ -1,8 +1,9 @@
-﻿using Code.Data.Configs;
+﻿using Code.Character.Hero.HeroInterfaces;
+using Code.Data.Configs;
 using Code.Data.GameData;
-using Code.Data.ProgressData;
 using Code.Services;
 using Code.Services.Input;
+using Code.Services.SaveServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -46,7 +47,7 @@ namespace Code.Character.Hero
         #region Run Time
 
         [Inject]
-        private void Construct(InputService input, HeroConfig heroConfig, SavedDataCollection dataCollection)
+        private void Construct(InputService input, HeroConfig heroConfig, SavedDataStorage dataStorage)
         {
             _hero = GetComponent<IHero>();
             _input = input;

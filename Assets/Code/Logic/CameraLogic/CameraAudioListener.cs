@@ -1,9 +1,9 @@
-using Code.Character.Hero;
+using Code.Character.Hero.HeroInterfaces;
 using FMODUnity;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Audio
+namespace Code.Logic.CameraLogic
 {
     [RequireComponent(typeof(StudioListener))]
     public class CameraAudioListener: MonoBehaviour

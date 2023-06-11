@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.Objects
+namespace Code.Logic.Objects.Movements
 {
     public class ObjectsPhysicsMovement : ObjectsMovement
     {

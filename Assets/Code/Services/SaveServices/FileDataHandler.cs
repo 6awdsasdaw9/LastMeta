@@ -3,7 +3,7 @@ using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace Code.Data.ProgressData
+namespace Code.Services.SaveServices
 {
     public class FileDataHandler
     {

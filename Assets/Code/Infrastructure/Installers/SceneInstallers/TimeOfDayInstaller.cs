@@ -1,7 +1,7 @@
 using Code.Logic.DayOfTime;
 using Zenject;
 
-namespace Code.Infrastructure.Installers
+namespace Code.Infrastructure.Installers.SceneInstallers
 {
     public class TimeOfDayInstaller: MonoInstaller
     {

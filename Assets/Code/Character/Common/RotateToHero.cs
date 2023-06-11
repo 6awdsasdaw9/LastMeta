@@ -1,4 +1,5 @@
 using Code.Character.Hero;
+using Code.Character.Hero.HeroInterfaces;
 using Code.Logic.Triggers;
 using UnityEngine;
 using Zenject;
@@ -12,18 +13,21 @@ namespace Code.Character.Common
 
         [Inject]
         private void Construct(IHero hero)
-            => _heroTransform = hero.Transform;
-    
+        {
+            _heroTransform = hero.Transform;
+        }
+
         private void Update()
         {
             if (_heroTransform)
+            {
                 RotateTowardsHero();
+            }
         }
 
         private void RotateTowardsHero()
         {
             _spriteRenderer.flipX = !(transform.position.x < _heroTransform.position.x);
         }
-
     }
 }

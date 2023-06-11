@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace Code.Logic.Objects
+namespace Code.Logic.Objects.Movements
 {
     public abstract class ObjectsMovement : MonoBehaviour
     {

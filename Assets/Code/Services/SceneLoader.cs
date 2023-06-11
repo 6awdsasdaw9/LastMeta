@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using System.Threading;
 using Code.Infrastructure;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,29 +10,24 @@ namespace Code.Services
 {
     public class SceneLoader
     {
-        private readonly ICoroutineRunner _coroutineRunner;
-
-        public SceneLoader(ICoroutineRunner coroutineRunner) =>
-            _coroutineRunner = coroutineRunner;
-
         public void Load(string name, Action onLoaded = null) =>
-            _coroutineRunner.StartCoroutine(LoadSceneAsync(name, onLoaded));
-
-        private IEnumerator LoadSceneAsync(string nextScene, Action onLoaded = null)
+            LoadSceneAsync(name, onLoaded).Forget();
+        
+        private async UniTaskVoid LoadSceneAsync(string nextScene, Action onLoaded = null)
         {
-            /*
+            
             if (SceneManager.GetActiveScene().name == nextScene)
             {
-                onLoaded?.Invoke();
-                yield break;
+                onLoaded?.Invoke(); 
+                return;
             }
-            */
-
+            
+            var cancellationToken = new CancellationTokenSource();
             AsyncOperation waitNextScene = SceneManager.LoadSceneAsync(nextScene);
 
             while (!waitNextScene.isDone)
-                yield return null;
-
+                await UniTask.Delay(TimeSpan.FromSeconds(0.1f), cancellationToken: cancellationToken.Token);
+            
             onLoaded?.Invoke();
         }
         

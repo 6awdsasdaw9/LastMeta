@@ -1,9 +1,9 @@
 using System.Linq;
 using Code.Data.Configs;
-using Code.Data.ProgressData;
 using Code.Debugers;
 using Code.Infrastructure.StateMachine;
 using Code.Infrastructure.StateMachine.States;
+using Code.Services.SaveServices;
 using UnityEngine;
 using Zenject;
 using Logger = Code.Debugers.Logger;

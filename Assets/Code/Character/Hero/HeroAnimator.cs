@@ -1,4 +1,5 @@
 using System;
+using Code.Character.Hero.HeroInterfaces;
 using Code.Debugers;
 using Sirenix.OdinInspector;
 using UnityEngine;

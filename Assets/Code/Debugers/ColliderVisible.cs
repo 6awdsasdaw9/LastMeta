@@ -4,6 +4,9 @@ namespace Code.Debugers
 {
     public class ColliderVisible : MonoBehaviour
     {
+#if UNITY_EDITOR
+        
+
         [SerializeField] private BoxCollider _collider;
         [SerializeField] private ColliderType type;
         [SerializeField] private bool isVisible;
@@ -50,5 +53,6 @@ namespace Code.Debugers
             StopCamera,
             Joint
         }
+#endif
     }
 }

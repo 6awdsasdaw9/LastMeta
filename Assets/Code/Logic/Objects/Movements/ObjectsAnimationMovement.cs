@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace Code.Logic.Objects
+namespace Code.Logic.Objects.Movements
 {
     public class ObjectsAnimationMovement : ObjectsMovement
     {

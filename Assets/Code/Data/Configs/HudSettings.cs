@@ -1,7 +1,7 @@
 using System;
-using Code.Logic.UI.Windows.DialogueWindows;
-using Code.UI;
-using Code.UI.HeadUpDisplay;
+using Code.Audio.AudioEvents;
+using Code.PresentationModel.HeadUpDisplay;
+using Code.PresentationModel.Windows.DialogueWindows;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

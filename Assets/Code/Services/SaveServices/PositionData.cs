@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Code.Data.GameData;
 
-namespace Code.Data.ProgressData
+namespace Code.Services.SaveServices
 {
     [Serializable]
     public class PositionData

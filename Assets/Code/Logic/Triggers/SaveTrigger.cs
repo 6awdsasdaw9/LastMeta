@@ -1,8 +1,8 @@
 using System;
 using System.Drawing;
 using Code.Data.Configs;
-using Code.Data.ProgressData;
 using Code.Debugers;
+using Code.Services.SaveServices;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,7 +25,7 @@ namespace Code.Logic.Triggers
         };
 
         [Inject]
-        private void Construct(SavedService service,SavedDataCollection savedDataCollection)
+        private void Construct(SavedService service,SavedDataStorage savedDataStorage)
         {
             _service = service;
         }

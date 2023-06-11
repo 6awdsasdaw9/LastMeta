@@ -1,9 +1,9 @@
-using Code.Audio;
+using Code.Audio.AudioPath;
 using Code.Data.Configs;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Infrastructure.Installers
+namespace Code.Infrastructure.Installers.ProjectInstaller
 {
     [CreateAssetMenu(fileName = "ScriptableObjectsInstaller", menuName = "ScriptableObjects/GameSettings/ScriptableObjectsInstaller")]
     public class ScriptableObjectsInstaller: ScriptableObjectInstaller<ScriptableObjectsInstaller>

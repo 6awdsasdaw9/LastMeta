@@ -1,8 +1,9 @@
 using System;
 using System.Linq;
+using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
 using Code.Data.GameData;
-using Code.Data.ProgressData;
+using Code.Services.SaveServices;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -22,7 +23,7 @@ namespace Code.Character.Hero
         public int BonusAirJump { get; private set; }
 
         [Inject]
-        private void Construct(HeroConfig heroConfig, SavedDataCollection dataCollection)
+        private void Construct(HeroConfig heroConfig, SavedDataStorage dataStorage)
         {
             _heroConfig = heroConfig.heroConfig;
            // dataCollection.Add(this);

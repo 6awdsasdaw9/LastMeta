@@ -1,7 +1,7 @@
-using UnityEngine;
 using FMODUnity;
+using UnityEngine;
 
-namespace Code.Audio
+namespace Code.Audio.AudioPath
 {
     [CreateAssetMenu(fileName = "EnemyAudioPath", menuName = "ScriptableObjects/Audio/EnemyAudioPath")]
     public class EnemyAudioPath : ScriptableObject

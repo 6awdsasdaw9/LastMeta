@@ -1,4 +1,5 @@
-using Code.Character.Interfaces;
+using Code.Character.Common.CommonCharacterInterfaces;
+using Code.Character.Hero.HeroInterfaces;
 using Code.Services;
 using Sirenix.OdinInspector;
 using UnityEngine;

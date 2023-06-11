@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Code.Character.Hero;
+using Code.Character.Hero.HeroInterfaces;
 using Code.Debugers;
 using Code.Services;
 using Cysharp.Threading.Tasks;

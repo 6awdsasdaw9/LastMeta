@@ -1,5 +1,5 @@
 using System;
-using Code.Character.Interfaces;
+using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Data.GameData;
 using UnityEngine;
 

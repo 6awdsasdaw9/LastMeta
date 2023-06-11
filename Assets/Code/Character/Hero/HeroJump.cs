@@ -1,3 +1,4 @@
+using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Debugers;

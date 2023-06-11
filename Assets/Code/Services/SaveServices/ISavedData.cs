@@ -1,4 +1,4 @@
-namespace Code.Data.ProgressData
+namespace Code.Services.SaveServices
 {
     public interface ISavedData : ISavedDataReader
     {

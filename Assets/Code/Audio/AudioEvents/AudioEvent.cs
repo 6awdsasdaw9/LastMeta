@@ -2,27 +2,30 @@ using System;
 using FMODUnity;
 using UnityEngine;
 
-[Serializable]
-public class AudioEvent
+namespace Code.Audio.AudioEvents
 {
-    [SerializeField] private EventReference _eventReference;
-    [SerializeField] private bool _playOnAwake;
-
-    private void OnEnable()
+    [Serializable]
+    public class AudioEvent
     {
-        if (_playOnAwake)
-        {
-            PlayAudioEvent();
-        }
-    }
+        [SerializeField] private EventReference _eventReference;
+        [SerializeField] private bool _playOnAwake;
 
-    public void PlayAudioEvent()
-    {
-        if (_eventReference.IsNull)
+        private void OnEnable()
         {
-            return;
+            if (_playOnAwake)
+            {
+                PlayAudioEvent();
+            }
         }
 
-        RuntimeManager.PlayOneShot(_eventReference);
+        public void PlayAudioEvent()
+        {
+            if (_eventReference.IsNull)
+            {
+                return;
+            }
+
+            RuntimeManager.PlayOneShot(_eventReference);
+        }
     }
 }

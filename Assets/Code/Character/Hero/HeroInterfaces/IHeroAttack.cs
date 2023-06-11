@@ -1,8 +1,8 @@
-using Code.Character.Hero.Interfaces;
+using Code.Character.Common.CommonCharacterInterfaces;
 
-namespace Code.Character.Hero
+namespace Code.Character.Hero.HeroInterfaces
 {
-    public interface IHeroAttack : IDisabled
+    public interface IHeroAttack : IDisabledComponent
     {
         void Attack();
 

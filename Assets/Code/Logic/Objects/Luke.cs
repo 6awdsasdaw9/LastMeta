@@ -1,8 +1,9 @@
+using Code.Data;
 using Code.Data.GameData;
-using Code.Data.ProgressData;
 using Code.Debugers;
 using Code.Logic.Triggers;
 using Code.Services;
+using Code.Services.SaveServices;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
@@ -17,9 +18,9 @@ namespace Code.Logic.Objects
         [SerializeField] private UniqueId _uniqueId;
 
         [Inject]
-        private void Construct(SavedDataCollection savedDataCollection)
+        private void Construct(SavedDataStorage savedDataStorage)
         {
-            savedDataCollection.Add(this);
+            savedDataStorage.Add(this);
         }
 
         private void Start()

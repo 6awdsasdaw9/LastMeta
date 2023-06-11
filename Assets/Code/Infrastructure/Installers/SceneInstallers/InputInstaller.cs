@@ -1,7 +1,7 @@
 using Code.Services.Input;
 using Zenject;
 
-namespace Code.Infrastructure.Installers
+namespace Code.Infrastructure.Installers.SceneInstallers
 {
     public class InputInstaller : MonoInstaller
     {

@@ -1,4 +1,5 @@
 using Code.Character.Hero;
+using Code.Character.Hero.HeroInterfaces;
 using Code.Services;
 using UnityEngine;
 using Zenject;

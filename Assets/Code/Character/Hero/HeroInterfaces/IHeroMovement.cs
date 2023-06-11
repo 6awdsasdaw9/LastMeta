@@ -1,10 +1,9 @@
-using Code.Character.Hero.Interfaces;
-using Cysharp.Threading.Tasks;
+using Code.Character.Common.CommonCharacterInterfaces;
 using UnityEngine;
 
-namespace Code.Character.Hero
+namespace Code.Character.Hero.HeroInterfaces
 {
-    public interface IHeroMovement : IDisabled
+    public interface IHeroMovement : IDisabledComponent
     {
         bool IsCrouch { get; }
         float DirectionX { get; }

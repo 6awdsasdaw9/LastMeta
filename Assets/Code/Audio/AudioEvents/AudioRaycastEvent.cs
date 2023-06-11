@@ -2,45 +2,48 @@ using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public class AudioRaycastEvent : MonoBehaviour
+namespace Code.Audio.AudioEvents
 {
-    [SerializeField] private AudioEvent _audioEvent;
-    [SerializeField] private LayerMask _layerMask;
-    [SerializeField] private Vector2 _startRaycastPoint;
-    [SerializeField] private float _distance;
-
-    private void Start()
+    public class AudioRaycastEvent : MonoBehaviour
     {
-        StartCheck().Forget();
-    }
+        [SerializeField] private AudioEvent _audioEvent;
+        [SerializeField] private LayerMask _layerMask;
+        [SerializeField] private Vector2 _startRaycastPoint;
+        [SerializeField] private float _distance;
 
-    private async UniTaskVoid StartCheck()
-    {
-        await UniTask.Delay(TimeSpan.FromSeconds(1),cancellationToken: this.GetCancellationTokenOnDestroy());
-        if (RaycastIsTrue())
+        private void Start()
         {
-            enabled = false;
+            StartCheck().Forget();
         }
-        else
+
+        private async UniTaskVoid StartCheck()
         {
-            WaitRaycast().Forget();
+            await UniTask.Delay(TimeSpan.FromSeconds(1),cancellationToken: this.GetCancellationTokenOnDestroy());
+            if (RaycastIsTrue())
+            {
+                enabled = false;
+            }
+            else
+            {
+                WaitRaycast().Forget();
+            }
         }
-    }
 
-    private async UniTaskVoid WaitRaycast()
-    {
-        await UniTask.WaitUntil(RaycastIsTrue, cancellationToken: this.GetCancellationTokenOnDestroy());
-        _audioEvent.PlayAudioEvent();
-    }
+        private async UniTaskVoid WaitRaycast()
+        {
+            await UniTask.WaitUntil(RaycastIsTrue, cancellationToken: this.GetCancellationTokenOnDestroy());
+            _audioEvent.PlayAudioEvent();
+        }
 
-    private bool RaycastIsTrue()
-    {
-        return Physics.Raycast(transform.position + (Vector3)_startRaycastPoint, Vector3.up, _distance, _layerMask);
-    }
+        private bool RaycastIsTrue()
+        {
+            return Physics.Raycast(transform.position + (Vector3)_startRaycastPoint, Vector3.up, _distance, _layerMask);
+        }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.black;
-        Gizmos.DrawRay(transform.position + (Vector3)_startRaycastPoint, Vector3.up * _distance);
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.black;
+            Gizmos.DrawRay(transform.position + (Vector3)_startRaycastPoint, Vector3.up * _distance);
+        }
     }
 }

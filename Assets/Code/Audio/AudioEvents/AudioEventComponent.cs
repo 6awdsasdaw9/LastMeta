@@ -1,26 +1,29 @@
 using FMODUnity;
 using UnityEngine;
 
-public class AudioEventComponent : MonoBehaviour
+namespace Code.Audio.AudioEvents
 {
-    [SerializeField] private EventReference _eventReference;
-    [SerializeField] private bool _playOnAwake;
-
-    private void OnEnable()
+    public class AudioEventComponent : MonoBehaviour
     {
-        if (_playOnAwake)
-        {
-            PlayAudioEvent();
-        }
-    }
+        [SerializeField] private EventReference _eventReference;
+        [SerializeField] private bool _playOnAwake;
 
-    public void PlayAudioEvent()
-    {
-        if (_eventReference.IsNull)
+        private void OnEnable()
         {
-            return;
+            if (_playOnAwake)
+            {
+                PlayAudioEvent();
+            }
         }
 
-        RuntimeManager.PlayOneShot(_eventReference, gameObject.transform.position);
+        public void PlayAudioEvent()
+        {
+            if (_eventReference.IsNull)
+            {
+                return;
+            }
+
+            RuntimeManager.PlayOneShot(_eventReference, gameObject.transform.position);
+        }
     }
 }

@@ -1,4 +1,4 @@
-namespace Code.Character.Hero
+namespace Code.Character.Hero.HeroInterfaces
 {
     public interface IHeroUpgrade
     {

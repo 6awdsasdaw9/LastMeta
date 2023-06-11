@@ -1,4 +1,5 @@
 using System;
+using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
 using Cysharp.Threading.Tasks;
 using UnityEngine;

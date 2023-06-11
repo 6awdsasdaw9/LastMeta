@@ -1,11 +1,10 @@
-using System;
 using Code.Logic.DayOfTime;
-using Code.Services;
-using Code.UI.HeadUpDisplay;
+using Code.PresentationModel;
+using Code.PresentationModel.HeadUpDisplay;
 using UnityEngine;
 using Zenject;
 
-namespace Code.UI.Adaptors
+namespace Code.Logic.Adaptors
 {
     public class TimeOfDayAdapter: MonoBehaviour
     {

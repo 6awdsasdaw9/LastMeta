@@ -4,7 +4,7 @@ using Code.Character.Hero;
 using Code.Data.Configs;
 using Code.Data.GameData;
 
-namespace Code.Data.ProgressData
+namespace Code.Services.SaveServices
 {
     [Serializable]
     public class SavedData

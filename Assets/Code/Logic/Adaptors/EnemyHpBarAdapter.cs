@@ -1,4 +1,6 @@
-namespace Code.UI.Adaptors
+using Code.PresentationModel;
+
+namespace Code.Logic.Adaptors
 {
     public class EnemyHpBarAdapter : HpBarAdapter
     {

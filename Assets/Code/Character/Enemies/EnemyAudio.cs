@@ -1,7 +1,8 @@
-using UnityEngine;
+using Code.Audio.AudioPath;
 using FMODUnity;
+using UnityEngine;
 
-namespace Code.Audio
+namespace Code.Character.Enemies
 {
     /// <summary>
     /// Animation Events

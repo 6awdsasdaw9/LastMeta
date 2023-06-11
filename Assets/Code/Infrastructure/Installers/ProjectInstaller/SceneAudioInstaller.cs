@@ -1,6 +1,7 @@
+using Code.Audio;
 using Zenject;
 
-namespace Code.Infrastructure.Installers
+namespace Code.Infrastructure.Installers.ProjectInstaller
 {
     public class SceneAudioInstaller : MonoInstaller
     {

@@ -1,13 +1,13 @@
 using System.Linq;
 using Code.Logic.Interactive;
+using Code.PresentationModel.HeadUpDisplay;
+using Code.PresentationModel.Windows;
 using Code.Services;
 using Code.Services.Input;
-using Code.UI.HeadUpDisplay;
-using Code.UI.Windows;
 using UnityEngine;
 using Zenject;
 
-namespace Code.UI.Adaptors
+namespace Code.Logic.Adaptors
 {
     public class HudAdapter : MonoBehaviour
     {

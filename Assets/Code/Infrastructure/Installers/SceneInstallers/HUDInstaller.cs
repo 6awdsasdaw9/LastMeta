@@ -1,9 +1,9 @@
 using Code.Data.Configs;
-using Code.UI.HeadUpDisplay;
+using Code.PresentationModel.HeadUpDisplay;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Infrastructure.Installers
+namespace Code.Infrastructure.Installers.SceneInstallers
 {
     public class HUDInstaller : MonoInstaller
     {

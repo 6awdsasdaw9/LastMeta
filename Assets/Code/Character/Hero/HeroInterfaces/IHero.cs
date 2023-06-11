@@ -1,7 +1,7 @@
-using Code.Character.Interfaces;
+using Code.Character.Common.CommonCharacterInterfaces;
 using UnityEngine;
 
-namespace Code.Character.Hero
+namespace Code.Character.Hero.HeroInterfaces
 {
     public interface IHero
     {

@@ -1,7 +1,9 @@
 using System.Linq;
+using Code.Character.Hero.HeroInterfaces;
+using Code.Data;
 using Code.Data.Configs;
-using Code.Data.ProgressData;
 using Code.Services;
+using Code.Services.SaveServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -14,10 +16,10 @@ namespace Code.Character.Hero
         private SpawnPointsConfig _spawnPointsConfig;
 
         [Inject]
-        private void Construct(SavedDataCollection savedDataCollection, SpawnPointsConfig spawnPointsConfig)
+        private void Construct(SavedDataStorage savedDataStorage, SpawnPointsConfig spawnPointsConfig)
         {
             _spawnPointsConfig = spawnPointsConfig;
-            savedDataCollection.Add(this);
+            savedDataStorage.Add(this);
             _hero = GetComponent<IHero>();
         }
 

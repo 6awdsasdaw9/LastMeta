@@ -1,7 +1,8 @@
-using Code.Character.Interfaces;
+using Code.Character.Common.CommonCharacterInterfaces;
+using Code.PresentationModel;
 using UnityEngine;
 
-namespace Code.UI.Adaptors
+namespace Code.Logic.Adaptors
 {
     public class HpBarAdapter : MonoBehaviour
     {

@@ -1,9 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-namespace Code.Audio
+namespace Code.Audio.AudioEvents
 {
     public class TestUIAudioButton : MonoBehaviour
     {
