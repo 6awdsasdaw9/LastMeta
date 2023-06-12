@@ -4,7 +4,6 @@ using Code.Debugers;
 using DG.Tweening;
 using UnityEngine;
 using Zenject;
-using Logger = Code.Debugers.Logger;
 
 namespace Code.PresentationModel.Windows.WindowsAnimation
 {
@@ -30,7 +29,7 @@ namespace Code.PresentationModel.Windows.WindowsAnimation
 
         public override void PlayShow(Action WindowShowed)
         {
-            Logger.ColorLog($"1. VerticalWindowAnimation: {gameObject.name} play show", ColorType.Lightblue);
+            Logg.ColorLog($"1. VerticalWindowAnimation: {gameObject.name} play show", ColorType.Lightblue);
             _body.anchoredPosition = _downPos;
             _canvasGroup.alpha = 0;
 
@@ -52,7 +51,7 @@ namespace Code.PresentationModel.Windows.WindowsAnimation
 
         public override void PlayHide(Action WindowHidden)
         {
-            Logger.ColorLog($"2. VerticalWindowAnimation: {gameObject.name} play hide", ColorType.Lightblue);
+            Logg.ColorLog($"2. VerticalWindowAnimation: {gameObject.name} play hide", ColorType.Lightblue);
             _body.anchoredPosition = _centerPos;
             _canvasGroup.alpha = 1;
 

@@ -554,7 +554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 244853699811189031, guid: 384656fa2fa493a41a554985c5d4754d, type: 3}
       propertyPath: timeOfDay
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 244853700423049454, guid: 384656fa2fa493a41a554985c5d4754d, type: 3}
       propertyPath: m_LocalRotation.w

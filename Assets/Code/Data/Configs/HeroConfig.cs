@@ -6,8 +6,7 @@ namespace Code.Data.Configs
     [CreateAssetMenu(fileName = "HeroConfig", menuName = "ScriptableObjects/GameData/HeroConfig")]
     public class HeroConfig : ScriptableObject
     {
-        public Constants.Scenes initialScene;
-        public GameData.HeroConfig heroConfig;
+        public HeroParams HeroParams;
     }
 
 }

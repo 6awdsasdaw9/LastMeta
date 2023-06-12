@@ -5,11 +5,12 @@ using Zenject;
 
 namespace Code.Infrastructure.Installers.ProjectInstaller
 {
-    [CreateAssetMenu(fileName = "ScriptableObjectsInstaller", menuName = "ScriptableObjects/GameSettings/ScriptableObjectsInstaller")]
+    [CreateAssetMenu(fileName = "ScriptableObjectsInstaller", menuName = "ScriptableObjects/ScriptableObjectsInstaller")]
     public class ScriptableObjectsInstaller: ScriptableObjectInstaller<ScriptableObjectsInstaller>
     {
+        public ScenesConfig ScenesConfig;
         public GameSettings GameSettings;
-        public HeroConfig heroConfig;
+        public HeroConfig HeroConfig;
         public PrefabsData PrefabsData;
         public TextConfig TextConfig;
         public SceneAudioPath SceneAudioPath;
@@ -17,8 +18,9 @@ namespace Code.Infrastructure.Installers.ProjectInstaller
         public SpawnPointsConfig SpawnPointsConfig;
         public override void InstallBindings()
         {
+            Container.BindInstance(ScenesConfig);
             Container.BindInstance(GameSettings);
-            Container.BindInstance(heroConfig);
+            Container.BindInstance(HeroConfig);
             Container.BindInstance(PrefabsData);
             Container.BindInstance(TextConfig);
             Container.BindInstance(SceneAudioPath);

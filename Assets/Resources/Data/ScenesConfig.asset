@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8209e9f5bd204becb110b2b25d376471, type: 3}
+  m_Name: ScenesConfig
+  m_EditorClassIdentifier: 
+  InitialScene: 4
+  ScenesParams:
+  - Scene: 1
+    GameMode: 0
+    Music:
+      Guid:
+        Data1: 492783442
+        Data2: 1301200461
+        Data3: -1493820014
+        Data4: 1745945372
+      Path: event:/Music/Music_Home
+    Ambience:
+      Guid:
+        Data1: 874724570
+        Data2: 1314933864
+        Data3: -1762680390
+        Data4: 1508453363
+      Path: event:/Ambience/Home_Ambiece
+    TimeOfDaySettings:
+      LightParams:
+      - TimeOfDay: 0
+        DirectionLightIntensity: 0.9
+        DirectionLightAngle: {x: 5, y: -2, z: 0}
+      - TimeOfDay: 1
+        DirectionLightIntensity: 0.45
+        DirectionLightAngle: {x: -35, y: 7, z: 0}
+      - TimeOfDay: 2
+        DirectionLightIntensity: 0.15
+        DirectionLightAngle: {x: -55, y: 13, z: 0}
+  - Scene: 2
+    GameMode: 1
+    Music:
+      Guid:
+        Data1: -929877944
+        Data2: 1304179162
+        Data3: -1340336500
+        Data4: -375817776
+      Path: event:/Music/Music_1
+    Ambience:
+      Guid:
+        Data1: 1240592419
+        Data2: 1143234125
+        Data3: -1700461924
+        Data4: 7084308
+      Path: event:/Ambience/Wind_Level_01
+    TimeOfDaySettings:
+      LightParams:
+      - TimeOfDay: 0
+        DirectionLightIntensity: 0.9
+        DirectionLightAngle: {x: 5, y: -2, z: 0}
+      - TimeOfDay: 1
+        DirectionLightIntensity: 0.45
+        DirectionLightAngle: {x: -35, y: 7, z: 0}
+      - TimeOfDay: 2
+        DirectionLightIntensity: 0.15
+        DirectionLightAngle: {x: -55, y: 13, z: 0}
+  - Scene: 4
+    GameMode: 1
+    Music:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    Ambience:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    TimeOfDaySettings:
+      LightParams:
+      - TimeOfDay: 0
+        DirectionLightIntensity: 0.9
+        DirectionLightAngle: {x: 5, y: -2, z: 0}
+      - TimeOfDay: 1
+        DirectionLightIntensity: 0.45
+        DirectionLightAngle: {x: -35, y: 7, z: 0}
+      - TimeOfDay: 2
+        DirectionLightIntensity: 0.15
+        DirectionLightAngle: {x: -55, y: 13, z: 0}

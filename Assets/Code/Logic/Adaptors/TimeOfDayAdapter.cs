@@ -9,15 +9,15 @@ namespace Code.Logic.Adaptors
     public class TimeOfDayAdapter: MonoBehaviour
     {
         private SliderController _sliderTimeOfDay;
-        private TimeOfDayController _timeOfDayController;
+        private GameClock _gameClock;
 
-        private bool _isEmptyAdapter => _sliderTimeOfDay == null || _timeOfDayController == null;
+        private bool _isEmptyAdapter => _sliderTimeOfDay == null || _gameClock == null;
         
         [Inject]
-        private void Construct(Hud hud, TimeOfDayController timeOfDayController)
+        private void Construct(Hud hud, GameClock gameClock)
         {
             _sliderTimeOfDay = hud.SliderTimeOfDay;
-            _timeOfDayController = timeOfDayController;
+            _gameClock = gameClock;
 
             if (_isEmptyAdapter)
             {
@@ -27,7 +27,7 @@ namespace Code.Logic.Adaptors
 
         private void LateUpdate()
         {
-            _sliderTimeOfDay.SetValue(_timeOfDayController.DayTimeNormalized);
+            _sliderTimeOfDay.SetValue(_gameClock.DayTimeNormalized);
         }
 
     }

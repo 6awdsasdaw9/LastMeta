@@ -1,3 +1,4 @@
+using Code.Logic.DayOfTime;
 using Code.Services.SaveServices;
 using Zenject;
 
@@ -7,11 +8,13 @@ namespace Code.Infrastructure.Installers.SceneInstallers
     {
         private SavedDataStorage _savedDataStorage;
         private SavedService _savedService;
-        
+        private GameClock _gameClock;
+
         [Inject]
-        private void Construct(SavedService savedService)
+        private void Construct(SavedService savedService,GameClock gameClock)
         {
             _savedService = savedService;
+            _gameClock = gameClock;
         }
         public override void InstallBindings()
         {
@@ -31,7 +34,7 @@ namespace Code.Infrastructure.Installers.SceneInstallers
 
         private void BindSaveData()
         {
-            _savedDataStorage = new SavedDataStorage();
+            _savedDataStorage = new SavedDataStorage(_gameClock);
             Container.Bind<SavedDataStorage>().FromInstance(_savedDataStorage).AsSingle().NonLazy();
         }
 

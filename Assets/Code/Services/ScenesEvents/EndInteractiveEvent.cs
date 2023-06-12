@@ -16,7 +16,7 @@ namespace Code.Services.ScenesEvents
 
         private void OnEndInteractive()
         {
-            Logger.ColorLog("Event: OnEndInteractive",ColorType.Red);
+            Logg.ColorLog("Event: OnEndInteractive",ColorType.Red);
             _interactivityHandler.OnEndInteractive -= OnEndInteractive;
             
             EnableFollows(_objectsToEnable).Forget();

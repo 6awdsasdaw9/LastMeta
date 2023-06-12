@@ -34,8 +34,8 @@ namespace Code.Character.Hero
         [Inject]
         private void Construct(HeroConfig heroConfig)
         {
-            _frictionMaterial = heroConfig.heroConfig.FrictionMaterial;
-            _noFrictionMaterial = heroConfig.heroConfig.NoFrictionMaterial;
+            _frictionMaterial = heroConfig.HeroParams.FrictionMaterial;
+            _noFrictionMaterial = heroConfig.HeroParams.NoFrictionMaterial;
             _hero = GetComponent<IHero>();
         }
 

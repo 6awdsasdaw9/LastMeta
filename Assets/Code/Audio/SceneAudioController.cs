@@ -46,6 +46,31 @@ namespace Code.Audio
 
         #region Play
 
+        public void ChangeSceneAudio(EventReference music ,EventReference ambience )
+        {
+            if (ambience.IsNull)
+            {
+                StopAmbience();
+            }
+            else if(!IsCurrentAmbienceEvent(ambience))
+            {
+                StopAmbience();
+                SetAmbienceEvent(ambience);
+                PlayAmbience();
+            }
+            
+            if (ambience.IsNull)
+            {
+                StopAmbience();
+            }
+            else if(IsCurrentMusicEvent(music))
+            {
+                StopMusic();
+               SetMusicEvent(music);
+               PlayMusic();
+            }
+        }
+
         public void PlayAmbience()
         {
             if (_ambienceEvent.IsNull)

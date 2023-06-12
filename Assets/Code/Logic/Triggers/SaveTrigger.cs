@@ -7,7 +7,6 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
-using Logger = Code.Debugers.Logger;
 
 namespace Code.Logic.Triggers
 {

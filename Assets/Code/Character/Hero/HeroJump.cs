@@ -17,7 +17,7 @@ namespace Code.Character.Hero
 
         private IHero _hero;
         private InputService _input;
-        private Data.GameData.HeroConfig _config;
+        private Data.GameData.HeroParams _params;
 
         #region Values
 
@@ -44,9 +44,9 @@ namespace Code.Character.Hero
         {
             _hero = GetComponent<IHero>();
             _input = input;
-            _config = heroConfig.heroConfig;
-            _jumpHeight = heroConfig.heroConfig.jumpHeight;
-            _maxAirJumps = heroConfig.heroConfig.maxAirJumps;
+            _params = heroConfig.HeroParams;
+            _jumpHeight = heroConfig.HeroParams.jumpHeight;
+            _maxAirJumps = heroConfig.HeroParams.maxAirJumps;
         }
 
         private void OnEnable() => 
@@ -94,7 +94,7 @@ namespace Code.Character.Hero
 
         private bool IsCanJump() =>
             _hero.Collision.OnGround
-            || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < _config.coyoteTime)
+            || (_coyoteTimeCounter > 0.03f && _coyoteTimeCounter < _params.coyoteTime)
             || _isCanJumpAgain;
 
         private void CheckCoyoteTime()
@@ -107,12 +107,12 @@ namespace Code.Character.Hero
 
         private void CheckJumpBuffer()
         {
-            if (!(_config.jumpBuffer > 0) || !_isDesiredJump)
+            if (!(_params.jumpBuffer > 0) || !_isDesiredJump)
                 return;
 
             _jumpBufferCounter += Time.deltaTime;
 
-            if (_jumpBufferCounter > _config.jumpBuffer)
+            if (_jumpBufferCounter > _params.jumpBuffer)
             {
                 _isDesiredJump = false;
                 _jumpBufferCounter = 0;
@@ -146,7 +146,7 @@ namespace Code.Character.Hero
                 }
             }
 
-            _body.velocity = new Vector3(_velocity.x, Mathf.Clamp(_velocity.y, -_config.speedLimit, 100));
+            _body.velocity = new Vector3(_velocity.x, Mathf.Clamp(_velocity.y, -_params.speedLimit, 100));
         }
 
         private void Jump()

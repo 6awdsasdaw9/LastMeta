@@ -1,18 +1,20 @@
+using Code.Data.GameData;
 using Code.Services;
 using Code.Services.SaveServices;
+using DG.Tweening;
 using Zenject;
 
 namespace Code.Infrastructure.StateMachine.States
 {
     public class BootstrapState : IState
     {
-        private readonly GameStateMachine _stateMachine;
+        private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
         private readonly SavedService _savedService;
 
-        public BootstrapState(GameStateMachine stateMachine, DiContainer container)
+        public BootstrapState(GameStateMachine gameStateMachine, DiContainer container)
         {
-            _stateMachine = stateMachine;
+            _gameStateMachine = gameStateMachine;
             _sceneLoader = container.Resolve<SceneLoader>();
             _savedService = container.Resolve<SavedService>();
         }
@@ -20,6 +22,7 @@ namespace Code.Infrastructure.StateMachine.States
         public void Enter()
         {
             _sceneLoader.Load(Constants.Scenes.Initial.ToString(), onLoaded: EnterLoadLevel);
+            //DOTween.SetTweensCapacity(2000, 100);
         }
 
         public void Exit()
@@ -29,10 +32,8 @@ namespace Code.Infrastructure.StateMachine.States
         private void EnterLoadLevel()
         {
             _savedService.LoadData();
-
-            var level = _savedService.SavedData.CurrentScene;
-
-            _stateMachine.Enter<LoadLevelState, string>(level);
+      
+            _gameStateMachine.Enter<LoadLevelState, string>(_savedService.SavedData.CurrentScene);
         }
     }
 }

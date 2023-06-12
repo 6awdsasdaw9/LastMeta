@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Code.Data.GameData
 {
     [Serializable]
-    public class HeroConfig
+    public class HeroParams
     {
         [Title("Health")]
         public float maxHP = 20;

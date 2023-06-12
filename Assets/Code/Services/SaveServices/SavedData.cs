@@ -10,6 +10,9 @@ namespace Code.Services.SaveServices
     public class SavedData
     {
         public string CurrentScene;
+
+
+        public TimeData TimeData;
         public HealthData HeroHealth;
         public HeroUpgradesData HeroUpgradesLevel;
         public PositionData HeroPosition;
@@ -17,9 +20,15 @@ namespace Code.Services.SaveServices
         public Dictionary<string, Vector3Data> ObjectsPosition;
         public Dictionary<string, PointData> SceneSpawnPoints;
 
-        public float currentTime;
+        
         public SavedData()
         {
+            TimeData = new TimeData
+            {
+                Seconds =  0,
+                Day = 1,
+                TimeOfDay = TimeOfDay.Morning.ToString(),
+            };
             HeroPosition = new PositionData();
             CameraPosition = new PositionData();
             HeroHealth = new HealthData();
@@ -27,6 +36,7 @@ namespace Code.Services.SaveServices
             ObjectsPosition = new Dictionary<string, Vector3Data>();
             SceneSpawnPoints = new Dictionary<string, PointData>();
         }
+
     }
 
 }

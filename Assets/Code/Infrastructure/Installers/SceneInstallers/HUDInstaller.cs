@@ -1,5 +1,6 @@
 using Code.Data.Configs;
 using Code.PresentationModel.HeadUpDisplay;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
@@ -7,7 +8,7 @@ namespace Code.Infrastructure.Installers.SceneInstallers
 {
     public class HUDInstaller : MonoInstaller
     {
-        [SerializeField] private Constants.GameMode gameMode; 
+        [SerializeField, EnumToggleButtons] private Constants.GameMode gameMode; 
         private HudSettings _hudSettings;
 
         [Inject]

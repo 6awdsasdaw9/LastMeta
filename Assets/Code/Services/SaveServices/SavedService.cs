@@ -4,7 +4,6 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
-using Logger = Code.Debugers.Logger;
 
 namespace Code.Services.SaveServices
 {
@@ -15,12 +14,14 @@ namespace Code.Services.SaveServices
         private FileDataHandler _dataHandler;
         private SavedDataStorage _dataStorage;
         private HeroConfig _heroConfig;
+        private ScenesConfig _scenesConfig;
         public SavedData SavedData { get; private set; }
 
         [Inject]
-        private void Construct(HeroConfig heroConfig)
+        private void Construct(HeroConfig heroConfig, ScenesConfig scenesConfig)
         {
             _heroConfig = heroConfig;
+            _scenesConfig = scenesConfig;
         }
 
         public void SetSavedDataCollection(SavedDataStorage storage)
@@ -46,7 +47,7 @@ namespace Code.Services.SaveServices
 
             if (SavedData == null)
             {
-                Logger.ColorLog("No data was found. Initializing data to defaults.", ColorType.Olive);
+                Logg.ColorLog("No data was found. Initializing data to defaults.", ColorType.Olive);
                 NewProgress();
             }
         }
@@ -59,7 +60,7 @@ namespace Code.Services.SaveServices
 
             if (SavedData == null)
             {
-                Logger.ColorLog("No data was found.A new Game nees to be started before data can be saved",
+                Logg.ColorLog("No data was found.A new Game nees to be started before data can be saved",
                     LogStyle.Warning);
                 return;
             }
@@ -84,10 +85,10 @@ namespace Code.Services.SaveServices
 
             SavedData = new SavedData
             {
-                CurrentScene = _heroConfig.initialScene.ToString(),
+                CurrentScene = _scenesConfig.InitialScene.ToString(),
                 HeroHealth =
                 {
-                    MaxHP = _heroConfig.heroConfig.maxHP
+                    MaxHP = _heroConfig.HeroParams.maxHP
                 },
             };
 

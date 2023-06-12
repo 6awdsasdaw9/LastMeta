@@ -19,7 +19,7 @@ namespace Code.Character.Hero
         [SerializeField] private Rigidbody _body;
 
         private IHero _hero;
-        private Data.GameData.HeroConfig _heroConfig;
+        private Data.GameData.HeroParams _heroParams;
         private InputService _input;
 
         #region Values
@@ -51,7 +51,7 @@ namespace Code.Character.Hero
         {
             _hero = GetComponent<IHero>();
             _input = input;
-            _heroConfig = heroConfig.heroConfig;
+            _heroParams = heroConfig.HeroParams;
             //dataCollection.Add(this);
         }
 
@@ -156,7 +156,7 @@ namespace Code.Character.Hero
         private void SetDesiredVelocity()
         {
             //TODO Непотребство
-            var speedMultiplayer = _heroConfig.maxSpeed;
+            var speedMultiplayer = _heroParams.maxSpeed;
 
             if (_hero.Upgrade != null)
                 speedMultiplayer += _hero.Upgrade.BonusSpeed;
@@ -170,9 +170,9 @@ namespace Code.Character.Hero
 
         private void MoveWithAcceleration()
         {
-            _acceleration = _hero.Collision.OnGround ? _heroConfig.maxAcceleration : _heroConfig.maxAirAcceleration;
-            _deceleration = _hero.Collision.OnGround ? _heroConfig.maxDeceleration : _heroConfig.maxAirDeceleration;
-            _turnSpeed = _hero.Collision.OnGround ? _heroConfig.maxTurnSpeed : _heroConfig.maxAirTurnSpeed;
+            _acceleration = _hero.Collision.OnGround ? _heroParams.maxAcceleration : _heroParams.maxAirAcceleration;
+            _deceleration = _hero.Collision.OnGround ? _heroParams.maxDeceleration : _heroParams.maxAirDeceleration;
+            _turnSpeed = _hero.Collision.OnGround ? _heroParams.maxTurnSpeed : _heroParams.maxAirTurnSpeed;
 
             if (_pressingMove)
             {
@@ -187,7 +187,7 @@ namespace Code.Character.Hero
             }
 
             _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange) *
-                          (IsCrouch ? _heroConfig.crouchSpeed : 1);
+                          (IsCrouch ? _heroParams.crouchSpeed : 1);
 
             if (_heroCanMove)
             {

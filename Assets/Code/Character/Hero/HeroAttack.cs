@@ -25,7 +25,7 @@ namespace Code.Character.Hero
         {
             _hero = GetComponent<IHero>();
             _inputService = inputService;
-            _power = heroConfig.heroConfig.power;
+            _power = heroConfig.HeroParams.power;
             _layerMask = 1 << LayerMask.NameToLayer(Constants.HittableLayer);
         }
 

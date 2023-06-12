@@ -2,7 +2,6 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
-using LightingSettings = Code.Logic.DayOfTime.LightingSettings;
 
 namespace Code.Data.Configs
 {
@@ -13,7 +12,7 @@ namespace Code.Data.Configs
             indent: false)]
         public float DurationOfDayTime => DayTimeInSeconds * 0.5f;
         public float DayTimeInSeconds = 50;
-        public LightingSettings LightingSettings;
+        //public LightingSettings LightingSettings;
         
         [Space] 
         public PhysicsMaterials PhysicMaterial;

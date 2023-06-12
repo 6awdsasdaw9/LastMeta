@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Code.Logic.DayOfTime;
 
 namespace Code.Services.SaveServices
 {
@@ -6,6 +7,11 @@ namespace Code.Services.SaveServices
     {
         private readonly List<ISavedData> _data = new();
         public IEnumerable<ISavedData> Data => _data;
+        
+        public SavedDataStorage(GameClock gameClock)
+        {
+            Add(gameClock);
+        }
         
         public void Add(ISavedData savedData) => 
             _data.Add(savedData);

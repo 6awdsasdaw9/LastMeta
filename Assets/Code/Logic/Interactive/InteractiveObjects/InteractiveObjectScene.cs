@@ -6,7 +6,6 @@ using Code.Infrastructure.StateMachine.States;
 using Code.Services.SaveServices;
 using UnityEngine;
 using Zenject;
-using Logger = Code.Debugers.Logger;
 
 namespace Code.Logic.Interactive.InteractiveObjects
 {
@@ -40,14 +39,14 @@ namespace Code.Logic.Interactive.InteractiveObjects
             var points = _spawnPointsConfig.SceneSpawnPoints.FirstOrDefault(p => p.Scene == _interactiveScene)?.Points;
             if (points == null)
             {
-                Logger.ColorLog("Interactive object scene: Can'not find points in Spawn Points Config", LogStyle.Error);
+                Logg.ColorLog("Interactive object scene: Can'not find points in Spawn Points Config", LogStyle.Error);
                 return;
             }
 
             var spawnPoint = points.FirstOrDefault(p => p.ID == _spawnPointID);
             if (spawnPoint == null)
             {
-                Logger.ColorLog("Interactive object scene: Can'not find a spawn point by ID", LogStyle.Error);
+                Logg.ColorLog("Interactive object scene: Can'not find a spawn point by ID", LogStyle.Error);
                 return;
             }
 

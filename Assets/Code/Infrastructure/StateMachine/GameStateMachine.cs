@@ -16,7 +16,11 @@ namespace Code.Infrastructure.StateMachine
             {
                 [typeof(BootstrapState)] = new BootstrapState(this,container),
                 [typeof(LoadLevelState)] = new LoadLevelState(this, container),
-                [typeof(GameLoopState)] = new GameLoopState(this),
+                [typeof(MorningState)] = new MorningState(this,container),
+                [typeof(EveningState)] = new EveningState(this,container),
+                [typeof(NightState)] = new NightState(this,container),
+                [typeof(PauseState)] = new PauseState(this,container),
+                
             };
         }
 

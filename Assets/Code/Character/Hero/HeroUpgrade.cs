@@ -13,7 +13,7 @@ namespace Code.Character.Hero
 {
     public class HeroUpgrade : MonoBehaviour,  IHeroUpgrade
     {
-        private Data.GameData.HeroConfig _heroConfig;
+        private Data.GameData.HeroParams _heroParams;
         
         public HeroUpgradesData UpgradesLevel => _upgradesData;
         private HeroUpgradesData _upgradesData = new HeroUpgradesData();
@@ -25,7 +25,7 @@ namespace Code.Character.Hero
         [Inject]
         private void Construct(HeroConfig heroConfig, SavedDataStorage dataStorage)
         {
-            _heroConfig = heroConfig.heroConfig;
+            _heroParams = heroConfig.HeroParams;
            // dataCollection.Add(this);
         }
 
@@ -78,7 +78,7 @@ namespace Code.Character.Hero
 
         private float GetUpgradeParam(UpgradeParamType paramType, int level)
         {
-            var values = _heroConfig.UpgradeParams
+            var values = _heroParams.UpgradeParams
                 .FirstOrDefault(s => s.Type == paramType)
                 ?.Values;
 
