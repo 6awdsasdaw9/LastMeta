@@ -17,7 +17,7 @@ namespace Code.Character.Hero
         private bool _isDeath;
         
         [Inject]
-        private void Construct(PrefabsData prefabsData, MovementLimiter limiter)
+        private void Construct(AssetsConfig assetsConfig, MovementLimiter limiter)
         {
             _hero = GetComponent<IHero>();
             _hero.Health.HealthChanged += HealthChanged;

@@ -11,14 +11,15 @@ namespace Code.Logic.Adaptors
 {
     public class HudAdapter : MonoBehaviour
     {
-        [SerializeField] private Hud _hud;
+        private Hud _hud;
 
         private MovementLimiter _movementLimiter;
         private InputService _input;
         
         [Inject]
-        public void Construct(MovementLimiter movementLimiter, InputService inputService)
+        public void Construct(Hud hud,MovementLimiter movementLimiter, InputService inputService)
         {
+            _hud = hud;
             _movementLimiter = movementLimiter;
             _input = inputService;
         }
@@ -59,11 +60,11 @@ namespace Code.Logic.Adaptors
             
             if (flag)
             {
-                dialogueWindow.CloseButton.OnStartTap += SimulatePressingEsc;
+                dialogueWindow.CloseDefaultButton.OnStartTap += SimulatePressingEsc;
             }
             else
             {
-                dialogueWindow.CloseButton.OnStartTap -= SimulatePressingEsc;
+                dialogueWindow.CloseDefaultButton.OnStartTap -= SimulatePressingEsc;
             }
         }
 

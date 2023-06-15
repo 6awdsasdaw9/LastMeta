@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ScenesConfig
   m_EditorClassIdentifier: 
   InitialScene: 4
+  DayTimeInSeconds: 50
   ScenesParams:
   - Scene: 1
     GameMode: 0
@@ -33,14 +34,18 @@ MonoBehaviour:
     TimeOfDaySettings:
       LightParams:
       - TimeOfDay: 0
+        Duration: 0.3
         DirectionLightIntensity: 0.9
         DirectionLightAngle: {x: 5, y: -2, z: 0}
       - TimeOfDay: 1
+        Duration: 0.5
         DirectionLightIntensity: 0.45
         DirectionLightAngle: {x: -35, y: 7, z: 0}
       - TimeOfDay: 2
+        Duration: 1
         DirectionLightIntensity: 0.15
         DirectionLightAngle: {x: -55, y: 13, z: 0}
+    Points: []
   - Scene: 2
     GameMode: 1
     Music:
@@ -60,14 +65,18 @@ MonoBehaviour:
     TimeOfDaySettings:
       LightParams:
       - TimeOfDay: 0
+        Duration: 0.3
         DirectionLightIntensity: 0.9
         DirectionLightAngle: {x: 5, y: -2, z: 0}
       - TimeOfDay: 1
+        Duration: 0.5
         DirectionLightIntensity: 0.45
         DirectionLightAngle: {x: -35, y: 7, z: 0}
       - TimeOfDay: 2
+        Duration: 1
         DirectionLightIntensity: 0.15
         DirectionLightAngle: {x: -55, y: 13, z: 0}
+    Points: []
   - Scene: 4
     GameMode: 1
     Music:
@@ -87,11 +96,17 @@ MonoBehaviour:
     TimeOfDaySettings:
       LightParams:
       - TimeOfDay: 0
+        Duration: 0
         DirectionLightIntensity: 0.9
-        DirectionLightAngle: {x: 5, y: -2, z: 0}
+        DirectionLightAngle: {x: 5, y: -1, z: 0}
       - TimeOfDay: 1
+        Duration: 0.082
         DirectionLightIntensity: 0.45
         DirectionLightAngle: {x: -35, y: 7, z: 0}
       - TimeOfDay: 2
+        Duration: 0.277
         DirectionLightIntensity: 0.15
         DirectionLightAngle: {x: -55, y: 13, z: 0}
+    Points:
+    - ID: 0
+      Position: {x: 2.71, y: 0, z: 0}

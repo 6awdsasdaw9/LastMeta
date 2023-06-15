@@ -10,7 +10,7 @@ namespace Code.Character.Hero
     {
         [SerializeField] private HeroAudio _heroAudio;
         [SerializeField] private SpriteVFX spriteVFX;
-        private HealthData _healthData = new HealthData();
+        private HealthData _healthData = new();
         public event Action HealthChanged;
         
         public float Current
@@ -44,17 +44,29 @@ namespace Code.Character.Hero
 
         public void TakeDamage(float damage)
         {
-            if (Current <= 0)
+            if (Current <= 0 || damage <= 0)
                 return;
 
             _heroAudio.PlayDamageAudio();
             spriteVFX.RedColorize();
             
-            //TODO можно уйти в минус.
             _healthData.CurrentHP -= damage;
+            
+            if (_healthData.CurrentHP < 0)
+            {
+                _healthData.CurrentHP = 0;
+            }
             
             HealthChanged?.Invoke();
         }
-        
+
+        public void RestoreHealth(float health)
+        {
+            _healthData.CurrentHP += health;
+            if (_healthData.CurrentHP > _healthData.MaxHP)
+            {
+                _healthData.CurrentHP = _healthData.MaxHP;
+            }
+        }
     }
 }

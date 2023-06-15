@@ -40,6 +40,6 @@ namespace Code.Data.Configs
         public AudioEvent ChoiceAudioEvent;
         [Title("Prefabs")]
         public MessageBox MessageBoxPrefab;
-        public ChoiceButton ChoiceButtonPrefab;
+        public ChoiceDefaultButton choiceDefaultButtonPrefab;
     }
 }

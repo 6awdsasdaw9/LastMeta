@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5b98cc6c07448338424f602009cbab3, type: 3}
+  m_Name: AssetsConfig
+  m_EditorClassIdentifier: 
+  RealHeroPrefab: {fileID: 7280351799685329201, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
+  HeroPrefab: {fileID: 1280621597331884213, guid: 231f3597919323245ba45cfb13628748, type: 3}
+  VFX_PlayerDeath: {fileID: 133562983179559606, guid: 9b632883970053048893a6daed222162, type: 3}
+  NoFrictionMaterial: {fileID: 13400000, guid: fcfcf8c2d4b646646b44fcc6be381bd9, type: 2}
+  FrictionMaterial: {fileID: 13400000, guid: 3c785d7b9ae77704f8d3c4484c3028f0, type: 2}

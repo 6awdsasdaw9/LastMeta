@@ -12,5 +12,10 @@ namespace Code.Character.Common
                 .OnComplete(() => _spriteRenderer.DOColor(Color.white, 0.5f))
                 .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
+
+        public void FlipSprite()
+        {
+            _spriteRenderer.flipX =   !_spriteRenderer.flipX;
+        }
     }
 }

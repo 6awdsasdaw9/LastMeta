@@ -33,12 +33,22 @@ namespace Code.Character.Enemies
 
         public void Reset()
         {
+            _current = _max;
         }
 
         public void TakeDamage(float damage)
         {
             Current -= damage;
             HealthChanged?.Invoke();
+        }
+
+        public void RestoreHealth(float health)
+        {
+            _current += health;
+            if (_current > _max)
+            {
+                _current = _max;
+            }
         }
     }
 }

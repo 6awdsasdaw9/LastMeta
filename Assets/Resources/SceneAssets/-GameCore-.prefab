@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2540698931917206684}
+  - component: {fileID: 1154830437712252310}
   m_Layer: 0
   m_Name: HudAdapter
   m_TagString: Untagged
@@ -31,6 +32,18 @@ Transform:
   m_Father: {fileID: 2540698932209258051}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1154830437712252310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2540698931917206687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3521bfa9b71542be8c3056f4c1f0e993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2540698932121645061
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +121,7 @@ GameObject:
   - component: {fileID: 2540698933173521830}
   - component: {fileID: 2540698933173521831}
   m_Layer: 0
-  m_Name: TimeOfDayAdapter
+  m_Name: ClockAdapter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -13,5 +13,6 @@ namespace Code.Character.Common.CommonCharacterInterfaces
         void Set(HealthData healthData);
         void Reset();
         void TakeDamage(float damage);
+        void RestoreHealth(float health);
     }
 }

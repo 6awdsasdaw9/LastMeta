@@ -12,13 +12,19 @@ namespace Code.Logic.Objects.Movements
 
         [SerializeField] protected Axis CurrentAxis;
         [SerializeField] protected float Distance = 2;
+        [SerializeField] protected RangedFloat RandomBonusDistance;
         [SerializeField] protected float Speed = 2;
 
-        protected Vector3 TargetPosition;
+        protected Vector3 DefaultTargetPosition;
+
+        protected Vector3 RandomTargetPosition => CurrentAxis == Axis.X
+            ? DefaultTargetPosition + new Vector3(RandomBonusDistance.GetRandom(), 0, 0)
+            : DefaultTargetPosition + new Vector3(0,RandomBonusDistance.GetRandom(), 0);
+        
 
         protected virtual void SetPositions()
         {
-            TargetPosition = CurrentAxis switch
+            DefaultTargetPosition = CurrentAxis switch
             {
                 Axis.X => transform.position + Vector3.right * Distance,
                 Axis.Y => transform.position + Vector3.up * Distance,

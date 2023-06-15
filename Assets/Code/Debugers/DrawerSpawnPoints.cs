@@ -12,26 +12,26 @@ namespace Code.Debugers
 #if UNITY_EDITOR
 
         [SerializeField] private int _configIndex;
-        [SerializeField] private SpawnPointsConfig _config;
+        [SerializeField] private ScenesConfig _config;
 
         [ShowInInspector]
         private Constants.Scenes _selectedScene => 
-            _config.SceneSpawnPoints.Count <= _configIndex
+               _config == null || _config.ScenesParams.Count <= _configIndex
                 ? Constants.Scenes.Initial
-                : _config.SceneSpawnPoints[_configIndex].Scene;
+                : _config.ScenesParams[_configIndex].Scene;
         
         
         [ShowInInspector]
-        private List<PointData> points => _config.SceneSpawnPoints.Count <= _configIndex
+        private List<PointData> points =>  _config == null || _config.ScenesParams.Count <= _configIndex
             ? null
-            : _config.SceneSpawnPoints[_configIndex].Points;
+            : _config.ScenesParams[_configIndex].Points;
         private void OnDrawGizmos()
         {
             if (_config == null)
                 return;
 
             Gizmos.color = Color.cyan;
-            var scenePoints = _config.SceneSpawnPoints[_configIndex].Points;
+            var scenePoints = _config.ScenesParams[_configIndex].Points;
             for (var index = 0; index < scenePoints.Count; index++)
             {
                 var scenePoint = scenePoints[index];
@@ -42,7 +42,7 @@ namespace Code.Debugers
         [Button]
         private void SetPoints()
         {
-            _config.SceneSpawnPoints[_configIndex].Points.Clear();
+            _config.ScenesParams[_configIndex].Points.Clear();
 
             var saveTriggers = FindObjectsOfType<SaveTrigger>().ToList();
             saveTriggers.Sort(new SaveTriggerComparer());
@@ -51,7 +51,7 @@ namespace Code.Debugers
             {
                 var trigger = saveTriggers[index];
                 trigger.ID = index;
-                _config.SceneSpawnPoints[_configIndex].Points.Add(trigger.TriggerPointData);
+                _config.ScenesParams[_configIndex].Points.Add(trigger.TriggerPointData);
             }
         }
     }

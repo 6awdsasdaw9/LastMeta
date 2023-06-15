@@ -13,12 +13,12 @@ namespace Code.Character.Hero
     public class HeroLoader : MonoBehaviour, ISavedData
     {
         private IHero _hero;
-        private SpawnPointsConfig _spawnPointsConfig;
+        private ScenesConfig _scenesConfig;
 
         [Inject]
-        private void Construct(SavedDataStorage savedDataStorage, SpawnPointsConfig spawnPointsConfig)
+        private void Construct(SavedDataStorage savedDataStorage, ScenesConfig scenesConfig)
         {
-            _spawnPointsConfig = spawnPointsConfig;
+            _scenesConfig = scenesConfig;
             savedDataStorage.Add(this);
             _hero = GetComponent<IHero>();
         }
@@ -58,10 +58,7 @@ namespace Code.Character.Hero
         {
             if (savedData.SceneSpawnPoints.ContainsKey(CurrentLevel()))
             {
-                var points = _spawnPointsConfig.SceneSpawnPoints
-                    .FirstOrDefault(p => p.Scene.ToString() == CurrentLevel())
-                    ?.Points;
-                
+                var points = _scenesConfig.GetSceneParam(CurrentLevel())?.Points;
                 var point = points?.FirstOrDefault(p => p.ID == savedData.SceneSpawnPoints[CurrentLevel()].ID);
                 
                 if (point == null)

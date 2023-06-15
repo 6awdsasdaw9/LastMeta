@@ -7,18 +7,12 @@ namespace Code.Infrastructure.Installers.ProjectInstaller
     {
         public override void InstallBindings()
         {
-            BindSceneEvents();
-            BindTimeEvents();
+            BindEventsFacade();
         }
 
-        private void BindSceneEvents()
+        private void BindEventsFacade()
         {
-            Container.Bind<SceneEvents>().AsSingle().NonLazy();
-        }
-        
-        private void BindTimeEvents()
-        {
-            Container.Bind<TimeEvents>().AsSingle().NonLazy();
+            Container.Bind<EventsFacade>().AsSingle().NonLazy();
         }
     }
 }

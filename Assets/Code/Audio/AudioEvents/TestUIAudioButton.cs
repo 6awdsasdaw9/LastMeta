@@ -11,6 +11,8 @@ namespace Code.Audio.AudioEvents
         private void Awake()
         {
             Button button = GetComponent<Button>();
+            if(button == null)
+                return;
             button.onClick.AddListener(PlayAudio);
         }
 

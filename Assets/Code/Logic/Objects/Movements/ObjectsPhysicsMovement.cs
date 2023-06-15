@@ -10,9 +10,8 @@ namespace Code.Logic.Objects.Movements
 {
     public class ObjectsPhysicsMovement : ObjectsMovement
     {
-        [Space, Title("Components")] [SerializeField]
-        private Rigidbody _rigidbody;
-
+        [Space, Title("Components")] 
+        [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private BoxCollider _collider;
         [SerializeField] private PlatformFriction _friction;
         private MovementLimiter _movementLimiter;
@@ -21,19 +20,15 @@ namespace Code.Logic.Objects.Movements
         private bool _isMove = true;
 
         [Inject]
-        private void Construct(MovementLimiter limiter, GameSettings settings)
+        private void Construct(MovementLimiter limiter,AssetsConfig assetsConfig)
         {
             _movementLimiter = limiter;
-            SetParams(settings.PhysicMaterial);
+            SetPhysicsParams(assetsConfig.FrictionMaterial, assetsConfig.NoFrictionMaterial);
         }
 
         private void OnEnable()
         {
             SubscribeToEvents(true);
-        }
-
-        private void Start()
-        {
             SetPositions();
         }
 
@@ -81,15 +76,15 @@ namespace Code.Logic.Objects.Movements
         #region Forward
 
         private bool CheckDistance() =>
-            Vector3.Distance(transform.position, TargetPosition) < 0.1f;
+            Vector3.Distance(transform.position, DefaultTargetPosition) < 0.1f;
 
         private Vector3 GetForward() =>
-            (TargetPosition - transform.position).normalized;
+            (DefaultTargetPosition - transform.position).normalized;
 
         private void SwitchForward()
         {
             _rigidbody.velocity = Vector3.zero;
-            TargetPosition = TargetPosition == _startPosition ? _finishPosition : _startPosition;
+            DefaultTargetPosition = DefaultTargetPosition == _startPosition ? _finishPosition : _startPosition;
         }
 
         #endregion
@@ -107,15 +102,15 @@ namespace Code.Logic.Objects.Movements
                 _ => transform.position
             };
 
-            TargetPosition = _finishPosition;
+            DefaultTargetPosition = _finishPosition;
         }
 
-        private void SetParams(PhysicsMaterials physicsMaterials)
+        private void SetPhysicsParams(PhysicMaterial frictionMaterial, PhysicMaterial noFrictionMaterial)
         {
             switch (CurrentAxis)
             {
                 case Axis.X:
-                    _collider.material = physicsMaterials.FrictionMaterial;
+                    _collider.material = frictionMaterial;
                     _rigidbody.useGravity = true;
                     _rigidbody.constraints = RigidbodyConstraints.FreezePositionY |
                                              RigidbodyConstraints.FreezeRotationZ |
@@ -124,7 +119,7 @@ namespace Code.Logic.Objects.Movements
                 case Axis.Y:
                     _friction.enabled = false;
                     _rigidbody.useGravity = false;
-                    _collider.material = physicsMaterials.NoFrictionMaterial;
+                    _collider.material = noFrictionMaterial;
                     _rigidbody.constraints = RigidbodyConstraints.FreezePositionX |
                                              RigidbodyConstraints.FreezeRotationZ |
                                              RigidbodyConstraints.FreezeRotation;

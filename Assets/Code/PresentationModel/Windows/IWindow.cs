@@ -25,6 +25,12 @@ namespace Code.PresentationModel.Windows
     {
         DialogueController DialogueController { get; }
 
-        ButtonTap CloseButton { get; }
+        HudButton CloseDefaultButton { get; }
+    }
+
+    public interface IHudWindow: IWindow
+    {
+        HudButton HudButton { get; }
+        HudButton CloseButton { get; }
     }
 }

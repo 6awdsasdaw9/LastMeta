@@ -7,23 +7,23 @@ namespace Code.Infrastructure.StateMachine
     public class PauseState : IState
     {
         private readonly GameStateMachine _gameStateMachine;
-        private readonly SceneEvents _sceneEvents;
+        private readonly EventsFacade _eventsFacade;
 
         public PauseState(GameStateMachine gameStateMachine, DiContainer container)
         {
             _gameStateMachine = gameStateMachine;
-            _sceneEvents = container.Resolve<SceneEvents>();
+            _eventsFacade = container.Resolve<EventsFacade>();
         }
 
         public void Enter()
         {
-            _sceneEvents.StartPauseEvent();
+            _eventsFacade.SceneEvents.StartPauseEvent();
             //TODO заглушить музыку. остановить движение
         }
 
         public void Exit()
         {
-            _sceneEvents.StopPauseEvent();
+            _eventsFacade.SceneEvents.StopPauseEvent();
             //TODO вернуть музыку. продолжить движение
         }
     }

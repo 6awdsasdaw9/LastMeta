@@ -8,21 +8,20 @@ namespace Code.Data.GameData
 {
     public class GameSceneData
     {
-        private readonly ScenesConfig _scenesConfig;
-
+        public readonly ScenesConfig ScenesConfig;
         public string CurrentScene { get; private set; }
-        public SceneParams SceneParams { get; private set; }
+        public SceneParams CurrentSceneParams { get; private set; }
         
       
         public GameSceneData(ScenesConfig scenesConfig)
         {
-            _scenesConfig = scenesConfig;
+            ScenesConfig = scenesConfig;
         }
         
         public void Init(SavedData savedData)
         {
             CurrentScene = savedData.CurrentScene;
-            SceneParams = _scenesConfig.GetSceneParam(CurrentScene);
+            CurrentSceneParams = ScenesConfig.GetSceneParam(CurrentScene);
         }
     }
 }

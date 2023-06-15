@@ -14,10 +14,10 @@ namespace Code.Character.Hero
         private IHero _hero;
 
         [Inject]
-        private void Construct(PrefabsData prefabsData)
+        private void Construct(AssetsConfig assetsConfig)
         {
             _hero = GetComponent<IHero>();
-            _deathFx = prefabsData.VFX_PlayerDeath;
+            _deathFx = assetsConfig.VFX_PlayerDeath;
         }
 
         public void PlayDeathVFX()

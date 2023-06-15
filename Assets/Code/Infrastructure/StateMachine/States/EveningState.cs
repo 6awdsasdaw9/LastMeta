@@ -11,7 +11,7 @@ namespace Code.Infrastructure.StateMachine
     public class EveningState : IState
     {
         private readonly GameStateMachine _gameStateMachine;
-        private readonly TimeEvents _timeEvents;
+        private readonly EventsFacade _eventsFacade;
         private readonly GameSceneData _gameSceneData;
         private readonly GameClock _gameClock;
 
@@ -20,22 +20,23 @@ namespace Code.Infrastructure.StateMachine
         public EveningState(GameStateMachine gameGameStateMachine, DiContainer diContainer)
         {
             _gameStateMachine = gameGameStateMachine;
-            _timeEvents = diContainer.Resolve<TimeEvents>();
+            _eventsFacade = diContainer.Resolve<EventsFacade>();
             _gameSceneData = diContainer.Resolve<GameSceneData>();
             _gameClock = diContainer.Resolve<GameClock>();
         }
 
         public void Enter()
         {
-            var timeParam = _gameSceneData.SceneParams.TimeOfDaySettings.GetLightParams(TimeOfDay.Evening);
+            var timeParam = _gameSceneData.CurrentSceneParams.TimeOfDaySettings.GetLightParams(TimeOfDay.Evening);
            
-            if (!_gameSceneData.SceneParams.TimeOfDaySettings.IsEmpty && timeParam == null)
+            if (!_gameSceneData.CurrentSceneParams.TimeOfDaySettings.IsEmpty && timeParam == null)
             {
                 _gameStateMachine.Enter<NightState>();
                 return;
             }
             
-            _timeEvents.StartEveningEvent();
+            _gameClock.SetTimeOfDay(TimeOfDay.Evening);
+            _eventsFacade.TimeEvents.StartEveningEvent();
 
             WaitNight().Forget();
         }
@@ -44,7 +45,7 @@ namespace Code.Infrastructure.StateMachine
         public void Exit()
         {
             _cts?.Cancel();
-            _timeEvents.EndEveningEvent();
+            _eventsFacade.TimeEvents.EndEveningEvent();
         }
 
         private async UniTaskVoid WaitNight()

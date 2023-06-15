@@ -9,7 +9,7 @@ namespace Code.Infrastructure.Installers.SceneInstallers
     public class HeroInstaller : MonoInstaller
     {
         [SerializeField, EnumToggleButtons] private Constants.GameMode _gameMode;
-        [Inject] private PrefabsData _prefabsData;
+        [Inject] private AssetsConfig _assetsConfig;
 
         public override void InstallBindings()
         {
@@ -32,10 +32,10 @@ namespace Code.Infrastructure.Installers.SceneInstallers
             switch (_gameMode)
             {
                 case Constants.GameMode.Game:
-                    return _prefabsData.HeroPrefab;
+                    return _assetsConfig.HeroPrefab;
                 case Constants.GameMode.Real:
                 default:
-                    return _prefabsData.RealHeroPrefab;
+                    return _assetsConfig.RealHeroPrefab;
             }
         }
 

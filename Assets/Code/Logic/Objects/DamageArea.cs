@@ -1,5 +1,6 @@
 using System;
 using Code.Character.Hero.HeroInterfaces;
+using Code.Debugers;
 using Code.Logic.Triggers;
 using Code.Services;
 using Cysharp.Threading.Tasks;
@@ -13,7 +14,8 @@ namespace Code.Logic.Objects
         [SerializeField, Range(0,5)] private float _damage;
         [SerializeField,Range(0,5)] private float _pushPower;
         [SerializeField, Range(0,5)] private float _pushDuration;
-        [Space] [SerializeField] private Cooldown _cooldown;
+        
+        [Space,SerializeField] private Cooldown _cooldown;
         [SerializeField] private TriggerObserver _trigger;
 
         private IHero _hero;
@@ -24,33 +26,35 @@ namespace Code.Logic.Objects
             _hero = hero;
         }
     
-        private void OnEnable() => 
+        private void OnEnable()
+        {
             SubscribeToEvent(true);
+        }
 
-        private void OnDisable() => 
+        private void OnDisable()
+        {
             SubscribeToEvent(false);
-
-
+        }
+        
         private void SubscribeToEvent(bool flag)
         {
             if (_trigger == null)
                 return;
 
             if (flag)
-                _trigger.TriggerEnter += collider => TakeDamage();
+            {
+                _trigger.TriggerEnter+= OnTriggerEnter;
+            }
             else
-                _trigger.TriggerEnter -= collider => TakeDamage();
+            {
+                _trigger.TriggerEnter -= OnTriggerEnter;
+            }
+          
         }
 
-        private async UniTaskVoid CooldownRun()
+        private void OnTriggerEnter(Collider obj)
         {
-            while (!_cooldown.IsUp())
-            {
-                _cooldown.UpdateCooldown();
-                await UniTask.Delay(
-                    TimeSpan.FromSeconds(Time.deltaTime),
-                    cancellationToken: gameObject.GetCancellationTokenOnDestroy());
-            }
+            TakeDamage();
         }
 
         private void TakeDamage()
@@ -63,6 +67,17 @@ namespace Code.Logic.Objects
         
             ResetHeroSupportVelocity().Forget();
             CooldownRun().Forget();
+        }
+
+        private async UniTaskVoid CooldownRun()
+        {
+            while (!_cooldown.IsUp())
+            {
+                _cooldown.UpdateCooldown();
+                await UniTask.Delay(
+                    TimeSpan.FromSeconds(Time.deltaTime),
+                    cancellationToken: gameObject.GetCancellationTokenOnDestroy());
+            }
         }
 
         private async UniTaskVoid ResetHeroSupportVelocity()
@@ -80,5 +95,6 @@ namespace Code.Logic.Objects
 
         private Vector3 Direction() => 
             (transform.position - _hero.Transform.position).normalized;
+
     }
 }

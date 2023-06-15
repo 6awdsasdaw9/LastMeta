@@ -24,7 +24,7 @@ namespace Code.Infrastructure.StateMachine.States
         private readonly SceneAudioPath _sceneAudioPath;
         private readonly SavedService _savedService;
         private readonly GameSceneData _gameSceneData;
-        private readonly SceneEvents _sceneEvents;
+        private readonly EventsFacade _eventsFacade;
 
         public LoadLevelState(GameStateMachine gameGameStateMachine, DiContainer container)
         {
@@ -36,7 +36,7 @@ namespace Code.Infrastructure.StateMachine.States
             _sceneAudioController = container.Resolve<SceneAudioController>();
             _savedService = container.Resolve<SavedService>();
             _gameSceneData = container.Resolve<GameSceneData>();
-            _sceneEvents = container.Resolve<SceneEvents>();
+            _eventsFacade = container.Resolve<EventsFacade>();
         }
 
         public void Enter(string sceneName)
@@ -48,7 +48,7 @@ namespace Code.Infrastructure.StateMachine.States
         public void Exit()
         {
             _loadingCurtain.Hide();
-            _sceneEvents.LoadSceneEvent();
+            _eventsFacade.SceneEvents.LoadSceneEvent();
         }
 
         private void OnLoaded()
@@ -56,7 +56,7 @@ namespace Code.Infrastructure.StateMachine.States
             _savedService.LoadProgress();
             _gameSceneData.Init(_savedService.SavedData);
             
-            var sceneParam = _gameSceneData.SceneParams;
+            var sceneParam = _gameSceneData.CurrentSceneParams;
             if (sceneParam == null)
                 return;
 
