@@ -16,9 +16,11 @@ namespace Code.Character.Hero
         private InputService _inputService;
         private DamageParam _damageParam;
 
+        public DamageParam DamageParam => _damageParam;
         private readonly Collider[] _hits = new Collider[7];
         private bool _attackIsActive;
         private int _layerMask;
+
 
         [Inject]
         private void Construct(InputService inputService, HeroConfig heroConfig)

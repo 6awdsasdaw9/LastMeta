@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08b460bccc7b45e38d2bdd5774faa542, type: 3}
+  m_Script: {fileID: 11500000, guid: a28dfcb71c9342a0aeea76cd45925b5d, type: 3}
   m_Name: TextConfig_Eng
   m_EditorClassIdentifier: 
   DialogueErrorMessage: Lost internet connection
@@ -17,3 +17,31 @@ MonoBehaviour:
   - Id: 0
     inkJSON: {fileID: 4900000, guid: 67faf21d303225240821bfbbcc72fc4d, type: 3}
     NoteImage: {fileID: 21300000, guid: f58370575b8bca6479553e4bb52939e0, type: 3}
+  HudNamings:
+    NameMenuWindow: Menu
+    NameHeroInformationWindow: Hero
+    ArtifactsDescriptionText:
+    - Type: 0
+      Title: Right sock
+      Description: Get dash
+    - Type: 1
+      Title: Left sock
+      Description: Get duble jump
+    - Type: 2
+      Title: Hand
+      Description: Hand fight
+    - Type: 3
+      Title: Gun
+      Description: Get shooting
+    - Type: 4
+      Title: Vase
+      Description: You can have black substance
+    HeroParamsText:
+    - ParamType: 0
+      Title: Health
+    - ParamType: 1
+      Title: Damage
+    - ParamType: 2
+      Title: Speed
+    - ParamType: 3
+      Title: Jump height

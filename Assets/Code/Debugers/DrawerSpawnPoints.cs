@@ -9,7 +9,7 @@ namespace Code.Debugers
 {
     public class DrawerSpawnPoints : MonoBehaviour
     {
-#if UNITY_EDITOR
+
 
         [SerializeField] private int _configIndex;
         [SerializeField] private ScenesConfig _config;
@@ -72,5 +72,4 @@ namespace Code.Debugers
         }
     }
             
-#endif
 }

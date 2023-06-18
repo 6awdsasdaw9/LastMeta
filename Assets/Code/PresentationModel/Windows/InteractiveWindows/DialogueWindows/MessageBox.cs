@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Code.PresentationModel.Windows.DialogueWindows
 {
-    public class MessageBox: MonoBehaviour
+    public class MessageBox: HudElement
     {
         [SerializeField] private RectTransform _boxTransform;
         [SerializeField] private Image _backgroundImage;

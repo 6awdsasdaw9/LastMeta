@@ -1,4 +1,5 @@
 using System;
+using Code.Character.Hero.HeroInterfaces;
 
 namespace Code.Infrastructure.GlobalEvents
 {
@@ -13,5 +14,7 @@ namespace Code.Infrastructure.GlobalEvents
         public event Action OnStopPause;
         public void StopPauseEvent() => OnStopPause?.Invoke();
         
+        public event Action<IHero> OnInitHero;
+        public void InitHeroEvent(IHero hero) => OnInitHero?.Invoke(hero);
     }
 }

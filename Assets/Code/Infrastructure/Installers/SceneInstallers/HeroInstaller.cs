@@ -1,5 +1,6 @@
 using Code.Character.Hero;
 using Code.Data.Configs;
+using Code.Infrastructure.GlobalEvents;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -9,7 +10,15 @@ namespace Code.Infrastructure.Installers.SceneInstallers
     public class HeroInstaller : MonoInstaller
     {
         [SerializeField, EnumToggleButtons] private Constants.GameMode _gameMode;
-        [Inject] private AssetsConfig _assetsConfig;
+        private AssetsConfig _assetsConfig;
+        private EventsFacade _eventsFacade;
+
+        [Inject]
+        private void Construct(AssetsConfig assetsConfig, EventsFacade eventsFacade)
+        {
+            _assetsConfig = assetsConfig;
+            _eventsFacade = eventsFacade;
+        }
 
         public override void InstallBindings()
         {
@@ -25,6 +34,7 @@ namespace Code.Infrastructure.Installers.SceneInstallers
                 null);
             
             Container.BindInterfacesTo<Hero>().FromInstance(hero).AsSingle().NonLazy();
+            _eventsFacade?.SceneEvents.InitHeroEvent(hero);
         }
 
         private Hero GetHeroPrefabs()

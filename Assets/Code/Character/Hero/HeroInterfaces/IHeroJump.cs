@@ -4,5 +4,6 @@ namespace Code.Character.Hero.HeroInterfaces
 {
     public interface IHeroJump: IDisabledComponent
     {
+         float Height { get; }
     }
 }

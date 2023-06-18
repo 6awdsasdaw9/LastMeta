@@ -7,6 +7,7 @@ namespace Code.PresentationModel.Windows
 {
     public interface IWindow
     {
+        
         void ShowWindow(Action WindowShowed = null);
         void HideWindow(Action WindowHidden = null);
     }
@@ -28,9 +29,5 @@ namespace Code.PresentationModel.Windows
         HudButton CloseDefaultButton { get; }
     }
 
-    public interface IHudWindow: IWindow
-    {
-        HudButton HudButton { get; }
-        HudButton CloseButton { get; }
-    }
+   
 }

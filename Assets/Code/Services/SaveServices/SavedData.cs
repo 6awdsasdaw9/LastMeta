@@ -20,8 +20,9 @@ namespace Code.Services.SaveServices
         public PositionData CameraPosition;
         public Dictionary<string, Vector3Data> ObjectsPosition;
         public Dictionary<string, PointData> SceneSpawnPoints;
+        public int Language;
 
-        
+
         public SavedData()
         {
             TimeData = new TimeData
@@ -38,7 +39,6 @@ namespace Code.Services.SaveServices
             ObjectsPosition = new Dictionary<string, Vector3Data>();
             SceneSpawnPoints = new Dictionary<string, PointData>();
         }
-
     }
 
 }

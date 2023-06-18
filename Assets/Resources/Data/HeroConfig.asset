@@ -40,13 +40,13 @@ MonoBehaviour:
   AbilitiesParams:
     DashLevelsData:
     - Cooldown: 3.5
-      SpeedBonus: 0
+      SpeedBonus: 5
       Duration: 0.2
     - Cooldown: 3
-      SpeedBonus: 0
+      SpeedBonus: 5.5
       Duration: 0.3
     - Cooldown: 2
-      SpeedBonus: 0
+      SpeedBonus: 6
       Duration: 0.4
     HandAttackLevelsData:
     - Cooldown: 2

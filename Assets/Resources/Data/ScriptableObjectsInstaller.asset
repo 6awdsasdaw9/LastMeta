@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScenesConfig: {fileID: 11400000, guid: 1bf1314a0a742664780cf899dda006eb, type: 2}
   HeroConfig: {fileID: 11400000, guid: b026f2898c8d20844aa583fde4bac51c, type: 2}
-  assetsConfig: {fileID: 11400000, guid: a59aef7bee20b3540aa4eadf47ae7d1c, type: 2}
-  TextConfig: {fileID: 11400000, guid: a21bd99348ce93e41953dc6f6ab214ef, type: 2}
+  AssetsConfig: {fileID: 11400000, guid: a59aef7bee20b3540aa4eadf47ae7d1c, type: 2}
   SceneAudioPath: {fileID: 11400000, guid: 917b863287e67ce4193cd756522b4a98, type: 2}
   HudSettings: {fileID: 11400000, guid: 2ff7d38ca5623d04db9a66d4bc4b88d7, type: 2}
+  ItemsConfig: {fileID: 11400000, guid: 4cec100bfb1003c468097b1e8e4394e8, type: 2}
+  TextConfig_Eng: {fileID: 11400000, guid: 4eca993e61a8e9c48bd365c8c4fcc388, type: 2}
+  TextConfig_Rus: {fileID: 11400000, guid: 852611469e9829148bfa9f7a73847b55, type: 2}

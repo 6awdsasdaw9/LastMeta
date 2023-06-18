@@ -21,6 +21,8 @@ namespace Code.Character.Hero
 
         #region Values
 
+        public float Height => _jumpHeight + _hero.Upgrade?.BonusHeightJump ?? _jumpHeight;
+
         private float _jumpHeight = 7.3f;
         private int _maxAirJumps;
 
@@ -182,7 +184,7 @@ namespace Code.Character.Hero
             }
 
             //TODO непотребство
-            _velocity.y += _jumpHeight /* + _hero.Upgrade.BonusHeightJump*/;
+            _velocity.y += Height /* + _hero.Upgrade.BonusHeightJump*/;
             _isCurrentlyJumping = true;
         }
 
@@ -193,5 +195,6 @@ namespace Code.Character.Hero
 
         public void Enable() => 
             _input.OnPressJump += OnJump;
+
     }
 }

@@ -26,6 +26,7 @@ namespace Code.Character.Hero
 
         public bool IsCrouch { get; private set; }
         public float DirectionX => _directionX;
+        public float Speed => _heroParams.maxSpeed + _hero.Upgrade?.BonusSpeed ?? _heroParams.maxSpeed;
 
         private float _directionX;
         private Vector2 _desiredVelocity;

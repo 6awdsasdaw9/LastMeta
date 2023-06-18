@@ -19,5 +19,13 @@ namespace Code.Data.Configs
         public HeroHandAttackAbility.Data[] HandAttackLevelsData = new HeroHandAttackAbility.Data[3];
     }
 
- 
+
+    public enum HeroParamType
+    {
+        Health,
+        Attack,
+        Speed,
+        Jump,
+        
+    }
 }

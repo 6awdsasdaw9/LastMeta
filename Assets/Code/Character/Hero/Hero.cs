@@ -1,5 +1,7 @@
+using System;
 using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Character.Hero.HeroInterfaces;
+using Code.Infrastructure.GlobalEvents;
 using Code.Services;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -64,7 +66,8 @@ namespace Code.Character.Hero
         private HeroVFX _vfx;
         
         #endregion
-        
+
+
         [Inject]
         private void Construct(MovementLimiter movementLimiter)
         {
@@ -72,6 +75,8 @@ namespace Code.Character.Hero
             _movementLimiter.OnDisableMovementMode += OnDisableMovementMode;
             _movementLimiter.OnEnableMovementMode += OnEnableMovementMode;
         }
+
+
 
         private void OnEnableMovementMode()
         {
