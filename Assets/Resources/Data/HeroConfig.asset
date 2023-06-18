@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeroParams:
     maxHP: 20
-    power:
+    damage:
       damage: 0
       damagedRadius: 0
     maxSpeed: 2.5
@@ -25,8 +25,8 @@ MonoBehaviour:
     maxAirAcceleration: 30
     maxAirDeceleration: 45
     maxAirTurnSpeed: 60
-    NoFrictionMaterial: {fileID: 0}
-    FrictionMaterial: {fileID: 0}
+    NoFrictionMaterial: {fileID: 13400000, guid: fcfcf8c2d4b646646b44fcc6be381bd9, type: 2}
+    FrictionMaterial: {fileID: 13400000, guid: d815cddd93c0d304cb1eec9fc0c61526, type: 2}
     jumpHeight: 3
     timeToJumpApex: 0.8
     upwardMovementMultiplier: 3
@@ -40,11 +40,24 @@ MonoBehaviour:
   AbilitiesParams:
     DashLevelsData:
     - Cooldown: 3.5
-      DashDistance: 5
+      SpeedBonus: 0
       Duration: 0.2
     - Cooldown: 3
-      DashDistance: 6
+      SpeedBonus: 0
       Duration: 0.3
     - Cooldown: 2
-      DashDistance: 7
+      SpeedBonus: 0
       Duration: 0.4
+    HandAttackLevelsData:
+    - Cooldown: 2
+      DamageParam:
+        damage: 1
+        damagedRadius: 0.3
+    - Cooldown: 2
+      DamageParam:
+        damage: 2
+        damagedRadius: 0.35
+    - Cooldown: 2
+      DamageParam:
+        damage: 3
+        damagedRadius: 0.35

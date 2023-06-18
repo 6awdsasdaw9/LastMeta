@@ -27,7 +27,7 @@ namespace Code.Character.Hero
         {
             MovementLoadData(savedData);
             
-            if(_hero.Mode == Constants.GameMode.Real)
+            if(_hero.GameMode == Constants.GameMode.Real)
                 return;
             
             HealthLoadData(savedData);
@@ -39,7 +39,7 @@ namespace Code.Character.Hero
         {
             MovementSaveData(savedData);
             
-            if(_hero.Mode == Constants.GameMode.Real)
+            if(_hero.GameMode == Constants.GameMode.Real)
                 return;
             
             HealthSaveData(savedData);

@@ -12,7 +12,7 @@ namespace Code.Data.GameData
         public float maxHP = 20;
 
         [Title("Damage")] 
-        public PowerData power;
+        public DamageParam damage;
         
         [Title("Move")]
         [Range(0f, 20f)] public float maxSpeed = 2.5f;

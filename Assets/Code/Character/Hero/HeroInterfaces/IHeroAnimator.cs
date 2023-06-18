@@ -11,5 +11,7 @@ namespace Code.Character.Hero.HeroInterfaces
         void PlayDash(bool isDash);
         void PlayDamageFromAbove();
         void PlayStunned(bool isStunned);
+        void PlayEnterGunMode();
+        void PlayEnterHandMode();
     }
 }

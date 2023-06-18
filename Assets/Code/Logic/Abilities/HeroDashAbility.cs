@@ -54,7 +54,7 @@ namespace Code.Character.Hero
                 return;
             
             _hero.Movement.BlockMovement();
-            _hero.Movement.SetBonusSpeed(_currentData.DashDistance);
+            _hero.Movement.SetBonusSpeed(_currentData.SpeedBonus);
             _hero.Animator.PlayDash(true);
             UpdateDurationCooldown().Forget();
         }
@@ -68,8 +68,10 @@ namespace Code.Character.Hero
     
             _durationCooldown.ResetCooldown();
 
-            var value = _currentData.DashDistance;
+            var value = _currentData.SpeedBonus;
             _hero.Movement.SetBonusSpeed(value);
+
+            var heroForward = _hero.Transform.localScale.x;
          
             while (!_durationCooldown.UpdateCooldown())
             {
@@ -78,9 +80,15 @@ namespace Code.Character.Hero
                     var sec = Time.deltaTime;
                     value -= sec;
                     _hero.Movement.SetBonusSpeed(value);
-                 
                 }
-                await UniTask.Delay(TimeSpan.FromSeconds(Time.deltaTime), cancellationToken: _durationCts.Token);
+
+                if (_hero.Transform.localScale.x == -_inputService.GetDirection())
+                {
+                    StopApplying();
+                    break;
+                }
+                
+                await UniTask.DelayFrame(1, cancellationToken: _durationCts.Token);
             }
             
             StopApplying();
@@ -111,7 +119,7 @@ namespace Code.Character.Hero
         public class Data
         {
             public float Cooldown;
-            public float DashDistance;
+            public float SpeedBonus;
             public float Duration;
         }
     }

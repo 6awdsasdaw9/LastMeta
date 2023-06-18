@@ -58,5 +58,16 @@ namespace Code.Character.Hero
 
         public void PlayStunned(bool isStunned) =>
             _animator.SetBool(Stunned_b,isStunned);
+
+        public void PlayEnterGunMode()
+        {
+            
+            _animator.SetBool(GunMode_b, true);
+        }
+
+        public void PlayEnterHandMode()
+        {
+            _animator.SetBool(GunMode_b, false);
+        }
     }
 }

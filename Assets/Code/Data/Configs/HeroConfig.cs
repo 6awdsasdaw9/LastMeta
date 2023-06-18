@@ -16,6 +16,7 @@ namespace Code.Data.Configs
     public class HeroAbilitiesParams
     {
         public HeroDashAbility.Data[] DashLevelsData = new HeroDashAbility.Data[3];
+        public HeroHandAttackAbility.Data[] HandAttackLevelsData = new HeroHandAttackAbility.Data[3];
     }
 
  

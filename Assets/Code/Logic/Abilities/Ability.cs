@@ -14,10 +14,12 @@ namespace Code.Character.Hero
         public abstract void StopApplying();
     }
 
+   
 
     public enum HeroAbilityType
     {
         Dash,
+        Hand,
         Gun,
         BlackMode,
     }

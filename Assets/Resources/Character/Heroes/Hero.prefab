@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: _gameMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7280351799685329201, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
+      propertyPath: _heroMode
+      value: 
+      objectReference: {fileID: 6934480608692550672}
+    - target: {fileID: 7280351799685329201, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
+      propertyPath: _heroShooting
+      value: 
+      objectReference: {fileID: 7696289855173539314}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
 --- !u!212 &2929443424245635808 stripped
@@ -258,6 +266,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heroAudio: {fileID: 7407501786901000246}
   spriteVFX: {fileID: 5869404379240297964}
+--- !u!114 &6934480608692550672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929443425413194330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b798c2a1c677465fb502ca2333ed3d83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7696289855173539314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929443425413194330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e66c8153bd405b9d2188339acec168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7407501786901000246 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1297059016546552242, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}

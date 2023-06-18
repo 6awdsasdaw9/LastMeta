@@ -10,7 +10,7 @@ namespace Code.Character.Hero
     public class Hero : MonoBehaviour, IHero
     {
         private bool _isNotRealHero => _gameMode != Constants.GameMode.Real;
-        public Constants.GameMode Mode => _gameMode;
+        public Constants.GameMode GameMode => _gameMode;
         [SerializeField] private Constants.GameMode _gameMode;
 
         #region Common Value
@@ -30,9 +30,18 @@ namespace Code.Character.Hero
         #endregion
 
         #region Game Value
-        public IHeroAttack Attack => _attack;
+
+        public IHeroMode HeroMode => _heroMode;
+        [ShowIf(nameof(_isNotRealHero)), SerializeField]
+        private HeroMode _heroMode;
+        public IHeroAttack HandAttack => _attack;
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
         private HeroAttack _attack;
+
+        public IHeroAttack GunAttack => _heroShooting;
+        [ShowIf(nameof(_isNotRealHero)), SerializeField]
+        private HeroShooting _heroShooting;
+        
         public IHeroBuff Buff => _buff;
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
         private HeroBuff _buff;

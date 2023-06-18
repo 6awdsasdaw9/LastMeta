@@ -6,15 +6,14 @@ using Code.Debugers;
 using Code.Services.Input;
 using UnityEngine;
 using Zenject;
-using HeroConfig = Code.Data.Configs.HeroConfig;
 
 namespace Code.Character.Hero
 {
-    public class HeroAttack : MonoBehaviour, IHeroAttack
+    public class HeroShooting: MonoBehaviour, IHeroAttack
     {
-        private IHero _hero;
+          private IHero _hero;
         private InputService _inputService;
-        private DamageParam _damageParam;
+        private DamageParam _damage;
 
         private readonly Collider[] _hits = new Collider[7];
         private bool _attackIsActive;
@@ -25,7 +24,7 @@ namespace Code.Character.Hero
         {
             _hero = GetComponent<IHero>();
             _inputService = inputService;
-            _damageParam = heroConfig.HeroParams.damage;
+            _damage = heroConfig.HeroParams.damage;
             _layerMask = 1 << LayerMask.NameToLayer(Constants.HittableLayer);
         }
 
@@ -41,7 +40,7 @@ namespace Code.Character.Hero
 
         public void SetDamageParam(DamageParam damageParam)
         {
-            _damageParam = damageParam;
+            _damage = damageParam;
         }
 
         public void Attack()
@@ -59,9 +58,9 @@ namespace Code.Character.Hero
         /// </summary>
         public void OnAttack()
         {
-            PhysicsDebug.DrawDebug(StartPoint(), _damageParam.damagedRadius, 1.0f);
+            PhysicsDebug.DrawDebug(StartPoint(), _damage.damagedRadius, 1.0f);
             for (int i = 0; i < Hit(); ++i)
-                _hits[i].GetComponent<IHealth>().TakeDamage(_damageParam.damage);
+                _hits[i].GetComponent<IHealth>().TakeDamage(_damage.damage);
         }
 
         /// <summary>
@@ -74,10 +73,10 @@ namespace Code.Character.Hero
         }
         
         private int Hit() =>
-            Physics.OverlapSphereNonAlloc(StartPoint(), _damageParam.damagedRadius, _hits, _layerMask);
+            Physics.OverlapSphereNonAlloc(StartPoint(), _damage.damagedRadius, _hits, _layerMask);
         
         private Vector3 StartPoint() =>
-            new(transform.position.x + transform.localScale.x * 0.2f, transform.position.y + 0.7f,
+            new(transform.position.x + transform.localScale.x * 0.1f, transform.position.y + 0.7f,
                 transform.position.z);
 
         public void Disable() => 

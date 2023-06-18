@@ -17,6 +17,8 @@ namespace Code.Character.Hero
         private InputService _inputService;
 
         private HeroDashAbility _heroDashAbility;
+        private HeroHandAttackAbility _heroHandAttackAbility;
+        private HeroGunAttackAbility _heroGunAttackAbility;
 
         [Inject]
         private void Construct(InputService inputService, HeroConfig heroConfig)
@@ -25,7 +27,7 @@ namespace Code.Character.Hero
             _heroConfig = heroConfig;
             _hero = GetComponent<IHero>();
         }
-        
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.P))
@@ -38,8 +40,31 @@ namespace Code.Character.Hero
         {
             AbilityLevelData = abilityLevelData;
             OpenDash(AbilityLevelData.DashLevel);
+            OpenHandAttack(AbilityLevelData.HandLevel);
+            OpenGunAttack(AbilityLevelData.GunLevel);
         }
-        
+
+        private void OpenGunAttack(int level)
+        {
+            _heroGunAttackAbility = new HeroGunAttackAbility(_hero, _inputService);
+          //  _heroGunAttackAbility.SetData(_heroConfig.AbilitiesParams.HandAttackLevelsData[level]);
+            _heroGunAttackAbility.OpenAbility();
+        }
+
+        [Button]
+        public void LevelUpHandAttack()
+        {
+            AbilityLevelData.HandLevel++;
+            _heroHandAttackAbility.SetData(_heroConfig.AbilitiesParams.HandAttackLevelsData[ AbilityLevelData.HandLevel]);
+        }
+
+        public void OpenHandAttack(int level = 0)
+        {
+            _heroHandAttackAbility = new HeroHandAttackAbility(_hero, _inputService);
+            _heroHandAttackAbility.SetData(_heroConfig.AbilitiesParams.HandAttackLevelsData[level]);
+            _heroHandAttackAbility.OpenAbility();
+        }
+
         [Button]
         public void LevelUpDash()
         {
@@ -53,7 +78,7 @@ namespace Code.Character.Hero
                 _heroDashAbility.SetData(_heroConfig.AbilitiesParams.DashLevelsData[AbilityLevelData.DashLevel]);
             }
         }
-        
+
         public void OpenDash(int level = 0)
         {
             _heroDashAbility = new HeroDashAbility(_hero, _inputService);
@@ -72,5 +97,6 @@ namespace Code.Character.Hero
     {
         public int DashLevel;
         public int GunLevel;
+        public int HandLevel;
     }
 }

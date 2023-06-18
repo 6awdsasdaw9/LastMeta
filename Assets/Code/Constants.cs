@@ -23,6 +23,12 @@ namespace Code
             Polygon
         }
         
+        public enum HeroMode
+        {
+            Default,
+            Gun,
+            Black,
+        }
        
         
         #region Tag

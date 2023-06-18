@@ -64,7 +64,8 @@ namespace Code.Character.Hero
             _hero.Collision.Disable();
             _hero.Movement.Disable();
             _hero.Jump.Disable();
-            _hero.Attack.Disable();
+            _hero.GunAttack.Disable();
+            _hero.HandAttack.Disable();
             _limiter.DisableMovement();
 
             transform.position = new Vector3(transform.position.x, transform.position.y, Constants.SecondLayerPosition);
