@@ -8,6 +8,7 @@ namespace Code.Character.Hero.HeroInterfaces
         void PlayAttack();
         void PlayDeath();
         void PlayDeathOnWater();
+        void PlayDash(bool isDash);
         void PlayDamageFromAbove();
         void PlayStunned(bool isStunned);
     }

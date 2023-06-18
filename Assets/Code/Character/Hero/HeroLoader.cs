@@ -25,31 +25,45 @@ namespace Code.Character.Hero
 
         public void LoadData(SavedData savedData)
         {
-            HealthLoadData(savedData);
             MovementLoadData(savedData);
+            
+            if(_hero.Mode == Constants.GameMode.Real)
+                return;
+            
+            HealthLoadData(savedData);
             UpgradesLoadData(savedData);
+            AbilityLoadData(savedData);
         }
 
         public void SaveData(SavedData savedData)
         {
-            HealthSaveData(savedData);
             MovementSaveData(savedData);
+            
+            if(_hero.Mode == Constants.GameMode.Real)
+                return;
+            
+            HealthSaveData(savedData);
             UpgradesSaveData(savedData);
+            AbilitySaveData(savedData);
+        }
+
+        private void AbilityLoadData(SavedData savedData)
+        {
+            _hero.Ability.Init(savedData.HeroAbilityLevel);
+        }
+
+        private void AbilitySaveData(SavedData savedData)
+        {
+            savedData.HeroAbilityLevel = _hero.Ability.AbilityLevelData;
         }
 
         private void HealthLoadData(SavedData savedData)
         {
-            if(_hero.Mode == Constants.GameMode.Real)
-                return;
-            
             _hero.Health.Set(savedData.HeroHealth);
         }
 
         private void HealthSaveData(SavedData savedData)
         {
-            if(_hero.Mode == Constants.GameMode.Real)
-                return;
-            
             savedData.HeroHealth.CurrentHP = _hero.Health.Current;
             savedData.HeroHealth.MaxHP = _hero.Health.Max;
         }
@@ -82,18 +96,12 @@ namespace Code.Character.Hero
 
         private void UpgradesLoadData(SavedData savedData)
         {
-            if(_hero.Mode == Constants.GameMode.Real)
-                return;
-            
             _hero.Upgrade.Init(savedData.HeroUpgradesLevel);
         }
 
         private void UpgradesSaveData(SavedData savedData)
         {
-            if(_hero.Mode == Constants.GameMode.Real)
-                return;
-            
-            savedData.HeroUpgradesLevel = _hero.Upgrade?.UpgradesLevel;
+            savedData.HeroUpgradesLevel = _hero.Upgrade?.UpgradesLevelUpgradesLevel;
         }
 
         private string CurrentLevel() =>

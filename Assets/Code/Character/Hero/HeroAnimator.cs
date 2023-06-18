@@ -15,7 +15,7 @@ namespace Code.Character.Hero
         private readonly int Speed_f = Animator.StringToHash("Speed");
         private readonly int Jump_b = Animator.StringToHash("Jump");
         private readonly int Attack_t = Animator.StringToHash("Attack");
-        private readonly int Dash_t = Animator.StringToHash("Dash");
+        private readonly int Dash_b = Animator.StringToHash("Dash");
         private readonly int Die_t = Animator.StringToHash("Death");
         private readonly int WaterDie_t = Animator.StringToHash("DeathOnWater");
         private readonly int DamageFromAbove_t = Animator.StringToHash("DamageFromAbove");
@@ -49,6 +49,9 @@ namespace Code.Character.Hero
             _animator.SetTrigger(Die_t);
         public void PlayDeathOnWater() => 
             _animator.SetTrigger(WaterDie_t);
+
+        public void PlayDash(bool isDash) => 
+            _animator.SetBool(Dash_b,isDash);
 
         public void PlayDamageFromAbove() =>
             _animator.SetTrigger(DamageFromAbove_t);

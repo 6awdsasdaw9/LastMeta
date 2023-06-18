@@ -8,20 +8,31 @@ namespace Code.Services
     {
         [SerializeField] private float _cooldown = 1;
         private float _currentCooldown;
-        
-        public void SetTime(float value) => 
+
+        public float Normalize => _currentCooldown / _cooldown; 
+        public void SetTime(float value)
+        {
             _cooldown = value;
+        }
 
-        public bool IsUp() =>
-            _currentCooldown <= 0;
+        public bool IsUp()
+        {
+            return _currentCooldown <= 0;
+        }
 
-        public void ResetCooldown() => 
+        public void ResetCooldown()
+        {
             _currentCooldown = _cooldown;
+        }
 
-        public void UpdateCooldown()
+        public bool UpdateCooldown()
         {
             if (!IsUp())
+            {
                 _currentCooldown -= Time.deltaTime;
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -31,12 +31,12 @@ namespace Code.Character.Hero
 
         private void OnEnable()
         {
-            _inputService.PlayerAttackEvent += Attack;
+            _inputService.OnPressAttack += Attack;
         }
 
         private void OnDisable()
         {
-            _inputService.PlayerAttackEvent -= Attack;
+            _inputService.OnPressAttack -= Attack;
         }
 
         public void Attack()

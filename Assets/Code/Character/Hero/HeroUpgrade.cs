@@ -14,9 +14,8 @@ namespace Code.Character.Hero
     public class HeroUpgrade : MonoBehaviour,  IHeroUpgrade
     {
         private HeroParams _heroParams;
-        
-        public HeroUpgradesData UpgradesLevel => _upgradesData;
-        private HeroUpgradesData _upgradesData = new HeroUpgradesData();
+        public HeroUpgradesLevelData UpgradesLevelUpgradesLevel => _upgradesLevelData;
+        private HeroUpgradesLevelData _upgradesLevelData = new HeroUpgradesLevelData();
         
         public float BonusSpeed { get; private set; }
         public float BonusHeightJump { get; private set; }
@@ -26,13 +25,11 @@ namespace Code.Character.Hero
         private void Construct(HeroConfig heroConfig)
         {
             _heroParams = heroConfig.HeroParams;
-          
         }
 
-
-        public void Init(HeroUpgradesData heroUpgradesData)
+        public void Init(HeroUpgradesLevelData heroUpgradesLevelData)
         {
-            _upgradesData = heroUpgradesData;
+            _upgradesLevelData = heroUpgradesLevelData;
             SetSpeed();
             SetHeightJump();
             SetAirJump();
@@ -41,39 +38,37 @@ namespace Code.Character.Hero
         [Button]
         public void LevelUpSpeed()
         {
-            _upgradesData.SpeedLevel++;
+            _upgradesLevelData.SpeedLevel++;
             SetSpeed();
         }
-
-
+        
         [Button]
         public void LevelUpJump()
         {
-            _upgradesData.JumpHeightLevel++;
+            _upgradesLevelData.JumpHeightLevel++;
             SetHeightJump();
         }
 
         [Button]
         public void LevelUpMaxAirJump()
         {
-            _upgradesData.AirJumpLevel++;
+            _upgradesLevelData.AirJumpLevel++;
             SetAirJump();
         }
 
         private void SetSpeed()
         {
-            BonusSpeed = GetUpgradeParam(UpgradeParamType.Speed, _upgradesData.SpeedLevel);
+            BonusSpeed = GetUpgradeParam(UpgradeParamType.Speed, _upgradesLevelData.SpeedLevel);
         }
 
         private void SetHeightJump()
         {
-            BonusHeightJump = GetUpgradeParam(UpgradeParamType.JumpHeight, _upgradesData.JumpHeightLevel);
+            BonusHeightJump = GetUpgradeParam(UpgradeParamType.JumpHeight, _upgradesLevelData.JumpHeightLevel);
         }
-
-
+        
         private void SetAirJump()
         {
-            BonusAirJump = Convert.ToInt32(GetUpgradeParam(UpgradeParamType.AirJump, _upgradesData.AirJumpLevel));
+            BonusAirJump = Convert.ToInt32(GetUpgradeParam(UpgradeParamType.AirJump, _upgradesLevelData.AirJumpLevel));
         }
 
         private float GetUpgradeParam(UpgradeParamType paramType, int level)
@@ -90,24 +85,11 @@ namespace Code.Character.Hero
 
             return values[level];
         }
-
-        /*public void LoadData(SavedData savedData)
-        {
-            _upgradesData = savedData.HeroUpgradesData;
-            SetSpeed();
-            SetHeightJump();
-            SetAirJump();
-        }
-
-        public void SaveData(SavedData savedData)
-        {
-            savedData.HeroUpgradesData = _upgradesData;
-        }*/
         
     }
 
     [Serializable]
-    public class HeroUpgradesData
+    public class HeroUpgradesLevelData
     {
         public int SpeedLevel;
         public int JumpHeightLevel;

@@ -189,9 +189,9 @@ namespace Code.Character.Hero
         #endregion
 
         public void Disable() => 
-            _input.PlayerJumpEvent -= OnJump;
+            _input.OnPressJump -= OnJump;
 
         public void Enable() => 
-            _input.PlayerJumpEvent += OnJump;
+            _input.OnPressJump += OnJump;
     }
 }

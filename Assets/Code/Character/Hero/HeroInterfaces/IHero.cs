@@ -19,6 +19,8 @@ namespace Code.Character.Hero.HeroInterfaces
         IHealth Health { get; }
         IHeroDeath Death { get; }
         IHeroUpgrade Upgrade { get; }
+
+        IHeroAbility Ability { get; }
         IHeroVFX VFX { get; }
 
     

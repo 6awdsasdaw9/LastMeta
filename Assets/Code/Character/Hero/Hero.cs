@@ -9,52 +9,53 @@ namespace Code.Character.Hero
 {
     public class Hero : MonoBehaviour, IHero
     {
-        //Common
+        private bool _isNotRealHero => _gameMode != Constants.GameMode.Real;
+        public Constants.GameMode Mode => _gameMode;
         [SerializeField] private Constants.GameMode _gameMode;
-        [SerializeField] private HeroAnimator _animator;
-        [SerializeField] private HeroAudio _audio;
-        [SerializeField] private HeroMovement _movement;
-        [SerializeField] private HeroJump _jump;
-        [SerializeField] private HeroCollision _collision;
 
-        [Space] //Game Hero
+        #region Common Value
+        public IHeroAnimator Animator => _animator;
+        [SerializeField] private HeroAnimator _animator;
+        public IHeroAudio Audio => _audio;
+        [SerializeField] private HeroAudio _audio;
+        public IHeroMovement Movement => _movement;
+        [SerializeField] private HeroMovement _movement;
+        public IHeroJump Jump => _jump;
+        [SerializeField] private HeroJump _jump;
+        public IHeroCollision Collision => _collision;
+        [SerializeField] private HeroCollision _collision;
+        public Transform Transform => transform;
+        private MovementLimiter _movementLimiter;
+        
+        #endregion
+
+        #region Game Value
+        public IHeroAttack Attack => _attack;
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
         private HeroAttack _attack;
-
+        public IHeroBuff Buff => _buff;
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
         private HeroBuff _buff;
-
+        public IHeroDeath Death => _death;
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
         private HeroDeath _death;
-
+        public IHealth Health => _health;
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
         private HeroHealth _health;
-
+        public IHeroUpgrade Upgrade => _upgrade;
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
         private HeroUpgrade _upgrade;
 
+
+        public IHeroAbility Ability => _ability;
+        [ShowIf(nameof(_isNotRealHero)), SerializeField]
+        private HeroAbility _ability;
+        public IHeroVFX VFX => _vfx;
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
         private HeroVFX _vfx;
-
-        private bool _isNotRealHero => _gameMode != Constants.GameMode.Real;
-        public Constants.GameMode Mode => _gameMode;
-        public Transform Transform => transform;
-        public IHeroAnimator Animator => _animator;
-        public IHeroAudio Audio => _audio;
-        public IHeroMovement Movement => _movement;
-        public IHeroJump Jump => _jump;
-        public IHeroCollision Collision => _collision;
-
-        public IHeroAttack Attack => _attack;
-
-        public IHeroBuff Buff => _buff;
-        public IHeroDeath Death => _death;
-        public IHealth Health => _health;
-        public IHeroUpgrade Upgrade => _upgrade;
-        public IHeroVFX VFX => _vfx;
-
-        private MovementLimiter _movementLimiter;
-
+        
+        #endregion
+        
         [Inject]
         private void Construct(MovementLimiter movementLimiter)
         {

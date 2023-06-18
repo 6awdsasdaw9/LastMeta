@@ -18,7 +18,7 @@ namespace Code.Services.Input
         {
             _master = new InputMaster();
             _eventSystem = EventSystem.current;
-            EneblePlayerInput();
+            EnablePlayerInput();
             EnableUIInput(true);
             SubscribeToEvents();
         }
@@ -30,64 +30,77 @@ namespace Code.Services.Input
 
         private void SubscribeToEvents()
         {
-            _master.Player.Horizontal.performed += Movement;
-            _master.Player.Horizontal.canceled += Movement;
+            _master.Player.Horizontal.performed += PressMovementEvent;
+            _master.Player.Horizontal.canceled += PressMovementEvent;
 
-            _master.Player.Dash.started += Dash;
-            _master.Player.Attack.started += Attack;
-            _master.Player.Attack.canceled += StopAttack;
-            _master.Player.Jump.started += Jump;
-            _master.Player.Crouch.started += Crouch;
-            _master.Player.Crouch.canceled += Crouch;
+            _master.Player.Dash.started += PressDashEvent;
+            _master.Player.Attack.started += PressAttackEvent;
+            _master.Player.Attack.canceled += PressSkillButtonThreeEvent;
+            _master.Player.Jump.started += PressJumpEvent;
+            _master.Player.Crouch.started += PressCrouchEvent;
+            _master.Player.Crouch.canceled += PressCrouchEvent;
 
-            _master.Player.Skill_One.started += SkillButton_One;
-            _master.Player.Skill_Two.started += SkillButton_Two;
+            _master.Player.Skill_One.started += PressSkillButtonOneEvent;
+            _master.Player.Skill_Two.started += PressSkillButtonTwoEvent;
 
-            _master.UI.Esc.started += PressEsc;
+            _master.UI.Esc.started += PressEscEvent;
 
-            _master.UI.Interact.performed += InteractButtonPressed;
-            _master.UI.Interact.canceled += InteractButtonPressed;
+            _master.UI.Interact.performed += InteractButtonPressedEvent;
+            _master.UI.Interact.canceled += InteractButtonPressedEvent;
 
-            _master.UI.Enter.performed += EnterButtonPressed;
-            _master.UI.Enter.canceled += EnterButtonPressed;
+            _master.UI.Enter.performed += EnterButtonPressedEvent;
+            _master.UI.Enter.canceled += EnterButtonPressedEvent;
         }
 
 
         #region Player input
 
-        private void EneblePlayerInput() => _master.Player.Enable();
+        private void EnablePlayerInput() => _master.Player.Enable();
+
         public void DisablePlayerInput() => _master.Player.Disable();
 
-        private void Movement(InputAction.CallbackContext context) => PlayerMovementEvent?.Invoke(context);
-        public event Action<InputAction.CallbackContext> PlayerMovementEvent;
+        private void PressMovementEvent(InputAction.CallbackContext context) => OnPressMovement?.Invoke(context);
 
-        private void Crouch(InputAction.CallbackContext context) => PlayerCrouchEvent?.Invoke(context);
-        public event Action<InputAction.CallbackContext> PlayerCrouchEvent;
+        public float GetDirection()
+        {
+            return _master.Player.Horizontal.ReadValue<float>();
+        }
 
-        private void Jump(InputAction.CallbackContext context) => PlayerJumpEvent?.Invoke(context);
-        public event Action<InputAction.CallbackContext> PlayerJumpEvent;
+        public event Action<InputAction.CallbackContext> OnPressMovement;
 
-        private void Dash(InputAction.CallbackContext context) => PlayerDashEvent?.Invoke();
-        public event Action PlayerDashEvent;
+        private void PressCrouchEvent(InputAction.CallbackContext context) => OnPressCrouch?.Invoke(context);
 
-        private void Attack(InputAction.CallbackContext context)
+        public event Action<InputAction.CallbackContext> OnPressCrouch;
+
+        private void PressJumpEvent(InputAction.CallbackContext context) => OnPressJump?.Invoke(context);
+
+        public event Action<InputAction.CallbackContext> OnPressJump;
+
+        private void PressDashEvent(InputAction.CallbackContext context) => OnPressDash?.Invoke();
+
+        public event Action OnPressDash;
+
+        private void PressAttackEvent(InputAction.CallbackContext context)
         {
             if (_isPressedOnUI)
                 return;
 
-            PlayerAttackEvent?.Invoke();
+            OnPressAttack?.Invoke();
         }
 
-        public event Action PlayerAttackEvent;
+        public event Action OnPressAttack;
 
-        private void SkillButton_One(InputAction.CallbackContext context) => SkillButton_1_Event?.Invoke();
-        public event Action SkillButton_1_Event;
+        private void PressSkillButtonOneEvent(InputAction.CallbackContext context) => OnPressSkillButtonOne?.Invoke();
 
-        private void SkillButton_Two(InputAction.CallbackContext context) => SkillButton_2_Event?.Invoke();
-        public event Action SkillButton_2_Event;
+        public event Action OnPressSkillButtonOne;
 
-        private void StopAttack(InputAction.CallbackContext context) => PlayerStopShootEvent?.Invoke();
-        public event Action PlayerStopShootEvent;
+        private void PressSkillButtonTwoEvent(InputAction.CallbackContext context) => OnPressSkillButtonTwo?.Invoke();
+
+        public event Action OnPressSkillButtonTwo;
+
+        private void PressSkillButtonThreeEvent(InputAction.CallbackContext context) => OnPressSkillButtonThree?.Invoke();
+
+        public event Action OnPressSkillButtonThree;
 
         #endregion
 
@@ -104,15 +117,16 @@ namespace Code.Services.Input
             OnPressEsc?.Invoke();
         }
 
-        private void PressEsc(InputAction.CallbackContext context)
+        private void PressEscEvent(InputAction.CallbackContext context)
         {
             if (context.started)
                 OnPressEsc?.Invoke();
         }
+
         public event Action OnPressEsc;
 
 
-        private void InteractButtonPressed(InputAction.CallbackContext context)
+        private void InteractButtonPressedEvent(InputAction.CallbackContext context)
         {
             _isInteractPressed = true;
             if (context.canceled)
@@ -126,7 +140,7 @@ namespace Code.Services.Input
             return result;
         }
 
-        private void EnterButtonPressed(InputAction.CallbackContext context) =>
+        private void EnterButtonPressedEvent(InputAction.CallbackContext context) =>
             IsEnterPressed = context.performed;
 
         public bool GetEnterPressed()

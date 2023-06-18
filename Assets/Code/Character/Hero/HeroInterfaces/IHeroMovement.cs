@@ -7,8 +7,10 @@ namespace Code.Character.Hero.HeroInterfaces
     {
         bool IsCrouch { get; }
         float DirectionX { get; }
+
         public void  BlockMovement();
         public void  UnBlockMovement();
         public void SetSupportVelocity(Vector2 otherObjectVelocity);
+        public void SetBonusSpeed(float bonusSpeed);
     }
 }

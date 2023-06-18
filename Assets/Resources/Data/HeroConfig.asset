@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c973dc534e48f28a99c18d603c627a, type: 3}
   m_Name: HeroConfig
   m_EditorClassIdentifier: 
-  initialScene: 4
-  heroConfig:
-    maxHP: 3
+  HeroParams:
+    maxHP: 20
     power:
-      damage: 5
-      damagedRadius: 0.5
+      damage: 0
+      damagedRadius: 0
     maxSpeed: 2.5
     crouchSpeed: 0.7
     maxAcceleration: 16
@@ -26,8 +25,8 @@ MonoBehaviour:
     maxAirAcceleration: 30
     maxAirDeceleration: 45
     maxAirTurnSpeed: 60
-    NoFrictionMaterial: {fileID: 13400000, guid: fcfcf8c2d4b646646b44fcc6be381bd9, type: 2}
-    FrictionMaterial: {fileID: 13400000, guid: d815cddd93c0d304cb1eec9fc0c61526, type: 2}
+    NoFrictionMaterial: {fileID: 0}
+    FrictionMaterial: {fileID: 0}
     jumpHeight: 3
     timeToJumpApex: 0.8
     upwardMovementMultiplier: 3
@@ -36,22 +35,16 @@ MonoBehaviour:
     jumpCutOff: 3
     speedLimit: 6.7
     coyoteTime: 0.1
-    jumpBuffer: 0.1
-    UpgradeParams:
-    - Type: 0
-      Values:
-      - 0.5
-      - 0.75
-      - 1
-      - 2
-    - Type: 1
-      Values:
-      - 0.5
-      - 0.75
-      - 1
-      - 1.25
-    - Type: 2
-      Values:
-      - 0
-      - 1
-      - 2
+    jumpBuffer: 0.3
+    UpgradeParams: []
+  AbilitiesParams:
+    DashLevelsData:
+    - Cooldown: 3.5
+      DashDistance: 5
+      Duration: 0.2
+    - Cooldown: 3
+      DashDistance: 6
+      Duration: 0.3
+    - Cooldown: 2
+      DashDistance: 7
+      Duration: 0.4

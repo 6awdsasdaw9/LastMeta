@@ -124,6 +124,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6554104898581862592}
     - target: {fileID: 7280351799685329201, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
+      propertyPath: _ability
+      value: 
+      objectReference: {fileID: 6065922583843789871}
+    - target: {fileID: 7280351799685329201, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
       propertyPath: _upgrade
       value: 
       objectReference: {fileID: 5115640495234611203}
@@ -228,6 +232,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 2929443424245635808}
+--- !u!114 &6065922583843789871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2929443425413194330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a24813e6c2b49e9b91b94dd59f33bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6554104898581862592
 MonoBehaviour:
   m_ObjectHideFlags: 0

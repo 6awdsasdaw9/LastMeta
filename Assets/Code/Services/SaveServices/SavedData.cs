@@ -14,7 +14,8 @@ namespace Code.Services.SaveServices
 
         public TimeData TimeData;
         public HealthData HeroHealth;
-        public HeroUpgradesData HeroUpgradesLevel;
+        public HeroUpgradesLevelData HeroUpgradesLevel;
+        public HeroAbilityLevelData HeroAbilityLevel;
         public PositionData HeroPosition;
         public PositionData CameraPosition;
         public Dictionary<string, Vector3Data> ObjectsPosition;
@@ -32,7 +33,8 @@ namespace Code.Services.SaveServices
             HeroPosition = new PositionData();
             CameraPosition = new PositionData();
             HeroHealth = new HealthData();
-            HeroUpgradesLevel = new HeroUpgradesData();
+            HeroUpgradesLevel = new HeroUpgradesLevelData();
+            HeroAbilityLevel = new HeroAbilityLevelData();
             ObjectsPosition = new Dictionary<string, Vector3Data>();
             SceneSpawnPoints = new Dictionary<string, PointData>();
         }

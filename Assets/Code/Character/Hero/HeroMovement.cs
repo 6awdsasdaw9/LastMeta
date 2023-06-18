@@ -14,7 +14,7 @@ using HeroConfig = Code.Data.Configs.HeroConfig;
 namespace Code.Character.Hero
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class HeroMovement : MonoBehaviour,  IHeroMovement
+    public class HeroMovement : MonoBehaviour, IHeroMovement
     {
         [SerializeField] private Rigidbody _body;
 
@@ -26,10 +26,12 @@ namespace Code.Character.Hero
 
         public bool IsCrouch { get; private set; }
         public float DirectionX => _directionX;
+
         private float _directionX;
         private Vector2 _desiredVelocity;
         private Vector2 _velocity;
         private Vector2 _supportVelocity;
+
         private float _maxSpeedChange;
         private float _acceleration;
         private float _deceleration;
@@ -43,7 +45,7 @@ namespace Code.Character.Hero
         private const float _supportVelocityMultiplayer = 0.15f;
 
         #endregion
-        
+
         #region Run Time
 
         [Inject]
@@ -82,13 +84,13 @@ namespace Code.Character.Hero
         {
             if (flag)
             {
-                _input.PlayerCrouchEvent += OnPressCrouch;
-                _input.PlayerMovementEvent += OnPressMovement;
+                _input.OnPressCrouch += OnPressCrouch;
+                _input.OnPressMovement += OnPressMovement;
             }
             else
             {
-                _input.PlayerCrouchEvent -= OnPressCrouch;
-                _input.PlayerMovementEvent -= OnPressMovement;
+                _input.OnPressCrouch -= OnPressCrouch;
+                _input.OnPressMovement -= OnPressMovement;
             }
         }
 
@@ -105,6 +107,7 @@ namespace Code.Character.Hero
         public void UnBlockMovement()
         {
             _heroCanMove = true;
+            _directionX = _input.GetDirection();
         }
 
         #endregion
@@ -127,6 +130,18 @@ namespace Code.Character.Hero
         #endregion
 
         #region Velocity
+
+        public void SetBonusSpeed(float bonusSpeed)
+        {
+            if (bonusSpeed == 0)
+            {
+                _supportVelocity = Vector2.zero;
+            }
+            else
+            {
+                _supportVelocity = new Vector2(transform.localScale.x, 0) * bonusSpeed;
+            }
+        }
 
         public void SetSupportVelocity(Vector2 otherObjectVelocity)
         {
@@ -193,6 +208,10 @@ namespace Code.Character.Hero
             {
                 _body.velocity = _velocity + _supportVelocity;
             }
+            else
+            {
+                _body.velocity = _supportVelocity;
+            }
         }
 
         private void Rotation()
@@ -211,33 +230,6 @@ namespace Code.Character.Hero
 
         #endregion
 
-        /*#region Save and Load
-
-        public void LoadData(SavedData savedData)
-        {
-            if (!savedData.heroPositionData.positionInScene.ContainsKey(CurrentLevel()))
-                return;
-
-            Vector3Data savedPosition = savedData.heroPositionData.positionInScene[CurrentLevel()];
-            transform.position = savedPosition.AsUnityVector();
-        }
-
-        public void SaveData(SavedData savedData)
-        {
-            if (savedData.heroPositionData.positionInScene.ContainsKey(CurrentLevel()))
-            {
-                savedData.heroPositionData.positionInScene[CurrentLevel()] = transform.position.AsVectorData();
-            }
-            else
-            {
-                savedData.heroPositionData.AddPosition(CurrentLevel(), transform.position.AsVectorData());
-            }
-        }
-
-        private string CurrentLevel() =>
-            SceneManager.GetActiveScene().name;
-
-        #endregion*/
 
         public void Disable()
         {
