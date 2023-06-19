@@ -101,7 +101,7 @@ namespace Code.Character.Hero
 
         private void UpgradesSaveData(SavedData savedData)
         {
-            savedData.HeroUpgradesLevel = _hero.Upgrade?.UpgradesLevelUpgradesLevel;
+            savedData.HeroUpgradesLevel = _hero.Upgrade?.UpgradesLevel;
         }
 
         private string CurrentLevel() =>

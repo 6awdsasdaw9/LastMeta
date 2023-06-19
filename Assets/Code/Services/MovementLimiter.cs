@@ -6,26 +6,26 @@ namespace Code.Services
     //экземляр которого создается в SceneContext как AsSingle 
     public class MovementLimiter
     {
-        public bool charactersCanMove { get; private set; }
+        public bool CharactersCanMove { get; private set; }
         
         public Action OnDisableMovementMode;
         public Action OnEnableMovementMode;
 
         public MovementLimiter()
         {
-            charactersCanMove = true;
+            CharactersCanMove = true;
         }
 
 
         public void DisableMovement()
         {
-            charactersCanMove = false;
+            CharactersCanMove = false;
             OnDisableMovementMode?.Invoke();
         }
 
         public void EnableMovement()
         {
-            charactersCanMove = true;
+            CharactersCanMove = true;
             OnEnableMovementMode?.Invoke();
         }
     }

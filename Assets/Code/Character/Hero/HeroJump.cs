@@ -167,7 +167,7 @@ namespace Code.Character.Hero
             var airJump = _maxAirJumps;
             if (_hero.Upgrade != null)
             {
-                airJump += _hero.Upgrade.BonusAirJump;
+                airJump += _hero.Upgrade.BonusAttack;
             }
 
             _isCanJumpAgain = airJump >= 1 && _isCanJumpAgain == false;

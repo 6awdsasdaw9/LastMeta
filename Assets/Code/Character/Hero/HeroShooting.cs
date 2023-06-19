@@ -1,89 +1,102 @@
-using Code.Character.Common.CommonCharacterInterfaces;
+using System;
+using System.Threading;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
-using Code.Data.GameData;
-using Code.Debugers;
+using Code.Infrastructure.Factories;
+using Code.Services;
 using Code.Services.Input;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Character.Hero
 {
-    public class HeroShooting: MonoBehaviour, IHeroAttack
+    public class HeroShooting: MonoBehaviour, IHeroRangeAttack
     {
-          private IHero _hero;
-        private InputService _inputService;
-        private DamageParam _damageParam;
-        public DamageParam DamageParam => _damageParam;
+        public bool IsAttack { get; private set;}
+        public ShootingParams ShootingParams { get; private set; }
         
-        private readonly Collider[] _hits = new Collider[7];
-        private bool _attackIsActive;
-        private int _layerMask;
-
+        private IHero _hero;
+        private InputService _inputService;
+        private Cooldown _attackCooldown;
+        private CancellationTokenSource _cts;
+        private MissilesFactory _missilesFactory;
+        
+        private bool _isCanAttack => !_hero.StateListener.IsDash 
+                                    && !_hero.StateListener.IsCrouch 
+                                    && !_hero.StateListener.IsJump
+                                    && !_hero.StateListener.IsBlockMove;
         [Inject]
-        private void Construct(InputService inputService, HeroConfig heroConfig)
+        private void Construct(InputService inputService, HeroConfig heroConfig, MissilesFactory missilesFactory)
         {
             _hero = GetComponent<IHero>();
             _inputService = inputService;
-            _damageParam = heroConfig.HeroParams.damage;
-            _layerMask = 1 << LayerMask.NameToLayer(Constants.HittableLayer);
+            _missilesFactory = missilesFactory;
         }
 
+        public void SetShootingParams(ShootingParams shootingParams)
+        {
+            ShootingParams = shootingParams;
+        }
+       
+        public void Enable() => enabled = true;
         private void OnEnable()
         {
-            _inputService.OnPressAttack += Attack;
+            _inputService.OnPressAttackButton += StartAttack;
+            _inputService.OnUnPressAttackButton += StopAttack;
         }
 
+        public void Disable() => enabled = false;
         private void OnDisable()
         {
-            _inputService.OnPressAttack -= Attack;
+            _inputService.OnPressAttackButton -= StartAttack;
+            _inputService.OnUnPressAttackButton -= StopAttack;
         }
 
-        public void SetDamageParam(DamageParam damageParam)
+        public void StartAttack()
         {
-            _damageParam = damageParam;
-        }
-
-        public void Attack()
-        {
-            if (_attackIsActive || !_hero.Collision.OnGround)
+            if (IsAttack || !_isCanAttack)
                 return;
 
-            _attackIsActive = true;
+            IsAttack = true;
             _hero.Animator.PlayAttack();
             _hero.Movement.BlockMovement();
+
+            StartAttackCycle().Forget();
         }
 
-        /// <summary>
-        /// Animation Event
-        /// </summary>
-        public void OnAttack()
+        private async  UniTaskVoid StartAttackCycle()
         {
-            PhysicsDebug.DrawDebug(StartPoint(), _damageParam.damagedRadius, 1.0f);
-            for (int i = 0; i < Hit(); ++i)
-                _hits[i].GetComponent<IHealth>().TakeDamage(_damageParam.damage);
+            _cts?.Cancel();
+            _cts = new CancellationTokenSource();
+
+            await UniTask.Delay(TimeSpan.FromSeconds(0.5f), cancellationToken: _cts.Token);
+            
+            _attackCooldown = new Cooldown();
+            _attackCooldown.SetTime(ShootingParams.AttackCooldown);
+            _attackCooldown.ResetCooldown();
+            
+            while (IsAttack)
+            {
+                var missile = _missilesFactory.SpawnMissile(ShootingParams, StartPoint(), _hero.Movement.DirectionX);
+                missile.Movement.StartMove();
+                await UniTask.WaitUntil(_attackCooldown.UpdateCooldown, cancellationToken: _cts.Token);
+                _attackCooldown.ResetCooldown();
+            }
         }
 
-        /// <summary>
-        /// Animation Event
-        /// </summary>
-        public void OnAttackEnded()
+        public void StopAttack()
         {
-            _attackIsActive = false;
+            if(!IsAttack)
+                return;
+            _cts?.Cancel();
+            IsAttack = false;
+            _hero.Animator.PlayStopAttack();
             _hero.Movement.UnBlockMovement();
         }
         
-        private int Hit() =>
-            Physics.OverlapSphereNonAlloc(StartPoint(), _damageParam.damagedRadius, _hits, _layerMask);
-        
         private Vector3 StartPoint() =>
-            new(transform.position.x + transform.localScale.x * 0.1f, transform.position.y + 0.7f,
+            new(transform.position.x + transform.localScale.x * 0.4f, transform.position.y + 0.7f,
                 transform.position.z);
-
-        public void Disable() => 
-            enabled = false;
-        
-        public void Enable() => 
-            enabled = true;
     }
 }

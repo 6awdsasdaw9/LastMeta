@@ -1,9 +1,6 @@
 using System;
-using System.Linq;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
-using Code.Data.GameData;
-using Code.Services.SaveServices;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -13,79 +10,86 @@ namespace Code.Character.Hero
 {
     public class HeroUpgrade : MonoBehaviour,  IHeroUpgrade
     {
-        private HeroParams _heroParams;
-        public HeroUpgradesLevelData UpgradesLevelUpgradesLevel => _upgradesLevelData;
-        private HeroUpgradesLevelData _upgradesLevelData = new HeroUpgradesLevelData();
-        
+        public HeroUpgradesLevelData UpgradesLevel { get; private set; } = new();
         public float BonusSpeed { get; private set; }
         public float BonusHeightJump { get; private set; }
-        public int BonusAirJump { get; private set; }
+        public int BonusAttack { get; private set; }
+        public float BonusHealth { get;private set; }
 
+        private HeroUpgradesParams _upgradesParams;
+        
         [Inject]
         private void Construct(HeroConfig heroConfig)
         {
-            _heroParams = heroConfig.HeroParams;
+            _upgradesParams = heroConfig.UpgradesParams;
         }
 
         public void Init(HeroUpgradesLevelData heroUpgradesLevelData)
         {
-            _upgradesLevelData = heroUpgradesLevelData;
+            UpgradesLevel = heroUpgradesLevelData;
             SetSpeed();
             SetHeightJump();
-            SetAirJump();
+            SetAttack();
+            SetBonusHealth();
+        }
+
+        [Button]
+        private void LevelUpHealth()
+        {
+            if(UpgradesLevel.HealthLevel >= _upgradesParams.GetMaxLevel<HeroUpgradeData>())
+                return;
+            
+            UpgradesLevel.HealthLevel++;
+            SetBonusHealth();
         }
 
         [Button]
         public void LevelUpSpeed()
         {
-            _upgradesLevelData.SpeedLevel++;
+            if(UpgradesLevel.SpeedLevel >=_upgradesParams.GetMaxLevel<SpeedUpgradesData>())
+                return;
+            
+            UpgradesLevel.SpeedLevel++;
             SetSpeed();
         }
         
         [Button]
         public void LevelUpJump()
         {
-            _upgradesLevelData.JumpHeightLevel++;
+            if(UpgradesLevel.JumpHeightLevel >= _upgradesParams.GetMaxLevel<JumpUpgradesData>())
+                return;
+            UpgradesLevel.JumpHeightLevel++;
             SetHeightJump();
         }
 
         [Button]
-        public void LevelUpMaxAirJump()
+        public void LevelUpAttack()
         {
-            _upgradesLevelData.AirJumpLevel++;
-            SetAirJump();
+            if(UpgradesLevel.AttackLevel >= _upgradesParams.GetMaxLevel<AttackUpgradesData>())
+                return;
+            UpgradesLevel.AttackLevel++;
+            SetAttack();
         }
 
+        private void SetBonusHealth()
+        {
+            BonusHealth = _upgradesParams.GetValueByLevel<SpeedUpgradesData>(UpgradesLevel.SpeedLevel);
+        }
         private void SetSpeed()
         {
-            BonusSpeed = GetUpgradeParam(UpgradeParamType.Speed, _upgradesLevelData.SpeedLevel);
+            BonusSpeed = _upgradesParams.GetValueByLevel<SpeedUpgradesData>(UpgradesLevel.SpeedLevel);
         }
 
         private void SetHeightJump()
         {
-            BonusHeightJump = GetUpgradeParam(UpgradeParamType.JumpHeight, _upgradesLevelData.JumpHeightLevel);
+            BonusHeightJump = _upgradesParams.GetValueByLevel<JumpUpgradesData>(UpgradesLevel.JumpHeightLevel);
         }
         
-        private void SetAirJump()
+        private void SetAttack()
         {
-            BonusAirJump = Convert.ToInt32(GetUpgradeParam(UpgradeParamType.AirJump, _upgradesLevelData.AirJumpLevel));
+            BonusAttack = Convert.ToInt32(_upgradesParams.GetValueByLevel<AttackUpgradesData>(UpgradesLevel.AttackLevel));
         }
 
-        private float GetUpgradeParam(UpgradeParamType paramType, int level)
-        {
-            var values = _heroParams?.UpgradeParams
-                .FirstOrDefault(s => s.Type == paramType)
-                ?.Values;
-
-            if (values == null)
-                return 0;
-
-            if (level > values.Count - 1)
-                level = values.Count - 1;
-
-            return values[level];
-        }
-        
     }
 
     [Serializable]
@@ -93,6 +97,7 @@ namespace Code.Character.Hero
     {
         public int SpeedLevel;
         public int JumpHeightLevel;
-        public int AirJumpLevel;
+        public int AttackLevel;
+        public int HealthLevel;
     }
 }

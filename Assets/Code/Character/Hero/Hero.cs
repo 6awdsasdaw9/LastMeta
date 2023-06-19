@@ -1,6 +1,7 @@
 using System;
 using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Character.Hero.HeroInterfaces;
+using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
 using Code.Services;
 using Sirenix.OdinInspector;
@@ -32,17 +33,15 @@ namespace Code.Character.Hero
         #endregion
 
         #region Game Value
-
-        public IHeroMode HeroMode => _heroMode;
+        public IHeroModeToggle ModeToggle => _modeToggle;
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
-        private HeroMode _heroMode;
+        private HeroModeToggle _modeToggle;
         public IHeroAttack HandAttack => _attack;
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
         private HeroAttack _attack;
-
-        public IHeroAttack GunAttack => _heroShooting;
+        public IHeroRangeAttack GunAttack => _shooting;
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
-        private HeroShooting _heroShooting;
+        private HeroShooting _shooting;
         
         public IHeroBuff Buff => _buff;
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
@@ -56,8 +55,6 @@ namespace Code.Character.Hero
         public IHeroUpgrade Upgrade => _upgrade;
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
         private HeroUpgrade _upgrade;
-
-
         public IHeroAbility Ability => _ability;
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
         private HeroAbility _ability;
@@ -65,38 +62,14 @@ namespace Code.Character.Hero
         [ShowIf(nameof(_isNotRealHero)), SerializeField]
         private HeroVFX _vfx;
         
+        public HeroStateListener StateListener { get; private set; }
         #endregion
-
 
         [Inject]
         private void Construct(MovementLimiter movementLimiter)
         {
             _movementLimiter = movementLimiter;
-            _movementLimiter.OnDisableMovementMode += OnDisableMovementMode;
-            _movementLimiter.OnEnableMovementMode += OnEnableMovementMode;
-        }
-
-
-
-        private void OnEnableMovementMode()
-        {
-            _movement.Enable();
-            _jump.Enable();
-
-            if (_isNotRealHero)
-            {
-                _attack.Enable();
-            }
-        }
-
-        private void OnDisableMovementMode()
-        {
-            _movement.Disable();
-            _jump.Disable();
-            if (_isNotRealHero)
-            {
-                _attack.Disable();
-            }
+            StateListener = new HeroStateListener(this, _movementLimiter);
         }
     }
 }

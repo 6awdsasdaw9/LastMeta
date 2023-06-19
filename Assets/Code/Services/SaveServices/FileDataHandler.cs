@@ -30,39 +30,39 @@ namespace Code.Services.SaveServices
             }
             return modifiedData;
         }
-        private string LoadJSONString()
+        /*private string LoadJSONString()
         {
             string fullPath = Path.Combine(dataDirPath, dataFileName);
             string loadedData = "";
 
-            //if (File.Exists(fullPath))
-            //{
-            //    try
-            //    {
-            //        // load the serialized data from the file
+            if (File.Exists(fullPath))
+            {
+                try
+                {
+                    // load the serialized data from the file
 
 
-            //        using (FileStream stream = new FileStream(fullPath, FileMode.Open))
-            //        {
-            //            using (StreamReader reader = new StreamReader(stream))
-            //            {
-            //                dataToLoad = reader.ReadToEnd();
-            //            }
-            //        }
-            //        loadedDate = 
-            //        // optionally decrypt the data
-            //        if (useEncryption)
-            //        {
-            //            dataToLoad = EncryptDecrypt(dataToLoad);
-            //        }
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        Debug.LogError("Error occured when trying to load data from file: " + fullPath + "\n" + e);
-            //    }
-            //}
+                    using (FileStream stream = new FileStream(fullPath, FileMode.Open))
+                    {
+                        using (StreamReader reader = new StreamReader(stream))
+                        {
+                            loadedData = reader.ReadToEnd();
+                        }
+                    }
+                 
+                    // optionally decrypt the data
+                    if (useEncryption)
+                    {
+                        loadedData = EncryptDecrypt(loadedData);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("Error occured when trying to load data from file: " + fullPath + "\n" + e);
+                }
+            }
             return loadedData;
-        }
+        }*/
         #endregion
 
 

@@ -5,9 +5,9 @@ namespace Code.Character.Hero.HeroInterfaces
 {
     public interface IHeroAttack : IDisabledComponent
     {
+        public bool IsAttack { get; }
         DamageParam DamageParam { get; }
         void SetDamageParam(DamageParam damageParam);
-        void Attack();
 
         /// <summary>
         /// Animation Event
@@ -18,5 +18,14 @@ namespace Code.Character.Hero.HeroInterfaces
         /// Animation Event
         /// </summary>
         void OnAttackEnded();
+    }
+
+    public interface IHeroRangeAttack : IDisabledComponent
+    {
+        public bool IsAttack { get; }
+        ShootingParams ShootingParams { get; }
+        void SetShootingParams(ShootingParams shootingParams);
+        void StartAttack();
+        void StopAttack();
     }
 }

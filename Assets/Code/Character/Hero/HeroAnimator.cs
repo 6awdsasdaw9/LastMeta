@@ -15,6 +15,7 @@ namespace Code.Character.Hero
         private readonly int Speed_f = Animator.StringToHash("Speed");
         private readonly int Jump_b = Animator.StringToHash("Jump");
         private readonly int Attack_t = Animator.StringToHash("Attack");
+        private readonly int StopAttack_t = Animator.StringToHash("StopAttack");
         private readonly int Dash_b = Animator.StringToHash("Dash");
         private readonly int Die_t = Animator.StringToHash("Death");
         private readonly int WaterDie_t = Animator.StringToHash("DeathOnWater");
@@ -45,6 +46,10 @@ namespace Code.Character.Hero
             _animator.SetBool(Crouch_b, _hero.Movement.IsCrouch);
         public void PlayAttack() => 
             _animator.SetTrigger(Attack_t);
+
+        public void PlayStopAttack() => 
+            _animator.SetTrigger(StopAttack_t);
+
         public void PlayDeath() => 
             _animator.SetTrigger(Die_t);
         public void PlayDeathOnWater() => 

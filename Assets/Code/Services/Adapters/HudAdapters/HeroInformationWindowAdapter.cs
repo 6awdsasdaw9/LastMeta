@@ -14,8 +14,6 @@ namespace Code.Logic.Adaptors
         private readonly EventsFacade _eventsFacade;
         private readonly Hud _hud;
         private readonly IHero _hero;
-
-
         public HeroInformationWindowAdapter(EventsFacade eventsFacade, Hud hud, IHero hero)
         {
             _eventsFacade = eventsFacade;
@@ -29,7 +27,7 @@ namespace Code.Logic.Adaptors
             {
                 if (_hud.GameMode == Constants.GameMode.Real)
                     return;
-        
+
                 _hud.HeroInformation.Button.OnStartTap += HeroInformationButtonOnStartTap;
             }
             else
@@ -42,24 +40,29 @@ namespace Code.Logic.Adaptors
 
         private void SceneEventsOnOnInitHero()
         {
-            var icon = _hud.HeroInformation.Window.HeroParamPanel.ParamIcons.FirstOrDefault(i => i.ParamType == HeroParamType.Health);
+            var icon = _hud.HeroInformation.Window.HeroParamPanel.ParamIcons.FirstOrDefault(i =>
+                i.upgradeParamType == HeroUpgradeParamType.Health);
             if (icon != null)
             {
                 icon.SetDescription(_hero.Health.Max.ToString());
             }
-             icon = _hud.HeroInformation.Window.HeroParamPanel.ParamIcons.FirstOrDefault(i => i.ParamType == HeroParamType.Attack);
+
+            icon = _hud.HeroInformation.Window.HeroParamPanel.ParamIcons.FirstOrDefault(i =>
+                i.upgradeParamType == HeroUpgradeParamType.Attack);
             if (icon != null)
             {
                 icon.SetDescription(_hero.HandAttack.DamageParam.damage.ToString());
             }
-            
-            icon = _hud.HeroInformation.Window.HeroParamPanel.ParamIcons.FirstOrDefault(i => i.ParamType == HeroParamType.Jump);
+
+            icon = _hud.HeroInformation.Window.HeroParamPanel.ParamIcons.FirstOrDefault(i =>
+                i.upgradeParamType == HeroUpgradeParamType.Jump);
             if (icon != null)
             {
                 icon.SetDescription(_hero.Jump.Height.ToString());
             }
-            
-            icon = _hud.HeroInformation.Window.HeroParamPanel.ParamIcons.FirstOrDefault(i => i.ParamType == HeroParamType.Speed);
+
+            icon = _hud.HeroInformation.Window.HeroParamPanel.ParamIcons.FirstOrDefault(i =>
+                i.upgradeParamType == HeroUpgradeParamType.Speed);
             if (icon != null)
             {
                 icon.SetDescription(_hero.Movement.Speed.ToString());

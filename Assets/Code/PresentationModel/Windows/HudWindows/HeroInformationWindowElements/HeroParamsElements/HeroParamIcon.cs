@@ -7,7 +7,7 @@ namespace Code.PresentationModel.Windows.HudWindows.HeroInformationWindowElement
 {
     public class HeroParamIcon: HudElement, ILocalizationTitle, ILocalizationDescription
     {
-        public HeroParamType ParamType;
+        public HeroUpgradeParamType upgradeParamType;
         [SerializeField] private TextMeshProUGUI _textTitle;
         [SerializeField] private TextMeshProUGUI _textValue;
         

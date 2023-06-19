@@ -6,6 +6,7 @@ namespace Code.Character.Hero.HeroInterfaces
         void PlayMove();
         void PlayCrouch();
         void PlayAttack();
+        void PlayStopAttack();
         void PlayDeath();
         void PlayDeathOnWater();
         void PlayDash(bool isDash);

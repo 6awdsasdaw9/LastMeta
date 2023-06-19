@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Code.Character.Hero.HeroInterfaces;
+using Code.Data.Configs;
 using Code.Services;
 using Code.Services.Input;
 using Cysharp.Threading.Tasks;
@@ -11,7 +12,6 @@ namespace Code.Character.Hero
     public class HeroDashAbility : Ability
     {
         private readonly InputService _inputService;
-
         private readonly IHero _hero;
         private Data _currentData;
         
@@ -20,7 +20,12 @@ namespace Code.Character.Hero
         
         private readonly Cooldown _durationCooldown;
         private readonly Cooldown _abilityCooldown;
-        
+        private bool _isCanDash => !_hero.HandAttack.IsAttack 
+                                   && !_hero.GunAttack.IsAttack 
+                                   && !_hero.Movement.IsCrouch
+                                   && _hero.;
+        public bool IsDash { get; private set; }
+
         public HeroDashAbility(IHero hero, InputService inputService)
         {
             Type = HeroAbilityType.Dash;
@@ -50,9 +55,10 @@ namespace Code.Character.Hero
 
         public override void StartApplying()
         {
-            if(!_abilityCooldown.IsUp())
+            if(!_abilityCooldown.IsUp() || !_isCanDash)
                 return;
-            
+
+            IsDash = true;
             _hero.Movement.BlockMovement();
             _hero.Movement.SetBonusSpeed(_currentData.SpeedBonus);
             _hero.Animator.PlayDash(true);
@@ -64,8 +70,7 @@ namespace Code.Character.Hero
         {
             _durationCts?.Cancel();
             _durationCts = new CancellationTokenSource();
-
-    
+            
             _durationCooldown.ResetCooldown();
 
             var value = _currentData.SpeedBonus;
@@ -81,7 +86,6 @@ namespace Code.Character.Hero
                     value -= sec;
                     _hero.Movement.SetBonusSpeed(value);
                 }
-
                 if (_hero.Transform.localScale.x == -_inputService.GetDirection())
                 {
                     StopApplying();
@@ -104,6 +108,7 @@ namespace Code.Character.Hero
 
         public override void StopApplying()
         {
+            IsDash = false;
             _durationCts?.Cancel();
             _abilityCts?.Cancel();
             
@@ -116,7 +121,7 @@ namespace Code.Character.Hero
         }
 
         [Serializable]
-        public class Data
+        public class Data : AbilitySettings
         {
             public float Cooldown;
             public float SpeedBonus;

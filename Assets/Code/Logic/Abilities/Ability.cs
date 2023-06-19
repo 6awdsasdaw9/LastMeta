@@ -7,6 +7,7 @@ namespace Code.Character.Hero
         
         public int Level { get; protected set; }
         public float CooldownTime { get; protected set; }
+        
 
         public abstract void OpenAbility();
 

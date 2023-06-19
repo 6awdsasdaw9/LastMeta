@@ -36,10 +36,11 @@ namespace Code.Logic.Adaptors
             _input = inputService;
 
             _menuWindowAdapter = new MenuWindowAdapter(eventsFacade, hud);
-            _heroInformationWindowAdapter = new HeroInformationWindowAdapter(eventsFacade, hud, hero);
 
             if (_hud.GameMode == Constants.GameMode.Real)
                 return;
+            
+            _heroInformationWindowAdapter = new HeroInformationWindowAdapter(eventsFacade, hud, hero);
         }
 
         private void OnEnable() =>

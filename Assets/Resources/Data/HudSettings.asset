@@ -43,4 +43,4 @@ MonoBehaviour:
         Path: event:/SFX/UI/Choise
       _playOnAwake: 0
     MessageBoxPrefab: {fileID: 2244307402555797556, guid: 1dc4b707012f31e4e878463a050d90c1, type: 3}
-    ChoiceButtonPrefab: {fileID: 874590692292462238, guid: 4f8600b52f2c91546ac11e663c2f5e52, type: 3}
+    choiceDefaultButtonPrefab: {fileID: 874590692292462238, guid: 4f8600b52f2c91546ac11e663c2f5e52, type: 3}

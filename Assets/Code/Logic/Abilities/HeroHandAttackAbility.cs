@@ -15,7 +15,7 @@ namespace Code.Character.Hero
         private readonly IHero _hero;
         private readonly InputService _inputService;
         private readonly HeroConfig _heroConfig;
-        private Data _currentData;
+        public Data CurrentData;
         
         private CancellationTokenSource _abilityCts;
         
@@ -34,7 +34,7 @@ namespace Code.Character.Hero
 
         public void SetData(Data data)
         {
-            _currentData = data;
+             CurrentData = data;
             _abilityCooldown.SetTime(data.Cooldown);
             _hero.HandAttack.SetDamageParam(data.DamageParam);
         }
@@ -50,7 +50,7 @@ namespace Code.Character.Hero
         public override void StartApplying()
         {
             Logg.ColorLog("HeroHandAttackAbility: StartApplying");
-            _hero.HeroMode.SetDefaultMode();
+            _hero.ModeToggle.SetDefaultMode();
         }
 
         public override void StopApplying()
@@ -59,7 +59,7 @@ namespace Code.Character.Hero
 
         
         [Serializable]
-        public class Data
+        public class Data : AbilitySettings
         {
             public float Cooldown;
             public DamageParam DamageParam;

@@ -1416,6 +1416,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 848423380340126172, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
+      propertyPath: m_Name
+      value: FacrotiesInstaller
+      objectReference: {fileID: 0}
+    - target: {fileID: 2501109377583017034, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
+      propertyPath: _autoRun
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2540698932121645061, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: m_Name
       value: -GameCore-

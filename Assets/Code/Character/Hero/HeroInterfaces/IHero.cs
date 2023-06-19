@@ -15,16 +15,16 @@ namespace Code.Character.Hero.HeroInterfaces
         IHeroJump Jump { get; }
 
 
-        IHeroMode HeroMode { get; }
+        IHeroModeToggle ModeToggle { get; }
         IHeroAttack HandAttack { get; }
-        IHeroAttack GunAttack { get; }
+        IHeroRangeAttack GunAttack { get; }
         IHeroBuff Buff { get; }
         IHealth Health { get; }
         IHeroDeath Death { get; }
         IHeroUpgrade Upgrade { get; }
         IHeroAbility Ability { get; }
         IHeroVFX VFX { get; }
-
+        HeroStateListener StateListener { get; }
     
     }
     

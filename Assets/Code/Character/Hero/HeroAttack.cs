@@ -1,8 +1,8 @@
+using Code.Character.Common;
 using Code.Character.Common.CommonCharacterInterfaces;
+using Code.Character.Enemies;
 using Code.Character.Hero.HeroInterfaces;
-using Code.Data.Configs;
 using Code.Data.GameData;
-using Code.Debugers;
 using Code.Services.Input;
 using UnityEngine;
 using Zenject;
@@ -14,44 +14,33 @@ namespace Code.Character.Hero
     {
         private IHero _hero;
         private InputService _inputService;
-        private DamageParam _damageParam;
-
-        public DamageParam DamageParam => _damageParam;
-        private readonly Collider[] _hits = new Collider[7];
-        private bool _attackIsActive;
-        private int _layerMask;
-
+        private RaycastHits _raycastHit;
+        public DamageParam DamageParam { get; private set; }
+        public bool IsAttack { get; private set; }
+        private bool _isCanAttack => !_hero.StateListener.IsDash 
+                                    && !_hero.StateListener.IsCrouch 
+                                    && !_hero.StateListener.IsJump
+                                    && !_hero.StateListener.IsBlockMove;
 
         [Inject]
         private void Construct(InputService inputService, HeroConfig heroConfig)
         {
             _hero = GetComponent<IHero>();
+        
+            _raycastHit = new RaycastHits(transform, Constants.HittableLayer, 0.2f, hitsSize: 7);
             _inputService = inputService;
-            _damageParam = heroConfig.HeroParams.damage;
-            _layerMask = 1 << LayerMask.NameToLayer(Constants.HittableLayer);
         }
-
-        private void OnEnable()
+        public void Enable() => enabled = true;
+        private void OnEnable() => _inputService.OnPressAttackButton += StartAttack;
+        public void Disable() => enabled = false;
+        private void OnDisable() => _inputService.OnPressAttackButton -= StartAttack;
+        public void SetDamageParam(DamageParam damageParam) => DamageParam = damageParam;
+        private void StartAttack()
         {
-            _inputService.OnPressAttack += Attack;
-        }
-
-        private void OnDisable()
-        {
-            _inputService.OnPressAttack -= Attack;
-        }
-
-        public void SetDamageParam(DamageParam damageParam)
-        {
-            _damageParam = damageParam;
-        }
-
-        public void Attack()
-        {
-            if (_attackIsActive || !_hero.Collision.OnGround)
+            if (IsAttack || !_isCanAttack)
                 return;
 
-            _attackIsActive = true;
+            IsAttack = true;
             _hero.Animator.PlayAttack();
             _hero.Movement.BlockMovement();
         }
@@ -61,9 +50,13 @@ namespace Code.Character.Hero
         /// </summary>
         public void OnAttack()
         {
-            PhysicsDebug.DrawDebug(StartPoint(), _damageParam.damagedRadius, 1.0f);
-            for (int i = 0; i < Hit(); ++i)
-                _hits[i].GetComponent<IHealth>().TakeDamage(_damageParam.damage);
+           var damageTakers = _raycastHit.GetComponents<IHealth>();
+
+           foreach (var health in damageTakers)
+           {
+               health.TakeDamage(DamageParam.damage);
+           }
+               
         }
 
         /// <summary>
@@ -71,21 +64,8 @@ namespace Code.Character.Hero
         /// </summary>
         public void OnAttackEnded()
         {
-            _attackIsActive = false;
+            IsAttack = false;
             _hero.Movement.UnBlockMovement();
         }
-        
-        private int Hit() =>
-            Physics.OverlapSphereNonAlloc(StartPoint(), _damageParam.damagedRadius, _hits, _layerMask);
-        
-        private Vector3 StartPoint() =>
-            new(transform.position.x + transform.localScale.x * 0.2f, transform.position.y + 0.7f,
-                transform.position.z);
-
-        public void Disable() => 
-            enabled = false;
-        
-        public void Enable() => 
-            enabled = true;
     }
 }

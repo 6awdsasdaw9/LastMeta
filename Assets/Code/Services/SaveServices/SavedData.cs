@@ -10,8 +10,6 @@ namespace Code.Services.SaveServices
     public class SavedData
     {
         public string CurrentScene;
-
-
         public TimeData TimeData;
         public HealthData HeroHealth;
         public HeroUpgradesLevelData HeroUpgradesLevel;

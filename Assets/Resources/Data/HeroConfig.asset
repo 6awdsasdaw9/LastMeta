@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeroParams:
     maxHP: 20
-    damage:
-      damage: 0
-      damagedRadius: 0
     maxSpeed: 2.5
     crouchSpeed: 0.7
     maxAcceleration: 16
@@ -36,7 +33,6 @@ MonoBehaviour:
     speedLimit: 6.7
     coyoteTime: 0.1
     jumpBuffer: 0.3
-    UpgradeParams: []
   AbilitiesParams:
     DashLevelsData:
     - Cooldown: 3.5
@@ -61,3 +57,81 @@ MonoBehaviour:
       DamageParam:
         damage: 3
         damagedRadius: 0.35
+    GunAttackLevelData:
+    - MissileType: 0
+      MoveType: 0
+      IsMassAttack: 0
+      LifeTime:
+        MinValue: 0.5
+        MaxValue: 2.0535712
+      Speed:
+        MinValue: 0.76785713
+        MaxValue: 1.3993387
+      Scatter:
+        MinValue: -1.2910849
+        MaxValue: 1.1143192
+      DamageParam:
+        damage: 3
+        damagedRadius: 1
+      AttackCooldown: 0.3
+      AbilityCooldown: 5
+      MissileSprites:
+      - {fileID: 7079261095572665666, guid: b8f79a695a10f4944821f68597746cfe, type: 3}
+      - {fileID: -6751012641250354480, guid: b8f79a695a10f4944821f68597746cfe, type: 3}
+    - MissileType: 0
+      MoveType: 0
+      IsMassAttack: 0
+      LifeTime:
+        MinValue: 0
+        MaxValue: 0
+      Speed:
+        MinValue: 0
+        MaxValue: 0
+      Scatter:
+        MinValue: 0
+        MaxValue: 0
+      DamageParam:
+        damage: 0
+        damagedRadius: 0
+      AttackCooldown: 0
+      AbilityCooldown: 0
+      MissileSprites: []
+    - MissileType: 0
+      MoveType: 0
+      IsMassAttack: 0
+      LifeTime:
+        MinValue: 0
+        MaxValue: 0
+      Speed:
+        MinValue: 0
+        MaxValue: 0
+      Scatter:
+        MinValue: 0
+        MaxValue: 0
+      DamageParam:
+        damage: 0
+        damagedRadius: 0
+      AttackCooldown: 0
+      AbilityCooldown: 0
+      MissileSprites: []
+  UpgradesParams:
+    HealthUpgradesData:
+      Values:
+      - 10
+      - 20
+      - 30
+    AttackUpgradesData:
+      Values:
+      - 5
+      - 7
+      - 10
+    SpeedUpgradesData:
+      Values:
+      - 0.2
+      - 0.35
+      - 0.5
+    JumpUpgradesData:
+      Values:
+      - 0.2
+      - 0.4
+      - 0.6

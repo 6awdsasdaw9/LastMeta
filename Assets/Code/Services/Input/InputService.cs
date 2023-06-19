@@ -1,4 +1,5 @@
 using System;
+using Code.Debugers;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -35,7 +36,7 @@ namespace Code.Services.Input
 
             _master.Player.Dash.started += PressDashEvent;
             _master.Player.Attack.started += PressAttackEvent;
-            _master.Player.Attack.canceled += PressSkillButtonThreeEvent;
+            _master.Player.Attack.canceled += UnPressAttackEvent;
             _master.Player.Jump.started += PressJumpEvent;
             _master.Player.Crouch.started += PressCrouchEvent;
             _master.Player.Crouch.canceled += PressCrouchEvent;
@@ -80,15 +81,23 @@ namespace Code.Services.Input
 
         public event Action OnPressDash;
 
+        private void UnPressAttackEvent(InputAction.CallbackContext obj)
+        {
+            if (_isPressedOnUI)
+                return;
+            OnUnPressAttackButton?.Invoke();
+        }
+        public event Action OnUnPressAttackButton;
+
         private void PressAttackEvent(InputAction.CallbackContext context)
         {
             if (_isPressedOnUI)
                 return;
-
-            OnPressAttack?.Invoke();
+            
+            OnPressAttackButton?.Invoke();
         }
 
-        public event Action OnPressAttack;
+        public event Action OnPressAttackButton;
 
         private void PressSkillButtonOneEvent(InputAction.CallbackContext context) => OnPressSkillButtonOne?.Invoke();
 
@@ -98,7 +107,8 @@ namespace Code.Services.Input
 
         public event Action OnPressSkillButtonTwo;
 
-        private void PressSkillButtonThreeEvent(InputAction.CallbackContext context) => OnPressSkillButtonThree?.Invoke();
+        private void PressSkillButtonThreeEvent(InputAction.CallbackContext context) =>
+            OnPressSkillButtonThree?.Invoke();
 
         public event Action OnPressSkillButtonThree;
 

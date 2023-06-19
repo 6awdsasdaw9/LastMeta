@@ -30,7 +30,7 @@ namespace Code.Character.Enemies
         
         private void Update()
         {
-            if (HeroNotReached() && !_attack.attackIsActive && _limiter.charactersCanMove)
+            if (HeroNotReached() && !_attack.attackIsActive && _limiter.CharactersCanMove)
             {
                 _agent.destination = _heroTransform.position;
             }
