@@ -10925,6 +10925,10 @@ PrefabInstance:
       propertyPath: ParamType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1066146563281752258, guid: 141b9fd788be7b7438a799348e5237e9, type: 3}
+      propertyPath: upgradeParamType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2334156443644191439, guid: 141b9fd788be7b7438a799348e5237e9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -11593,6 +11597,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1066146563281752258, guid: 141b9fd788be7b7438a799348e5237e9, type: 3}
       propertyPath: ParamType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066146563281752258, guid: 141b9fd788be7b7438a799348e5237e9, type: 3}
+      propertyPath: upgradeParamType
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2334156443644191439, guid: 141b9fd788be7b7438a799348e5237e9, type: 3}
@@ -14313,6 +14321,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1066146563281752258, guid: 141b9fd788be7b7438a799348e5237e9, type: 3}
       propertyPath: ParamType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066146563281752258, guid: 141b9fd788be7b7438a799348e5237e9, type: 3}
+      propertyPath: upgradeParamType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2334156443644191439, guid: 141b9fd788be7b7438a799348e5237e9, type: 3}

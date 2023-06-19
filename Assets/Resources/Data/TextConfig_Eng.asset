@@ -37,11 +37,11 @@ MonoBehaviour:
       Title: Vase
       Description: You can have black substance
     HeroParamsText:
-    - ParamType: 0
+    - upgradeParamType: 0
       Title: Health
-    - ParamType: 1
+    - upgradeParamType: 1
       Title: Damage
-    - ParamType: 2
+    - upgradeParamType: 2
       Title: Speed
-    - ParamType: 3
+    - upgradeParamType: 3
       Title: Jump height
