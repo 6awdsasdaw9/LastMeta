@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace Code.Logic.Missile
 {
-    public class MissileAttack: MonoBehaviour
+    public class HeroMissileAttack: MonoBehaviour
     {
-        [SerializeField] private Missile Missile;
+        [SerializeField] private HeroMissile _heroMissile;
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out IHealth health))
             {
-                health.TakeDamage(Missile.ShootingParams.DamageParam.damage);
+                health.TakeDamage(_heroMissile.Hero.Stats.Damage);
             }
             
-            Missile.OnTakeDamage?.Invoke(Missile);
+            _heroMissile.OnTakeDamage?.Invoke(_heroMissile);
         }
     }
 

@@ -1,9 +1,10 @@
 using System;
 using System.Threading;
 using Code.Character.Hero;
+using Code.Character.Hero.HeroInterfaces;
 using Code.Services;
 using Cysharp.Threading.Tasks;
-using Unity.Collections;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
@@ -22,19 +23,25 @@ namespace Code.Logic.Missile
         Random,
         Ricochet
     }
-    public class Missile : MonoBehaviour
+    public class HeroMissile : MonoBehaviour
     {
+        public IHero Hero;
         public ShootingParams ShootingParams { get; private set; }
-        public Rigidbody Rigidbody;
+        public Rigidbody Rigidbody => _rigidbody;
+        [SerializeField] private Rigidbody _rigidbody;
+        public MissileModel Model => _model;
+        [SerializeField] private MissileModel _model;
 
-        public MissileModel Model;
-        [ReadOnly] public MissileAttack Attack;
-        [ReadOnly] public MissileMovement Movement;
+        public HeroMissileAttack Attack => _attack;
+        [SerializeField] private  HeroMissileAttack _attack;
+       
+        [SerializeField] private  Collider _collider;
+        [ShowInInspector,ReadOnly] public MissileMovement Movement { get; private set; }
 
         private Cooldown _lifetimeCooldown;
         private CancellationTokenSource _cts;
-        public Action<Missile> OnLifetimeCooldownIsUp;
-        public Action<Missile> OnTakeDamage;
+        public Action<HeroMissile> OnLifetimeCooldownIsUp;
+        public Action<HeroMissile> OnTakeDamage;
 
         public void SetMovement(MissileMovement movement)
         {
@@ -59,23 +66,29 @@ namespace Code.Logic.Missile
             Movement.StopMove();
         }
         
-        public class Pool : MonoMemoryPool<ShootingParams, Vector3,float, Missile>
+        public class Pool : MonoMemoryPool<ShootingParams, IHero, HeroMissile>
         {
-            protected override void OnCreated(Missile item)
+            protected override void OnCreated(HeroMissile item)
             {
                 base.OnCreated(item);
             }
 
-            protected override void Reinitialize(ShootingParams data, Vector3 spawnPosition,float forward, Missile item)
+            protected override void Reinitialize(ShootingParams data, IHero hero, HeroMissile item)
             {
                 item.ShootingParams = data;
-                item.transform.position = spawnPosition;
+                item.Hero = hero;
+                item.transform.position = data.StartPoint(hero.Transform);
+                item.Rigidbody.useGravity = data.IsUseGravity;
+                item.Rigidbody.mass = data.Mass;
+                item.Rigidbody.drag = data.Drag;
+                item._collider.material = data.PhysicMaterial;
+                
                 item.Model.SetRandomMissileSprite();
                 item.StartUpdateLifeTimeCooldown().Forget();
-                base.Reinitialize(data, spawnPosition,forward, item);
+                base.Reinitialize(data,  hero, item);
             }
 
-            protected override void OnDespawned(Missile item)
+            protected override void OnDespawned(HeroMissile item)
             {
                 item.Rigidbody.velocity = Vector3.zero;
                 base.OnDespawned(item);

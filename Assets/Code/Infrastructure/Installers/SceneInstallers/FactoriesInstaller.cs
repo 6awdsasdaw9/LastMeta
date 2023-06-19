@@ -7,7 +7,7 @@ namespace Code.Infrastructure.Installers.SceneInstallers
 {
     public class FactoriesInstaller: MonoInstaller
     {
-        [SerializeField] private Missile _missilePrefabs;
+        [SerializeField] private HeroMissile heroMissilePrefabs;
         public override void InstallBindings()
         {
             BindMissilePool();
@@ -18,10 +18,10 @@ namespace Code.Infrastructure.Installers.SceneInstallers
 
         private void BindMissilePool()
         {
-            Container.BindMemoryPool<Missile, Missile.Pool>()
+            Container.BindMemoryPool<HeroMissile, HeroMissile.Pool>()
                 .WithInitialSize(10)
                 .ExpandByOneAtATime()
-                .FromComponentInNewPrefab(_missilePrefabs)
+                .FromComponentInNewPrefab(heroMissilePrefabs)
                 .UnderTransformGroup("Missile");
         }
         

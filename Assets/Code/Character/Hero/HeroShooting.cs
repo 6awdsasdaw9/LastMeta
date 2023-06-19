@@ -78,7 +78,7 @@ namespace Code.Character.Hero
             
             while (IsAttack)
             {
-                var missile = _missilesFactory.SpawnMissile(ShootingParams, StartPoint(), _hero.Movement.DirectionX);
+                var missile = _missilesFactory.SpawnMissile(ShootingParams,_hero);
                 missile.Movement.StartMove();
                 await UniTask.WaitUntil(_attackCooldown.UpdateCooldown, cancellationToken: _cts.Token);
                 _attackCooldown.ResetCooldown();
@@ -95,8 +95,6 @@ namespace Code.Character.Hero
             _hero.Movement.UnBlockMovement();
         }
         
-        private Vector3 StartPoint() =>
-            new(transform.position.x + transform.localScale.x * 0.4f, transform.position.y + 0.7f,
-                transform.position.z);
+       
     }
 }

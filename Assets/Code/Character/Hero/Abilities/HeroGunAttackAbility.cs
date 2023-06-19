@@ -12,7 +12,7 @@ namespace Code.Character.Hero
         private readonly IHero _hero;
         private readonly InputService _inputService;
         private readonly HeroConfig _heroConfig;
-        public ShootingParams Params;
+        public ShootingParams ShootingParams;
 
         private CancellationTokenSource _abilityCts;
 
@@ -31,7 +31,7 @@ namespace Code.Character.Hero
 
         public void SetShootingParams(ShootingParams shootingParams)
         {
-            Params = shootingParams;
+            ShootingParams = shootingParams;
             _hero.GunAttack.SetShootingParams(shootingParams);
             _abilityCooldown.SetTime(shootingParams.AttackCooldown);
         }

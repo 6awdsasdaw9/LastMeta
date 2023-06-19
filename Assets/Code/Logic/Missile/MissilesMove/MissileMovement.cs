@@ -4,12 +4,12 @@ namespace Code.Logic.Missile
 {
     public abstract class MissileMovement
     {
-        protected Missile Missile;
+        protected HeroMissile heroMissile;
         protected float Forward;
      
-        public  MissileMovement(Missile missile, float forward)
+        public  MissileMovement(HeroMissile heroMissile, float forward)
         {
-            Missile = missile;
+            this.heroMissile = heroMissile;
             Forward = forward;
         }
 

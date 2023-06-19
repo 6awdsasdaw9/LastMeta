@@ -161,6 +161,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2540698932121645066}
     m_Modifications:
+    - target: {fileID: 955468923986454651, guid: 5a4c5bd916e8adb47b19715d3f3c8b07, type: 3}
+      propertyPath: heroMissilePrefabs
+      value: 
+      objectReference: {fileID: 8053710278240547915, guid: 2db31b4f7ea07344a84338f08344215e, type: 3}
     - target: {fileID: 7948913252850770648, guid: 5a4c5bd916e8adb47b19715d3f3c8b07, type: 3}
       propertyPath: gameMode
       value: 1

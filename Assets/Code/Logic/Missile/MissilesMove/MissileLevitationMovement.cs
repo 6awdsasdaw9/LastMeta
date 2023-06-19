@@ -3,6 +3,7 @@ using System.Threading;
 using Code.Debugers;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 namespace Code.Logic.Missile
@@ -14,15 +15,16 @@ namespace Code.Logic.Missile
         private float startY;
 
         private float _maxVelocityY = 3;
+        private float _maxVelocityX = 5;
 
-        public MissileLevitationMovement(Missile missile, float forward)
-            : base(missile, forward)
+        public MissileLevitationMovement(HeroMissile heroMissile, float forward)
+            : base(heroMissile, forward)
         {
         }
 
         public override void StartMove()
         {
-            startY = Missile.transform.position.y;
+            startY = heroMissile.transform.position.y;
             _cts?.Cancel();
             _cts = new CancellationTokenSource();
             _isMove = true;
@@ -39,33 +41,61 @@ namespace Code.Logic.Missile
         {
             while (_isMove)
             {
-                if (Missile == null || !Missile.gameObject.activeSelf)
+                if (heroMissile == null || !heroMissile.gameObject.activeSelf)
                 {
                     StopMove();
                     break;
                 }
 
-                Missile.Rigidbody.AddForce(GetForward());
-                while (Missile.Rigidbody.velocity.y > _maxVelocityY)
-                {
-                    Missile.Rigidbody.velocity -= new Vector3(-Missile.Rigidbody.velocity.x * 0.3f,Time.deltaTime,0);
-                    await UniTask.DelayFrame(1, cancellationToken: _cts.Token);
-                }
-                
-                await UniTask.Delay(TimeSpan.FromSeconds(0.2f), cancellationToken: _cts.Token);
+                heroMissile.Rigidbody.AddForce(GetForward(), ForceMode.Impulse);
+
+                CheckMaxVelocityX();
+                CheckMaxVelocityY();
+
+                await UniTask.Delay(TimeSpan.FromSeconds(Random.Range(0.1f,0.5f)), cancellationToken: _cts.Token);
+            }
+        }
+
+        private void CheckMaxVelocityY()
+        {
+            if (heroMissile.Rigidbody.velocity.y > _maxVelocityY
+                || heroMissile.Rigidbody.velocity.y < _maxVelocityY)
+            {
+                heroMissile.Rigidbody.velocity = new Vector3(
+                    heroMissile.Rigidbody.velocity.x,
+                    -heroMissile.Rigidbody.velocity.y * 0.5f,
+                    0);
+            }
+        }
+
+        private void CheckMaxVelocityX()
+        {
+            if (heroMissile.Rigidbody.velocity.x > heroMissile.ShootingParams.Speed.GetRandom())
+            {
+                heroMissile.Rigidbody.velocity = new Vector3(
+                    heroMissile.ShootingParams.Speed.GetRandom(),
+                    heroMissile.Rigidbody.velocity.y,
+                    0);
+            }
+            else if (heroMissile.Rigidbody.velocity.x < heroMissile.ShootingParams.Speed.GetRandom())
+            {
+                heroMissile.Rigidbody.velocity = new Vector3(
+                    -heroMissile.ShootingParams.Speed.GetRandom(),
+                    heroMissile.Rigidbody.velocity.y,
+                    0);
             }
         }
 
         private Vector3 GetForward()
         {
-            return Vector3.Lerp(Missile.Rigidbody.velocity , GetMissileTrajectory(), Time.deltaTime).normalized;
+            return Vector3.Lerp(heroMissile.Rigidbody.velocity, GetMissileTrajectory(), Time.deltaTime).normalized;
         }
 
         private Vector3 GetMissileTrajectory()
         {
             return new Vector3(
-                Forward * Missile.ShootingParams.Speed.GetRandom() * 1.5f,
-                startY + Missile.ShootingParams.Scatter.GetRandom(),
+                Forward * heroMissile.ShootingParams.Speed.GetRandom(),
+                heroMissile.ShootingParams.Scatter.GetRandom(),
                 0);
         }
     }

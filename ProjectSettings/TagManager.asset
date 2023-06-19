@@ -14,8 +14,8 @@ TagManager:
   - Water
   - UI
   - 3D
-  - PlayerObserver
-  - Player
+  - HeroObserver
+  - Hero
   - Hittable
   - Enemy
   - NoCollision

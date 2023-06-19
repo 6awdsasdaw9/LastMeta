@@ -4,14 +4,14 @@ namespace Code.Logic.Missile
 {
     public class MissileDirectMovement: MissileMovement
     {
-        public MissileDirectMovement(Missile missile, float forward) : base(missile, forward)
+        public MissileDirectMovement(HeroMissile heroMissile, float forward) : base(heroMissile, forward)
         {
             
         }
 
         public override void StartMove()
         {
-            Missile.Rigidbody.velocity = new Vector3(Forward * Missile.ShootingParams.Speed.MaxValue,0,0);
+            heroMissile.Rigidbody.velocity = new Vector3(Forward * heroMissile.ShootingParams.Speed.MaxValue,0,0);
         }
 
         public override void StopMove()

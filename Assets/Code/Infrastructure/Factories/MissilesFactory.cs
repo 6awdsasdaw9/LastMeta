@@ -1,4 +1,5 @@
 using Code.Character.Hero;
+using Code.Character.Hero.HeroInterfaces;
 using Code.Logic.Missile;
 using UnityEngine;
 
@@ -6,40 +7,40 @@ namespace Code.Infrastructure.Factories
 {
     public class MissilesFactory
     {
-        private readonly Missile.Pool _missilePool;
+        private readonly HeroMissile.Pool _missilePool;
         
-        public MissilesFactory(Missile.Pool missilePool)
+        public MissilesFactory(HeroMissile.Pool missilePool)
         {
             _missilePool = missilePool;
         }
 
-        public Missile SpawnMissile(ShootingParams shootingParams, Vector3 spawnPosition, float forward)
+        public HeroMissile SpawnMissile(ShootingParams shootingParams, IHero hero)
         {
-              var missile = _missilePool.Spawn(shootingParams, spawnPosition, forward);
+              var missile = _missilePool.Spawn(shootingParams,hero);
               missile.OnTakeDamage += DeSpawnMissile;
               missile.OnLifetimeCooldownIsUp += DeSpawnMissile;
               
-              missile.SetMovement(GetMissileMovement(missile,forward));
+              missile.SetMovement(GetMissileMovement(missile, hero.Transform.localScale.x));
               return missile;
         }
 
-        private void DeSpawnMissile(Missile missile)
+        private void DeSpawnMissile(HeroMissile heroMissile)
         {
-            missile.OnTakeDamage -= DeSpawnMissile;
-            missile.OnLifetimeCooldownIsUp -= DeSpawnMissile;
-            missile.Disable();
-            _missilePool.Despawn(missile);
+            heroMissile.OnTakeDamage -= DeSpawnMissile;
+            heroMissile.OnLifetimeCooldownIsUp -= DeSpawnMissile;
+            heroMissile.Disable();
+            _missilePool.Despawn(heroMissile);
         }
 
-        private MissileMovement GetMissileMovement(Missile missile ,float forward)
+        private MissileMovement GetMissileMovement(HeroMissile heroMissile ,float forward)
         {
-            if (missile.ShootingParams.MoveType == MissileMoveType.Levitation)
+            if (heroMissile.ShootingParams.MoveType == MissileMoveType.Levitation)
             {
-                return new MissileLevitationMovement(missile, forward);
+                return new MissileLevitationMovement(heroMissile, forward);
             }
             else  
             {
-                return new MissileDirectMovement(missile, forward);
+                return new MissileDirectMovement(heroMissile, forward);
             }
         }
     }
