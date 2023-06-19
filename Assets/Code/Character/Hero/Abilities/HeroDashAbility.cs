@@ -20,10 +20,9 @@ namespace Code.Character.Hero
         
         private readonly Cooldown _durationCooldown;
         private readonly Cooldown _abilityCooldown;
-        private bool _isCanDash => !_hero.HandAttack.IsAttack 
-                                   && !_hero.GunAttack.IsAttack 
-                                   && !_hero.Movement.IsCrouch
-                                   && _hero.;
+        private bool _isCanDash => !_hero.Stats.IsAttack 
+                                   && !_hero.Stats.IsCrouch
+                                   && !_hero.Stats.IsBlockMove;
         public bool IsDash { get; private set; }
 
         public HeroDashAbility(IHero hero, InputService inputService)

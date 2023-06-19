@@ -6,7 +6,7 @@ namespace Code.Character.Common.CommonCharacterInterfaces
     public interface IHealth
     {
         
-        event Action HealthChanged;
+        event Action OnHealthChanged;
         float Current { get; }
         float Max { get;  }
 

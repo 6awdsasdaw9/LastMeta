@@ -38,7 +38,7 @@ namespace Code.Character.Hero
         public void SetGunMode()
         {
             Logg.ColorLog("HeroMode: Set Gun");
-            Mode = Constants.HeroMode.Default;
+            Mode = Constants.HeroMode.Gun;
             _hero.GunAttack.Enable();
             _hero.HandAttack.Disable();
             _hero.Animator.PlayEnterGunMode();

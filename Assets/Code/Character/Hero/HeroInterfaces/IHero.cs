@@ -6,8 +6,8 @@ namespace Code.Character.Hero.HeroInterfaces
     public interface IHero
     {
         Constants.GameMode GameMode { get; }
- 
         Transform Transform { get; }
+        IHeroStats Stats { get; }
         IHeroAnimator Animator { get; }
         IHeroAudio Audio { get; }
         IHeroCollision Collision { get;  }
@@ -24,7 +24,6 @@ namespace Code.Character.Hero.HeroInterfaces
         IHeroUpgrade Upgrade { get; }
         IHeroAbility Ability { get; }
         IHeroVFX VFX { get; }
-        HeroStateListener StateListener { get; }
     
     }
     

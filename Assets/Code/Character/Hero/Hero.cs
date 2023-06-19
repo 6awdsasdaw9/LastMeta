@@ -1,6 +1,7 @@
 using System;
 using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Character.Hero.HeroInterfaces;
+using Code.Data.Configs;
 using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
 using Code.Services;
@@ -12,7 +13,7 @@ namespace Code.Character.Hero
 {
     public class Hero : MonoBehaviour, IHero
     {
-        private bool _isNotRealHero => _gameMode != Constants.GameMode.Real;
+        private bool _isGameHero => _gameMode != Constants.GameMode.Real;
         public Constants.GameMode GameMode => _gameMode;
         [SerializeField] private Constants.GameMode _gameMode;
 
@@ -28,48 +29,48 @@ namespace Code.Character.Hero
         public IHeroCollision Collision => _collision;
         [SerializeField] private HeroCollision _collision;
         public Transform Transform => transform;
-        private MovementLimiter _movementLimiter;
-        
+
         #endregion
 
         #region Game Value
         public IHeroModeToggle ModeToggle => _modeToggle;
-        [ShowIf(nameof(_isNotRealHero)), SerializeField]
+        [ShowIf(nameof(_isGameHero)), SerializeField]
         private HeroModeToggle _modeToggle;
         public IHeroAttack HandAttack => _attack;
-        [ShowIf(nameof(_isNotRealHero)), SerializeField]
+        [ShowIf(nameof(_isGameHero)), SerializeField]
         private HeroAttack _attack;
         public IHeroRangeAttack GunAttack => _shooting;
-        [ShowIf(nameof(_isNotRealHero)), SerializeField]
+        [ShowIf(nameof(_isGameHero)), SerializeField]
         private HeroShooting _shooting;
         
         public IHeroBuff Buff => _buff;
-        [ShowIf(nameof(_isNotRealHero)), SerializeField]
+        [ShowIf(nameof(_isGameHero)), SerializeField]
         private HeroBuff _buff;
         public IHeroDeath Death => _death;
-        [ShowIf(nameof(_isNotRealHero)), SerializeField]
+        [ShowIf(nameof(_isGameHero)), SerializeField]
         private HeroDeath _death;
         public IHealth Health => _health;
-        [ShowIf(nameof(_isNotRealHero)), SerializeField]
+        [ShowIf(nameof(_isGameHero)), SerializeField]
         private HeroHealth _health;
         public IHeroUpgrade Upgrade => _upgrade;
-        [ShowIf(nameof(_isNotRealHero)), SerializeField]
+        [ShowIf(nameof(_isGameHero)), SerializeField]
         private HeroUpgrade _upgrade;
         public IHeroAbility Ability => _ability;
-        [ShowIf(nameof(_isNotRealHero)), SerializeField]
+        [ShowIf(nameof(_isGameHero)), SerializeField]
         private HeroAbility _ability;
         public IHeroVFX VFX => _vfx;
-        [ShowIf(nameof(_isNotRealHero)), SerializeField]
+        [ShowIf(nameof(_isGameHero)), SerializeField]
         private HeroVFX _vfx;
         
-        public HeroStateListener StateListener { get; private set; }
+        public IHeroStats Stats { get; private set; } 
         #endregion
 
         [Inject]
-        private void Construct(MovementLimiter movementLimiter)
+        private void Construct(MovementLimiter movementLimiter, HeroConfig heroConfig)
         {
-            _movementLimiter = movementLimiter;
-            StateListener = new HeroStateListener(this, _movementLimiter);
+            Stats = _isGameHero
+                ? new HeroGameStats(this, movementLimiter, heroConfig)
+                : new HeroStats(this, movementLimiter, heroConfig);
         }
     }
 }

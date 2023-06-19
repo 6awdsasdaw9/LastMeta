@@ -44,28 +44,28 @@ namespace Code.Logic.Adaptors
                 i.upgradeParamType == HeroUpgradeParamType.Health);
             if (icon != null)
             {
-                icon.SetDescription(_hero.Health.Max.ToString());
+                icon.SetDescription(_hero.Stats.MaxHeath.ToString());
             }
 
             icon = _hud.HeroInformation.Window.HeroParamPanel.ParamIcons.FirstOrDefault(i =>
                 i.upgradeParamType == HeroUpgradeParamType.Attack);
             if (icon != null)
             {
-                icon.SetDescription(_hero.HandAttack.DamageParam.damage.ToString());
+                icon.SetDescription(_hero.Stats.Damage.ToString());
             }
 
             icon = _hud.HeroInformation.Window.HeroParamPanel.ParamIcons.FirstOrDefault(i =>
                 i.upgradeParamType == HeroUpgradeParamType.Jump);
             if (icon != null)
             {
-                icon.SetDescription(_hero.Jump.Height.ToString());
+                icon.SetDescription(_hero.Stats.JumpHeight.ToString());
             }
 
             icon = _hud.HeroInformation.Window.HeroParamPanel.ParamIcons.FirstOrDefault(i =>
                 i.upgradeParamType == HeroUpgradeParamType.Speed);
             if (icon != null)
             {
-                icon.SetDescription(_hero.Movement.Speed.ToString());
+                icon.SetDescription(_hero.Stats.Speed.ToString());
             }
         }
 

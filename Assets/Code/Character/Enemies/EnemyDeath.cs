@@ -17,12 +17,12 @@ namespace Code.Character.Enemies
 
         private void Start()
         {
-            _health.HealthChanged += OnHealthChanged;
+            _health.OnHealthChanged += OnHealthChanged;
         }
 
         private void OnDestroy()
         {
-            _health.HealthChanged -= OnHealthChanged;
+            _health.OnHealthChanged -= OnHealthChanged;
         }
 
         private void OnHealthChanged()
@@ -35,7 +35,7 @@ namespace Code.Character.Enemies
 
         private void Die()
         {
-            _health.HealthChanged -= OnHealthChanged;
+            _health.OnHealthChanged -= OnHealthChanged;
             
             _animator.PlayDeath();
             

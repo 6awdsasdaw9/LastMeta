@@ -20,14 +20,14 @@ namespace Code.Character.Hero
         private void Construct(AssetsConfig assetsConfig, MovementLimiter limiter)
         {
             _hero = GetComponent<IHero>();
-            _hero.Health.HealthChanged += HealthChanged;
+            _hero.Health.OnHealthChanged += HealthChanged;
             _hero.Collision.OnWater += DeathOnWater;
             _limiter = limiter;
         }
 
         private void OnDestroy()
         {
-            _hero.Health.HealthChanged -= HealthChanged;
+            _hero.Health.OnHealthChanged -= HealthChanged;
             _hero.Collision.OnWater -= DeathOnWater;
         }
 

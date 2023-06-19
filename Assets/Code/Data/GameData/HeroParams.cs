@@ -11,7 +11,7 @@ namespace Code.Data.GameData
         [Title("Health")] public float maxHP = 20;
 
 
-        [Title("Move")] [Range(0f, 20f)] public float maxSpeed = 2.5f;
+        [Title("Move")] [Range(0f, 20f)] public float MaxSpeed = 2.5f;
         [Range(0f, 1f)] public float crouchSpeed = 0.7f;
         [Range(0f, 100f)] public float maxAcceleration = 16f;
         [Range(0f, 100f)] public float maxDeceleration = 52f;
@@ -24,7 +24,7 @@ namespace Code.Data.GameData
         public PhysicMaterial FrictionMaterial;
 
         [Title("Jump")] [Range(2f, 5.5f), Tooltip("Максимальная высота прыжка")]
-        public float jumpHeight = 3;
+        public float JumpHeight = 3;
 
         [Range(0.2f, 1.25f), Tooltip("Время, за которое достигается максимальная высота")]
         public float timeToJumpApex = 0.8f;

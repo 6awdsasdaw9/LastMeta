@@ -11,7 +11,7 @@ namespace Code.Character.Enemies
         [SerializeField] private float _current;
         [SerializeField] private float _max;
 
-        public event Action HealthChanged;
+        public event Action OnHealthChanged;
 
         public float Current
         {
@@ -39,7 +39,7 @@ namespace Code.Character.Enemies
         public void TakeDamage(float damage)
         {
             Current -= damage;
-            HealthChanged?.Invoke();
+            OnHealthChanged?.Invoke();
         }
 
         public void RestoreHealth(float health)

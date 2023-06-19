@@ -6,6 +6,7 @@ namespace Code.Character.Hero
         public HeroHandAttackAbility HandAttackAbility { get; }
         public HeroGunAttackAbility GunAttackAbility { get; }
         public HeroAbilityLevelData AbilityLevelData { get; }
+        public HeroSuperJumpAbility SuperJumpAbility { get;  }
         void Init(HeroAbilityLevelData abilityLevelData);
         void LevelUpDash();
         void OpenDash(int level);

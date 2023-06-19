@@ -22,10 +22,10 @@ namespace Code.Character.Hero
         private CancellationTokenSource _cts;
         private MissilesFactory _missilesFactory;
         
-        private bool _isCanAttack => !_hero.StateListener.IsDash 
-                                    && !_hero.StateListener.IsCrouch 
-                                    && !_hero.StateListener.IsJump
-                                    && !_hero.StateListener.IsBlockMove;
+        private bool _isCanAttack => !_hero.Stats.IsDash 
+                                    && !_hero.Stats.IsCrouch 
+                                    && !_hero.Stats.IsJump
+                                    && !_hero.Stats.IsBlockMove;
         [Inject]
         private void Construct(InputService inputService, HeroConfig heroConfig, MissilesFactory missilesFactory)
         {

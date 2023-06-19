@@ -19,14 +19,14 @@ namespace Code.Character.Hero
         [SerializeField] private Rigidbody _body;
 
         private IHero _hero;
-        private Data.GameData.HeroParams _heroParams;
+        private HeroParams _heroParams;
         private InputService _input;
 
         #region Values
 
         public bool IsCrouch { get; private set; }
         public float DirectionX => _directionX;
-        public float Speed => _heroParams.maxSpeed + _hero.Upgrade?.BonusSpeed ?? _heroParams.maxSpeed;
+        public float Speed => _hero.Stats.Speed  * _hero.Stats.ModeSpeedMultiplayer;
 
         private float _directionX;
         private Vector2 _desiredVelocity;
@@ -169,16 +169,8 @@ namespace Code.Character.Hero
         }
 
 
-        private void SetDesiredVelocity()
-        {
-            //TODO Непотребство
-            var speedMultiplayer = _heroParams.maxSpeed;
-
-            if (_hero.Upgrade != null)
-                speedMultiplayer += _hero.Upgrade.BonusSpeed;
-
-            _desiredVelocity = new Vector2(_directionX, 0f) * speedMultiplayer;
-        }
+        private void SetDesiredVelocity() => 
+            _desiredVelocity = new Vector2(_directionX, 0f) * _hero.Stats.Speed * _hero.Stats.ModeSpeedMultiplayer;
 
         #endregion
 

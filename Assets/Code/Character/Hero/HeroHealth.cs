@@ -1,22 +1,29 @@
 using System;
-using Code.Character.Common;
 using Code.Character.Common.CommonCharacterInterfaces;
+using Code.Character.Hero.HeroInterfaces;
 using Code.Data.GameData;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Character.Hero
 {
     public class HeroHealth : MonoBehaviour, IHealth
     {
-        [SerializeField] private HeroAudio _heroAudio;
-        [SerializeField] private SpriteVFX spriteVFX;
+        private IHero _hero;
         private HealthData _healthData = new();
-        public event Action HealthChanged;
+        public event Action OnHealthChanged;
+
+        [Inject]
+        private void Construct()
+        {
+            _hero = GetComponent<IHero>();
+        }
         
+        public float Max => _healthData.MaxHP + _hero.Stats.BonusHealth;
         public float Current
         {
             get => _healthData.CurrentHP;
-            set
+            private set
             {
                 if (_healthData.CurrentHP != value)
                 {
@@ -25,21 +32,17 @@ namespace Code.Character.Hero
             }
         }
 
-        public float Max
-        {
-            get => _healthData.MaxHP;
-            set => _healthData.MaxHP = value;
-        }
+
         public void Set(HealthData healthData)
         {
             _healthData = healthData;
-            HealthChanged?.Invoke();
+            OnHealthChanged?.Invoke();
         }
 
         public void Reset()
         {
             _healthData.Reset();
-            HealthChanged?.Invoke();
+            OnHealthChanged?.Invoke();
         }
 
         public void TakeDamage(float damage)
@@ -47,25 +50,25 @@ namespace Code.Character.Hero
             if (Current <= 0 || damage <= 0)
                 return;
 
-            _heroAudio.PlayDamageAudio();
-            spriteVFX.RedColorize();
+            _hero.Audio.PlayDamageAudio();
+            _hero.VFX.SpriteVFX.RedColorize();
             
-            _healthData.CurrentHP -= damage;
+            Current -= damage;
             
-            if (_healthData.CurrentHP < 0)
+            if (Current < 0)
             {
-                _healthData.CurrentHP = 0;
+                Current = 0;
             }
             
-            HealthChanged?.Invoke();
+            OnHealthChanged?.Invoke();
         }
 
         public void RestoreHealth(float health)
         {
-            _healthData.CurrentHP += health;
+            Current += health;
             if (_healthData.CurrentHP > _healthData.MaxHP)
             {
-                _healthData.CurrentHP = _healthData.MaxHP;
+                Current = Max;
             }
         }
     }

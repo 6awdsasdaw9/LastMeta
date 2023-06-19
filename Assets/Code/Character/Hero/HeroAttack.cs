@@ -17,10 +17,10 @@ namespace Code.Character.Hero
         private RaycastHits _raycastHit;
         public DamageParam DamageParam { get; private set; }
         public bool IsAttack { get; private set; }
-        private bool _isCanAttack => !_hero.StateListener.IsDash 
-                                    && !_hero.StateListener.IsCrouch 
-                                    && !_hero.StateListener.IsJump
-                                    && !_hero.StateListener.IsBlockMove;
+        private bool _isCanAttack => !_hero.Stats.IsDash 
+                                    && !_hero.Stats.IsCrouch 
+                                    && !_hero.Stats.IsJump
+                                    && !_hero.Stats.IsBlockMove;
 
         [Inject]
         private void Construct(InputService inputService, HeroConfig heroConfig)
@@ -54,7 +54,7 @@ namespace Code.Character.Hero
 
            foreach (var health in damageTakers)
            {
-               health.TakeDamage(DamageParam.damage);
+               health.TakeDamage(_hero.Stats.Damage);
            }
                
         }

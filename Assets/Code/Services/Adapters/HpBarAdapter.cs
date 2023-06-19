@@ -12,13 +12,13 @@ namespace Code.Logic.Adaptors
         protected  void Start()
         {
             _health = GetComponent<IHealth>();
-            _health.HealthChanged += UpdateHpBar;
+            _health.OnHealthChanged += UpdateHpBar;
         }
         
         private void OnDestroy()
         {
             if (_health != null)
-                _health.HealthChanged -= UpdateHpBar;
+                _health.OnHealthChanged -= UpdateHpBar;
         }
         
         private void UpdateHpBar()

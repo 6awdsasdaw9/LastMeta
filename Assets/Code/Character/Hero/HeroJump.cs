@@ -17,15 +17,13 @@ namespace Code.Character.Hero
 
         private IHero _hero;
         private InputService _input;
-        private Data.GameData.HeroParams _params;
+        private HeroParams _params;
 
         #region Values
 
-        public float Height => _jumpHeight + _hero.Upgrade?.BonusHeightJump ?? _jumpHeight;
-
-        private float _jumpHeight = 7.3f;
-        private int _maxAirJumps;
-
+        public float Height => _hero.Stats.JumpHeight;
+        private int _maxAirJumps => _hero.Stats.AirJump;
+        
         //Calculations
         private Vector2 _velocity;
         private float _jumpSpeed;
@@ -47,8 +45,6 @@ namespace Code.Character.Hero
             _hero = GetComponent<IHero>();
             _input = input;
             _params = heroConfig.HeroParams;
-            _jumpHeight = heroConfig.HeroParams.jumpHeight;
-            _maxAirJumps = heroConfig.HeroParams.maxAirJumps;
         }
 
         private void OnEnable() => 

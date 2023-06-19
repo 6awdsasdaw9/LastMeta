@@ -1,4 +1,5 @@
 using System;
+using Code.Character.Common;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
 using Cysharp.Threading.Tasks;
@@ -9,14 +10,13 @@ namespace Code.Character.Hero
 {
     public class HeroVFX : MonoBehaviour, IHeroVFX
     {
-        //TODO вытащить в отдельных класс VFX игрока
+        public SpriteVFX SpriteVFX => _spriteVFX;
+        [SerializeField] private SpriteVFX _spriteVFX;
         private GameObject _deathFx;
-        private IHero _hero;
 
         [Inject]
         private void Construct(AssetsConfig assetsConfig)
         {
-            _hero = GetComponent<IHero>();
             _deathFx = assetsConfig.VFX_PlayerDeath;
         }
 
