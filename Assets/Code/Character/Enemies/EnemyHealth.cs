@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Code.Character.Enemies
 {
     [RequireComponent((typeof(EnemyAnimator)))]
-    public class EnemyHealth : MonoBehaviour, IHealth
+    public class EnemyHealth : MonoBehaviour, ICharacterHealth
     {
         [SerializeField] private float _current;
         [SerializeField] private float _max;

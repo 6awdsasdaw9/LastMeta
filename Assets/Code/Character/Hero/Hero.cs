@@ -49,7 +49,7 @@ namespace Code.Character.Hero
         public IHeroDeath Death => _death;
         [ShowIf(nameof(_isGameHero)), SerializeField]
         private HeroDeath _death;
-        public IHealth Health => _health;
+        public ICharacterHealth Health => _health;
         [ShowIf(nameof(_isGameHero)), SerializeField]
         private HeroHealth _health;
         public IHeroUpgrade Upgrade => _upgrade;

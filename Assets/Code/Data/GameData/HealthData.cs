@@ -1,11 +1,13 @@
 using System;
+using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Code.Data.GameData
 {
     [Serializable]
     public class HealthData
     {
-        public float CurrentHP;
+        [ReadOnly] public float CurrentHP;
         public float MaxHP;
 
         public HealthData()

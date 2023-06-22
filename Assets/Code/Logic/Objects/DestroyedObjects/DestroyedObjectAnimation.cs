@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Code.Logic.Objects
 {
-    public class DestroyObjectAnimation : MonoBehaviour
+    public class DestroyedObjectAnimation : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
         private readonly int _destroy = Animator.StringToHash("Destroy");

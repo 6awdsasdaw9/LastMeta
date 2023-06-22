@@ -47,7 +47,7 @@ MonoBehaviour:
     HeroParamsText:
     - upgradeParamType: 0
       Title: "\u0417\u0434\u043E\u0440\u043E\u0432\u044C\u0435"
-    - upgradeParamType: 2
+    - upgradeParamType: 1
       Title: "\u0423\u0440\u043E\u043D"
     - upgradeParamType: 2
       Title: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C"

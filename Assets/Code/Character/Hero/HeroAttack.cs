@@ -56,7 +56,6 @@ namespace Code.Character.Hero
            {
                health.TakeDamage(_hero.Stats.Damage);
            }
-               
         }
 
         /// <summary>

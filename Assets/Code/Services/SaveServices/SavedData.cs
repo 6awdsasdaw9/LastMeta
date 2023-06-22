@@ -17,6 +17,7 @@ namespace Code.Services.SaveServices
         public PositionData HeroPosition;
         public PositionData CameraPosition;
         public Dictionary<string, Vector3Data> ObjectsPosition;
+        public Dictionary<string, bool> DestroyedObjects;
         public Dictionary<string, PointData> SceneSpawnPoints;
         public int Language;
 
@@ -35,6 +36,7 @@ namespace Code.Services.SaveServices
             HeroUpgradesLevel = new HeroUpgradesLevelData();
             HeroAbilityLevel = new HeroAbilityLevelData();
             ObjectsPosition = new Dictionary<string, Vector3Data>();
+            DestroyedObjects = new Dictionary<string, bool>();
             SceneSpawnPoints = new Dictionary<string, PointData>();
         }
     }

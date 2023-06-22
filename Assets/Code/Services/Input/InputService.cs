@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Code.Services.Input
 {
-    public class InputService : ITickable
+    public class InputService 
     {
         private readonly InputMaster _master;
         private readonly EventSystem _eventSystem;
@@ -15,10 +15,10 @@ namespace Code.Services.Input
         private bool _isInteractPressed;
         private bool _isPressedOnUI;
 
-        public InputService()
+        public InputService(EventSystem eventSystem)
         {
             _master = new InputMaster();
-            _eventSystem = EventSystem.current;
+            _eventSystem = eventSystem;
             EnablePlayerInput();
             EnableUIInput(true);
             SubscribeToEvents();
@@ -26,7 +26,14 @@ namespace Code.Services.Input
 
         public void Tick()
         {
-            _isPressedOnUI = _eventSystem.IsPointerOverGameObject();
+            /*if (_eventSystem == null)
+            {
+                Logg.ColorLog("Null", LogStyle.Error);
+                return;
+            }*/
+
+            _isPressedOnUI = EventSystem.current.IsPointerOverGameObject();
+            Logg.ColorLog(_isPressedOnUI.ToString());
         }
 
         private void SubscribeToEvents()
@@ -87,13 +94,14 @@ namespace Code.Services.Input
                 return;
             OnUnPressAttackButton?.Invoke();
         }
+
         public event Action OnUnPressAttackButton;
 
         private void PressAttackEvent(InputAction.CallbackContext context)
         {
             if (_isPressedOnUI)
                 return;
-            
+
             OnPressAttackButton?.Invoke();
         }
 

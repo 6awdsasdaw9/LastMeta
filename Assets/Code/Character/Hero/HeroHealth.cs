@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Code.Character.Hero
 {
-    public class HeroHealth : MonoBehaviour, IHealth
+    public class HeroHealth : MonoBehaviour, ICharacterHealth
     {
         private IHero _hero;
         private HealthData _healthData = new();

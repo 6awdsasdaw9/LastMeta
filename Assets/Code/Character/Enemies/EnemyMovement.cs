@@ -1,5 +1,3 @@
-using Code.Character.Common;
-using Code.Character.Hero;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Logic.Triggers;
 using Code.Services;

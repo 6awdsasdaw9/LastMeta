@@ -19,7 +19,7 @@ namespace Code.Character.Hero.HeroInterfaces
         IHeroAttack HandAttack { get; }
         IHeroRangeAttack GunAttack { get; }
         IHeroBuff Buff { get; }
-        IHealth Health { get; }
+        ICharacterHealth Health { get; }
         IHeroDeath Death { get; }
         IHeroUpgrade Upgrade { get; }
         IHeroAbility Ability { get; }

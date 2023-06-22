@@ -12,19 +12,13 @@ namespace Code.Logic.Missile
     {
         private CancellationTokenSource _cts;
         private bool _isMove;
-        private float startY;
-
-        private float _maxVelocityY = 3;
-        private float _maxVelocityX = 5;
+        private const float _maxVelocityY = 3;
 
         public MissileLevitationMovement(HeroMissile heroMissile, float forward)
-            : base(heroMissile, forward)
-        {
-        }
+            : base(heroMissile, forward) { }
 
         public override void StartMove()
         {
-            startY = heroMissile.transform.position.y;
             _cts?.Cancel();
             _cts = new CancellationTokenSource();
             _isMove = true;
@@ -58,8 +52,7 @@ namespace Code.Logic.Missile
 
         private void CheckMaxVelocityY()
         {
-            if (heroMissile.Rigidbody.velocity.y > _maxVelocityY
-                || heroMissile.Rigidbody.velocity.y < _maxVelocityY)
+            if (heroMissile.Rigidbody.velocity.y is > _maxVelocityY or < _maxVelocityY)
             {
                 heroMissile.Rigidbody.velocity = new Vector3(
                     heroMissile.Rigidbody.velocity.x,

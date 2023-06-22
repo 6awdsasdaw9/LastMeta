@@ -7,11 +7,11 @@ namespace Code.Logic.Adaptors
     public class HpBarAdapter : MonoBehaviour
     {
         protected HpBar _hpBar;
-        private IHealth _health;
+        private ICharacterHealth _health;
         
         protected  void Start()
         {
-            _health = GetComponent<IHealth>();
+            _health = GetComponent<ICharacterHealth>();
             _health.OnHealthChanged += UpdateHpBar;
         }
         
