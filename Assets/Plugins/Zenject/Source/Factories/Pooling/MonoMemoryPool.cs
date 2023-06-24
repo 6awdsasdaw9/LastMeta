@@ -32,7 +32,7 @@ namespace Zenject
             item.gameObject.SetActive(true);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDeSpawned(TValue item)
         {
             item.gameObject.SetActive(false);
 
@@ -73,7 +73,7 @@ namespace Zenject
             item.gameObject.SetActive(true);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDeSpawned(TValue item)
         {
             item.gameObject.SetActive(false);
 
@@ -115,7 +115,7 @@ namespace Zenject
             item.gameObject.SetActive(true);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDeSpawned(TValue item)
         {
             item.gameObject.SetActive(false);
 
@@ -157,7 +157,7 @@ namespace Zenject
             item.gameObject.SetActive(true);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDeSpawned(TValue item)
         {
             item.gameObject.SetActive(false);
 
@@ -199,7 +199,7 @@ namespace Zenject
             item.gameObject.SetActive(true);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDeSpawned(TValue item)
         {
             item.gameObject.SetActive(false);
 
@@ -241,7 +241,7 @@ namespace Zenject
             item.gameObject.SetActive(true);
         }
 
-        protected override void OnDespawned(TValue item)
+        protected override void OnDeSpawned(TValue item)
         {
             item.gameObject.SetActive(false);
 

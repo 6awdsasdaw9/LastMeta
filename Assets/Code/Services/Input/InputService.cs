@@ -15,27 +15,19 @@ namespace Code.Services.Input
         private bool _isInteractPressed;
         private bool _isPressedOnUI;
 
-        public InputService(EventSystem eventSystem)
+        public InputService()
         {
             _master = new InputMaster();
-            _eventSystem = eventSystem;
             EnablePlayerInput();
             EnableUIInput(true);
             SubscribeToEvents();
         }
 
-        public void Tick()
+
+        public void SetPressOnUI(bool isActive)
         {
-            /*if (_eventSystem == null)
-            {
-                Logg.ColorLog("Null", LogStyle.Error);
-                return;
-            }*/
-
-            _isPressedOnUI = EventSystem.current.IsPointerOverGameObject();
-            Logg.ColorLog(_isPressedOnUI.ToString());
+            _isPressedOnUI = isActive;
         }
-
         private void SubscribeToEvents()
         {
             _master.Player.Horizontal.performed += PressMovementEvent;

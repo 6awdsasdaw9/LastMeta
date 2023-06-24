@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc4059b765d43b2944b9aa4e4233535, type: 3}
   m_Name: ItemsConfig
   m_EditorClassIdentifier: 
-  Artifacts:
+  Items:
   - Type: 0
-    Name: Right Sock
-    Description: 
-    Level: 0
-    IsActiveAbility: 1
-    AbilityType: 0
+    Value: 1
+    AnimatorController: {fileID: 22100000, guid: 8d7e23b1ffb06124481ad0b0bcf4aeac, type: 2}
+  - Type: 5
+    Value: 1
+    AnimatorController: {fileID: 22100000, guid: 1407dc84018e3f14a8d53b84fe590c86, type: 2}

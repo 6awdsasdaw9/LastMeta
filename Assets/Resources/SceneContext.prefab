@@ -44,6 +44,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956c63f0e931408daeedb6fc6333f04b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3178601552424859839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8164131872731743875}
+  - component: {fileID: 2555467939751169943}
+  m_Layer: 0
+  m_Name: ItemsInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8164131872731743875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3178601552424859839}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7948913253427275685}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2555467939751169943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3178601552424859839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cdb32510d9d4be6bcd3dd80cbabcefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemPrefab: {fileID: 8747476145901203509, guid: 8755e0287d219274c95400bec26b35ea, type: 3}
 --- !u!1 &5126146781664098866
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,7 +100,7 @@ GameObject:
   - component: {fileID: 1253390048313202775}
   - component: {fileID: 955468923986454651}
   m_Layer: 0
-  m_Name: FacrotiesInstallaer
+  m_Name: MissilesInstallaer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9e22b9943044589108fb746bf216f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _missilePrefabs: {fileID: 8053710278240547915, guid: 2db31b4f7ea07344a84338f08344215e, type: 3}
+  _heroMissilePrefabs: {fileID: 8053710278240547915, guid: 2db31b4f7ea07344a84338f08344215e, type: 3}
 --- !u!1 &7948913252850770646
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d149a1d32d6e484a9b93a5115a749f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameMode: 0
+  gameMode: 1
 --- !u!1 &7948913253268715923
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531c265f446545548e1df9bb16a6c26c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameMode: 0
+  _gameMode: 1
 --- !u!1 &7948913253373618296
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +304,7 @@ Transform:
   - {fileID: 7948913252850770647}
   - {fileID: 8887953125819007913}
   - {fileID: 1253390048313202775}
+  - {fileID: 8164131872731743875}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -274,7 +320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
+  _scriptableObjectInstallers:
+  - {fileID: 0}
   _monoInstallers:
   - {fileID: 7948913253675025850}
   - {fileID: 7948913253373618298}
@@ -282,6 +329,7 @@ MonoBehaviour:
   - {fileID: 955468923986454651}
   - {fileID: 7948913253268715925}
   - {fileID: 1825028843133541956}
+  - {fileID: 2555467939751169943}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:

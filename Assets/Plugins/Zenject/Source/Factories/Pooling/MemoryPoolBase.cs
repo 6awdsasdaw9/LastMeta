@@ -131,7 +131,7 @@ namespace Zenject
             using (ProfileBlock.Start("{0}.OnDespawned", GetType()))
 #endif
             {
-                OnDespawned(item);
+                OnDeSpawned(item);
             }
 
             if (_inactiveItems.Count > _settings.MaxSize)
@@ -267,7 +267,7 @@ namespace Zenject
             }
         }
 
-        protected virtual void OnDespawned(TContract item)
+        protected virtual void OnDeSpawned(TContract item)
         {
             // Optional
         }

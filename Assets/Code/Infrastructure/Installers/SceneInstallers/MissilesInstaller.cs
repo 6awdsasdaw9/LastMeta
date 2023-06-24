@@ -5,9 +5,9 @@ using Zenject;
 
 namespace Code.Infrastructure.Installers.SceneInstallers
 {
-    public class FactoriesInstaller: MonoInstaller
+    public class MissilesInstaller: MonoInstaller
     {
-        [SerializeField] private HeroMissile heroMissilePrefabs;
+        [SerializeField] private HeroMissile _heroMissilePrefabs;
         public override void InstallBindings()
         {
             BindMissilePool();
@@ -21,8 +21,8 @@ namespace Code.Infrastructure.Installers.SceneInstallers
             Container.BindMemoryPool<HeroMissile, HeroMissile.Pool>()
                 .WithInitialSize(10)
                 .ExpandByOneAtATime()
-                .FromComponentInNewPrefab(heroMissilePrefabs)
-                .UnderTransformGroup("Missile");
+                .FromComponentInNewPrefab(_heroMissilePrefabs)
+                .UnderTransformGroup("Missiles");
         }
         
         private void BindMissileFactory()

@@ -88,10 +88,10 @@ namespace Code.Logic.Missile
                 base.Reinitialize(data,  hero, item);
             }
 
-            protected override void OnDespawned(HeroMissile item)
+            protected override void OnDeSpawned(HeroMissile item)
             {
                 item.Rigidbody.velocity = Vector3.zero;
-                base.OnDespawned(item);
+                base.OnDeSpawned(item);
             }
         }
     }

@@ -1,4 +1,5 @@
 using System;
+using Code.Logic.Artifacts;
 using Code.Logic.LanguageLocalization;
 
 namespace Code.Infrastructure.GlobalEvents
@@ -9,6 +10,13 @@ namespace Code.Infrastructure.GlobalEvents
         public TimeEvents TimeEvents { get; } = new();
         public GameEvents GameEvents { get; } = new();
         public HudEvents HudEvents { get; } = new();
+        public ItemEvents ItemEvents { get; } = new();
+    }
+
+    public class ItemEvents
+    {
+        public void PickUpItemEvent(Item item) => OnPickUpItem?.Invoke(item);
+        public Action<Item> OnPickUpItem;
     }
 
     public class GameEvents

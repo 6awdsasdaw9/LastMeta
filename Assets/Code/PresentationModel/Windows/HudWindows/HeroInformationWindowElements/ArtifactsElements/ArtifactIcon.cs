@@ -6,7 +6,7 @@ namespace Code.PresentationModel.Windows.HudWindows.HeroInformationWindowElement
 {
     public class ArtifactIcon: HudElement
     {
-        public ArtifactType Type;
+        public ItemType Type;
         [SerializeField] private GameObject _activeImage;
         
         public DescriptionPanel DescriptionPanel => _descriptionPanel;

@@ -5,9 +5,6 @@ namespace Code.Infrastructure.GlobalEvents
 {
     public class TimeEvents
     {
-        public void TimeStartMove() => OnTimeStartMove?.Invoke();
-        public event Action OnTimeStartMove;
-        
         //Common
         private void StartTimeOfDayEvent(TimeOfDay timeOfDay) => OnStartTimeOfDay?.Invoke(timeOfDay);
         public event Action<TimeOfDay> OnStartTimeOfDay;
@@ -60,7 +57,5 @@ namespace Code.Infrastructure.GlobalEvents
             OnEndNight?.Invoke();
         }
         public event Action OnEndNight;
-        
-        
     }
 }

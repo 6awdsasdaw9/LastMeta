@@ -39,7 +39,7 @@ namespace Code.Data.Configs
     [Serializable]
     public class ArtifactDescriptionText
     {
-        public ArtifactType Type;
+        public ItemType Type;
         public string Title;
         public string Description;
     }
