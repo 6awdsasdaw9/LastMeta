@@ -18,14 +18,18 @@ namespace Code.Audio
 
         private PARAMETER_DESCRIPTION _nightParameterDescription;
         private PARAMETER_ID _nightParameterID;
+        
+        private PARAMETER_DESCRIPTION _pauseParameterDescription;
+        private PARAMETER_ID _pauseParameterID;
 
         private Bus Music_Volume;
         private Bus Effect_Volume;
 
-    
+
         public SceneAudioController()
         {
             SetNightParam();
+            SetPauseParam();
         }
         #region Set Audio EventReference
 
@@ -52,10 +56,8 @@ namespace Code.Audio
                 StopAmbience();
                 SetAmbienceEvent(ambience);
                 PlayAmbience();
-               Logg.ColorLog("SAC: PlayAmbience");
             }
-            
-               Logg.ColorLog($"SAC: PlayMusic {!music.IsNull}" );
+
             if (music.IsNull)
             {
                 StopMusic();
@@ -101,9 +103,7 @@ namespace Code.Audio
         }
 
         #endregion
-    
-    
-    
+        
         #region Param
 
         private void SetNightParam()
@@ -112,7 +112,7 @@ namespace Code.Audio
             RuntimeManager.StudioSystem.getParameterDescriptionByName(nameParam, out _nightParameterDescription);
             _nightParameterID = _nightParameterDescription.id;
         }
-
+        
         //calue = 0 - 1
         public void ChangeNightParam(bool isNight)
         {
@@ -120,6 +120,19 @@ namespace Code.Audio
             RuntimeManager.StudioSystem.setParameterByID(_nightParameterID, value);
         }
 
+        private void SetPauseParam()
+        {
+            string nameParam = "GamePauseStatus";
+            RuntimeManager.StudioSystem.getParameterDescriptionByName(nameParam, out _pauseParameterDescription);
+            _pauseParameterID = _pauseParameterDescription.id;
+        }
+        
+        //calue = 0 - 1
+        public void ChangePauseParam(bool isPause)
+        {
+            var value = isPause ? 1 : 0;
+            RuntimeManager.StudioSystem.setParameterByID(_pauseParameterID, value);
+        }
         #endregion
 
         #region Bus
