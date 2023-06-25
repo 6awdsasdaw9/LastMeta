@@ -16,7 +16,6 @@ namespace Code.Logic.Adaptors
 {
     public class HudAdapter : MonoBehaviour
     {
-
         private Hud _hud;
 
         private MovementLimiter _movementLimiter;
