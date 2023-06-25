@@ -1,3 +1,5 @@
+using Code.Debugers;
+using Code.Infrastructure.GlobalEvents;
 using FMOD.Studio;
 using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
@@ -7,30 +9,29 @@ namespace Code.Audio
 {
     public class SceneAudioController 
     {
+        private readonly EventsFacade _eventsFacade;
         private EventReference _ambienceEvent;
         private EventReference _musicEvent;
 
         private EventInstance _ambience;
         private EventInstance _music;
 
-        private PARAMETER_DESCRIPTION _parameterDescription;
-        private PARAMETER_ID _parameterID;
+        private PARAMETER_DESCRIPTION _nightParameterDescription;
+        private PARAMETER_ID _nightParameterID;
 
         private Bus Music_Volume;
         private Bus Effect_Volume;
 
-
+    
+        public SceneAudioController()
+        {
+            SetNightParam();
+        }
         #region Set Audio EventReference
 
-        public bool IsCurrentAmbienceEvent(EventReference ambienceEvent)
-        {
-            return _ambienceEvent.Guid == ambienceEvent.Guid;
-        }
+        private bool IsCurrentAmbienceEvent(EventReference ambienceEvent) => _ambienceEvent.Guid == ambienceEvent.Guid;
 
-        public bool IsCurrentMusicEvent(EventReference musicEvent)
-        {
-            return _musicEvent.Guid == musicEvent.Guid;
-        }
+        private bool IsCurrentMusicEvent(EventReference musicEvent) => _musicEvent.Guid == musicEvent.Guid;
 
         public void SetAmbienceEvent(EventReference ambienceEvent)
         {
@@ -68,10 +69,11 @@ namespace Code.Audio
                 StopMusic();
                SetMusicEvent(music);
                PlayMusic();
+               Logg.ColorLog("GSM: Try Set music ");
             }
         }
 
-        public void PlayAmbience()
+        private void PlayAmbience()
         {
             if (_ambienceEvent.IsNull)
                 return;
@@ -80,7 +82,7 @@ namespace Code.Audio
             _ambience.start();
         }
 
-        public void PlayMusic()
+        private void PlayMusic()
         {
             if (_musicEvent.IsNull)
                 return;
@@ -109,17 +111,18 @@ namespace Code.Audio
     
         #region Param
 
-        private void SetParam()
+        private void SetNightParam()
         {
-            string nameParam = "";
-            RuntimeManager.StudioSystem.getParameterDescriptionByName(nameParam, out _parameterDescription);
-            _parameterID = _parameterDescription.id;
+            string nameParam = "NightToggle";
+            RuntimeManager.StudioSystem.getParameterDescriptionByName(nameParam, out _nightParameterDescription);
+            _nightParameterID = _nightParameterDescription.id;
         }
 
         //calue = 0 - 1
-        private void ChangeParam(float value)
+        public void ChangeNightParam(bool isNight)
         {
-            RuntimeManager.StudioSystem.setParameterByID(_parameterID, value);
+            var value = isNight ? 1 : 0;
+            RuntimeManager.StudioSystem.setParameterByID(_nightParameterID, value);
         }
 
         #endregion

@@ -87,6 +87,7 @@ namespace Code.Infrastructure.StateMachine.States
 
         private void TrySetSceneMusic(SceneParams sceneParam)
         {
+            Logg.ColorLog("GSM: Try Set music ");
             _sceneAudioController.ChangeSceneAudio(sceneParam.Music, sceneParam.Ambience);
         }
     }

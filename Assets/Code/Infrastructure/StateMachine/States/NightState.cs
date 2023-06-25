@@ -1,4 +1,5 @@
 using System.Threading;
+using Code.Audio;
 using Code.Data.GameData;
 using Code.Infrastructure.GlobalEvents;
 using Code.Infrastructure.StateMachine.States;
@@ -16,19 +17,21 @@ namespace Code.Infrastructure.StateMachine
         private readonly GameClock _gameClock;
 
         private CancellationTokenSource _cts;
-        
+        private readonly SceneAudioController _sceneAudioController;
+
         public NightState(GameStateMachine gameGameStateMachine, DiContainer diContainer)
         {
             _gameStateMachine = gameGameStateMachine;
             _eventsFacade = diContainer.Resolve<EventsFacade>();
             _gameSceneData = diContainer.Resolve<GameSceneData>();
             _gameClock = diContainer.Resolve<GameClock>();
+            _sceneAudioController = diContainer.Resolve<SceneAudioController>();
         }
 
         public void Enter()
         {
             var timeParam = _gameSceneData.CurrentSceneParams.TimeOfDaySettings.GetLightParams(TimeOfDay.Night);
-           
+            _sceneAudioController.ChangeNightParam(true);
             if (!_gameSceneData.CurrentSceneParams.TimeOfDaySettings.IsEmpty && timeParam == null)
             {
                 _gameStateMachine.Enter<MorningState>();
