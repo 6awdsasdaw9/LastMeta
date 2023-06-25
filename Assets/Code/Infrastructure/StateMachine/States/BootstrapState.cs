@@ -1,3 +1,5 @@
+using Code.Audio;
+using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Services;
 using Code.Services.SaveServices;
@@ -17,6 +19,9 @@ namespace Code.Infrastructure.StateMachine.States
             _gameStateMachine = gameStateMachine;
             _sceneLoader = container.Resolve<SceneLoader>();
             _savedService = container.Resolve<SavedService>();
+
+            var audio = container.Resolve<SceneAudioController>();
+            audio.InitSnapshot(container.Resolve<ScenesConfig>().PauseSnapshot.Path);
         }
 
         public void Enter()

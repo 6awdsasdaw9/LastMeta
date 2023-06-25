@@ -2,6 +2,7 @@ using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
 using FMOD.Studio;
 using FMODUnity;
+using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 
@@ -29,7 +30,6 @@ namespace Code.Audio
         public SceneAudioController()
         {
             SetNightParam();
-            SetPauseParam();
         }
         #region Set Audio EventReference
 
@@ -106,6 +106,20 @@ namespace Code.Audio
         
         #region Param
 
+        private string aGroupSnapshot;
+
+        private EventInstance snapshotInstance;
+         
+
+            float pauseParametr;
+        public void InitSnapshot(string pauseSnapshot)
+        {
+            snapshotInstance = RuntimeManager.CreateInstance(pauseSnapshot);
+           // snapshotInstance.getParameterByName("GamePauseStatus", out pauseParametr);
+            snapshotInstance.start();
+        }
+
+
         private void SetNightParam()
         {
             string nameParam = "NightToggle";
@@ -120,18 +134,21 @@ namespace Code.Audio
             RuntimeManager.StudioSystem.setParameterByID(_nightParameterID, value);
         }
 
-        private void SetPauseParam()
-        {
-            string nameParam = "GamePauseStatus";
-            RuntimeManager.StudioSystem.getParameterDescriptionByName(nameParam, out _pauseParameterDescription);
-            _pauseParameterID = _pauseParameterDescription.id;
-        }
+
         
         //calue = 0 - 1
         public void ChangePauseParam(bool isPause)
         {
-            var value = isPause ? 1 : 0;
-            RuntimeManager.StudioSystem.setParameterByID(_pauseParameterID, value);
+            if(isPause)
+                snapshotInstance.stop(STOP_MODE.ALLOWFADEOUT);
+            else
+            {
+                snapshotInstance.start();
+            }
+            /*var value = isPause ? 1 : 0;
+            /*pauseParametr = value;
+            RuntimeManager.StudioSystem.setParameterByID(_pauseParameterID, value);#1#
+            snapshotInstance.setParameterByName("GamePauseStatus", value);*/
         }
         #endregion
 

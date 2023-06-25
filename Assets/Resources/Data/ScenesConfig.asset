@@ -14,6 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialScene: 4
   DayTimeInSeconds: 100
+  PauseSnapshot:
+    Guid:
+      Data1: 447742451
+      Data2: 1316071812
+      Data3: -1712982880
+      Data4: 121920096
+    Path: snapshot:/GamePause
   ScenesParams:
   - Scene: 1
     GameMode: 0

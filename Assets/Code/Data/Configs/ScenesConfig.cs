@@ -15,6 +15,9 @@ namespace Code.Data.Configs
         public Constants.Scenes InitialScene;
         public float DayTimeInSeconds = 50;
 
+    
+        public EventReference PauseSnapshot;
+        
         [ListDrawerSettings(Expanded = false, ShowIndexLabels = true, ShowPaging = false, ShowItemCount = true)]
         public List<SceneParams> ScenesParams;
 
