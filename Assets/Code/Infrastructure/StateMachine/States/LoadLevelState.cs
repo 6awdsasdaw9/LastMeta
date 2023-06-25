@@ -41,6 +41,7 @@ namespace Code.Infrastructure.StateMachine.States
 
         public void Enter(string sceneName)
         {
+            Logg.ColorLog("Scene name");
             _loadingCurtain.Show();
             _sceneLoader.Load(sceneName, OnLoaded);
         }

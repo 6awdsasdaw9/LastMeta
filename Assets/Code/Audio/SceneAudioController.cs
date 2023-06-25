@@ -33,15 +33,9 @@ namespace Code.Audio
 
         private bool IsCurrentMusicEvent(EventReference musicEvent) => _musicEvent.Guid == musicEvent.Guid;
 
-        public void SetAmbienceEvent(EventReference ambienceEvent)
-        {
-            _ambienceEvent = ambienceEvent;
-        }
+        private void SetAmbienceEvent(EventReference ambienceEvent) => _ambienceEvent = ambienceEvent;
 
-        public void SetMusicEvent(EventReference musicEvent)
-        {
-            _musicEvent = musicEvent;
-        }
+        private void SetMusicEvent(EventReference musicEvent) => _musicEvent = musicEvent;
 
         #endregion
 
@@ -58,18 +52,19 @@ namespace Code.Audio
                 StopAmbience();
                 SetAmbienceEvent(ambience);
                 PlayAmbience();
+               Logg.ColorLog("SAC: PlayAmbience");
             }
             
-            if (ambience.IsNull)
+               Logg.ColorLog($"SAC: PlayMusic {!music.IsNull}" );
+            if (music.IsNull)
             {
-                StopAmbience();
+                StopMusic();
             }
-            else if(IsCurrentMusicEvent(music))
+            else if(!IsCurrentMusicEvent(music))
             {
                 StopMusic();
                SetMusicEvent(music);
                PlayMusic();
-               Logg.ColorLog("GSM: Try Set music ");
             }
         }
 
