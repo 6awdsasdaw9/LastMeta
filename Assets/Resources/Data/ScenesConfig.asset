@@ -100,11 +100,11 @@ MonoBehaviour:
         DirectionLightIntensity: 0.9
         DirectionLightAngle: {x: 5, y: -1, z: 0}
       - TimeOfDay: 1
-        Duration: 0.082
+        Duration: 0.145
         DirectionLightIntensity: 0.45
         DirectionLightAngle: {x: -35, y: 7, z: 0}
       - TimeOfDay: 2
-        Duration: 0.277
+        Duration: 0.589
         DirectionLightIntensity: 0.15
         DirectionLightAngle: {x: -55, y: 13, z: 0}
     Points:
