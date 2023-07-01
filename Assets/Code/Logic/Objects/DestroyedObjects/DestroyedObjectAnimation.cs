@@ -7,9 +7,10 @@ namespace Code.Logic.Objects
         [SerializeField] private Animator _animator;
         private readonly int _destroy = Animator.StringToHash("Destroy");
 
-        public void PlayDestroy()
-        {
+        public void SetAnimatorController(RuntimeAnimatorController animatorController) => 
+            _animator.runtimeAnimatorController = animatorController;
+
+        public void PlayDestroy() => 
             _animator.SetTrigger(_destroy);
-        }
     }
 }

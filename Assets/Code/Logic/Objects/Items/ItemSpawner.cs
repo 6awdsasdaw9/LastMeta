@@ -26,6 +26,13 @@ namespace Code.Logic.Artifacts
         {
             var item = _factory.SpawnItem(_itemType);
             item.transform.position = transform.position;
+            item.OnPickUpItem += OnPickUpItem;
+        }
+
+        private void OnPickUpItem(Item item)
+        {
+            _factory.DeSpawnItem(item);
+            DisableSpawner();
         }
 
         private void DisableSpawner()

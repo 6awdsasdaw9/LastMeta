@@ -20,8 +20,10 @@ namespace Code.Infrastructure.StateMachine.States
             _sceneLoader = container.Resolve<SceneLoader>();
             _savedService = container.Resolve<SavedService>();
 
-            var audio = container.Resolve<SceneAudioController>();
-            audio.InitSnapshot(container.Resolve<ScenesConfig>().PauseSnapshot.Path);
+            /*var audio = container.Resolve<SceneAudioController>();
+            if(container.Resolve<ScenesConfig>().PauseSnapshot.IsNull)
+                return;
+            audio.InitSnapshot(container.Resolve<ScenesConfig>().PauseSnapshot.Path);*/
         }
 
         public void Enter()

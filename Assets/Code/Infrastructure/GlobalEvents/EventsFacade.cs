@@ -15,8 +15,8 @@ namespace Code.Infrastructure.GlobalEvents
 
     public class ItemEvents
     {
-        public void PickUpItemEvent(Item item) => OnPickUpItem?.Invoke(item);
-        public Action<Item> OnPickUpItem;
+        public void PickUpItemEvent(ItemData item) => OnPickUpItem?.Invoke(item);
+        public Action<ItemData> OnPickUpItem;
     }
 
     public class GameEvents

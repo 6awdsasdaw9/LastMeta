@@ -1,12 +1,22 @@
+using System;
+using Cysharp.Threading.Tasks;
+
 namespace Code.Logic.Artifacts
 {
     public abstract class ItemBehaviour
     {
-        public  ItemBehaviour(Item item)
+        protected Item Item { get; }
+        public ItemBehaviour(Item item)
         {
             Item = item;
         }
-        public Item Item { get; private set; }
-        public abstract void PickUp();
+
+        public abstract void PickUp(Action OnPickUp = null);
+
+        protected async UniTaskVoid InvokeActionWithDelay(Action Action, float delay)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(delay));
+            Action?.Invoke();
+        }
     }
 }

@@ -23,7 +23,7 @@ namespace Code.Audio
         private PARAMETER_DESCRIPTION _pauseParameterDescription;
         private PARAMETER_ID _pauseParameterID;
 
-        private Bus Music_Volume;
+        private Bus _music_Volume;
         private Bus Effect_Volume;
 
 
@@ -92,37 +92,16 @@ namespace Code.Audio
 
         #region Stop
 
-        public void StopMusic()
-        {
-            _music.stop(STOP_MODE.ALLOWFADEOUT);
-        }
+        private void StopMusic() => _music.stop(STOP_MODE.ALLOWFADEOUT);
 
-        public void StopAmbience()
-        {
-            _ambience.stop(STOP_MODE.ALLOWFADEOUT);
-        }
+        private void StopAmbience() => _ambience.stop(STOP_MODE.ALLOWFADEOUT);
 
         #endregion
         
         #region Param
-
-        private string aGroupSnapshot;
-
-        private EventInstance snapshotInstance;
-         
-
-            float pauseParametr;
-        public void InitSnapshot(string pauseSnapshot)
-        {
-            snapshotInstance = RuntimeManager.CreateInstance(pauseSnapshot);
-           // snapshotInstance.getParameterByName("GamePauseStatus", out pauseParametr);
-            snapshotInstance.start();
-        }
-
-
         private void SetNightParam()
         {
-            string nameParam = "NightToggle";
+            const string nameParam = "NightToggle";
             RuntimeManager.StudioSystem.getParameterDescriptionByName(nameParam, out _nightParameterDescription);
             _nightParameterID = _nightParameterDescription.id;
         }
@@ -134,37 +113,55 @@ namespace Code.Audio
             RuntimeManager.StudioSystem.setParameterByID(_nightParameterID, value);
         }
 
+        #endregion
 
+        #region Snapshot
+        
+        private EventInstance _pauseSnapshotInstance;
+        private bool _isActivePauseSnapshot;
+        private bool _isInit;
+        
+        public void InitSnapshot(string pauseSnapshot)
+        {
+            /*if(_isInit)
+                return;
+            _isInit = true;
+            _pauseSnapshotInstance = RuntimeManager.CreateInstance(pauseSnapshot);
+            _pauseSnapshotInstance.stop(STOP_MODE.ALLOWFADEOUT);*/
+            //_pauseSnapshotInstance.start();
+        }
         
         //calue = 0 - 1
         public void ChangePauseParam(bool isPause)
         {
-            if(isPause)
-                snapshotInstance.stop(STOP_MODE.ALLOWFADEOUT);
+            /*if(isPause == _isActivePauseSnapshot)
+                return;
+
+            _isActivePauseSnapshot = isPause;
+            if (isPause)
+            {
+                _pauseSnapshotInstance.stop(STOP_MODE.ALLOWFADEOUT);
+                _pauseSnapshotInstance.setParameterByName("GamePauseStatus", 1);
+            }
             else
             {
-                snapshotInstance.start();
-            }
-            /*var value = isPause ? 1 : 0;
-            /*pauseParametr = value;
-            RuntimeManager.StudioSystem.setParameterByID(_pauseParameterID, value);#1#
-            snapshotInstance.setParameterByName("GamePauseStatus", value);*/
+                _pauseSnapshotInstance.start();
+                _pauseSnapshotInstance.setParameterByName("GamePauseStatus", 0);
+            }*/
         }
-        #endregion
 
+        #endregion
         #region Bus
 
         private void SetBus()
         {
             // Path copy from FMOD
-            Music_Volume = RuntimeManager.GetBus("bus:/Master/Music");
+            _music_Volume = RuntimeManager.GetBus("bus:/Master/Music");
             Effect_Volume = RuntimeManager.GetBus("bus:/Master/Effect");
         }
 
-        private void ChangeBusEffect(float volume)
-        {
-            Effect_Volume.setVolume(volume);
-        }
+        private void ChangeEffectVolume(float volume) => Effect_Volume.setVolume(volume);
+        private void ChangeMusicVolume(float volume) => _music_Volume.setVolume(volume);
 
         #endregion
 

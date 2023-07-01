@@ -2,6 +2,7 @@ using System;
 using Code.Data.Configs;
 using Code.Infrastructure.GlobalEvents;
 using Code.Logic.Artifacts;
+using Code.Logic.Artifacts.Artifacts;
 using Code.Logic.Missile;
 
 namespace Code.Infrastructure.Factories
@@ -17,7 +18,6 @@ namespace Code.Infrastructure.Factories
             _itemPool = itemPool;
             _itemsConfig = itemsConfig;
             _eventsFacade = eventsFacade;
-            _eventsFacade.ItemEvents.OnPickUpItem += DeSpawnItem;
         }
 
         public Item SpawnItem(ItemType itemType)
@@ -26,21 +26,24 @@ namespace Code.Infrastructure.Factories
             if (data == null) return null;
 
             var item = _itemPool.Spawn(data, _eventsFacade);
-            item.SetBehavior(GetItemBehaviour(itemType));
+            var itemBehavior = GetItemBehaviour(item);
+            
+            item.SetBehavior(itemBehavior);
             return item;
         }
 
-        private void DeSpawnItem(Item item)
+        public void DeSpawnItem(Item item)
         {
             _itemPool.Despawn(item);
         }
 
-        private ItemBehaviour GetItemBehaviour(ItemType itemType)
+        private ItemBehaviour GetItemBehaviour(Item item)
         {
-            switch (itemType)
+            switch (item.Data.Type)
             {
                 default:
                 case ItemType.Money:
+                    return new ItemMoneyBehavior(item);
                 case ItemType.HealthBonus:
                 case ItemType.SpeedBonus:
                 case ItemType.LeftSock:
