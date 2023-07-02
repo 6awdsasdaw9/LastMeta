@@ -21,6 +21,7 @@ namespace Code.Services.SaveServices
         public Dictionary<string, bool> Items;
         public Dictionary<string, PointData> SceneSpawnPoints;
         public int Language;
+        public int Money;
 
 
         public SavedData()
@@ -41,6 +42,7 @@ namespace Code.Services.SaveServices
             Items = new Dictionary<string, bool>();
             SceneSpawnPoints = new Dictionary<string, PointData>();
         }
+
     }
 
 }

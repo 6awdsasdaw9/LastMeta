@@ -16,11 +16,11 @@ MonoBehaviour:
   DayTimeInSeconds: 100
   PauseSnapshot:
     Guid:
-      Data1: 447742451
-      Data2: 1316071812
-      Data3: -1712982880
-      Data4: 121920096
-    Path: snapshot:/GamePause
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   ScenesParams:
   - Scene: 1
     GameMode: 0

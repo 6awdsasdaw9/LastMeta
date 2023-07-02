@@ -18,8 +18,6 @@ namespace Code.Character.Hero
         private const string pathShoot = "event:/SFX/Player/Player_Shoot";
         private const string pathStunned = "event:/SFX/Player/Player_Stunned";
         private const string pathWaterDeath = "event:/SFX/Player/Shark Death";
-    
-        
         
         public void PlayStepSound() =>
             RuntimeManager.PlayOneShot(pathStep, transform.position);

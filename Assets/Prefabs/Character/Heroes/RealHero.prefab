@@ -105,16 +105,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc8c6223ba74088ab6f9c100291ac65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameMode: 0
   _animator: {fileID: 6659652504158788546}
   _audio: {fileID: 1297059016546552242}
   _movement: {fileID: 6659652504158788560}
   _jump: {fileID: 6659652504158788562}
   _collision: {fileID: 6659652504158788561}
+  _modeToggle: {fileID: 0}
   _attack: {fileID: 0}
+  _shooting: {fileID: 0}
   _buff: {fileID: 0}
   _death: {fileID: 0}
   _health: {fileID: 0}
   _upgrade: {fileID: 0}
+  _ability: {fileID: 0}
   _vfx: {fileID: 0}
 --- !u!114 &6659652504158788561
 MonoBehaviour:
@@ -128,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079bd03092cea444581fbf3cc51923b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isShowGroundRaycast: 0
   _collider: {fileID: 1427034856}
   _rigidbody: {fileID: 4988326818585598692}
   _groundLayer:
@@ -136,7 +141,7 @@ MonoBehaviour:
   _waterLayer:
     serializedVersion: 2
     m_Bits: 16
-  _groundLength: 0.15
+  _groundLength: 0.22
   _ceilingLength: 0.95
   _colliderOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &6659652504158788546

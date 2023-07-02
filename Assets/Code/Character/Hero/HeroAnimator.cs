@@ -23,12 +23,7 @@ namespace Code.Character.Hero
         private readonly int Crouch_b = Animator.StringToHash("Crouch");
         private readonly int Stunned_b = Animator.StringToHash("Stunned");
         private readonly int GunMode_b = Animator.StringToHash("Gun");
-
-        private void Awake()
-        {
-            _hero = GetComponent<IHero>();
-        }
-
+        private void Awake() => _hero = GetComponent<IHero>();
         private void Update()
         {
             PlayMove();
@@ -46,15 +41,12 @@ namespace Code.Character.Hero
             _animator.SetBool(Crouch_b, _hero.Movement.IsCrouch);
         public void PlayAttack() => 
             _animator.SetTrigger(Attack_t);
-
         public void PlayStopAttack() => 
             _animator.SetTrigger(StopAttack_t);
-
         public void PlayDeath() => 
             _animator.SetTrigger(Die_t);
         public void PlayDeathOnWater() => 
             _animator.SetTrigger(WaterDie_t);
-
         public void PlayDash(bool isDash) => 
             _animator.SetBool(Dash_b,isDash);
 
@@ -63,16 +55,9 @@ namespace Code.Character.Hero
 
         public void PlayStunned(bool isStunned) =>
             _animator.SetBool(Stunned_b,isStunned);
-
-        public void PlayEnterGunMode()
-        {
-            
+        public void PlayEnterGunMode() => 
             _animator.SetBool(GunMode_b, true);
-        }
-
-        public void PlayEnterHandMode()
-        {
+        public void PlayEnterHandMode() => 
             _animator.SetBool(GunMode_b, false);
-        }
     }
 }

@@ -13,7 +13,6 @@ namespace Code.Logic.CameraLogic
         [Inject]
         private void Construct(IHero hero)
         {
-            _listener.attenuationObject = hero.Transform.gameObject;
         }
     }
 }

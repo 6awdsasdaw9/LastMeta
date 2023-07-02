@@ -134,6 +134,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _heroMissilePrefabs: {fileID: 8053710278240547915, guid: 2db31b4f7ea07344a84338f08344215e, type: 3}
+--- !u!1 &6922286833601306194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6326631559239875073}
+  - component: {fileID: 3506020975539346590}
+  m_Layer: 0
+  m_Name: MoneyInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6326631559239875073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6922286833601306194}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7948913253427275685}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3506020975539346590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6922286833601306194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7756a9d31b41028328a5f18c7239ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7948913252850770646
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +349,7 @@ Transform:
   - {fileID: 8887953125819007913}
   - {fileID: 1253390048313202775}
   - {fileID: 8164131872731743875}
+  - {fileID: 6326631559239875073}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -330,6 +375,7 @@ MonoBehaviour:
   - {fileID: 7948913253268715925}
   - {fileID: 1825028843133541956}
   - {fileID: 2555467939751169943}
+  - {fileID: 3506020975539346590}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:

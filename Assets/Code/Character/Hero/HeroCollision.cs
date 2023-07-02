@@ -14,13 +14,14 @@ namespace Code.Character.Hero
         public bool UnderCeiling { get; private set; }
         public event Action OnWater;
 
+        [SerializeField] private bool _isShowGroundRaycast;
         [SerializeField] private CapsuleCollider _collider;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private LayerMask _waterLayer;
 
         [Space, Title("Collider Settings")] 
-        [SerializeField] private float _groundLength = 0.95f;
+        [SerializeField] private float _groundLength = 0.22f;
 
         [SerializeField] private float _ceilingLength = 0.95f;
         [SerializeField] private Vector3 _colliderOffset;
@@ -130,7 +131,8 @@ namespace Code.Character.Hero
             Gizmos.color = Color.red;
 
             //ground
-            Gizmos.DrawLine(transform.position, transform.position + Vector3.down * _groundLength);
+            if(_isShowGroundRaycast)
+                Gizmos.DrawLine(transform.position, transform.position + Vector3.down * _groundLength);
             //ceiling
             Gizmos.DrawLine(transform.position + _colliderOffset,
                 transform.position + _colliderOffset + Vector3.up * _ceilingLength);
