@@ -7,6 +7,13 @@ namespace FMODUnity
     public struct EventReference
     {
         public FMOD.GUID Guid;
+        public bool IsNull
+        {
+            get
+            {
+                return string.IsNullOrEmpty(Path) && Guid.IsNull;
+            }
+        }
 
 #if UNITY_EDITOR
         public string Path;
@@ -18,13 +25,6 @@ namespace FMODUnity
             return string.Format("{0} ({1})", Guid, Path);
         }
 
-        public bool IsNull
-        {
-            get
-            {
-                return string.IsNullOrEmpty(Path) && Guid.IsNull;
-            }
-        }
 
         public static EventReference Find(string path)
         {

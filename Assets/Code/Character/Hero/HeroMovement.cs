@@ -55,7 +55,6 @@ namespace Code.Character.Hero
             _hero = GetComponent<IHero>();
             _input = input;
             _heroParams = heroConfig.HeroParams;
-            //dataCollection.Add(this);
         }
 
         private void OnEnable() =>

@@ -12,9 +12,9 @@ namespace Code.Data.Configs
         public HeroParams HeroParams;
         [GUIColor(0.2f,0.8f,0.5f)]
         public HeroAbilitiesParams AbilitiesParams;
-        [GUIColor(0.8f,0.5f,0.5f)]
+        [GUIColor(0.8f,0.5f,0.2f)]
         public HeroUpgradesParams UpgradesParams;
-
-        
+        [GUIColor(0.8f, 0.5f, 0.8f)] 
+        public HeroAudioPath AudioPath;
     }
 }

@@ -9,7 +9,6 @@ namespace Code.Audio.AudioPath
     public class SceneAudioPath : ScriptableObject
     {
         public List<SceneAudioData> SceneAudioData;
-
     }
 
     [Serializable]
@@ -19,4 +18,5 @@ namespace Code.Audio.AudioPath
         public EventReference Music;
         public EventReference Ambience;
     }
+    
 }
