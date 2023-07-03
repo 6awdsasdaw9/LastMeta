@@ -88,11 +88,11 @@ MonoBehaviour:
     GameMode: 1
     Music:
       Guid:
-        Data1: 1804112061
-        Data2: 1192767265
-        Data3: -704707949
-        Data4: 1733429385
-      Path: event:/Music/Music_Enter_Metapark_Day_Night
+        Data1: 2050525325
+        Data2: 1217164241
+        Data3: 876140209
+        Data4: -403891229
+      Path: event:/Music/EnterMetaPark
     Ambience:
       Guid:
         Data1: 1240592419
