@@ -30,9 +30,17 @@ namespace Code.Character.Hero
             _raycastHit = new RaycastHits(transform, Constants.HittableLayer, 0.2f, hitsSize: 7);
             _inputService = inputService;
         }
-        public void Enable() => enabled = true;
+        public void Enable()
+        {
+            if(this != null) enabled = true;
+        }
+
         private void OnEnable() => _inputService.OnPressAttackButton += StartAttack;
-        public void Disable() => enabled = false;
+        public void Disable()
+        {
+            if(this != null) enabled = false;
+        }
+
         private void OnDisable() => _inputService.OnPressAttackButton -= StartAttack;
         public void SetDamageParam(DamageParam damageParam) => DamageParam = damageParam;
         private void StartAttack()

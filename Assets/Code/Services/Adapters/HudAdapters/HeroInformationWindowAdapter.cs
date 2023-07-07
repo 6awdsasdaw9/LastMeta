@@ -73,13 +73,14 @@ namespace Code.Logic.Adaptors
         {
             if (_hud.HeroInformation.Window.IsOpen)
             {
-                _hud.HeroInformation.Window.HideWindow(() => _hud.OnUIWindowHidden?.Invoke());
+                _hud.HeroInformation.Window.HideWindow(() =>
+                    _eventsFacade.HudEvents.WindowHiddenEvent(_hud.HeroInformation.Window));
             }
             else
             {
-                Logg.ColorLog("Show");
                 SetParamInIcons();
-                _hud.HeroInformation.Window.ShowWindow(() => _hud.OnUIWindowShown?.Invoke());
+                _hud.HeroInformation.Window.ShowWindow(() => 
+                    _eventsFacade.HudEvents.WindowShownEvent(_hud.HeroInformation.Window));
             }
         }
     }

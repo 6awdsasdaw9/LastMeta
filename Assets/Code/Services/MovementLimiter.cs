@@ -15,8 +15,7 @@ namespace Code.Services
         {
             CharactersCanMove = true;
         }
-
-
+        
         public void DisableMovement()
         {
             CharactersCanMove = false;

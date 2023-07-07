@@ -101,7 +101,7 @@ namespace Code.Character.Hero
             _heroCanMove = false;
             _pressingCrouch = false;
             _pressingMove = false;
-            _body.velocity = Vector3.zero;
+            if(_body) _body.velocity = Vector3.zero;
         }
 
         public void UnBlockMovement()
@@ -226,12 +226,12 @@ namespace Code.Character.Hero
         public void Disable()
         {
             BlockMovement();
-            enabled = false;
+  //          enabled = false;
         }
 
         public void Enable()
         {
-            enabled = true;
+//            enabled = true;
             _heroCanMove = true;
         }
     }

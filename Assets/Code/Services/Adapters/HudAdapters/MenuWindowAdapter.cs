@@ -1,4 +1,3 @@
-using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
 using Code.Logic.LanguageLocalization;
 using Code.PresentationModel.HeadUpDisplay;
@@ -42,8 +41,14 @@ namespace Code.Logic.Adaptors
 
         private void CloseOpenWindow()
         {
-            if (_hud.Menu.Window.IsOpen) _hud.Menu.Window.HideWindow(() => _hud.OnUIWindowHidden?.Invoke());
-            else _hud.Menu.Window.ShowWindow(() => _hud.OnUIWindowShown?.Invoke());
+            if (_hud.Menu.Window.IsOpen)
+            {
+                _hud.Menu.Window.HideWindow(() => _eventsFacade.HudEvents.WindowHiddenEvent(_hud.Menu.Window));
+            }
+            else
+            {
+                _hud.Menu.Window.ShowWindow(() => _eventsFacade.HudEvents.WindowShownEvent(_hud.Menu.Window));
+            }
         }
 
         private void RusLanguageOnStartTap() => _eventsFacade.HudEvents.PressButtonLanguageEvent(Language.Rus);

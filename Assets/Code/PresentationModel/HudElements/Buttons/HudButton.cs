@@ -1,4 +1,6 @@
 using System;
+using Code.Audio.AudioEvents;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +8,9 @@ namespace Code.PresentationModel.Buttons
 {
     public  class HudButton: HudElement
     {
-        [SerializeField] private UnityEngine.UI.Button _button;
+        [SerializeField] private Button _button;
+        [Title("Optional")]
+        [SerializeField] private AudioEvent _audioEvent;
         public event Action OnStartTap;
 
         protected void OnEnable()
@@ -21,6 +25,7 @@ namespace Code.PresentationModel.Buttons
         protected virtual void InvokeEvent()
         {
             OnStartTap?.Invoke();
+            _audioEvent.PlayAudioEvent();
         }
     }
 }

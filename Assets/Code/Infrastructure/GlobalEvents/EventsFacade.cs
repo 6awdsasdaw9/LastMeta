@@ -1,6 +1,7 @@
 using System;
 using Code.Logic.Artifacts;
 using Code.Logic.LanguageLocalization;
+using Code.PresentationModel.Windows;
 
 namespace Code.Infrastructure.GlobalEvents
 {
@@ -29,5 +30,18 @@ namespace Code.Infrastructure.GlobalEvents
     {
         public void PressButtonLanguageEvent(Language language) => OnPressButtonLanguage?.Invoke(language);
         public Action<Language> OnPressButtonLanguage;
+
+        public void WindowShownEvent(IWindow window) => OnWindowShown?.Invoke(window);
+        public Action<IWindow> OnWindowShown;
+        public void WindowHiddenEvent(IWindow window) => OnWindowHidden?.Invoke(window);
+        public Action<IWindow> OnWindowHidden;
+
+
+        public void OpenFirstWindowEvent() => OnOpenFirstWindow?.Invoke();
+        public Action OnOpenFirstWindow;
+
+        public void CloseLastWindowEvent() => OnCloseLastWindow?.Invoke();
+        public Action OnCloseLastWindow;
+
     }
 }

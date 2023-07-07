@@ -12,7 +12,7 @@ using Zenject;
 
 namespace Code.Logic.Adaptors
 {
-    public class HudAdapter : MonoBehaviour
+    public class HudWindowsAdapter : MonoBehaviour
     {
         private Hud _hud;
         private MovementLimiter _movementLimiter;
@@ -23,7 +23,8 @@ namespace Code.Logic.Adaptors
         
         private List<IWindow> _openedWindows = new();
         private bool _menuWindowIsOpened;
-        
+        private EventsFacade _eventsFacade;
+
         [Inject]
         public void Construct(Hud hud, 
             MovementLimiter movementLimiter, 
@@ -34,7 +35,9 @@ namespace Code.Logic.Adaptors
             _hud = hud;
             _movementLimiter = movementLimiter;
             _input = inputService;
-
+            _eventsFacade = eventsFacade;
+        
+            
             InitWindowsAdapters(hud, eventsFacade, hero);
         }
 
@@ -57,18 +60,32 @@ namespace Code.Logic.Adaptors
         {
             if (flag)
             {
-                _hud.OnUIWindowShown += DisableMovement;
-                _hud.OnUIWindowHidden += EnableMovement;
+                _eventsFacade.HudEvents.OnWindowShown += AddOpenedWindowToList;
+                _eventsFacade.HudEvents.OnWindowHidden += RemoveOpenedWindowFromList;
             }
             else
             {
-                _hud.OnUIWindowShown -= DisableMovement;
-                _hud.OnUIWindowHidden -= EnableMovement;
+                _eventsFacade.HudEvents.OnWindowShown -= AddOpenedWindowToList;
+                _eventsFacade.HudEvents.OnWindowHidden -= RemoveOpenedWindowFromList;
             }
 
             SubscribeDialogueWindowEvents(flag);
             _menuWindowAdapter.SubscribeToEvent(flag);
             _heroInformationWindowAdapter.SubscribeToEvent(flag);
+        }
+
+        private void RemoveOpenedWindowFromList(IWindow window)
+        {
+            _openedWindows.Remove(window);
+            if(_openedWindows.Any())return;
+            _eventsFacade.HudEvents.CloseLastWindowEvent();
+        }
+
+        private void AddOpenedWindowToList(IWindow window)
+        {
+            _openedWindows.Add(window);
+            if(_openedWindows.Count != 1)return;
+            _eventsFacade.HudEvents.OpenFirstWindowEvent();
         }
 
         private void SubscribeDialogueWindowEvents(bool flag)
@@ -94,10 +111,6 @@ namespace Code.Logic.Adaptors
         {
             _input.SimulatePressEsc();
         }
-
-        private void EnableMovement() =>
-            _movementLimiter.EnableMovement();
-        private void DisableMovement() =>
-            _movementLimiter.DisableMovement();
+        
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Code.PresentationModel.Windows.MenuWindow
 {
-    public class MenuWindow : HudElement,  ILocalizationTitle
+    public class MenuWindow : HudElement,  ILocalizationTitle, IWindow
     {
         [SerializeField] private TextMeshProUGUI _titleText;
         public TextMeshProUGUI TitleText => _titleText;

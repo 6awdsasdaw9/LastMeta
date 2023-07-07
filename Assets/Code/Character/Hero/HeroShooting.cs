@@ -39,14 +39,22 @@ namespace Code.Character.Hero
             ShootingParams = shootingParams;
         }
        
-        public void Enable() => enabled = true;
+        public void Enable()
+        {
+            if(this != null) enabled = true;
+        }
+
         private void OnEnable()
         {
             _inputService.OnPressAttackButton += StartAttack;
             _inputService.OnUnPressAttackButton += StopAttack;
         }
 
-        public void Disable() => enabled = false;
+        public void Disable()
+        {
+            if(this != null) enabled = false;
+        }
+
         private void OnDisable()
         {
             _inputService.OnPressAttackButton -= StartAttack;

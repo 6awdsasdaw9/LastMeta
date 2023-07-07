@@ -16,7 +16,6 @@ namespace Code.PresentationModel.Windows.InteractiveWindows
                 return;
             
             _animation.PlayShow(WindowShowed);
-            _hud.OnUIWindowShown?.Invoke();
         }
 
         public virtual void HideWindow(Action WindowHidden)
@@ -25,7 +24,6 @@ namespace Code.PresentationModel.Windows.InteractiveWindows
                 return;
             
             _animation.PlayHide(WindowHidden);
-            _hud.OnUIWindowHidden?.Invoke();
         }
     }
 }

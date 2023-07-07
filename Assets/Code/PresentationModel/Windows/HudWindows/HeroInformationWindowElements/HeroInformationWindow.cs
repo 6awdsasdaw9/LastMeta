@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Code.PresentationModel.Windows.HudWindows.HeroInformationWindowElements
 {
-    public class HeroInformationWindow : HudElement,  ILocalizationTitle
+    public class HeroInformationWindow : HudElement,  ILocalizationTitle, IWindow
     {
         [SerializeField] private TextMeshProUGUI _titleText;
 

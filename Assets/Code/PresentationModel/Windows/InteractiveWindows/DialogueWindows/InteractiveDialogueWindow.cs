@@ -18,7 +18,6 @@ namespace Code.PresentationModel.Windows.DialogueWindows
                 return;
 
             _animation.PlayShow(WindowShowed);
-            _hud.OnUIWindowShown?.Invoke();
         }
 
         public override void HideWindow(Action WindowHidden)
@@ -29,7 +28,6 @@ namespace Code.PresentationModel.Windows.DialogueWindows
             _dialogueController.StopDialogue();
 
             _animation.PlayHide(WindowHidden);
-            _hud.OnUIWindowHidden?.Invoke();
         }
     }
 }

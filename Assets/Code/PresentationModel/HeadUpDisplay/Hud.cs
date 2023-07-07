@@ -24,7 +24,6 @@ namespace Code.PresentationModel.HeadUpDisplay
         [ShowIf(nameof(_isGameHud))] public TextPanel MoneyPanel;
         [ShowIf(nameof(_isGameHud))] public HeroInformationButtonWindow HeroInformation;
         
-        public Action OnUIWindowShown;
-        public Action OnUIWindowHidden;
+    
     }
 }

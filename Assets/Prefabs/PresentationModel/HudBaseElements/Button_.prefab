@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7181152900287433251}
   - component: {fileID: 1874765600929540939}
-  - component: {fileID: 7131417160635208307}
   m_Layer: 5
   m_Name: Body
   m_TagString: Untagged
@@ -47,27 +46,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3559094737315015942}
   m_CullTransparentMesh: 1
---- !u!114 &7131417160635208307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3559094737315015942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da3c13b8684c41928fb2ea6b73dfc183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _uiAudio:
-    _eventReference:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
-    _playOnAwake: 0
 --- !u!1 &3993670988898288734
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,6 +98,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 7181152900287433251}
   _button: {fileID: 2974715920834156180}
+  _audioEvent:
+    _eventReference:
+      Guid:
+        Data1: -15822610
+        Data2: 1242760594
+        Data3: 562082950
+        Data4: 621305227
+      Path: event:/SFX/UI/HUD_Button
+    _playOnAwake: 0
 --- !u!1 &5276748965412105990
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +119,6 @@ GameObject:
   - component: {fileID: 4294151849898908545}
   - component: {fileID: 8142991418938600708}
   - component: {fileID: 2974715920834156180}
-  - component: {fileID: 1071816060272168868}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -242,24 +228,3 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1071816060272168868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276748965412105990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da3c13b8684c41928fb2ea6b73dfc183, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _uiAudio:
-    _eventReference:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
-    _playOnAwake: 0
