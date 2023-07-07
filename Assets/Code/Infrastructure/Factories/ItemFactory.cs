@@ -49,6 +49,7 @@ namespace Code.Infrastructure.Factories
                 case ItemType.LeftSock:
                 case ItemType.Seed:
                 case ItemType.RightSock:
+                    return new ItemMoneyBehavior(item);
                 case ItemType.Key:
                 case ItemType.Glove:
                 case ItemType.Gun:

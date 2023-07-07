@@ -7,6 +7,7 @@ namespace Code.Logic.Artifacts.Artifacts
     [Serializable]
     public class ItemArtifactBehavior : ItemBehaviour
     {
+        
         public ItemArtifactBehavior(Item item) : base(item)
         {
         }
@@ -14,6 +15,7 @@ namespace Code.Logic.Artifacts.Artifacts
         public override void PickUp(Action OnPickUp = null)
         {
             Item.Animator.PlayDestroy();
+            InvokeActionWithDelay(() => OnPickUp?.Invoke(), 1f).Forget();
         }
     }
 
@@ -29,4 +31,6 @@ namespace Code.Logic.Artifacts.Artifacts
             InvokeActionWithDelay(() => OnPickUp?.Invoke(), 1f).Forget();
         }
     }
+    
+    
 }

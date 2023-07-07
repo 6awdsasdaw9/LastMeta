@@ -17,8 +17,8 @@ namespace Code.Audio
         private EventInstance _ambience;
         private EventInstance _music;
 
-        private PARAMETER_DESCRIPTION _nightParameterDescription;
-        private PARAMETER_ID _nightParameterID;
+        private PARAMETER_DESCRIPTION _dayNightParameterDescription;
+        private PARAMETER_ID _dayNightParameterID;
         
         private PARAMETER_DESCRIPTION _pauseParameterDescription;
         private PARAMETER_ID _pauseParameterID;
@@ -101,16 +101,16 @@ namespace Code.Audio
         #region Param
         private void SetNightParam()
         {
-            const string nameParam = "NightToggle";
-            RuntimeManager.StudioSystem.getParameterDescriptionByName(nameParam, out _nightParameterDescription);
-            _nightParameterID = _nightParameterDescription.id;
+            const string nameParam = "DayNight";
+            RuntimeManager.StudioSystem.getParameterDescriptionByName(nameParam, out _dayNightParameterDescription);
+            _dayNightParameterID = _dayNightParameterDescription.id;
         }
         
         //calue = 0 - 1
         public void ChangeNightParam(bool isNight)
         {
             var value = isNight ? 1 : 0;
-            RuntimeManager.StudioSystem.setParameterByID(_nightParameterID, value);
+            RuntimeManager.StudioSystem.setParameterByID(_dayNightParameterID, value);
         }
 
         #endregion
