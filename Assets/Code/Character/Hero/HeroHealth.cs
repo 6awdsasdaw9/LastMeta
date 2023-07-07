@@ -50,7 +50,7 @@ namespace Code.Character.Hero
             if (Current <= 0 || damage <= 0)
                 return;
 
-            _hero.Audio.PlayDamageAudio();
+            _hero.Audio.PlayDamageSound();
             _hero.VFX.SpriteVFX.RedColorize();
             
             Current -= damage;

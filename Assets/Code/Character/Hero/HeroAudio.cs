@@ -23,19 +23,39 @@ namespace Code.Character.Hero
         public void PlaySoftStepSound() =>
             PlayOneShotAudio(_audioPath.SoftStep);
 
-        public void PlayOnLandAudio() =>
+        public void PlayOnLandSound() =>
             PlayOneShotAudio(_audioPath.OnLoad);
 
-        public void PlayPunchAudio() =>
+        public void PlayPunchSound() =>
             PlayOneShotAudio(_audioPath.Punch);
-        public void PlayDamageAudio() =>
+        public void PlayDamageSound() =>
             PlayOneShotAudio(_audioPath.TakeDamage);
-        public void PlayJump() => 
+        public void PlayJumpSound() => 
             PlayOneShotAudio(_audioPath.Jump);
 
-        public void PlayWaterDeathAudio() => 
+        public void PLayStunnedSound() =>
+            PlayOneShotAudio(_audioPath.Stunned);
+
+        public void PlayWaterDeathSound() => 
             PlayOneShotAudio(_audioPath.WaterDeath);
         
+        public void PlayDashSound()=>
+            PlayOneShotAudio(_audioPath.Dash);
+
+        public void PlayTakeGunSound() => 
+            PlayOneShotAudio(_audioPath.TakeGun);
+
+        public void PlayReturnGunSound() => 
+            PlayOneShotAudio(_audioPath.ReturnGun);
+
+        public void PlayStartShoot() => 
+            PlayOneShotAudio(_audioPath.StartShoot);
+
+        public void PlayStopShoot() => 
+            PlayOneShotAudio(_audioPath.StopShoot);
+        
+        public void PlayShoot() => 
+            PlayOneShotAudio(_audioPath.Shoot);
         private void PlayOneShotAudio(EventReference eventReference)
         {
             if (eventReference.IsNull)

@@ -4,9 +4,9 @@ namespace Code.Character.Hero.HeroInterfaces
     {
         void PlayStepSound();
         void PlaySoftStepSound();
-        void PlayOnLandAudio();
-        void PlayPunchAudio();
-        void PlayDamageAudio();
-        void PlayJump();
+        void PlayOnLandSound();
+        void PlayPunchSound();
+        void PlayDamageSound();
+        void PlayJumpSound();
     }
 }

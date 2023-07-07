@@ -153,7 +153,7 @@ namespace Code.Character.Hero
                 return;
 
             if (!_isCurrentlyJumping)
-                _hero.Audio.PlayJump();
+                _hero.Audio.PlayJumpSound();
 
             _isDesiredJump = false;
             _jumpBufferCounter = 0;
