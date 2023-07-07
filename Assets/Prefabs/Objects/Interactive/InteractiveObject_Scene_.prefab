@@ -259,8 +259,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconType: 2
   _iconAnimation: {fileID: 3766245025369825767}
-  _audioEvent: {fileID: 8334268751405434150}
   _isStartOnEnable: 0
+  _pressButtonAudioEvent:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
 --- !u!114 &158201092009306197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 6
   _interactiveScene: 3
-  _exitPosition: {x: 0, y: 0, z: 0}
+  _spawnPointID: 0
 --- !u!114 &8334268751405434150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +302,7 @@ MonoBehaviour:
       Data2: 1120882342
       Data3: -704084845
       Data4: 625795077
-    Path: event:/Press_E
+    Path: event:/Buttons/Press_E
   _playOnAwake: 0
 --- !u!1001 &1021078870540857477
 PrefabInstance:
