@@ -11,11 +11,13 @@ namespace Code.Logic.Artifacts
         public DestroyedObjectAnimation Animator => _animator;
         [SerializeField] private DestroyedObjectAnimation _animator;
 
+        [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private SphereCollider _trigger;
+        
         private ItemBehaviour _behaviour;
-        public ItemData Data { get;private set; }
-
         public event Action<Item> OnPickUpItem;
+
+        public ItemData Data { get;private set; }
 
         public void SetBehavior(ItemBehaviour behaviour)
         {
@@ -32,6 +34,7 @@ namespace Code.Logic.Artifacts
         {
             Data = itemData;
             _animator.SetAnimatorController(Data.AnimatorController);
+            _spriteRenderer.sprite = Data.Sprite;
         }
         
         public class Pool : MonoMemoryPool<ItemData,EventsFacade ,Item>

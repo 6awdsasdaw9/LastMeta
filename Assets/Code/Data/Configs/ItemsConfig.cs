@@ -9,7 +9,7 @@ namespace Code.Data.Configs
     public class ItemsConfig : ScriptableObject
     {
         public ItemData[] Items;
-
         public ItemData GetData(ItemType type) => Items.FirstOrDefault(i => i.Type == type);
+    
     }
 }

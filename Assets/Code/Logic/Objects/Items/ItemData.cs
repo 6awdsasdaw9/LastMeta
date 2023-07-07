@@ -9,6 +9,7 @@ namespace Code.Logic.Artifacts
     {
         public ItemType Type;
         public float Value;
+        public Sprite Sprite;
         public RuntimeAnimatorController AnimatorController;
     }
 }

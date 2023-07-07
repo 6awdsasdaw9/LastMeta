@@ -21,7 +21,6 @@ namespace Code.Services.Input
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            
             _inputService.SetPressOnUI(false);
         }
     }

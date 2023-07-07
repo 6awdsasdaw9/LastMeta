@@ -61,11 +61,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 5211658980401582066}
+  _spriteRenderer: {fileID: 40897493992684515}
   _trigger: {fileID: 40897493671730650}
-  Data:
-    Type: 0
-    Value: 0
-    AnimatorController: {fileID: 0}
 --- !u!114 &5211658980401582066
 MonoBehaviour:
   m_ObjectHideFlags: 0

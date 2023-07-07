@@ -1,4 +1,3 @@
-using Code.Character.Enemies;
 using Code.Data.GameData;
 using Code.Infrastructure.Factories;
 using Code.Services.SaveServices;
@@ -18,7 +17,6 @@ namespace Code.Logic.Artifacts
         private RangedFloat _randomOffsetX;
         [HideIf(nameof(_isSpawnOneItem)), SerializeField, MinMaxRange(-0.3f, 0.3f)]
         private RangedFloat _randomOffsetY;
-        
         private bool _isSpawnOneItem => _itemsCount == 1;
         private ItemFactory _factory;
         private bool _isPickUp;

@@ -35,12 +35,13 @@ namespace Code.PresentationModel.Windows.MenuWindow
         public void ShowWindow(Action WindowShowed = null)
         {
             base.Show();
+            WindowShowed?.Invoke();
         }
 
         public void HideWindow(Action WindowHidden = null)
         {
             base.Hide();
-            
+            WindowHidden?.Invoke();
         }
 
         public void SetTitle(string title)

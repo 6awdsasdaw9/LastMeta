@@ -29,7 +29,6 @@ namespace Code.Character.Hero
 
         public void SetDefaultMode()
         {
-            Logg.ColorLog("HeroMode: Set Hand");
             Mode = Constants.HeroMode.Default;
             _hero.GunAttack.Disable();
             _hero.HandAttack.Enable();
@@ -37,7 +36,6 @@ namespace Code.Character.Hero
         }
         public void SetGunMode()
         {
-            Logg.ColorLog("HeroMode: Set Gun");
             Mode = Constants.HeroMode.Gun;
             _hero.GunAttack.Enable();
             _hero.HandAttack.Disable();
@@ -54,7 +52,6 @@ namespace Code.Character.Hero
                 _hero.GunAttack.Enable();
                 _hero.HandAttack.Enable();
             }
-            Logg.ColorLog("Hero EnableMovementMode");
         }
 
         private void OnDisableMovementMode()
@@ -67,7 +64,6 @@ namespace Code.Character.Hero
                 _hero.GunAttack.Disable();
                 _hero.HandAttack.Disable();
             }
-            Logg.ColorLog("Hero DisableMovementMode");
         }
     }
 }

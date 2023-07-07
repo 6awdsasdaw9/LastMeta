@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Code.Logic.Adaptors;
 using Code.PresentationModel.Buttons;
 using Code.PresentationModel.HudElements.HudButtonWindows;
 using Code.PresentationModel.Windows.InteractiveWindows;
-using Code.PresentationModel.Windows.MenuWindow;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -18,7 +16,6 @@ namespace Code.PresentationModel.HeadUpDisplay
         public List<InteractiveObjectWindowData> InteractiveObjectWindows;
         
         public MenuButtonWindow Menu;
-
         private bool _isGameHud => _gameMode == Constants.GameMode.Game;
         [Space,Title("Game HUD")]
         [ShowIf(nameof(_isGameHud))] public HpBar HeroHpBar;
