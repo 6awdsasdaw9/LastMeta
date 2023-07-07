@@ -88,11 +88,11 @@ MonoBehaviour:
     GameMode: 1
     Music:
       Guid:
-        Data1: 2050525325
-        Data2: 1217164241
-        Data3: 876140209
-        Data4: -403891229
-      Path: event:/Music/EnterMetaPark
+        Data1: -1796594614
+        Data2: 1148808539
+        Data3: -2121410123
+        Data4: -884319057
+      Path: event:/Music/DayNight_EnterMetaPark
     Ambience:
       Guid:
         Data1: 1240592419
@@ -107,11 +107,11 @@ MonoBehaviour:
         DirectionLightIntensity: 0.9
         DirectionLightAngle: {x: 5, y: -1, z: 0}
       - TimeOfDay: 1
-        Duration: 0.145
+        Duration: 0.183
         DirectionLightIntensity: 0.45
         DirectionLightAngle: {x: -35, y: 7, z: 0}
       - TimeOfDay: 2
-        Duration: 0.589
+        Duration: 0.483
         DirectionLightIntensity: 0.15
         DirectionLightAngle: {x: -55, y: 13, z: 0}
     Points:
