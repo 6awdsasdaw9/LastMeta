@@ -6,6 +6,7 @@ namespace Code.Character.Common
     public class SpriteVFX : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
+
         public void RedColorize()
         {
             _spriteRenderer.DOColor(Constants.RedColor, 0.5f)
@@ -13,9 +14,14 @@ namespace Code.Character.Common
                 .SetLink(gameObject, LinkBehaviour.KillOnDestroy);
         }
 
-        public void FlipSprite()
+        public void SetFlipX(bool isFlip)
         {
-            _spriteRenderer.flipX =   !_spriteRenderer.flipX;
+            _spriteRenderer.flipX = isFlip;
+        }
+
+        public void InverseFlipX()
+        {
+            _spriteRenderer.flipX = !_spriteRenderer.flipX;
         }
     }
 }

@@ -89,7 +89,7 @@ namespace Code.Logic.Objects.DestroyedObjects
         {
             public SpriteRenderer SpriteRenderer;
             public Sprite DestroyedImage;
-            public DestroyedObjectAnimation Animation;
+            public DestroyedAnimation Animation;
         }
     }
 }

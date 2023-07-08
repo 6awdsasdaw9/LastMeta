@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Code.Logic.DayOfTime
 {
   
-    public class TimeObserversComponentController : TimeObserver
+    public class TimeObserverComponentController : TimeObserver
     {
         [SerializeField] private List<MonoBehaviour> _enabledComponents;
         [SerializeField] private List<GameObject> _enableObjects;

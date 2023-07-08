@@ -25,9 +25,9 @@ namespace Code
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                /*isPause = !isPause;
+                isPause = !isPause;
                 _sceneAudioController.ChangePauseParam(isPause);
-                Logg.ColorLog($"{isPause}",ColorType.Magenta);*/
+                Logg.ColorLog($"{isPause}",ColorType.Magenta);
             }
         }
     }

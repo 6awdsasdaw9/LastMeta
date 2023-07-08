@@ -16,11 +16,11 @@ MonoBehaviour:
   DayTimeInSeconds: 100
   PauseSnapshot:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -2009899407
+      Data2: 1152610702
+      Data3: -2040101985
+      Data4: -408788551
+    Path: snapshot:/Pause
   ScenesParams:
   - Scene: 1
     GameMode: 0
@@ -107,11 +107,11 @@ MonoBehaviour:
         DirectionLightIntensity: 0.9
         DirectionLightAngle: {x: 5, y: -1, z: 0}
       - TimeOfDay: 1
-        Duration: 0.164
+        Duration: 0.04
         DirectionLightIntensity: 0.45
-        DirectionLightAngle: {x: -35, y: 7, z: 0}
+        DirectionLightAngle: {x: -25, y: 7, z: 0}
       - TimeOfDay: 2
-        Duration: 0.483
+        Duration: 0.1
         DirectionLightIntensity: 0.15
         DirectionLightAngle: {x: -55, y: 13, z: 0}
     Points:

@@ -7,7 +7,7 @@ using Zenject;
 namespace Code.Logic.DayOfTime
 {
     [RequireComponent(typeof(TimeChangerController))]
-    public abstract class TimeObserver: MonoBehaviour, ITimeObserver
+    public abstract class  TimeObserver: MonoBehaviour, ITimeObserver
     {
         [SerializeField,EnumToggleButtons] protected TimeOfDay _timeToEnable = TimeOfDay.Night;
         [SerializeField, EnumToggleButtons] protected TimeOfDay _timeToDisable= TimeOfDay.Morning;

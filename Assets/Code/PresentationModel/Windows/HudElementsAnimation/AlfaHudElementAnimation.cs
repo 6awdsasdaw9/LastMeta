@@ -45,7 +45,7 @@ namespace Code.PresentationModel.Windows.WindowsAnimation
             for (var i = 0; i < CYCLE_STEPS; i++)
             {
                 _canvasGroup.alpha += ONE_STEP;
-                await UniTask.Delay(TimeSpan.FromSeconds(speed));
+                await UniTask.Delay(TimeSpan.FromSeconds(speed), cancellationToken: gameObject.GetCancellationTokenOnDestroy());
             }
 
             WindowShowed?.Invoke();
@@ -62,7 +62,7 @@ namespace Code.PresentationModel.Windows.WindowsAnimation
             for (var i = 0; i < CYCLE_STEPS; i++)
             {
                 _canvasGroup.alpha -= ONE_STEP;
-                await UniTask.Delay(TimeSpan.FromSeconds(speed));
+                await UniTask.Delay(TimeSpan.FromSeconds(speed), cancellationToken: gameObject.GetCancellationTokenOnDestroy());
             }
 
             IsPlay = false;

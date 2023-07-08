@@ -1,5 +1,7 @@
+using Code.Data.Configs;
 using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
+using Code.Services;
 using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
@@ -8,7 +10,7 @@ using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 namespace Code.Audio
 {
-    public class SceneAudioController 
+    public class SceneAudioController
     {
         private readonly EventsFacade _eventsFacade;
         private EventReference _ambienceEvent;
@@ -26,9 +28,12 @@ namespace Code.Audio
         private Bus _music_Volume;
         private Bus Effect_Volume;
 
+        private const string PAUSE_SNAPSHOT_PARAM = "PauseSnapShot";
 
-        public SceneAudioController()
+
+        public SceneAudioController(ScenesConfig scenesConfig, EventsFacade eventsFacade)
         {
+            InitSnapshot(scenesConfig.PauseSnapshot.Path);
             SetNightParam();
         }
         #region Set Audio EventReference
@@ -123,31 +128,30 @@ namespace Code.Audio
         
         public void InitSnapshot(string pauseSnapshot)
         {
-            /*if(_isInit)
-                return;
+            if(_isInit) return;
             _isInit = true;
             _pauseSnapshotInstance = RuntimeManager.CreateInstance(pauseSnapshot);
-            _pauseSnapshotInstance.stop(STOP_MODE.ALLOWFADEOUT);*/
-            //_pauseSnapshotInstance.start();
+            _pauseSnapshotInstance.stop(STOP_MODE.ALLOWFADEOUT);
+            _pauseSnapshotInstance.start();
         }
         
         //calue = 0 - 1
         public void ChangePauseParam(bool isPause)
         {
-            /*if(isPause == _isActivePauseSnapshot)
+            if(isPause == _isActivePauseSnapshot)
                 return;
 
             _isActivePauseSnapshot = isPause;
             if (isPause)
             {
-                _pauseSnapshotInstance.stop(STOP_MODE.ALLOWFADEOUT);
-                _pauseSnapshotInstance.setParameterByName("GamePauseStatus", 1);
+               _pauseSnapshotInstance.start();
+                //_pauseSnapshotInstance.setParameterByName(PAUSE_SNAPSHOT_PARAM, 1);
             }
             else
             {
-                _pauseSnapshotInstance.start();
-                _pauseSnapshotInstance.setParameterByName("GamePauseStatus", 0);
-            }*/
+                _pauseSnapshotInstance.stop(STOP_MODE.ALLOWFADEOUT);
+                //_pauseSnapshotInstance.setParameterByName(PAUSE_SNAPSHOT_PARAM, 0);
+            }
         }
 
         #endregion
@@ -165,5 +169,6 @@ namespace Code.Audio
 
         #endregion
 
+       
     }
 }

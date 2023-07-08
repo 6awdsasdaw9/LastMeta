@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.PresentationModel.Buttons;
+using Code.PresentationModel.HudElements;
 using Code.PresentationModel.HudElements.HudButtonWindows;
 using Code.PresentationModel.Windows.InteractiveWindows;
 using Sirenix.OdinInspector;
@@ -17,10 +18,12 @@ namespace Code.PresentationModel.HeadUpDisplay
         
         public MenuButtonWindow Menu;
         private bool _isGameHud => _gameMode == Constants.GameMode.Game;
+
         [Space,Title("Game HUD")]
         [ShowIf(nameof(_isGameHud))] public HpBar HeroHpBar;
         [ShowIf(nameof(_isGameHud))] public TextPanel DayPanel;
         [ShowIf(nameof(_isGameHud))] public HudSlider SliderTimeOfDay;
+        [ShowIf(nameof(_isGameHud))] public StartStopAnimation HandleTimeOfDay;
         [ShowIf(nameof(_isGameHud))] public TextPanel MoneyPanel;
         [ShowIf(nameof(_isGameHud))] public HeroInformationButtonWindow HeroInformation;
         

@@ -9,7 +9,7 @@ namespace Code.Character.Common
     public class DestroyedTrigger: MonoBehaviour, IEventSubscriber
     {
         [SerializeField] private TriggerObserver _destructionTrigger;
-        [SerializeField] private DestroyedObjectAnimation _animation;
+        [SerializeField] private DestroyedAnimation _animation;
         [SerializeField] private List<MonoBehaviour> _disableComponents;
         [SerializeField] private List<GameObject> _disableObjects;
 
@@ -27,15 +27,15 @@ namespace Code.Character.Common
         {
             if (flag)
             {
-                _destructionTrigger.TriggerEnter += OnDestructionTriggerEnter;
+                _destructionTrigger.OnEnter += OnDestructionOnEnter;
             }
             else
             {
-                _destructionTrigger.TriggerEnter -= OnDestructionTriggerEnter;
+                _destructionTrigger.OnEnter -= OnDestructionOnEnter;
             }
         }
 
-        private void OnDestructionTriggerEnter(Collider collider)
+        private void OnDestructionOnEnter(Collider collider)
         {
             _animation.PlayDestroy();
             foreach (var component in _disableComponents)

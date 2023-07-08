@@ -8,8 +8,8 @@ namespace Code.Logic.Artifacts
 {
     public class Item: MonoBehaviour
     {
-        public DestroyedObjectAnimation Animator => _animator;
-        [SerializeField] private DestroyedObjectAnimation _animator;
+        public DestroyedAnimation Animator => _animator;
+        [SerializeField] private DestroyedAnimation _animator;
 
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private SphereCollider _trigger;

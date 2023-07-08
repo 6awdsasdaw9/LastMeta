@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5438222552204047518}
   - component: {fileID: 1385038291417549740}
   - component: {fileID: 7504546772481773337}
-  - component: {fileID: 2292018000407428149}
+  - component: {fileID: 1444022811665974281}
   m_Layer: 5
   m_Name: Button_TestAudio
   m_TagString: Untagged
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2292018000407428149
+--- !u!114 &1444022811665974281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,10 +132,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 23486217925150302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da3c13b8684c41928fb2ea6b73dfc183, type: 3}
+  m_Script: {fileID: 11500000, guid: 65ddb4f4f687403db43e5bc53b549ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uiAudio:
+  Body: {fileID: 2127076309815551952}
+  _button: {fileID: 7504546772481773337}
+  _audioEvent:
     _eventReference:
       Guid:
         Data1: -15822610
@@ -1027,6 +1029,8 @@ GameObject:
   - component: {fileID: 1772950056469124608}
   - component: {fileID: 4072333770675494688}
   - component: {fileID: 3558380029724773938}
+  - component: {fileID: 6181129364481055605}
+  - component: {fileID: 4001868447121795111}
   m_Layer: 5
   m_Name: Image_Handle
   m_TagString: Untagged
@@ -1092,6 +1096,40 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &6181129364481055605
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039429760527978805}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b9e96df11b8636a41b819a7824b3c9e3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4001868447121795111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039429760527978805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01dca9e8cd1d4b17a26518dad48ab298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 6181129364481055605}
 --- !u!1 &1256157572565360805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,6 +1395,7 @@ MonoBehaviour:
   HeroHpBar: {fileID: 3250748225871163076}
   DayPanel: {fileID: 4328791773445437785}
   SliderTimeOfDay: {fileID: 7971639654216133456}
+  HandleTimeOfDay: {fileID: 4001868447121795111}
   MoneyPanel: {fileID: 1033767092983568253}
   HeroInformation:
     Window: {fileID: 3559991921562189275}
@@ -3150,9 +3189,9 @@ RectTransform:
   m_Father: {fileID: 6107436805359455499}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 465, y: 25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 319, y: 435}
   m_SizeDelta: {x: 274.4402, y: 376.5206}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1060820471525867241
@@ -6246,6 +6285,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 3009291360746046397}
   _button: {fileID: 7626005628166218960}
+  _audioEvent:
+    _eventReference:
+      Guid:
+        Data1: -15822610
+        Data2: 1242760594
+        Data3: 562082950
+        Data4: 621305227
+      Path: event:/SFX/UI/HUD_Button
+    _playOnAwake: 0
 --- !u!1 &5832299661992824246
 GameObject:
   m_ObjectHideFlags: 0
@@ -6661,7 +6709,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: -5}
+  m_AnchoredPosition: {x: -331, y: -193}
   m_SizeDelta: {x: 277.6219, y: 381.2344}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4126776027505791305
@@ -8728,6 +8776,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 5828534938903918103}
   _button: {fileID: 3640931860818412805}
+  _audioEvent:
+    _eventReference:
+      Guid:
+        Data1: -15822610
+        Data2: 1242760594
+        Data3: 562082950
+        Data4: 621305227
+      Path: event:/SFX/UI/HUD_Button
+    _playOnAwake: 0
 --- !u!1 &8031740285846920592
 GameObject:
   m_ObjectHideFlags: 0
@@ -9580,7 +9637,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -230, y: 4}
+  m_AnchoredPosition: {x: -230, y: -158}
   m_SizeDelta: {x: 334.2696, y: 432.1706}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1612987809712574192

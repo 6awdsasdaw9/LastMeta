@@ -25,10 +25,10 @@ namespace Code.Logic.Objects
 
         private void Start()
         {
-            _triggerObserver.TriggerEnter += TriggerEnter;
+            _triggerObserver.OnEnter += OnEnter;
         }
 
-        private void TriggerEnter(Collider obj)
+        private void OnEnter(Collider obj)
         {
             _groundCollider.SetActive(false);
         }

@@ -19,8 +19,8 @@ namespace Code.Character.Enemies
         
         private void OnEnable()
         {
-            _triggerObserver.TriggerEnter += TriggerEnter;
-            _triggerObserver.TriggerExit += TriggerExit;
+            _triggerObserver.OnEnter += OnEnter;
+            _triggerObserver.OnExit += OnExit;
             _limiter.OnDisableMovementMode += StopCheck;
             
             _enemyAttack.DisableAttack();
@@ -28,17 +28,17 @@ namespace Code.Character.Enemies
 
         private void OnDisable()
         {
-            _triggerObserver.TriggerEnter -= TriggerEnter;
-            _triggerObserver.TriggerExit -= TriggerExit;
+            _triggerObserver.OnEnter -= OnEnter;
+            _triggerObserver.OnExit -= OnExit;
             _limiter.OnDisableMovementMode -= StopCheck;
         }
 
-        private void TriggerEnter(Collider obj)
+        private void OnEnter(Collider obj)
         {
             _enemyAttack.EnableAttack();
         }
 
-        private void TriggerExit(Collider obj)
+        private void OnExit(Collider obj)
         {
             _enemyAttack.DisableAttack();
         }

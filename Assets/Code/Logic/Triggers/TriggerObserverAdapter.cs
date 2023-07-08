@@ -17,8 +17,8 @@ namespace Code.Logic.Triggers
 
         private void Awake()
         {
-            _triggerObserver.TriggerEnter += TriggerEnter;
-            _triggerObserver.TriggerExit += TriggerExit;
+            _triggerObserver.OnEnter += OnEnter;
+            _triggerObserver.OnExit += OnExit;
 
             SwitchFollowOff();
         }
@@ -30,7 +30,7 @@ namespace Code.Logic.Triggers
 
         #region Triggers
 
-        private void TriggerEnter(Collider obj)
+        private void OnEnter(Collider obj)
         {
             if (_hasReactionTarget)
                 return;
@@ -40,7 +40,7 @@ namespace Code.Logic.Triggers
             SwitchFollowOnAfterDelay().Forget();
         }
 
-        private void TriggerExit(Collider obj)
+        private void OnExit(Collider obj)
         {
             if (!_hasReactionTarget)
                 return;

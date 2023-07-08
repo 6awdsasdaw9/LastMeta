@@ -12,6 +12,7 @@ namespace Code.Infrastructure.GlobalEvents
         public GameEvents GameEvents { get; } = new();
         public HudEvents HudEvents { get; } = new();
         public ItemEvents ItemEvents { get; } = new();
+        
     }
 
     public class ItemEvents

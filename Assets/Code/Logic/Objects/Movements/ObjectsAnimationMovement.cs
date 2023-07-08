@@ -13,9 +13,18 @@ namespace Code.Logic.Objects.Movements
         [ShowIf(nameof(_isFlipSprite)), SerializeField]
         private SpriteVFX _sprite;
 
+        private Vector3 _startPosition;
+
+        private void Awake()
+        {
+            _startPosition = transform.position;
+            SetPositions();
+        }
+
         private void OnEnable()
         {
-            SetPositions();
+            
+            _sprite.SetFlipX(isFlip: false);
             StartMove();
         }
 
@@ -26,7 +35,8 @@ namespace Code.Logic.Objects.Movements
         
         protected override void StartMove()
         {
-            Move();
+            _moveTween?.Kill();
+            transform.DOMove(_startPosition, Speed).OnComplete(Move);
         }
 
         protected override void Move()
@@ -39,7 +49,7 @@ namespace Code.Logic.Objects.Movements
                 {
                     if (_isFlipSprite && _sprite != null)
                     {
-                        _sprite.FlipSprite();
+                        _sprite.InverseFlipX();
                     }
                 });
         }

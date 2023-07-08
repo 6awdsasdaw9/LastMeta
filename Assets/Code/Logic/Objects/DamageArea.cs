@@ -43,16 +43,16 @@ namespace Code.Logic.Objects
 
             if (flag)
             {
-                _trigger.TriggerEnter+= OnTriggerEnter;
+                _trigger.OnEnter+= OnOnEnter;
             }
             else
             {
-                _trigger.TriggerEnter -= OnTriggerEnter;
+                _trigger.OnEnter -= OnOnEnter;
             }
           
         }
 
-        private void OnTriggerEnter(Collider obj)
+        private void OnOnEnter(Collider obj)
         {
             TakeDamage();
         }

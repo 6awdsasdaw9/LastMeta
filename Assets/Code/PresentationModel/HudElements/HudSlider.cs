@@ -8,6 +8,7 @@ namespace Code.PresentationModel
     {
         [SerializeField] private Slider _slider;
         [SerializeField] private bool _isTransmitsValue;
+        
         public Action<float> OnChangedSliderValue;
 
         private void OnEnable()
