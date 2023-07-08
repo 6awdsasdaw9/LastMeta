@@ -131,8 +131,7 @@ namespace Code.Audio
             if(_isInit) return;
             _isInit = true;
             _pauseSnapshotInstance = RuntimeManager.CreateInstance(pauseSnapshot);
-            _pauseSnapshotInstance.stop(STOP_MODE.ALLOWFADEOUT);
-            _pauseSnapshotInstance.start();
+          //  _pauseSnapshotInstance.stop(STOP_MODE.ALLOWFADEOUT);
         }
         
         //calue = 0 - 1

@@ -28,7 +28,8 @@ namespace Code.Character.Hero
         public bool IsAttack => false;
 
         public bool IsDeath => false;
-        public bool IsJump => !_hero.Collision.OnGround;
+        public bool IsJump => _hero.Jump.IsCurrentlyJumping;
+        public bool OnGround => _hero.Collision.OnGround;
 
         #endregion
 

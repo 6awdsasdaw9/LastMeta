@@ -24,7 +24,7 @@ namespace Code.Character.Hero
         
         private bool _isCanAttack => !_hero.Stats.IsDash 
                                     && !_hero.Stats.IsCrouch 
-                                    && !_hero.Stats.IsJump
+                                    && _hero.Stats.OnGround
                                     && !_hero.Stats.IsBlockMove;
         [Inject]
         private void Construct(InputService inputService, HeroConfig heroConfig, MissilesFactory missilesFactory)

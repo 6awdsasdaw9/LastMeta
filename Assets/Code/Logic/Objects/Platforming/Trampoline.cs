@@ -33,7 +33,7 @@ namespace Code.Logic.Objects
 
         public void SubscribeToEvent(bool flag)
         {
-            if (flag)
+            /*if (flag)
             {
                 _trigger.OnEnter += OnEnter;
             }
@@ -41,6 +41,24 @@ namespace Code.Logic.Objects
             {
                 
                 _trigger.OnEnter -= OnEnter;
+            }*/
+        }
+
+        /*
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.gameObject.TryGetComponent(out Rigidbody rb))
+            {
+                if(rb.velocity.y > 0.2f ) rb.AddForce(_force, ForceMode.Impulse);
+            }
+        }
+        */
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.TryGetComponent(out Rigidbody rb))
+            {
+                    rb.AddForce(_force, ForceMode.Impulse);
             }
         }
 

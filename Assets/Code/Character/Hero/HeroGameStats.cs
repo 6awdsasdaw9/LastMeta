@@ -29,8 +29,9 @@ namespace Code.Character.Hero
         public bool IsAttack => _hero.GunAttack.IsAttack || _hero.HandAttack.IsAttack;
 
         public bool IsDeath => _hero.Health.Current <= 0;
-        public bool IsJump => !_hero.Collision.OnGround;
+        public bool IsJump =>   _hero.Jump.IsCurrentlyJumping;
 
+        public bool OnGround => _hero.Collision.OnGround;
         #endregion
 
         #region Stats

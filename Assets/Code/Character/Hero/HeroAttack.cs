@@ -18,8 +18,8 @@ namespace Code.Character.Hero
         public DamageParam DamageParam { get; private set; }
         public bool IsAttack { get; private set; }
         private bool _isCanAttack => !_hero.Stats.IsDash 
+                                    && _hero.Stats.OnGround
                                     && !_hero.Stats.IsCrouch 
-                                    && !_hero.Stats.IsJump
                                     && !_hero.Stats.IsBlockMove;
 
         [Inject]

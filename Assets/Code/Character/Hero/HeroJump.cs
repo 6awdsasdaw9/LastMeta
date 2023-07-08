@@ -33,7 +33,7 @@ namespace Code.Character.Hero
         //States
         private bool _isCanJumpAgain;
         private bool _isDesiredJump;
-        private bool _isCurrentlyJumping;
+        public bool IsCurrentlyJumping { get; private set; }
 
         #endregion
 
@@ -79,7 +79,7 @@ namespace Code.Character.Hero
 
         private void OnJump(InputAction.CallbackContext context)
         {
-            if (_hero.Movement.IsCrouch)
+            if (_hero.Stats.IsCrouch || !_hero.Stats.OnGround)
                 return;
 
             if (context.started)
@@ -97,7 +97,7 @@ namespace Code.Character.Hero
 
         private void CheckCoyoteTime()
         {
-            if (!_isCurrentlyJumping && !_hero.Collision.OnGround)
+            if (!IsCurrentlyJumping && !_hero.Collision.OnGround)
                 _coyoteTimeCounter += Time.deltaTime;
             else
                 _coyoteTimeCounter = 0;
@@ -137,7 +137,7 @@ namespace Code.Character.Hero
                 {
                     if (_hero.Collision.OnGround)
                     {
-                        _isCurrentlyJumping = false;
+                        IsCurrentlyJumping = false;
                     }
 
                     break;
@@ -152,7 +152,7 @@ namespace Code.Character.Hero
             if (!IsCanJump())
                 return;
 
-            if (!_isCurrentlyJumping)
+            if (!IsCurrentlyJumping)
                 _hero.Audio.PlayJumpSound();
 
             _isDesiredJump = false;
@@ -181,7 +181,7 @@ namespace Code.Character.Hero
 
             //TODO непотребство
             _velocity.y += Height /* + _hero.Upgrade.BonusHeightJump*/;
-            _isCurrentlyJumping = true;
+            IsCurrentlyJumping = true;
         }
 
         #endregion

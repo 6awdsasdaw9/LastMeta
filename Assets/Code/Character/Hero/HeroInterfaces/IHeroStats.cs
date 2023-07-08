@@ -10,6 +10,11 @@ namespace Code.Character.Hero
         bool IsAttack { get; }
         bool IsDeath { get; }
         bool IsJump { get; }
+
+
+        bool OnGround { get; }
+
+
         float CurrentHeath { get; }
         float MaxHeath { get; }
         float BonusHealth { get; }
