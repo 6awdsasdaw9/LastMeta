@@ -55,7 +55,7 @@ namespace Code.Logic.CameraLogic
             transform.position = Vector3.SmoothDamp(transform.position, horizontalTarget, ref _velocity, _currentDampTime);
             
             Vector3 verticalTarget = new Vector3(transform.position.x, _target.y, _cameraOffset.z);
-            var verticalDampTime = _target.y > transform.position.y ? _currentDampTime : _currentDampTime * 0.7f;
+            var verticalDampTime = _target.y >= transform.position.y ? _currentDampTime * 0.7f : _currentDampTime * 0.4f;
             transform.position = Vector3.SmoothDamp(transform.position, verticalTarget, ref _velocity,verticalDampTime);
         }
 

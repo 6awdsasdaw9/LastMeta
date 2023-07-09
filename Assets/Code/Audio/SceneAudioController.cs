@@ -26,7 +26,8 @@ namespace Code.Audio
         private PARAMETER_ID _pauseParameterID;
 
         private Bus _music_Volume;
-        private Bus Effect_Volume;
+        private Bus _effect_Volume;
+        private Bus _master_Volume;
 
         private const string PAUSE_SNAPSHOT_PARAM = "PauseSnapShot";
 
@@ -34,6 +35,7 @@ namespace Code.Audio
         public SceneAudioController(ScenesConfig scenesConfig, EventsFacade eventsFacade)
         {
             InitSnapshot(scenesConfig.PauseSnapshot.Path);
+            InitBus();
             SetNightParam();
         }
         #region Set Audio EventReference
@@ -156,15 +158,17 @@ namespace Code.Audio
         #endregion
         #region Bus
 
-        private void SetBus()
+        private void InitBus()
         {
             // Path copy from FMOD
-            _music_Volume = RuntimeManager.GetBus("bus:/Master/Music");
-            Effect_Volume = RuntimeManager.GetBus("bus:/Master/Effect");
+            _music_Volume = RuntimeManager.GetBus("bus:/Premaster/Music");
+            _effect_Volume = RuntimeManager.GetBus("bus:/SFX");
+            _effect_Volume = RuntimeManager.GetBus("bus:/");
         }
 
-        private void ChangeEffectVolume(float volume) => Effect_Volume.setVolume(volume);
-        private void ChangeMusicVolume(float volume) => _music_Volume.setVolume(volume);
+        public void ChangeEffectVolume(float volume) => _effect_Volume.setVolume(volume);
+        public  void ChangeMusicVolume(float volume) => _music_Volume.setVolume(volume);
+        public  void ChangeMusterVolume(float volume) => _master_Volume.setVolume(volume);
 
         #endregion
 
