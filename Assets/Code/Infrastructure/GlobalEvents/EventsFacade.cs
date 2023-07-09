@@ -25,6 +25,10 @@ namespace Code.Infrastructure.GlobalEvents
     {
         public void ChoiceLanguageEvent(Language language) => OnChoiceLanguage?.Invoke(language);
         public Action<Language> OnChoiceLanguage;
+
+        public void PauseEvent(bool isPause) => OnPause?.Invoke(isPause);
+        public Action<bool> OnPause;
+
     }
 
     public class HudEvents

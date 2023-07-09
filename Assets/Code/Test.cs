@@ -23,12 +23,12 @@ namespace Code
 
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            /*if (Input.GetKeyDown(KeyCode.Escape))
             {
                 isPause = !isPause;
                 _sceneAudioController.ChangePauseParam(isPause);
                 Logg.ColorLog($"{isPause}",ColorType.Magenta);
-            }
+            }*/
         }
     }
 

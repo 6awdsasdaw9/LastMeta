@@ -1,4 +1,5 @@
 using Code.Audio;
+using Code.Infrastructure.GlobalEvents;
 using Code.PresentationModel.HeadUpDisplay;
 using Code.Services;
 
@@ -8,11 +9,13 @@ namespace Code.Logic.Adaptors
     {
         private readonly Hud _hud;
         private readonly SceneAudioController _audioController;
+        private readonly EventsFacade _eventsFacade;
 
-        public AudioAdapter(Hud hud, SceneAudioController audioController)
+        public AudioAdapter(Hud hud, SceneAudioController audioController, EventsFacade eventsFacade)
         {
             _hud = hud;
             _audioController = audioController;
+            _eventsFacade = eventsFacade;
             SubscribeToEvent(true);
         }
 
@@ -21,6 +24,12 @@ namespace Code.Logic.Adaptors
         {
             _hud.Menu.Window.EffectVolumeHudSlider.OnChangedSliderValue += OnChangedEffectValue;
             _hud.Menu.Window.MusicVolumeHudSlider.OnChangedSliderValue += OnChangedMusicValue;
+            _eventsFacade.GameEvents.OnPause += OnPause;
+        }
+
+        private void OnPause(bool isPause)
+        {
+            _audioController.ChangePauseParam(isPause);
         }
 
         private void OnChangedMusicValue(float value)

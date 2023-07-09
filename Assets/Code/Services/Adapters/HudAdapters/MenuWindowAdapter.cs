@@ -49,6 +49,7 @@ namespace Code.Logic.Adaptors
             {
                 _hud.Menu.Window.ShowWindow(() => _eventsFacade.HudEvents.WindowShownEvent(_hud.Menu.Window));
             }
+            _eventsFacade.GameEvents.PauseEvent(_hud.Menu.Window.IsOpen);
         }
 
         private void RusLanguageOnStartTap() => _eventsFacade.HudEvents.PressButtonLanguageEvent(Language.Rus);
