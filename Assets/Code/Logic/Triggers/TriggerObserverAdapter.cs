@@ -53,7 +53,7 @@ namespace Code.Logic.Triggers
 
         #endregion
 
-        #region Coroutines
+        #region Cooldowns
 
         private async UniTaskVoid SwitchFollowOnAfterDelay()
         {

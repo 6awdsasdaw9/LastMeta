@@ -1,10 +1,4 @@
-using System;
-using System.Collections;
-using System.Runtime.InteropServices;
 using Code.Audio;
-using Code.Data.Configs;
-using Code.Debugers;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 

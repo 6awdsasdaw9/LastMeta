@@ -1,12 +1,51 @@
+using System;
+using Code.Audio.AudioEvents;
+using Code.Logic.Collisions;
+using Code.Logic.Objects.Animations;
+using Code.Services;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Code.Logic.Objects
 {
-    public class Trampoline : MonoBehaviour
+    public class Trampoline : MonoBehaviour, IEventSubscriber
     {
+        [SerializeField] private CollisionObserver _collision;
         [SerializeField] private Vector2 _force = Vector2.up;
 
-        private void OnCollisionEnter(Collision collision)
+        [Title("Optional")] 
+        [SerializeField] private AudioEvent _audioEvent; 
+        [SerializeField] private StartAnimation _startAnimation; 
+        private void OnEnable()
+        {
+            SubscribeToEvent(true);
+        }
+
+        private void OnDisable()
+        {
+            SubscribeToEvent(false);
+        }
+
+        public void SubscribeToEvent(bool flag)
+        {
+            if (flag)
+            {
+                _collision.OnEnter += OnEnter;
+            }
+            else
+            {
+                _collision.OnEnter -= OnEnter;
+            }
+        }
+
+        private void OnEnter(Collision collision)
+        {
+            AddForce(collision);
+            _audioEvent.PlayAudioEvent();
+            _startAnimation?.PlayStart();
+        }
+
+        private void AddForce(Collision collision)
         {
             if (collision.gameObject.TryGetComponent(out Rigidbody rb))
             {
