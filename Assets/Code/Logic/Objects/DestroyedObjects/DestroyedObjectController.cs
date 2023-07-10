@@ -3,6 +3,7 @@ using Code.Data.GameData;
 using Code.Services;
 using Code.Services.SaveServices;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Logic.Objects.DestroyedObjects
 {
@@ -12,7 +13,14 @@ namespace Code.Logic.Objects.DestroyedObjects
         [SerializeField] private Collider _collider;
         [SerializeField] private DestroyedObjectHealth _health;
         [SerializeField] private DestroyedObjectSpriteParam[] _destroyedSprites;
+    
         private bool _isDestroyed;
+        
+        [Inject]
+        private void Construct(SavedDataStorage savedDataStorage)
+        {
+             savedDataStorage.Add(this);
+        }
 
         private void OnEnable() => SubscribeToEvent(true);
         private void OnDisable() => SubscribeToEvent(false);
