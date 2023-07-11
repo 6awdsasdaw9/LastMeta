@@ -1,5 +1,6 @@
 using System;
 using Code.Data.GameData;
+using Code.Debugers;
 using Code.Services;
 using Code.Services.SaveServices;
 using UnityEngine;
@@ -13,13 +14,13 @@ namespace Code.Logic.Objects.DestroyedObjects
         [SerializeField] private Collider _collider;
         [SerializeField] private DestroyedObjectHealth _health;
         [SerializeField] private DestroyedObjectSpriteParam[] _destroyedSprites;
-    
+
         private bool _isDestroyed;
-        
+
         [Inject]
         private void Construct(SavedDataStorage savedDataStorage)
         {
-             savedDataStorage.Add(this);
+            savedDataStorage.Add(this);
         }
 
         private void OnEnable() => SubscribeToEvent(true);
@@ -56,7 +57,7 @@ namespace Code.Logic.Objects.DestroyedObjects
             enabled = false;
             _collider.enabled = false;
 
-            foreach (var objectSpriteParam  in _destroyedSprites)
+            foreach (var objectSpriteParam in _destroyedSprites)
             {
                 objectSpriteParam.Animation.enabled = false;
             }
@@ -72,12 +73,14 @@ namespace Code.Logic.Objects.DestroyedObjects
             if (!_isDestroyed)
                 return;
 
-            foreach (var objectSprite in _destroyedSprites)
+            gameObject.SetActive(false);
+            /*foreach (var objectSprite in _destroyedSprites)
             {
-                objectSprite.SpriteRenderer.sprite = objectSprite.DestroyedImage;
+                objectSprite.Animation.DisableAnimation();
+                objectSprite.SpriteRenderer.enabled = false;
             }
 
-            Disable();
+            Disable();*/
         }
 
         public void SaveData(SavedData savedData)

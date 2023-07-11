@@ -824,11 +824,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2849022695292030987, guid: 61a68be6c83080e4eb1ab1b5b2a16bf5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.307
+      value: 7.053
       objectReference: {fileID: 0}
     - target: {fileID: 2849022695292030987, guid: 61a68be6c83080e4eb1ab1b5b2a16bf5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.096
+      value: 0.567
       objectReference: {fileID: 0}
     - target: {fileID: 2849022695292030987, guid: 61a68be6c83080e4eb1ab1b5b2a16bf5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1587,6 +1587,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116260473}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1146499418 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6400541843742268207, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
+  m_PrefabInstance: {fileID: 1903716928}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1371368961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2039,6 +2044,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1523746617081452046, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
+      propertyPath: _disableObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523746617081452046, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
+      propertyPath: _disableObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 1146499418}
     - target: {fileID: 1523746617081452075, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
       propertyPath: m_Name
       value: Mr_Spider

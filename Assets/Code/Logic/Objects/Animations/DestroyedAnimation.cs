@@ -12,5 +12,10 @@ namespace Code.Logic.Objects
 
         public void PlayDestroy() => 
             _animator.SetTrigger(_destroy);
+
+        public void DisableAnimation()
+        {
+            _animator.enabled = false;
+        }
     }
 }
