@@ -22,16 +22,17 @@ namespace Code.Character.Hero
 
         public Constants.HeroMode Mode => _hero.ModeToggle.Mode;
         public bool IsBlockMove => !_movementLimiter.CharactersCanMove;
-        public bool IsDash => _hero.Ability.HeroDashAbility.IsDash;
+        public bool IsDash => _hero.Ability.DashAbility is { IsDash: true };
 
         public bool IsMove => _hero.Movement.DirectionX != 0;
         public bool IsCrouch => _hero.Movement.IsCrouch;
         public bool IsAttack => _hero.GunAttack.IsAttack || _hero.HandAttack.IsAttack;
 
         public bool IsDeath => _hero.Health.Current <= 0;
-        public bool IsJump =>   _hero.Jump.IsCurrentlyJumping;
+        public bool IsJump => _hero.Jump.IsCurrentlyJumping;
 
         public bool OnGround => _hero.Collision.OnGround;
+
         #endregion
 
         #region Stats
@@ -50,10 +51,14 @@ namespace Code.Character.Hero
                     default:
                     case Constants.HeroMode.Default:
                         return _hero.Upgrade.BonusAttack +
-                               _hero.Ability.HandAttackAbility.CurrentData.DamageParam.Damage;
+                               (_hero.Ability.HandAttackAbility is { CurrentData: { } }
+                                   ? _hero.Ability.HandAttackAbility.CurrentData.DamageParam.Damage
+                                   : 0);
                     case Constants.HeroMode.Gun:
                         return _hero.Upgrade.BonusAttack +
-                               _hero.Ability.GunAttackAbility.ShootingParams.DamageParam.Damage;
+                               (_hero.Ability.GunAttackAbility is { ShootingParams: { } }
+                                   ? _hero.Ability.GunAttackAbility.ShootingParams.DamageParam.Damage
+                                   : 0);
                     case Constants.HeroMode.Black:
                         return 420;
                 }
@@ -65,9 +70,11 @@ namespace Code.Character.Hero
 
         public float JumpHeight => _heroConfig.HeroParams.JumpHeight
                                    + _hero.Upgrade.BonusHeightJump
-                                   + _hero.Ability.SuperJumpAbility.CurrentData.BonusHeightJump;
+                                   + (_hero.Ability.SuperJumpAbility != null
+                                       ? _hero.Ability.SuperJumpAbility.CurrentData.BonusHeightJump
+                                       : 0);
 
-        public int AirJump => _hero.Ability.SuperJumpAbility != null
+        public int AirJump => _hero.Ability.SuperJumpAbility is { CurrentData: { } }
             ? _hero.Ability.SuperJumpAbility.CurrentData.MaxAirJump
             : 0;
 

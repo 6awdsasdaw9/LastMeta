@@ -1,7 +1,7 @@
 using System;
-using System.Collections;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
+using Code.Debugers;
 using Code.Services.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -17,7 +17,7 @@ namespace Code.Character.Hero
         private HeroConfig _heroConfig;
         private InputService _inputService;
 
-        public HeroDashAbility HeroDashAbility { get; private set; }
+        public HeroDashAbility DashAbility { get; private set; }
         public HeroHandAttackAbility HandAttackAbility { get; private set; }
         public HeroGunAttackAbility GunAttackAbility { get; private set; }
 
@@ -33,11 +33,13 @@ namespace Code.Character.Hero
         
         public void Init(HeroAbilityLevelData abilityLevelData)
         {
+            Logg.ColorLog($"init is null {abilityLevelData == null}");
+
             AbilityLevelData = abilityLevelData;
-           // OpenDash(AbilityLevelData.DashLevel);
             OpenHandAttack(AbilityLevelData.HandLevel);
+            /*OpenDash(AbilityLevelData.DashLevel);
             OpenGunAttack(AbilityLevelData.GunLevel);
-            OpenSuperJump();
+            OpenSuperJump();*/
         }
 
         public void LevelUpSuperJump()
@@ -104,26 +106,31 @@ namespace Code.Character.Hero
         [Button]
         public void LevelUpDash()
         {
-            if (HandAttackAbility is not { IsOpen: true })
+            if (AbilityLevelData == null)
+            {
+                Logg.ColorLog("=((((((");
+                return;
+            }
+            if (DashAbility is not { IsOpen: true } )
             {
                 OpenDash(AbilityLevelData.DashLevel);
                 return;
             }
             AbilityLevelData.DashLevel++;
-            HeroDashAbility.SetData(_heroConfig.AbilitiesParams.DashLevelsData[AbilityLevelData.DashLevel]);
+            DashAbility.SetData(_heroConfig.AbilitiesParams.DashLevelsData[AbilityLevelData.DashLevel]);
         }
 
         private void OpenDash(int level = 0)
         {
-            HeroDashAbility = new HeroDashAbility(_hero, _inputService);
+            DashAbility = new HeroDashAbility(_hero, _inputService);
             level = CheckLevel<HeroDashAbility.Data>(level);
-            HeroDashAbility.SetData(_heroConfig.AbilitiesParams.DashLevelsData[level]);
-            HeroDashAbility.OpenAbility();
+            DashAbility.SetData(_heroConfig.AbilitiesParams.DashLevelsData[level]);
+            DashAbility.OpenAbility();
         }
 
         private void OnDisable()
         {
-            HeroDashAbility?.StopApplying();
+            DashAbility?.StopApplying();
         }
 
         private int CheckLevel<T>(int level) where T : AbilitySettings

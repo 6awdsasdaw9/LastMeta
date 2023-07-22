@@ -99,6 +99,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7800196301488393856, guid: c064c150e2252014b9443291d50b48b3, type: 3}
+      propertyPath: m_Name
+      value: Canvas_EnemyHpBar
+      objectReference: {fileID: 0}
     - target: {fileID: 7800196302827944487, guid: c064c150e2252014b9443291d50b48b3, type: 3}
       propertyPath: _attackCooldown
       value: 2

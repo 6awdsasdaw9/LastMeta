@@ -1,9 +1,6 @@
-using System;
 using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
-using Code.Debugers;
-using Code.Infrastructure.GlobalEvents;
 using Code.Services;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -61,7 +58,6 @@ namespace Code.Character.Hero
         public IHeroVFX VFX => _vfx;
         [ShowIf(nameof(_isGameHero)), SerializeField]
         private HeroVFX _vfx;
-        
         public IHeroStats Stats { get; private set; } 
         #endregion
 

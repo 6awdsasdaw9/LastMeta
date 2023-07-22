@@ -1,3 +1,5 @@
+using System;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,9 +7,13 @@ namespace Code.PresentationModel
 {
     public class HpBar : MonoBehaviour
     {
-        public Image _image;
+        [SerializeField] protected Image _value;
+        protected float _currentValue;
 
-        public void SetValue(float current, float max) =>
-            _image.fillAmount = current / max;
+        public void SetValue(float current, float max)
+        {
+            _currentValue = current / max;
+            _value.fillAmount = _currentValue;
+        }
     }
 }

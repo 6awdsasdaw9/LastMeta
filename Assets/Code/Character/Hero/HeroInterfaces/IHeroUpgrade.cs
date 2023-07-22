@@ -1,5 +1,3 @@
-using Code.Data.Configs;
-
 namespace Code.Character.Hero.HeroInterfaces
 {
     public interface IHeroUpgrade

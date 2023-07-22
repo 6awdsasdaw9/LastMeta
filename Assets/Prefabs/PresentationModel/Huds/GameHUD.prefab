@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 2373514461420765805}
   - component: {fileID: 3250748225871163076}
   m_Layer: 5
-  m_Name: HpBar
+  m_Name: HeroHpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4505a2c56ed3b4d9fee35835ecbb42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _image: {fileID: 6843825795318632759}
+  _value: {fileID: 6843825795318632759}
 --- !u!1 &277306906302687321
 GameObject:
   m_ObjectHideFlags: 0
@@ -7647,7 +7647,7 @@ GameObject:
   - component: {fileID: 5612690756561041155}
   - component: {fileID: 6843825795318632759}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

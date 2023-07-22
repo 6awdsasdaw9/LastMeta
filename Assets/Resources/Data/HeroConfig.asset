@@ -47,15 +47,15 @@ MonoBehaviour:
     HandAttackLevelsData:
     - Cooldown: 2
       DamageParam:
-        Damage: 0
+        Damage: 5
         damagedRadius: 0.3
     - Cooldown: 2
       DamageParam:
-        Damage: 0
+        Damage: 7
         damagedRadius: 0.35
     - Cooldown: 2
       DamageParam:
-        Damage: 0
+        Damage: 10
         damagedRadius: 0.35
     GunAttackLevelData:
     - IsMassAttack: 0
@@ -141,17 +141,17 @@ MonoBehaviour:
       - 30
     AttackUpgradesData:
       Values:
-      - 5
+      - 0
       - 7
       - 10
     SpeedUpgradesData:
       Values:
-      - 0.2
+      - 0
       - 0.35
       - 0.5
     JumpUpgradesData:
       Values:
-      - 0.2
+      - 0
       - 0.4
       - 0.6
   AudioPath:
@@ -204,6 +204,27 @@ MonoBehaviour:
         Data3: -175367259
         Data4: 740719344
       Path: event:/SFX/Player/Player_Punch
+    TakeGun:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    ReturnGun:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    StartShoot:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
     Shoot:
       Guid:
         Data1: 1314707604
@@ -211,6 +232,13 @@ MonoBehaviour:
         Data3: 1124784532
         Data4: -1349184215
       Path: event:/SFX/Player/Player_Shoot
+    StopShoot:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
     Stunned:
       Guid:
         Data1: -941485470

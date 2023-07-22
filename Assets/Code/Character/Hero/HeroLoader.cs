@@ -2,6 +2,7 @@ using System.Linq;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data;
 using Code.Data.Configs;
+using Code.Debugers;
 using Code.Services;
 using Code.Services.SaveServices;
 using UnityEngine;
@@ -19,8 +20,8 @@ namespace Code.Character.Hero
         private void Construct(SavedDataStorage savedDataStorage, ScenesConfig scenesConfig)
         {
             _scenesConfig = scenesConfig;
-            savedDataStorage.Add(this);
             _hero = GetComponent<IHero>();
+            savedDataStorage.Add(this);
         }
 
         public void LoadData(SavedData savedData)
@@ -49,6 +50,7 @@ namespace Code.Character.Hero
 
         private void AbilityLoadData(SavedData savedData)
         {
+            Logg.ColorLog($"AbilityLoadData is null {savedData.HeroAbilityLevel == null}");
             _hero.Ability.Init(savedData.HeroAbilityLevel);
         }
 

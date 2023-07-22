@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ef9e17971247a3bceaf6608f789df5, type: 3}
+  m_Name: ShopsConfig
+  m_EditorClassIdentifier: 
+  ShopsData:
+  - ShopType: 1
+    Slots:
+    - ItemType: 5
+      Price: 5
+      PriceMultiplayer: 2
+      IsCanSaleForCoupon: 1
+      IsPurchase: 0
+      PurchasePriceMultiplayer: 0.5
+    - ItemType: 6
+      Price: 7
+      PriceMultiplayer: 3
+      IsCanSaleForCoupon: 1
+      IsPurchase: 0
+      PurchasePriceMultiplayer: 0.5

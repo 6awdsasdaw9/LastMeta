@@ -9,6 +9,7 @@ namespace Code.Logic.Objects.Items
         public ItemType Type;
         public float Value;
         public Sprite Sprite;
+        public Sprite Icon;
         public RuntimeAnimatorController AnimatorController;
     }
 }
