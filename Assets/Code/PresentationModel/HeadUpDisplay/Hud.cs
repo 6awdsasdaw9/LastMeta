@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Code.Logic.Objects.Animations;
 using Code.PresentationModel.Buttons;
 using Code.PresentationModel.HudElements;
 using Code.PresentationModel.HudElements.HudButtonWindows;

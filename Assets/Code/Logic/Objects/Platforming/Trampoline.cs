@@ -1,4 +1,3 @@
-using System;
 using Code.Audio.AudioEvents;
 using Code.Logic.Collisions;
 using Code.Logic.Objects.Animations;
@@ -6,7 +5,7 @@ using Code.Services;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Code.Logic.Objects
+namespace Code.Logic.Objects.Platforming
 {
     public class Trampoline : MonoBehaviour, IEventSubscriber
     {

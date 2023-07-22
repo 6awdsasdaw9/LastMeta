@@ -1,5 +1,7 @@
 using Code.Infrastructure.Factories;
-using Code.Logic.Artifacts;
+using Code.Logic.Objects.Items;
+using Code.Logic.Objects.Items.Handlers;
+using Code.Services.CurrencyServices;
 using UnityEngine;
 using Zenject;
 
@@ -12,6 +14,7 @@ namespace Code.Infrastructure.Installers.SceneInstallers
         {
             BindItemsPool();
             BindItemFactory();
+            BindHanlers();
         }
         
         private void BindItemsPool()
@@ -20,12 +23,18 @@ namespace Code.Infrastructure.Installers.SceneInstallers
                 .WithInitialSize(10)
                 .ExpandByOneAtATime()
                 .FromComponentInNewPrefab(_itemPrefab)
-                .UnderTransformGroup("Items");
+                .UnderTransformGroup("Pool: Items");
         }
 
         private void BindItemFactory()
         {
             Container.Bind<ItemFactory>().AsSingle().NonLazy();
+        }
+        
+        private void BindHanlers()
+        {
+            Container.Bind<ArtefactsHandler>().AsSingle().NonLazy();
+            Container.Bind<MoneyHandler>().AsSingle().NonLazy();
         }
     }
 }

@@ -1,13 +1,12 @@
-using System;
 using System.Collections.Generic;
 using Code.Data.GameData;
 using Code.Infrastructure.GlobalEvents;
-using Code.Logic.DayOfTime.Interfaces;
+using Code.Logic.Objects.TimingObjects.TimeObserverses.Interfaces;
 using Code.Services;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.DayOfTime
+namespace Code.Logic.Objects.TimingObjects.TimeObserverses
 {
     public class TimeChangerController : MonoBehaviour, IEventSubscriber,ITimeObserver
     {

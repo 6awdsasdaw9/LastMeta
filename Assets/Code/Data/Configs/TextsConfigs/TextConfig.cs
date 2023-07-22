@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Code.Logic.Artifacts;
+using Code.Logic.Objects.Items;
 using UnityEngine;
 
 namespace Code.Data.Configs

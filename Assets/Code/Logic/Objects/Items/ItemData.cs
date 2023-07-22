@@ -1,8 +1,7 @@
 using System;
-using UnityEditor.Animations;
 using UnityEngine;
 
-namespace Code.Logic.Artifacts
+namespace Code.Logic.Objects.Items
 {
     [Serializable]
     public class ItemData

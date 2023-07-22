@@ -1,6 +1,6 @@
 using System;
-using Code.Logic.Artifacts;
 using Code.Logic.LanguageLocalization;
+using Code.Logic.Objects.Items;
 using Code.PresentationModel.Windows;
 
 namespace Code.Infrastructure.GlobalEvents

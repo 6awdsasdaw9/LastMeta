@@ -1,6 +1,7 @@
 using Code.Audio.AudioEvents;
 using Code.Data.Configs;
-using Code.Logic.Interactive.InteractiveObjects;
+using Code.Logic.Objects.Animations;
+using Code.Logic.Objects.Interactive.InteractiveObjects;
 using Code.Logic.Triggers;
 using Code.Services;
 using Code.Services.Input;
@@ -9,7 +10,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.Interactive
+namespace Code.Logic.Objects.Interactive
 {
     public class InteractiveObjectHandler : FollowTriggerObserver, IEventSubscriber
     {

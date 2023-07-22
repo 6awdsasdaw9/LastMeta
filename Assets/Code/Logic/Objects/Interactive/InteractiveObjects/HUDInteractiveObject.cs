@@ -5,7 +5,7 @@ using Code.PresentationModel.Windows;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.Interactive.InteractiveObjects
+namespace Code.Logic.Objects.Interactive.InteractiveObjects
 {
     public class HUDInteractiveObject : Interactivity
     {

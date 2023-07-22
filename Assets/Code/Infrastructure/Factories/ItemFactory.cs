@@ -1,9 +1,9 @@
 using System;
 using Code.Data.Configs;
 using Code.Infrastructure.GlobalEvents;
-using Code.Logic.Artifacts;
-using Code.Logic.Artifacts.Artifacts;
 using Code.Logic.Missile;
+using Code.Logic.Objects.Items;
+using Code.Logic.Objects.Items.ItemBehavious;
 
 namespace Code.Infrastructure.Factories
 {

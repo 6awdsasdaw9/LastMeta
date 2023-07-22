@@ -1,18 +1,18 @@
 using System;
 using Code.Infrastructure.GlobalEvents;
-using Code.Logic.Artifacts;
+using Code.Logic.Objects.Items;
 using Code.PresentationModel.HeadUpDisplay;
 using Code.Services.SaveServices;
 
 namespace Code.Services.CurrencyServices
 {
-    public class MoneyStorageAdapter: ISavedData
+    public class MoneyHandler: ISavedData
     {
         private readonly MoneyStorage _moneyStorage;
         private readonly Hud _hud;
         private readonly EventsFacade _eventsFacade;
 
-        public MoneyStorageAdapter(MoneyStorage moneyStorage, Hud hud,SavedDataStorage savedDataStorage, EventsFacade eventsFacade)
+        public MoneyHandler(MoneyStorage moneyStorage, Hud hud,SavedDataStorage savedDataStorage, EventsFacade eventsFacade)
         {
             _moneyStorage = moneyStorage;
             _hud = hud;

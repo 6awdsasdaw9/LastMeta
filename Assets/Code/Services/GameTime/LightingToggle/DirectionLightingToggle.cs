@@ -3,7 +3,7 @@ using System.Linq;
 using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Infrastructure.GlobalEvents;
-using Code.Logic.DayOfTime.Interfaces;
+using Code.Logic.Objects.TimingObjects.TimeObserverses.Interfaces;
 using Code.Services;
 using DG.Tweening;
 using Sirenix.OdinInspector;

@@ -1,4 +1,4 @@
-using Code.Logic.Artifacts;
+using Code.Logic.Objects.Items;
 using Code.PresentationModel.Buttons;
 using UnityEngine;
 

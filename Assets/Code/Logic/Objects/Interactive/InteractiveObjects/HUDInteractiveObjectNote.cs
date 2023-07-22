@@ -7,7 +7,7 @@ using Ink.Runtime;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.Interactive.InteractiveObjects
+namespace Code.Logic.Objects.Interactive.InteractiveObjects
 {
     public class HUDInteractiveObjectNote : Interactivity
     {

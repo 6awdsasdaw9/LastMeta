@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Infrastructure.GlobalEvents;
-using Code.Logic.Interactive;
+using Code.Logic.Objects.Interactive;
 using Code.PresentationModel.HeadUpDisplay;
 using Code.PresentationModel.Windows;
 using Code.Services;

@@ -1,7 +1,6 @@
-using Code.Logic.Objects.Animations;
 using UnityEngine;
 
-namespace Code.PresentationModel.HudElements
+namespace Code.Logic.Objects.Animations
 {
     public class StartStopAnimation: StartAnimation
     {

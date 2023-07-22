@@ -1,6 +1,5 @@
 using System.Linq;
-using Code.Logic.Artifacts;
-using Code.Logic.Artifacts.Artifacts;
+using Code.Logic.Objects.Items;
 using UnityEngine;
 
 namespace Code.Data.Configs

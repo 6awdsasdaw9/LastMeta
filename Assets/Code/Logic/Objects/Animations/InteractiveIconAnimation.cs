@@ -1,6 +1,7 @@
+using Code.Logic.Objects.Interactive;
 using UnityEngine;
 
-namespace Code.Logic.Interactive
+namespace Code.Logic.Objects.Animations
 {
     public class InteractiveIconAnimation : MonoBehaviour
     {

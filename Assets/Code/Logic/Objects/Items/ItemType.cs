@@ -1,8 +1,5 @@
-using System;
-
-namespace Code.Logic.Artifacts
+namespace Code.Logic.Objects.Items
 {
-    
     public enum ItemType
     {
         Money,
@@ -16,6 +13,4 @@ namespace Code.Logic.Artifacts
         Gun,
         Substance,
     }
-    
-
 }

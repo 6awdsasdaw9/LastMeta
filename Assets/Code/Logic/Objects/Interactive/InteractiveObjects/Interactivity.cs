@@ -1,8 +1,7 @@
 using System;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Code.Logic.Interactive.InteractiveObjects
+namespace Code.Logic.Objects.Interactive.InteractiveObjects
 {
     public abstract class Interactivity : MonoBehaviour
     {

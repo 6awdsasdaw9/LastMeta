@@ -1,10 +1,11 @@
 using Code.Data.GameData;
-using Code.Logic.DayOfTime.Interfaces;
+using Code.Logic.DayOfTime;
+using Code.Logic.Objects.TimingObjects.TimeObserverses.Interfaces;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.DayOfTime
+namespace Code.Logic.Objects.TimingObjects.TimeObserverses
 {
     [RequireComponent(typeof(TimeChangerController))]
     public abstract class  TimeObserver: MonoBehaviour, ITimeObserver

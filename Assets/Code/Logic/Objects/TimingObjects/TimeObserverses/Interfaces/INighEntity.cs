@@ -1,4 +1,4 @@
-namespace Code.Logic.DayOfTime.Interfaces
+namespace Code.Logic.Objects.TimingObjects.TimeObserverses.Interfaces
 {
     public interface INighEntity
     {

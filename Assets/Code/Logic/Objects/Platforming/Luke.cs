@@ -1,14 +1,11 @@
 using Code.Data;
 using Code.Data.GameData;
-using Code.Debugers;
 using Code.Logic.Triggers;
-using Code.Services;
 using Code.Services.SaveServices;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.Objects
+namespace Code.Logic.Objects.Platforming
 {
     public class Luke : MonoBehaviour, ISavedData
     {

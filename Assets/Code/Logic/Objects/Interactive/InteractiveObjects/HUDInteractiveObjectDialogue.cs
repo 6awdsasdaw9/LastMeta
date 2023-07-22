@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using Code.Audio.AudioEvents;
 using Code.PresentationModel.HeadUpDisplay;
@@ -7,7 +6,7 @@ using Code.Services;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.Interactive.InteractiveObjects
+namespace Code.Logic.Objects.Interactive.InteractiveObjects
 {
     public class HUDInteractiveObjectDialogue : Interactivity, IEventSubscriber
     {

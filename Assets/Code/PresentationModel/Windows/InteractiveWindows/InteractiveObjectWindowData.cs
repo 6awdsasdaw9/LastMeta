@@ -1,5 +1,5 @@
 using System;
-using Code.Logic.Interactive;
+using Code.Logic.Objects.Interactive;
 
 namespace Code.PresentationModel.Windows.InteractiveWindows
 {

@@ -1,4 +1,4 @@
-namespace Code.Logic.Interactive
+namespace Code.Logic.Objects.Interactive
 {
     public enum InteractiveIconType {
         Void,

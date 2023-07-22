@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.Artifacts
+namespace Code.Logic.Objects.Items
 {
     public  class ItemSpawner : MonoBehaviour, ISavedData
     {

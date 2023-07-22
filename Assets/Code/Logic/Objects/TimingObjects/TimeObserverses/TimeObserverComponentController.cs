@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Code.Logic.DayOfTime
+namespace Code.Logic.Objects.TimingObjects.TimeObserverses
 {
   
     public class TimeObserverComponentController : TimeObserver

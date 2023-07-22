@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Logic.Objects
+namespace Code.Logic.Objects.Animations
 {
     public class DestroyedAnimation : MonoBehaviour
     {

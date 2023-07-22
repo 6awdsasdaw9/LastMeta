@@ -30,18 +30,29 @@ namespace Code.Character.Hero
             _heroConfig = heroConfig;
             _hero = GetComponent<IHero>();
         }
-
-
+        
         public void Init(HeroAbilityLevelData abilityLevelData)
         {
             AbilityLevelData = abilityLevelData;
-            OpenDash(AbilityLevelData.DashLevel);
+           // OpenDash(AbilityLevelData.DashLevel);
             OpenHandAttack(AbilityLevelData.HandLevel);
             OpenGunAttack(AbilityLevelData.GunLevel);
             OpenSuperJump();
         }
 
-        public void OpenSuperJump(int level = 0)
+        public void LevelUpSuperJump()
+        {
+            if (SuperJumpAbility is not { IsOpen: true })
+            {
+                OpenGunAttack(AbilityLevelData.SuperJumpLevel);
+                return;
+            }
+
+            AbilityLevelData.SuperJumpLevel++;
+            SuperJumpAbility?.SetData(_heroConfig.AbilitiesParams.SuperJumpData[AbilityLevelData.SuperJumpLevel]);
+        }
+
+        private void OpenSuperJump(int level = 0)
         {
             SuperJumpAbility = new HeroSuperJumpAbility();
             level = CheckLevel<HeroSuperJumpAbility.Data>(level);
@@ -101,7 +112,8 @@ namespace Code.Character.Hero
             AbilityLevelData.DashLevel++;
             HeroDashAbility.SetData(_heroConfig.AbilitiesParams.DashLevelsData[AbilityLevelData.DashLevel]);
         }
-        public void OpenDash(int level = 0)
+
+        private void OpenDash(int level = 0)
         {
             HeroDashAbility = new HeroDashAbility(_hero, _inputService);
             level = CheckLevel<HeroDashAbility.Data>(level);

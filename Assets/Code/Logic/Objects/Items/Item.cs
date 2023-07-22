@@ -1,10 +1,11 @@
 using System;
 using Code.Infrastructure.GlobalEvents;
-using Code.Logic.Objects;
+using Code.Logic.Objects.Animations;
+using Code.Logic.Objects.Items.ItemBehavious;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.Artifacts
+namespace Code.Logic.Objects.Items
 {
     public class Item: MonoBehaviour
     {

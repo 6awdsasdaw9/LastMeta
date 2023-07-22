@@ -7,7 +7,7 @@ using Code.Services.SaveServices;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.Interactive.InteractiveObjects
+namespace Code.Logic.Objects.Interactive.InteractiveObjects
 {
     public class InteractiveObjectScene : Interactivity
     {

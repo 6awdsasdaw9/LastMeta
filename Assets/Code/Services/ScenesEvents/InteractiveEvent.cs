@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Code.Logic.Interactive.InteractiveObjects;
+using Code.Logic.Objects.Interactive.InteractiveObjects;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 

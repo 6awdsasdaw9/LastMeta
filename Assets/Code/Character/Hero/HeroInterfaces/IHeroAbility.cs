@@ -9,6 +9,8 @@ namespace Code.Character.Hero
         public HeroSuperJumpAbility SuperJumpAbility { get;  }
         void Init(HeroAbilityLevelData abilityLevelData);
         void LevelUpDash();
-        void OpenDash(int level);
+        void LevelUpHandAttack();
+        void LevelUpGunAttack();
+        void LevelUpSuperJump();
     }
 }

@@ -1,6 +1,7 @@
 using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Infrastructure.GlobalEvents;
 using Code.Logic.DayOfTime;
+using Code.Logic.Objects.Animations;
 using Code.PresentationModel;
 using Code.PresentationModel.Buttons;
 using Code.PresentationModel.HeadUpDisplay;

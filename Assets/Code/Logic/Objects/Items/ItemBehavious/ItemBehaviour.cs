@@ -1,7 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
 
-namespace Code.Logic.Artifacts
+namespace Code.Logic.Objects.Items.ItemBehavious
 {
     public abstract class ItemBehaviour
     {

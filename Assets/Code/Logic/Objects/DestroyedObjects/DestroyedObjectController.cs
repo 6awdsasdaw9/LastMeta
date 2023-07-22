@@ -1,8 +1,10 @@
 using System;
 using Code.Data.GameData;
 using Code.Debugers;
+using Code.Logic.Objects.Animations;
 using Code.Services;
 using Code.Services.SaveServices;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
@@ -10,6 +12,10 @@ namespace Code.Logic.Objects.DestroyedObjects
 {
     public class DestroyedObjectController : MonoBehaviour, IEventSubscriber, ISavedData
     {
+#if UNITY_EDITOR
+        [ReadOnly, ShowInInspector] private bool _isSaved = true; 
+        [Space]
+#endif
         [SerializeField] private UniqueId _id;
         [SerializeField] private Collider _collider;
         [SerializeField] private DestroyedObjectHealth _health;

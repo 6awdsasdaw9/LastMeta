@@ -1,7 +1,6 @@
-using Code.Logic.DayOfTime;
 using UnityEngine;
 
-namespace Code.Logic.Objects.TimingObjects
+namespace Code.Logic.Objects.TimingObjects.TimeObserverses
 {
     public class TimeObserverAnimator : TimeObserver
     {

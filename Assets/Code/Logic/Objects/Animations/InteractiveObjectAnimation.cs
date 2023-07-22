@@ -1,8 +1,9 @@
 using System;
+using Code.Logic.Objects.Interactive.InteractiveObjects;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Code.Logic.Interactive.InteractiveObjects
+namespace Code.Logic.Objects.Animations
 {
     public class InteractiveObjectAnimation : Interactivity
     {

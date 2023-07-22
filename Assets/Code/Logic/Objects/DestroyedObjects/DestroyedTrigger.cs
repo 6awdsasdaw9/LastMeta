@@ -1,13 +1,19 @@
 using System.Collections.Generic;
-using Code.Logic.Objects;
+using Code.Logic.Objects.Animations;
 using Code.Logic.Triggers;
 using Code.Services;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Code.Character.Common
+namespace Code.Logic.Objects.DestroyedObjects
 {
     public class DestroyedTrigger: MonoBehaviour, IEventSubscriber
     {
+#if UNITY_EDITOR
+        [ReadOnly, ShowInInspector] private bool _isSaved = false; 
+        [Space]
+#endif
+        
         [SerializeField] private TriggerObserver _destructionTrigger;
         [SerializeField] private DestroyedAnimation _animation;
         [SerializeField] private List<MonoBehaviour> _disableComponents;

@@ -1,9 +1,8 @@
-using Code.Character.Hero;
 using Code.Character.Hero.HeroInterfaces;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.Objects
+namespace Code.Logic.Objects.Platforming
 {
     public class PlatformFriction : MonoBehaviour
     {

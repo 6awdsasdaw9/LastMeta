@@ -1,8 +1,6 @@
 using System;
-using Code.Character.Hero;
-using Sirenix.OdinInspector;
 
-namespace Code.Logic.Artifacts.Artifacts
+namespace Code.Logic.Objects.Items.ItemBehavious
 {
     [Serializable]
     public class ItemArtifactBehavior : ItemBehaviour
