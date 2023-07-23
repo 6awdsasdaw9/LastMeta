@@ -10,12 +10,16 @@ namespace Code.Services
 {
     public class SceneLoader
     {
-        public void Load(string name, Action onLoaded = null) =>
+        public void LoadAsync(string name, Action onLoaded = null) =>
             LoadSceneAsync(name, onLoaded).Forget();
+
+        public void Load(string name)
+        {
+            SceneManager.LoadScene(name);
+        }
         
         private async UniTaskVoid LoadSceneAsync(string nextScene, Action onLoaded = null)
         {
-            
             if (SceneManager.GetActiveScene().name == nextScene)
             {
                 onLoaded?.Invoke(); 
@@ -30,6 +34,8 @@ namespace Code.Services
             
             onLoaded?.Invoke();
         }
+        
+        
         
     }
 } 

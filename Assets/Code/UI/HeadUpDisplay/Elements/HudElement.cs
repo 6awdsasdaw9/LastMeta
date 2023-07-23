@@ -10,13 +10,13 @@ namespace Code.UI.HeadUpDisplay.HudElements
         public virtual void Show()
         {
             IsOpen = true;
-            Body.gameObject?.SetActive(true);
+            Body?.gameObject?.SetActive(true);
         }
 
         public virtual void Hide()
         {
             IsOpen = false;
-            Body.gameObject?.SetActive(false);
+            Body?.gameObject?.SetActive(false);
         }
     }
 }

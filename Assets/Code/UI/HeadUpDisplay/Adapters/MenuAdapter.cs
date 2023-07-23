@@ -43,6 +43,7 @@ namespace Code.UI.HeadUpDisplay.Adapters
         private void CloseOpenWindow()
         {
             var menuWindow = _hudFacade.Menu.Window;
+            if (menuWindow == null) return;
             if (menuWindow.IsOpen)
             {
                 menuWindow.HideWindow(() => _eventsFacade.HudEvents.WindowHiddenEvent(menuWindow));
@@ -52,7 +53,7 @@ namespace Code.UI.HeadUpDisplay.Adapters
                 menuWindow.ShowWindow(() => _eventsFacade.HudEvents.WindowShownEvent(menuWindow));
             }
 
-            _eventsFacade.GameEvents.PauseEvent(menuWindow.IsOpen);//Стоит переложить эту задачу на адаптр окон
+            _eventsFacade.GameEvents.PauseEvent(menuWindow.IsOpen); //Стоит переложить эту задачу на адаптр окон
         }
 
         private void RusLanguageOnStartTap() => _eventsFacade.HudEvents.PressButtonLanguageEvent(Language.Rus);

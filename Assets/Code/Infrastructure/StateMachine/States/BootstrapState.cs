@@ -19,17 +19,11 @@ namespace Code.Infrastructure.StateMachine.States
             _gameStateMachine = gameStateMachine;
             _sceneLoader = container.Resolve<SceneLoader>();
             _savedService = container.Resolve<SavedService>();
-
-            /*var audio = container.Resolve<SceneAudioController>();
-            if(container.Resolve<ScenesConfig>().PauseSnapshot.IsNull)
-                return;
-            audio.InitSnapshot(container.Resolve<ScenesConfig>().PauseSnapshot.Path);*/
         }
 
         public void Enter()
         {
-            _sceneLoader.Load(Constants.Scenes.Initial.ToString(), onLoaded: EnterLoadLevel);
-            //DOTween.SetTweensCapacity(2000, 100);
+            _sceneLoader.LoadAsync(Constants.Scenes.Initial.ToString(), onLoaded: EnterLoadLevel);
         }
 
         public void Exit()

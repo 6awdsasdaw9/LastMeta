@@ -42,7 +42,7 @@ namespace Code.Infrastructure.StateMachine.States
         {
             Logg.ColorLog("Scene name");
             _loadingCurtain.Show();
-            _sceneLoader.Load(sceneName, OnLoaded);
+            _sceneLoader.LoadAsync(sceneName, OnLoaded);
         }
 
         public void Exit()
