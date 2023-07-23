@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb911e487e24242a8ca75ea5d9c6be1, type: 3}
   m_Name: HudSettings
   m_EditorClassIdentifier: 
-  RealHUD: {fileID: 4590295659727660109, guid: 72103a4a3845e7f43abfc322564ac1e2, type: 3}
-  GameHUD: {fileID: 7281473980765438915, guid: 1cc260bbc5d148b4c879996d198d66e6, type: 3}
+  realHudFacade: {fileID: 4590295659727660109, guid: 72103a4a3845e7f43abfc322564ac1e2, type: 3}
+  gameHudFacade: {fileID: 7281473980765438915, guid: 1cc260bbc5d148b4c879996d198d66e6, type: 3}
   InteractiveUIParams:
     InteractiveCooldownTime: 1.1
     InteractiveObjectDownPos: {x: 0, y: -1600, z: 0}

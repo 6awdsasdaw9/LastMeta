@@ -1,8 +1,9 @@
 using System.Linq;
 using Code.Audio.AudioEvents;
 using Code.Data.Configs;
-using Code.PresentationModel.HeadUpDisplay;
-using Code.PresentationModel.Windows;
+using Code.Data.Configs.TextsConfigs;
+using Code.UI.HeadUpDisplay;
+using Code.UI.HeadUpDisplay.Windows;
 using Ink.Runtime;
 using UnityEngine;
 using Zenject;
@@ -21,9 +22,9 @@ namespace Code.Logic.Objects.Interactive.InteractiveObjects
         private bool _isNull;
 
         [Inject]
-        private void Construct(Hud hud,TextConfig textConfig)
+        private void Construct(HudFacade hudFacade,TextConfig textConfig)
         {
-            _presentationWindow = (INoteWindow)hud.InteractiveObjectWindows
+            _presentationWindow = (INoteWindow)hudFacade.InteractiveObjectWindows
                 .FirstOrDefault(w => w.Type == Type)?
                 .InteractiveObjectWindow;
 

@@ -1,6 +1,7 @@
 using System;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
+using Code.Data.Configs.HeroConfigs;
 using Code.Services;
 
 namespace Code.Character.Hero

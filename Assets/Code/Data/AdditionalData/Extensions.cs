@@ -2,7 +2,7 @@ using System;
 using Code.Data.GameData;
 using UnityEngine;
 
-namespace Code.Data
+namespace Code.Data.AdditionalData
 {
     public static class Extensions
     {

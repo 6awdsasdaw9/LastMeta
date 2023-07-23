@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Logic.Missile
+namespace Code.Logic.Missile.MissilesMove
 {
     public class MissileDirectMovement: MissileMovement
     {

@@ -1,7 +1,7 @@
 using System;
-using Code.Logic.LanguageLocalization;
 using Code.Logic.Objects.Items;
-using Code.PresentationModel.Windows;
+using Code.Services.LanguageLocalization;
+using Code.UI.HeadUpDisplay.Windows;
 
 namespace Code.Infrastructure.GlobalEvents
 {

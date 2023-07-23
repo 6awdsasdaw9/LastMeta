@@ -1,5 +1,7 @@
 using Code.Audio.AudioPath;
 using Code.Data.Configs;
+using Code.Data.Configs.HeroConfigs;
+using Code.Data.Configs.TextsConfigs;
 using UnityEngine;
 using Zenject;
 

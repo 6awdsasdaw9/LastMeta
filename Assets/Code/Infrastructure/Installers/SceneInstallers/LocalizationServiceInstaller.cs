@@ -1,7 +1,7 @@
-using Code.Logic.LanguageLocalization;
+using Code.Services.LanguageLocalization;
 using Zenject;
 
-namespace Code.Infrastructure.Installers.ProjectInstaller
+namespace Code.Infrastructure.Installers.SceneInstallers
 {
     public class LocalizationServiceInstaller: MonoInstaller
     {

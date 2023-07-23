@@ -8,7 +8,8 @@ namespace Code.Logic.Objects.Animations
         
         public void PlayStop()
         {
-            _animator.SetTrigger(_stop_t);
+            if(_isDestoy)return;
+            _animator?.SetTrigger(_stop_t);
         }
     }
 }

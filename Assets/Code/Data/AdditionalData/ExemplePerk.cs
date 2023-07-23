@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 
-namespace Code.Data
+namespace Code.Data.AdditionalData
 {
     public class ExemplePerk
     {

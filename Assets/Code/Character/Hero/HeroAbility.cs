@@ -1,6 +1,9 @@
 using System;
+using Code.Character.Hero.Abilities;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
+using Code.Data.Configs.HeroConfigs;
+using Code.Data.GameData;
 using Code.Debugers;
 using Code.Services.Input;
 using Sirenix.OdinInspector;

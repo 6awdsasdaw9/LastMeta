@@ -1,11 +1,11 @@
 using System.Threading;
-using Code.Character.Hero;
 using Code.Character.Hero.HeroInterfaces;
-using Code.Data.Configs;
+using Code.Data.Configs.HeroConfigs;
+using Code.Data.GameData;
 using Code.Services;
 using Code.Services.Input;
 
-namespace Code.Character.Hero
+namespace Code.Character.Hero.Abilities
 {
     public class HeroGunAttackAbility : Ability
     {

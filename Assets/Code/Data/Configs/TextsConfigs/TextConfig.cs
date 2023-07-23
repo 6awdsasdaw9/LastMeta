@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Code.Data.Configs.HeroConfigs;
 using Code.Logic.Objects.Items;
 using UnityEngine;
 
-namespace Code.Data.Configs
+namespace Code.Data.Configs.TextsConfigs
 {
     [CreateAssetMenu(fileName = "TextConfig", menuName = "ScriptableObjects/GameData/TextConfigs/TextConfig")]
     public  class TextConfig : ScriptableObject
@@ -30,7 +31,7 @@ namespace Code.Data.Configs
     public class HudNamings
     {
         public string NameMenuWindow;
-        public string NameHeroInformationWindow;
+        public string NameHeroWindow;
         public ArtifactDescriptionText[] ArtifactsDescriptionText;
         public HeroParamText[]  HeroParamsText;
     }

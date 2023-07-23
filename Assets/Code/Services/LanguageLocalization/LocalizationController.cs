@@ -1,9 +1,8 @@
-using System.Collections.Generic;
-using Code.Data.Configs;
+using Code.Data.Configs.TextsConfigs;
 using Code.Infrastructure.GlobalEvents;
 using Code.Services.SaveServices;
 
-namespace Code.Logic.LanguageLocalization
+namespace Code.Services.LanguageLocalization
 {
     public class LocalizationController: ISavedData
     {

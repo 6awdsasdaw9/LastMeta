@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Code.Logic.DayOfTime;
+using Code.Services.GameTime;
 
 namespace Code.Services.SaveServices
 {

@@ -1,11 +1,11 @@
 using System;
-using Code.Data.Configs;
-using Code.Data.GameData;
+using Code.Data.AdditionalData;
+using Code.Data.Configs.HeroConfigs;
 using Code.Logic.Missile;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Code.Character.Hero
+namespace Code.Data.GameData
 {
     [Serializable]
     public class ShootingParams : AbilitySettings

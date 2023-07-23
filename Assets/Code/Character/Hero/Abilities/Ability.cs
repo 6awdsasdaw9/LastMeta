@@ -1,4 +1,4 @@
-namespace Code.Character.Hero
+namespace Code.Character.Hero.Abilities
 {
     public abstract class Ability
     {

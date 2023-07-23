@@ -1,12 +1,11 @@
 using Code.Data.GameData;
 using Code.Infrastructure.GlobalEvents;
 using Code.Logic.Objects.TimingObjects.TimeObserverses.Interfaces;
-using Code.Services;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.DayOfTime
+namespace Code.Services.GameTime.LightingToggle
 {
     public class ParticleToggle : MonoBehaviour, IEventSubscriber, ITimeObserver
     {

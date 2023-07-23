@@ -1,6 +1,6 @@
 using Code.Data.GameData;
-using Code.Logic.DayOfTime;
 using Code.Logic.Objects.TimingObjects.TimeObserverses.Interfaces;
+using Code.Services.GameTime;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;

@@ -6,10 +6,9 @@ using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
-using Code.Logic.DayOfTime;
-using Code.PresentationModel;
 using Code.Services;
 using Code.Services.SaveServices;
+using Code.UI;
 using Zenject;
 
 namespace Code.Infrastructure.StateMachine.States

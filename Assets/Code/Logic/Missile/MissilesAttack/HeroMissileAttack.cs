@@ -1,7 +1,7 @@
 using Code.Character.Common.CommonCharacterInterfaces;
 using UnityEngine;
 
-namespace Code.Logic.Missile
+namespace Code.Logic.Missile.MissilesAttack
 {
     public class HeroMissileAttack: MonoBehaviour
     {

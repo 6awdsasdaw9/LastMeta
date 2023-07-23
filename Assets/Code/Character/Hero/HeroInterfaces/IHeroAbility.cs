@@ -1,4 +1,6 @@
-namespace Code.Character.Hero
+using Code.Character.Hero.Abilities;
+
+namespace Code.Character.Hero.HeroInterfaces
 {
     public interface IHeroAbility
     {

@@ -2,7 +2,7 @@ using System.Threading;
 using Code.Audio;
 using Code.Data.GameData;
 using Code.Infrastructure.GlobalEvents;
-using Code.Logic.DayOfTime;
+using Code.Services.GameTime;
 using Cysharp.Threading.Tasks;
 using Zenject;
 

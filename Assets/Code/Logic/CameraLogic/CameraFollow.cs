@@ -2,6 +2,7 @@ using System.Collections;
 using Code.Character.Hero;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data;
+using Code.Data.AdditionalData;
 using Code.Data.GameData;
 using Code.Services;
 using Code.Services.SaveServices;

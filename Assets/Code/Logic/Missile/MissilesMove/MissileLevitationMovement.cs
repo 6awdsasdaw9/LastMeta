@@ -1,12 +1,11 @@
 using System;
 using System.Threading;
-using Code.Debugers;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-namespace Code.Logic.Missile
+namespace Code.Logic.Missile.MissilesMove
 {
     public class MissileLevitationMovement : MissileMovement
     {

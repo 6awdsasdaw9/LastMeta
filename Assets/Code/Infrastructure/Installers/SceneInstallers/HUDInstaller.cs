@@ -1,5 +1,5 @@
 using Code.Data.Configs;
-using Code.PresentationModel.HeadUpDisplay;
+using Code.UI.HeadUpDisplay;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -24,24 +24,24 @@ namespace Code.Infrastructure.Installers.SceneInstallers
 
         private void BindHUD()
         {
-            Hud hud = Container.InstantiatePrefabForComponent<Hud>(
+            HudFacade hudFacade = Container.InstantiatePrefabForComponent<HudFacade>(
                 GetHudPrefabs(),
                 Vector3.zero,
                 Quaternion.identity,
                 null);
             
-            Container.Bind<Hud>().FromInstance(hud).AsSingle().NonLazy();
+            Container.Bind<HudFacade>().FromInstance(hudFacade).AsSingle().NonLazy();
         }
 
-        private Hud GetHudPrefabs()
+        private HudFacade GetHudPrefabs()
         {
             switch (gameMode)
             {
                 case Constants.GameMode.Real:
-                    return _hudSettings.RealHUD;
+                    return _hudSettings.realHudFacade;
                 case Constants.GameMode.Game:
                 default:
-                    return _hudSettings.GameHUD;
+                    return _hudSettings.gameHudFacade;
             }
         }
     }

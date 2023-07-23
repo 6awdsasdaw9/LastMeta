@@ -1,4 +1,4 @@
-using Code.Logic.DayOfTime;
+using Code.Services.GameTime;
 using Zenject;
 
 namespace Code.Infrastructure.Installers.SceneInstallers

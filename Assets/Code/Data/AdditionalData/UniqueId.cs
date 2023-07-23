@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Data.GameData
+namespace Code.Data.AdditionalData
 {
     public class UniqueId : MonoBehaviour
     {

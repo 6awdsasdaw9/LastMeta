@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using Zenject;
-using HeroConfig = Code.Data.Configs.HeroConfig;
+using HeroConfig = Code.Data.Configs.HeroConfigs.HeroConfig;
 
 
 namespace Code.Character.Hero

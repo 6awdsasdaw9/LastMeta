@@ -1,5 +1,5 @@
-using Code.Logic.Adaptors;
 using Code.Services;
+using Code.Services.Adapters;
 using Zenject;
 
 namespace Code.Infrastructure.Installers.SceneInstallers

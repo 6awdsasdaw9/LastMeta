@@ -1,10 +1,11 @@
 using System;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
+using Code.Data.Configs.HeroConfigs;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
-using HeroConfig = Code.Data.Configs.HeroConfig;
+using HeroConfig = Code.Data.Configs.HeroConfigs.HeroConfig;
 
 namespace Code.Character.Hero
 {

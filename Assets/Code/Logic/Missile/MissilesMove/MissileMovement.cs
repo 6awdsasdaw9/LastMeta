@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace Code.Logic.Missile
+namespace Code.Logic.Missile.MissilesMove
 {
     public abstract class MissileMovement
     {

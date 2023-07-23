@@ -1,12 +1,9 @@
 using System;
 using System.Threading;
-using Code.Data.Configs;
-using Code.Data.GameData;
-using Code.Debugers;
+using Code.Data.Configs.HeroConfigs;
 using Code.Services;
-using Code.Services.Input;
 
-namespace Code.Character.Hero
+namespace Code.Character.Hero.Abilities
 {
     public class HeroSuperJumpAbility: Ability
     {

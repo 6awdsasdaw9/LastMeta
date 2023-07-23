@@ -1,6 +1,7 @@
 using System;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
+using Code.Data.Configs.HeroConfigs;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;

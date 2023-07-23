@@ -1,9 +1,10 @@
 using System;
-using Code.Character.Hero;
+using Code.Character.Hero.Abilities;
+using Code.Data.GameData;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Code.Data.Configs
+namespace Code.Data.Configs.HeroConfigs
 {
     [Serializable]
     public class HeroAbilitiesParams

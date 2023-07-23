@@ -1,4 +1,4 @@
-namespace Code.Logic.Adaptors
+namespace Code.Services.Adapters
 {
     public class ItemsAdapter
     {

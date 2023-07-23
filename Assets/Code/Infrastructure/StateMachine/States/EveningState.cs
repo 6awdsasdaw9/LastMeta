@@ -1,12 +1,11 @@
 using System.Threading;
 using Code.Data.GameData;
 using Code.Infrastructure.GlobalEvents;
-using Code.Infrastructure.StateMachine.States;
-using Code.Logic.DayOfTime;
+using Code.Services.GameTime;
 using Cysharp.Threading.Tasks;
 using Zenject;
 
-namespace Code.Infrastructure.StateMachine
+namespace Code.Infrastructure.StateMachine.States
 {
     public class EveningState : IState
     {

@@ -1,14 +1,13 @@
 using System;
 using System.Threading;
 using Code.Character.Hero.HeroInterfaces;
-using Code.Data.Configs;
+using Code.Data.Configs.HeroConfigs;
 using Code.Data.GameData;
 using Code.Debugers;
 using Code.Services;
 using Code.Services.Input;
-using UnityEngine;
 
-namespace Code.Character.Hero
+namespace Code.Character.Hero.Abilities
 {
     public class HeroHandAttackAbility : Ability
     {

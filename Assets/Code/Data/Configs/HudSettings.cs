@@ -1,7 +1,7 @@
 using System;
 using Code.Audio.AudioEvents;
-using Code.PresentationModel.HeadUpDisplay;
-using Code.PresentationModel.Windows.DialogueWindows;
+using Code.UI.HeadUpDisplay;
+using Code.UI.HeadUpDisplay.Windows.InteractiveWindows.DialogueWindows;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -10,8 +10,8 @@ namespace Code.Data.Configs
     [CreateAssetMenu(fileName = "HudSettings", menuName = "ScriptableObjects/GameData/HudSettings")]
     public class HudSettings : ScriptableObject
     {
-        public Hud RealHUD;
-        public Hud GameHUD;
+        public HudFacade realHudFacade;
+        public HudFacade gameHudFacade;
    
         [Space] public InteractiveUIParams InteractiveUIParams;
 

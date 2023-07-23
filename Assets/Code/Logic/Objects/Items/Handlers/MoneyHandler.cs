@@ -1,21 +1,21 @@
 using System;
 using Code.Infrastructure.GlobalEvents;
-using Code.Logic.Objects.Items;
-using Code.PresentationModel.HeadUpDisplay;
+using Code.Services.CurrencyServices;
 using Code.Services.SaveServices;
+using Code.UI.HeadUpDisplay;
 
-namespace Code.Services.CurrencyServices
+namespace Code.Logic.Objects.Items.Handlers
 {
     public class MoneyHandler: ISavedData
     {
         private readonly MoneyStorage _moneyStorage;
-        private readonly Hud _hud;
+        private readonly HudFacade _hudFacade;
         private readonly EventsFacade _eventsFacade;
 
-        public MoneyHandler(MoneyStorage moneyStorage, Hud hud,SavedDataStorage savedDataStorage, EventsFacade eventsFacade)
+        public MoneyHandler(MoneyStorage moneyStorage, HudFacade hudFacade,SavedDataStorage savedDataStorage, EventsFacade eventsFacade)
         {
             _moneyStorage = moneyStorage;
-            _hud = hud;
+            _hudFacade = hudFacade;
             _eventsFacade = eventsFacade;
 
             savedDataStorage.Add(this);
@@ -37,7 +37,7 @@ namespace Code.Services.CurrencyServices
 
         private void OnChangeValue(int currentMoney)
         {
-            _hud.MoneyPanel.SetText(currentMoney.ToString());
+            _hudFacade.MoneyPanel.SetText(currentMoney.ToString());
         }
 
         public void LoadData(SavedData savedData)

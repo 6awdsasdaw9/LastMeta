@@ -1,7 +1,7 @@
 using System;
 using FMODUnity;
 
-namespace Code.Data.Configs
+namespace Code.Data.Configs.HeroConfigs
 {
     [Serializable]
     public class HeroAudioPath

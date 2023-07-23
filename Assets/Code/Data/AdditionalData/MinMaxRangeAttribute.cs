@@ -1,12 +1,15 @@
 ﻿using System;
 
-public class MinMaxRangeAttribute : Attribute
+namespace Code.Data.AdditionalData
 {
-	public MinMaxRangeAttribute(float min, float max)
+	public class MinMaxRangeAttribute : Attribute
 	{
-		Min = min;
-		Max = max;
+		public MinMaxRangeAttribute(float min, float max)
+		{
+			Min = min;
+			Max = max;
+		}
+		public float Min { get; private set; }
+		public float Max { get; private set; }
 	}
-	public float Min { get; private set; }
-	public float Max { get; private set; }
 }

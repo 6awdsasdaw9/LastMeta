@@ -1,8 +1,7 @@
 using Code.Infrastructure.GlobalEvents;
-using Code.Infrastructure.StateMachine.States;
 using Zenject;
 
-namespace Code.Infrastructure.StateMachine
+namespace Code.Infrastructure.StateMachine.States
 {
     public class PauseState : IState
     {

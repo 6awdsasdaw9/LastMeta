@@ -1,4 +1,5 @@
 using Code.Data.Configs;
+using Code.Data.Configs.HeroConfigs;
 using Code.Debugers;
 using Sirenix.OdinInspector;
 using UnityEngine;

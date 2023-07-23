@@ -1,7 +1,7 @@
 using System.Linq;
 using Code.Audio.AudioEvents;
-using Code.PresentationModel.HeadUpDisplay;
-using Code.PresentationModel.Windows;
+using Code.UI.HeadUpDisplay;
+using Code.UI.HeadUpDisplay.Windows;
 using UnityEngine;
 using Zenject;
 
@@ -15,9 +15,9 @@ namespace Code.Logic.Objects.Interactive.InteractiveObjects
         private bool _isWindowNull;
 
         [Inject]
-        private void Construct(Hud hud)
+        private void Construct(HudFacade hudFacade)
         {
-            hud.InteractiveObjectWindows
+            hudFacade.InteractiveObjectWindows
                 .FirstOrDefault(w => w.Type == Type)?
                 .InteractiveObjectWindow
                 .TryGetComponent(out _presentationWindow);

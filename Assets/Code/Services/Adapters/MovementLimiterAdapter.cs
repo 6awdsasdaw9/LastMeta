@@ -1,8 +1,7 @@
 using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
-using Code.Services;
 
-namespace Code.Logic.Adaptors
+namespace Code.Services.Adapters
 {
     public class MovementLimiterAdapter : IEventSubscriber
     {

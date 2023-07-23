@@ -1,14 +1,11 @@
-using System;
-using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
-using Code.Services;
 using Code.Services.SaveServices;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.DayOfTime
+namespace Code.Services.GameTime
 {
     public class GameClock : ITickable, ISavedData, IEventSubscriber
     {

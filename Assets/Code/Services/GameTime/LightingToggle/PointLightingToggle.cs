@@ -1,15 +1,14 @@
 using System.Collections.Generic;
+using Code.Data.AdditionalData;
 using Code.Data.GameData;
 using Code.Infrastructure.GlobalEvents;
 using Code.Logic.Objects.TimingObjects.TimeObserverses.Interfaces;
-using Code.Services;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-
-namespace Code.Logic.DayOfTime
+namespace Code.Services.GameTime.LightingToggle
 {
     public class PointLightingToggle : MonoBehaviour, IEventSubscriber, ITimeObserver
     {

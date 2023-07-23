@@ -7,7 +7,7 @@ using Code.Services.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
-using HeroConfig = Code.Data.Configs.HeroConfig;
+using HeroConfig = Code.Data.Configs.HeroConfigs.HeroConfig;
 
 namespace Code.Character.Hero
 {

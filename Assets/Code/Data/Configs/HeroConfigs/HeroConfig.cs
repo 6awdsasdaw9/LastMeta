@@ -1,9 +1,8 @@
 using Code.Data.GameData;
-using Code.Logic.Missile;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Code.Data.Configs
+namespace Code.Data.Configs.HeroConfigs
 {
     [CreateAssetMenu(fileName = "HeroConfig", menuName = "ScriptableObjects/GameData/HeroConfig")]
     public class HeroConfig : ScriptableObject

@@ -1,22 +1,22 @@
 using System.Linq;
-using Code.Data.Configs;
+using Code.Data.Configs.TextsConfigs;
 using Code.Infrastructure.GlobalEvents;
-using Code.PresentationModel.HeadUpDisplay;
+using Code.UI.HeadUpDisplay;
 
-namespace Code.Logic.LanguageLocalization
+namespace Code.Services.LanguageLocalization
 {
     public class HudLocalization
     {
         private readonly EventsFacade _eventsFacade;
-        private readonly Hud _hud;
+        private readonly HudFacade _hudFacade;
         private readonly TextConfigRus _textConfigRus;
         private readonly TextConfigEng _textConfigEng;
 
-        public HudLocalization(EventsFacade eventsFacade, Hud hud, TextConfigRus textConfigRus,
+        public HudLocalization(EventsFacade eventsFacade, HudFacade hudFacade, TextConfigRus textConfigRus,
             TextConfigEng textConfigEng)
         {
             _eventsFacade = eventsFacade;
-            _hud = hud;
+            _hudFacade = hudFacade;
             _textConfigRus = textConfigRus;
             _textConfigEng = textConfigEng;
             _eventsFacade.GameEvents.OnChoiceLanguage += OnChoiceLanguage;
@@ -36,13 +36,19 @@ namespace Code.Logic.LanguageLocalization
 
         private void SetLanguage(TextConfig textConfig)
         {
-            _hud.Menu?.Window.SetTitle(textConfig.HudNamings.NameMenuWindow);
+            _hudFacade.Menu?.Window.Settings.SetTitle(textConfig.HudNamings.NameMenuWindow);
             
-            if(_hud.GameMode == Constants.GameMode.Real)
+            if(_hudFacade.GameMode == Constants.GameMode.Real)
                 return;
-            
-            _hud.HeroInformation?.Window.SetTitle(textConfig.HudNamings.NameHeroInformationWindow);
-            foreach (var icon in _hud.HeroInformation.Window.ArtifactsPanel.ArtifactIcons)
+
+            RefreshHeroPanel(textConfig);
+        }
+
+        private void RefreshHeroPanel(TextConfig textConfig)
+        {
+            var heroWindow = _hudFacade.Menu.Window.Hero;
+            heroWindow.SetTitle(textConfig.HudNamings.NameHeroWindow);
+            foreach (var icon in heroWindow.ArtifactsPanel.ArtifactIcons)
             {
                 var data = textConfig.HudNamings.ArtifactsDescriptionText.FirstOrDefault(a =>
                     a.Type == icon.Type);
@@ -52,8 +58,8 @@ namespace Code.Logic.LanguageLocalization
                 icon.DescriptionPanel.SetTitle(data.Title);
                 icon.DescriptionPanel.SetDescription(data.Description);
             }
-            
-            foreach (var icon in _hud.HeroInformation.Window.HeroParamPanel.ParamIcons)
+
+            foreach (var icon in heroWindow.HeroParamPanel.ParamIcons)
             {
                 var data = textConfig.HudNamings.HeroParamsText.FirstOrDefault(a =>
                     a.upgradeParamType == icon.upgradeParamType);

@@ -1,12 +1,12 @@
 using System;
 using Sirenix.OdinInspector;
 
-namespace Code.Data.Configs
+namespace Code.Data.Configs.HeroConfigs
 {
     public enum HeroUpgradeParamType
     {
         Health,
-        Attack,
+        Damage,
         Speed,
         Jump,
     }
@@ -69,7 +69,7 @@ namespace Code.Data.Configs
     [Serializable]
     public class AttackUpgradesData : HeroUpgradeData
     {
-       [ShowInInspector,ReadOnly] public override HeroUpgradeParamType Type => HeroUpgradeParamType.Attack;
+       [ShowInInspector,ReadOnly] public override HeroUpgradeParamType Type => HeroUpgradeParamType.Damage;
     }
     
     [Serializable]
