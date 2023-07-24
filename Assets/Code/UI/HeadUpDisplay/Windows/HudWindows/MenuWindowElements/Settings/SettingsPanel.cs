@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace Code.UI.HeadUpDisplay.Windows.HudWindows.MenuWindowElements.Settings
 {
-    public class SettingsWindow : HudElement, ILocalizationTitle, IWindow
+    public class SettingsPanel : HudElement, ILocalizationTitle, IWindow
     {
         [SerializeField] private HudButton _folderButton;
         public HudButton FolderButton => _folderButton;

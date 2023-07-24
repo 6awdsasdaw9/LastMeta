@@ -18,8 +18,8 @@ namespace Code.UI.HeadUpDisplay.Windows.HudWindows.MenuWindowElements
         public HeroPanel Hero => hero;
         [Space,Title("FOLDERS")]
         [SerializeField] private HeroPanel hero;
-        public SettingsWindow Settings => settings;
-        [SerializeField] private SettingsWindow settings;
+        public SettingsPanel Settings => settings;
+        [SerializeField] private SettingsPanel settings;
         
         public void ShowWindow(Action WindowShowed = null)
         {

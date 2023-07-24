@@ -1,4 +1,5 @@
 using Code.Audio;
+using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
 using Code.UI.HeadUpDisplay;
 
@@ -29,6 +30,7 @@ namespace Code.Services.Adapters.HudAdapters
         private void OnPause(bool isPause)
         {
             _audioController.ChangePauseParam(isPause);
+            Logg.ColorLog($"Pause {isPause}");
         }
 
         private void OnChangedMusicValue(float value)
