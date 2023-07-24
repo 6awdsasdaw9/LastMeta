@@ -9,7 +9,6 @@ using UnityEngine;
 
 namespace Code.UI.HeadUpDisplay
 {
-    
     public class HudFacade : MonoBehaviour
     {
         [SerializeField] private Constants.GameMode _gameMode;

@@ -26,6 +26,8 @@ namespace Code.UI.HeadUpDisplay.Adapters
                 _hudFacade.Menu.Button.OnStartTap += CloseOpenWindow;
                 _inputService.OnPressEsc += CloseOpenWindow;
                 _hudFacade.Menu.CloseButton.OnStartTap += CloseOpenWindow;
+                
+                //todo эта часть премещается в адаптер settings panel
                 _hudFacade.Menu.Window.Settings.EngLanguage.OnStartTap += EngLanguageOnStartTap;
                 _hudFacade.Menu.Window.Settings.RusLanguage.OnStartTap += RusLanguageOnStartTap;
             }
@@ -34,6 +36,8 @@ namespace Code.UI.HeadUpDisplay.Adapters
                 _hudFacade.Menu.Button.OnStartTap -= CloseOpenWindow;
                 _inputService.OnPressEsc -= CloseOpenWindow;
                 _hudFacade.Menu.CloseButton.OnStartTap -= CloseOpenWindow;
+                
+                //todo эта часть премещается в адаптер settings panel
                 _hudFacade.Menu.Window.Settings.EngLanguage.OnStartTap -= EngLanguageOnStartTap;
                 _hudFacade.Menu.Window.Settings.RusLanguage.OnStartTap -= RusLanguageOnStartTap;
             }
@@ -52,8 +56,6 @@ namespace Code.UI.HeadUpDisplay.Adapters
             {
                 menuWindow.ShowWindow(() => _eventsFacade.HudEvents.WindowShownEvent(menuWindow));
             }
-
-            _eventsFacade.GameEvents.PauseEvent(menuWindow.IsOpen); //Стоит переложить эту задачу на адаптр окон
         }
 
         private void RusLanguageOnStartTap() => _eventsFacade.HudEvents.PressButtonLanguageEvent(Language.Rus);

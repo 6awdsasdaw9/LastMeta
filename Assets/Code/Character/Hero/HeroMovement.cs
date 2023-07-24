@@ -1,12 +1,9 @@
 ﻿using Code.Character.Hero.HeroInterfaces;
-using Code.Data.Configs;
 using Code.Data.GameData;
-using Code.Services;
 using Code.Services.Input;
 using Code.Services.SaveServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using Zenject;
 using HeroConfig = Code.Data.Configs.HeroConfigs.HeroConfig;
 
@@ -124,8 +121,10 @@ namespace Code.Character.Hero
             _pressingMove = DirectionX != 0;
         }
 
-        private void OnPressCrouch(InputAction.CallbackContext context) =>
-            _pressingCrouch = context.started;
+        private void OnPressCrouch(InputAction.CallbackContext context)
+        {
+            _pressingCrouch = _heroCanMove && context.started;
+        }
 
         #endregion
 
@@ -221,7 +220,6 @@ namespace Code.Character.Hero
         }
 
         #endregion
-
 
         public void Disable()
         {

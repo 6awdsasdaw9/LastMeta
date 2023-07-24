@@ -31,7 +31,6 @@ namespace Code.UI.HeadUpDisplay.Adapters
                 _eventsFacade.HudEvents.OnWindowShown -= AddOpenedWindowToList;
                 _eventsFacade.HudEvents.OnWindowHidden -= RemoveOpenedWindowFromList;
             }
-
         }
 
         private void RemoveOpenedWindowFromList(IWindow window)
@@ -39,6 +38,7 @@ namespace Code.UI.HeadUpDisplay.Adapters
             _openedWindows.Remove(window);
             if(_openedWindows.Any())return;
             _eventsFacade.HudEvents.CloseLastWindowEvent();
+            _eventsFacade.GameEvents.PauseEvent(false);
         }
 
         private void AddOpenedWindowToList(IWindow window)
@@ -46,6 +46,7 @@ namespace Code.UI.HeadUpDisplay.Adapters
             _openedWindows.Add(window);
             if(_openedWindows.Count != 1)return;
             _eventsFacade.HudEvents.OpenFirstWindowEvent();
+            _eventsFacade.GameEvents.PauseEvent(true);
         }
     }
 }
