@@ -23,7 +23,6 @@ namespace Code.Logic.Objects.Movements
 
         private void OnEnable()
         {
-            
             _sprite.SetFlipX(isFlip: false);
             StartMove();
         }
@@ -43,7 +42,6 @@ namespace Code.Logic.Objects.Movements
         {
             _moveTween = transform.DOMove(RandomTargetPosition, Speed)
                 .SetSpeedBased(true)
-                .SetEase(Ease.Flash)
                 .SetLoops(-1, LoopType.Yoyo)
                 .OnStepComplete(() =>
                 {
@@ -66,10 +64,10 @@ namespace Code.Logic.Objects.Movements
             {
                 default:
                 case Axis.X:
-                    Gizmos.DrawRay(transform.position, Vector3.right * Distance);
+                    Gizmos.DrawRay(_startPosition == Vector3.zero ? transform.position : _startPosition, Vector3.right * Distance);
                     break;
                 case Axis.Y:
-                    Gizmos.DrawRay(transform.position, Vector3.up * Distance);
+                    Gizmos.DrawRay(_startPosition == Vector3.zero ? transform.position : _startPosition, Vector3.up * Distance);
                     break;
             }
         }

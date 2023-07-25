@@ -38,7 +38,7 @@ namespace Code
 
         #region Layers
         public const string HittableLayer = "Hittable";
-        public const string PlayerLayer = "Player";
+        public const string HeroLayer = "Hero";
         public const string EnemyLayer = "Enemy";
         public const string StopCameraLayer = "StopCamera";
         #endregion

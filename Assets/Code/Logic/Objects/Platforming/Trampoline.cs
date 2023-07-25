@@ -1,9 +1,11 @@
 using Code.Audio.AudioEvents;
+using Code.Infrastructure.GlobalEvents;
 using Code.Logic.Collisions;
 using Code.Logic.Objects.Animations;
 using Code.Services;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Logic.Objects.Platforming
 {
@@ -14,7 +16,21 @@ namespace Code.Logic.Objects.Platforming
 
         [Title("Optional")] 
         [SerializeField] private AudioEvent _audioEvent; 
-        [SerializeField] private StartAnimation _startAnimation; 
+        [SerializeField] private StartAnimation _startAnimation;
+
+        private bool _isActive;
+        
+        [Inject]
+        private void Constuct(EventsFacade eventsFacade)
+        {
+            eventsFacade.GameEvents.OnPause  += OnPause;
+        }
+
+        private void OnPause(bool isPause)
+        {
+            SubscribeToEvent(!isPause);
+        }
+
         private void OnEnable()
         {
             SubscribeToEvent(true);
@@ -27,6 +43,9 @@ namespace Code.Logic.Objects.Platforming
 
         public void SubscribeToEvent(bool flag)
         {
+            if(_isActive== flag)return;
+            _isActive = flag;
+            
             if (flag)
             {
                 _collision.OnEnter += OnEnter;

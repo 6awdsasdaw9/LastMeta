@@ -37,15 +37,15 @@ namespace Code.Logic.Objects.DestroyedObjects
         {
             if (flag)
             {
-                _health.OnHealthChanged += HealthOnOnHealthChanged;
+                _health.OnHealthChanged += OnHealthChanged;
             }
             else
             {
-                _health.OnHealthChanged -= HealthOnOnHealthChanged;
+                _health.OnHealthChanged -= OnHealthChanged;
             }
         }
 
-        private void HealthOnOnHealthChanged()
+        private void OnHealthChanged()
         {
             if (_isDestroyed || _health.Current > 0)
                 return;

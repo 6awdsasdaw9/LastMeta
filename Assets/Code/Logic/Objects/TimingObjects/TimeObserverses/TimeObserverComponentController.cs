@@ -43,5 +43,4 @@ namespace Code.Logic.Objects.TimingObjects.TimeObserverses
             }
         }
     }
-
 }

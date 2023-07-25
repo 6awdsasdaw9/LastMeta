@@ -21,7 +21,16 @@ namespace Code.UI.HeadUpDisplay.Adapters
             _hudFacade = hudFacade;
             _eventsFacade = eventsFacade;
             _inputService = inputService;
+            
             SubscribeToEvent(true);
+            InitCurrentWindow();
+        }
+
+        private void InitCurrentWindow()
+        {
+            _currentWindow =_hudFacade.Menu.Window.Hero; 
+            _currentWindow.ShowWindow();
+            _hudFacade.Menu.Window.Settings.HideWindow();
         }
 
         public void SubscribeToEvent(bool flag)

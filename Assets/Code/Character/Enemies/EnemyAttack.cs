@@ -5,6 +5,7 @@ using Code.Character.Hero.HeroInterfaces;
 using Code.Debugers;
 using Code.Services;
 using Cysharp.Threading.Tasks;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
@@ -33,7 +34,7 @@ namespace Code.Character.Enemies
         private void Construct(IHero hero)
         {
             _hero = hero;
-            _layerMask = 1 << LayerMask.NameToLayer(Constants.PlayerLayer);
+            _layerMask =  LayerMask.GetMask(Constants.HeroLayer);
         }
         
         private void Update()
@@ -64,18 +65,15 @@ namespace Code.Character.Enemies
         private void OnAttack()
         {
             PhysicsDebug.DrawDebug(StartPoint(), _cleavage, 1);
-            if (!Hit(out Collider hit))
-                return;
-
+            if (!Hit(out Collider hit)) return;
             _hero.Health.TakeDamage(_damage);
             Push().Forget();
         }
 
         private async UniTaskVoid Push()
         {
-            if (_pushForce == 0)
-                return;
-            _hero.Movement.SetSupportVelocity(_hero.Transform.localScale * _pushForce);
+            if (_pushForce == 0) return;
+            _hero.Movement.SetSupportVelocity((transform.position - _hero.Transform.position) * _pushForce);
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
             _hero.Movement.SetSupportVelocity(Vector2.zero);
         }
@@ -89,11 +87,8 @@ namespace Code.Character.Enemies
             _isAttacking = false;
         }
 
-        public void DisableAttack() =>
-            attackIsActive = false;
-
-        public void EnableAttack() =>
-            attackIsActive = true;
+        public void DisableAttack() => attackIsActive = false;
+        public void EnableAttack() => attackIsActive = true;
 
         private bool Hit(out Collider hit)
         {
@@ -102,13 +97,7 @@ namespace Code.Character.Enemies
             return hitCount > 0;
         }
 
-        private Vector3 StartPoint() =>
-            new Vector3(transform.position.x, transform.position.y + _effectiveHeight, transform.position.z);
-
-
-
-        private bool CanAttack() =>
-            attackIsActive && !_isAttacking &&   _attackCooldown.IsUp();
-
+        private Vector3 StartPoint() => new(transform.position.x, transform.position.y + _effectiveHeight, transform.position.z);
+        private bool CanAttack() => attackIsActive && !_isAttacking &&   _attackCooldown.IsUp();
     }
 }

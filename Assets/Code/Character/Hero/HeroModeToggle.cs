@@ -7,12 +7,12 @@ using Zenject;
 
 namespace Code.Character.Hero
 {
-    public class HeroModeToggle: MonoBehaviour, IHeroModeToggle
+    public class HeroModeToggle : MonoBehaviour, IHeroModeToggle
     {
         public Constants.HeroMode Mode { get; private set; }
         private IHero _hero;
         private MovementLimiter _limiter;
-        
+
         [Inject]
         private void Construct(MovementLimiter limiter)
         {
@@ -36,14 +36,13 @@ namespace Code.Character.Hero
         {
             if (flag)
             {
-                
-            _limiter.OnDisableMovementMode += OnDisableMovementMode;
-            _limiter.OnEnableMovementMode += OnEnableMovementMode;
+                _limiter.OnDisableMovementMode += OnDisableMovementMode;
+                _limiter.OnEnableMovementMode += OnEnableMovementMode;
             }
             else
-            {  _limiter.OnDisableMovementMode -= OnDisableMovementMode;
+            {
+                _limiter.OnDisableMovementMode -= OnDisableMovementMode;
                 _limiter.OnEnableMovementMode -= OnEnableMovementMode;
-                
             }
         }
 
@@ -54,6 +53,7 @@ namespace Code.Character.Hero
             _hero.HandAttack?.Enable();
             _hero.Animator.PlayEnterHandMode();
         }
+
         public void SetGunMode()
         {
             Mode = Constants.HeroMode.Gun;
@@ -67,11 +67,10 @@ namespace Code.Character.Hero
             _hero.Movement.Enable();
             _hero.Jump.Enable();
 
-            if (_hero.GameMode == Constants.GameMode.Game)
-            {
-                _hero.GunAttack?.Enable();
-                _hero.HandAttack?.Enable();
-            }
+            if (_hero.GameMode != Constants.GameMode.Game) return;
+            
+            _hero.GunAttack?.Enable();
+            _hero.HandAttack?.Enable();
         }
 
         private void OnDisableMovementMode()
@@ -79,11 +78,10 @@ namespace Code.Character.Hero
             _hero.Movement.Disable();
             _hero.Jump.Disable();
 
-            if (_hero.GameMode == Constants.GameMode.Game)
-            {
-                _hero.GunAttack?.Disable();
-                _hero.HandAttack?.Disable();
-            }
+            if (_hero.GameMode != Constants.GameMode.Game) return;
+            
+            _hero.GunAttack?.Disable();
+            _hero.HandAttack?.Disable();
         }
     }
 }
