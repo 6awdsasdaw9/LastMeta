@@ -27,7 +27,7 @@ namespace Code.Character.Hero
         public bool IsAttack => _hero.GunAttack.IsAttack || _hero.HandAttack.IsAttack;
         public bool IsDeath => _hero.Health.Current <= 0;
         public bool IsJump => _hero.Jump.IsCurrentlyJumping;
-        public bool IsWounded => _hero.Health.Current < _hero.Health.Max / 100 * 20;
+        public bool IsWounded => _hero.Health.Current < _hero.Health.Max / 100 * 30;
 
         public bool OnGround => _hero.Collision.OnGround;
 
