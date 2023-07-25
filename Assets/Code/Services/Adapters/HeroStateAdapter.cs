@@ -1,4 +1,5 @@
 using Code.Character.Hero.HeroInterfaces;
+using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
 
 namespace Code.Services.Adapters
@@ -16,16 +17,19 @@ namespace Code.Services.Adapters
             _eventsFacade = eventsFacade;
             
             _hero.Health.OnHealthChanged += OnHealthChanged;
+            OnHealthChanged();
         }
 
         private void OnHealthChanged()
         {
             if (_hero.Stats.IsWounded && !IsWoundedMode)
             {
+                IsWoundedMode = true;
                 _eventsFacade.HeroEvents.HeroWoundEvent();
             }
-            else if(IsWoundedMode && !_hero.Stats.IsWounded)
+            else if(!_hero.Stats.IsWounded && IsWoundedMode)
             {
+                IsWoundedMode = false;
                 _eventsFacade.HeroEvents.HeroHealthyEvent();
             }
         }

@@ -13,25 +13,25 @@ namespace Code.Infrastructure.GlobalEvents
         public GameEvents GameEvents { get; } = new();
         public HudEvents HudEvents { get; } = new();
         public ItemEvents ItemEvents { get; } = new();
-        public HeroEvents HeroEvents { get; set; } = new();
+        public HeroEvents HeroEvents { get; } = new();
     }
 
     public class HeroEvents
     {
         public void HeroWoundEvent()
         {
-            OnHeroWounded?.Invoke();
             Logg.ColorLog("Hero Events: HeroWoundEvent", ColorType.Aqua);
+            OnHeroWounded?.Invoke();
         }
-
         public Action OnHeroWounded;
+
         public void HeroHealthyEvent()
         {
-            OnHeroHealth?.Invoke();
             Logg.ColorLog("Hero Events: HeroHealthyEvent", ColorType.Aqua);
+            OnHeroHealth?.Invoke();
         }
-
         public Action OnHeroHealth;
+
     }
 
     public class ItemEvents

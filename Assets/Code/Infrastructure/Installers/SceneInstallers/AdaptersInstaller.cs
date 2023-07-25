@@ -1,3 +1,4 @@
+using Code.Services.Adapters;
 using Code.Services.Adapters.HudAdapters;
 using Code.UI.HeadUpDisplay.Adapters;
 using Sirenix.OdinInspector;
@@ -14,6 +15,7 @@ namespace Code.Infrastructure.Installers.SceneInstallers
         {
             BindAudioAdapter();
             BindHudAdapters();
+            BindHeroStateAdapter();
         }
 
         private void BindAudioAdapter()
@@ -31,6 +33,12 @@ namespace Code.Infrastructure.Installers.SceneInstallers
             Container.BindInterfacesAndSelfTo<TimeAdapter>().AsSingle().NonLazy();;
             Container.Bind<DialogueWindowAdapter>().AsSingle().NonLazy();
             Container.Bind<HeroPanelAdapter>().AsSingle().NonLazy();
+        }
+
+        private void BindHeroStateAdapter()
+        {
+            if(_gameMode == Constants.GameMode.Real) return;
+            Container.Bind<HeroStateAdapter>().AsSingle().NonLazy();
         }
     }
 }
