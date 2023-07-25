@@ -12,5 +12,6 @@ namespace Code.Logic.Objects.Items
         Glove,
         Gun,
         Substance,
+        HealPill
     }
 }
