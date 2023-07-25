@@ -36,13 +36,13 @@ namespace Code.Character.Hero
         
         public void Init(HeroAbilityLevelData abilityLevelData)
         {
-            Logg.ColorLog($"init is null {abilityLevelData == null}");
+            Logg.ColorLog($"HeroAbility: init {abilityLevelData.DashLevel}");
 
             AbilityLevelData = abilityLevelData;
             OpenHandAttack(AbilityLevelData.HandLevel);
-            /*OpenDash(AbilityLevelData.DashLevel);
+            OpenDash(AbilityLevelData.DashLevel);
             OpenGunAttack(AbilityLevelData.GunLevel);
-            OpenSuperJump();*/
+            OpenSuperJump();
         }
 
         public void LevelUpSuperJump()
@@ -153,9 +153,10 @@ namespace Code.Character.Hero
     [Serializable]
     public class HeroAbilityLevelData
     {
+        public int HandLevel;
         public int DashLevel;
         public int GunLevel;
-        public int HandLevel;
         public int SuperJumpLevel;
     }
+    
 }

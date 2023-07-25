@@ -1,6 +1,4 @@
-using System;
 using Code.Character.Hero.HeroInterfaces;
-using Code.Data.Configs;
 using Code.Data.Configs.HeroConfigs;
 using Code.Services;
 
@@ -24,13 +22,12 @@ namespace Code.Character.Hero
         public Constants.HeroMode Mode => _hero.ModeToggle.Mode;
         public bool IsBlockMove => !_movementLimiter.CharactersCanMove;
         public bool IsDash => _hero.Ability.DashAbility is { IsDash: true };
-
         public bool IsMove => _hero.Movement.DirectionX != 0;
         public bool IsCrouch => _hero.Movement.IsCrouch;
         public bool IsAttack => _hero.GunAttack.IsAttack || _hero.HandAttack.IsAttack;
-
         public bool IsDeath => _hero.Health.Current <= 0;
         public bool IsJump => _hero.Jump.IsCurrentlyJumping;
+        public bool IsWounded => _hero.Health.Current < _hero.Health.Max / 100 * 20;
 
         public bool OnGround => _hero.Collision.OnGround;
 

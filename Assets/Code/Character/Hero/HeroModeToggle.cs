@@ -1,6 +1,5 @@
-using System;
 using Code.Character.Hero.HeroInterfaces;
-using Code.Debugers;
+using Code.Infrastructure.GlobalEvents;
 using Code.Services;
 using UnityEngine;
 using Zenject;
@@ -12,7 +11,7 @@ namespace Code.Character.Hero
         public Constants.HeroMode Mode { get; private set; }
         private IHero _hero;
         private MovementLimiter _limiter;
-
+        
         [Inject]
         private void Construct(MovementLimiter limiter)
         {

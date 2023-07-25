@@ -155,6 +155,7 @@ MonoBehaviour:
   _disableObjects:
   - {fileID: 6400541843103445610}
   - {fileID: 1523746617005838192}
+  - {fileID: 6400541843742268207}
 --- !u!114 &1523746617081452041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +176,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1523746617081452075}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ffcbcd9b4f2b834e9af45e30120879b, type: 3}
   m_Name: 

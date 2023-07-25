@@ -21,13 +21,12 @@ namespace Code.Character.Hero.HeroInterfaces
         public Constants.HeroMode Mode => Constants.HeroMode.Default;
         public bool IsBlockMove => !_movementLimiter.CharactersCanMove;
         public bool IsDash => false;
-
         public bool IsMove => _hero.Movement.DirectionX != 0;
         public bool IsCrouch => _hero.Movement.IsCrouch;
         public bool IsAttack => false;
-
         public bool IsDeath => false;
         public bool IsJump => _hero.Jump.IsCurrentlyJumping;
+        public bool IsWounded => false;
         public bool OnGround => _hero.Collision.OnGround;
 
         #endregion

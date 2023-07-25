@@ -1,4 +1,5 @@
 using System;
+using Code.Debugers;
 using Code.Logic.Objects.Items;
 using Code.Services.LanguageLocalization;
 using Code.UI.HeadUpDisplay.Windows;
@@ -12,7 +13,25 @@ namespace Code.Infrastructure.GlobalEvents
         public GameEvents GameEvents { get; } = new();
         public HudEvents HudEvents { get; } = new();
         public ItemEvents ItemEvents { get; } = new();
-        
+        public HeroEvents HeroEvents { get; set; } = new();
+    }
+
+    public class HeroEvents
+    {
+        public void HeroWoundEvent()
+        {
+            OnHeroWounded?.Invoke();
+            Logg.ColorLog("Hero Events: HeroWoundEvent", ColorType.Aqua);
+        }
+
+        public Action OnHeroWounded;
+        public void HeroHealthyEvent()
+        {
+            OnHeroHealth?.Invoke();
+            Logg.ColorLog("Hero Events: HeroHealthyEvent", ColorType.Aqua);
+        }
+
+        public Action OnHeroHealth;
     }
 
     public class ItemEvents

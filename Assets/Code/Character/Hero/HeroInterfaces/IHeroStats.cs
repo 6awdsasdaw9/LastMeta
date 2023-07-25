@@ -11,7 +11,7 @@ namespace Code.Character.Hero.HeroInterfaces
         bool IsDeath { get; }
         bool IsJump { get; }
 
-
+        bool IsWounded { get; }
         bool OnGround { get; }
 
 
