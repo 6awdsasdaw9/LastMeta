@@ -117,7 +117,6 @@ namespace Code.Character.Hero
             {
                 _directionX = context.ReadValue<float>();
             }
-
             _pressingMove = DirectionX != 0;
         }
 
@@ -167,8 +166,10 @@ namespace Code.Character.Hero
         }
 
 
-        private void SetDesiredVelocity() => 
+        private void SetDesiredVelocity()
+        {
             _desiredVelocity = new Vector2(_directionX, 0f) * _hero.Stats.Speed * _hero.Stats.ModeSpeedMultiplayer;
+        }
 
         #endregion
 
@@ -224,12 +225,10 @@ namespace Code.Character.Hero
         public void Disable()
         {
             BlockMovement();
-  //          enabled = false;
         }
 
         public void Enable()
         {
-//            enabled = true;
             _heroCanMove = true;
         }
     }

@@ -7,14 +7,20 @@ namespace Code.UI.HeadUpDisplay.HudElements.Buttons
         public DescriptionPanel DescriptionPanel => _descriptionPanel;
         [SerializeField] private DescriptionPanel _descriptionPanel;
 
+        /// <summary>
+        /// Animation event
+        /// </summary>
         private void ShowDescriptionPanel()
         {
-            _descriptionPanel.Show();
+            _descriptionPanel?.Show();
         }
 
+        /// <summary>
+        /// Animation event
+        /// </summary>
         private void HideDescriptionPanel()
         {
-            _descriptionPanel.Hide();
+            _descriptionPanel?.Hide();
         }
         
     }

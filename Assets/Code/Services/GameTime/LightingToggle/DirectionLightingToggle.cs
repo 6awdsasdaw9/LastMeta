@@ -4,6 +4,7 @@ using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Infrastructure.GlobalEvents;
 using Code.Logic.Objects.TimingObjects.TimeObserverses.Interfaces;
+using Code.Services.SaveServices;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -21,12 +22,13 @@ namespace Code.Services.GameTime.LightingToggle
         private Sequence _sequence;
 
         [Inject]
-        private void Construct(GameSceneData gameSceneData, GameClock gameClock, EventsFacade eventsFacade)
+        private void Construct(DiContainer container)
         {
-            _gameClock = gameClock;
-            _gameSceneData = gameSceneData;
-            _eventsFacade = eventsFacade;
+            _gameClock = container.Resolve<GameClock>();
+            _gameSceneData = container.Resolve<GameSceneData>();
+            _eventsFacade = container.Resolve<EventsFacade>();
         }
+        
 
         private void OnEnable()
         {

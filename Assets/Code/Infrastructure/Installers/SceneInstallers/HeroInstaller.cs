@@ -50,6 +50,6 @@ namespace Code.Infrastructure.Installers.SceneInstallers
         }
 
         private Vector3 GetInitialPoint() => 
-            GameObject.FindGameObjectWithTag(Constants.InitialPointTag).transform.position;
+             GameObject.FindGameObjectWithTag(Constants.InitialPointTag).transform.position;
     }
 }

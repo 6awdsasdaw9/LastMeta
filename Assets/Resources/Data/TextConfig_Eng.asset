@@ -19,21 +19,21 @@ MonoBehaviour:
     NoteImage: {fileID: 21300000, guid: f58370575b8bca6479553e4bb52939e0, type: 3}
   HudNamings:
     NameMenuWindow: Menu
-    NameHeroInformationWindow: Hero
+    NameHeroWindow: 
     ArtifactsDescriptionText:
-    - Type: 0
+    - Type: 5
       Title: Right sock
       Description: Get dash
-    - Type: 1
+    - Type: 6
       Title: Left sock
       Description: Get duble jump
-    - Type: 2
+    - Type: 7
       Title: Hand
       Description: Hand fight
-    - Type: 3
+    - Type: 8
       Title: Gun
       Description: Get shooting
-    - Type: 4
+    - Type: 9
       Title: Vase
       Description: You can have black substance
     HeroParamsText:

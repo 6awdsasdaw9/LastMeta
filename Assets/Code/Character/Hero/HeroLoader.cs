@@ -73,16 +73,13 @@ namespace Code.Character.Hero
 
         private void MovementLoadData(SavedData savedData)
         {
-            if (savedData.SceneSpawnPoints.ContainsKey(CurrentLevel()))
-            {
-                var points = _scenesConfig.GetSceneParam(CurrentLevel())?.Points;
-                var point = points?.FirstOrDefault(p => p.ID == savedData.SceneSpawnPoints[CurrentLevel()].ID);
-                
-                if (point == null)
-                    return;
-                
-                transform.position = point.Position;
-            }
+            if (!savedData.SceneSpawnPoints.ContainsKey(CurrentLevel())) return;
+            
+            var points = _scenesConfig.GetSceneParam(CurrentLevel())?.Points;
+            var point = points?.FirstOrDefault(p => p.ID == savedData.SceneSpawnPoints[CurrentLevel()].ID);
+            if (point == null) return;
+            
+            transform.position = point.Position;
         }
 
         private void MovementSaveData(SavedData savedData)
@@ -97,17 +94,10 @@ namespace Code.Character.Hero
             }
         }
 
-        private void UpgradesLoadData(SavedData savedData)
-        {
-            _hero.Upgrade.Init(savedData.HeroUpgradesLevel);
-        }
+        private void UpgradesLoadData(SavedData savedData) => _hero.Upgrade.Init(savedData.HeroUpgradesLevel);
 
-        private void UpgradesSaveData(SavedData savedData)
-        {
-            savedData.HeroUpgradesLevel = _hero.Upgrade?.UpgradesLevel;
-        }
+        private void UpgradesSaveData(SavedData savedData) => savedData.HeroUpgradesLevel = _hero.Upgrade?.UpgradesLevel;
 
-        private string CurrentLevel() =>
-            SceneManager.GetActiveScene().name;
+        private string CurrentLevel() => SceneManager.GetActiveScene().name;
     }
 }

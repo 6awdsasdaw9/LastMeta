@@ -5,7 +5,6 @@ namespace Code.UI.HeadUpDisplay.Windows.HudWindows.MenuWindowElements.Hero.Artif
 {
     public class ArtifactsPanel: HudElement
     {
-
         public ArtifactIcon[] ArtifactIcons => _artifactIcons;
         [SerializeField] private ArtifactIcon[] _artifactIcons;
     }

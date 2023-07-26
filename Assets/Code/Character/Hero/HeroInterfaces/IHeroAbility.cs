@@ -1,4 +1,5 @@
 using Code.Character.Hero.Abilities;
+using Code.Logic.Objects.Items;
 
 namespace Code.Character.Hero.HeroInterfaces
 {
@@ -14,5 +15,6 @@ namespace Code.Character.Hero.HeroInterfaces
         void LevelUpHandAttack();
         void LevelUpGunAttack();
         void LevelUpSuperJump();
+        Ability GetAbility(ItemType itemType);
     }
 }
