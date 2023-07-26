@@ -9,15 +9,15 @@ using UnityEngine;
 
 namespace Code.Character.Hero.Abilities
 {
-    public class HeroDashAbility : Ability
+    public class HeroDashAbility : Ability, IEventSubscriber
     {
         private readonly InputService _inputService;
         private readonly IHero _hero;
         private Data _currentData;
-        
+
         private CancellationTokenSource _durationCts;
         private CancellationTokenSource _abilityCts;
-        
+
         private readonly Cooldown _durationCooldown;
         private readonly Cooldown _abilityCooldown;
 
@@ -25,6 +25,7 @@ namespace Code.Character.Hero.Abilities
                                    && !_hero.Stats.IsAttack
                                    && !_hero.Stats.IsCrouch
                                    && !_hero.Stats.IsBlockMove;
+
         public bool IsDash { get; private set; }
 
         public HeroDashAbility(IHero hero, InputService inputService)
@@ -33,10 +34,22 @@ namespace Code.Character.Hero.Abilities
 
             _hero = hero;
             _inputService = inputService;
-            
+
             _durationCooldown = new Cooldown();
             _abilityCooldown = new Cooldown();
-            _inputService.OnPressDash += StartApplying;
+            SubscribeToEvent(true);
+        }
+
+        public void SubscribeToEvent(bool flag)
+        {
+            if (flag)
+            {
+                _inputService.OnPressDash += StartApplying;
+            }
+            else
+            {
+                _inputService.OnPressDash -= StartApplying;
+            }
         }
 
         public void SetData(Data data, int level)
@@ -44,14 +57,12 @@ namespace Code.Character.Hero.Abilities
             _currentData = data;
             _durationCooldown.SetTime(_currentData.Duration);
             _abilityCooldown.SetTime(_currentData.Cooldown);
-        
             Level = level;
-            IsOpen = level > 0;
         }
 
         public override void StartApplying()
         {
-            if(!IsOpen || !_abilityCooldown.IsUp() || !_isCanDash) return;
+            if (!IsOpen || !_abilityCooldown.IsUp() || !_isCanDash || _hero?.Transform == null) return;
 
             IsDash = true;
             _hero.Movement?.BlockMovement();
@@ -65,31 +76,34 @@ namespace Code.Character.Hero.Abilities
         {
             _durationCts?.Cancel();
             _durationCts = new CancellationTokenSource();
-            
+
             _durationCooldown.ResetCooldown();
 
             var value = _currentData.SpeedBonus;
+            if (_hero.Transform.gameObject == null) return;
             _hero.Movement.SetBonusSpeed(value);
 
             var heroForward = _hero.Transform.localScale.x;
-         
+
             while (!_durationCooldown.UpdateCooldown())
             {
                 if (_durationCooldown.Normalize < 0.3f)
                 {
                     var sec = Time.deltaTime;
                     value -= sec;
+                    if (_hero.Transform.gameObject == null) break;
                     _hero.Movement.SetBonusSpeed(value);
                 }
+
                 if (_hero.Transform.localScale.x == -_inputService.GetDirection())
                 {
                     StopApplying();
                     break;
                 }
-                
+
                 await UniTask.DelayFrame(1, cancellationToken: _durationCts.Token);
             }
-            
+
             StopApplying();
             UpdateAbilityCooldown().Forget();
         }
@@ -106,7 +120,7 @@ namespace Code.Character.Hero.Abilities
             IsDash = false;
             _durationCts?.Cancel();
             _abilityCts?.Cancel();
-            
+
             if (_hero.Transform.gameObject == null) return;
 
             _hero.Animator.PlayDash(false);

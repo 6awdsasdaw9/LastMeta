@@ -36,7 +36,13 @@ namespace Code.Services.SaveServices
             CameraPosition = new PositionData();
             HeroHealth = new HealthData();
             HeroUpgradesLevel = new HeroUpgradesLevelData();
-            HeroAbilityLevel = new HeroAbilityLevelData();
+            HeroAbilityLevel = new HeroAbilityLevelData()
+            {
+                HandLevel = 0,
+                GunLevel =  -1,
+                DashLevel = -1,
+                SuperJumpLevel = -1
+            };
             ObjectsPosition = new Dictionary<string, Vector3Data>();
             DestroyedObjects = new Dictionary<string, bool>();
             Items = new Dictionary<string, bool>();

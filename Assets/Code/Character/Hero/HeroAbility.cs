@@ -3,7 +3,6 @@ using Code.Character.Hero.Abilities;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs.HeroConfigs;
 using Code.Data.GameData;
-using Code.Debugers;
 using Code.Logic.Objects.Items;
 using Code.Services.Input;
 using Sirenix.OdinInspector;
@@ -35,81 +34,75 @@ namespace Code.Character.Hero
 
         public void Init(HeroAbilityLevelData abilityLevelData)
         {
-            Logg.ColorLog($"HeroAbility: init {abilityLevelData.DashLevel}");
-
             AbilityLevelData = abilityLevelData;
             SetHandAttackData(AbilityLevelData.HandLevel);
             SetDashData(AbilityLevelData.DashLevel);
-            OpenGunAttack(AbilityLevelData.GunLevel);
-            OpenSuperJump();
+            SetGunAttackData(AbilityLevelData.GunLevel);
+            SetSuperJumpData(AbilityLevelData.SuperJumpLevel);
         }
 
+        private void OnDestroy()
+        {
+            DashAbility?.StopApplying();
+            DashAbility?.SubscribeToEvent(false);
+        }
+
+        #region Jump
+
+        [Button]
         public void LevelUpSuperJump()
         {
             AbilityLevelData.SuperJumpLevel++;
-
-            if (SuperJumpAbility is not { IsOpen: true })
-            {
-                OpenGunAttack(AbilityLevelData.SuperJumpLevel);
-                return;
-            }
-
-            SuperJumpAbility?.SetData(_heroConfig.AbilitiesParams.SuperJumpData[AbilityLevelData.SuperJumpLevel]);
+            SetSuperJumpData(AbilityLevelData.SuperJumpLevel);
         }
 
-        private void OpenSuperJump(int level = 0)
+        private void SetSuperJumpData(int level = 0)
         {
-            SuperJumpAbility = new HeroSuperJumpAbility();
+            SuperJumpAbility ??= new HeroSuperJumpAbility();
             level = CheckLevel<HeroSuperJumpAbility.Data>(level);
-            SuperJumpAbility.SetData(_heroConfig.AbilitiesParams.SuperJumpData[level]);
-   
+            SuperJumpAbility.SetData(_heroConfig.AbilitiesParams.SuperJumpData[level], level);
         }
+
+        #endregion
+
+
+        #region Gun
 
         [Button]
         public void LevelUpGunAttack()
         {
             AbilityLevelData.GunLevel++;
-
-            if (GunAttackAbility is not { IsOpen: true })
-            {
-                OpenGunAttack(AbilityLevelData.HandLevel);
-                return;
-            }
-
-            HandAttackAbility?.SetData(_heroConfig.AbilitiesParams.HandAttackLevelsData[AbilityLevelData.HandLevel]);
+            SetGunAttackData(AbilityLevelData.HandLevel);
         }
 
-        private void OpenGunAttack(int level)
+        private void SetGunAttackData(int level)
         {
-            if (level <= 0) return;
-            GunAttackAbility = new HeroGunAttackAbility(_hero, _inputService);
+            GunAttackAbility ??= new HeroGunAttackAbility(_hero, _inputService);
             level = CheckLevel<ShootingParams>(level);
-            GunAttackAbility.SetShootingParams(_heroConfig.AbilitiesParams.GunAttackLevelData[level]);
-            GunAttackAbility.OpenAbility();
+            GunAttackAbility.SetShootingParams(_heroConfig.AbilitiesParams.GunAttackLevelData[level], level);
         }
 
+        #endregion
+
+        #region Hand
 
         [Button]
         public void LevelUpHandAttack()
         {
-            if (HandAttackAbility is not { IsOpen: true })
-            {
-                SetHandAttackData(AbilityLevelData.HandLevel);
-                return;
-            }
-
             AbilityLevelData.HandLevel++;
-            HandAttackAbility?.SetData(_heroConfig.AbilitiesParams.HandAttackLevelsData[AbilityLevelData.HandLevel]);
+            SetHandAttackData(AbilityLevelData.HandLevel);
         }
 
         private void SetHandAttackData(int level = 0)
         {
-            if (level <= 0) return;
-            HandAttackAbility = new HeroHandAttackAbility(_hero, _inputService);
+            HandAttackAbility ??= new HeroHandAttackAbility(_hero, _inputService);
             level = CheckLevel<HeroHandAttackAbility.Data>(level);
-            HandAttackAbility.SetData(_heroConfig.AbilitiesParams.HandAttackLevelsData[level]);
+            HandAttackAbility.SetData(_heroConfig.AbilitiesParams.HandAttackLevelsData[level], level);
         }
 
+        #endregion
+
+        #region Dash
 
         [Button]
         public void LevelUpDash()
@@ -125,10 +118,8 @@ namespace Code.Character.Hero
             DashAbility.SetData(_heroConfig.AbilitiesParams.DashLevelsData[level], level);
         }
 
-        private void OnDisable()
-        {
-            DashAbility?.StopApplying();
-        }
+        #endregion
+
 
         public Ability GetAbility(ItemType itemType)
         {
@@ -146,13 +137,8 @@ namespace Code.Character.Hero
         private int CheckLevel<T>(int level) where T : AbilitySettings
         {
             var maxLevel = _heroConfig.AbilitiesParams.GetMaxLevel<T>();
-            if (level >= maxLevel)
-            {
-                level = maxLevel;
-            }
-            else if (level < 0)
-                level = 0;
-
+            if (level >= maxLevel) level = maxLevel;
+            else if (level < 0) level = 0;
             return level;
         }
     }

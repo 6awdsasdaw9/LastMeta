@@ -18,9 +18,10 @@ namespace Code.Character.Hero.Abilities
             Type = HeroAbilityType.Hand;
         }
 
-        public void SetData(Data data)
+        public void SetData(Data data, int level)
         {
             CurrentData = data;
+            Level = level;
         }
      
 

@@ -22,31 +22,23 @@ namespace Code.Character.Hero.Abilities
         public HeroGunAttackAbility(IHero hero, InputService inputService)
         {
             Type = HeroAbilityType.Gun;
-
             _hero = hero;
             _inputService = inputService;
-
             _abilityCooldown = new Cooldown();
+            _inputService.OnPressSkillButtonTwo += StartApplying;
         }
 
-        public void SetShootingParams(ShootingParams shootingParams)
+        public void SetShootingParams(ShootingParams shootingParams, int level)
         {
             ShootingParams = shootingParams;
             _hero.GunAttack.SetShootingParams(shootingParams);
             _abilityCooldown.SetTime(shootingParams.AttackCooldown);
         }
 
-        public  void OpenAbility()
-        {
-            if (IsOpen)
-                return;
-
-            IsOpen = true;
-            _inputService.OnPressSkillButtonTwo += StartApplying;
-        }
 
         public override void StartApplying()
         {
+            if (!IsOpen) return;
             _hero.ModeToggle.SetGunMode();
         }
 

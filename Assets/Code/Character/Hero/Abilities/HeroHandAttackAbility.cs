@@ -24,31 +24,24 @@ namespace Code.Character.Hero.Abilities
         public HeroHandAttackAbility(IHero hero, InputService inputService)
         {
             Type = HeroAbilityType.Hand;
-
             _hero = hero;
-            _inputService = inputService;
-
             _abilityCooldown = new Cooldown();
+            
+            _inputService = inputService;
+            _inputService.OnPressSkillButtonOne += StartApplying;
         }
 
-        public void SetData(Data data)
+        public void SetData(Data data, int level)
         {
              CurrentData = data;
+             Level = level;
             _abilityCooldown.SetTime(data.Cooldown);
             _hero.HandAttack.SetDamageParam(data.DamageParam);
-        }
-        public void OpenAbility()
-        {
-            if (IsOpen)
-                return;
-
-            IsOpen = true;
-            _inputService.OnPressSkillButtonOne += StartApplying;
         }
 
         public override void StartApplying()
         {
-            Logg.ColorLog("HeroHandAttackAbility: StartApplying");
+            if(!IsOpen)return;
             _hero.ModeToggle.SetDefaultMode();
         }
 

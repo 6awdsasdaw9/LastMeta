@@ -37,7 +37,7 @@ namespace Code.Audio
             InitSnapshot(scenesConfig.PauseSnapshot.Path);
             InitBus();
             InitNightParam();
-            InitNightParam();
+            InitHeroHealthParam();
         }
         
         #region Set Audio EventReference
