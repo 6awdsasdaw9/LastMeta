@@ -1,4 +1,3 @@
-using Code.Audio.AudioPath;
 using Code.Data.Configs;
 using Code.Data.Configs.HeroConfigs;
 using Code.Data.Configs.TextsConfigs;
@@ -13,7 +12,6 @@ namespace Code.Infrastructure.Installers.ProjectInstaller
         public ScenesConfig ScenesConfig;
         public HeroConfig HeroConfig;
         public AssetsConfig AssetsConfig;
-        public SceneAudioPath SceneAudioPath;
         public HudSettings HudSettings;
         public ItemsConfig ItemsConfig;
    
@@ -24,7 +22,6 @@ namespace Code.Infrastructure.Installers.ProjectInstaller
             Container.BindInstance(ScenesConfig);
             Container.BindInstance(HeroConfig);
             Container.BindInstance(AssetsConfig);
-            Container.BindInstance(SceneAudioPath);
             Container.BindInstance(HudSettings);
             Container.BindInstance(ItemsConfig);
             Container.BindInstance(TextConfig_Eng);

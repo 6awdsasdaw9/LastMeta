@@ -14,7 +14,11 @@ namespace Code.UI.HeadUpDisplay.Adapters
         private readonly HudFacade _hudFacade;
         private readonly EventsFacade _eventsFacade;
 
-        public HeroArtefactsPanelAdapter(IHero hero, HudFacade hudFacade, EventsFacade eventsFacade, SavedDataStorage savedDataStorage)
+        public HeroArtefactsPanelAdapter(
+            IHero hero, 
+            HudFacade hudFacade, 
+            EventsFacade eventsFacade, 
+            SavedDataStorage savedDataStorage)
         {
             _hero = hero;
             _hudFacade = hudFacade;
@@ -23,10 +27,6 @@ namespace Code.UI.HeadUpDisplay.Adapters
             SubscribeToEvent(true);
         }
 
-        public void RefsreshArtefactLevel()
-        {
-            
-        }
 
         public void SubscribeToEvent(bool flag)
         {
@@ -36,9 +36,8 @@ namespace Code.UI.HeadUpDisplay.Adapters
             }
             else
             {
-                
+                _eventsFacade.ItemEvents.OnPickUpItem -= OnPickUpItem;
             }
-                
         }
 
         private void OnPickUpItem(ItemData item)
