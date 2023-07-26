@@ -20,7 +20,6 @@ namespace Code.Infrastructure.StateMachine.States
         private readonly LoadingCurtain _loadingCurtain;
 
         private readonly SceneAudioController _sceneAudioController;
-        private readonly SceneAudioPath _sceneAudioPath;
         private readonly SavedService _savedService;
         private readonly GameSceneData _gameSceneData;
         private readonly EventsFacade _eventsFacade;

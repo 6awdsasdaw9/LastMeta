@@ -34,9 +34,13 @@ namespace Code.Services.SaveServices
         {
             LoadData();
 
-            foreach (ISavedData dataPersistenceObj in _dataStorage.Data)
+            foreach (ISavedData savedData in _dataStorage.DataSaved)
             {
-                dataPersistenceObj.LoadData(SavedData);
+                savedData.LoadData(SavedData);
+            }
+            foreach (ISavedDataReader dataReader in _dataStorage.DataReaders)
+            {
+                dataReader.LoadData(SavedData);
             }
         }
 
@@ -67,9 +71,9 @@ namespace Code.Services.SaveServices
             }
 
             SavedData.CurrentScene = SceneManager.GetActiveScene().name;
-            foreach (ISavedData dataPersistenceObj in _dataStorage.Data)
+            foreach (ISavedData savedData in _dataStorage.DataSaved)
             {
-                dataPersistenceObj.SaveData(SavedData);
+                savedData.SaveData(SavedData);
             }
             _dataHandler.Save(SavedData);
         }

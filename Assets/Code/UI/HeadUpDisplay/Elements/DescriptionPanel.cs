@@ -1,5 +1,6 @@
 using Code.Services.LanguageLocalization;
 using Code.UI.HeadUpDisplay.Windows.HudElementsAnimation;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
@@ -9,7 +10,9 @@ namespace Code.UI.HeadUpDisplay.HudElements
     {
         [SerializeField] private TextMeshProUGUI _titleText;
         [SerializeField] private TextMeshProUGUI _descriptionText;
-
+        [SerializeField] private TextMeshProUGUI _levelText;
+        [SerializeField] private RectTransform _backgroundImage;
+        
         [SerializeField] private AlfaHudElementAnimation _animation;
 
         private void Awake()
@@ -37,6 +40,17 @@ namespace Code.UI.HeadUpDisplay.HudElements
         public void SetDescription(string description)
         {
             _descriptionText.SetText(description);
+        }
+
+        public void SetLevel(string level)
+        {
+            _levelText.SetText(level);
+        }
+
+        [Button]
+        private void FlipDestionPanel()
+        {
+            _backgroundImage.transform.localScale = new Vector3(-_backgroundImage.transform.localScale.x, 1, 1);
         }
     }
 }

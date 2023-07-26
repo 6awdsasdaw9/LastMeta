@@ -2,25 +2,21 @@ using System;
 using System.Linq;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs.HeroConfigs;
-using Code.Infrastructure.GlobalEvents;
 using Code.UI.HeadUpDisplay.Windows.HudWindows.MenuWindowElements.Hero;
 using UnityEngine;
 
 namespace Code.UI.HeadUpDisplay.Adapters
 {
-    public class HeroPanelAdapter
+    public class HeroParamPanelAdapter
     {
-        private readonly EventsFacade _eventsFacade;
-        private readonly HudFacade _hudFacade;
         private readonly IHero _hero;
         private readonly HeroPanel _heroPanel;
 
-        public HeroPanelAdapter(EventsFacade eventsFacade, HudFacade hudFacade, IHero hero)
+        public HeroParamPanelAdapter(HudFacade hudFacade, IHero hero)
         {
-            _eventsFacade = eventsFacade;
-            _hudFacade = hudFacade;
             _hero = hero;
             _heroPanel = hudFacade.Menu.Window.Hero;
+            SetParamInIcons();
         }
 
         private void SetParamInIcons()

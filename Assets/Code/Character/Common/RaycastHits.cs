@@ -16,7 +16,7 @@ namespace Code.Character.Common
         public RaycastHits(Transform owner,string layerName, float hitRadius =1, int hitsSize =1, float hitOffsetX = 0.2f)
         {
             _owner = owner;
-            _layerMask = 1 << LayerMask.NameToLayer(layerName);
+            _layerMask =  LayerMask.GetMask(layerName);
             _hitRadius = hitRadius;
             _hits = new Collider[hitsSize];
             _hitOffsetX = hitOffsetX;

@@ -40,20 +40,17 @@ namespace Code.Character.Enemies
         private void Update()
         {
             _attackCooldown.UpdateCooldown();
-            if (CanAttack())
-                StartAttack();
+            if (CanAttack()) StartAttack();
         }
 
         private void OnDisable()
         {
-            if(_isAttacking)
-                _hero.Movement.SetSupportVelocity(Vector2.zero);
+            if(_isAttacking) _hero.Movement.SetSupportVelocity(Vector2.zero);
         }
 
         private void StartAttack()
         {
-            if (_isAttacking)
-                return;
+            if (_isAttacking) return;
 
             _isAttacking = true;
             _animator.PlayAttack();
@@ -92,7 +89,7 @@ namespace Code.Character.Enemies
 
         private bool Hit(out Collider hit)
         {
-            int hitCount = Physics.OverlapSphereNonAlloc(StartPoint(), _cleavage, _hits, _layerMask);
+            var hitCount = Physics.OverlapSphereNonAlloc(StartPoint(), _cleavage, _hits, _layerMask);
             hit = _hits.FirstOrDefault();
             return hitCount > 0;
         }

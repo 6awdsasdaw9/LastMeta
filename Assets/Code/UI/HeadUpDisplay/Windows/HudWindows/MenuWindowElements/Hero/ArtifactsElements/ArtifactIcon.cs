@@ -17,11 +17,6 @@ namespace Code.UI.HeadUpDisplay.Windows.HudWindows.MenuWindowElements.Hero.Artif
             _activeImage.SetActive(true);
         }
 
-        public void SetDescription(string title)
-        {
-            
-        }
-
     }
     
     

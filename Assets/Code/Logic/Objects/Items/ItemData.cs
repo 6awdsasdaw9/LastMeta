@@ -1,4 +1,5 @@
 using System;
+using FMODUnity;
 using UnityEngine;
 
 namespace Code.Logic.Objects.Items
@@ -11,5 +12,6 @@ namespace Code.Logic.Objects.Items
         public Sprite Sprite;
         public Sprite Icon;
         public RuntimeAnimatorController AnimatorController;
+        public EventReference AudioEvent;
     }
 }

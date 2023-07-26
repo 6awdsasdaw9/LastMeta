@@ -53,7 +53,7 @@ namespace Code.Services.LanguageLocalization
                 var data = textConfig.HudNamings.ArtifactsDescriptionText.FirstOrDefault(a =>
                     a.Type == icon.Type);
 
-                if (data == null)
+                if (data == null || icon.DescriptionPanel == null)
                     continue;
                 icon.DescriptionPanel.SetTitle(data.Title);
                 icon.DescriptionPanel.SetDescription(data.Description);

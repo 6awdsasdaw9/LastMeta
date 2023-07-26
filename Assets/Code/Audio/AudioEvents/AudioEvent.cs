@@ -9,7 +9,6 @@ namespace Code.Audio.AudioEvents
     {
         [SerializeField] private EventReference _eventReference;
         [SerializeField] private bool _playOnAwake;
-
         private void OnEnable()
         {
             if (_playOnAwake)
@@ -18,6 +17,10 @@ namespace Code.Audio.AudioEvents
             }
         }
 
+        public void SetEventReference(EventReference eventReference)
+        {
+            _eventReference = eventReference;
+        }
         public void PlayAudioEvent()
         {
             if (_eventReference.IsNull)

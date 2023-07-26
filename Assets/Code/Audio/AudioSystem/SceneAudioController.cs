@@ -24,6 +24,8 @@ namespace Code.Audio
         
         private PARAMETER_DESCRIPTION _pauseParameterDescription;
         private PARAMETER_ID _pauseParameterID;
+        private PARAMETER_DESCRIPTION _heroHealthtParameterDescription;
+        private PARAMETER_ID _heroHealthParameterID;
 
         private Bus _music_Volume;
         private Bus _effect_Volume;
@@ -34,7 +36,8 @@ namespace Code.Audio
         {
             InitSnapshot(scenesConfig.PauseSnapshot.Path);
             InitBus();
-            SetNightParam();
+            InitNightParam();
+            InitNightParam();
         }
         
         #region Set Audio EventReference
@@ -105,20 +108,33 @@ namespace Code.Audio
         #endregion
         
         #region Param
-        private void SetNightParam()
+        
+        private void InitNightParam()
         {
             const string nameParam = "DayNight";
             RuntimeManager.StudioSystem.getParameterDescriptionByName(nameParam, out _dayNightParameterDescription);
             _dayNightParameterID = _dayNightParameterDescription.id;
         }
         
-        //calue = 0 - 1
+        //value = 0 - 1
         public void ChangeNightParam(bool isNight)
         {
             var value = isNight ? 1 : 0;
             RuntimeManager.StudioSystem.setParameterByID(_dayNightParameterID, value);
         }
 
+        private void InitHeroHealthParam()
+        {
+            const string nameParam = "HeroHealth";
+            RuntimeManager.StudioSystem.getParameterDescriptionByName(nameParam, out _heroHealthtParameterDescription);
+            _heroHealthParameterID = _heroHealthtParameterDescription.id;
+        }
+
+        public void ChancgeHeroHealthParam(float normalize)
+        {
+            RuntimeManager.StudioSystem.setParameterByID(_heroHealthParameterID, normalize);
+        }
+        
         #endregion
 
         #region Snapshot
@@ -126,6 +142,7 @@ namespace Code.Audio
         private EventInstance _pauseSnapshotInstance;
         private bool _isActivePauseSnapshot;
         private bool _isInit;
+
 
         private void InitSnapshot(string pauseSnapshot)
         {
@@ -152,6 +169,7 @@ namespace Code.Audio
         }
 
         #endregion
+        
         #region Bus
 
         private void InitBus()
@@ -167,7 +185,6 @@ namespace Code.Audio
         public  void ChangeMasterVolume(float volume) => _master_Volume.setVolume(volume);
 
         #endregion
-
-       
+        
     }
 }

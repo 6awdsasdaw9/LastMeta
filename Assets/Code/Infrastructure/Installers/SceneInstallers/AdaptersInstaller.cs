@@ -20,7 +20,7 @@ namespace Code.Infrastructure.Installers.SceneInstallers
 
         private void BindAudioAdapter()
         {
-            Container.Bind<SceneAudioAdapter>().AsSingle().NonLazy();
+            Container.Bind<SceneAudioParamAdapter>().AsSingle().NonLazy();
         }
 
         private void BindHudAdapters()
@@ -32,7 +32,8 @@ namespace Code.Infrastructure.Installers.SceneInstallers
             
             Container.BindInterfacesAndSelfTo<TimeAdapter>().AsSingle().NonLazy();;
             Container.Bind<DialogueWindowAdapter>().AsSingle().NonLazy();
-            Container.Bind<HeroPanelAdapter>().AsSingle().NonLazy();
+            Container.Bind<HeroArtefactsPanelAdapter>().AsSingle().NonLazy();
+           // Container.Bind<HeroParamPanelAdapter>().AsSingle().NonLazy();
         }
 
         private void BindHeroStateAdapter()
