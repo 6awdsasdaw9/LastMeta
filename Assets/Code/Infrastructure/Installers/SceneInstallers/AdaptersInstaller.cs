@@ -20,7 +20,7 @@ namespace Code.Infrastructure.Installers.SceneInstallers
 
         private void BindAudioAdapter()
         {
-            Container.Bind<SceneAudioAdapter>().AsSingle().NonLazy();
+            Container.Bind<SceneAudioParamAdapter>().AsSingle().NonLazy();
         }
 
         private void BindHudAdapters()
