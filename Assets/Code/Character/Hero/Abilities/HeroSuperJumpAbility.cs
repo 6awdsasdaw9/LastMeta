@@ -22,14 +22,7 @@ namespace Code.Character.Hero.Abilities
         {
             CurrentData = data;
         }
-        public override void OpenAbility()
-        {
-            if (IsOpen)
-                return;
-
-            IsOpen = true;
-          
-        }
+     
 
         public override void StartApplying()
         {

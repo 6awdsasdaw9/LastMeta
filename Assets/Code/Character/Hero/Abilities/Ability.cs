@@ -8,7 +8,6 @@ namespace Code.Character.Hero.Abilities
         public int Level { get; protected set; }
         public float CooldownTime { get; protected set; }
 
-        public abstract void OpenAbility();
 
         public abstract void StartApplying();
         public abstract void StopApplying();

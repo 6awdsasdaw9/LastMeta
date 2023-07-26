@@ -32,14 +32,14 @@ namespace Code.Character.Hero
             _heroConfig = heroConfig;
             _hero = GetComponent<IHero>();
         }
-        
+
         public void Init(HeroAbilityLevelData abilityLevelData)
         {
             Logg.ColorLog($"HeroAbility: init {abilityLevelData.DashLevel}");
 
             AbilityLevelData = abilityLevelData;
-            OpenHandAttack(AbilityLevelData.HandLevel);
-            OpenDash(AbilityLevelData.DashLevel);
+            SetHandAttackData(AbilityLevelData.HandLevel);
+            SetDashData(AbilityLevelData.DashLevel);
             OpenGunAttack(AbilityLevelData.GunLevel);
             OpenSuperJump();
         }
@@ -47,7 +47,7 @@ namespace Code.Character.Hero
         public void LevelUpSuperJump()
         {
             AbilityLevelData.SuperJumpLevel++;
-            
+
             if (SuperJumpAbility is not { IsOpen: true })
             {
                 OpenGunAttack(AbilityLevelData.SuperJumpLevel);
@@ -62,13 +62,14 @@ namespace Code.Character.Hero
             SuperJumpAbility = new HeroSuperJumpAbility();
             level = CheckLevel<HeroSuperJumpAbility.Data>(level);
             SuperJumpAbility.SetData(_heroConfig.AbilitiesParams.SuperJumpData[level]);
-            SuperJumpAbility.OpenAbility();
+   
         }
+
         [Button]
         public void LevelUpGunAttack()
         {
             AbilityLevelData.GunLevel++;
-            
+
             if (GunAttackAbility is not { IsOpen: true })
             {
                 OpenGunAttack(AbilityLevelData.HandLevel);
@@ -77,9 +78,10 @@ namespace Code.Character.Hero
 
             HandAttackAbility?.SetData(_heroConfig.AbilitiesParams.HandAttackLevelsData[AbilityLevelData.HandLevel]);
         }
+
         private void OpenGunAttack(int level)
         {
-            if(level <= 0)return;
+            if (level <= 0) return;
             GunAttackAbility = new HeroGunAttackAbility(_hero, _inputService);
             level = CheckLevel<ShootingParams>(level);
             GunAttackAbility.SetShootingParams(_heroConfig.AbilitiesParams.GunAttackLevelData[level]);
@@ -92,20 +94,20 @@ namespace Code.Character.Hero
         {
             if (HandAttackAbility is not { IsOpen: true })
             {
-                OpenHandAttack(AbilityLevelData.HandLevel);
+                SetHandAttackData(AbilityLevelData.HandLevel);
                 return;
             }
 
             AbilityLevelData.HandLevel++;
             HandAttackAbility?.SetData(_heroConfig.AbilitiesParams.HandAttackLevelsData[AbilityLevelData.HandLevel]);
         }
-        private void OpenHandAttack(int level = 0)
+
+        private void SetHandAttackData(int level = 0)
         {
-            if(level <= 0)return;
+            if (level <= 0) return;
             HandAttackAbility = new HeroHandAttackAbility(_hero, _inputService);
             level = CheckLevel<HeroHandAttackAbility.Data>(level);
             HandAttackAbility.SetData(_heroConfig.AbilitiesParams.HandAttackLevelsData[level]);
-            HandAttackAbility.OpenAbility();
         }
 
 
@@ -113,22 +115,14 @@ namespace Code.Character.Hero
         public void LevelUpDash()
         {
             AbilityLevelData.DashLevel++;
-            
-            if (DashAbility is not { IsOpen: true } )
-            {
-                Logg.ColorLog("open dash");
-                OpenDash(AbilityLevelData.DashLevel);
-                return;
-            }
-            DashAbility.SetData(_heroConfig.AbilitiesParams.DashLevelsData[AbilityLevelData.DashLevel],AbilityLevelData.DashLevel);
+            SetDashData(AbilityLevelData.DashLevel);
         }
 
-        private void OpenDash(int level = 0)
+        private void SetDashData(int level = 0)
         {
             DashAbility ??= new HeroDashAbility(_hero, _inputService);
             level = CheckLevel<HeroDashAbility.Data>(level);
             DashAbility.SetData(_heroConfig.AbilitiesParams.DashLevelsData[level], level);
-            DashAbility.OpenAbility();
         }
 
         private void OnDisable()
@@ -148,6 +142,7 @@ namespace Code.Character.Hero
                 _ => null
             };
         }
+
         private int CheckLevel<T>(int level) where T : AbilitySettings
         {
             var maxLevel = _heroConfig.AbilitiesParams.GetMaxLevel<T>();
@@ -170,5 +165,4 @@ namespace Code.Character.Hero
         public int GunLevel;
         public int SuperJumpLevel;
     }
-    
 }

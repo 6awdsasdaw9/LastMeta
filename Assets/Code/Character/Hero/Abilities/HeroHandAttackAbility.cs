@@ -37,7 +37,7 @@ namespace Code.Character.Hero.Abilities
             _abilityCooldown.SetTime(data.Cooldown);
             _hero.HandAttack.SetDamageParam(data.DamageParam);
         }
-        public override void OpenAbility()
+        public void OpenAbility()
         {
             if (IsOpen)
                 return;

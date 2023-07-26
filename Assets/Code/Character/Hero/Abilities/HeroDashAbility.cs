@@ -36,14 +36,6 @@ namespace Code.Character.Hero.Abilities
             
             _durationCooldown = new Cooldown();
             _abilityCooldown = new Cooldown();
-        }
-
-        public override void OpenAbility()
-        {
-            if (IsOpen)
-                return;
-
-            IsOpen = true;
             _inputService.OnPressDash += StartApplying;
         }
 
@@ -52,13 +44,14 @@ namespace Code.Character.Hero.Abilities
             _currentData = data;
             _durationCooldown.SetTime(_currentData.Duration);
             _abilityCooldown.SetTime(_currentData.Cooldown);
+        
             Level = level;
+            IsOpen = level > 0;
         }
 
         public override void StartApplying()
         {
-            if(!_abilityCooldown.IsUp() || !_isCanDash)
-                return;
+            if(!IsOpen || !_abilityCooldown.IsUp() || !_isCanDash) return;
 
             IsDash = true;
             _hero.Movement?.BlockMovement();
@@ -76,7 +69,7 @@ namespace Code.Character.Hero.Abilities
             _durationCooldown.ResetCooldown();
 
             var value = _currentData.SpeedBonus;
-            _hero.Movement?.SetBonusSpeed(value);
+            _hero.Movement.SetBonusSpeed(value);
 
             var heroForward = _hero.Transform.localScale.x;
          
@@ -86,7 +79,7 @@ namespace Code.Character.Hero.Abilities
                 {
                     var sec = Time.deltaTime;
                     value -= sec;
-                    _hero.Movement?.SetBonusSpeed(value);
+                    _hero.Movement.SetBonusSpeed(value);
                 }
                 if (_hero.Transform.localScale.x == -_inputService.GetDirection())
                 {
@@ -114,12 +107,11 @@ namespace Code.Character.Hero.Abilities
             _durationCts?.Cancel();
             _abilityCts?.Cancel();
             
-            if (_hero.Transform.gameObject == null)
-                return;
+            if (_hero.Transform.gameObject == null) return;
 
-            _hero.Animator?.PlayDash(false);
-            _hero.Movement?.SetBonusSpeed(0);
-            _hero.Movement?.UnBlockMovement();
+            _hero.Animator.PlayDash(false);
+            _hero.Movement.SetBonusSpeed(0);
+            _hero.Movement.UnBlockMovement();
         }
 
         [Serializable]
