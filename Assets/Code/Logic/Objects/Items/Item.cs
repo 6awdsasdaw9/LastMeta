@@ -1,4 +1,5 @@
 using System;
+using Code.Audio.AudioEvents;
 using Code.Infrastructure.GlobalEvents;
 using Code.Logic.Objects.Animations;
 using Code.Logic.Objects.Items.ItemBehavious;
@@ -14,7 +15,8 @@ namespace Code.Logic.Objects.Items
 
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private SphereCollider _trigger;
-        
+
+        private AudioEvent _audioEvent;
         private ItemBehaviour _behaviour;
         public event Action<Item> OnPickUpItem;
 
@@ -28,6 +30,7 @@ namespace Code.Logic.Objects.Items
         private void OnTriggerEnter(Collider other)
         {
             _behaviour?.PickUp(() => OnPickUpItem?.Invoke(this));
+            _audioEvent.PlayAudioEvent();
             _trigger.enabled = false;
         }
 
@@ -35,6 +38,7 @@ namespace Code.Logic.Objects.Items
         {
             Data = itemData;
             _animator.SetAnimatorController(Data.AnimatorController);
+            _audioEvent.SetEventReference(itemData.AudioEvent);
             _spriteRenderer.sprite = Data.Sprite;
         }
         
