@@ -16,7 +16,7 @@ namespace Code.Logic.Objects.Items
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private SphereCollider _trigger;
 
-        private AudioEvent _audioEvent;
+        private readonly AudioEvent _audioEvent = new();
         private ItemBehaviour _behaviour;
         public event Action<Item> OnPickUpItem;
 
