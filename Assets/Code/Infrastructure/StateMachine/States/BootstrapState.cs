@@ -33,7 +33,6 @@ namespace Code.Infrastructure.StateMachine.States
         private void EnterLoadLevel()
         {
             _savedService.LoadData();
-      
             _gameStateMachine.Enter<LoadLevelState, string>(_savedService.SavedData.CurrentScene);
         }
     }

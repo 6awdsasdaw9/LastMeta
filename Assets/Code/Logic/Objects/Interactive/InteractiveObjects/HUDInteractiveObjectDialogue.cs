@@ -17,14 +17,17 @@ namespace Code.Logic.Objects.Interactive.InteractiveObjects
         private bool _isWindowNull;
 
         [Inject]
-        private void Construct(HudFacade hudFacade)
+        private void Construct(DiContainer container)
         {
+            var hudFacade = container.Resolve<HudFacade>();
             hudFacade.InteractiveObjectWindows
                 .FirstOrDefault(w => w.Type == Type)?
                 .InteractiveObjectWindow
                 .TryGetComponent(out _presentationWindow);
 
             _isWindowNull = _presentationWindow == null;
+            
+            container.Resolve<EventSubsribersStorage>().Add(this);
         }
 
         private void OnEnable()

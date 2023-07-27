@@ -33,10 +33,11 @@ namespace Code.Services.GameTime.LightingToggle
         private float _animationDuration => _gameClock.DayTimeInSeconds * 0.3f * _durationMultiplayer.GetRandom();
 
         [Inject]
-        private void Construct(GameClock gameClock, EventsFacade eventsFacade)
+        private void Construct(DiContainer container)
         {
-            _gameClock = gameClock;
-            _eventsFacade = eventsFacade;
+            _gameClock = container.Resolve<GameClock>();
+            _eventsFacade = container.Resolve<EventsFacade>();
+            container.Resolve<EventSubsribersStorage>().Add(this);
         }
 
         private void OnEnable()

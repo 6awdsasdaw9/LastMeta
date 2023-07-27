@@ -18,6 +18,7 @@ namespace Code.Character.Hero
         private IHero _hero;
         private HeroConfig _heroConfig;
         private InputService _inputService;
+        private DiContainer _container;
 
         public HeroDashAbility DashAbility { get; private set; }
         public HeroHandAttackAbility HandAttackAbility { get; private set; }
@@ -25,10 +26,11 @@ namespace Code.Character.Hero
         public HeroSuperJumpAbility SuperJumpAbility { get; private set; }
 
         [Inject]
-        private void Construct(InputService inputService, HeroConfig heroConfig)
+        private void Construct(DiContainer container)
         {
-            _inputService = inputService;
-            _heroConfig = heroConfig;
+            _container = container;
+            _inputService = container.Resolve<InputService>();
+            _heroConfig = container.Resolve<HeroConfig>();
             _hero = GetComponent<IHero>();
         }
 
@@ -113,7 +115,7 @@ namespace Code.Character.Hero
 
         private void SetDashData(int level = 0)
         {
-            DashAbility ??= new HeroDashAbility(_hero, _inputService);
+            DashAbility ??= new HeroDashAbility(_container);
             level = CheckLevel<HeroDashAbility.Data>(level);
             DashAbility.SetData(_heroConfig.AbilitiesParams.DashLevelsData[level], level);
         }

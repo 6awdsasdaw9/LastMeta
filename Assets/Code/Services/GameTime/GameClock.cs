@@ -29,12 +29,11 @@ namespace Code.Services.GameTime
                                      && CurrentTime.Seconds < _nightTime;
 
         public bool IsNightTime => CurrentTime.Seconds > _nightTime;
-
-
-        public GameClock(GameSceneData gameSceneData, EventsFacade eventsFacade)
+        
+        public GameClock(DiContainer container)
         {
-            _eventsFacade = eventsFacade;
-            _gameSceneData = gameSceneData;
+            _eventsFacade = container.Resolve<EventsFacade>();
+            _gameSceneData = container.Resolve<GameSceneData>();
             SubscribeToEvent(true);
         }
 
@@ -91,7 +90,6 @@ namespace Code.Services.GameTime
 
             _eveningTime = Mathf.Lerp(0, _dayTimeInSeconds, eveningParam.Duration);
             _nightTime = Mathf.Lerp(0, _dayTimeInSeconds, nightParam.Duration);
-            Logg.ColorLog($"Duration = {_dayTimeInSeconds}, evening = {_eveningTime}, night = {_nightTime}");
         }
 
         private void ClockMovement()
@@ -106,11 +104,7 @@ namespace Code.Services.GameTime
 
         public void LoadData(SavedData savedData)
         {
-            Logg.ColorLog($"savedData.TimeData == null {savedData.TimeData == null}");
-            if (savedData.TimeData == null)
-                return;
-            Logg.ColorLog(
-                $"s {savedData.TimeData.Seconds} d {savedData.TimeData.Day}  tod{savedData.TimeData.TimeOfDay} ");
+            if (savedData.TimeData == null) return;
             CurrentTime = new TimeData()
             {
                 TimeOfDay = savedData.TimeData.TimeOfDay,

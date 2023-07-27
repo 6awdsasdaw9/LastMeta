@@ -1,5 +1,7 @@
 using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
+using UnityEngine.Rendering;
+using Zenject;
 
 namespace Code.Services.Adapters
 {
@@ -8,13 +10,15 @@ namespace Code.Services.Adapters
         private readonly MovementLimiter _movementLimiter;
         private readonly EventsFacade _eventsFacade;
 
-        public MovementLimiterAdapter(MovementLimiter movementLimiter, EventsFacade eventsFacade)
+        public MovementLimiterAdapter(DiContainer container)
         {
-            _movementLimiter = movementLimiter;
-            _eventsFacade = eventsFacade;
+            _movementLimiter = container.Resolve<MovementLimiter>();
+            _eventsFacade = container.Resolve<EventsFacade>();
+            
+            container.Resolve<EventSubsribersStorage>().Add(this);
+            
             SubscribeToEvent(true);
         }
-
 
         public void SubscribeToEvent(bool flag)
         {
@@ -22,6 +26,11 @@ namespace Code.Services.Adapters
             {
                 _eventsFacade.HudEvents.OnCloseLastWindow += OnCloseLastWindow;
                 _eventsFacade.HudEvents.OnOpenFirstWindow += OnOpenFirstWindow;
+            }
+            else
+            {
+                _eventsFacade.HudEvents.OnCloseLastWindow -= OnCloseLastWindow;
+                _eventsFacade.HudEvents.OnOpenFirstWindow -= OnOpenFirstWindow;
             }
         }
 

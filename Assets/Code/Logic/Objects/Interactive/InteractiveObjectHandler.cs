@@ -29,13 +29,15 @@ namespace Code.Logic.Objects.Interactive
         private float _currentCooldown;
 
         [Inject]
-        private void Construct(InputService inputService, HudSettings hudSettings)
+        private void Construct(DiContainer container)
         {
-            _input = inputService;
+            _input = container.Resolve<InputService>();
+            container.Resolve<EventSubsribersStorage>().Add(this);
+            var hudSettings = container.Resolve<HudSettings>();
 
-            _cooldown = new Cooldown();
             _cooldown.SetTime(hudSettings.InteractiveUIParams.InteractiveCooldownTime);
-
+            _cooldown = new Cooldown();
+            
             _interactiveObject = GetComponent<Interactivity>();
         }
 
@@ -55,8 +57,7 @@ namespace Code.Logic.Objects.Interactive
 
         private void Update()
         {
-            if (_interactiveObject == null)
-                return;
+            if (_interactiveObject == null) return;
 
             if (_input.GetInteractPressed() && IsReady())
             {
@@ -80,7 +81,19 @@ namespace Code.Logic.Objects.Interactive
             _input.OnPressEsc -= OnPressEsc;
             HideIcon();
         }
-
+        
+        public void SubscribeToEvent(bool flag)
+        {
+            if (flag)
+            {
+                _interactiveObject.OnEndInteractive += StopInteractive;
+            }
+            else
+            {
+                _interactiveObject.OnEndInteractive -= StopInteractive;
+            }
+        }
+        
         private bool IsReady() => _cooldown.IsUp() && !_interactiveObject.OnAnimationProcess;
 
         private void StartInteractive()
@@ -123,16 +136,6 @@ namespace Code.Logic.Objects.Interactive
         private void HideIcon() =>
             _iconAnimation.PlayVoid();
 
-        public void SubscribeToEvent(bool flag)
-        {
-            if (flag)
-            {
-                _interactiveObject.OnEndInteractive += StopInteractive;
-            }
-            else
-            {
-                _interactiveObject.OnEndInteractive -= StopInteractive;
-            }
-        }
+
     }
 }

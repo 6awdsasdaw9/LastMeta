@@ -1,10 +1,10 @@
 using System.Linq;
 using Code.Character.Hero.HeroInterfaces;
-using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
 using Code.Logic.Objects.Items;
 using Code.Services;
 using Code.Services.SaveServices;
+using Zenject;
 
 namespace Code.UI.HeadUpDisplay.Adapters
 {
@@ -14,16 +14,15 @@ namespace Code.UI.HeadUpDisplay.Adapters
         private readonly HudFacade _hudFacade;
         private readonly EventsFacade _eventsFacade;
 
-        public HeroArtefactsPanelAdapter(
-            IHero hero, 
-            HudFacade hudFacade, 
-            EventsFacade eventsFacade, 
-            SavedDataStorage savedDataStorage)
+        public HeroArtefactsPanelAdapter(DiContainer container)
         {
-            _hero = hero;
-            _hudFacade = hudFacade;
-            _eventsFacade = eventsFacade;
-            savedDataStorage.Add(this);
+            _hero = container.Resolve<IHero>();
+            _hudFacade = container.Resolve<HudFacade>();
+            _eventsFacade = container.Resolve<EventsFacade>();
+            
+            container.Resolve<SavedDataStorage>().Add(this);
+            container.Resolve<EventSubsribersStorage>().Add(this);
+            
             SubscribeToEvent(true);
         }
 
@@ -42,17 +41,13 @@ namespace Code.UI.HeadUpDisplay.Adapters
 
         private void OnPickUpItem(ItemData item)
         {
-            Logg.ColorLog($"HeroArtefactsPanelAdapter: OnPickUpItem {item.Type}");
             var icons = _hudFacade.Menu.Window.Hero.ArtifactsPanel.ArtifactIcons;
             
             var ability = _hero.Ability.GetAbility(item.Type);
             var artefactIcon = icons.FirstOrDefault(i => i.Type == item.Type);
-            Logg.ColorLog($"HeroArtefactsPanelAdapter: OnPickUpItem: icon == null {artefactIcon == null}  ability == null {ability == null}");
             
             if(artefactIcon == null || ability == null) return;
 
-            Logg.ColorLog($"HeroArtefactsPanelAdapter: OnPickUpItem: level {ability.Level}.end");
-            
             artefactIcon.DescriptionPanel.SetLevel(ability.Level.ToString());
         }
 

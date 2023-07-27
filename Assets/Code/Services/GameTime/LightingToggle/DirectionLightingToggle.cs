@@ -27,6 +27,8 @@ namespace Code.Services.GameTime.LightingToggle
             _gameClock = container.Resolve<GameClock>();
             _gameSceneData = container.Resolve<GameSceneData>();
             _eventsFacade = container.Resolve<EventsFacade>();
+            
+            container.Resolve<EventSubsribersStorage>().Add(this);
         }
         
 

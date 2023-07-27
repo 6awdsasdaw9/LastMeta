@@ -13,10 +13,7 @@ namespace Code.Logic.Objects.DestroyedObjects
 {
     public class DestroyedObjectController : MonoBehaviour, IEventSubscriber, ISavedData
     {
-#if UNITY_EDITOR
-        [ReadOnly, ShowInInspector] private bool _isSaved = true; 
-        [Space]
-#endif
+        [InfoBox("Is saved data")]
         [SerializeField] private UniqueId _id;
         [SerializeField] private Collider _collider;
         [SerializeField] private DestroyedObjectHealth _health;
@@ -25,9 +22,10 @@ namespace Code.Logic.Objects.DestroyedObjects
         private bool _isDestroyed;
 
         [Inject]
-        private void Construct(SavedDataStorage savedDataStorage)
+        private void Construct(SavedDataStorage savedDataStorage, EventSubsribersStorage eventSubsribersStorage)
         {
             savedDataStorage.Add(this);
+            eventSubsribersStorage.Add(this);
         }
 
         private void OnEnable() => SubscribeToEvent(true);

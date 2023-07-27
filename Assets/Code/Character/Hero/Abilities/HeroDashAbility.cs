@@ -6,6 +6,7 @@ using Code.Services;
 using Code.Services.Input;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Character.Hero.Abilities
 {
@@ -25,18 +26,17 @@ namespace Code.Character.Hero.Abilities
                                    && !_hero.Stats.IsAttack
                                    && !_hero.Stats.IsCrouch
                                    && !_hero.Stats.IsBlockMove;
-
         public bool IsDash { get; private set; }
 
-        public HeroDashAbility(IHero hero, InputService inputService)
+        public HeroDashAbility(DiContainer container)
         {
+            _hero = container.Resolve<IHero>();
+            _inputService = container.Resolve<InputService>();
+
             Type = HeroAbilityType.Dash;
-
-            _hero = hero;
-            _inputService = inputService;
-
             _durationCooldown = new Cooldown();
             _abilityCooldown = new Cooldown();
+            
             SubscribeToEvent(true);
         }
 

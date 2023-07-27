@@ -11,10 +11,11 @@ namespace Code.UI.HeadUpDisplay.Adapters
         private readonly HudFacade _hudFacade;
         private readonly InputService _inputService;
 
-        public DialogueWindowAdapter(HudFacade hudFacade, InputService inputService)
+        public DialogueWindowAdapter(HudFacade hudFacade, InputService inputService, EventSubsribersStorage eventSubsribersStorage)
         {
             _hudFacade = hudFacade;
             _inputService = inputService;
+            eventSubsribersStorage.Add(this);
             SubscribeToEvent(true);
         }
         

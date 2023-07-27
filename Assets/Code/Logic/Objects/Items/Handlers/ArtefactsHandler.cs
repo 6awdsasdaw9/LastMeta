@@ -8,20 +8,17 @@ namespace Code.Logic.Objects.Items.Handlers
     {
         private readonly EventsFacade _eventsFacade;
         private readonly IHero _hero;
-
-        private bool _isSubsribe;
-
-        public ArtefactsHandler(EventsFacade eventsFacade, IHero hero)
+        
+        public ArtefactsHandler(EventsFacade eventsFacade, IHero hero, EventSubsribersStorage eventSubsribersStorage)
         {
             _eventsFacade = eventsFacade;
             _hero = hero;
+            eventSubsribersStorage.Add(this);
             SubscribeToEvent(true);
         }
 
         public void SubscribeToEvent(bool flag)
         {
-            if(_isSubsribe == flag) return;
-            _isSubsribe = flag;
             if (flag)
             {
                 _eventsFacade.ItemEvents.OnPickUpItem += OnPickUpItem;

@@ -31,11 +31,12 @@ namespace Code.UI.HeadUpDisplay.Windows.InteractiveWindows.DialogueWindows
         public Action OnDialogueIsEnd;
 
         [Inject]
-        private void Construct(HudSettings hudSettings)
+        private void Construct(HudSettings hudSettings, EventSubsribersStorage eventSubsribersStorage)
         {
             _params = hudSettings.DialogueParams;
             _choiceButtonCreator.Init(_params);
             _messageBoxCreator.Init(_params);
+            eventSubsribersStorage.Add(this);
         }
 
         private void OnEnable()

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Threading;
 using Code.Infrastructure;
+using Code.Infrastructure.GlobalEvents;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,12 @@ namespace Code.Services
 {
     public class SceneLoader
     {
+        private readonly EventsFacade _eventsFacade;
+
+        public SceneLoader(EventsFacade eventsFacade)
+        {
+            _eventsFacade = eventsFacade;
+        }
         public void LoadAsync(string name, Action onLoaded = null) =>
             LoadSceneAsync(name, onLoaded).Forget();
 
@@ -20,6 +27,7 @@ namespace Code.Services
         
         private async UniTaskVoid LoadSceneAsync(string nextScene, Action onLoaded = null)
         {
+            _eventsFacade.SceneEvents.ExitSceneEvent();
             if (SceneManager.GetActiveScene().name == nextScene)
             {
                 onLoaded?.Invoke(); 
@@ -34,8 +42,6 @@ namespace Code.Services
             
             onLoaded?.Invoke();
         }
-        
-        
-        
+
     }
 } 

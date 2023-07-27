@@ -2,8 +2,8 @@ namespace Code.Character.Hero.Abilities
 {
     public abstract class Ability
     {
-        public HeroAbilityType Type { get; protected set; }
-        public bool IsOpen => Level >= 0;
+        protected HeroAbilityType Type { get; set; }
+        protected bool IsOpen => Level >= 0;
         public int Level { get; protected set; }
         
         
@@ -11,9 +11,7 @@ namespace Code.Character.Hero.Abilities
         public abstract void StartApplying();
         public abstract void StopApplying();
     }
-
-   
-
+    
     public enum HeroAbilityType
     {
         Dash,
