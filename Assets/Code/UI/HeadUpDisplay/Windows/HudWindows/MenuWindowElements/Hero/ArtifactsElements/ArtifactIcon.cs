@@ -15,6 +15,13 @@ namespace Code.UI.HeadUpDisplay.Windows.HudWindows.MenuWindowElements.Hero.Artif
         public void EnableIcon()
         {
             _activeImage.SetActive(true);
+            _descriptionPanel?.gameObject.SetActive(true);
+        }
+
+        public void DisableIcon()
+        {
+            _activeImage.SetActive(false);
+            _descriptionPanel?.gameObject.SetActive(false);
         }
 
     }

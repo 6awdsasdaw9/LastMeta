@@ -1,6 +1,4 @@
-using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
-using UnityEngine.Rendering;
 using Zenject;
 
 namespace Code.Services.Adapters
@@ -36,13 +34,11 @@ namespace Code.Services.Adapters
 
         private void OnOpenFirstWindow()
         {
-            Logg.ColorLog("Disable Move");
             _movementLimiter.DisableMovement();
         }
 
         private void OnCloseLastWindow()
         {
-            Logg.ColorLog("Enable Move");
             _movementLimiter.EnableMovement();
         }
     }

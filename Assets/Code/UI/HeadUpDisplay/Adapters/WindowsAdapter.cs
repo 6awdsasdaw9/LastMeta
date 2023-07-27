@@ -3,6 +3,7 @@ using System.Linq;
 using Code.Infrastructure.GlobalEvents;
 using Code.Services;
 using Code.UI.HeadUpDisplay.Windows;
+using Zenject;
 
 namespace Code.UI.HeadUpDisplay.Adapters
 {
@@ -13,9 +14,12 @@ namespace Code.UI.HeadUpDisplay.Adapters
         private readonly List<IWindow> _openedWindows = new();
         private bool _menuWindowIsOpened;
 
-        public  WindowsAdapter(EventsFacade eventsFacade)
+        public  WindowsAdapter(DiContainer container)
         {
-            _eventsFacade = eventsFacade;
+            _eventsFacade = container.Resolve<EventsFacade>();
+
+            container.Resolve<EventSubsribersStorage>().Add(this);
+            
             SubscribeToEvents(true);
         }
         

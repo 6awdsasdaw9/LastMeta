@@ -35,7 +35,7 @@ namespace Code.Infrastructure.Installers.SceneInstallers
             Container.BindInterfacesAndSelfTo<TimeAdapter>().AsSingle().NonLazy();;
             Container.Bind<DialogueWindowAdapter>().AsSingle().NonLazy();
             Container.Bind<HeroArtefactsPanelAdapter>().AsSingle().NonLazy();
-           // Container.Bind<HeroParamPanelAdapter>().AsSingle().NonLazy();
+            Container.Bind<HeroParamPanelAdapter>().AsSingle().NonLazy();
         }
 
         private void BindHeroStateAdapter()
