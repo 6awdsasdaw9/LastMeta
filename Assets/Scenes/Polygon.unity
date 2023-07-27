@@ -2481,27 +2481,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 848423380340126172, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1380842644100223732, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2501109376667841149, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2501109377080371512, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2501109377334201942, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2501109377566162869, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2501109377583017034, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: _autoRun
@@ -2513,7 +2513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2501109377636508566, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2540698932121645061, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: m_Name
@@ -2565,7 +2565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3239610904580314556, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4730765513837618069, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: _heroMissilePrefabs
@@ -2577,11 +2577,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6266711135541783699, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6987658637722219345, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7193326701806581913, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
       propertyPath: _sceneContexst
@@ -2600,10 +2600,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 793875756}
     m_Modifications:
-    - target: {fileID: 1523746617081452075, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1523746617081452043, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
+      propertyPath: _disableObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1523746617081452075, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
       propertyPath: m_Name
       value: Enemy_MrSpider

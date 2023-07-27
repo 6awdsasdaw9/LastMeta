@@ -20,14 +20,12 @@ namespace Code.Infrastructure.GlobalEvents
     {
         public void HeroWoundEvent()
         {
-            Logg.ColorLog("Hero Events: HeroWoundEvent", ColorType.Aqua);
             OnHeroWounded?.Invoke();
         }
         public Action OnHeroWounded;
 
         public void HeroHealthyEvent()
         {
-            Logg.ColorLog("Hero Events: HeroHealthyEvent", ColorType.Aqua);
             OnHeroHealth?.Invoke();
         }
         public Action OnHeroHealth;
