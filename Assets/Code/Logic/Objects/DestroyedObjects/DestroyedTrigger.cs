@@ -4,32 +4,35 @@ using Code.Logic.Triggers;
 using Code.Services;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Logic.Objects.DestroyedObjects
 {
-    public class DestroyedTrigger: MonoBehaviour, IEventSubscriber
+    public class DestroyedTrigger: MonoBehaviour, IEventsSubscriber
     {
-#if UNITY_EDITOR
-        [ReadOnly, ShowInInspector] private bool _isSaved = false; 
-        [Space]
-#endif
-        
+        [InfoBox("Is not saved data")]
         [SerializeField] private TriggerObserver _destructionTrigger;
         [SerializeField] private DestroyedAnimation _animation;
         [SerializeField] private List<MonoBehaviour> _disableComponents;
         [SerializeField] private List<GameObject> _disableObjects;
 
+        [Inject]
+        private void Construct(EventSubsribersStorage eventSubsribersStorage)
+        {
+            eventSubsribersStorage.Add(this);
+        }
+
         private void OnEnable()
         {
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
         private void OnDisable()
         {
-            SubscribeToEvent(false);
+            SubscribeToEvents(false);
         }
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {

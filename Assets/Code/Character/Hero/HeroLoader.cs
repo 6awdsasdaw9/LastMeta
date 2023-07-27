@@ -51,7 +51,6 @@ namespace Code.Character.Hero
 
         private void AbilityLoadData(SavedData savedData)
         {
-            Logg.ColorLog($"AbilityLoadData is null {savedData.HeroAbilityLevel == null}");
             _hero.Ability.Init(savedData.HeroAbilityLevel);
         }
 

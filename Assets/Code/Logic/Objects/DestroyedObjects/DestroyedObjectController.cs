@@ -11,12 +11,9 @@ using Zenject;
 
 namespace Code.Logic.Objects.DestroyedObjects
 {
-    public class DestroyedObjectController : MonoBehaviour, IEventSubscriber, ISavedData
+    public class DestroyedObjectController : MonoBehaviour, IEventsSubscriber, ISavedData
     {
-#if UNITY_EDITOR
-        [ReadOnly, ShowInInspector] private bool _isSaved = true; 
-        [Space]
-#endif
+        [InfoBox("Is saved data")]
         [SerializeField] private UniqueId _id;
         [SerializeField] private Collider _collider;
         [SerializeField] private DestroyedObjectHealth _health;
@@ -25,15 +22,16 @@ namespace Code.Logic.Objects.DestroyedObjects
         private bool _isDestroyed;
 
         [Inject]
-        private void Construct(SavedDataStorage savedDataStorage)
+        private void Construct(SavedDataStorage savedDataStorage, EventSubsribersStorage eventSubsribersStorage)
         {
             savedDataStorage.Add(this);
+            eventSubsribersStorage.Add(this);
         }
 
-        private void OnEnable() => SubscribeToEvent(true);
-        private void OnDisable() => SubscribeToEvent(false);
+        private void OnEnable() => SubscribeToEvents(true);
+        private void OnDisable() => SubscribeToEvents(false);
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {

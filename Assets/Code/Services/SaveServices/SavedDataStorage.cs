@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Code.Audio;
 using Code.Services.GameTime;
+using Zenject;
 
 namespace Code.Services.SaveServices
 {
@@ -11,9 +13,10 @@ namespace Code.Services.SaveServices
         private readonly List<ISavedDataReader> _dataReaders = new();
         public IEnumerable<ISavedDataReader> DataReaders => _dataReaders;
 
-        public SavedDataStorage(GameClock gameClock)
+        public SavedDataStorage(DiContainer container)
         {
-            Add(gameClock);
+            Add(container.Resolve<GameClock>());
+            Add(container.Resolve<SceneAudioController>());
         }
         
         public void Add(ISavedData savedData) => _dataSaved.Add(savedData);

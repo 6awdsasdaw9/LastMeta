@@ -5,6 +5,7 @@ namespace Code.Character.Hero.HeroInterfaces
 {
     public interface IHero
     {
+        
         Constants.GameMode GameMode { get; }
         Transform Transform { get; }
         IHeroStats Stats { get; }

@@ -7,10 +7,10 @@ namespace Code.Infrastructure.Installers.ProjectInstaller
     {
         public override void InstallBindings()
         {
-            BindAudioManager();
+            BindSceneAudioController();
         }
 
-        private void BindAudioManager()
+        private void BindSceneAudioController()
         {
             Container.Bind<SceneAudioController>().AsSingle().NonLazy();
         }

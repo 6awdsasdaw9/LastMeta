@@ -34,7 +34,7 @@ namespace Code.Infrastructure.Installers.SceneInstallers
 
         private void BindSaveData()
         {
-            _savedDataStorage = new SavedDataStorage(_gameClock);
+            _savedDataStorage = new SavedDataStorage(Container);
             Container.Bind<SavedDataStorage>().FromInstance(_savedDataStorage).AsSingle().NonLazy();
         }
 

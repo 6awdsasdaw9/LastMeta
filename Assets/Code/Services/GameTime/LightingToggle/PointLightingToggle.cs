@@ -10,7 +10,7 @@ using Zenject;
 
 namespace Code.Services.GameTime.LightingToggle
 {
-    public class PointLightingToggle : MonoBehaviour, IEventSubscriber, ITimeObserver
+    public class PointLightingToggle : MonoBehaviour, IEventsSubscriber, ITimeObserver
     {
         [SerializeField, EnumToggleButtons] private TimeOfDay _timeToEnable = TimeOfDay.Night;
         [SerializeField, EnumToggleButtons] private TimeOfDay _timeToDisable = TimeOfDay.Morning;
@@ -33,23 +33,24 @@ namespace Code.Services.GameTime.LightingToggle
         private float _animationDuration => _gameClock.DayTimeInSeconds * 0.3f * _durationMultiplayer.GetRandom();
 
         [Inject]
-        private void Construct(GameClock gameClock, EventsFacade eventsFacade)
+        private void Construct(DiContainer container)
         {
-            _gameClock = gameClock;
-            _eventsFacade = eventsFacade;
+            _gameClock = container.Resolve<GameClock>();
+            _eventsFacade = container.Resolve<EventsFacade>();
+            container.Resolve<EventSubsribersStorage>().Add(this);
         }
 
         private void OnEnable()
         {
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
         private void OnDisable()
         {
-            SubscribeToEvent(false);
+            SubscribeToEvents(false);
         }
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (_isEmptyToggle)
                 return;

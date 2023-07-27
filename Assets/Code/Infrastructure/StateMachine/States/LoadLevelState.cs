@@ -39,7 +39,6 @@ namespace Code.Infrastructure.StateMachine.States
 
         public void Enter(string sceneName)
         {
-            Logg.ColorLog("Scene name");
             _loadingCurtain.Show();
             _sceneLoader.LoadAsync(sceneName, OnLoaded);
         }
@@ -86,7 +85,6 @@ namespace Code.Infrastructure.StateMachine.States
 
         private void TrySetSceneMusic(SceneParams sceneParam)
         {
-            Logg.ColorLog("GSM: Try Set music ");
             _sceneAudioController.ChangeSceneAudio(sceneParam.Music, sceneParam.Ambience);
         }
     }

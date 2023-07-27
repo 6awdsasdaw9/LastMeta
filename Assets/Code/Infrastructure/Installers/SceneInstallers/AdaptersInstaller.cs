@@ -1,3 +1,4 @@
+using Code.Audio.AudioSystem;
 using Code.Services.Adapters;
 using Code.Services.Adapters.HudAdapters;
 using Code.UI.HeadUpDisplay.Adapters;
@@ -21,6 +22,7 @@ namespace Code.Infrastructure.Installers.SceneInstallers
         private void BindAudioAdapter()
         {
             Container.Bind<SceneAudioParamAdapter>().AsSingle().NonLazy();
+            Container.Bind<SceneAudioVolumeAdapter>().AsSingle().NonLazy();
         }
 
         private void BindHudAdapters()

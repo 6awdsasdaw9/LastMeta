@@ -1,16 +1,15 @@
+using Code.Audio.AudioSystem;
 using Code.Data.Configs;
-using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
-using Code.Services;
+using Code.Services.SaveServices;
 using FMOD.Studio;
 using FMODUnity;
-using UnityEngine;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 
 namespace Code.Audio
 {
-    public class SceneAudioController
+    public class SceneAudioController: ISavedData
     {
         private readonly EventsFacade _eventsFacade;
         private EventReference _ambienceEvent;
@@ -27,10 +26,11 @@ namespace Code.Audio
         private PARAMETER_DESCRIPTION _heroHealthtParameterDescription;
         private PARAMETER_ID _heroHealthParameterID;
 
-        private Bus _music_Volume;
-        private Bus _effect_Volume;
-        private Bus _master_Volume;
+        private Bus _musicVolume;
+        private Bus _effectVolume;
+        private Bus _masterVolume;
 
+        private AudioVolume _volume = new();
 
         public SceneAudioController(ScenesConfig scenesConfig)
         {
@@ -143,7 +143,6 @@ namespace Code.Audio
         private bool _isActivePauseSnapshot;
         private bool _isInit;
 
-
         private void InitSnapshot(string pauseSnapshot)
         {
             if(_isInit) return;
@@ -175,16 +174,43 @@ namespace Code.Audio
         private void InitBus()
         {
             // Path copy from FMOD
-            _music_Volume = RuntimeManager.GetBus("bus:/Premaster/Music");
-            _effect_Volume = RuntimeManager.GetBus("bus:/SFX");
+            _musicVolume = RuntimeManager.GetBus("bus:/Premaster/Music");
+            _effectVolume = RuntimeManager.GetBus("bus:/SFX");
             //_master_Volume = RuntimeManager.GetBus("bus:/");
         }
 
-        public void ChangeEffectVolume(float volume) => _effect_Volume.setVolume(volume);
-        public  void ChangeMusicVolume(float volume) => _music_Volume.setVolume(volume);
-        public  void ChangeMasterVolume(float volume) => _master_Volume.setVolume(volume);
+        public void ChangeEffectVolume(float volume)
+        {
+            _volume.Effects = volume;
+            _effectVolume.setVolume(volume);
+        }
+
+        public  void ChangeMusicVolume(float volume)
+        {
+            _volume.Music = volume;
+            _musicVolume.setVolume(volume);
+        }
+
+        public  void ChangeMasterVolume(float volume)
+        {
+            _volume.Master = volume;
+            _masterVolume.setVolume(volume);
+        }
 
         #endregion
-        
+
+        public void LoadData(SavedData savedData)
+        {
+            ChangeEffectVolume(savedData.AudioVolume.Effects);
+            ChangeMusicVolume(savedData.AudioVolume.Music);
+            ChangeMasterVolume(savedData.AudioVolume.Master);
+        }
+
+        public void SaveData(SavedData savedData)
+        {
+            savedData.AudioVolume.Effects = _volume.Effects;
+            savedData.AudioVolume.Music = _volume.Music;
+            savedData.AudioVolume.Master = _volume.Master;
+        }
     }
 }

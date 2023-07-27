@@ -6,19 +6,20 @@ using Code.UI.HeadUpDisplay.Windows;
 
 namespace Code.UI.HeadUpDisplay.Adapters
 {
-    public class DialogueWindowAdapter : IEventSubscriber
+    public class DialogueWindowAdapter : IEventsSubscriber
     {
         private readonly HudFacade _hudFacade;
         private readonly InputService _inputService;
 
-        public DialogueWindowAdapter(HudFacade hudFacade, InputService inputService)
+        public DialogueWindowAdapter(HudFacade hudFacade, InputService inputService, EventSubsribersStorage eventSubsribersStorage)
         {
             _hudFacade = hudFacade;
             _inputService = inputService;
-            SubscribeToEvent(true);
+            eventSubsribersStorage.Add(this);
+            SubscribeToEvents(true);
         }
         
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             var dialogueWindow = (IDialogueWindow)_hudFacade.InteractiveObjectWindows
                 .FirstOrDefault(w => w.Type == InteractiveObjectType.Dialogue)

@@ -8,7 +8,7 @@ using Code.UI.HeadUpDisplay.Windows.HudWindows.MenuWindowElements.Settings;
 
 namespace Code.UI.HeadUpDisplay.Adapters
 {
-    public class MenuAdapter : IEventSubscriber
+    public class MenuAdapter : IEventsSubscriber
     {
         private readonly HudFacade _hudFacade;
         private readonly EventsFacade _eventsFacade;
@@ -22,7 +22,7 @@ namespace Code.UI.HeadUpDisplay.Adapters
             _eventsFacade = eventsFacade;
             _inputService = inputService;
             
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
             InitCurrentWindow();
         }
 
@@ -33,7 +33,7 @@ namespace Code.UI.HeadUpDisplay.Adapters
             _hudFacade.Menu.Window.Settings.HideWindow();
         }
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {

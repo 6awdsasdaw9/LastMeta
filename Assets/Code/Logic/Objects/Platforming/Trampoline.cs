@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Code.Logic.Objects.Platforming
 {
-    public class Trampoline : MonoBehaviour, IEventSubscriber
+    public class Trampoline : MonoBehaviour, IEventsSubscriber
     {
         [SerializeField] private CollisionObserver _collision;
         [SerializeField] private Vector2 _force = Vector2.up;
@@ -28,20 +28,20 @@ namespace Code.Logic.Objects.Platforming
 
         private void OnPause(bool isPause)
         {
-            SubscribeToEvent(!isPause);
+            SubscribeToEvents(!isPause);
         }
 
         private void OnEnable()
         {
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
         private void OnDisable()
         {
-            SubscribeToEvent(false);
+            SubscribeToEvents(false);
         }
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if(_isActive== flag)return;
             _isActive = flag;

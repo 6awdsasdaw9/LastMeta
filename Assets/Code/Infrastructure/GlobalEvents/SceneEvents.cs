@@ -5,6 +5,8 @@ namespace Code.Infrastructure.GlobalEvents
 {
     public class SceneEvents
     {
+        public event Action OnExitScene;
+        public void ExitSceneEvent() => OnExitScene?.Invoke();
         public event Action OnLoadScene;
         public void LoadSceneEvent() => OnLoadScene?.Invoke();
 

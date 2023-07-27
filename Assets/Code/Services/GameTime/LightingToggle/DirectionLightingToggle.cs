@@ -12,7 +12,7 @@ using Zenject;
 
 namespace Code.Services.GameTime.LightingToggle
 {
-    public class DirectionLightingToggle : MonoBehaviour, IEventSubscriber, ITimeObserver
+    public class DirectionLightingToggle : MonoBehaviour, IEventsSubscriber, ITimeObserver
     {
         [SerializeField] private Light _directionLight;
         private float _animationDuration => _gameClock.DayTimeInSeconds * 0.15f;
@@ -27,20 +27,22 @@ namespace Code.Services.GameTime.LightingToggle
             _gameClock = container.Resolve<GameClock>();
             _gameSceneData = container.Resolve<GameSceneData>();
             _eventsFacade = container.Resolve<EventsFacade>();
+            
+            container.Resolve<EventSubsribersStorage>().Add(this);
         }
         
 
         private void OnEnable()
         {
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
         private void OnDisable()
         {
-            SubscribeToEvent(false);
+            SubscribeToEvents(false);
         }
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {

@@ -356,10 +356,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d35ca7914f9a9854f8cec4633fcf2680, type: 2}
   _monoInstallers:
   - {fileID: 4167531919796139003}
+  - {fileID: 8171030088181622119}
   - {fileID: 2111560918493587341}
   - {fileID: 6868517398842405997}
   - {fileID: 6109691237085345089}
-  - {fileID: 8171030088181622119}
   - {fileID: 257704696004996166}
   - {fileID: 7920435334666006030}
   _installerPrefabs: []
@@ -368,7 +368,7 @@ MonoBehaviour:
   _buildsReflectionBakingCoverageMode: 0
   _settings:
     _ensureDeterministicDestructionOrderOnApplicationQuit: 0
-    _displayWarningWhenResolvingDuringInstall: 1
+    _displayWarningWhenResolvingDuringInstall: 0
     _validationRootResolveMethod: 0
     _validationErrorResponse: 0
     _signalSettings:
@@ -420,7 +420,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a63d8bd0f125421f8ee126f0028ecf3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventSystem: {fileID: 0}
 --- !u!1 &8184120550308777095
 GameObject:
   m_ObjectHideFlags: 0

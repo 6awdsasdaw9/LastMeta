@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Code.UI.HeadUpDisplay.Adapters
 {
-    public class TimeAdapter : ITickable, IEventSubscriber, IDisabledComponent
+    public class TimeAdapter : ITickable, IEventsSubscriber, IDisabledComponent
     {
         private HudSlider _hudSliderTimeOfDay;
         private StartStopAnimation _handleAnimation;
@@ -28,7 +28,7 @@ namespace Code.UI.HeadUpDisplay.Adapters
             _dayNumber = hudFacade.DayPanel;
             _gameClock = gameClock;
             _eventsFacade = eventsFacade;
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
 
@@ -41,7 +41,7 @@ namespace Code.UI.HeadUpDisplay.Adapters
         }
         
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {
