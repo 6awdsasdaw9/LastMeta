@@ -20,8 +20,7 @@ namespace Code.Audio.AudioSystem
             
             SubscribeToEvents(true);
         }
-
-
+        
         public void SubscribeToEvents(bool flag)
         {
             _hudFacade.Menu.Window.Settings.EffectVolumeHudSlider.OnChangedSliderValue += OnChangedEffectValue;
@@ -40,8 +39,8 @@ namespace Code.Audio.AudioSystem
 
         public void LoadData(SavedData savedData)
         {
-            
+            _hudFacade.Menu.Window.Settings.EffectVolumeHudSlider.SetValue(savedData.AudioVolume.Effects);
+            _hudFacade.Menu.Window.Settings.MusicVolumeHudSlider.SetValue(savedData.AudioVolume.Music);
         }
-        
     }
 }
