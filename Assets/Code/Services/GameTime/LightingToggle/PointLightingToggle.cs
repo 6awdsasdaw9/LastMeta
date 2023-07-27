@@ -10,7 +10,7 @@ using Zenject;
 
 namespace Code.Services.GameTime.LightingToggle
 {
-    public class PointLightingToggle : MonoBehaviour, IEventSubscriber, ITimeObserver
+    public class PointLightingToggle : MonoBehaviour, IEventsSubscriber, ITimeObserver
     {
         [SerializeField, EnumToggleButtons] private TimeOfDay _timeToEnable = TimeOfDay.Night;
         [SerializeField, EnumToggleButtons] private TimeOfDay _timeToDisable = TimeOfDay.Morning;
@@ -42,15 +42,15 @@ namespace Code.Services.GameTime.LightingToggle
 
         private void OnEnable()
         {
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
         private void OnDisable()
         {
-            SubscribeToEvent(false);
+            SubscribeToEvents(false);
         }
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (_isEmptyToggle)
                 return;

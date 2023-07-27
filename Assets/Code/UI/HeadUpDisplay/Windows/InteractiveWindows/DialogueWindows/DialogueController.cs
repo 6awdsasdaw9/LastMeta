@@ -10,7 +10,7 @@ using Zenject;
 
 namespace Code.UI.HeadUpDisplay.Windows.InteractiveWindows.DialogueWindows
 {
-    public class DialogueController : MonoBehaviour, IEventSubscriber
+    public class DialogueController : MonoBehaviour, IEventsSubscriber
     {
         [SerializeField] private HudButton buttonSkip;
 
@@ -41,16 +41,16 @@ namespace Code.UI.HeadUpDisplay.Windows.InteractiveWindows.DialogueWindows
 
         private void OnEnable()
         {
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
         private void OnDisable()
         {
             StopDialogue();
-            SubscribeToEvent(false);
+            SubscribeToEvents(false);
         }
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {

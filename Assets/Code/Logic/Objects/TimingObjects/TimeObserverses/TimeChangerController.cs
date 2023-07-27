@@ -8,13 +8,13 @@ using Zenject;
 
 namespace Code.Logic.Objects.TimingObjects.TimeObserverses
 {
-    public class TimeChangerController : MonoBehaviour, IEventSubscriber,ITimeObserver
+    public class TimeChangerController : MonoBehaviour, IEventsSubscriber, ITimeObserver
     {
-        [SerializeField] private List<TimeObserver> _timeObservers;
-        
         private EventsFacade _eventsFacade;
-
+        
+        [SerializeField] private List<TimeObserver> _timeObservers;
         private bool _isEmptyController => _timeObservers.Count == 0;
+        
         [Inject]
         private void Construct(EventsFacade eventsFacade)
         {
@@ -23,18 +23,17 @@ namespace Code.Logic.Objects.TimingObjects.TimeObserverses
 
         private void OnEnable()
         {
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
         private void OnDisable()
         {
-            SubscribeToEvent(false);
+            SubscribeToEvents(false);
         }
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
-            if(_isEmptyController)
-                return;
+            if(_isEmptyController) return;
             if (flag)
             {
                 _eventsFacade.SceneEvents.OnLoadScene += OnLoadScene;

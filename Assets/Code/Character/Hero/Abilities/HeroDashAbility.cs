@@ -10,7 +10,7 @@ using Zenject;
 
 namespace Code.Character.Hero.Abilities
 {
-    public class HeroDashAbility : Ability, IEventSubscriber
+    public class HeroDashAbility : Ability, IEventsSubscriber
     {
         private readonly InputService _inputService;
         private readonly IHero _hero;
@@ -37,10 +37,10 @@ namespace Code.Character.Hero.Abilities
             _durationCooldown = new Cooldown();
             _abilityCooldown = new Cooldown();
             
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {

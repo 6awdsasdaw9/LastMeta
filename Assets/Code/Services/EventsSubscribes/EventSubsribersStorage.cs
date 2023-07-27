@@ -6,7 +6,7 @@ namespace Code.Services
     public class EventSubsribersStorage
     {
         private readonly EventsFacade _eventsFacade;
-        private readonly List<IEventSubscriber> _eventSubscribers = new();
+        private readonly List<IEventsSubscriber> _eventSubscribers = new();
 
         public EventSubsribersStorage(EventsFacade eventsFacade)
         {
@@ -14,13 +14,13 @@ namespace Code.Services
             _eventsFacade.SceneEvents.OnExitScene += OnExitScene;
         }
         
-        public void Add(IEventSubscriber savedData) => _eventSubscribers.Add(savedData);
+        public void Add(IEventsSubscriber savedData) => _eventSubscribers.Add(savedData);
         
         private void OnExitScene()
         {
             foreach (var subscriber in _eventSubscribers)
             {
-                subscriber.SubscribeToEvent(false);
+                subscriber.SubscribeToEvents(false);
             }
             CleanUp();
         }

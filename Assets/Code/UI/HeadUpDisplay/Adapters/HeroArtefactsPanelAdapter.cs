@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Code.UI.HeadUpDisplay.Adapters
 {
-    public class HeroArtefactsPanelAdapter: IEventSubscriber, ISavedDataReader
+    public class HeroArtefactsPanelAdapter: IEventsSubscriber, ISavedDataReader
     {
         private readonly IHero _hero;
         private readonly HudFacade _hudFacade;
@@ -23,11 +23,11 @@ namespace Code.UI.HeadUpDisplay.Adapters
             container.Resolve<SavedDataStorage>().Add(this);
             container.Resolve<EventSubsribersStorage>().Add(this);
             
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {

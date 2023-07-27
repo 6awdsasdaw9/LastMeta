@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Code.Services.GameTime
 {
-    public class GameClock : ITickable, ISavedData, IEventSubscriber
+    public class GameClock : ITickable, ISavedData, IEventsSubscriber
     {
         private float _dayTimeInSeconds;
         private float _eveningTime;
@@ -34,7 +34,7 @@ namespace Code.Services.GameTime
         {
             _eventsFacade = container.Resolve<EventsFacade>();
             _gameSceneData = container.Resolve<GameSceneData>();
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
         public void Tick()
@@ -45,7 +45,7 @@ namespace Code.Services.GameTime
             }
         }
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {

@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Code.Services.Adapters
 {
-    public class MovementLimiterAdapter : IEventSubscriber
+    public class MovementLimiterAdapter : IEventsSubscriber
     {
         private readonly MovementLimiter _movementLimiter;
         private readonly EventsFacade _eventsFacade;
@@ -17,10 +17,10 @@ namespace Code.Services.Adapters
             
             container.Resolve<EventSubsribersStorage>().Add(this);
             
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {

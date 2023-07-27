@@ -11,7 +11,7 @@ using Zenject;
 
 namespace Code.Logic.Objects.DestroyedObjects
 {
-    public class DestroyedObjectController : MonoBehaviour, IEventSubscriber, ISavedData
+    public class DestroyedObjectController : MonoBehaviour, IEventsSubscriber, ISavedData
     {
         [InfoBox("Is saved data")]
         [SerializeField] private UniqueId _id;
@@ -28,10 +28,10 @@ namespace Code.Logic.Objects.DestroyedObjects
             eventSubsribersStorage.Add(this);
         }
 
-        private void OnEnable() => SubscribeToEvent(true);
-        private void OnDisable() => SubscribeToEvent(false);
+        private void OnEnable() => SubscribeToEvents(true);
+        private void OnDisable() => SubscribeToEvents(false);
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {

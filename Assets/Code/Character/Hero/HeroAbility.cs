@@ -46,7 +46,7 @@ namespace Code.Character.Hero
         private void OnDestroy()
         {
             DashAbility?.StopApplying();
-            DashAbility?.SubscribeToEvent(false);
+            DashAbility?.SubscribeToEvents(false);
         }
 
         #region Jump

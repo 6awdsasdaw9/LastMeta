@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Code.Logic.Objects.DestroyedObjects
 {
-    public class DestroyedTrigger: MonoBehaviour, IEventSubscriber
+    public class DestroyedTrigger: MonoBehaviour, IEventsSubscriber
     {
         [InfoBox("Is not saved data")]
         [SerializeField] private TriggerObserver _destructionTrigger;
@@ -24,15 +24,15 @@ namespace Code.Logic.Objects.DestroyedObjects
 
         private void OnEnable()
         {
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
         private void OnDisable()
         {
-            SubscribeToEvent(false);
+            SubscribeToEvents(false);
         }
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {

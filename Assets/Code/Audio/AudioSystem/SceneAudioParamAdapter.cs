@@ -4,34 +4,31 @@ using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
 using Code.Services.SaveServices;
 using Code.UI.HeadUpDisplay;
+using Zenject;
 
 namespace Code.Services.Adapters.HudAdapters
 {
-    public class SceneAudioParamAdapter: IEventSubscriber, ISavedData
+    public class SceneAudioParamAdapter: IEventsSubscriber, ISavedDataReader
     {
-        private readonly HudFacade _hudFacade;
         private readonly SceneAudioController _audioController;
         private readonly EventsFacade _eventsFacade;
         private readonly IHero _hero;
 
-        public SceneAudioParamAdapter(
-            HudFacade hudFacade, 
-            SceneAudioController audioController, 
-            EventsFacade eventsFacade
-            , IHero hero)
+        public SceneAudioParamAdapter(DiContainer container)
         {
-            _hudFacade = hudFacade;
-            _audioController = audioController;
-            _eventsFacade = eventsFacade;
-            _hero = hero;
-            SubscribeToEvent(true);
+            _audioController = container.Resolve<SceneAudioController>();
+            _eventsFacade = container.Resolve<EventsFacade>();
+            _hero = container.Resolve<IHero>();
+            
+            container.Resolve<EventSubsribersStorage>().Add(this);
+            container.Resolve<SavedDataStorage>().Add(this);
+            
+            SubscribeToEvents(true);
         }
 
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
-            _hudFacade.Menu.Window.Settings.EffectVolumeHudSlider.OnChangedSliderValue += OnChangedEffectValue;
-            _hudFacade.Menu.Window.Settings.MusicVolumeHudSlider.OnChangedSliderValue += OnChangedMusicValue;
             _hero.Health.OnHealthChanged += OnChangeHeroHealthParam;
             _eventsFacade.GameEvents.OnPause += OnPause;
         }
@@ -45,26 +42,11 @@ namespace Code.Services.Adapters.HudAdapters
         private void OnPause(bool isPause)
         {
             _audioController.ChangePauseParam(isPause);
-            Logg.ColorLog($"Pause {isPause}");
         }
-
-        private void OnChangedMusicValue(float value)
-        {
-            _audioController.ChangeMusicVolume(value);
-        }
-
-        private void OnChangedEffectValue(float value)
-        {
-            _audioController.ChangeEffectVolume(value);
-        }
-
+        
         public void LoadData(SavedData savedData)
         {
             
-        }
-
-        public void SaveData(SavedData savedData)
-        {
         }
     }
 }

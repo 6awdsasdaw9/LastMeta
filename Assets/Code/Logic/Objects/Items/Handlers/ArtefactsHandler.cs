@@ -4,7 +4,7 @@ using Code.Services;
 
 namespace Code.Logic.Objects.Items.Handlers
 {
-    public class ArtefactsHandler : IEventSubscriber
+    public class ArtefactsHandler : IEventsSubscriber
     {
         private readonly EventsFacade _eventsFacade;
         private readonly IHero _hero;
@@ -14,10 +14,10 @@ namespace Code.Logic.Objects.Items.Handlers
             _eventsFacade = eventsFacade;
             _hero = hero;
             eventSubsribersStorage.Add(this);
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {

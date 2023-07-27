@@ -6,7 +6,7 @@ using Code.UI.HeadUpDisplay.Windows;
 
 namespace Code.UI.HeadUpDisplay.Adapters
 {
-    public class WindowsAdapter: IEventSubscriber 
+    public class WindowsAdapter: IEventsSubscriber 
     {
         private readonly EventsFacade _eventsFacade;
         
@@ -16,10 +16,10 @@ namespace Code.UI.HeadUpDisplay.Adapters
         public  WindowsAdapter(EventsFacade eventsFacade)
         {
             _eventsFacade = eventsFacade;
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
         
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {

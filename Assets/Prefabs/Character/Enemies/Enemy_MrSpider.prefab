@@ -95,7 +95,7 @@ GameObject:
   m_Layer: 7
   m_Name: Enemy_MrSpider
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -225,6 +225,24 @@ MonoBehaviour:
   - {fileID: 6400541843812690207}
   _disableComponents: []
   _disableObjects: []
+  _enableAudioEvent:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
+  _disableAudioEvent:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
 --- !u!114 &1523746617081452047
 MonoBehaviour:
   m_ObjectHideFlags: 0

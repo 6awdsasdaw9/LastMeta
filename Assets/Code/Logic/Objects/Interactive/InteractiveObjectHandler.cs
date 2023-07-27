@@ -12,7 +12,7 @@ using Zenject;
 
 namespace Code.Logic.Objects.Interactive
 {
-    public class InteractiveObjectHandler : FollowTriggerObserver, IEventSubscriber
+    public class InteractiveObjectHandler : FollowTriggerObserver, IEventsSubscriber
     {
         [SerializeField] private InteractiveIconType iconType = InteractiveIconType.Interaction;
         [SerializeField] private InteractiveIconAnimation _iconAnimation;
@@ -82,7 +82,7 @@ namespace Code.Logic.Objects.Interactive
             HideIcon();
         }
         
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {
@@ -102,7 +102,7 @@ namespace Code.Logic.Objects.Interactive
             _interactiveObject.StartInteractive();
             _pressButtonAudioEvent.PlayAudioEvent();
          
-            SubscribeToEvent(_onInteractive);
+            SubscribeToEvents(_onInteractive);
             HideIcon();
         }
 
@@ -112,7 +112,7 @@ namespace Code.Logic.Objects.Interactive
             _interactiveObject.StopInteractive();
             _pressButtonAudioEvent.PlayAudioEvent();
             
-            SubscribeToEvent(_onInteractive);
+            SubscribeToEvents(_onInteractive);
             ShowIcon().Forget();
         }
 

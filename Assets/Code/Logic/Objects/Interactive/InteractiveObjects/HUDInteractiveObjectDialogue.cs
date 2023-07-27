@@ -8,7 +8,7 @@ using Zenject;
 
 namespace Code.Logic.Objects.Interactive.InteractiveObjects
 {
-    public class HUDInteractiveObjectDialogue : Interactivity, IEventSubscriber
+    public class HUDInteractiveObjectDialogue : Interactivity, IEventsSubscriber
     {
         [SerializeField] private TextAsset _textAsset;
         [SerializeField] private AudioEvent _layerAudio;
@@ -32,12 +32,12 @@ namespace Code.Logic.Objects.Interactive.InteractiveObjects
 
         private void OnEnable()
         {
-            SubscribeToEvent(true);
+            SubscribeToEvents(true);
         }
 
         private void OnDisable()
         {
-            SubscribeToEvent(false);
+            SubscribeToEvents(false);
         }
 
         public override void StartInteractive()
@@ -75,7 +75,7 @@ namespace Code.Logic.Objects.Interactive.InteractiveObjects
             _presentationWindow.HideWindow(() => OnAnimationProcess = false);
         }
 
-        public void SubscribeToEvent(bool flag)
+        public void SubscribeToEvents(bool flag)
         {
             if (flag)
             {
