@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995c65ff16fc4a46b599a98a636f251b, type: 3}
+  m_Name: EnemyAudioPath_Mr_Spider
+  m_EditorClassIdentifier: 
+  breathPath:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  stepPath:
+    Guid:
+      Data1: -119205966
+      Data2: 1193612163
+      Data3: -1764432512
+      Data4: -443973214
+    Path: event:/SFX/Enemy/Mr_Spider/SpiderSteps
+  attackStartPath:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  attackPath:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  attackEndPath:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  deathPath:
+    Guid:
+      Data1: -1160036655
+      Data2: 1081297934
+      Data3: -971753854
+      Data4: 1345167969
+    Path: event:/SFX/Enemy/Mr_Spider/SpiderDeath
+  screamPath:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  SFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
