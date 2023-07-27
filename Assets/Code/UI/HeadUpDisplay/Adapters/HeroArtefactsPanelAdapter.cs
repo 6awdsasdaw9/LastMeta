@@ -1,9 +1,11 @@
 using System.Linq;
+using Code.Character.Hero.Abilities;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Infrastructure.GlobalEvents;
 using Code.Logic.Objects.Items;
 using Code.Services;
 using Code.Services.SaveServices;
+using Code.UI.HeadUpDisplay.Windows.HudWindows.MenuWindowElements.Hero.ArtifactsElements;
 using Zenject;
 
 namespace Code.UI.HeadUpDisplay.Adapters
@@ -41,19 +43,37 @@ namespace Code.UI.HeadUpDisplay.Adapters
 
         private void OnPickUpItem(ItemData item)
         {
-            var icons = _hudFacade.Menu.Window.Hero.ArtifactsPanel.ArtifactIcons;
-            
-            var ability = _hero.Ability.GetAbility(item.Type);
-            var artefactIcon = icons.FirstOrDefault(i => i.Type == item.Type);
-            
-            if(artefactIcon == null || ability == null) return;
-
-            artefactIcon.DescriptionPanel.SetLevel(ability.Level.ToString());
+            RefreshIcon(item.Type);
         }
 
+        private void RefreshIcon(ItemType itemType)
+        {
+            GetComponents(itemType, out ArtifactIcon artefactIcon, out Ability ability);
+            if (artefactIcon == null || ability == null) return;
+            if (ability.Level > 0)
+            {
+                artefactIcon.EnableIcon();
+                artefactIcon.DescriptionPanel?.SetLevel((ability.Level + 1).ToString());
+            }
+            else
+            {
+                artefactIcon.DisableIcon();
+            }
+        }
+
+        private void GetComponents(ItemType itemType, out ArtifactIcon artifactIcon, out Ability ability)
+        {
+            var icons = _hudFacade.Menu.Window.Hero.ArtifactsPanel.ArtifactIcons;
+            artifactIcon =  icons.FirstOrDefault(i => i.Type == itemType);
+            ability = _hero.Ability.GetAbility(itemType);
+        }
         public void LoadData(SavedData savedData)
         {
-            
+            RefreshIcon(ItemType.Glove);
+            RefreshIcon(ItemType.Gun);
+            RefreshIcon(ItemType.RightSock);
+            RefreshIcon(ItemType.LeftSock);
+            RefreshIcon(ItemType.Substance);
         }
     }
 }

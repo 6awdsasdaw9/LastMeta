@@ -1,9 +1,7 @@
 using Code.Audio;
 using Code.Character.Hero.HeroInterfaces;
-using Code.Debugers;
 using Code.Infrastructure.GlobalEvents;
 using Code.Services.SaveServices;
-using Code.UI.HeadUpDisplay;
 using Zenject;
 
 namespace Code.Services.Adapters.HudAdapters
