@@ -11,7 +11,7 @@ namespace Code.Character.Hero
         public Constants.HeroMode Mode { get; private set; }
         private IHero _hero;
         private MovementLimiter _limiter;
-        
+
         [Inject]
         private void Construct(MovementLimiter limiter)
         {
@@ -48,17 +48,21 @@ namespace Code.Character.Hero
         public void SetDefaultMode()
         {
             Mode = Constants.HeroMode.Default;
-            _hero.GunAttack?.Disable();
-            _hero.HandAttack?.Enable();
-            _hero.Animator.PlayEnterHandMode();
+            
+            _hero.GunAttack.Disable();
+            _hero.HandAttack.Enable();
+
+            if (_hero.Animator.IsCalPlayAnimation) _hero.Animator.PlayEnterHandMode();
         }
 
         public void SetGunMode()
         {
             Mode = Constants.HeroMode.Gun;
-            _hero.GunAttack?.Enable();
-            _hero.HandAttack?.Disable();
-            _hero.Animator.PlayEnterGunMode();
+            
+            _hero.GunAttack.Enable();
+            _hero.HandAttack.Disable();
+            
+            if (_hero.Animator.IsCalPlayAnimation) _hero.Animator.PlayEnterGunMode();
         }
 
         private void OnEnableMovementMode()
@@ -67,7 +71,7 @@ namespace Code.Character.Hero
             _hero.Jump.Enable();
 
             if (_hero.GameMode != Constants.GameMode.Game) return;
-            
+
             _hero.GunAttack?.Enable();
             _hero.HandAttack?.Enable();
         }
@@ -78,7 +82,7 @@ namespace Code.Character.Hero
             _hero.Jump.Disable();
 
             if (_hero.GameMode != Constants.GameMode.Game) return;
-            
+
             _hero.GunAttack?.Disable();
             _hero.HandAttack?.Disable();
         }

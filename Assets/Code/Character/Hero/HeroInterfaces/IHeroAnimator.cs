@@ -2,6 +2,7 @@ namespace Code.Character.Hero.HeroInterfaces
 {
     public interface IHeroAnimator 
     {
+        bool IsCalPlayAnimation { get; }
         void PlayJump();
         void PlayMove();
         void PlayCrouch();

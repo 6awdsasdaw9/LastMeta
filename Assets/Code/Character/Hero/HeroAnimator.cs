@@ -31,6 +31,8 @@ namespace Code.Character.Hero
             PlayJump();
         }
 
+        public bool IsCalPlayAnimation => _animator != null && _animator.isActiveAndEnabled;
+
         public void PlayJump() => 
             _animator.SetBool(Jump_b, !_hero.Collision.OnGround);
 
@@ -49,10 +51,8 @@ namespace Code.Character.Hero
             _animator.SetTrigger(WaterDie_t);
         public void PlayDash(bool isDash) => 
             _animator.SetBool(Dash_b,isDash);
-
         public void PlayDamageFromAbove() =>
             _animator.SetTrigger(DamageFromAbove_t);
-
         public void PlayStunned(bool isStunned) =>
             _animator.SetBool(Stunned_b,isStunned);
         public void PlayEnterGunMode() => 
