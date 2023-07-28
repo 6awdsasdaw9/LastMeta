@@ -226,8 +226,7 @@ MonoBehaviour:
   - {fileID: 6400541843812690207}
   - {fileID: 3815039768029477319}
   _disableComponents: []
-  _disableObjects:
-  - {fileID: 3815039768029477319}
+  _disableObjects: []
 --- !u!114 &1523746617081452047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6400541843812690204
 Transform:
   m_ObjectHideFlags: 0
