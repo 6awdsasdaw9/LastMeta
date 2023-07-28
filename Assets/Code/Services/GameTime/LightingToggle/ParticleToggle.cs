@@ -44,7 +44,7 @@ namespace Code.Services.GameTime.LightingToggle
             }
             else
             {
-                _eventsFacade.SceneEvents.OnLoadScene += OnLoadScene;
+                _eventsFacade.SceneEvents.OnLoadScene -= OnLoadScene;
                 _eventsFacade.TimeEvents.OnStartTimeOfDay -= OnStartTimeOfDay;
             }
         }
@@ -73,12 +73,12 @@ namespace Code.Services.GameTime.LightingToggle
         }
         private void StopParticle()
         {
-            _particle.Stop();
+            _particle?.Stop();
         }
 
         private void PlayParticle()
         {
-            _particle.Play();
+            _particle?.Play();
         }
 
     

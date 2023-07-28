@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace FMODUnity
@@ -6,8 +7,7 @@ namespace FMODUnity
     [AddComponentMenu("FMOD Studio/FMOD Studio Listener")]
     public class StudioListener : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject attenuationObject = null;
+        public GameObject AttenuationObject;
 
 #if UNITY_PHYSICS_EXIST
         private Rigidbody rigidBody;
@@ -108,19 +108,19 @@ namespace FMODUnity
 #if UNITY_PHYSICS_EXIST
             if (rigidBody)
             {
-                RuntimeManager.SetListenerLocation(ListenerNumber, gameObject, rigidBody, attenuationObject);
+                RuntimeManager.SetListenerLocation(ListenerNumber, gameObject, rigidBody, AttenuationObject);
             }
             else
 #endif
 #if UNITY_PHYSICS2D_EXIST
             if (rigidBody2D)
             {
-                RuntimeManager.SetListenerLocation(ListenerNumber, gameObject, rigidBody2D, attenuationObject);
+                RuntimeManager.SetListenerLocation(ListenerNumber, gameObject, rigidBody2D, AttenuationObject);
             }
             else
 #endif
             {
-                RuntimeManager.SetListenerLocation(ListenerNumber, gameObject, attenuationObject);
+                RuntimeManager.SetListenerLocation(ListenerNumber, gameObject, AttenuationObject);
             }
         }
     }

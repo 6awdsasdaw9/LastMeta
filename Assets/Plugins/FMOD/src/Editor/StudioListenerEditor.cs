@@ -11,7 +11,7 @@ namespace FMODUnity
 
         private void OnEnable()
         {
-            attenuationObject = serializedObject.FindProperty("attenuationObject");
+            attenuationObject = serializedObject.FindProperty("AttenuationObject");
         }
 
         public override void OnInspectorGUI()
