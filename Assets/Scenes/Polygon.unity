@@ -2601,6 +2601,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 793875756}
     m_Modifications:
     - target: {fileID: 1523746617081452043, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
+      propertyPath: _enableObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523746617081452043, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
       propertyPath: _disableObjects.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -2651,6 +2655,18 @@ PrefabInstance:
     - target: {fileID: 1523746617081452085, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042047799516870383, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
+      propertyPath: OverrideAttenuation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042047799516870383, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
+      propertyPath: OverrideMaxDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042047799516870383, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
+      propertyPath: OverrideMinDistance
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
