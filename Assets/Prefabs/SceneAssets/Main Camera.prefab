@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttenuationObject: {fileID: 0}
 --- !u!114 &1830403187388025935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,8 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2513c5604ebed3b4b85a14c7b9dbac0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dampTime: 0.75
+  _isTeleportToPlayerOnAwake: 1
+  _isCanMove: 1
   _isCanMoveY: 1
+  _dampTime: 0.75
 --- !u!114 &1830403187388026034
 MonoBehaviour:
   m_ObjectHideFlags: 0
