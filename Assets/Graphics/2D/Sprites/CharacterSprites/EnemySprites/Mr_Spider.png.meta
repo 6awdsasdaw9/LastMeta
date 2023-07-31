@@ -121,7 +121,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 9
@@ -142,7 +142,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 9
@@ -163,7 +163,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 9
@@ -184,7 +184,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 128
+        y: 192
         width: 64
         height: 64
       alignment: 9
@@ -204,8 +204,8 @@ TextureImporter:
       name: Mr_Spider_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 256
+        y: 192
         width: 64
         height: 64
       alignment: 9
@@ -225,8 +225,8 @@ TextureImporter:
       name: Mr_Spider_5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
+        x: 0
+        y: 128
         width: 64
         height: 64
       alignment: 9
@@ -246,8 +246,8 @@ TextureImporter:
       name: Mr_Spider_6
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
+        x: 64
+        y: 128
         width: 64
         height: 64
       alignment: 9
@@ -267,8 +267,8 @@ TextureImporter:
       name: Mr_Spider_7
       rect:
         serializedVersion: 2
-        x: 192
-        y: 64
+        x: 128
+        y: 128
         width: 64
         height: 64
       alignment: 9
@@ -288,8 +288,8 @@ TextureImporter:
       name: Mr_Spider_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 192
+        y: 128
         width: 64
         height: 64
       alignment: 9
@@ -309,8 +309,8 @@ TextureImporter:
       name: Mr_Spider_9
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 256
+        y: 128
         width: 64
         height: 64
       alignment: 9
@@ -330,8 +330,8 @@ TextureImporter:
       name: Mr_Spider_10
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
+        x: 0
+        y: 64
         width: 64
         height: 64
       alignment: 9
@@ -351,8 +351,8 @@ TextureImporter:
       name: Mr_Spider_11
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
+        x: 64
+        y: 64
         width: 64
         height: 64
       alignment: 9
@@ -364,6 +364,174 @@ TextureImporter:
       bones: []
       spriteID: 4b31a00c6918f314496783757cd4bee3
       internalID: -1648332863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mr_Spider_12
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e62a52e21170d5f44a4b29b195735e6b
+      internalID: -1921437654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mr_Spider_13
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 732f659d3a7cc5143af5ca90f36885f0
+      internalID: 497656784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mr_Spider_14
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0be531df0865f814bb4d76fd0c7b5064
+      internalID: 1405714895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mr_Spider_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca05a0a1f0484ff4e89afa3a1ffc4923
+      internalID: -450691276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mr_Spider_16
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef6fd7cd4d2b43540850f9d65ba572a0
+      internalID: -2018307017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mr_Spider_17
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49a24c91b1e58f845b47d1683c9995a4
+      internalID: 1250911277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mr_Spider_18
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37244de5f1770ef4c9e89ee87ce34ea0
+      internalID: -1688777117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mr_Spider_19
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aaaf072acbe6814fa105d15bb36352b
+      internalID: 245916846
       vertices: []
       indices: 
       edges: []
@@ -383,6 +551,14 @@ TextureImporter:
       Mr_Spider_1: -376412729
       Mr_Spider_10: 1013937823
       Mr_Spider_11: -1648332863
+      Mr_Spider_12: -1921437654
+      Mr_Spider_13: 497656784
+      Mr_Spider_14: 1405714895
+      Mr_Spider_15: -450691276
+      Mr_Spider_16: -2018307017
+      Mr_Spider_17: 1250911277
+      Mr_Spider_18: -1688777117
+      Mr_Spider_19: 245916846
       Mr_Spider_2: 1456280096
       Mr_Spider_3: -1864950630
       Mr_Spider_4: -959637664

@@ -90,7 +90,7 @@ namespace Code.Character.Hero
             {
                 var missile = _missilesFactory.SpawnMissile(ShootingParams,_hero);
                 missile.Movement.StartMove();
-                await UniTask.WaitUntil(_attackCooldown.UpdateCooldown, cancellationToken: _cts.Token);
+                await UniTask.WaitUntil(_attackCooldown.IsUp, cancellationToken: _cts.Token);
                 _attackCooldown.ResetCooldown();
             }
         }

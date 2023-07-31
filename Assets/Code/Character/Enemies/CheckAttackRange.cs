@@ -46,7 +46,7 @@ namespace Code.Character.Enemies
         private void StopCheck()
         {
             _enemyAttack.enabled = false;
-            this.enabled = false;
+            enabled = false;
         }
     }
 }

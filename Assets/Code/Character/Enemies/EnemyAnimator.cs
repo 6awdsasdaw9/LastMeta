@@ -13,7 +13,6 @@ namespace Code.Character.Enemies
         private static readonly int Attack_t = Animator.StringToHash("Attack");
         private static readonly int death_t = Animator.StringToHash("Die");
         private static readonly int win_t = Animator.StringToHash("Win");
-        private static readonly int isMoving_b = Animator.StringToHash("IsMoving");
 
         private void Update()
         {
@@ -26,8 +25,5 @@ namespace Code.Character.Enemies
 
         private void PlayMove(float speed) => 
             _animator.SetFloat(Speed_f,speed);
-
-        public void StopMoving() =>  _animator.SetBool(isMoving_b,false);
-
     }
 }

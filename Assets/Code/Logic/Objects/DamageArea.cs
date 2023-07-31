@@ -66,19 +66,8 @@ namespace Code.Logic.Objects
             _hero.Movement.SetSupportVelocity(-Direction() * _pushPower);
         
             ResetHeroSupportVelocity().Forget();
-            CooldownRun().Forget();
         }
 
-        private async UniTaskVoid CooldownRun()
-        {
-            while (!_cooldown.IsUp())
-            {
-                _cooldown.UpdateCooldown();
-                await UniTask.Delay(
-                    TimeSpan.FromSeconds(Time.deltaTime),
-                    cancellationToken: gameObject.GetCancellationTokenOnDestroy());
-            }
-        }
 
         private async UniTaskVoid ResetHeroSupportVelocity()
         {

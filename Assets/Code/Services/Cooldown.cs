@@ -17,7 +17,12 @@ namespace Code.Services
 
         public bool IsUp()
         {
-            return _currentCooldown <= 0;
+            if (_currentCooldown > 0)
+            {
+                _currentCooldown -= Time.deltaTime;
+                return false;
+            }
+            return true;
         }
 
         public void ResetCooldown()
@@ -25,14 +30,6 @@ namespace Code.Services
             _currentCooldown = _cooldown;
         }
 
-        public bool UpdateCooldown()
-        {
-            if (!IsUp())
-            {
-                _currentCooldown -= Time.deltaTime;
-                return false;
-            }
-            return true;
-        }
+      
     }
 }

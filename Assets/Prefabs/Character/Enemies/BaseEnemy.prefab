@@ -158,8 +158,8 @@ GameObject:
   - component: {fileID: 1335422147629940910}
   - component: {fileID: 2817641175816865812}
   - component: {fileID: 8588384264464487781}
-  - component: {fileID: 7800196302827944487}
   - component: {fileID: 1335422147629940909}
+  - component: {fileID: 7800196302827944487}
   - component: {fileID: 1335422147629940899}
   - component: {fileID: 1335422147629940908}
   - component: {fileID: 1335422147629940898}
@@ -304,6 +304,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attack: {fileID: 7800196302827944487}
   _agent: {fileID: 5253977171680248896}
+--- !u!114 &1335422147629940909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702138767582540881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bacba6b3054484e83d554090956493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyAttack: {fileID: 7800196302827944487}
+  _triggerObserver: {fileID: 7800196302107043218}
 --- !u!114 &7800196302827944487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,20 +337,6 @@ MonoBehaviour:
   _cleavage: 1
   _effectiveHeight: 1
   _pushForce: 3
---- !u!114 &1335422147629940909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5702138767582540881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8bacba6b3054484e83d554090956493, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyAttack: {fileID: 7800196302827944487}
-  _triggerObserver: {fileID: 7800196302107043218}
 --- !u!114 &1335422147629940899
 MonoBehaviour:
   m_ObjectHideFlags: 0

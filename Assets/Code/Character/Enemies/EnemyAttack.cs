@@ -16,19 +16,20 @@ namespace Code.Character.Enemies
     {
         [SerializeField] private EnemyAnimator _animator;
         [SerializeField] private Cooldown _attackCooldown;
+        
+        //Todo берем данные из конфига
         [SerializeField] private float _damage = 10;
         [SerializeField] private float _cleavage = 1;
         [SerializeField] private float _effectiveHeight = 1;
         [SerializeField] private float _pushForce = 3;
-
+        
         private IHero _hero;
+        private int _layerMask;
+        private Vector3 _startPoint;
+        private readonly Collider[] _hits = new Collider[1];
 
         private bool _isAttacking;
-        private int _layerMask;
-        private readonly Collider[] _hits = new Collider[1];
-        private Vector3 startPoint;
-        public bool attackIsActive { get; private set; }
-        
+        private bool _attackIsActive;
 
         [Inject]
         private void Construct(IHero hero)
@@ -39,13 +40,16 @@ namespace Code.Character.Enemies
         
         private void Update()
         {
-            _attackCooldown.UpdateCooldown();
             if (CanAttack()) StartAttack();
         }
 
         private void OnDisable()
         {
-            if(_isAttacking) _hero.Movement.SetSupportVelocity(Vector2.zero);
+            if (_isAttacking)
+            {
+                _hero.Movement.SetSupportVelocity(Vector2.zero);
+            }
+            _attackCooldown.ResetCooldown();
         }
 
         private void StartAttack()
@@ -84,8 +88,8 @@ namespace Code.Character.Enemies
             _isAttacking = false;
         }
 
-        public void DisableAttack() => attackIsActive = false;
-        public void EnableAttack() => attackIsActive = true;
+        public void DisableAttack() => _attackIsActive = false;
+        public void EnableAttack() => _attackIsActive = true;
 
         private bool Hit(out Collider hit)
         {
@@ -95,6 +99,6 @@ namespace Code.Character.Enemies
         }
 
         private Vector3 StartPoint() => new(transform.position.x, transform.position.y + _effectiveHeight, transform.position.z);
-        private bool CanAttack() => attackIsActive && !_isAttacking &&   _attackCooldown.IsUp();
+        private bool CanAttack() => _attackIsActive && !_isAttacking && _attackCooldown.IsUp();
     }
 }
