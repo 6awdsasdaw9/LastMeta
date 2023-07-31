@@ -59,7 +59,7 @@ namespace Code.Logic.Missile
             _lifetimeCooldown.SetTime(ShootingParams.LifeTime.GetRandom());
             _lifetimeCooldown.ResetCooldown();
 
-            await UniTask.WaitUntil(_lifetimeCooldown.UpdateCooldown, cancellationToken: _cts.Token);
+            await UniTask.WaitUntil(_lifetimeCooldown.IsUp, cancellationToken: _cts.Token);
             OnLifetimeCooldownIsUp?.Invoke(this);
         }
 

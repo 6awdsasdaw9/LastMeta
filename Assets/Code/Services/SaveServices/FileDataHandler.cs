@@ -18,8 +18,7 @@ namespace Code.Services.SaveServices
             this.dataFileName = dataFileName;
             this.useEncryption = useEncryption;
         }
-
-
+        
         #region  Encrypt
         private string EncryptDecrypt(string data)
         {
@@ -64,52 +63,46 @@ namespace Code.Services.SaveServices
             return loadedData;
         }*/
         #endregion
-
-
+        
         public void Save(SavedData savedData)
         {
-            string fullPath = Path.Combine(dataDirPath, dataFileName);
+            var fullPath = Path.Combine(dataDirPath, dataFileName);
             try
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
-                string dataToStore = JsonConvert.SerializeObject(savedData);
-
-                using (FileStream stream = new FileStream(fullPath,FileMode.Create))
-                {
-                    using(StreamWriter writer = new StreamWriter(stream))
-                    {
-                        writer.Write(dataToStore);
-                    }
-                }
+                var dataToStore = JsonConvert.SerializeObject(savedData);
+                
+                using FileStream stream = new FileStream(fullPath,FileMode.Create);
+                using StreamWriter writer = new StreamWriter(stream);
+             
+                writer.Write(dataToStore);
             }
             catch (Exception e)
             {
                 Debug.LogError("Error occured when trying to save data to file: " + fullPath + "\n" + e);
             }
         }
+        
         public SavedData Load()
         {
-            string fullPath = Path.Combine(dataDirPath, dataFileName);
+            var fullPath = Path.Combine(dataDirPath, dataFileName);
             SavedData loadedSavedData = null;
-            if (File.Exists(fullPath))
+            
+            if (!File.Exists(fullPath)) return loadedSavedData;
+            try
             {
-                try
-                {
-                    string dataToLoad = "";
-                    using (FileStream stream = new FileStream(fullPath, FileMode.Open))
-                    {
-                        using (StreamReader  reader = new StreamReader(stream))
-                        {
-                            dataToLoad = reader.ReadToEnd();
-                        }
-                    }
-                    loadedSavedData = JsonConvert.DeserializeObject<SavedData>(dataToLoad);
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError("Error occured when trying to load data from file: " + fullPath + "\n" + e);
-                }
+                var dataToLoad = "";
+                
+                using FileStream stream = new FileStream(fullPath, FileMode.Open);
+                using StreamReader  reader = new StreamReader(stream);
+
+                dataToLoad = reader.ReadToEnd();
+                loadedSavedData = JsonConvert.DeserializeObject<SavedData>(dataToLoad);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error occured when trying to load data from file: " + fullPath + "\n" + e);
             }
             return loadedSavedData;
         }

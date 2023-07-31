@@ -40,10 +40,6 @@ namespace Code.Logic.CameraLogic
             {
                 VerifyBoundaries();
             }
-            else
-            {
-                _cooldown.UpdateCooldown();
-            }
         }
 
         #region Two Side

@@ -73,19 +73,19 @@ namespace Code.Logic.Triggers
 
         private void SwitchFollowOn()
         {
-            foreach (var f in _followTriggerObserver)
+            foreach (var observer in _followTriggerObserver)
             {
-                if (f == null) continue;
-                f.enabled = true;
+                if (observer == null) continue;
+                observer.enabled = true;
             }
         }
 
         private void SwitchFollowOff()
         {
-            foreach (var f in _followTriggerObserver)
+            foreach (var observer in _followTriggerObserver)
             {
-                if (f == null) continue;
-                f.enabled = false;
+                if (observer == null) continue;
+                observer.enabled = false;
             }
         }
 

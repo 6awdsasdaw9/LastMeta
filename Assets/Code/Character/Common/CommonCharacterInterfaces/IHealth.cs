@@ -7,7 +7,6 @@ namespace Code.Character.Common.CommonCharacterInterfaces
     {
         float Current { get; }
         float Max { get; }
-
         event Action OnHealthChanged;
         void TakeDamage(float damage);
     }

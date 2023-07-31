@@ -85,7 +85,7 @@ namespace Code.Character.Hero.Abilities
 
             var heroForward = _hero.Transform.localScale.x;
 
-            while (!_durationCooldown.UpdateCooldown())
+            while (!_durationCooldown.IsUp())
             {
                 if (_durationCooldown.Normalize < 0.3f)
                 {

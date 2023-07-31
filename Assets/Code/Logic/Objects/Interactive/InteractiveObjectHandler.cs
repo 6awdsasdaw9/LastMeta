@@ -72,8 +72,6 @@ namespace Code.Logic.Objects.Interactive
 
                 _cooldown.ResetCooldown();
             }
-
-            _cooldown.UpdateCooldown();
         }
 
         private void OnDisable()
