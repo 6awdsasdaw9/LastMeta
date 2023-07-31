@@ -71,7 +71,10 @@ namespace Code.Services.SaveServices
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
-                var dataToStore = JsonConvert.SerializeObject(savedData);
+                var dataToStore = JsonConvert.SerializeObject(savedData, new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                });
                 
                 using FileStream stream = new FileStream(fullPath,FileMode.Create);
                 using StreamWriter writer = new StreamWriter(stream);

@@ -22,17 +22,14 @@ namespace Code.Character.Enemies
         [SerializeField] private float _cleavage = 1;
         [SerializeField] private float _effectiveHeight = 1;
         [SerializeField] private float _pushForce = 3;
-
-
+        
         private IHero _hero;
         private int _layerMask;
         private Vector3 _startPoint;
         private readonly Collider[] _hits = new Collider[1];
-        
-        
+
         private bool _isAttacking;
         private bool _attackIsActive;
-        
 
         [Inject]
         private void Construct(IHero hero)
