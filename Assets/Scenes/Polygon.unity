@@ -3055,6 +3055,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trampoline_Turtle
       objectReference: {fileID: 0}
+    - target: {fileID: 663415509047981561, guid: 4d0d260be5677d04eac3f23a7a31365e, type: 3}
+      propertyPath: _audioEvent._eventReference.Path
+      value: event:/SFX/Obstructions/Trampoline/Turtle
+      objectReference: {fileID: 0}
+    - target: {fileID: 663415509047981561, guid: 4d0d260be5677d04eac3f23a7a31365e, type: 3}
+      propertyPath: _audioEvent._eventReference.Guid.Data1
+      value: -1327575455
+      objectReference: {fileID: 0}
+    - target: {fileID: 663415509047981561, guid: 4d0d260be5677d04eac3f23a7a31365e, type: 3}
+      propertyPath: _audioEvent._eventReference.Guid.Data2
+      value: 1077710951
+      objectReference: {fileID: 0}
+    - target: {fileID: 663415509047981561, guid: 4d0d260be5677d04eac3f23a7a31365e, type: 3}
+      propertyPath: _audioEvent._eventReference.Guid.Data3
+      value: 1865802147
+      objectReference: {fileID: 0}
+    - target: {fileID: 663415509047981561, guid: 4d0d260be5677d04eac3f23a7a31365e, type: 3}
+      propertyPath: _audioEvent._eventReference.Guid.Data4
+      value: -1049723472
+      objectReference: {fileID: 0}
     - target: {fileID: 663415509047981567, guid: 4d0d260be5677d04eac3f23a7a31365e, type: 3}
       propertyPath: m_RootOrder
       value: 0
