@@ -11,7 +11,7 @@ namespace Code.Character.Enemies
         [SerializeField] private EnemyHealth _health;
         [SerializeField] private EnemyAnimator _animator;
         [SerializeField] private EnemyAttack _enemyAttack;
-        [SerializeField] private EnemyMovement _agent;
+        [SerializeField] private EnemyMovementPatrol _agent;
         
         public event Action Happened;
 

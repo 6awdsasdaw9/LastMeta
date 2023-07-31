@@ -1,9 +1,11 @@
 using Code.Character.Common.CommonCharacterInterfaces;
+using Code.Data.Configs;
 
 namespace Code.Character.Enemies
 {
     public interface IEnemy
     {
+        public EnemyType Type { get; }
         public IEnemyMovement Movement { get; }
         public IEnemyAttack Attack { get; }
         public ICharacterHealth Health { get; }

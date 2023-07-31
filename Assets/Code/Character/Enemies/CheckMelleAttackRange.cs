@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Code.Character.Enemies
 {
-    public class CheckAttackRange : MonoBehaviour
+    public class CheckMelleAttackRange : MonoBehaviour
     {
         [SerializeField] private EnemyAttack _enemyAttack;
         [SerializeField] private TriggerObserver _triggerObserver;

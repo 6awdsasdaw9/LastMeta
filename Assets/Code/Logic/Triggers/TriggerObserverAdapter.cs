@@ -10,7 +10,8 @@ namespace Code.Logic.Triggers
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private float _delay;
         [SerializeField] private float _cooldown;
-        [SerializeField] private FollowTriggerObserver[] _followTriggerObserver;
+        [SerializeField] private FollowTriggerObserver[] _enableObserver;
+        [SerializeField] private FollowTriggerObserver[] _disableObserver;
 
         private CancellationTokenSource _tokenSource;
         private bool _hasReactionTarget;
@@ -32,8 +33,7 @@ namespace Code.Logic.Triggers
 
         private void OnEnter(Collider obj)
         {
-            if (_hasReactionTarget)
-                return;
+            if (_hasReactionTarget) return;
 
             _hasReactionTarget = true;
             _tokenSource = new CancellationTokenSource();
@@ -73,19 +73,27 @@ namespace Code.Logic.Triggers
 
         private void SwitchFollowOn()
         {
-            foreach (var observer in _followTriggerObserver)
+            foreach (var observer in _enableObserver)
             {
-                if (observer == null) continue;
-                observer.enabled = true;
+                observer.Enable();
+            }
+
+            foreach (var observer in _disableObserver)
+            {
+                observer.Disable();
             }
         }
 
         private void SwitchFollowOff()
         {
-            foreach (var observer in _followTriggerObserver)
+            foreach (var observer in _enableObserver)
             {
-                if (observer == null) continue;
-                observer.enabled = false;
+                observer.Disable();
+            }
+            
+            foreach (var observer in _disableObserver)
+            {
+                observer.Enable();
             }
         }
 

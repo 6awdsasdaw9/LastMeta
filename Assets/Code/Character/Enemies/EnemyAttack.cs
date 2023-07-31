@@ -1,11 +1,9 @@
 using System;
 using System.Linq;
-using Code.Character.Hero;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Debugers;
 using Code.Services;
 using Cysharp.Threading.Tasks;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
@@ -29,7 +27,7 @@ namespace Code.Character.Enemies
         private readonly Collider[] _hits = new Collider[1];
 
         private bool _isAttacking;
-        private bool _attackIsActive;
+        public bool IsActive { get; set; }
 
         [Inject]
         private void Construct(IHero hero)
@@ -88,8 +86,8 @@ namespace Code.Character.Enemies
             _isAttacking = false;
         }
 
-        public void DisableAttack() => _attackIsActive = false;
-        public void EnableAttack() => _attackIsActive = true;
+        public void DisableAttack() => IsActive = false;
+        public void EnableAttack() => IsActive = true;
 
         private bool Hit(out Collider hit)
         {
@@ -99,6 +97,6 @@ namespace Code.Character.Enemies
         }
 
         private Vector3 StartPoint() => new(transform.position.x, transform.position.y + _effectiveHeight, transform.position.z);
-        private bool CanAttack() => _attackIsActive && !_isAttacking && _attackCooldown.IsUp();
+        private bool CanAttack() => IsActive && !_isAttacking && _attackCooldown.IsUp();
     }
 }
