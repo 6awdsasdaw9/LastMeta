@@ -584,6 +584,17 @@ Transform:
   m_Father: {fileID: 607160853}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &425367093 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8277901911783564243, guid: bb228830be456474db5134492cbf334c, type: 3}
+  m_PrefabInstance: {fileID: 1328632138}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9e379ef1d672e4a9d87f7a42225a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &429266146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1904,6 +1915,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 793875756}
     m_Modifications:
+    - target: {fileID: 1402708071, guid: bb228830be456474db5134492cbf334c, type: 3}
+      propertyPath: melleAttack
+      value: 
+      objectReference: {fileID: 425367093}
+    - target: {fileID: 889040388031060312, guid: bb228830be456474db5134492cbf334c, type: 3}
+      propertyPath: enemyMelleAttack
+      value: 
+      objectReference: {fileID: 425367093}
+    - target: {fileID: 889040388031060313, guid: bb228830be456474db5134492cbf334c, type: 3}
+      propertyPath: enemyMelleAttack
+      value: 
+      objectReference: {fileID: 425367093}
     - target: {fileID: 5907823467843071395, guid: bb228830be456474db5134492cbf334c, type: 3}
       propertyPath: m_RootOrder
       value: 1
