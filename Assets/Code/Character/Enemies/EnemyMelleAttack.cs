@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Debugers;
+using Code.Logic.Triggers;
 using Code.Services;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -10,7 +11,7 @@ using Zenject;
 namespace Code.Character.Enemies
 {
     [RequireComponent(typeof(EnemyAnimator))]
-    public class EnemyAttack : MonoBehaviour
+    public class EnemyMelleAttack : FollowTriggerObserver
     {
         [SerializeField] private EnemyAnimator _animator;
         [SerializeField] private Cooldown _attackCooldown;
@@ -27,7 +28,7 @@ namespace Code.Character.Enemies
         private readonly Collider[] _hits = new Collider[1];
 
         private bool _isAttacking;
-        public bool IsActive { get; set; }
+        public bool IsActive { get; private set; }
 
         [Inject]
         private void Construct(IHero hero)
@@ -55,7 +56,7 @@ namespace Code.Character.Enemies
             if (_isAttacking) return;
 
             _isAttacking = true;
-            _animator.PlayAttack();
+            _animator.PlayMelleAttack();
         }
 
         /// <summary>

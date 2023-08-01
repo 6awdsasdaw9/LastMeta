@@ -15,6 +15,7 @@ namespace Code.Logic.Objects.Platforming
         [SerializeField] private Vector2 _force = Vector2.up;
 
         [Title("Optional")] 
+        [GUIColor(0.85f, 0.74f, 1)]
         [SerializeField] private AudioEvent _audioEvent; 
         [SerializeField] private StartAnimation _startAnimation;
 

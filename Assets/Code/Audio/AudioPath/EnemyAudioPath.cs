@@ -6,13 +6,12 @@ namespace Code.Audio.AudioPath
     [CreateAssetMenu(fileName = "EnemyAudioPath", menuName = "ScriptableObjects/Audio/EnemyAudioPath")]
     public class EnemyAudioPath : ScriptableObject
     {
-        public EventReference breathPath;
-        public EventReference stepPath;
-        public EventReference attackStartPath;
-        public EventReference attackPath;
-        public EventReference attackEndPath;
-        public EventReference deathPath;
-        public EventReference screamPath;
+        public EventReference BreathPath;
+        public EventReference StepPath;
+        public EventReference MelleAttackPath;
+        public EventReference RangeAttackPath;
+        public EventReference DeathPath;
+        public EventReference ScreamPath;
         public EventReference SFX;
     }
 }

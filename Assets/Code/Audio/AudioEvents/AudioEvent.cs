@@ -1,5 +1,6 @@
 using System;
 using FMODUnity;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Code.Audio.AudioEvents

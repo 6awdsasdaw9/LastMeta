@@ -19,6 +19,7 @@ namespace Code.Logic.Objects.DestroyedObjects
         [SerializeField] private Collider _collider;
         [SerializeField] private DestroyedObjectHealth _health;
         [SerializeField] private DestroyedObjectSpriteParam[] _destroyedSprites;
+        [GUIColor(0.85f, 0.74f, 1)]
         [SerializeField] private AudioEvent _audioEvent;
 
         private bool _isDestroyed;

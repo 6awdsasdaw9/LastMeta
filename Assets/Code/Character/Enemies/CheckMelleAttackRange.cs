@@ -7,7 +7,7 @@ namespace Code.Character.Enemies
 {
     public class CheckMelleAttackRange : MonoBehaviour
     {
-        [SerializeField] private EnemyAttack _enemyAttack;
+        [SerializeField] private EnemyMelleAttack enemyMelleAttack;
         [SerializeField] private TriggerObserver _triggerObserver;
         private MovementLimiter _limiter;
         
@@ -23,7 +23,7 @@ namespace Code.Character.Enemies
             _triggerObserver.OnExit += OnExit;
             _limiter.OnDisableMovementMode += StopCheck;
             
-            _enemyAttack.DisableAttack();
+            enemyMelleAttack.DisableAttack();
         }
 
         private void OnDisable()
@@ -35,17 +35,17 @@ namespace Code.Character.Enemies
 
         private void OnEnter(Collider obj)
         {
-            _enemyAttack.EnableAttack();
+            enemyMelleAttack.EnableAttack();
         }
 
         private void OnExit(Collider obj)
         {
-            _enemyAttack.DisableAttack();
+            enemyMelleAttack.DisableAttack();
         }
 
         private void StopCheck()
         {
-            _enemyAttack.enabled = false;
+            enemyMelleAttack.enabled = false;
             enabled = false;
         }
     }

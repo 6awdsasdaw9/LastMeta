@@ -9,13 +9,12 @@ namespace Code.Character.Enemies
         [SerializeField] private EnemyAudioPath _enemyAudioPath;
 
         #region Animation events
-        private void AudioPlayBreath() => PlayAudio(_enemyAudioPath.breathPath);
-        private void AudioPlayStep() => PlayAudio(_enemyAudioPath.stepPath);
-        private void AudioPlayAttackStart() => PlayAudio(_enemyAudioPath.attackStartPath);
-        private void AudioPlayAttack() => PlayAudio(_enemyAudioPath.attackPath);
-        private void AudioPlayAttackEnd() => PlayAudio(_enemyAudioPath.attackEndPath);
-        private void AudioPlayDeath() => PlayAudio(_enemyAudioPath.deathPath);
-        private void AudioPlayScream() => PlayAudio(_enemyAudioPath.screamPath);
+        private void AudioPlayBreath() => PlayAudio(_enemyAudioPath.BreathPath);
+        private void AudioPlayStep() => PlayAudio(_enemyAudioPath.StepPath);
+        private void AudioPlayMelleAttack() => PlayAudio(_enemyAudioPath.MelleAttackPath);
+        private void AudioPlayRangeAttack() => PlayAudio(_enemyAudioPath.RangeAttackPath);
+        private void AudioPlayDeath() => PlayAudio(_enemyAudioPath.DeathPath);
+        private void AudioPlayScream() => PlayAudio(_enemyAudioPath.ScreamPath);
         private void AudioPlaySFX() => PlayAudio(_enemyAudioPath.SFX);
         
         #endregion

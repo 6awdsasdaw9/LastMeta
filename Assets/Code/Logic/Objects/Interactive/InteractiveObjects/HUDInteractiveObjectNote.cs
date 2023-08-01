@@ -5,6 +5,7 @@ using Code.Data.Configs.TextsConfigs;
 using Code.UI.HeadUpDisplay;
 using Code.UI.HeadUpDisplay.Windows;
 using Ink.Runtime;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
@@ -13,6 +14,7 @@ namespace Code.Logic.Objects.Interactive.InteractiveObjects
     public class HUDInteractiveObjectNote : Interactivity
     {
         [SerializeField] private int _noteId;
+        [GUIColor(0.85f, 0.74f, 1)]
         [SerializeField] private AudioEvent _layerAudioEvent;
 
         private Sprite _noteImage;

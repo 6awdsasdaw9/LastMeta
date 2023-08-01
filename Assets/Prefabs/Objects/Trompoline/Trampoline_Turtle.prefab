@@ -324,10 +324,10 @@ MonoBehaviour:
   _audioEvent:
     _eventReference:
       Guid:
-        Data1: 93246546
-        Data2: 1317168363
-        Data3: -99374447
-        Data4: 781608164
-      Path: event:/SFX/Player/Player_Dash
+        Data1: -1327575455
+        Data2: 1077710951
+        Data3: 1865802147
+        Data4: -1049723472
+      Path: event:/SFX/Obstructions/Trampoline/Turtle
     _playOnAwake: 0
   _startAnimation: {fileID: 663415508083033640}

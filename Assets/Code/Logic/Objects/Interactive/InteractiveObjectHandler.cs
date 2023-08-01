@@ -19,6 +19,7 @@ namespace Code.Logic.Objects.Interactive
 
         [Space, Title("Optional")] 
         [SerializeField] private bool _isStartOnEnable;
+        [GUIColor(0.85f, 0.74f, 1)]
         [SerializeField] private AudioEvent _pressButtonAudioEvent;
         
         private Interactivity _interactiveObject;

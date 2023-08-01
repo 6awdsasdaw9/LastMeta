@@ -56,7 +56,9 @@ namespace Code
         public static Color BlueColor =  new(0.75f, 0.95f, 1, 1);
         public static Color DarkBlueColor =  new(0.75f, 0.85f, 1, 1);
         public static Color VioletColor =  new(0.85f, 0.74f, 1, 1);
-        public static Color[] RainbowColors = { RedColor,OrangeColor,YellowColor,GreenColor,BlueColor,DarkBlueColor,VioletColor};             
+        public static Color[] RainbowColors = { RedColor,OrangeColor,YellowColor,GreenColor,BlueColor,DarkBlueColor,VioletColor};  
+        
+        
         #endregion
     }
 }
