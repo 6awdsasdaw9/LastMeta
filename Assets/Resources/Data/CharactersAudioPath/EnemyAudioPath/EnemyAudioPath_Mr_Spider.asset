@@ -12,49 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995c65ff16fc4a46b599a98a636f251b, type: 3}
   m_Name: EnemyAudioPath_Mr_Spider
   m_EditorClassIdentifier: 
-  breathPath:
+  BreathPath:
     Guid:
       Data1: 0
       Data2: 0
       Data3: 0
       Data4: 0
     Path: 
-  stepPath:
+  StepPath:
     Guid:
       Data1: 0
       Data2: 0
       Data3: 0
       Data4: 0
     Path: 
-  attackStartPath:
+  MelleAttackPath:
     Guid:
       Data1: 0
       Data2: 0
       Data3: 0
       Data4: 0
     Path: 
-  attackPath:
+  RangeAttackPath:
     Guid:
       Data1: 0
       Data2: 0
       Data3: 0
       Data4: 0
     Path: 
-  attackEndPath:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  deathPath:
+  DeathPath:
     Guid:
       Data1: -1160036655
       Data2: 1081297934
       Data3: -971753854
       Data4: 1345167969
     Path: event:/SFX/Enemy/Mr_Spider/SpiderDeath
-  screamPath:
+  ScreamPath:
     Guid:
       Data1: 0
       Data2: 0
