@@ -29,12 +29,12 @@ namespace Code.Character.Common
             _sprite.flipX = !_sprite.flipX;
         }
 
-        public override void Disable()
+        public override void DisableComponent()
         {
             enabled = false;
         }
 
-        public override void Enable()
+        public override void EnableComponent()
         {
             enabled = true;
         }

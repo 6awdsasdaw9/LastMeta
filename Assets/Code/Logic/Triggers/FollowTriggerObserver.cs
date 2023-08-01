@@ -10,12 +10,12 @@ namespace Code.Logic.Triggers
     /// </summary>
     public abstract class FollowTriggerObserver : MonoBehaviour, IDisabledComponent
     {
-        public virtual void Disable()
+        public virtual void DisableComponent()
         {
             enabled = false;
         }
 
-        public virtual void Enable()
+        public virtual void EnableComponent()
         {
             enabled = true;
         }

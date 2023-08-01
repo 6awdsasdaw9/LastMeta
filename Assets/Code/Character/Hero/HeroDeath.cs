@@ -61,11 +61,11 @@ namespace Code.Character.Hero
         {
             _isDeath = true;
 
-            _hero.Collision.Disable();
-            _hero.Movement.Disable();
-            _hero.Jump.Disable();
-            _hero.GunAttack.Disable();
-            _hero.HandAttack.Disable();
+            _hero.Collision.DisableComponent();
+            _hero.Movement.DisableComponent();
+            _hero.Jump.DisableComponent();
+            _hero.GunAttack.DisableComponent();
+            _hero.HandAttack.DisableComponent();
             _limiter.DisableMovement();
 
             transform.position = new Vector3(transform.position.x, transform.position.y, Constants.SecondLayerPosition);

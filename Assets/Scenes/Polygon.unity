@@ -1007,11 +1007,6 @@ Transform:
   m_Father: {fileID: 607160853}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &779061721 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 990005456188490368, guid: bb228830be456474db5134492cbf334c, type: 3}
-  m_PrefabInstance: {fileID: 1328632138}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &788738768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1909,14 +1904,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 793875756}
     m_Modifications:
-    - target: {fileID: 889040388031060314, guid: bb228830be456474db5134492cbf334c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1867709981018532422, guid: bb228830be456474db5134492cbf334c, type: 3}
-      propertyPath: _followTriggerObserver.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5907823467843071395, guid: bb228830be456474db5134492cbf334c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1964,10 +1951,6 @@ PrefabInstance:
     - target: {fileID: 5907823467843071397, guid: bb228830be456474db5134492cbf334c, type: 3}
       propertyPath: m_Name
       value: Enemy_BlackHand
-      objectReference: {fileID: 0}
-    - target: {fileID: 7633266188420172945, guid: bb228830be456474db5134492cbf334c, type: 3}
-      propertyPath: _patrolDistance
-      value: 7.06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb228830be456474db5134492cbf334c, type: 3}
@@ -2045,30 +2028,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2540698932121645066, guid: 3f7a422ad9ea38647b9c87126d409a01, type: 3}
   m_PrefabInstance: {fileID: 1901725431}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1402708044 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5907823467843071397, guid: bb228830be456474db5134492cbf334c, type: 3}
-  m_PrefabInstance: {fileID: 1328632138}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &1402708055 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 6212503193679453620, guid: bb228830be456474db5134492cbf334c, type: 3}
-  m_PrefabInstance: {fileID: 1328632138}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1402708058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402708044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7677cd508e2b47278cc166dc670bb499, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sprite: {fileID: 779061721}
-  _meshAgent: {fileID: 1402708055}
 --- !u!1 &1568893361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2958,8 +2917,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 1bf1314a0a742664780cf899dda006eb, type: 2}
     - target: {fileID: 244853700002595893, guid: 384656fa2fa493a41a554985c5d4754d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.307
+      objectReference: {fileID: 0}
+    - target: {fileID: 244853700002595893, guid: 384656fa2fa493a41a554985c5d4754d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6
+      value: -1.627
       objectReference: {fileID: 0}
     - target: {fileID: 244853700423049454, guid: 384656fa2fa493a41a554985c5d4754d, type: 3}
       propertyPath: m_LocalRotation.w

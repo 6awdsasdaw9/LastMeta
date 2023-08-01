@@ -75,12 +75,12 @@ namespace Code.Logic.Triggers
         {
             foreach (var observer in _enableObserver)
             {
-                observer.Enable();
+                observer.EnableComponent();
             }
 
             foreach (var observer in _disableObserver)
             {
-                observer.Disable();
+                observer.DisableComponent();
             }
         }
 
@@ -88,12 +88,12 @@ namespace Code.Logic.Triggers
         {
             foreach (var observer in _enableObserver)
             {
-                observer.Disable();
+                observer.DisableComponent();
             }
             
             foreach (var observer in _disableObserver)
             {
-                observer.Enable();
+                observer.EnableComponent();
             }
         }
 

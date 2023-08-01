@@ -115,13 +115,13 @@ namespace Code.Character.Hero
         
         #endregion
         
-        public void Disable()
+        public void DisableComponent()
         {
             _collider.enabled = false;
             _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
         }
 
-        public void Enable()
+        public void EnableComponent()
         {
             _collider.enabled = true;
             _rigidbody.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;

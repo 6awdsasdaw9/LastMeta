@@ -48,7 +48,7 @@ namespace Code.Character.Hero
         }
 
         private void OnEnable() => 
-            Enable();
+            EnableComponent();
 
         private void Update()
         {
@@ -71,7 +71,7 @@ namespace Code.Character.Hero
         }
 
         private void OnDisable() => 
-            Disable();
+            DisableComponent();
 
         #endregion
 
@@ -186,10 +186,10 @@ namespace Code.Character.Hero
 
         #endregion
 
-        public void Disable() => 
+        public void DisableComponent() => 
             _input.OnPressJump -= OnJump;
 
-        public void Enable() => 
+        public void EnableComponent() => 
             _input.OnPressJump += OnJump;
 
     }

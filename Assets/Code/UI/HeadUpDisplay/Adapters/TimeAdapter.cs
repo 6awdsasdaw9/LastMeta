@@ -45,7 +45,7 @@ namespace Code.UI.HeadUpDisplay.Adapters
         {
             if (flag)
             {
-                _eventsFacade.SceneEvents.OnLoadScene += Enable;
+                _eventsFacade.SceneEvents.OnLoadScene += EnableComponent;
                 _eventsFacade.TimeEvents.OnStartMorning += RefreshDayText;
                 
                 _eventsFacade.TimeEvents.OnStartMorning += ShowSunSliderHandle;
@@ -53,7 +53,7 @@ namespace Code.UI.HeadUpDisplay.Adapters
             }
             else
             {
-                _eventsFacade.SceneEvents.OnLoadScene -= Enable;
+                _eventsFacade.SceneEvents.OnLoadScene -= EnableComponent;
                 _eventsFacade.TimeEvents.OnStartMorning -= RefreshDayText;
                 
                 _eventsFacade.TimeEvents.OnStartMorning -= ShowSunSliderHandle;
@@ -61,12 +61,12 @@ namespace Code.UI.HeadUpDisplay.Adapters
             }
         }
 
-        public void Disable()
+        public void DisableComponent()
         {
             _isFollowToClock = false;
         }
 
-        public void Enable()
+        public void EnableComponent()
         {
             RefreshDayText();
             _isFollowToClock = true;

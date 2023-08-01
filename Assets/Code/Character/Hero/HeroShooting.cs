@@ -41,7 +41,7 @@ namespace Code.Character.Hero
             ShootingParams = shootingParams;
         }
        
-        public void Enable()
+        public void EnableComponent()
         {
             if(this != null) enabled = true;
         }
@@ -52,7 +52,7 @@ namespace Code.Character.Hero
             _inputService.OnUnPressAttackButton += StopAttack;
         }
 
-        public void Disable()
+        public void DisableComponent()
         {
             if(this != null) enabled = false;
         }

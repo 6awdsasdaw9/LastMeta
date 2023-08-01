@@ -55,10 +55,10 @@ namespace Code.Character.Enemies
             return Vector3.Distance(_agent.transform.position, point) >= _minimalDistance;
         }
         
-        public override void Enable()
+        public override void EnableComponent()
         {
             _cooldown.ResetCooldown();
-            base.Enable();
+            base.EnableComponent();
         }
         
         private void OnDrawGizmos()

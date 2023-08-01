@@ -49,8 +49,8 @@ namespace Code.Character.Hero
         {
             Mode = Constants.HeroMode.Default;
             
-            _hero.GunAttack.Disable();
-            _hero.HandAttack.Enable();
+            _hero.GunAttack.DisableComponent();
+            _hero.HandAttack.EnableComponent();
 
             if (_hero.Animator.IsCalPlayAnimation) _hero.Animator.PlayEnterHandMode();
         }
@@ -59,32 +59,32 @@ namespace Code.Character.Hero
         {
             Mode = Constants.HeroMode.Gun;
             
-            _hero.GunAttack.Enable();
-            _hero.HandAttack.Disable();
+            _hero.GunAttack.EnableComponent();
+            _hero.HandAttack.DisableComponent();
             
             if (_hero.Animator.IsCalPlayAnimation) _hero.Animator.PlayEnterGunMode();
         }
 
         private void OnEnableMovementMode()
         {
-            _hero.Movement.Enable();
-            _hero.Jump.Enable();
+            _hero.Movement.EnableComponent();
+            _hero.Jump.EnableComponent();
 
             if (_hero.GameMode != Constants.GameMode.Game) return;
 
-            _hero.GunAttack?.Enable();
-            _hero.HandAttack?.Enable();
+            _hero.GunAttack?.EnableComponent();
+            _hero.HandAttack?.EnableComponent();
         }
 
         private void OnDisableMovementMode()
         {
-            _hero.Movement.Disable();
-            _hero.Jump.Disable();
+            _hero.Movement.DisableComponent();
+            _hero.Jump.DisableComponent();
 
             if (_hero.GameMode != Constants.GameMode.Game) return;
 
-            _hero.GunAttack?.Disable();
-            _hero.HandAttack?.Disable();
+            _hero.GunAttack?.DisableComponent();
+            _hero.HandAttack?.DisableComponent();
         }
     }
 }

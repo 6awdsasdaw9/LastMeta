@@ -222,12 +222,12 @@ namespace Code.Character.Hero
 
         #endregion
 
-        public void Disable()
+        public void DisableComponent()
         {
             BlockMovement();
         }
 
-        public void Enable()
+        public void EnableComponent()
         {
             _heroCanMove = true;
         }
