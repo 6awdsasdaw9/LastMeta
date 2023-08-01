@@ -1,4 +1,5 @@
 using System;
+using Code.Audio.AudioEvents;
 using Code.Data.AdditionalData;
 using Code.Data.GameData;
 using Code.Debugers;
@@ -18,6 +19,7 @@ namespace Code.Logic.Objects.DestroyedObjects
         [SerializeField] private Collider _collider;
         [SerializeField] private DestroyedObjectHealth _health;
         [SerializeField] private DestroyedObjectSpriteParam[] _destroyedSprites;
+        [SerializeField] private AudioEvent _audioEvent;
 
         private bool _isDestroyed;
 
@@ -52,6 +54,7 @@ namespace Code.Logic.Objects.DestroyedObjects
             foreach (var objectSpriteParam in _destroyedSprites)
             {
                 objectSpriteParam.Animation.PlayDestroy();
+                _audioEvent.PlayAudioEvent();
             }
 
             Disable();
