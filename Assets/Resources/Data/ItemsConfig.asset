@@ -18,13 +18,34 @@ MonoBehaviour:
     Sprite: {fileID: -589837483, guid: 19470176de1c3df408bb3af4d6927b69, type: 3}
     Icon: {fileID: -589837483, guid: 19470176de1c3df408bb3af4d6927b69, type: 3}
     AnimatorController: {fileID: 22100000, guid: 8d7e23b1ffb06124481ad0b0bcf4aeac, type: 2}
+    AudioEvent:
+      Guid:
+        Data1: -255327776
+        Data2: 1225972074
+        Data3: -765123708
+        Data4: 707099347
+      Path: event:/SFX/Bonus/Money
   - Type: 5
     Value: 1
     Sprite: {fileID: 1318286311, guid: 19470176de1c3df408bb3af4d6927b69, type: 3}
     Icon: {fileID: 1318286311, guid: 19470176de1c3df408bb3af4d6927b69, type: 3}
     AnimatorController: {fileID: 22100000, guid: 1407dc84018e3f14a8d53b84fe590c86, type: 2}
+    AudioEvent:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
   - Type: 6
     Value: 1
     Sprite: {fileID: 2030030009, guid: 6e8ef9d5f84affd4fb102ec450c09b24, type: 3}
     Icon: {fileID: 2030030009, guid: 6e8ef9d5f84affd4fb102ec450c09b24, type: 3}
     AnimatorController: {fileID: 22100000, guid: 1407dc84018e3f14a8d53b84fe590c86, type: 2}
+    AudioEvent:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 

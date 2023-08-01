@@ -3221,6 +3221,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4982487749705536633, guid: 3b1ddf31dfee97041ac8915f07fa1139, type: 3}
+      propertyPath: _audioEvent._eventReference.Path
+      value: event:/Glass_Break
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982487749705536633, guid: 3b1ddf31dfee97041ac8915f07fa1139, type: 3}
+      propertyPath: _audioEvent._eventReference.Guid.Data1
+      value: -392102268
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982487749705536633, guid: 3b1ddf31dfee97041ac8915f07fa1139, type: 3}
+      propertyPath: _audioEvent._eventReference.Guid.Data2
+      value: 1151285986
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982487749705536633, guid: 3b1ddf31dfee97041ac8915f07fa1139, type: 3}
+      propertyPath: _audioEvent._eventReference.Guid.Data3
+      value: 528673921
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982487749705536633, guid: 3b1ddf31dfee97041ac8915f07fa1139, type: 3}
+      propertyPath: _audioEvent._eventReference.Guid.Data4
+      value: -445835068
+      objectReference: {fileID: 0}
     - target: {fileID: 4982487749705536634, guid: 3b1ddf31dfee97041ac8915f07fa1139, type: 3}
       propertyPath: m_Name
       value: GlassVase
