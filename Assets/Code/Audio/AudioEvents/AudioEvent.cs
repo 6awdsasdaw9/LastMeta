@@ -30,5 +30,15 @@ namespace Code.Audio.AudioEvents
 
             RuntimeManager.PlayOneShot(_eventReference);
         }
+
+        public void PlayAudioEvent(EventReference eventReference)
+        {
+            if (eventReference.IsNull)
+            {
+                return;
+            }
+
+            RuntimeManager.PlayOneShot(eventReference);
+        }
     }
 }

@@ -14,7 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpikesData:
   - Type: 0
+    Damage: 3
+    PushForce: 0.5
+    AudioData:
+      EnableAudioEvent:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+      DisableAudioEvent:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+      CollisionAudioEvent:
+        Guid:
+          Data1: 0
+          Data2: 0
+          Data3: 0
+          Data4: 0
+        Path: 
+  - Type: 3
     Damage: 1
+    PushForce: 0.5
     AudioData:
       EnableAudioEvent:
         Guid:

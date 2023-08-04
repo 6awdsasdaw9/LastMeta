@@ -42,7 +42,7 @@ PrefabInstance:
     - target: {fileID: 6659652504158788562, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
       propertyPath: _heroAudio
       value: 
-      objectReference: {fileID: 7407501786901000246}
+      objectReference: {fileID: 0}
     - target: {fileID: 6659652504158788574, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
       propertyPath: m_Name
       value: Hero
@@ -159,6 +159,10 @@ PrefabInstance:
       propertyPath: heroModeToggle
       value: 
       objectReference: {fileID: 6934480608692550672}
+    - target: {fileID: 7969470891057066125, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6ea32136250244c4a8f54f406059e528, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
 --- !u!212 &2929443424245635808 stripped
@@ -303,16 +307,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74e66c8153bd405b9d2188339acec168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7407501786901000246 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1297059016546552242, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
-  m_PrefabInstance: {fileID: 8416295237243615620}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2929443425413194330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33ba9089bd2749c18a769f57eb3a932b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

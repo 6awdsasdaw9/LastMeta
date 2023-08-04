@@ -17,6 +17,5 @@ namespace Code.Logic.Collisions
         {
             OnExit?.Invoke(collision);
         }
-
     }
 }

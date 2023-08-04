@@ -1,5 +1,7 @@
+using Code.Audio.AudioEvents;
 using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Character.Hero.HeroInterfaces;
+using Code.Data.GameData;
 using Code.Logic.Objects.Animations;
 using Code.Logic.Triggers;
 using UnityEngine;
@@ -11,7 +13,9 @@ namespace Code.Logic.Objects.Spikes
     {
         [SerializeField] private StartStopAnimation _animation;
         [SerializeField] private TriggerObserver _damageTrigger;
-        [SerializeField] private float _damage;
+
+        private SpikeData _data;
+        private AudioEvent _audioEvent;
         private IHero _hero;
 
         [Inject]
@@ -34,7 +38,7 @@ namespace Code.Logic.Objects.Spikes
 
         private void OnTriggerEnter(Collider obj)
         {
-            _hero.Health.TakeDamage(_damage);
+            _hero.Health.TakeDamage(_data.Damage);
         }
     }
 }
