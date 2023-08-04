@@ -1,12 +1,8 @@
-using System;
 using Code.Character.Hero.HeroInterfaces;
-using Code.Debugers;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Code.Character.Hero
 {
-    [RequireComponent(typeof(Animator))]
     public class HeroAnimator : MonoBehaviour, IHeroAnimator
     {
         [SerializeField] private Animator _animator;
