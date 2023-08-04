@@ -84,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameMode: 0
   _animator: {fileID: 6659652504158788546}
-  _audio: {fileID: 0}
+  _audio: {fileID: 1418188040343595794}
   _movement: {fileID: 6659652504158788560}
   _jump: {fileID: 6659652504158788562}
   _collision: {fileID: 6659652504158788561}
