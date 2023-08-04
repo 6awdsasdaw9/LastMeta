@@ -12,7 +12,7 @@ namespace Code.Character.Hero
 {
     public class HeroAttack : MonoBehaviour, IHeroAttack
     {
-        private IHero _hero;
+        [SerializeField] private Hero _hero;
         private InputService _inputService;
         private RaycastHits _raycastHit;
         public DamageParam DamageParam { get; private set; }
@@ -25,8 +25,6 @@ namespace Code.Character.Hero
         [Inject]
         private void Construct(InputService inputService, HeroConfig heroConfig)
         {
-            _hero = GetComponent<IHero>();
-        
             _raycastHit = new RaycastHits(transform, Constants.HittableLayer, 0.2f, hitsSize: 7);
             _inputService = inputService;
         }
