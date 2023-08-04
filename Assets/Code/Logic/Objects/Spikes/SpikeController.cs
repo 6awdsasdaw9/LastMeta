@@ -23,11 +23,13 @@ namespace Code.Logic.Objects.Spikes
         public void DisableComponent()
         {
             _damageTrigger.OnEnter -= OnTriggerEnter;
+            _animation.PlayStop();
         }
 
         public void EnableComponent()
         {
             _damageTrigger.OnEnter += OnTriggerEnter;
+            _animation.PlayStart();
         }
 
         private void OnTriggerEnter(Collider obj)
