@@ -2,7 +2,7 @@ using System;
 using FMODUnity;
 using UnityEngine;
 
-namespace Code.Logic.Objects.Items
+namespace Code.Logic.Items
 {
     [Serializable]
     public class ItemData

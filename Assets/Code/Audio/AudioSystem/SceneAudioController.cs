@@ -1,4 +1,3 @@
-using Code.Audio.AudioSystem;
 using Code.Data.Configs;
 using Code.Infrastructure.GlobalEvents;
 using Code.Services.SaveServices;
@@ -7,7 +6,7 @@ using FMODUnity;
 using STOP_MODE = FMOD.Studio.STOP_MODE;
 
 
-namespace Code.Audio
+namespace Code.Audio.AudioSystem
 {
     public class SceneAudioController: ISavedData
     {

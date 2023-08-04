@@ -1,7 +1,7 @@
 using System;
 using Code.Services.LanguageLocalization;
-using Code.UI.HeadUpDisplay.HudElements;
-using Code.UI.HeadUpDisplay.HudElements.Buttons;
+using Code.UI.HeadUpDisplay.Elements;
+using Code.UI.HeadUpDisplay.Elements.Buttons;
 using Code.UI.HeadUpDisplay.Windows.HudWindows.MenuWindowElements.Hero.ArtifactsElements;
 using Code.UI.HeadUpDisplay.Windows.HudWindows.MenuWindowElements.Hero.HeroParamsElements;
 using TMPro;

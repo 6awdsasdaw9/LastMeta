@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using Code.Audio.AudioEvents;
 using UnityEngine;
 
-namespace Code.Logic.Objects.TimingObjects.TimeObserverses
+namespace Code.Logic.TimingObjects.TimeObserverses
 {
   
     public class TimeObserverComponentController : TimeObserver

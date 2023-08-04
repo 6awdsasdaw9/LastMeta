@@ -1,12 +1,11 @@
 using Code.Data.AdditionalData;
-using Code.Data.GameData;
 using Code.Infrastructure.Factories;
 using Code.Services.SaveServices;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.Objects.Items
+namespace Code.Logic.Items
 {
     public  class ItemSpawner : MonoBehaviour, ISavedData
     {

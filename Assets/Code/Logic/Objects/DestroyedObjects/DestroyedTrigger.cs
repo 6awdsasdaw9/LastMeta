@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Code.Logic.Objects.Animations;
 using Code.Logic.Triggers;
 using Code.Services;
+using Code.Services.EventsSubscribes;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;

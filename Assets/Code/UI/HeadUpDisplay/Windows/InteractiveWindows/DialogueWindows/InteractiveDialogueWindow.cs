@@ -1,5 +1,5 @@
 using System;
-using Code.UI.HeadUpDisplay.HudElements.Buttons;
+using Code.UI.HeadUpDisplay.Elements.Buttons;
 using UnityEngine;
 
 namespace Code.UI.HeadUpDisplay.Windows.InteractiveWindows.DialogueWindows

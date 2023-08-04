@@ -3,8 +3,9 @@ using FMODUnity;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Code.Logic.Objects.Spikes
+namespace Code.Data.GameData
 {
+    #region SPIKES
     public enum SpikeType
     {
         BidAngle,
@@ -17,11 +18,10 @@ namespace Code.Logic.Objects.Spikes
     public class SpikeData
     {
         public SpikeType Type;
-        public RuntimeAnimatorController AnimatorController;
         public float Damage = 1;
 
         [GUIColor(0.85f, 0.74f, 1)] 
-        private readonly SpikeAudioData _spikeAudioData = new SpikeAudioData();
+        public SpikeAudioData AudioData;
     }
 
     [Serializable]
@@ -31,4 +31,5 @@ namespace Code.Logic.Objects.Spikes
         public EventReference DisableAudioEvent;
         public EventReference CollisionAudioEvent;
     }
+    #endregion
 }

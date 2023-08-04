@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Logic.Objects.TimingObjects.TimeObserverses
+namespace Code.Logic.TimingObjects.TimeObserverses
 {
     public class TimeObserverAnimator : TimeObserver
     {

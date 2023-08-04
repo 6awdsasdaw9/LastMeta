@@ -1,4 +1,4 @@
-using Code.Logic.Objects.Items;
+using Code.Logic.Items;
 using UnityEditor;
 using UnityEngine;
 

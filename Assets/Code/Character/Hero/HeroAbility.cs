@@ -3,7 +3,7 @@ using Code.Character.Hero.Abilities;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs.HeroConfigs;
 using Code.Data.GameData;
-using Code.Logic.Objects.Items;
+using Code.Logic.Items;
 using Code.Services.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;

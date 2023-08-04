@@ -1,6 +1,6 @@
 using Code.Data.GameData;
 
-namespace Code.Logic.Objects.TimingObjects.TimeObserverses.Interfaces
+namespace Code.Logic.TimingObjects.TimeObserverses.Interfaces
 {
     public interface ITimeObserver
     {

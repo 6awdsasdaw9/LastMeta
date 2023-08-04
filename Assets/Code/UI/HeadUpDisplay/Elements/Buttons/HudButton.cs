@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Code.UI.HeadUpDisplay.HudElements.Buttons
+namespace Code.UI.HeadUpDisplay.Elements.Buttons
 {
     public  class HudButton: HudElement
     {

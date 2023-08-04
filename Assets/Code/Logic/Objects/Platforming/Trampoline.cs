@@ -3,6 +3,7 @@ using Code.Infrastructure.GlobalEvents;
 using Code.Logic.Collisions;
 using Code.Logic.Objects.Animations;
 using Code.Services;
+using Code.Services.EventsSubscribes;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;

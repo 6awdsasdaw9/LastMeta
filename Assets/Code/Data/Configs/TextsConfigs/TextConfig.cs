@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Data.Configs.HeroConfigs;
-using Code.Logic.Objects.Items;
+using Code.Logic.Items;
 using UnityEngine;
 
 namespace Code.Data.Configs.TextsConfigs

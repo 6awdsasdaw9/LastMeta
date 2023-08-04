@@ -1,6 +1,5 @@
 using Code.Audio.AudioSystem;
 using Code.Services.Adapters;
-using Code.Services.Adapters.HudAdapters;
 using Code.UI.HeadUpDisplay.Adapters;
 using Sirenix.OdinInspector;
 using UnityEngine;

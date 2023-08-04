@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Code.Logic.Objects.Animations;
 using Code.UI.GameElements;
-using Code.UI.HeadUpDisplay.HudElements;
+using Code.UI.HeadUpDisplay.Elements;
 using Code.UI.HeadUpDisplay.Windows.HudWindows.HudButtonWindows;
 using Code.UI.HeadUpDisplay.Windows.InteractiveWindows;
 using Sirenix.OdinInspector;

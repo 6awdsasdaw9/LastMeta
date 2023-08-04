@@ -1,10 +1,10 @@
-using Code.Audio;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Infrastructure.GlobalEvents;
+using Code.Services.EventsSubscribes;
 using Code.Services.SaveServices;
 using Zenject;
 
-namespace Code.Services.Adapters.HudAdapters
+namespace Code.Audio.AudioSystem
 {
     public class SceneAudioParamAdapter: IEventsSubscriber, ISavedDataReader
     {

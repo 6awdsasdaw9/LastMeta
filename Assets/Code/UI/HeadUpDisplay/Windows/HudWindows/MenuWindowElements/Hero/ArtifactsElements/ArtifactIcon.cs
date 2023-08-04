@@ -1,5 +1,5 @@
-using Code.Logic.Objects.Items;
-using Code.UI.HeadUpDisplay.HudElements;
+using Code.Logic.Items;
+using Code.UI.HeadUpDisplay.Elements;
 using UnityEngine;
 
 namespace Code.UI.HeadUpDisplay.Windows.HudWindows.MenuWindowElements.Hero.ArtifactsElements

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Code.Infrastructure.GlobalEvents;
 
-namespace Code.Services
+namespace Code.Services.EventsSubscribes
 {
     public class EventSubsribersStorage
     {

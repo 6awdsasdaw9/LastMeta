@@ -1,7 +1,7 @@
 using System;
 using Code.Services.LanguageLocalization;
-using Code.UI.HeadUpDisplay.HudElements;
-using Code.UI.HeadUpDisplay.HudElements.Buttons;
+using Code.UI.HeadUpDisplay.Elements;
+using Code.UI.HeadUpDisplay.Elements.Buttons;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;

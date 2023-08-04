@@ -1,4 +1,4 @@
-namespace Code.UI.HeadUpDisplay.HudElements
+namespace Code.UI.HeadUpDisplay.Elements
 {
 
 }

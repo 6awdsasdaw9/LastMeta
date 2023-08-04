@@ -1,4 +1,4 @@
-namespace Code.Character.Enemies
+namespace Code.Character.Enemies.EnemiesInterfaces
 {
     public interface IEnemyDeath
     {

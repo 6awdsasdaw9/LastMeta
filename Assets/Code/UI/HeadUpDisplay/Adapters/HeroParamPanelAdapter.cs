@@ -4,6 +4,7 @@ using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs.HeroConfigs;
 using Code.Infrastructure.GlobalEvents;
 using Code.Services;
+using Code.Services.EventsSubscribes;
 using Code.UI.HeadUpDisplay.Windows.HudWindows.MenuWindowElements.Hero;
 using UnityEngine;
 using Zenject;

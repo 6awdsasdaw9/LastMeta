@@ -1,4 +1,5 @@
 using Code.Services;
+using Code.Services.EventsSubscribes;
 
 namespace Code.Infrastructure.Installers.SceneInstallers
 {

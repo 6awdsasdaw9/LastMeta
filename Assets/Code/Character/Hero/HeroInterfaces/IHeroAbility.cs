@@ -1,5 +1,5 @@
 using Code.Character.Hero.Abilities;
-using Code.Logic.Objects.Items;
+using Code.Logic.Items;
 
 namespace Code.Character.Hero.HeroInterfaces
 {

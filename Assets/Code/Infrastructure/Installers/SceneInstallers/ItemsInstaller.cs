@@ -1,6 +1,6 @@
 using Code.Infrastructure.Factories;
-using Code.Logic.Objects.Items;
-using Code.Logic.Objects.Items.Handlers;
+using Code.Logic.Items;
+using Code.Logic.Items.Handlers;
 using Code.Services.CurrencyServices;
 using UnityEngine;
 using Zenject;

@@ -1,4 +1,4 @@
-using Code.UI.HeadUpDisplay.HudElements.Buttons;
+using Code.UI.HeadUpDisplay.Elements.Buttons;
 using TMPro;
 using UnityEngine;
 

@@ -1,7 +1,7 @@
 using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Data.Configs;
 
-namespace Code.Character.Enemies
+namespace Code.Character.Enemies.EnemiesInterfaces
 {
     public interface IEnemy
     {

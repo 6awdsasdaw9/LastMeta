@@ -1,4 +1,5 @@
 using Code.Character.Common.CommonCharacterInterfaces;
+using Code.Character.Enemies.EnemiesInterfaces;
 using Code.Data.Configs;
 using UnityEngine;
 

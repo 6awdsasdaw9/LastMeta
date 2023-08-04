@@ -1,4 +1,4 @@
-namespace Code.Logic.Objects.Items
+namespace Code.Logic.Items
 {
     public enum ItemType
     {

@@ -4,7 +4,7 @@ using Code.Services.CurrencyServices;
 using Code.Services.SaveServices;
 using Code.UI.HeadUpDisplay;
 
-namespace Code.Logic.Objects.Items.Handlers
+namespace Code.Logic.Items.Handlers
 {
     public class MoneyHandler: ISavedData
     {

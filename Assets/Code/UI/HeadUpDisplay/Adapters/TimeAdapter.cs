@@ -2,8 +2,9 @@ using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Infrastructure.GlobalEvents;
 using Code.Logic.Objects.Animations;
 using Code.Services;
+using Code.Services.EventsSubscribes;
 using Code.Services.GameTime;
-using Code.UI.HeadUpDisplay.HudElements;
+using Code.UI.HeadUpDisplay.Elements;
 using UnityEngine;
 using Zenject;
 

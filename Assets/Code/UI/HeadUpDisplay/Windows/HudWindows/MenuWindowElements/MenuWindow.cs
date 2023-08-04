@@ -1,6 +1,6 @@
 using System;
-using Code.UI.HeadUpDisplay.HudElements;
-using Code.UI.HeadUpDisplay.HudElements.Buttons;
+using Code.UI.HeadUpDisplay.Elements;
+using Code.UI.HeadUpDisplay.Elements.Buttons;
 using Code.UI.HeadUpDisplay.Windows.HudWindows.MenuWindowElements.Hero;
 using Code.UI.HeadUpDisplay.Windows.HudWindows.MenuWindowElements.Settings;
 using Sirenix.OdinInspector;

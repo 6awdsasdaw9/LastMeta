@@ -3,6 +3,7 @@ using System.Threading;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs.HeroConfigs;
 using Code.Services;
+using Code.Services.EventsSubscribes;
 using Code.Services.Input;
 using Cysharp.Threading.Tasks;
 using UnityEngine;

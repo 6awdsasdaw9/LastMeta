@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Code.UI.HeadUpDisplay.HudElements
+namespace Code.UI.HeadUpDisplay.Elements
 {
     public class HudSlider : HudElement
     {

@@ -1,6 +1,6 @@
 using System;
 using Code.Debugers;
-using Code.Logic.Objects.Items;
+using Code.Logic.Items;
 using Code.Services.LanguageLocalization;
 using Code.UI.HeadUpDisplay.Windows;
 

@@ -1,8 +1,8 @@
 using Code.Character.Hero.HeroInterfaces;
 using Code.Infrastructure.GlobalEvents;
-using Code.Services;
+using Code.Services.EventsSubscribes;
 
-namespace Code.Logic.Objects.Items.Handlers
+namespace Code.Logic.Items.Handlers
 {
     public class ArtefactsHandler : IEventsSubscriber
     {

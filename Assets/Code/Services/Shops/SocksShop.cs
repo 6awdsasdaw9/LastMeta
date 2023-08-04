@@ -1,4 +1,4 @@
-namespace Code.Logic.Shops
+namespace Code.Services.Shops
 {
     public class SocksShop
     {

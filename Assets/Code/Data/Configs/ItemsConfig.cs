@@ -1,5 +1,5 @@
 using System.Linq;
-using Code.Logic.Objects.Items;
+using Code.Logic.Items;
 using UnityEngine;
 
 namespace Code.Data.Configs

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace Code.UI.HeadUpDisplay.HudElements.Buttons
+namespace Code.UI.HeadUpDisplay.Elements.Buttons
 {
     public class ButtonRestartScene : MonoBehaviour
     {

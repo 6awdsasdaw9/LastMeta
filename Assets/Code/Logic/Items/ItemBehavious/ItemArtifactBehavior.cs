@@ -1,6 +1,6 @@
 using System;
 
-namespace Code.Logic.Objects.Items.ItemBehavious
+namespace Code.Logic.Items.ItemBehavious
 {
     [Serializable]
     public class ItemArtifactBehavior : ItemBehaviour

@@ -1,6 +1,7 @@
 using Code.Data.GameData;
 using Code.Infrastructure.GlobalEvents;
-using Code.Logic.Objects.TimingObjects.TimeObserverses.Interfaces;
+using Code.Logic.TimingObjects.TimeObserverses.Interfaces;
+using Code.Services.EventsSubscribes;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;

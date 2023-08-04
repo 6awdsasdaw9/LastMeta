@@ -1,7 +1,7 @@
 using Code.Services.GameTime;
 using Zenject;
 
-namespace Code.Infrastructure.Installers.SceneInstallers
+namespace Code.Infrastructure.Installers.ProjectInstaller
 {
     public class GameClockInstaller: MonoInstaller
     {

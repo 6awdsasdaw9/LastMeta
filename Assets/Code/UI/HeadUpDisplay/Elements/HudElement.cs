@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.UI.HeadUpDisplay.HudElements
+namespace Code.UI.HeadUpDisplay.Elements
 {
     public abstract class HudElement : MonoBehaviour
     {

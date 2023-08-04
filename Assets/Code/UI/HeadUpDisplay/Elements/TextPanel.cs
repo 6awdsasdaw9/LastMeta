@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Code.UI.HeadUpDisplay.HudElements
+namespace Code.UI.HeadUpDisplay.Elements
 {
     public class TextPanel: HudElement
     {

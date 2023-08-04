@@ -1,12 +1,12 @@
 using System;
 using Code.Audio.AudioEvents;
 using Code.Infrastructure.GlobalEvents;
+using Code.Logic.Items.ItemBehavious;
 using Code.Logic.Objects.Animations;
-using Code.Logic.Objects.Items.ItemBehavious;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Logic.Objects.Items
+namespace Code.Logic.Items
 {
     public class Item: MonoBehaviour
     {

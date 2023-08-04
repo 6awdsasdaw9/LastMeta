@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.UI.HeadUpDisplay.HudElements.Buttons
+namespace Code.UI.HeadUpDisplay.Elements.Buttons
 {
     public class ButtonExitGame : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using Code.Data.Configs.HeroConfigs;
 using Code.Services.LanguageLocalization;
-using Code.UI.HeadUpDisplay.HudElements;
+using Code.UI.HeadUpDisplay.Elements;
 using TMPro;
 using UnityEngine;
 

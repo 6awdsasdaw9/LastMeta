@@ -1,6 +1,6 @@
 using System;
-using Code.Logic.Objects.Items;
-using Code.Logic.Shops;
+using Code.Logic.Items;
+using Code.Services.Shops;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
