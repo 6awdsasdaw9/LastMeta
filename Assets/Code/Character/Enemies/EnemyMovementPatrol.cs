@@ -8,9 +8,10 @@ namespace Code.Character.Enemies
     public class EnemyMovementPatrol : FollowTriggerObserver
     {
         [SerializeField] private float _patrolDistance = 1;
-        [SerializeField] private Cooldown _cooldown;
         [SerializeField] private NavMeshAgent _agent;
-        
+
+        private Cooldown _cooldown;
+        private float _speed;
         private float _minimalDistance;
         private Vector3 _startPoint, _finishPoint, _targetPoint;
         
@@ -20,6 +21,18 @@ namespace Code.Character.Enemies
             InitPatrolPoints();
         }
 
+        private void Update()
+        {
+            MoveToTarget();
+        }
+
+        public void Init(float speed, float cooldown)
+        {
+            _speed = speed;
+            _cooldown = new Cooldown();
+            _cooldown.SetTime(cooldown);
+        }
+
         private void InitPatrolPoints()
         {
             _startPoint = transform.position;
@@ -27,11 +40,6 @@ namespace Code.Character.Enemies
             _targetPoint = _finishPoint;
         }
 
-        private void Update()
-        {
-            MoveToTarget();
-        }
-        
         private void MoveToTarget()
         {
             if (PointNotReached(_targetPoint))
@@ -57,6 +65,7 @@ namespace Code.Character.Enemies
         
         public override void EnableComponent()
         {
+            _agent.speed = _speed;
             _cooldown.ResetCooldown();
             base.EnableComponent();
         }

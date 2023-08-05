@@ -14,18 +14,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemiesData:
   - Type: 0
-    Hp: 50
-    Damage: 10
-    EffectiveDistance: 0.5
-    Cleavage: 0.5
+    HealthData:
+      MaxHP: 0
+      CurrentHP: 0
+    DamageParam:
+      Damage: 0
+      DamagedRadius: 0
+      EffectiveDistance: {x: 0.5, y: 1, z: 0}
+      Cooldown: 0
+    PushData:
+      Duration: 0
+      Force: 0
     MoveSpeed: 3
+    PatrolSpeed: 3
+    PatrolCooldown: 3
     AudioPath: {fileID: 11400000, guid: 41d1fc554631a9149b96b91813ddaaa1, type: 2}
     Prefab: {fileID: 1523746617081452075, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}
   - Type: 1
-    Hp: 1
-    Damage: 3.2
-    EffectiveDistance: 0.5
-    Cleavage: 0.5
+    HealthData:
+      MaxHP: 7.39
+      CurrentHP: 0
+    DamageParam:
+      Damage: 2.8
+      DamagedRadius: 0.54
+      EffectiveDistance: {x: 0.5, y: 1, z: 0}
+      Cooldown: 0
+    PushData:
+      Duration: 0.23
+      Force: 2.72
     MoveSpeed: 3
+    PatrolSpeed: 2.21
+    PatrolCooldown: 1.49
     AudioPath: {fileID: 11400000, guid: 536f58224f4120f489837674dc9c14fb, type: 2}
     Prefab: {fileID: 5907823467843071397, guid: bb228830be456474db5134492cbf334c, type: 3}

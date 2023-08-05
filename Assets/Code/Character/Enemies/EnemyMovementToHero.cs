@@ -16,18 +16,18 @@ namespace Code.Character.Enemies
         private MovementLimiter _limiter;
         
         private float _minimalDistance;
+        private float _speed;
         
-        [Inject]
-        private void Construct(IHero hero,MovementLimiter limiter)
+        public void Init(Transform heroTransform, float speed)
         {
-            _heroTransform = hero.Transform;
-            _limiter = limiter;
-
+            _heroTransform = heroTransform;
+            _speed = speed;
             _minimalDistance = _agent.stoppingDistance;
         }
         
         private void Update()
         {
+            if(_heroTransform == null)return;
             if (HeroNotReached() && !melleAttack.IsActive && _limiter.CharactersCanMove)
             {
                 _agent.destination = _heroTransform.position;
@@ -36,5 +36,11 @@ namespace Code.Character.Enemies
         
         private bool HeroNotReached() => 
             Vector3.Distance(_agent.transform.position, _heroTransform.position) >= _minimalDistance;
+
+        public override void EnableComponent()
+        {
+            _agent.speed = _speed;
+            base.EnableComponent();
+        }
     }
 }

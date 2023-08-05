@@ -1,6 +1,8 @@
 using System;
 using System.Linq;
 using Code.Audio.AudioPath;
+using Code.Character.Common.CommonCharacterInterfaces;
+using Code.Data.GameData;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -27,11 +29,10 @@ namespace Code.Data.Configs
     {
         public EnemyType Type;
         [Title("Params")] 
-        [Range(1, 100)] public int Hp = 50;
-        [Space]
-        [Range(1, 30)] public float Damage = 10;
-        [Range(.5f, 3)] public float EffectiveDistance = .5f;
-        [Range(.5f, 2)] public float Cleavage = .5f;
+        public HealthData HealthData;
+        [Space] 
+        public DamageParam DamageParam;
+        public PushData PushData;
         [Space]
         [Range(0, 10)] public float MoveSpeed = 3;
         [Range(0, 10)] public float PatrolSpeed = 3;

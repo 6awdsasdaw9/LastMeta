@@ -35,7 +35,7 @@ namespace Code.Character.Hero.Abilities
         {
              CurrentData = data;
              Level = level;
-            _abilityCooldown.SetTime(data.Cooldown);
+            _abilityCooldown.SetTime(data.DamageParam.Cooldown);
             _hero.HandAttack.SetDamageParam(data.DamageParam);
         }
 
@@ -53,7 +53,7 @@ namespace Code.Character.Hero.Abilities
         [Serializable]
         public class Data : AbilitySettings
         {
-            public float Cooldown;
+
             public DamageParam DamageParam;
         }
     }

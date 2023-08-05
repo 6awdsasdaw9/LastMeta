@@ -1,6 +1,8 @@
 using System;
 using System.Linq;
+using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Character.Hero.HeroInterfaces;
+using Code.Data.GameData;
 using Code.Debugers;
 using Code.Logic.Triggers;
 using Code.Services;
@@ -14,26 +16,28 @@ namespace Code.Character.Enemies
     public class EnemyMelleAttack : FollowTriggerObserver
     {
         [SerializeField] private EnemyAnimator _animator;
-        [SerializeField] private Cooldown _attackCooldown;
+        private Cooldown _attackCooldown;
         
-        //Todo берем данные из конфига
-        [SerializeField] private float _damage = 10;
-        [SerializeField] private float _cleavage = 1;
-        [SerializeField] private float _effectiveHeight = 1;
-        [SerializeField] private float _pushForce = 3;
+        private DamageParam _damageParam;
+        private PushData _pushData;
         
         private IHero _hero;
-        private int _layerMask;
         private Vector3 _startPoint;
         private readonly Collider[] _hits = new Collider[1];
 
+        private int _layerMask;
         private bool _isAttacking;
         public bool IsActive { get; private set; }
-
-        [Inject]
-        private void Construct(IHero hero)
+        
+        public void Init(IHero hero, DamageParam damageParam, PushData pushData)
         {
             _hero = hero;
+            _damageParam =  damageParam;
+            _pushData = pushData;
+            
+            _attackCooldown = new Cooldown();
+            _attackCooldown.SetTime(_damageParam.Cooldown);
+            
             _layerMask =  LayerMask.GetMask(Constants.HeroLayer);
         }
         
@@ -64,21 +68,21 @@ namespace Code.Character.Enemies
         /// </summary>
         private void OnAttack()
         {
-            PhysicsDebug.DrawDebug(StartPoint(), _cleavage, 1);
+            PhysicsDebug.DrawDebug(StartPoint(), _damageParam.DamagedRadius, 1);
             if (!Hit(out Collider hit)) return;
-            _hero.Health.TakeDamage(_damage);
+            _hero.Health.TakeDamage(_damageParam.Damage);
             Push().Forget();
         }
 
         private async UniTaskVoid Push()
         {
-            if (_pushForce == 0) return;
-            _hero.Movement.SetSupportVelocity((transform.position - _hero.Transform.position) * _pushForce);
-            await UniTask.Delay(TimeSpan.FromSeconds(0.5f));
+            if (_pushData.Force == 0) return;
+            _hero.Movement.SetSupportVelocity((transform.position - _hero.Transform.position) * _pushData.Force);
+            await UniTask.Delay(TimeSpan.FromSeconds(_pushData.Duration));
             _hero.Movement.SetSupportVelocity(Vector2.zero);
         }
 
-        /// <summary>
+        /// <summary> 
         /// Animation Event
         /// </summary>
         private void OnAttackEnded()
@@ -92,12 +96,12 @@ namespace Code.Character.Enemies
 
         private bool Hit(out Collider hit)
         {
-            var hitCount = Physics.OverlapSphereNonAlloc(StartPoint(), _cleavage, _hits, _layerMask);
+            var hitCount = Physics.OverlapSphereNonAlloc(StartPoint(), _damageParam.DamagedRadius, _hits, _layerMask);
             hit = _hits.FirstOrDefault();
             return hitCount > 0;
         }
 
-        private Vector3 StartPoint() => new(transform.position.x, transform.position.y + _effectiveHeight, transform.position.z);
+        private Vector3 StartPoint() => transform.position + _damageParam.EffectiveDistance;
         private bool CanAttack() => IsActive && !_isAttacking && _attackCooldown.IsUp();
     }
 }

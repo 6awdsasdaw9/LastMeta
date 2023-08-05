@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Code.Character.Common
 {
-    public class RaycastHits
+    public class RaycastHitsController
     {
         private readonly Transform _owner;
         private readonly Collider[] _hits;
@@ -13,7 +13,7 @@ namespace Code.Character.Common
         private readonly float _hitOffsetX;
         private readonly float _hitRadius;
         
-        public RaycastHits(Transform owner,string layerName, float hitRadius =1, int hitsSize =1, float hitOffsetX = 0.2f)
+        public RaycastHitsController(Transform owner,string layerName, float hitRadius =1, int hitsSize =1, float hitOffsetX = 0.2f)
         {
             _owner = owner;
             _layerMask =  LayerMask.GetMask(layerName);

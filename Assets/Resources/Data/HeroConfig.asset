@@ -45,23 +45,28 @@ MonoBehaviour:
       SpeedBonus: 6
       Duration: 0.4
     HandAttackLevelsData:
-    - Cooldown: 2
-      DamageParam:
+    - DamageParam:
         Damage: 5
-        damagedRadius: 0.3
-    - Cooldown: 2
-      DamageParam:
+        DamagedRadius: 0.89
+        EffectiveDistance: {x: 0.5, y: 1, z: 0}
+        Cooldown: 2.5
+    - DamageParam:
         Damage: 7
-        damagedRadius: 0.35
-    - Cooldown: 2
-      DamageParam:
+        DamagedRadius: 0
+        EffectiveDistance: {x: 0.5, y: 1, z: 0}
+        Cooldown: 0
+    - DamageParam:
         Damage: 10
-        damagedRadius: 0.35
+        DamagedRadius: 0
+        EffectiveDistance: {x: 0.5, y: 1, z: 0}
+        Cooldown: 0
     GunAttackLevelData:
     - IsMassAttack: 0
       DamageParam:
-        Damage: 0
-        damagedRadius: 1
+        Damage: 0.46
+        DamagedRadius: 0.33
+        EffectiveDistance: {x: 0.5, y: 1, z: 0}
+        Cooldown: 0.75
       AttackCooldown: 0.3
       MissileType: 0
       MoveType: 0
@@ -85,7 +90,9 @@ MonoBehaviour:
     - IsMassAttack: 0
       DamageParam:
         Damage: 0
-        damagedRadius: 0
+        DamagedRadius: 0
+        EffectiveDistance: {x: 0.5, y: 1, z: 0}
+        Cooldown: 0
       AttackCooldown: 0
       MissileType: 0
       MoveType: 0
@@ -107,7 +114,9 @@ MonoBehaviour:
     - IsMassAttack: 0
       DamageParam:
         Damage: 0
-        damagedRadius: 0
+        DamagedRadius: 0
+        EffectiveDistance: {x: 0.5, y: 1, z: 0}
+        Cooldown: 0
       AttackCooldown: 0
       MissileType: 0
       MoveType: 0

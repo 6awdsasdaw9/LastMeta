@@ -2,6 +2,7 @@ using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs.HeroConfigs;
 using Code.Services;
+using Code.Services.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -62,11 +63,16 @@ namespace Code.Character.Hero
         #endregion
 
         [Inject]
-        private void Construct(MovementLimiter movementLimiter, HeroConfig heroConfig)
+        private void Construct(MovementLimiter movementLimiter, HeroConfig heroConfig, InputService inputService)
         {
             Stats = _isGameHero
                 ? new HeroGameStats(this, movementLimiter, heroConfig)
                 : new HeroStats(this, movementLimiter, heroConfig);
+
+            if (_isGameHero)
+            {
+                _attack.Init(inputService);
+            }
         }
     }
 }
