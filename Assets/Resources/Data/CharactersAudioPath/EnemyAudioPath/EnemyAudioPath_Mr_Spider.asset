@@ -21,11 +21,11 @@ MonoBehaviour:
     Path: 
   StepPath:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -119205966
+      Data2: 1193612163
+      Data3: -1764432512
+      Data4: -443973214
+    Path: event:/SFX/Enemy/Mr_Spider/SpiderSteps
   MelleAttackPath:
     Guid:
       Data1: 0
