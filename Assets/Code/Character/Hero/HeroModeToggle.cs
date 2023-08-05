@@ -1,5 +1,4 @@
 using Code.Character.Hero.HeroInterfaces;
-using Code.Infrastructure.GlobalEvents;
 using Code.Services;
 using UnityEngine;
 using Zenject;
@@ -9,13 +8,16 @@ namespace Code.Character.Hero
     public class HeroModeToggle : MonoBehaviour, IHeroModeToggle
     {
         public Constants.HeroMode Mode { get; private set; }
-        private IHero _hero;
         private MovementLimiter _limiter;
+        
+        private IHero _hero;
+        private Rigidbody _heroRigidbody;
 
         [Inject]
         private void Construct(MovementLimiter limiter)
         {
             _hero = GetComponent<IHero>();
+            _hero.Transform.gameObject.TryGetComponent(out _heroRigidbody);
             _limiter = limiter;
             SubscribeToEvents(true);
             SetDefaultMode();
@@ -69,9 +71,11 @@ namespace Code.Character.Hero
         {
             _hero.Movement.EnableComponent();
             _hero.Jump.EnableComponent();
+            _heroRigidbody.isKinematic = false;
 
             if (_hero.GameMode != Constants.GameMode.Game) return;
 
+            _hero.VFX.SpriteVFX.SetDefaultMaterial();
             _hero.GunAttack?.EnableComponent();
             _hero.HandAttack?.EnableComponent();
         }
@@ -80,9 +84,11 @@ namespace Code.Character.Hero
         {
             _hero.Movement.DisableComponent();
             _hero.Jump.DisableComponent();
+            _heroRigidbody.isKinematic = true;
 
             if (_hero.GameMode != Constants.GameMode.Game) return;
 
+            _hero.VFX.SpriteVFX.SetGlitchMaterial();
             _hero.GunAttack?.DisableComponent();
             _hero.HandAttack?.DisableComponent();
         }

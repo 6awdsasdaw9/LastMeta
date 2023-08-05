@@ -15,5 +15,7 @@ MonoBehaviour:
   RealHeroPrefab: {fileID: 7280351799685329201, guid: cfd43cd86d4ff2740b31de291d06cb42, type: 3}
   HeroPrefab: {fileID: 1280621597331884213, guid: 231f3597919323245ba45cfb13628748, type: 3}
   VFX_PlayerDeath: {fileID: 133562983179559606, guid: 9b632883970053048893a6daed222162, type: 3}
+  CharacterMaterial: {fileID: 2100000, guid: 53d572b321caf0946bd7cfb0d0d4d5ee, type: 2}
+  GlitchMaterial: {fileID: 2100000, guid: 7cb8f868ead621c43a59a1f99029bb6f, type: 2}
   NoFrictionMaterial: {fileID: 13400000, guid: fcfcf8c2d4b646646b44fcc6be381bd9, type: 2}
   FrictionMaterial: {fileID: 13400000, guid: 3c785d7b9ae77704f8d3c4484c3028f0, type: 2}

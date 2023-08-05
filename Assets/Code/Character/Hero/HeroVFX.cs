@@ -36,6 +36,8 @@ namespace Code.Character.Hero
             await UniTask.Delay(TimeSpan.FromSeconds(delay), cancellationToken: gameObject.GetCancellationTokenOnDestroy());
             Instantiate(VFX, transform.position, Quaternion.identity);
         }
+
+      
     }
     
 }

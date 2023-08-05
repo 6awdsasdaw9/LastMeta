@@ -13,6 +13,10 @@ namespace Code.Data.Configs
         
         [Title("FX")] 
         public GameObject VFX_PlayerDeath;
+
+        [Title("Graphics Material")] 
+        public Material CharacterMaterial;
+        public Material GlitchMaterial;
         
         [Title("Physics Material")] 
         public PhysicMaterial NoFrictionMaterial;
