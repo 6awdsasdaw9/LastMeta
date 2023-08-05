@@ -13,5 +13,6 @@ namespace Code.Audio.AudioPath
         public EventReference DeathPath;
         public EventReference ScreamPath;
         public EventReference SFX;
+        public EventReference TakeDamage;
     }
 }

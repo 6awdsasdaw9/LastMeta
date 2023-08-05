@@ -18,7 +18,6 @@ namespace Code.Audio.AudioSystem
             _eventsFacade = container.Resolve<EventsFacade>();
             _hero = container.Resolve<IHero>();
             
-          //  container.Resolve<EventSubsribersStorage>().Add(this);
             container.Resolve<SavedDataStorage>().Add(this);
             
             SubscribeToEvents(true);

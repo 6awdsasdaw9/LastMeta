@@ -1,6 +1,6 @@
 namespace Code.Character.Enemies
 {
-    public class EnemySpikeRangeAttack
+    public class EnemyRangeAttack
     {
         
     }

@@ -1,4 +1,6 @@
 using Code.Audio.AudioPath;
+using Code.Logic.Common.Interfaces;
+using Code.Services.EventsSubscribes;
 using FMODUnity;
 using UnityEngine;
 
@@ -29,6 +31,8 @@ namespace Code.Character.Enemies
 
         private void AudioPlaySFX() => PlayAudio(_enemyAudioPath.SFX);
 
+        public void AudioPlayTakeDamage() => PlayAudio(_enemyAudioPath.TakeDamage);
+
         #endregion
 
         private void PlayAudio(EventReference audioEvent)
@@ -36,5 +40,7 @@ namespace Code.Character.Enemies
             if (audioEvent.IsNull) return;
             RuntimeManager.PlayOneShotAttached(audioEvent.Guid, gameObject);
         }
+
+      
     }
 }

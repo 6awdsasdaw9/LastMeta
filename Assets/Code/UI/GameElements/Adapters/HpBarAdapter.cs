@@ -6,7 +6,7 @@ namespace Code.UI.GameElements.Adapters
     public class HpBarAdapter : MonoBehaviour
     {
         protected HpBar _hpBar;
-        private ICharacterHealth _health;
+        protected ICharacterHealth _health;
         
         protected  void Start()
         {
