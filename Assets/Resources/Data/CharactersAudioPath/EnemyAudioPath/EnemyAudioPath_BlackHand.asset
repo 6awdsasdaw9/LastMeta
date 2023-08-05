@@ -61,3 +61,10 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  TakeDamage:
+    Guid:
+      Data1: 697830901
+      Data2: 1131169699
+      Data3: -2122132096
+      Data4: 1954827184
+    Path: event:/SFX/Enemy/BlackHand/Black_Hand_Take_Damage
