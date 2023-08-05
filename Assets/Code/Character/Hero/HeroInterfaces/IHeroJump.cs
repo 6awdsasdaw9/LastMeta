@@ -1,4 +1,4 @@
-using Code.Character.Common.CommonCharacterInterfaces;
+using Code.Logic.Common.Interfaces;
 
 namespace Code.Character.Hero.HeroInterfaces
 {

@@ -3,7 +3,7 @@ using Code.Character.Hero.HeroInterfaces;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Code.Character.Common.CommonCharacterInterfaces
+namespace Code.Logic.Common
 {
     public class HeroPusher
     {

@@ -11,15 +11,14 @@ namespace Code.Infrastructure.Installers.SceneInstallers
         private GameClock _gameClock;
 
         [Inject]
-        private void Construct(SavedService savedService,GameClock gameClock)
+        private void Construct(SavedService savedService)
         {
             _savedService = savedService;
-            _gameClock = gameClock;
         }
         public override void InstallBindings()
         {
             BindInterfaces();
-            BindSaveData();
+            BindSaveDataStorage();
         }
 
         public void Initialize()
@@ -32,7 +31,7 @@ namespace Code.Infrastructure.Installers.SceneInstallers
             Container.BindInterfacesTo<SaveDataStorageInstaller>().FromInstance(this);
         }
 
-        private void BindSaveData()
+        private void BindSaveDataStorage()
         {
             _savedDataStorage = new SavedDataStorage(Container);
             Container.Bind<SavedDataStorage>().FromInstance(_savedDataStorage).AsSingle().NonLazy();
@@ -40,7 +39,7 @@ namespace Code.Infrastructure.Installers.SceneInstallers
 
         private void SetSavedDataCollection()
         {
-            _savedService.SetSavedDataCollection(_savedDataStorage);
+            _savedService.SetSavedDataStorage(_savedDataStorage);
         }
     }
 }

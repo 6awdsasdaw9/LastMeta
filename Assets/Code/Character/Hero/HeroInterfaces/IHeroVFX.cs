@@ -1,4 +1,4 @@
-using Code.Character.Common;
+using Code.Logic.Common;
 using UnityEngine;
 
 namespace Code.Character.Hero.HeroInterfaces

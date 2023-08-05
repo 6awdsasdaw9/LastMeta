@@ -1,7 +1,7 @@
 using System;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Debugers;
-using Code.Logic.Triggers;
+using Code.Logic.Collisions.Triggers;
 using Code.Services;
 using Cysharp.Threading.Tasks;
 using UnityEngine;

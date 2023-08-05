@@ -116,6 +116,12 @@ namespace Code.Character.Hero
         private void SetDashData(int level = 0)
         {
             DashAbility ??= new HeroDashAbility(_container);
+            if (level == -1)
+            {
+                DashAbility.SetData(null, level);
+                return;
+            }
+
             level = CheckLevel<HeroDashAbility.Data>(level);
             DashAbility.SetData(_heroConfig.AbilitiesParams.DashLevelsData[level], level);
         }

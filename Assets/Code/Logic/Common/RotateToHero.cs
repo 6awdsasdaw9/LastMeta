@@ -1,10 +1,9 @@
-using Code.Character.Hero;
 using Code.Character.Hero.HeroInterfaces;
-using Code.Logic.Triggers;
+using Code.Logic.Collisions.Triggers;
 using UnityEngine;
 using Zenject;
 
-namespace Code.Character.Common
+namespace Code.Logic.Common
 {
     public class RotateToHero : FollowTriggerObserver
     {

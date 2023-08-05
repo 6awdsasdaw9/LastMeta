@@ -1,11 +1,13 @@
-using Code.Logic.Triggers;
+using Code.Character.Enemies.EnemiesInterfaces;
+using Code.Logic.Collisions.Triggers;
 using Code.Services;
+using Code.Services.PauseListeners;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Code.Character.Enemies
 {
-    public class EnemyMovementPatrol : FollowTriggerObserver
+    public class EnemyMovementPatrol : FollowTriggerObserver, IPauseListener
     {
         [SerializeField] private float _patrolDistance = 1;
         [SerializeField] private NavMeshAgent _agent;
@@ -14,7 +16,17 @@ namespace Code.Character.Enemies
         private float _speed;
         private float _minimalDistance;
         private Vector3 _startPoint, _finishPoint, _targetPoint;
-        
+        private IEnemyStats _enemyStats;
+        public bool IsMoving { get; private set; }
+
+        public void Init(float speed, float cooldown, IEnemyStats enemyStats)
+        {
+            _speed = speed;
+            _cooldown = new Cooldown();
+            _cooldown.SetTime(cooldown);
+            _enemyStats = enemyStats;
+        }
+
         private void Awake()
         {
             _minimalDistance = _agent.stoppingDistance;
@@ -23,14 +35,7 @@ namespace Code.Character.Enemies
 
         private void Update()
         {
-            MoveToTarget();
-        }
-
-        public void Init(float speed, float cooldown)
-        {
-            _speed = speed;
-            _cooldown = new Cooldown();
-            _cooldown.SetTime(cooldown);
+            if(_enemyStats is { IsBlock: false }) MoveToTarget();
         }
 
         private void InitPatrolPoints()
@@ -65,15 +70,31 @@ namespace Code.Character.Enemies
         
         public override void EnableComponent()
         {
+            IsMoving = true;
             _agent.speed = _speed;
             _cooldown.ResetCooldown();
             base.EnableComponent();
         }
-        
+
+        public override void DisableComponent()
+        {
+            IsMoving = false;
+            base.DisableComponent();
+        }
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.black;
             Gizmos.DrawRay(transform.position, Vector3.right * _patrolDistance); 
+        }
+
+        public void OnPause()
+        {
+            _targetPoint = transform.position;
+        }
+
+        public void OnResume()
+        {
         }
     }
 }

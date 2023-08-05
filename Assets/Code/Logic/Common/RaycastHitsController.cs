@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Code.Debugers;
 using UnityEngine;
 
-namespace Code.Character.Common
+namespace Code.Logic.Common
 {
     public class RaycastHitsController
     {

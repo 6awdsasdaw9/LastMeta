@@ -1,7 +1,7 @@
 using System;
 using Code.Data.GameData;
 
-namespace Code.Character.Common.CommonCharacterInterfaces
+namespace Code.Logic.Common.Interfaces
 {
     public interface IHealth
     {

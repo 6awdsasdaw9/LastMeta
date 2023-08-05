@@ -1,6 +1,6 @@
-using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs.HeroConfigs;
+using Code.Logic.Common.Interfaces;
 using Code.Services;
 using Code.Services.Input;
 using Sirenix.OdinInspector;

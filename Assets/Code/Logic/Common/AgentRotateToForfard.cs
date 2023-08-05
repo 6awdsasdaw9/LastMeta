@@ -1,8 +1,8 @@
-using Code.Logic.Triggers;
+using Code.Logic.Collisions.Triggers;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Code.Character.Common
+namespace Code.Logic.Common
 {
     public class AgentRotateToForfard: FollowTriggerObserver
     {

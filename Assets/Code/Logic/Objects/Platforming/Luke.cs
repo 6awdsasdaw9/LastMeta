@@ -1,7 +1,7 @@
 using Code.Data;
 using Code.Data.AdditionalData;
 using Code.Data.GameData;
-using Code.Logic.Triggers;
+using Code.Logic.Collisions.Triggers;
 using Code.Services.SaveServices;
 using UnityEngine;
 using Zenject;

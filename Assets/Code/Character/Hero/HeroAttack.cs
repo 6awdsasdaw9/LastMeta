@@ -1,9 +1,9 @@
-using Code.Character.Common;
-using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Character.Enemies;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.GameData;
 using Code.Debugers;
+using Code.Logic.Common;
+using Code.Logic.Common.Interfaces;
 using Code.Services.Input;
 using UnityEngine;
 using Zenject;
@@ -54,7 +54,6 @@ namespace Code.Character.Hero
                 hitsSize: 7,
                 hitOffsetX: damageParam.EffectiveDistance.x,
                 hitOffsetY: damageParam.EffectiveDistance.y);
-            Logg.ColorLog($"Hero attack damage = {damageParam.Damage}");
         }
 
         private void StartAttack()

@@ -1,10 +1,11 @@
 using System;
 using System.Linq;
-using Code.Character.Common.CommonCharacterInterfaces;
+using Code.Character.Enemies.EnemiesInterfaces;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.GameData;
 using Code.Debugers;
-using Code.Logic.Triggers;
+using Code.Logic.Collisions.Triggers;
+using Code.Logic.Common;
 using Code.Services;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -26,14 +27,16 @@ namespace Code.Character.Enemies
         private readonly Collider[] _hits = new Collider[1];
 
         private int _layerMask;
-        private bool _isAttacking;
-        public bool IsActive { get; private set; }
+        public bool IsAttacking;
+        private IEnemyStats _enemyStats;
+        private bool IsActive { get; set; }
         
-        public void Init(IHero hero, DamageParam damageParam, PushData pushData)
+        public void Init(IHero hero, DamageParam damageParam, PushData pushData, IEnemyStats enemyStats)
         {
             _hero = hero;
             _damageParam =  damageParam;
             _pushData = pushData;
+            _enemyStats = enemyStats;
             
             _attackCooldown = new Cooldown();
             _attackCooldown.SetTime(_damageParam.Cooldown);
@@ -48,7 +51,7 @@ namespace Code.Character.Enemies
 
         private void OnDisable()
         {
-            if (_isAttacking)
+            if (IsAttacking)
             {
                 _hero.Movement.SetSupportVelocity(Vector2.zero);
             }
@@ -57,9 +60,7 @@ namespace Code.Character.Enemies
 
         private void StartAttack()
         {
-            if (_isAttacking) return;
-
-            _isAttacking = true;
+            IsAttacking = true;
             _animator.PlayMelleAttack();
         }
 
@@ -88,7 +89,7 @@ namespace Code.Character.Enemies
         private void OnAttackEnded()
         {
             _attackCooldown.ResetCooldown();
-            _isAttacking = false;
+            IsAttacking = false;
         }
 
         public void DisableAttack() => IsActive = false;
@@ -102,6 +103,6 @@ namespace Code.Character.Enemies
         }
 
         private Vector3 StartPoint() => transform.position + _damageParam.EffectiveDistance;
-        private bool CanAttack() => IsActive && !_isAttacking && _attackCooldown.IsUp();
+        private bool CanAttack() => IsActive && !IsAttacking && _attackCooldown.IsUp() && !_enemyStats.IsBlock;
     }
 }

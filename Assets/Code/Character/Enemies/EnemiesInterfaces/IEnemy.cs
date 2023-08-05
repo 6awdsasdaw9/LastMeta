@@ -1,5 +1,5 @@
-using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Data.Configs;
+using Code.Logic.Common.Interfaces;
 
 namespace Code.Character.Enemies.EnemiesInterfaces
 {

@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Code.Infrastructure.Installers.SceneInstallers
 {
-    public class MoneyInstaller : MonoInstaller
+    public class MoneyStorageInstaller : MonoInstaller
     {
         public override void InstallBindings()
         {
@@ -14,6 +14,5 @@ namespace Code.Infrastructure.Installers.SceneInstallers
         {
             Container.Bind<MoneyStorage>().AsSingle().NonLazy();
         }
-
     }
 }

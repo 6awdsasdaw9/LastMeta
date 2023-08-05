@@ -55,10 +55,11 @@ namespace Code.Character.Hero.Abilities
 
         public void SetData(Data data, int level)
         {
+            Level = level;
+            if(!IsOpen) return;
             _currentData = data;
             _durationCooldown.SetTime(_currentData.Duration);
             _abilityCooldown.SetTime(_currentData.Cooldown);
-            Level = level;
         }
 
         public override void StartApplying()

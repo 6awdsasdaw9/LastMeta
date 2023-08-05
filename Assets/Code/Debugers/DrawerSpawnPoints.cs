@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Code.Data.Configs;
-using Code.Logic.Triggers;
+using Code.Logic.Collisions.Triggers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

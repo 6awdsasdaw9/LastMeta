@@ -25,7 +25,7 @@ namespace Code.Services.SaveServices
             _scenesConfig = scenesConfig;
         }
 
-        public void SetSavedDataCollection(SavedDataStorage storage)
+        public void SetSavedDataStorage(SavedDataStorage storage)
         {
             _dataStorage = storage;
         }

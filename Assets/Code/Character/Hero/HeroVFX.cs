@@ -1,7 +1,7 @@
 using System;
-using Code.Character.Common;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
+using Code.Logic.Common;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;

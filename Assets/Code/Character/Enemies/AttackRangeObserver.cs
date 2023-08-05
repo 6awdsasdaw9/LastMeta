@@ -1,11 +1,11 @@
-using Code.Logic.Triggers;
+using Code.Logic.Collisions.Triggers;
 using Code.Services;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Character.Enemies
 {
-    public class CheckMelleAttackRange : MonoBehaviour
+    public class AttackRangeObserver : MonoBehaviour
     {
         [SerializeField] private EnemyMelleAttack enemyMelleAttack;
         [SerializeField] private TriggerObserver _triggerObserver;

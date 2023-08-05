@@ -1,7 +1,7 @@
-using Code.Character.Common.CommonCharacterInterfaces;
+using Code.Logic.Common.Interfaces;
 using UnityEngine;
 
-namespace Code.Logic.Triggers
+namespace Code.Logic.Collisions.Triggers
 {
     /// <summary>
     /// The class that listens to TriggerObserver,

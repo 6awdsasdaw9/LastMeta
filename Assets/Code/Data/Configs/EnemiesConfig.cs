@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
 using Code.Audio.AudioPath;
-using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Data.GameData;
+using Code.Logic.Common;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -40,7 +40,6 @@ namespace Code.Data.Configs
 
         [Space,Title("Assets")]
         public EnemyAudioPath AudioPath;
-        public GameObject Prefab;
     }
 
     public enum EnemyType

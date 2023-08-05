@@ -3,7 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Code.Logic.Triggers
+namespace Code.Logic.Collisions.Triggers
 {
     public class TriggerObserverAdapter : MonoBehaviour
     {

@@ -1,14 +1,12 @@
 using System;
-using System.Drawing;
 using Code.Data.Configs;
-using Code.Debugers;
 using Code.Services.SaveServices;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace Code.Logic.Triggers
+namespace Code.Logic.Collisions.Triggers
 {
     public class SaveTrigger : MonoBehaviour
     {

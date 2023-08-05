@@ -1,9 +1,9 @@
-using Code.Services;
 using Code.Services.EventsSubscribes;
+using Zenject;
 
 namespace Code.Infrastructure.Installers.SceneInstallers
 {
-    public class EventsSubsribersInstaller: MoneyInstaller
+    public class EventsSubsribersStorageInstaller: MonoInstaller
     {
         public override void InstallBindings()
         {

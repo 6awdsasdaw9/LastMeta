@@ -1,6 +1,6 @@
 using System;
-using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Data.GameData;
+using Code.Logic.Common.Interfaces;
 using UnityEngine;
 
 namespace Code.Logic.Objects.DestroyedObjects

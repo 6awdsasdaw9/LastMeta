@@ -1,4 +1,4 @@
-using Code.Character.Common;
+using Code.Logic.Common;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;

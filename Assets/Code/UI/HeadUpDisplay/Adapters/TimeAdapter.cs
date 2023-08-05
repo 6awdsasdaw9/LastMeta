@@ -1,5 +1,5 @@
-using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Infrastructure.GlobalEvents;
+using Code.Logic.Common.Interfaces;
 using Code.Logic.Objects.Animations;
 using Code.Services;
 using Code.Services.EventsSubscribes;

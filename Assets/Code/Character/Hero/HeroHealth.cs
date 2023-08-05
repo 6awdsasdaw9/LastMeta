@@ -1,7 +1,7 @@
 using System;
-using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.GameData;
+using Code.Logic.Common.Interfaces;
 using UnityEngine;
 using Zenject;
 

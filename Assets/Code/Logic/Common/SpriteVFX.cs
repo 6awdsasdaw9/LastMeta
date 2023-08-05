@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace Code.Character.Common
+namespace Code.Logic.Common
 {
     public class SpriteVFX : MonoBehaviour
     {

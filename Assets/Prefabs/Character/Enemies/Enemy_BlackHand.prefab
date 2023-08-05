@@ -225,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5702138767582540881, guid: c064c150e2252014b9443291d50b48b3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5702138767582540884, guid: c064c150e2252014b9443291d50b48b3, type: 3}
       propertyPath: m_Controller
@@ -332,6 +332,17 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1397218061088283508, guid: c064c150e2252014b9443291d50b48b3, type: 3}
   m_PrefabInstance: {fileID: 2224460302059903476}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3460813301548414064 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3375898202828991876, guid: c064c150e2252014b9443291d50b48b3, type: 3}
+  m_PrefabInstance: {fileID: 2224460302059903476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907823467843071397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b03ae1ca8f793549b99ce52d823a00c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5907823467843071395 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5702138767582540887, guid: c064c150e2252014b9443291d50b48b3, type: 3}
@@ -342,6 +353,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5702138767582540881, guid: c064c150e2252014b9443291d50b48b3, type: 3}
   m_PrefabInstance: {fileID: 2224460302059903476}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &425367108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907823467843071397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff4d1a801b84a28bd87a447f328faf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 1
+  MelleAttack: {fileID: 8277901911783564243}
+  Patrol: {fileID: 7633266188420172945}
+  MovementToHero: {fileID: 1402708071}
+  Health: {fileID: 889040388031060311}
+  EnemyAudio: {fileID: 3460813301548414064}
 --- !u!114 &1402708058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,25 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcab638d38e2488d874227f9dc594d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  melleAttack: {fileID: 8277901911783564243}
   _agent: {fileID: 6212503193679453620}
---- !u!114 &425367108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5907823467843071397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ff4d1a801b84a28bd87a447f328faf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
-  MelleAttack: {fileID: 8277901911783564243}
-  Patrol: {fileID: 7633266188420172945}
-  MovementToHero: {fileID: 1402708071}
-  Health: {fileID: 889040388031060311}
 --- !u!195 &6212503193679453620 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 5253977171680248896, guid: c064c150e2252014b9443291d50b48b3, type: 3}

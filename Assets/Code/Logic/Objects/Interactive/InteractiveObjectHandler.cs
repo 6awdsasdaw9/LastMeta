@@ -1,8 +1,8 @@
 using Code.Audio.AudioEvents;
 using Code.Data.Configs;
+using Code.Logic.Collisions.Triggers;
 using Code.Logic.Objects.Animations;
 using Code.Logic.Objects.Interactive.InteractiveObjects;
-using Code.Logic.Triggers;
 using Code.Services;
 using Code.Services.EventsSubscribes;
 using Code.Services.Input;

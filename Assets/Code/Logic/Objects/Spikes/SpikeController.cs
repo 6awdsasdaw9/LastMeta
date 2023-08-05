@@ -1,9 +1,9 @@
 using Code.Audio.AudioEvents;
-using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.GameData;
+using Code.Logic.Collisions.Triggers;
+using Code.Logic.Common.Interfaces;
 using Code.Logic.Objects.Animations;
-using Code.Logic.Triggers;
 using UnityEngine;
 using Zenject;
 
