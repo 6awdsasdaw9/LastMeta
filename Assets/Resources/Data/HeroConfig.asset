@@ -215,18 +215,18 @@ MonoBehaviour:
       Path: event:/SFX/Player/Player_Punch
     TakeGun:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -620555394
+        Data2: 1303126631
+        Data3: -1281070675
+        Data4: -1800743490
+      Path: event:/SFX/Player/Player_Start_Shoot
     ReturnGun:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: 2081196510
+        Data2: 1266674931
+        Data3: 186550682
+        Data4: 2011458482
+      Path: event:/SFX/Player/Player_Gun_Take_Off
     StartShoot:
       Guid:
         Data1: 0
