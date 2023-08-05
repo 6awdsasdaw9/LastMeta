@@ -3,6 +3,7 @@ using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Character.Enemies;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.GameData;
+using Code.Debugers;
 using Code.Services.Input;
 using UnityEngine;
 using Zenject;
@@ -16,35 +17,46 @@ namespace Code.Character.Hero
         private RaycastHitsController _raycastHitController;
         public DamageParam DamageParam { get; private set; }
         public bool IsAttack { get; private set; }
-        private bool _isCanAttack => !_hero.Stats.IsDash 
-                                    && _hero.Stats.OnGround
-                                    && !_hero.Stats.IsCrouch 
-                                    && !_hero.Stats.IsBlockMove;
 
-      
-        public void Init(InputService inputService)
+        private bool _isCanAttack => !_hero.Stats.IsDash
+                                     && _hero.Stats.OnGround
+                                     && !_hero.Stats.IsCrouch
+                                     && !_hero.Stats.IsBlockMove;
+
+        [Inject]
+        private void Construct(InputService inputService)
         {
+            _inputService = inputService;
+        }
+        
+
+        public void EnableComponent()
+        {
+            if (this != null) enabled = true;
+        }
+
+        private void OnEnable() => _inputService.OnPressAttackButton += StartAttack;
+
+        public void DisableComponent()
+        {
+            if (this != null) enabled = false;
+        }
+
+        private void OnDisable() => _inputService.OnPressAttackButton -= StartAttack;
+
+        public void SetDamageParam(DamageParam damageParam)
+        {
+            DamageParam = damageParam;
             _raycastHitController = new RaycastHitsController(
                 owner: transform,
                 layerName: Constants.HittableLayer,
                 hitRadius: 0.2f,
-                hitsSize: 7);
-            
-            _inputService = inputService;
-        }
-        public void EnableComponent()
-        {
-            if(this != null) enabled = true;
+                hitsSize: 7,
+                hitOffsetX: damageParam.EffectiveDistance.x,
+                hitOffsetY: damageParam.EffectiveDistance.y);
+            Logg.ColorLog($"Hero attack damage = {damageParam.Damage}");
         }
 
-        private void OnEnable() => _inputService.OnPressAttackButton += StartAttack;
-        public void DisableComponent()
-        {
-            if(this != null) enabled = false;
-        }
-
-        private void OnDisable() => _inputService.OnPressAttackButton -= StartAttack;
-        public void SetDamageParam(DamageParam damageParam) => DamageParam = damageParam;
         private void StartAttack()
         {
             if (IsAttack || !_isCanAttack)
@@ -60,12 +72,12 @@ namespace Code.Character.Hero
         /// </summary>
         public void OnAttack()
         {
-           var damageTakers = _raycastHitController.GetComponents<IHealth>();
+            var damageTakers = _raycastHitController.GetComponents<IHealth>();
 
-           foreach (var health in damageTakers)
-           {
-               health.TakeDamage(_hero.Stats.Damage);
-           }
+            foreach (var health in damageTakers)
+            {
+                health.TakeDamage(DamageParam.Damage);
+            }
         }
 
         /// <summary>

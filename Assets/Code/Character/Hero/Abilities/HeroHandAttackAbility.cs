@@ -53,7 +53,6 @@ namespace Code.Character.Hero.Abilities
         [Serializable]
         public class Data : AbilitySettings
         {
-
             public DamageParam DamageParam;
         }
     }

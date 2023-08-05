@@ -63,16 +63,11 @@ namespace Code.Character.Hero
         #endregion
 
         [Inject]
-        private void Construct(MovementLimiter movementLimiter, HeroConfig heroConfig, InputService inputService)
+        private void Construct(MovementLimiter movementLimiter, HeroConfig heroConfig)
         {
             Stats = _isGameHero
                 ? new HeroGameStats(this, movementLimiter, heroConfig)
                 : new HeroStats(this, movementLimiter, heroConfig);
-
-            if (_isGameHero)
-            {
-                _attack.Init(inputService);
-            }
         }
     }
 }
