@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SpikeSmallforward_Controller
+  m_Controller: {fileID: 9100000, guid: b9e96df11b8636a41b819a7824b3c9e3, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 0b2bb66a759dbc243a47006c5aaad2cc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0bff51d26f88b604eb1b68a1f7ffd8f7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fa380b07176c0934eaf5187928a7399a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d4b1f47338d1d404b96c0202ea18655f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 23a31438acd1ddd4eb5f40e9bd2d6be7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: db8d34ba2cde3a248897b229338a14ed, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fcfd57d854d614246a96ff2c629be608, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 419adbff4e0fb97468b482f73b488a90, type: 2}

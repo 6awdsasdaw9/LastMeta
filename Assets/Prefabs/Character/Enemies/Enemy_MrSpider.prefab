@@ -88,8 +88,6 @@ GameObject:
   - component: {fileID: 1523746617081452046}
   - component: {fileID: 1523746617081452041}
   - component: {fileID: 1523746617081452042}
-  - component: {fileID: 1523746617081452040}
-  - component: {fileID: 1523746617081452043}
   - component: {fileID: 1523746617081452047}
   - component: {fileID: 1523746617081452044}
   m_Layer: 7
@@ -150,8 +148,8 @@ MonoBehaviour:
   _disableComponents:
   - {fileID: 1523746617081452042}
   - {fileID: 1523746617081452084}
-  - {fileID: 1523746617081452040}
-  - {fileID: 1523746617081452043}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 4042047799516870383}
   _disableObjects:
   - {fileID: 6400541843103445610}
@@ -190,42 +188,6 @@ MonoBehaviour:
   Speed: 0.3
   _isFlipSprite: 1
   _sprite: {fileID: 1523746617081452044}
---- !u!114 &1523746617081452040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523746617081452075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3cd101eccda45639ce10896d617ef39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timeObservers:
-  - {fileID: 1523746617081452043}
---- !u!114 &1523746617081452043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523746617081452075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06d0c2e6ff8a46a19b3e0ce94473d267, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timeToEnable: 2
-  _timeToDisable: 0
-  _enabledComponents:
-  - {fileID: 1523746617081452084}
-  - {fileID: 1523746617081452046}
-  - {fileID: 1523746617081452042}
-  _enableObjects:
-  - {fileID: 6400541843812690207}
-  _disableComponents: []
-  _disableObjects: []
 --- !u!114 &1523746617081452047
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ namespace Code.Logic.Common
             _pushData = pushData;
         }
         
-        private async UniTaskVoid Push()
+        public async UniTaskVoid Push()
         {
             if (_pushData.Force == 0) return;
             _hero.Movement.SetSupportVelocity((_owner.position - _hero.Transform.position) * _pushData.Force);
