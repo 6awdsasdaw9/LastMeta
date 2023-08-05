@@ -13,7 +13,6 @@ namespace Code.Character.Enemies
         [SerializeField] private NavMeshAgent _agent;
         
         private Transform _heroTransform;
-        private MovementLimiter _limiter;
         
         private float _minimalDistance;
         private float _speed;
@@ -27,8 +26,7 @@ namespace Code.Character.Enemies
         
         private void Update()
         {
-            if(_heroTransform == null)return;
-            if (HeroNotReached() && !melleAttack.IsActive && _limiter.CharactersCanMove)
+            if (HeroNotReached() && !melleAttack.IsActive )
             {
                 _agent.destination = _heroTransform.position;
             }

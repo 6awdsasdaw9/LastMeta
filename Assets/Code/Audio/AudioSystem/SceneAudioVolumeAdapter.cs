@@ -16,7 +16,7 @@ namespace Code.Audio.AudioSystem
             _hudFacade = container.Resolve<HudFacade>();
             _audioController = container.Resolve<SceneAudioController>();
             
-            container.Resolve<EventSubsribersStorage>().Add(this);
+        //    container.Resolve<EventSubsribersStorage>().Add(this);
             container.Resolve<SavedDataStorage>().Add(this);
             
             SubscribeToEvents(true);
