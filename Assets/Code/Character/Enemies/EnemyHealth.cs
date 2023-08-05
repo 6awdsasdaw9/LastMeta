@@ -1,6 +1,7 @@
 using System;
 using Code.Character.Common.CommonCharacterInterfaces;
 using Code.Data.GameData;
+using TMPro;
 using UnityEngine;
 
 namespace Code.Character.Enemies
@@ -8,32 +9,31 @@ namespace Code.Character.Enemies
     [RequireComponent((typeof(EnemyAnimator)))]
     public class EnemyHealth : MonoBehaviour, ICharacterHealth
     {
-        [SerializeField] private float _current;
-        [SerializeField] private float _max;
-
+        private readonly HealthData _data = new();
         public event Action OnHealthChanged;
 
         public float Current
         {
-            get => _current;
-            set => _current = value;
+            get => _data.CurrentHP;
+            private set => _data.CurrentHP = value;
         }
 
         public float Max
         {
-            get => _max;
-            set => _max = value;
+            get => _data.MaxHP;
+            private set => _data.MaxHP = value;
         }
-
-        //TODO допилить
+        
         public void Set(HealthData healthData)
         {
-            
+            Max = healthData.MaxHP;
+            Reset();
         }
 
         public void Reset()
         {
-            _current = _max;
+            _data.CurrentHP = _data.MaxHP;
+            OnHealthChanged?.Invoke();
         }
 
         public void TakeDamage(float damage)
@@ -44,10 +44,10 @@ namespace Code.Character.Enemies
 
         public void RestoreHealth(float health)
         {
-            _current += health;
-            if (_current > _max)
+            _data.CurrentHP += health;
+            if (_data.CurrentHP > _data.MaxHP)
             {
-                _current = _max;
+                _data.CurrentHP = _data.MaxHP;
             }
         }
     }

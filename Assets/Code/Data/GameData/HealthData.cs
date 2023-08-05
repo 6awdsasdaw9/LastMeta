@@ -7,13 +7,10 @@ namespace Code.Data.GameData
     [Serializable]
     public class HealthData
     {
-        [ReadOnly] public float CurrentHP;
         public float MaxHP;
+        [HideInInspector] public float CurrentHP;
 
-        public HealthData()
-        {
-            Reset();
-        }
+  
 
         public void Reset() => CurrentHP = MaxHP;
     }

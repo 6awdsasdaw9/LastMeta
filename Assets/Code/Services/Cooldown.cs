@@ -10,6 +10,8 @@ namespace Code.Services
         private float _currentCooldown;
 
         public float Normalize => _currentCooldown / _cooldown; 
+        
+        
         public void SetTime(float value)
         {
             _cooldown = value;

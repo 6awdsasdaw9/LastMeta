@@ -6,7 +6,6 @@ using Code.Data.GameData;
 using Code.Services.Input;
 using UnityEngine;
 using Zenject;
-using HeroConfig = Code.Data.Configs.HeroConfigs.HeroConfig;
 
 namespace Code.Character.Hero
 {
@@ -14,7 +13,7 @@ namespace Code.Character.Hero
     {
         [SerializeField] private Hero _hero;
         private InputService _inputService;
-        private RaycastHits _raycastHit;
+        private RaycastHitsController _raycastHitController;
         public DamageParam DamageParam { get; private set; }
         public bool IsAttack { get; private set; }
         private bool _isCanAttack => !_hero.Stats.IsDash 
@@ -22,10 +21,15 @@ namespace Code.Character.Hero
                                     && !_hero.Stats.IsCrouch 
                                     && !_hero.Stats.IsBlockMove;
 
-        [Inject]
-        private void Construct(InputService inputService, HeroConfig heroConfig)
+      
+        public void Init(InputService inputService)
         {
-            _raycastHit = new RaycastHits(transform, Constants.HittableLayer, 0.2f, hitsSize: 7);
+            _raycastHitController = new RaycastHitsController(
+                owner: transform,
+                layerName: Constants.HittableLayer,
+                hitRadius: 0.2f,
+                hitsSize: 7);
+            
             _inputService = inputService;
         }
         public void EnableComponent()
@@ -56,7 +60,7 @@ namespace Code.Character.Hero
         /// </summary>
         public void OnAttack()
         {
-           var damageTakers = _raycastHit.GetComponents<IHealth>();
+           var damageTakers = _raycastHitController.GetComponents<IHealth>();
 
            foreach (var health in damageTakers)
            {
