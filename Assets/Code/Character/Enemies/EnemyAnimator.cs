@@ -20,7 +20,7 @@ namespace Code.Character.Enemies
         
         public void PlayDeath() => _animator.SetTrigger(_death_t);
         public void PlayMelleAttack() => _animator.SetTrigger(_melleAttack_t);
-        public void PlayRangeAttack() => _animator.SetTrigger(_melleAttack_t);
+        public void PlayRangeAttack() => _animator.SetTrigger(_rangeAttack_t);
         private void PlayMove(float speed) => _animator.SetFloat(_speed_f,speed);
     }
 }

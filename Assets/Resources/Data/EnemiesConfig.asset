@@ -41,7 +41,7 @@ MonoBehaviour:
     PushData:
       Duration: 0.23
       Force: 2.72
-    MoveSpeed: 1.89
-    PatrolSpeed: 1
-    PatrolCooldown: 0.7
+    MoveSpeed: 0.3
+    PatrolSpeed: 0.2
+    PatrolCooldown: 0.54
     AudioPath: {fileID: 11400000, guid: 41d1fc554631a9149b96b91813ddaaa1, type: 2}
