@@ -28,7 +28,7 @@ MonoBehaviour:
     MoveSpeed: 3
     PatrolSpeed: 3
     PatrolCooldown: 3
-    AudioPath: {fileID: 11400000, guid: 41d1fc554631a9149b96b91813ddaaa1, type: 2}
+    AudioPath: {fileID: 11400000, guid: 536f58224f4120f489837674dc9c14fb, type: 2}
   - Type: 1
     HealthData:
       MaxHP: 7.39
@@ -44,4 +44,4 @@ MonoBehaviour:
     MoveSpeed: 1.89
     PatrolSpeed: 1
     PatrolCooldown: 0.7
-    AudioPath: {fileID: 11400000, guid: 536f58224f4120f489837674dc9c14fb, type: 2}
+    AudioPath: {fileID: 11400000, guid: 41d1fc554631a9149b96b91813ddaaa1, type: 2}
