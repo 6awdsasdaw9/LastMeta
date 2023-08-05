@@ -39,8 +39,8 @@ MonoBehaviour:
           Data4: 0
         Path: 
   - Type: 3
-    Damage: 1
-    PushForce: 0.5
+    Damage: 2.52
+    PushForce: 1.4
     AudioData:
       EnableAudioEvent:
         Guid:

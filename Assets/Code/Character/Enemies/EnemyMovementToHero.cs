@@ -39,6 +39,7 @@ namespace Code.Character.Enemies
         public override void EnableComponent()
         {
             _agent.speed = _speed;
+            _target = _heroTransform.position;
             IsMoving = true;
             base.EnableComponent();
         }
