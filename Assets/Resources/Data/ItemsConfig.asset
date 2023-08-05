@@ -32,11 +32,11 @@ MonoBehaviour:
     AnimatorController: {fileID: 22100000, guid: 1407dc84018e3f14a8d53b84fe590c86, type: 2}
     AudioEvent:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -2068438620
+        Data2: 1340057163
+        Data3: 934092419
+        Data4: -1896803268
+      Path: event:/SFX/Player/Sock
   - Type: 6
     Value: 1
     Sprite: {fileID: 2030030009, guid: 6e8ef9d5f84affd4fb102ec450c09b24, type: 3}
@@ -44,8 +44,8 @@ MonoBehaviour:
     AnimatorController: {fileID: 22100000, guid: 1407dc84018e3f14a8d53b84fe590c86, type: 2}
     AudioEvent:
       Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
+        Data1: -2068438620
+        Data2: 1340057163
+        Data3: 934092419
+        Data4: -1896803268
+      Path: event:/SFX/Player/Sock
