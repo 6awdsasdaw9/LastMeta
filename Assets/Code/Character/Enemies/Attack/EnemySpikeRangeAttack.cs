@@ -18,7 +18,6 @@ namespace Code.Character.Enemies
         private IHero _hero;
 
         public bool IsAttacking;
-        private bool IsActive { get; set; }
 
         [Inject]
         private void Construct(IHero hero)
@@ -29,7 +28,7 @@ namespace Code.Character.Enemies
         {
             if (CanAttack()) StartRangeAttack();
         }
-        private bool CanAttack() => IsActive && !IsAttacking  && !_enemyStats.IsBlock;
+        private bool CanAttack() => IsActive && !IsAttacking;
         protected override void StartRangeAttack()
         {
             Logg.ColorLog("StartRangeAttack",ColorType.Red);
