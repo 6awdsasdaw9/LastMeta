@@ -211,13 +211,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf4f2557abc4a56a0746224b389805e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeToEnable: 2
+  _timeToDisable: 0
   _type: 3
   _animation: {fileID: 8316283466391908696}
   _damageTrigger: {fileID: 3572105376804961415}
   _data:
     Type: 3
-    Damage: 1
-    PushForce: 0.5
+    Damage: 3
+    PushData:
+      Duration: 4
+      Force: 10
     AudioData:
       EnableAudioEvent:
         Guid:

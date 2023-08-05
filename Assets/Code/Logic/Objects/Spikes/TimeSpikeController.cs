@@ -1,5 +1,7 @@
+using System.Linq;
 using Code.Audio.AudioEvents;
 using Code.Character.Hero.HeroInterfaces;
+using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Logic.Collisions.Triggers;
 using Code.Logic.Common;
@@ -15,11 +17,12 @@ namespace Code.Logic.Objects.Spikes
     {
         [SerializeField] private SpikeType _type;
         [SerializeField] private StartStopAnimation _animation;
-        [SerializeField] private TriggerObserver _damageTrigger;
-        [SerializeField] private SpikeData _data;
+        [SerializeField] private TriggerObserver _damageTrigger; 
+        
+        private SpikeData _data;
         private HeroPusher _pusher;
         
-        private AudioEvent _audioEvent;
+        private readonly AudioEvent _audioEvent = new();
         private IHero _hero;
 
         private bool _isActive;
@@ -28,7 +31,8 @@ namespace Code.Logic.Objects.Spikes
         private void Construct(DiContainer container)
         {
             _hero = container.Resolve<IHero>();
-            _pusher = new HeroPusher(owner: this.transform, hero: _hero, pushData: _data.PushData);
+            _data = container.Resolve<ObjectsConfig>().SpikesData.FirstOrDefault(s => s.Type == _type);
+            _pusher = new HeroPusher(owner: transform, hero: _hero, pushData: _data.PushData);
         }
         
         protected override void StartReaction()
@@ -51,24 +55,27 @@ namespace Code.Logic.Objects.Spikes
             _animation.PlayStopIdle();
         }
 
-        public void DisableComponent()
-        {
-            _damageTrigger.OnEnter -= OnTriggerEnter;
-            _animation.PlayStop();
-            _isActive = false;
-        }
-
         public void EnableComponent()
         {
             _damageTrigger.OnEnter += OnTriggerEnter;
             _animation.PlayStart();
+            _audioEvent.PlayAudioEvent(_data.AudioData.EnableAudioEvent);
             _isActive = true;
+        }
+
+        public void DisableComponent()
+        {
+            _damageTrigger.OnEnter -= OnTriggerEnter;
+            _audioEvent.PlayAudioEvent(_data.AudioData.DisableAudioEvent);
+            _animation.PlayStop();
+            _isActive = false;
         }
 
         private void OnTriggerEnter(Collider obj)
         {
             if(!_isActive)return;
             _hero.Health.TakeDamage(_data.Damage);
+            _audioEvent.PlayAudioEvent(_data.AudioData.CollisionAudioEvent);
             _pusher.Push().Forget();
         }
     }

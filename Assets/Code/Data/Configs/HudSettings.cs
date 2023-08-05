@@ -2,6 +2,7 @@ using System;
 using Code.Audio.AudioEvents;
 using Code.UI.HeadUpDisplay;
 using Code.UI.HeadUpDisplay.Windows.InteractiveWindows.DialogueWindows;
+using FMODUnity;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ namespace Code.Data.Configs
     {
         public HudFacade realHudFacade;
         public HudFacade gameHudFacade;
+        [Space,GUIColor(0.85f, 0.74f, 1)]
+        public EventReference ButtonAudioEvent;
    
         [Space] public InteractiveUIParams InteractiveUIParams;
 

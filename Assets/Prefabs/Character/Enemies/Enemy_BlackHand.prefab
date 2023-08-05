@@ -208,8 +208,16 @@ PrefabInstance:
       value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 5253977171680248896, guid: c064c150e2252014b9443291d50b48b3, type: 3}
+      propertyPath: m_AutoBraking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5253977171680248896, guid: c064c150e2252014b9443291d50b48b3, type: 3}
+      propertyPath: m_Acceleration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5253977171680248896, guid: c064c150e2252014b9443291d50b48b3, type: 3}
       propertyPath: m_StoppingDistance
-      value: 0.7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5702138767582540881, guid: c064c150e2252014b9443291d50b48b3, type: 3}
       propertyPath: m_Icon

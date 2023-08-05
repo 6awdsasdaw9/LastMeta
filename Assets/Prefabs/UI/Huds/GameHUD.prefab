@@ -174,15 +174,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 2127076309815551952}
   _button: {fileID: 7504546772481773337}
-  _audioEvent:
-    _eventReference:
-      Guid:
-        Data1: -15822610
-        Data2: 1242760594
-        Data3: 562082950
-        Data4: 621305227
-      Path: event:/SFX/UI/HUD_Button
-    _playOnAwake: 0
 --- !u!1 &89957524607629155
 GameObject:
   m_ObjectHideFlags: 0
@@ -5377,15 +5368,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 5373649833425388625}
   _button: {fileID: 874357350643263053}
-  _audioEvent:
-    _eventReference:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
-    _playOnAwake: 0
 --- !u!1 &4667064719558937336
 GameObject:
   m_ObjectHideFlags: 0
@@ -6045,15 +6027,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 3009291360746046397}
   _button: {fileID: 7626005628166218960}
-  _audioEvent:
-    _eventReference:
-      Guid:
-        Data1: -15822610
-        Data2: 1242760594
-        Data3: 562082950
-        Data4: 621305227
-      Path: event:/SFX/UI/HUD_Button
-    _playOnAwake: 0
 --- !u!1 &5725905707119003400
 GameObject:
   m_ObjectHideFlags: 0
@@ -6615,15 +6588,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 2435214926415191873}
   _button: {fileID: 7855099391226272087}
-  _audioEvent:
-    _eventReference:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
-    _playOnAwake: 0
 --- !u!1 &6369072686316430999
 GameObject:
   m_ObjectHideFlags: 0
@@ -7118,15 +7082,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 92190883884853016}
   _button: {fileID: 3458373931859956867}
-  _audioEvent:
-    _eventReference:
-      Guid:
-        Data1: 0
-        Data2: 0
-        Data3: 0
-        Data4: 0
-      Path: 
-    _playOnAwake: 0
 --- !u!1 &6940151461217983931
 GameObject:
   m_ObjectHideFlags: 0
@@ -8381,15 +8336,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 5828534938903918103}
   _button: {fileID: 3640931860818412805}
-  _audioEvent:
-    _eventReference:
-      Guid:
-        Data1: -15822610
-        Data2: 1242760594
-        Data3: 562082950
-        Data4: 621305227
-      Path: event:/SFX/UI/HUD_Button
-    _playOnAwake: 0
 --- !u!1 &8118186066373393845
 GameObject:
   m_ObjectHideFlags: 0
