@@ -88,11 +88,11 @@ MonoBehaviour:
     GameMode: 1
     Music:
       Guid:
-        Data1: -1248597249
-        Data2: 1162117934
-        Data3: -1950451320
-        Data4: -1991718384
-      Path: event:/Music/DayNight_Scene_1
+        Data1: -633989851
+        Data2: 1233084631
+        Data3: -1150331977
+        Data4: -2087656422
+      Path: event:/Scene_Music_Audio_System
     Ambience:
       Guid:
         Data1: 1240592419
