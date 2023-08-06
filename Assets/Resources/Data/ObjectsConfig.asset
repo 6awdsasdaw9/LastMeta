@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ObjectsConfig
   m_EditorClassIdentifier: 
   SpikesData:
-  - Type: 0
+  - Type: 1
     Damage: 3
     PushData:
       Force: 0
@@ -39,8 +39,8 @@ MonoBehaviour:
           Data3: 0
           Data4: 0
         Path: 
-  - Type: 3
-    Damage: 2.52
+  - Type: 0
+    Damage: 2
     PushData:
       Force: 6
     AudioData:

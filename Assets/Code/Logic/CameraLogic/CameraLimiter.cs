@@ -59,7 +59,7 @@ namespace Code.Logic.CameraLogic
             if (!_heroRaycast)
             {
                 _cameraFollow.StartFollow();
-                _cooldown.ResetCooldown();
+                _cooldown.SetMaxCooldown();
             }
 
             Debug.DrawRay(_hero.position, Vector3.left * _heroRaycastDistance);

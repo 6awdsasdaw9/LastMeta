@@ -34,7 +34,7 @@ namespace Code.Character.Enemies
             _pushData = pushData;
             _enemyStats = enemyStats;
             
-            _attackCooldown.SetTime(_attackData.Cooldown);
+            _attackCooldown.SetMaxTime(_attackData.Cooldown);
             _layerMask =  LayerMask.GetMask(Constants.HeroLayer);
         }
         
@@ -49,7 +49,7 @@ namespace Code.Character.Enemies
             {
                 _hero.Movement.SetSupportVelocity(Vector2.zero);
             }
-            _attackCooldown.ResetCooldown();
+            _attackCooldown.SetMaxCooldown();
         }
         protected override void StartAttack()
         {
@@ -73,7 +73,7 @@ namespace Code.Character.Enemies
         /// </summary>
         protected  override void OnAttackEnded()
         {
-            _attackCooldown.ResetCooldown();
+            _attackCooldown.SetMaxCooldown();
             IsAttacking = false;
         }
         

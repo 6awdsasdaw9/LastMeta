@@ -23,7 +23,7 @@ namespace Code.Character.Enemies
             _animator = enemyAnimator;
             _enemyStats = enemyStats;
             _attackCooldown = new Cooldown();
-            _attackCooldown.SetTime(cooldown);
+            _attackCooldown.SetMaxTime(cooldown);
         }
 
         private void Update()

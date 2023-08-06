@@ -35,7 +35,7 @@ namespace Code.Character.Hero.Abilities
         {
              CurrentData = data;
              Level = level;
-            _abilityCooldown.SetTime(data.attackData.Cooldown);
+            _abilityCooldown.SetMaxTime(data.attackData.Cooldown);
             _hero.HandAttack.SetDamageParam(data.attackData);
         }
 

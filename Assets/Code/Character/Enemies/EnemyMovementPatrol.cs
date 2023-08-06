@@ -23,7 +23,7 @@ namespace Code.Character.Enemies
         {
             _speed = speed;
             _cooldown = new Cooldown();
-            _cooldown.SetTime(cooldown);
+            _cooldown.SetMaxTime(cooldown);
             _enemyStats = enemyStats;
         }
 
@@ -54,7 +54,7 @@ namespace Code.Character.Enemies
             if(Mathf.Abs(_agent.velocity.x) == 0 && _cooldown.IsUp())
             {
                 SwitchTarget();
-                _cooldown.ResetCooldown();
+                _cooldown.SetMaxCooldown();
             }
         }
 
@@ -72,7 +72,7 @@ namespace Code.Character.Enemies
         {
             IsMoving = true;
             _agent.speed = _speed;
-            _cooldown.ResetCooldown();
+            _cooldown.SetMaxCooldown();
             base.EnableComponent();
         }
 

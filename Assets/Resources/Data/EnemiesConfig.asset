@@ -15,31 +15,47 @@ MonoBehaviour:
   EnemiesData:
   - Type: 0
     HealthData:
-      MaxHP: 0
+      MaxHP: 1
       CurrentHP: 0
-    attackData:
+    _isHasMelleAttack: 1
+    MelleAttackData:
       Damage: 3
+      DamagedRadius: 1
+      EffectiveDistance: {x: 0, y: 0.2, z: 0}
+      Cooldown: 0.7
+    _rangeAttackType: 0
+    RangeAttackData:
+      Damage: 0
       DamagedRadius: 0
       EffectiveDistance: {x: 0.5, y: 1, z: 0}
       Cooldown: 0.7
+    RangeCooldown: 0
     PushData:
-      Force: 0
+      Force: 2
     MoveSpeed: 3
     PatrolSpeed: 3
     PatrolCooldown: 3
     AudioPath: {fileID: 11400000, guid: 536f58224f4120f489837674dc9c14fb, type: 2}
   - Type: 1
     HealthData:
-      MaxHP: 7.39
+      MaxHP: 10
       CurrentHP: 0
-    attackData:
+    _isHasMelleAttack: 1
+    MelleAttackData:
       Damage: 3
-      DamagedRadius: 2
-      EffectiveDistance: {x: 0.7, y: 1, z: 0}
+      DamagedRadius: 1.7
+      EffectiveDistance: {x: 0.75, y: 1, z: 0}
       Cooldown: 0.7
+    _rangeAttackType: 2
+    RangeAttackData:
+      Damage: 0
+      DamagedRadius: 0
+      EffectiveDistance: {x: 0.5, y: 1, z: 0}
+      Cooldown: 0.7
+    RangeCooldown: 2
     PushData:
-      Force: 2.72
+      Force: 2.7
     MoveSpeed: 0.3
     PatrolSpeed: 0.2
-    PatrolCooldown: 0.54
+    PatrolCooldown: 0.5
     AudioPath: {fileID: 11400000, guid: 41d1fc554631a9149b96b91813ddaaa1, type: 2}
