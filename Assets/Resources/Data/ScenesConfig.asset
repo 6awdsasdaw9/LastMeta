@@ -117,3 +117,40 @@ MonoBehaviour:
     Points:
     - ID: 0
       Position: {x: 2.71, y: 0, z: 0}
+    - ID: 1
+      Position: {x: 4.17, y: 3.28, z: 0}
+  - Scene: 5
+    GameMode: 1
+    Music:
+      Guid:
+        Data1: -633989851
+        Data2: 1233084631
+        Data3: -1150331977
+        Data4: -2087656422
+      Path: event:/Scene_Music_Audio_System
+    Ambience:
+      Guid:
+        Data1: 1240592419
+        Data2: 1143234125
+        Data3: -1700461924
+        Data4: 7084308
+      Path: event:/Ambience/Wind_Level_01
+    TimeOfDaySettings:
+      LightParams:
+      - TimeOfDay: 0
+        Duration: 0
+        DirectionLightIntensity: 0.9
+        DirectionLightAngle: {x: 5, y: -1, z: 0}
+      - TimeOfDay: 1
+        Duration: 0.079
+        DirectionLightIntensity: 0.45
+        DirectionLightAngle: {x: -25, y: 7, z: 0}
+      - TimeOfDay: 2
+        Duration: 0.156
+        DirectionLightIntensity: 0.15
+        DirectionLightAngle: {x: -55, y: 13, z: 0}
+    Points:
+    - ID: 0
+      Position: {x: 2.71, y: 0, z: 0}
+    - ID: 1
+      Position: {x: 4.17, y: 3.28, z: 0}
