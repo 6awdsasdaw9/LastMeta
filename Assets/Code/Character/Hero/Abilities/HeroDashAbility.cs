@@ -67,8 +67,7 @@ namespace Code.Character.Hero.Abilities
             if (!IsOpen || !_abilityCooldown.IsUp() || !_isCanDash || _hero?.Transform == null) return;
 
             IsDash = true;
-            _hero.Movement?.BlockMovement();
-            _hero.Movement?.SetBonusSpeed(_currentData.SpeedBonus);
+           // _hero.Movement?.BlockMovement();
             _hero.Animator?.PlayDash(true);
             UpdateDurationCooldown().Forget();
         }
@@ -81,9 +80,9 @@ namespace Code.Character.Hero.Abilities
 
             _durationCooldown.SetMaxCooldown();
 
-            var value = _currentData.SpeedBonus;
+            var value = _currentData.SpeedBonus * 0.2f;
             if (_hero.Transform.gameObject == null) return;
-            _hero.Movement.SetBonusSpeed(value);
+           _hero.Movement.SetBonusSpeed(value);
 
             var heroForward = _hero.Transform.localScale.x;
 
@@ -127,7 +126,7 @@ namespace Code.Character.Hero.Abilities
 
             _hero.Animator.PlayDash(false);
             _hero.Movement.SetBonusSpeed(0);
-            _hero.Movement.UnBlockMovement();
+       //     _hero.Movement.UnBlockMovement();
         }
 
         [Serializable]

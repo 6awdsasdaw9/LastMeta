@@ -20,7 +20,8 @@ namespace Code
             Home,
             EnterMetaPark,
             EnterMetaPark_Room,
-            Polygon
+            Polygon,
+            Polygon_3000
         }
         
         public enum HeroMode

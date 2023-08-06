@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 4982487749705536630}
   - component: {fileID: 4982487749705536629}
   m_Layer: 9
-  m_Name: DestroyedObject
+  m_Name: Vase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthData:
-    CurrentHP: 1
     MaxHP: 1
+    CurrentHP: 1
 --- !u!114 &4982487749705536633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +195,15 @@ MonoBehaviour:
   - SpriteRenderer: {fileID: 4982487749824528623}
     DestroyedImage: {fileID: 1358736678, guid: 412abd8ed01ea814184ac8355352bac3, type: 3}
     Animation: {fileID: 4982487749824528625}
+  _audioEvent:
+    _eventReference:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
+    _playOnAwake: 0
 --- !u!136 &4982487749705536630
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -221,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82fdd1c421d4affb0c54c7e735c507a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Id: _c8dc32ef-d28d-4463-b400-fd9011981c0e
+  Id: _78fc5fd3-9734-4e46-90e9-37350abb1753
 --- !u!1 &4982487749824528627
 GameObject:
   m_ObjectHideFlags: 0
