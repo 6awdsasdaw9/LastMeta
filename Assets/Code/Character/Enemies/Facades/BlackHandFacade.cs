@@ -6,26 +6,20 @@ using Zenject;
 
 namespace Code.Character.Enemies.EnemiesFacades
 {
-    public class BlackHandFacade : Enemy, IResumeListener
+    public class BlackHandFacade : EnemyFacade, IResumeListener
     {
-        public EnemyType Type;
-        public IEnemyStats Stats;
         public EnemyMelleAttack MelleAttack;
+        public EnemySpikeRangeAttack SpikeAttack;
         public EnemyMovementPatrol Patrol;
         public EnemyMovementToHero MovementToHero;
-        public EnemyHealth Health;
-        public EnemyAudio EnemyAudio;
-
-        private EnemyData _data;
-        private IHero _hero;
-
+        
         [Inject]
         private void Construct(DiContainer container)
         {
-            _data = container.Resolve<EnemiesConfig>().GetByType(Type);
-            _hero = container.Resolve<IHero>();
+            data = container.Resolve<EnemiesConfig>().GetByType(Type);
+            hero = container.Resolve<IHero>();
             
-            if (_hero == null || _data == null) return;
+            if (hero == null || data == null) return;
 
           container.Resolve<PauseListenerStorage>().Add(this);
           InitComponents();
@@ -34,11 +28,12 @@ namespace Code.Character.Enemies.EnemiesFacades
         private void InitComponents()
         {
             Stats = new BlackHandStats(this);
-            MelleAttack.Init(_hero, _data.attackData, _data.PushData, Stats);
-            Patrol.Init(_data.PatrolSpeed, _data.PatrolCooldown, Stats);
-            MovementToHero.Init(_hero.Transform, _data.MoveSpeed);
-            EnemyAudio.Init(_data.AudioPath);
-            Health.Set(_data.HealthData);
+            MelleAttack.Init(hero, data.MelleAttackData, data.PushData, Stats);
+            SpikeAttack.Init(hero,Stats,Animator,cooldown: data.RangeCooldown);
+            Patrol.Init(data.PatrolSpeed, data.PatrolCooldown, Stats);
+            MovementToHero.Init(hero.Transform, data.MoveSpeed);
+            EnemyAudio.Init(data.AudioPath);
+            Health.Set(data.HealthData);
         }
 
         public void OnPause()
