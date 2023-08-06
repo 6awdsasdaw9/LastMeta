@@ -31,7 +31,7 @@ namespace Code.Data.Configs
         [Title("Params")] 
         public HealthData HealthData;
         [Space] 
-        public DamageParam DamageParam;
+        public AttackData attackData;
         public PushData PushData;
         [Space]
         [Range(0, 10)] public float MoveSpeed = 3;

@@ -3,6 +3,7 @@ using Code.Audio.AudioEvents;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
 using Code.Data.GameData;
+using Code.Debugers;
 using Code.Logic.Collisions.Triggers;
 using Code.Logic.Common;
 using Code.Logic.Common.Interfaces;
@@ -76,7 +77,9 @@ namespace Code.Logic.Objects.Spikes
             if(!_isActive)return;
             _hero.Health.TakeDamage(_data.Damage);
             _audioEvent.PlayAudioEvent(_data.AudioData.CollisionAudioEvent);
-            _pusher.Push().Forget();
+            Logg.ColorLog($"OnTriggerEnter -> Push force ",ColorType.Red);
+         
+            _pusher.Push();
         }
     }
 }

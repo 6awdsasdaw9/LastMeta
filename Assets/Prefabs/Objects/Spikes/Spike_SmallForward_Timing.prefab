@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 8316283466391908703}
   - component: {fileID: 8316283466391908696}
   m_Layer: 0
-  m_Name: Spike_SmallForward_DayNight
+  m_Name: Spike_SmallForward_Timing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,34 +216,6 @@ MonoBehaviour:
   _type: 3
   _animation: {fileID: 8316283466391908696}
   _damageTrigger: {fileID: 3572105376804961415}
-  _data:
-    Type: 3
-    Damage: 3
-    PushData:
-      Duration: 4
-      Force: 10
-    AudioData:
-      EnableAudioEvent:
-        Guid:
-          Data1: 0
-          Data2: 0
-          Data3: 0
-          Data4: 0
-        Path: 
-      DisableAudioEvent:
-        Guid:
-          Data1: 0
-          Data2: 0
-          Data3: 0
-          Data4: 0
-        Path: 
-      CollisionAudioEvent:
-        Guid:
-          Data1: 0
-          Data2: 0
-          Data3: 0
-          Data4: 0
-        Path: 
 --- !u!114 &8316283466391908696
 MonoBehaviour:
   m_ObjectHideFlags: 0

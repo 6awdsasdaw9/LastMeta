@@ -16,6 +16,9 @@ namespace Code.Character.Hero
         [SerializeField] private Constants.GameMode _gameMode;
 
         #region Common Value
+        public Transform Transform => transform;
+        public Rigidbody Rigidbody => _rigidbody;
+        [SerializeField] private Rigidbody _rigidbody;
         public IHeroAnimator Animator => _animator;
         [SerializeField] private HeroAnimator _animator;
         public IHeroAudio Audio => _audio;
@@ -26,8 +29,6 @@ namespace Code.Character.Hero
         [SerializeField] private HeroJump _jump;
         public IHeroCollision Collision => _collision;
         [SerializeField] private HeroCollision _collision;
-        public Transform Transform => transform;
-
         #endregion
 
         #region Game Value
@@ -56,6 +57,10 @@ namespace Code.Character.Hero
         public IHeroAbility Ability => _ability;
         [ShowIf(nameof(_isGameHero)), SerializeField]
         private HeroAbility _ability;
+        public IHeroEffectsController EffectsController => _effectsController;
+        [ShowIf(nameof(_isGameHero)), SerializeField]
+        private HeroEffectsController _effectsController; 
+
         public IHeroVFX VFX => _vfx;
         [ShowIf(nameof(_isGameHero)), SerializeField]
         private HeroVFX _vfx;

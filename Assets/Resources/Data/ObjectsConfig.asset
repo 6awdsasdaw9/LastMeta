@@ -15,7 +15,8 @@ MonoBehaviour:
   SpikesData:
   - Type: 0
     Damage: 3
-    PushForce: 0.5
+    PushData:
+      Force: 0
     AudioData:
       EnableAudioEvent:
         Guid:
@@ -40,7 +41,8 @@ MonoBehaviour:
         Path: 
   - Type: 3
     Damage: 2.52
-    PushForce: 1.4
+    PushData:
+      Force: 6
     AudioData:
       EnableAudioEvent:
         Guid:

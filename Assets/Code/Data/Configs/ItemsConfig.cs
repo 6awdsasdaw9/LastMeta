@@ -9,6 +9,6 @@ namespace Code.Data.Configs
     {
         public ItemData[] Items;
         public ItemData GetData(ItemType type) => Items.FirstOrDefault(i => i.Type == type);
-    
+        
     }
 }

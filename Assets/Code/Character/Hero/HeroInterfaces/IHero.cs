@@ -8,6 +8,7 @@ namespace Code.Character.Hero.HeroInterfaces
         
         Constants.GameMode GameMode { get; }
         Transform Transform { get; }
+        Rigidbody Rigidbody { get; } 
         IHeroStats Stats { get; }
         IHeroAnimator Animator { get; }
         IHeroAudio Audio { get; }
@@ -25,6 +26,7 @@ namespace Code.Character.Hero.HeroInterfaces
         IHeroUpgrade Upgrade { get; }
         IHeroAbility Ability { get; }
         IHeroVFX VFX { get; }
+        IHeroEffectsController EffectsController {get;}
     
     }
     

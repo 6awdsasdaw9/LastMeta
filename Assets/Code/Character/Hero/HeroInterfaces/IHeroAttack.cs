@@ -6,8 +6,8 @@ namespace Code.Character.Hero.HeroInterfaces
     public interface IHeroAttack : IDisabledComponent
     {
         public bool IsAttack { get; }
-        DamageParam DamageParam { get; }
-        void SetDamageParam(DamageParam damageParam);
+        AttackData AttackData { get; }
+        void SetDamageParam(AttackData attackData);
 
         /// <summary>
         /// Animation Event

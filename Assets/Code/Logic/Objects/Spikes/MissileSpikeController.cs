@@ -4,6 +4,7 @@ using Code.Audio.AudioEvents;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
 using Code.Data.GameData;
+using Code.Debugers;
 using Code.Logic.Collisions.Triggers;
 using Code.Logic.Common;
 using Code.Logic.Objects.Animations;
@@ -32,7 +33,6 @@ namespace Code.Logic.Objects.Spikes
         {
             _hero = container.Resolve<IHero>();
             _data = container.Resolve<ObjectsConfig>().SpikesData.FirstOrDefault(s => s.Type == _type);
-            _pusher = new HeroPusher(owner: transform, hero: _hero, pushData: _data.PushData);
         }
 
         private void OnEnable()
@@ -54,6 +54,8 @@ namespace Code.Logic.Objects.Spikes
 
         private void EnableComponent()
         {
+            _pusher ??= new HeroPusher(owner: transform, hero: _hero, pushData: _data.PushData);
+            _damageTrigger.gameObject.SetActive(true);
             _damageTrigger.OnEnter += OnTriggerEnter;
             _animation.PlayStart();
             _audioEvent.PlayAudioEvent(_data.AudioData.EnableAudioEvent);
@@ -63,6 +65,7 @@ namespace Code.Logic.Objects.Spikes
         private void DisableComponent()
         {
             _damageTrigger.OnEnter -= OnTriggerEnter;
+            _damageTrigger.gameObject.SetActive(false);
             _audioEvent.PlayAudioEvent(_data.AudioData.DisableAudioEvent);
             _animation.PlayStop();
             _isActive = false;
@@ -73,7 +76,8 @@ namespace Code.Logic.Objects.Spikes
             if(!_isActive)return;
             _hero.Health.TakeDamage(_data.Damage);
             _audioEvent.PlayAudioEvent(_data.AudioData.CollisionAudioEvent);
-            _pusher.Push().Forget();
+            Logg.ColorLog($"OnTriggerEnter -> Push force ",ColorType.Red);
+            _pusher.Push();
         }
     }
 }

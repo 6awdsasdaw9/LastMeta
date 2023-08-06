@@ -17,13 +17,12 @@ MonoBehaviour:
     HealthData:
       MaxHP: 0
       CurrentHP: 0
-    DamageParam:
-      Damage: 0
+    attackData:
+      Damage: 3
       DamagedRadius: 0
       EffectiveDistance: {x: 0.5, y: 1, z: 0}
-      Cooldown: 0
+      Cooldown: 0.7
     PushData:
-      Duration: 0
       Force: 0
     MoveSpeed: 3
     PatrolSpeed: 3
@@ -33,13 +32,12 @@ MonoBehaviour:
     HealthData:
       MaxHP: 7.39
       CurrentHP: 0
-    DamageParam:
-      Damage: 2.8
-      DamagedRadius: 0.54
-      EffectiveDistance: {x: 0.5, y: 1, z: 0}
-      Cooldown: 0
+    attackData:
+      Damage: 3
+      DamagedRadius: 2
+      EffectiveDistance: {x: 0.7, y: 1, z: 0}
+      Cooldown: 0.7
     PushData:
-      Duration: 0.23
       Force: 2.72
     MoveSpeed: 0.3
     PatrolSpeed: 0.2

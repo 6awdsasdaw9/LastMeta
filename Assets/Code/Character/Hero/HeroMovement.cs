@@ -66,7 +66,7 @@ namespace Code.Character.Hero
 
         private void FixedUpdate()
         {
-            _velocity = _body.velocity;
+            _velocity = _body.velocity;  
             MoveWithAcceleration();
         }
 
@@ -224,11 +224,13 @@ namespace Code.Character.Hero
 
         public void DisableComponent()
         {
+            enabled = false;
             BlockMovement();
         }
 
         public void EnableComponent()
         {
+            enabled = true;
             _heroCanMove = true;
         }
     }

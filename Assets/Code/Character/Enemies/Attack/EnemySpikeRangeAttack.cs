@@ -28,7 +28,7 @@ namespace Code.Character.Enemies
         {
             if (CanAttack()) StartRangeAttack();
         }
-        private bool CanAttack() => IsActive && !IsAttacking;
+        private bool CanAttack() => IsActive && !IsAttacking &&  _hero.Stats.CurrentHeath > 0 && _hero.Stats.OnGround;
         protected override void StartRangeAttack()
         {
             Logg.ColorLog("StartRangeAttack",ColorType.Red);

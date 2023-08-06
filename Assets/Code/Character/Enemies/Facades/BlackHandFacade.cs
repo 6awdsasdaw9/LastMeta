@@ -28,13 +28,13 @@ namespace Code.Character.Enemies.EnemiesFacades
             if (_hero == null || _data == null) return;
 
           container.Resolve<PauseListenerStorage>().Add(this);
-            InitComponents();
+          InitComponents();
         }
 
         private void InitComponents()
         {
             Stats = new BlackHandStats(this);
-            MelleAttack.Init(_hero, _data.DamageParam, _data.PushData, Stats);
+            MelleAttack.Init(_hero, _data.attackData, _data.PushData, Stats);
             Patrol.Init(_data.PatrolSpeed, _data.PatrolCooldown, Stats);
             MovementToHero.Init(_hero.Transform, _data.MoveSpeed);
             EnemyAudio.Init(_data.AudioPath);
