@@ -9,7 +9,6 @@ using Code.Logic.Objects.Animations;
 using Code.Services;
 using Code.Services.EventsSubscribes;
 using Cysharp.Threading.Tasks;
-using TMPro;
 using UnityEngine;
 
 namespace Code.Logic.Objects.Spikes
@@ -26,10 +25,11 @@ namespace Code.Logic.Objects.Spikes
         private HeroPusher _pusher;
         private AudioEvent _audioEvent = new();
 
-        private bool _isActive;
-
         private CancellationTokenSource _cts;
+        
+        private bool _isActive;
         private bool _isWatching;
+        private bool _isAttacking;
 
         public void Init(Transform owner, IHero hero, SpikeData data)
         {
@@ -101,17 +101,30 @@ namespace Code.Logic.Objects.Spikes
         
         private async UniTaskVoid FollowingTrigger()
         {
+            if(_isAttacking) return;
+            
+            _isAttacking = true;
             _cts?.Cancel();
             _cts = new CancellationTokenSource();
+            
             _cooldown.SetZeroCooldown();
-            await UniTask.Delay(TimeSpan.FromSeconds(0.3f), cancellationToken: _cts.Token);
-            while (_isWatching)
+            
+            await UniTask.Delay(
+                TimeSpan.FromSeconds(0.8f), 
+                cancellationToken: _hero.Transform.gameObject.GetCancellationTokenOnDestroy());
+            
+            while (_isActive && _isWatching)
             {
-                await UniTask.WaitUntil(() => _cooldown.IsUp()
-                    , cancellationToken: _hero.Transform.gameObject.GetCancellationTokenOnDestroy());
+                await UniTask.WaitUntil(
+                    () => _cooldown.IsUp(),
+                    cancellationToken: _hero.Transform.gameObject.GetCancellationTokenOnDestroy());
+                
+                if(!_isActive || !_isWatching) break;
+                
                 AttackHero();
                 _cooldown.SetMaxCooldown();
             }
+            _isAttacking = false;
         }
 
         public void AttackHero()
@@ -120,7 +133,5 @@ namespace Code.Logic.Objects.Spikes
             _audioEvent.PlayAudioEvent(_data.AudioData.CollisionAudioEvent);
             _pusher.Push();
         }
-
-    
     }
 }

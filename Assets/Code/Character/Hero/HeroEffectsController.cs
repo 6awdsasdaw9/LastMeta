@@ -11,10 +11,10 @@ using Zenject;
 namespace Code.Character.Hero
 {
     public class HeroEffectsController : MonoBehaviour, IEventsSubscriber, IHeroEffectsController
-    {
+    { 
+        private Cooldown _disableMovementCooldown;
         private IHero _hero;
         private InputService _inputService;
-        [SerializeField] private Cooldown _pushDuration;
         private bool _isPressMove;
         private CancellationTokenSource _cts;
 
@@ -23,6 +23,9 @@ namespace Code.Character.Hero
         {
             _hero = GetComponent<IHero>();
             _inputService = container.Resolve<InputService>();
+
+            _disableMovementCooldown = new Cooldown();
+            _disableMovementCooldown.SetMaxTime(0.3f);
         }
         public void Push(Vector3 forward)
         {
@@ -33,14 +36,18 @@ namespace Code.Character.Hero
         {
             _cts?.Cancel();
             _cts = new CancellationTokenSource();
+            _disableMovementCooldown.SetMaxCooldown();
+            
             SubscribeToEvents(true);
             _hero.Movement.DisableComponent();
             _hero.Jump.DisableComponent();
+            
             _hero.Rigidbody.AddForce(forward, ForceMode.Impulse);
-            await UniTask.WaitUntil(() => _pushDuration.IsUp() || _isPressMove, cancellationToken: _cts.Token);
+            await UniTask.WaitUntil(() => _disableMovementCooldown.IsUp() || _isPressMove, cancellationToken: _cts.Token);
+            
+            SubscribeToEvents(false);
             _hero.Movement.EnableComponent();
             _hero.Jump.EnableComponent();
-            SubscribeToEvents(false);
         }
 
         public void SubscribeToEvents(bool flag)
@@ -57,7 +64,7 @@ namespace Code.Character.Hero
 
         private void OnPressMovement(InputAction.CallbackContext context)
         {
-            if (context.started && _pushDuration.Normalize < 0.3f) _isPressMove = true;
+            _isPressMove = context.started && _disableMovementCooldown.Normalize < 0.3f;
         }
     }
 

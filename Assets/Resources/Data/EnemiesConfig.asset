@@ -43,7 +43,7 @@ MonoBehaviour:
     _isHasMelleAttack: 1
     MelleAttackData:
       Damage: 3
-      DamagedRadius: 1.7
+      DamagedRadius: 1
       EffectiveDistance: {x: 0.75, y: 1, z: 0}
       Cooldown: 0.7
     _rangeAttackType: 2
@@ -54,7 +54,7 @@ MonoBehaviour:
       Cooldown: 0.7
     RangeCooldown: 2
     PushData:
-      Force: 2.7
+      Force: 1.5
     MoveSpeed: 0.3
     PatrolSpeed: 0.2
     PatrolCooldown: 0.5

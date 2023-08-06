@@ -48,7 +48,7 @@ namespace Code.Character.Enemies
             _spikeController.EndReaction();
         }
 
-        private bool CanAttack() => IsActive && !IsAttacking && _attackCooldown.IsUp()
+        private bool CanAttack() => IsActive && _attackCooldown.IsUp() && !IsAttacking
                                     &&_hero.Stats.CurrentHeath > 0 && _hero.Stats.OnGround 
                                     && !_enemyStats.IsBlock;
     }

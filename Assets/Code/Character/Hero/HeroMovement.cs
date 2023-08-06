@@ -59,6 +59,7 @@ namespace Code.Character.Hero
 
         private void Update()
         {
+            if(!_heroCanMove)return;
             SetDesiredVelocity();
             Rotation();
             Crouch();
@@ -66,6 +67,7 @@ namespace Code.Character.Hero
 
         private void FixedUpdate()
         {
+            if(!_heroCanMove)return;
             _velocity = _body.velocity;  
             MoveWithAcceleration();
         }
@@ -224,13 +226,11 @@ namespace Code.Character.Hero
 
         public void DisableComponent()
         {
-            enabled = false;
             BlockMovement();
         }
 
         public void EnableComponent()
         {
-            enabled = true;
             _heroCanMove = true;
         }
     }

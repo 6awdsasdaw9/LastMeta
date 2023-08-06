@@ -42,7 +42,7 @@ MonoBehaviour:
   - Type: 0
     Damage: 2
     PushData:
-      Force: 6
+      Force: 2
     AudioData:
       EnableAudioEvent:
         Guid:
