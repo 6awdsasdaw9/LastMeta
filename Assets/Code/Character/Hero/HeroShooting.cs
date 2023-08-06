@@ -83,15 +83,15 @@ namespace Code.Character.Hero
             await UniTask.Delay(TimeSpan.FromSeconds(0.5f), cancellationToken: _cts.Token);
             
             _attackCooldown = new Cooldown();
-            _attackCooldown.SetTime(ShootingParams.AttackCooldown);
-            _attackCooldown.ResetCooldown();
+            _attackCooldown.SetMaxTime(ShootingParams.AttackCooldown);
+            _attackCooldown.SetMaxCooldown();
             
             while (IsAttack)
             {
                 var missile = _missilesFactory.SpawnMissile(ShootingParams,_hero);
                 missile.Movement.StartMove();
                 await UniTask.WaitUntil(_attackCooldown.IsUp, cancellationToken: _cts.Token);
-                _attackCooldown.ResetCooldown();
+                _attackCooldown.SetMaxCooldown();
             }
         }
 

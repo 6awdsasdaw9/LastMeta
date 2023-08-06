@@ -9,6 +9,12 @@ namespace Code.Character.Enemies
         public void EnableAttack() => IsActive = true;
         
     }
+
+    public enum MelleAttackType
+    {
+        None,
+        Default
+    }
     public abstract class EnemyMelleAttackBase : EnemyAttack
     {
         protected abstract void StartAttack();
@@ -23,9 +29,14 @@ namespace Code.Character.Enemies
         /// </summary>
         protected abstract void OnAttackEnded();
         
-
     }
     
+    public enum RangeAttackType
+    {
+        None,
+        Default,
+        Spike
+    }
     public abstract class EnemyRangeAttackBase : EnemyAttack
     {
         protected abstract void StartRangeAttack();

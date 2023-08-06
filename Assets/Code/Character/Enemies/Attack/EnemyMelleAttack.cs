@@ -13,30 +13,28 @@ namespace Code.Character.Enemies
     public class EnemyMelleAttack : EnemyMelleAttackBase
     {
         [SerializeField] private EnemyAnimator _animator;
-        private Cooldown _attackCooldown;
-        private HeroPusher _pusher;
+        private readonly Cooldown _attackCooldown = new();
         
-        private DamageParam _damageParam;
-        
+        private IEnemyStats _enemyStats;
         private IHero _hero;
-        private Vector3 _startPoint;
+        
+        private AttackData _attackData;
+        private PushData _pushData;
+        
+        private Vector3 _attackPoint;
         private readonly Collider[] _hits = new Collider[1];
 
         private int _layerMask;
-        public bool IsAttacking;
-        private IEnemyStats _enemyStats;
-        
-        public void Init(IHero hero, DamageParam damageParam, PushData pushData, IEnemyStats enemyStats)
+        public bool IsAttacking { get; private set; }
+
+        public void Init(IHero hero, AttackData attackData, PushData pushData, IEnemyStats enemyStats)
         {
             _hero = hero;
-            _damageParam =  damageParam;
+            _attackData =  attackData;
+            _pushData = pushData;
             _enemyStats = enemyStats;
             
-            _attackCooldown = new Cooldown();
-            _attackCooldown.SetTime(_damageParam.Cooldown);
-
-            _pusher = new HeroPusher(transform, hero, pushData);
-            
+            _attackCooldown.SetMaxTime(_attackData.Cooldown);
             _layerMask =  LayerMask.GetMask(Constants.HeroLayer);
         }
         
@@ -51,7 +49,7 @@ namespace Code.Character.Enemies
             {
                 _hero.Movement.SetSupportVelocity(Vector2.zero);
             }
-            _attackCooldown.ResetCooldown();
+            _attackCooldown.SetMaxCooldown();
         }
         protected override void StartAttack()
         {
@@ -64,10 +62,10 @@ namespace Code.Character.Enemies
         /// </summary>
         protected  override void OnAttack()
         {
-            PhysicsDebug.DrawDebug(StartPoint(), _damageParam.DamagedRadius, 1);
+            PhysicsDebug.DrawDebug(StartPoint(), _attackData.DamagedRadius, 1);
             if (!Hit(out Collider hit)) return;
-            _hero.Health.TakeDamage(_damageParam.Damage);
-            _pusher.Push().Forget();
+            _hero.Health.TakeDamage(_attackData.Damage);
+            _hero.EffectsController.Push(forward: (transform.position - _hero.Transform.position) * _pushData.Force);
         }
 
         /// <summary> 
@@ -75,20 +73,19 @@ namespace Code.Character.Enemies
         /// </summary>
         protected  override void OnAttackEnded()
         {
-            _attackCooldown.ResetCooldown();
+            _attackCooldown.SetMaxCooldown();
             IsAttacking = false;
         }
-   
-
+        
 
         private bool Hit(out Collider hit)
         {
-            var hitCount = Physics.OverlapSphereNonAlloc(StartPoint(), _damageParam.DamagedRadius, _hits, _layerMask);
+            var hitCount = Physics.OverlapSphereNonAlloc(StartPoint(), _attackData.DamagedRadius, _hits, _layerMask);
             hit = _hits.FirstOrDefault();
             return hitCount > 0;
         }
 
-        private Vector3 StartPoint() => transform.position + _damageParam.EffectiveDistance;
-        private bool CanAttack() => IsActive && !IsAttacking && _attackCooldown.IsUp() && !_enemyStats.IsBlock;
+        private Vector3 StartPoint() => transform.position + _attackData.EffectiveDistance;
+        private bool CanAttack() => IsActive && !IsAttacking && _attackCooldown.IsUp() && !_enemyStats.IsBlock && _hero.Health.Current > 0;
     }
 }

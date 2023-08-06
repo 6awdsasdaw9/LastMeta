@@ -12,7 +12,7 @@ namespace Code.Data.GameData
     {
         [Title("Attack")]
         public bool IsMassAttack;
-        public DamageParam DamageParam;
+        public AttackData attackData;
         public float AttackCooldown;
 
         [Title("Bullet")]

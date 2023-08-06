@@ -58,8 +58,8 @@ namespace Code.Character.Hero.Abilities
             Level = level;
             if(!IsOpen) return;
             _currentData = data;
-            _durationCooldown.SetTime(_currentData.Duration);
-            _abilityCooldown.SetTime(_currentData.Cooldown);
+            _durationCooldown.SetMaxTime(_currentData.Duration);
+            _abilityCooldown.SetMaxTime(_currentData.Cooldown);
         }
 
         public override void StartApplying()
@@ -79,7 +79,7 @@ namespace Code.Character.Hero.Abilities
             _durationCts?.Cancel();
             _durationCts = new CancellationTokenSource();
 
-            _durationCooldown.ResetCooldown();
+            _durationCooldown.SetMaxCooldown();
 
             var value = _currentData.SpeedBonus;
             if (_hero.Transform.gameObject == null) return;

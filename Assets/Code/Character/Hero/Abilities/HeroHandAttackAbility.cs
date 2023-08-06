@@ -35,8 +35,8 @@ namespace Code.Character.Hero.Abilities
         {
              CurrentData = data;
              Level = level;
-            _abilityCooldown.SetTime(data.DamageParam.Cooldown);
-            _hero.HandAttack.SetDamageParam(data.DamageParam);
+            _abilityCooldown.SetMaxTime(data.attackData.Cooldown);
+            _hero.HandAttack.SetDamageParam(data.attackData);
         }
 
         public override void StartApplying()
@@ -53,7 +53,7 @@ namespace Code.Character.Hero.Abilities
         [Serializable]
         public class Data : AbilitySettings
         {
-            public DamageParam DamageParam;
+            public AttackData attackData;
         }
     }
 }

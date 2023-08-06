@@ -1,82 +1,49 @@
 using System.Linq;
-using Code.Audio.AudioEvents;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
 using Code.Data.GameData;
-using Code.Logic.Collisions.Triggers;
-using Code.Logic.Common;
-using Code.Logic.Common.Interfaces;
-using Code.Logic.Objects.Animations;
 using Code.Logic.TimingObjects.TimeObserverses;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Logic.Objects.Spikes
 {
-    public class TimeSpikeController : TimeObserver, IDisabledComponent
+    public class TimeSpikeController : TimeObserver
     {
         [SerializeField] private SpikeType _type;
-        [SerializeField] private StartStopAnimation _animation;
-        [SerializeField] private TriggerObserver _damageTrigger; 
-        
-        private SpikeData _data;
-        private HeroPusher _pusher;
-        
-        private readonly AudioEvent _audioEvent = new();
-        private IHero _hero;
-
-        private bool _isActive;
+        [SerializeField] private SpikeController _spikeController;
 
         [Inject]
         private void Construct(DiContainer container)
         {
-            _hero = container.Resolve<IHero>();
-            _data = container.Resolve<ObjectsConfig>().SpikesData.FirstOrDefault(s => s.Type == _type);
-            _pusher = new HeroPusher(owner: transform, hero: _hero, pushData: _data.PushData);
+            var data = container.Resolve<ObjectsConfig>().SpikesData.FirstOrDefault(s => s.Type == _type);
+            var hero = container.Resolve<IHero>();
+            _spikeController.Init(owner: transform, hero: hero, data: data);
         }
-        
+
         protected override void StartReaction()
         {
-            EnableComponent();
+            _spikeController.StartReaction();
         }
         
         protected override void EndReaction()
         {
-            DisableComponent();
+            _spikeController.EndReaction();
         }
 
         protected override void SetStartReaction()
         {
-            _animation.PlayStartIdle();
+            _spikeController.SetStartReaction();
         }
 
         protected override void SetEndReaction()
         {
-            _animation.PlayStopIdle();
+            _spikeController.SetEndReaction();
         }
-
-        public void EnableComponent()
+        
+        private void OnTriggerEnter(Collider other)
         {
-            _damageTrigger.OnEnter += OnTriggerEnter;
-            _animation.PlayStart();
-            _audioEvent.PlayAudioEvent(_data.AudioData.EnableAudioEvent);
-            _isActive = true;
-        }
-
-        public void DisableComponent()
-        {
-            _damageTrigger.OnEnter -= OnTriggerEnter;
-            _audioEvent.PlayAudioEvent(_data.AudioData.DisableAudioEvent);
-            _animation.PlayStop();
-            _isActive = false;
-        }
-
-        private void OnTriggerEnter(Collider obj)
-        {
-            if(!_isActive)return;
-            _hero.Health.TakeDamage(_data.Damage);
-            _audioEvent.PlayAudioEvent(_data.AudioData.CollisionAudioEvent);
-            _pusher.Push().Forget();
+            _spikeController.AttackHero();
         }
     }
 }

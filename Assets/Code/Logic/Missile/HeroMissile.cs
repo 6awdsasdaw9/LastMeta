@@ -56,8 +56,8 @@ namespace Code.Logic.Missile
             _cts = new CancellationTokenSource();
 
             _lifetimeCooldown = new Cooldown();
-            _lifetimeCooldown.SetTime(ShootingParams.LifeTime.GetRandom());
-            _lifetimeCooldown.ResetCooldown();
+            _lifetimeCooldown.SetMaxTime(ShootingParams.LifeTime.GetRandom());
+            _lifetimeCooldown.SetMaxCooldown();
 
             await UniTask.WaitUntil(_lifetimeCooldown.IsUp, cancellationToken: _cts.Token);
             OnLifetimeCooldownIsUp?.Invoke(this);

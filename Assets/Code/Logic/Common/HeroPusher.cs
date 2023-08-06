@@ -1,6 +1,5 @@
 using System;
 using Code.Character.Hero.HeroInterfaces;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Code.Logic.Common
@@ -18,19 +17,27 @@ namespace Code.Logic.Common
             _pushData = pushData;
         }
         
-        public async UniTaskVoid Push()
+        public void Push()
         {
-            if (_pushData.Force == 0) return;
-            _hero.Movement.SetSupportVelocity((_owner.position - _hero.Transform.position) * _pushData.Force);
-            await UniTask.Delay(TimeSpan.FromSeconds(_pushData.Duration != 0 ? _pushData.Duration : 0.5f));
-            _hero.Movement.SetSupportVelocity(Vector2.zero);
+            var pushDirection = GetDirection();
+            _hero.EffectsController.Push(pushDirection * _pushData.Force);
+        }
+
+        private Vector3 GetDirection()
+        {
+            Vector3 impactVector = _hero.Transform.position - _owner.position;
+            
+            var rotationAngle = _owner.rotation.eulerAngles.z;
+            impactVector = Quaternion.Euler(0f, 0f, -rotationAngle) * impactVector;
+
+            Vector3 pushDirection = impactVector.normalized;
+            return pushDirection;
         }
     }
 
     [Serializable]
     public struct PushData
     {
-        public float Duration;
         public float Force;
     }
 }

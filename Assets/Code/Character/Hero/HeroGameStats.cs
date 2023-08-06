@@ -50,12 +50,12 @@ namespace Code.Character.Hero
                     case Constants.HeroMode.Default:
                         return _hero.Upgrade.BonusAttack +
                                (_hero.Ability.HandAttackAbility is { CurrentData: { } }
-                                   ? _hero.Ability.HandAttackAbility.CurrentData.DamageParam.Damage
+                                   ? _hero.Ability.HandAttackAbility.CurrentData.attackData.Damage
                                    : 0);
                     case Constants.HeroMode.Gun:
                         return _hero.Upgrade.BonusAttack +
                                (_hero.Ability.GunAttackAbility is { ShootingParams: { } }
-                                   ? _hero.Ability.GunAttackAbility.ShootingParams.DamageParam.Damage
+                                   ? _hero.Ability.GunAttackAbility.ShootingParams.attackData.Damage
                                    : 0);
                     case Constants.HeroMode.Black:
                         return 420;

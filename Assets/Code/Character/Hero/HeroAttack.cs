@@ -15,7 +15,7 @@ namespace Code.Character.Hero
         [SerializeField] private Hero _hero;
         private InputService _inputService;
         private RaycastHitsController _raycastHitController;
-        public DamageParam DamageParam { get; private set; }
+        public AttackData AttackData { get; private set; }
         public bool IsAttack { get; private set; }
 
         private bool _isCanAttack => !_hero.Stats.IsDash
@@ -44,16 +44,16 @@ namespace Code.Character.Hero
 
         private void OnDisable() => _inputService.OnPressAttackButton -= StartAttack;
 
-        public void SetDamageParam(DamageParam damageParam)
+        public void SetDamageParam(AttackData attackData)
         {
-            DamageParam = damageParam;
+            AttackData = attackData;
             _raycastHitController = new RaycastHitsController(
                 owner: transform,
                 layerName: Constants.HittableLayer,
                 hitRadius: 0.2f,
                 hitsSize: 7,
-                hitOffsetX: damageParam.EffectiveDistance.x,
-                hitOffsetY: damageParam.EffectiveDistance.y);
+                hitOffsetX: attackData.EffectiveDistance.x,
+                hitOffsetY: attackData.EffectiveDistance.y);
         }
 
         private void StartAttack()
@@ -75,7 +75,7 @@ namespace Code.Character.Hero
 
             foreach (var health in damageTakers)
             {
-                health.TakeDamage(DamageParam.Damage);
+                health.TakeDamage(AttackData.Damage);
             }
         }
 

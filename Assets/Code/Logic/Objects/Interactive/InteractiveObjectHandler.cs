@@ -37,7 +37,7 @@ namespace Code.Logic.Objects.Interactive
             container.Resolve<EventSubsribersStorage>().Add(this);
             var hudSettings = container.Resolve<HudSettings>();
 
-            _cooldown.SetTime(hudSettings.InteractiveUIParams.InteractiveCooldownTime);
+            _cooldown.SetMaxTime(hudSettings.InteractiveUIParams.InteractiveCooldownTime);
             _cooldown = new Cooldown();
             
             _interactiveObject = GetComponent<Interactivity>();
@@ -72,7 +72,7 @@ namespace Code.Logic.Objects.Interactive
                     StartInteractive();
                 }
 
-                _cooldown.ResetCooldown();
+                _cooldown.SetMaxCooldown();
             }
         }
 

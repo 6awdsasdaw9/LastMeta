@@ -10,10 +10,8 @@ namespace Code.Data.GameData
 
     public enum SpikeType
     {
-        BidAngle,
-        BigForward,
-        SmallAngle,
-        SmallForward
+        Small,
+        Bid,
     }
 
     [Serializable]

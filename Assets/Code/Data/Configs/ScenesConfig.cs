@@ -13,8 +13,8 @@ namespace Code.Data.Configs
     {
         public Constants.Scenes InitialScene;
         public float DayTimeInSeconds = 50;
-
-    
+        
+        [GUIColor(0.85f, 0.74f, 1)]
         public EventReference PauseSnapshot;
         
         [ListDrawerSettings(Expanded = false, ShowIndexLabels = true, ShowPaging = false, ShowItemCount = true)]
@@ -33,7 +33,9 @@ namespace Code.Data.Configs
         [EnumToggleButtons] public Constants.GameMode GameMode;
 
         [Title("Music")] 
+        [GUIColor(0.85f, 0.74f, 1)]
         public EventReference Music;
+        [GUIColor(0.85f, 0.74f, 1)]
         public EventReference Ambience;
 
         [Title("Lighting")] 
