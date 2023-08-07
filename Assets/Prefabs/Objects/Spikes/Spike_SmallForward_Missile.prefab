@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30397b6588d84a03abef7de26f11080b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
+  _type: 1
   _spikeController:
     _animation: {fileID: 3583130102039650749}
     _damageTrigger: {fileID: 8305236936660069474}

@@ -23,7 +23,7 @@ namespace Code.Character.Hero
 
         public bool IsCrouch { get; private set; }
         public float DirectionX => _directionX;
-        public float Speed => _hero.Stats.Speed  * _hero.Stats.ModeSpeedMultiplayer;
+        public float Speed => _hero.Stats.Speed * _hero.Stats.ModeSpeedMultiplayer;
 
         private float _directionX;
         private Vector2 _desiredVelocity;
@@ -59,7 +59,7 @@ namespace Code.Character.Hero
 
         private void Update()
         {
-            if(!_heroCanMove)return;
+            if (!_heroCanMove) return;
             SetDesiredVelocity();
             Rotation();
             Crouch();
@@ -67,8 +67,8 @@ namespace Code.Character.Hero
 
         private void FixedUpdate()
         {
-            if(!_heroCanMove)return;
-            _velocity = _body.velocity;  
+            if (!_heroCanMove) return;
+            _velocity = _body.velocity;
             MoveWithAcceleration();
         }
 
@@ -100,7 +100,7 @@ namespace Code.Character.Hero
             _heroCanMove = false;
             _pressingCrouch = false;
             _pressingMove = false;
-            if(_body) _body.velocity = Vector3.zero;
+            if (_body) _body.velocity = Vector3.zero;
         }
 
         public void UnBlockMovement()
@@ -119,6 +119,7 @@ namespace Code.Character.Hero
             {
                 _directionX = context.ReadValue<float>();
             }
+
             _pressingMove = DirectionX != 0;
         }
 
@@ -131,16 +132,9 @@ namespace Code.Character.Hero
 
         #region Velocity
 
-        public void SetBonusSpeed(float bonusSpeed)
+        public void AddBonusSpeed(float bonusSpeed)
         {
-            if (bonusSpeed == 0)
-            {
-                _supportVelocity = Vector2.zero;
-            }
-            else
-            {
-                _supportVelocity = new Vector2(transform.localScale.x, 0) * bonusSpeed;
-            }
+            _supportVelocity += new Vector2(transform.localScale.x, 0) * bonusSpeed;
         }
 
         public void SetSupportVelocity(Vector2 otherObjectVelocity)

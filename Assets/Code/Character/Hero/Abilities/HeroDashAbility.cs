@@ -82,19 +82,12 @@ namespace Code.Character.Hero.Abilities
 
             var value = _currentData.SpeedBonus * 0.2f;
             if (_hero.Transform.gameObject == null) return;
-           _hero.Movement.SetBonusSpeed(value);
+           _hero.Movement.AddBonusSpeed(value);
 
             var heroForward = _hero.Transform.localScale.x;
 
             while (!_durationCooldown.IsUp())
             {
-                if (_durationCooldown.Normalize < 0.3f)
-                {
-                    var sec = Time.deltaTime;
-                    value -= sec;
-                    if (_hero.Transform.gameObject == null) break;
-                    _hero.Movement.SetBonusSpeed(value);
-                }
 
                 if (_hero.Transform.localScale.x == -_inputService.GetDirection())
                 {
@@ -125,7 +118,8 @@ namespace Code.Character.Hero.Abilities
             if (_hero.Transform.gameObject == null) return;
 
             _hero.Animator.PlayDash(false);
-            _hero.Movement.SetBonusSpeed(0);
+            _hero.Movement.AddBonusSpeed(0);
+            _abilityCooldown.SetMaxCooldown();
        //     _hero.Movement.UnBlockMovement();
         }
 

@@ -10,7 +10,8 @@ namespace Code.Data.GameData
 
     public enum SpikeType
     {
-        Small,
+        SmallTiming,
+        SmallMissile,
         Bid,
     }
 
@@ -20,6 +21,8 @@ namespace Code.Data.GameData
         public SpikeType Type;
         [Range(1, 10)] public float Damage = 1;
          public PushData PushData;
+        public float Cooldown = 1;
+        public float DelayAfterAttack = 0.4f;
         [GUIColor(0.85f, 0.74f, 1)] public SpikeAudioData AudioData;
     }
 
