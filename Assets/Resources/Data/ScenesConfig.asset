@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ScenesConfig
   m_EditorClassIdentifier: 
   InitialScene: 5
-  DayTimeInSeconds: 100
+  DayTimeInSeconds: 300
   PauseSnapshot:
     Guid:
       Data1: -2009899407
@@ -142,15 +142,13 @@ MonoBehaviour:
         DirectionLightIntensity: 0.9
         DirectionLightAngle: {x: 5, y: -1, z: 0}
       - TimeOfDay: 1
-        Duration: 0.079
+        Duration: 0.1
         DirectionLightIntensity: 0.45
         DirectionLightAngle: {x: -25, y: 7, z: 0}
       - TimeOfDay: 2
-        Duration: 0.156
+        Duration: 0.5
         DirectionLightIntensity: 0.15
         DirectionLightAngle: {x: -55, y: 13, z: 0}
     Points:
     - ID: 0
-      Position: {x: 2.71, y: 0, z: 0}
-    - ID: 1
-      Position: {x: 4.17, y: 3.28, z: 0}
+      Position: {x: 13.57, y: -10.12, z: 0}

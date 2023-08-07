@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _directionLight: {fileID: 244853700423049455}
   _testSceneConfig: {fileID: 0}
-  timeOfDay: 2
+  timeOfDay: 0
   _scene: 0
 --- !u!114 &244853699811189029
 MonoBehaviour:
@@ -65,8 +65,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb0b811e464445c0982399f3ee6951d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToEnable: 2
-  _timeToDisable: 0
+  _timeToEnable: 0
+  _timeToDisable: 2
   _durationMultiplayer:
     MinValue: 0
     MaxValue: 0
