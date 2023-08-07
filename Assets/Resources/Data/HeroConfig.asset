@@ -49,7 +49,7 @@ MonoBehaviour:
         Damage: 5
         DamagedRadius: 2
         EffectiveDistance: {x: -0.5, y: 0.7, z: 0}
-        Cooldown: 0.7
+        Cooldown: 0.26
     - attackData:
         Damage: 0
         DamagedRadius: 0
@@ -63,27 +63,27 @@ MonoBehaviour:
     GunAttackLevelData:
     - IsMassAttack: 0
       attackData:
-        Damage: 0
-        DamagedRadius: 0
+        Damage: 5
+        DamagedRadius: 3
         EffectiveDistance: {x: 0.5, y: 1, z: 0}
-        Cooldown: 0.7
-      AttackCooldown: 0.3
+        Cooldown: 0
+      AttackCooldown: 0.37
       MissileType: 0
-      MoveType: 0
+      MoveType: 1
       LifeTime:
-        MinValue: 1.2722634
-        MaxValue: 1.7196195
+        MinValue: 0.5
+        MaxValue: 0.715311
       Speed:
-        MinValue: 0.11887754
-        MaxValue: 1.2451304
+        MinValue: 3.501566
+        MaxValue: 4.560151
       Scatter:
-        MinValue: -0.40982333
-        MaxValue: 0.23305765
-      Mass: 0.7
+        MinValue: -5
+        MaxValue: -4.4531784
+      Mass: 1
       IsUseGravity: 0
       PhysicMaterial: {fileID: 13400000, guid: 01eea85b5cf22f544b409f6d92a0e046, type: 2}
-      Drag: 0.05
-      SpawnOffset: {x: 0.4, y: 0.7}
+      Drag: 1.8
+      SpawnOffset: {x: 0.36, y: 0.7}
       MissileSprites:
       - {fileID: 7079261095572665666, guid: b8f79a695a10f4944821f68597746cfe, type: 3}
       - {fileID: -6751012641250354480, guid: b8f79a695a10f4944821f68597746cfe, type: 3}
