@@ -6,7 +6,6 @@ using Code.Services;
 using Code.Services.EventsSubscribes;
 using Code.Services.Input;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 using Zenject;
 
 namespace Code.Character.Hero.Abilities
@@ -64,45 +63,11 @@ namespace Code.Character.Hero.Abilities
 
         public override void StartApplying()
         {
-            if (!IsOpen || !_abilityCooldown.IsUp() || !_isCanDash || _hero?.Transform == null) return;
+            if (!IsOpen || !_isCanDash || !_abilityCooldown.IsUp()) return;
 
             IsDash = true;
             _hero.Animator?.PlayDash(true);
             UpdateDurationCooldown().Forget();
-        }
-
-
-        private async UniTaskVoid UpdateDurationCooldown()
-        {
-            if (_hero.Transform.gameObject == null) return;
-            
-            _durationCts?.Cancel();
-            _durationCts = new CancellationTokenSource();
-            _durationCooldown.SetMaxCooldown();
-            
-            var value = Param.SpeedBonus * 0.2f;
-          // _hero.Movement.AddBonusSpeed(value);
-
-            while (!_durationCooldown.IsUp())
-            {
-                if (_hero.Transform.localScale.x == -_inputService.GetDirection())
-                {
-                    StopApplying();
-                    break;
-                }
-
-                await UniTask.DelayFrame(1, cancellationToken: _durationCts.Token);
-            }
-
-            StopApplying();
-            UpdateAbilityCooldown().Forget();
-        }
-
-        private async UniTaskVoid UpdateAbilityCooldown()
-        {
-            _abilityCts?.Cancel();
-            _abilityCts = new CancellationTokenSource();
-            await UniTask.WaitUntil(_abilityCooldown.IsUp, cancellationToken: _abilityCts.Token);
         }
 
         public override void StopApplying()
@@ -114,9 +79,30 @@ namespace Code.Character.Hero.Abilities
             if (_hero.Transform.gameObject == null) return;
 
             _hero.Animator.PlayDash(false);
-           // _hero.Movement.AddBonusSpeed(-Param.SpeedBonus * 0.2f);
             _abilityCooldown.SetMaxCooldown();
-       //     _hero.Movement.UnBlockMovement();
+            UpdateAbilityCooldown().Forget();
+        }
+
+        private async UniTaskVoid UpdateDurationCooldown()
+        {
+            if (_hero.Transform.gameObject == null) return;
+            
+            _durationCts?.Cancel();
+            _durationCts = new CancellationTokenSource();
+            _durationCooldown.SetMaxCooldown();
+
+            await UniTask.WaitUntil(
+                () => _durationCooldown.IsUp() || _hero.Transform.localScale.x == -_inputService.GetDirection(),
+                cancellationToken: _durationCts.Token);
+
+            StopApplying();
+        }
+        
+        private async UniTaskVoid UpdateAbilityCooldown()
+        {
+            _abilityCts?.Cancel();
+            _abilityCts = new CancellationTokenSource();
+            await UniTask.WaitUntil(_abilityCooldown.IsUp, cancellationToken: _abilityCts.Token);
         }
 
         [Serializable]
