@@ -33,6 +33,8 @@ namespace Code.Character.Hero.Abilities
 
         public void SetData(Data data, int level)
         {
+            Level = level;
+            if(!IsOpen) return;
              CurrentData = data;
              Level = level;
             _abilityCooldown.SetMaxTime(data.attackData.Cooldown);

@@ -30,6 +30,8 @@ namespace Code.Character.Hero.Abilities
 
         public void SetShootingParams(ShootingParams shootingParams, int level)
         {
+            Level = level;
+            if(!IsOpen) return;
             ShootingParams = shootingParams;
             _hero.GunAttack.SetShootingParams(shootingParams);
             _abilityCooldown.SetMaxTime(shootingParams.AttackCooldown);

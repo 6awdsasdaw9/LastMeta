@@ -67,6 +67,7 @@ namespace Code.Character.Hero.Abilities
 
             IsDash = true;
             _hero.Animator?.PlayDash(true);
+            _hero.Jump.DisableComponent();
             UpdateDurationCooldown().Forget();
         }
 
@@ -80,6 +81,7 @@ namespace Code.Character.Hero.Abilities
 
             _hero.Animator.PlayDash(false);
             _abilityCooldown.SetMaxCooldown();
+            _hero.Jump.EnableComponent();
             UpdateAbilityCooldown().Forget();
         }
 

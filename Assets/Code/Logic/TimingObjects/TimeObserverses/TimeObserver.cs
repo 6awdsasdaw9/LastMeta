@@ -56,12 +56,10 @@ namespace Code.Logic.TimingObjects.TimeObserverses
             if (_gameClock.CurrentTime.TimeOfDay == _timeToEnable.ToString())
             {
                 SetStartReaction();
-                Logg.ColorLog("TimeObserver set start reaction");
             }
             else
             {
                 SetEndReaction();
-                Logg.ColorLog("TimeObserver set end reaction");
             }
         }
 

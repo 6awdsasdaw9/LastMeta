@@ -25,7 +25,7 @@ namespace Code.Character.Hero
             _inputService = container.Resolve<InputService>();
 
             _disableMovementCooldown = new Cooldown();
-            _disableMovementCooldown.SetMaxTime(0.3f);
+            _disableMovementCooldown.SetMaxTime(0.15f);
         }
         public void Push(Vector3 forward)
         {

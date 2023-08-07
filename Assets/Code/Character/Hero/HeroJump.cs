@@ -19,11 +19,12 @@ namespace Code.Character.Hero
         private InputService _input;
         private HeroParams _params;
 
+
         #region Values
 
         public float Height => _hero.Stats.JumpHeight;
         private int _maxAirJumps => _hero.Stats.AirJump;
-        
+
         //Calculations
         private Vector2 _velocity;
         private float _jumpSpeed;
@@ -47,7 +48,7 @@ namespace Code.Character.Hero
             _params = heroConfig.HeroParams;
         }
 
-        private void OnEnable() => 
+        private void OnEnable() =>
             EnableComponent();
 
         private void Update()
@@ -70,7 +71,7 @@ namespace Code.Character.Hero
             CalculateGravity();
         }
 
-        private void OnDisable() => 
+        private void OnDisable() =>
             DisableComponent();
 
         #endregion
@@ -123,6 +124,12 @@ namespace Code.Character.Hero
 
         private void CalculateGravity()
         {
+            if (_hero.Stats.IsDash)
+            {
+                _body.velocity = new Vector3(_velocity.x, 0, 0);
+                return;
+            }
+
             switch (_body.velocity.y)
             {
                 case > 0.01f when _hero.Collision.OnGround:
@@ -144,10 +151,12 @@ namespace Code.Character.Hero
                 }
             }
 
-            _body.velocity = new Vector3(_velocity.x, Mathf.Clamp(_velocity.y, -_params.speedLimit, 100));
+            _body.velocity = new Vector3(_velocity.x, Mathf.Clamp(_velocity.y, -_params.speedLimit, 100), 0);
         }
 
         private void Jump()
+        
+        
         {
             if (!IsCanJump())
                 return;
@@ -179,18 +188,14 @@ namespace Code.Character.Hero
                     break;
             }
 
-            //TODO непотребство
-            _velocity.y += Height /* + _hero.Upgrade.BonusHeightJump*/;
+            _velocity.y += Height;
             IsCurrentlyJumping = true;
         }
 
         #endregion
 
-        public void DisableComponent() => 
-            _input.OnPressJump -= OnJump;
+        public void DisableComponent() => _input.OnPressJump -= OnJump;
 
-        public void EnableComponent() => 
-            _input.OnPressJump += OnJump;
-
+        public void EnableComponent() => _input.OnPressJump += OnJump;
     }
 }

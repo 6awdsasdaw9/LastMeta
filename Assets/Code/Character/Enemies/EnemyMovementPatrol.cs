@@ -1,4 +1,5 @@
 using Code.Character.Enemies.EnemiesInterfaces;
+using Code.Debugers;
 using Code.Logic.Collisions.Triggers;
 using Code.Services;
 using Code.Services.PauseListeners;
@@ -70,6 +71,7 @@ namespace Code.Character.Enemies
         
         public override void EnableComponent()
         {
+            Logg.ColorLog("Enable Component");
             IsMoving = true;
             _agent.speed = _speed;
             _cooldown.SetMaxCooldown();
@@ -78,7 +80,11 @@ namespace Code.Character.Enemies
 
         public override void DisableComponent()
         {
+            Logg.ColorLog("Disable Component");
             IsMoving = false;
+            _targetPoint = transform.position;
+            _agent.destination = _targetPoint;
+            base.DisableComponent();
             base.DisableComponent();
         }
 
@@ -90,6 +96,7 @@ namespace Code.Character.Enemies
 
         public void OnPause()
         {
+            _agent.destination = _targetPoint;
             _targetPoint = transform.position;
         }
 

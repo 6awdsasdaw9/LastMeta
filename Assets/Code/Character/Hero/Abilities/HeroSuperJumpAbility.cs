@@ -7,7 +7,6 @@ namespace Code.Character.Hero.Abilities
 {
     public class HeroSuperJumpAbility: Ability
     {
-
         public Data CurrentData;
         
         private CancellationTokenSource _abilityCts;
@@ -22,6 +21,7 @@ namespace Code.Character.Hero.Abilities
         {
             CurrentData = data;
             Level = level;
+            
         }
      
 

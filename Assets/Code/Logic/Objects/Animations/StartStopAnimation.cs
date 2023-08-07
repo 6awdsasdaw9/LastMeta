@@ -19,7 +19,6 @@ namespace Code.Logic.Objects.Animations
         {
             if(_isDestoy)return;
             _animator?.SetTrigger(_stop_t);
-            Logg.ColorLog("Play stop idle");
         }
     }
 }
