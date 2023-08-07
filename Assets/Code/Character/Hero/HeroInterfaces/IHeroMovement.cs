@@ -12,6 +12,6 @@ namespace Code.Character.Hero.HeroInterfaces
         public void  BlockMovement();
         public void  UnBlockMovement();
         public void SetSupportVelocity(Vector2 otherObjectVelocity);
-        public void SetBonusSpeed(float bonusSpeed);
+        public void AddBonusSpeed(float bonusSpeed);
     }
 }

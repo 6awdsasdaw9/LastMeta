@@ -37,7 +37,7 @@ namespace Code.Logic.Objects.Spikes
             _data = data;
             _pusher = new HeroPusher(owner: owner.transform, hero: _hero, pushData: _data.PushData);
             _cooldown = new Cooldown();
-            _cooldown.SetMaxTime(1.5f);
+            _cooldown.SetMaxTime(_data.Cooldown);
         }
         
         public void StartReaction()
@@ -110,7 +110,7 @@ namespace Code.Logic.Objects.Spikes
             _cooldown.SetZeroCooldown();
             
             await UniTask.Delay(
-                TimeSpan.FromSeconds(0.8f), 
+                TimeSpan.FromSeconds(_data.DelayAfterAttack), 
                 cancellationToken: _hero.Transform.gameObject.GetCancellationTokenOnDestroy());
             
             while (_isActive && _isWatching)
@@ -134,4 +134,6 @@ namespace Code.Logic.Objects.Spikes
             _pusher.Push();
         }
     }
+    
+    
 }
