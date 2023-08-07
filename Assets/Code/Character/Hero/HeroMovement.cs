@@ -135,6 +135,7 @@ namespace Code.Character.Hero
         public void AddBonusSpeed(float bonusSpeed)
         {
             _supportVelocity += new Vector2(transform.localScale.x, 0) * bonusSpeed;
+            
         }
 
         public void SetSupportVelocity(Vector2 otherObjectVelocity)

@@ -1,3 +1,4 @@
+using System;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs.HeroConfigs;
 using Code.Services;
@@ -63,7 +64,22 @@ namespace Code.Character.Hero
             }
         }
 
-        public float ModeSpeedMultiplayer => Mode != Constants.HeroMode.Default ? 0.6f : 1;
+        public float ModeSpeedMultiplayer
+        {
+            get
+            {
+                switch (Mode)
+                {
+                    default:
+                    case Constants.HeroMode.Default:
+                    case Constants.HeroMode.Black:
+                        return IsDash ? _hero.Ability.DashAbility.Param.SpeedBonus + 1 : 1;
+                    case Constants.HeroMode.Gun:
+                        return IsDash ? _hero.Ability.DashAbility.Param.SpeedBonus + 0.6f : 0.6f;
+                }
+            }
+        }
+
         public float Speed => _heroConfig.HeroParams.MaxSpeed + _hero.Upgrade.BonusSpeed;
 
         public float JumpHeight => _heroConfig.HeroParams.JumpHeight

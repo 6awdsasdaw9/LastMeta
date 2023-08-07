@@ -15,7 +15,7 @@ namespace Code.Character.Hero.Abilities
     {
         private readonly InputService _inputService;
         private readonly IHero _hero;
-        private Data _currentData;
+        public Data Param { get; private set; }
 
         private CancellationTokenSource _durationCts;
         private CancellationTokenSource _abilityCts;
@@ -23,7 +23,7 @@ namespace Code.Character.Hero.Abilities
         private readonly Cooldown _durationCooldown;
         private readonly Cooldown _abilityCooldown;
 
-        private bool _isCanDash => _currentData != null
+        private bool _isCanDash => Param != null || IsDash
                                    && !_hero.Stats.IsAttack
                                    && !_hero.Stats.IsCrouch
                                    && !_hero.Stats.IsBlockMove;
@@ -57,9 +57,9 @@ namespace Code.Character.Hero.Abilities
         {
             Level = level;
             if(!IsOpen) return;
-            _currentData = data;
-            _durationCooldown.SetMaxTime(_currentData.Duration);
-            _abilityCooldown.SetMaxTime(_currentData.Cooldown);
+            Param = data;
+            _durationCooldown.SetMaxTime(Param.Duration);
+            _abilityCooldown.SetMaxTime(Param.Cooldown);
         }
 
         public override void StartApplying()
@@ -67,7 +67,6 @@ namespace Code.Character.Hero.Abilities
             if (!IsOpen || !_abilityCooldown.IsUp() || !_isCanDash || _hero?.Transform == null) return;
 
             IsDash = true;
-           // _hero.Movement?.BlockMovement();
             _hero.Animator?.PlayDash(true);
             UpdateDurationCooldown().Forget();
         }
@@ -75,20 +74,17 @@ namespace Code.Character.Hero.Abilities
 
         private async UniTaskVoid UpdateDurationCooldown()
         {
+            if (_hero.Transform.gameObject == null) return;
+            
             _durationCts?.Cancel();
             _durationCts = new CancellationTokenSource();
-
             _durationCooldown.SetMaxCooldown();
-
-            var value = _currentData.SpeedBonus * 0.2f;
-            if (_hero.Transform.gameObject == null) return;
-           _hero.Movement.AddBonusSpeed(value);
-
-            var heroForward = _hero.Transform.localScale.x;
+            
+            var value = Param.SpeedBonus * 0.2f;
+          // _hero.Movement.AddBonusSpeed(value);
 
             while (!_durationCooldown.IsUp())
             {
-
                 if (_hero.Transform.localScale.x == -_inputService.GetDirection())
                 {
                     StopApplying();
@@ -118,7 +114,7 @@ namespace Code.Character.Hero.Abilities
             if (_hero.Transform.gameObject == null) return;
 
             _hero.Animator.PlayDash(false);
-            _hero.Movement.AddBonusSpeed(0);
+           // _hero.Movement.AddBonusSpeed(-Param.SpeedBonus * 0.2f);
             _abilityCooldown.SetMaxCooldown();
        //     _hero.Movement.UnBlockMovement();
         }

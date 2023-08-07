@@ -29,6 +29,7 @@ namespace Code
             Default,
             Gun,
             Black,
+            Dash
         }
        
         

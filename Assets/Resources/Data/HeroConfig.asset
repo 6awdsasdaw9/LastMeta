@@ -13,37 +13,43 @@ MonoBehaviour:
   m_Name: HeroConfig
   m_EditorClassIdentifier: 
   HeroParams:
-    maxHP: 5
-    MaxSpeed: 3
-    crouchSpeed: 0.567
-    maxAcceleration: 34.6
-    maxDeceleration: 49.8
-    maxTurnSpeed: 60
+    maxHP: 15.2
+    MaxSpeed: 2.5
+    crouchSpeed: 0
+    maxAcceleration: 16
+    maxDeceleration: 52
+    maxTurnSpeed: 58.51
     maxAirAcceleration: 30
-    maxAirDeceleration: 21.9
-    maxAirTurnSpeed: 66.4
+    maxAirDeceleration: 45
+    maxAirTurnSpeed: 60
     NoFrictionMaterial: {fileID: 13400000, guid: fcfcf8c2d4b646646b44fcc6be381bd9, type: 2}
     FrictionMaterial: {fileID: 13400000, guid: d815cddd93c0d304cb1eec9fc0c61526, type: 2}
-    JumpHeight: 4.5
-    timeToJumpApex: 0.832
-    upwardMovementMultiplier: 0.82
-    downwardMovementMultiplier: 6.9
+    JumpHeight: 3
+    timeToJumpApex: 0.8
+    upwardMovementMultiplier: 3
+    downwardMovementMultiplier: 2
     maxAirJumps: 0
-    jumpCutOff: 1
-    speedLimit: 13.2
-    coyoteTime: 0.083
-    jumpBuffer: 0.065
+    jumpCutOff: 3
+    speedLimit: 6.7
+    coyoteTime: 0.1
+    jumpBuffer: 0.3
   AbilitiesParams:
     DashLevelsData:
-    - Cooldown: 0
-      SpeedBonus: 0
-      Duration: 0
+    - Cooldown: 1
+      SpeedBonus: 1.5
+      Duration: 0.2
+    - Cooldown: 0.7
+      SpeedBonus: 2
+      Duration: 0.3
+    - Cooldown: 0.8
+      SpeedBonus: 0.8
+      Duration: 0.4
     HandAttackLevelsData:
     - attackData:
         Damage: 5
         DamagedRadius: 2
         EffectiveDistance: {x: -0.5, y: 0.7, z: 0}
-        Cooldown: 0.1
+        Cooldown: 0.7
     - attackData:
         Damage: 0
         DamagedRadius: 0
@@ -57,27 +63,27 @@ MonoBehaviour:
     GunAttackLevelData:
     - IsMassAttack: 0
       attackData:
-        Damage: 5
-        DamagedRadius: 3
+        Damage: 0
+        DamagedRadius: 0
         EffectiveDistance: {x: 0.5, y: 1, z: 0}
-        Cooldown: 0
-      AttackCooldown: 0.37
+        Cooldown: 0.7
+      AttackCooldown: 0.3
       MissileType: 0
-      MoveType: 1
+      MoveType: 0
       LifeTime:
-        MinValue: 0.5
-        MaxValue: 0.715311
+        MinValue: 1.2722634
+        MaxValue: 1.7196195
       Speed:
-        MinValue: 3.501566
-        MaxValue: 4.560151
+        MinValue: 0.11887754
+        MaxValue: 1.2451304
       Scatter:
-        MinValue: -5
-        MaxValue: -4.4531784
-      Mass: 1
+        MinValue: -0.40982333
+        MaxValue: 0.23305765
+      Mass: 0.7
       IsUseGravity: 0
       PhysicMaterial: {fileID: 13400000, guid: 01eea85b5cf22f544b409f6d92a0e046, type: 2}
-      Drag: 1.8
-      SpawnOffset: {x: 0.36, y: 0.7}
+      Drag: 0.05
+      SpawnOffset: {x: 0.4, y: 0.7}
       MissileSprites:
       - {fileID: 7079261095572665666, guid: b8f79a695a10f4944821f68597746cfe, type: 3}
       - {fileID: -6751012641250354480, guid: b8f79a695a10f4944821f68597746cfe, type: 3}
@@ -132,9 +138,9 @@ MonoBehaviour:
     SuperJumpData:
     - MaxAirJump: 0
       BonusHeightJump: 0
-    - MaxAirJump: 0
+    - MaxAirJump: 1
       BonusHeightJump: 0
-    - MaxAirJump: 0
+    - MaxAirJump: 2
       BonusHeightJump: 0
   UpgradesParams:
     HealthUpgradesData:

@@ -66,6 +66,7 @@ namespace Code.Character.Hero
             
             if (_hero.Animator.IsCalPlayAnimation) _hero.Animator.PlayEnterGunMode();
         }
+        
 
         private void OnEnableMovementMode()
         {
