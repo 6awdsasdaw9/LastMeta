@@ -27,6 +27,7 @@ namespace Code.Character.Hero
             _disableMovementCooldown = new Cooldown();
             _disableMovementCooldown.SetMaxTime(0.15f);
         }
+        
         public void Push(Vector3 forward)
         {
             StopMoveAndPush(forward).Forget();

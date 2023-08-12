@@ -49,3 +49,15 @@ MonoBehaviour:
         Data3: 934092419
         Data4: -1896803268
       Path: event:/SFX/Player/Sock
+  - Type: 1
+    Value: 0
+    Sprite: {fileID: 0}
+    Icon: {fileID: 0}
+    AnimatorController: {fileID: 22100000, guid: 1407dc84018e3f14a8d53b84fe590c86, type: 2}
+    AudioEvent:
+      Guid:
+        Data1: 0
+        Data2: 0
+        Data3: 0
+        Data4: 0
+      Path: 
