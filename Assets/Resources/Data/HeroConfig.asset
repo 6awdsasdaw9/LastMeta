@@ -13,34 +13,34 @@ MonoBehaviour:
   m_Name: HeroConfig
   m_EditorClassIdentifier: 
   HeroParams:
-    maxHP: 15.2
-    MaxSpeed: 2.5
-    crouchSpeed: 0
-    maxAcceleration: 16
-    maxDeceleration: 52
-    maxTurnSpeed: 58.51
-    maxAirAcceleration: 30
-    maxAirDeceleration: 45
-    maxAirTurnSpeed: 60
+    maxHP: 100
+    MaxSpeed: 2.7
+    crouchSpeed: 0.63
+    maxAcceleration: 14.4
+    maxDeceleration: 16.3
+    maxTurnSpeed: 53.8
+    maxAirAcceleration: 11
+    maxAirDeceleration: 51.7
+    maxAirTurnSpeed: 35.8
     NoFrictionMaterial: {fileID: 13400000, guid: fcfcf8c2d4b646646b44fcc6be381bd9, type: 2}
     FrictionMaterial: {fileID: 13400000, guid: d815cddd93c0d304cb1eec9fc0c61526, type: 2}
-    JumpHeight: 3
-    timeToJumpApex: 0.8
+    JumpHeight: 4.7
+    timeToJumpApex: 1.047
     upwardMovementMultiplier: 3
     downwardMovementMultiplier: 2
     maxAirJumps: 0
-    jumpCutOff: 3
+    jumpCutOff: 2.25
     speedLimit: 6.7
-    coyoteTime: 0.1
+    coyoteTime: 0.18
     jumpBuffer: 0.3
   AbilitiesParams:
     DashLevelsData:
-    - Cooldown: 1
-      SpeedBonus: 1.5
-      Duration: 0.2
+    - Cooldown: 2
+      SpeedBonus: 0.5
+      Duration: 0.3
     - Cooldown: 0.7
       SpeedBonus: 2
-      Duration: 0.3
+      Duration: 0.5
     - Cooldown: 0.8
       SpeedBonus: 0.8
       Duration: 0.4
