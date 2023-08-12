@@ -1,5 +1,6 @@
 using Code.Character.Enemies.EnemiesInterfaces;
 using Code.Character.Hero.HeroInterfaces;
+using Code.Data.GameData;
 using Code.Logic.Objects.Spikes;
 using Code.Services;
 using UnityEngine;
@@ -17,13 +18,16 @@ namespace Code.Character.Enemies
 
         public bool IsAttacking;
 
-        public void Init(IHero hero,IEnemyStats enemyStats,EnemyAnimator enemyAnimator,float cooldown)
+        public void Init(IHero hero,IEnemyStats enemyStats,SpikeAttackData data,EnemyAnimator enemyAnimator)
         {
             _hero = hero;
-            _animator = enemyAnimator;
             _enemyStats = enemyStats;
+            
+            _animator = enemyAnimator;
+            _animator.SetRangeAttackAnimationSpeed(data.AnimationSpeed);
+            
             _attackCooldown = new Cooldown();
-            _attackCooldown.SetMaxTime(cooldown);
+            _attackCooldown.SetMaxTime(data.Cooldown);
         }
 
         private void Update()
@@ -51,5 +55,7 @@ namespace Code.Character.Enemies
         private bool CanAttack() => IsActive && _attackCooldown.IsUp() && !IsAttacking
                                     &&_hero.Stats.CurrentHeath > 0 && _hero.Stats.OnGround 
                                     && !_enemyStats.IsBlock;
+        
     }
+      
 }

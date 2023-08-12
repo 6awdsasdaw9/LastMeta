@@ -17,21 +17,25 @@ MonoBehaviour:
     HealthData:
       MaxHP: 1
       CurrentHP: 0
+    PushData:
+      Force: 2
     _isHasMelleAttack: 1
     MelleAttackData:
       Damage: 3
       DamagedRadius: 1
       EffectiveDistance: {x: 0, y: 0.2, z: 0}
       Cooldown: 0.7
+      AnimationSpeed: 0
     _rangeAttackType: 0
     RangeAttackData:
       Damage: 0
       DamagedRadius: 0
       EffectiveDistance: {x: 0.5, y: 1, z: 0}
       Cooldown: 0.7
-    RangeCooldown: 0
-    PushData:
-      Force: 2
+      AnimationSpeed: 0
+    SpikeAttackData:
+      Cooldown: 0.7
+      AnimationSpeed: 1
     MoveSpeed: 3
     PatrolSpeed: 3
     PatrolCooldown: 3
@@ -40,21 +44,25 @@ MonoBehaviour:
     HealthData:
       MaxHP: 10
       CurrentHP: 0
+    PushData:
+      Force: 1.5
     _isHasMelleAttack: 1
     MelleAttackData:
       Damage: 3
       DamagedRadius: 1
       EffectiveDistance: {x: 0.75, y: 1, z: 0}
       Cooldown: 0.7
+      AnimationSpeed: 2
     _rangeAttackType: 2
     RangeAttackData:
       Damage: 0
       DamagedRadius: 0
       EffectiveDistance: {x: 0.5, y: 1, z: 0}
       Cooldown: 0.7
-    RangeCooldown: 2
-    PushData:
-      Force: 1.5
+      AnimationSpeed: 0
+    SpikeAttackData:
+      Cooldown: 1
+      AnimationSpeed: 1.3
     MoveSpeed: 0.3
     PatrolSpeed: 0.2
     PatrolCooldown: 0.5

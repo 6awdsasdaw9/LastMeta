@@ -28,10 +28,15 @@ namespace Code.Character.Enemies.EnemiesFacades
         private void InitComponents()
         {
             Stats = new BlackHandStats(this);
-            MelleAttack.Init(hero, data.MelleAttackData, data.PushData, Stats);
-            SpikeAttack.Init(hero,Stats,Animator,cooldown: data.RangeCooldown);
+            
+            MelleAttack.Init(hero, data.MelleAttackData, data.PushData, Stats, Animator);
+
+            SpikeAttack.Init(hero,Stats,data.SpikeAttackData,Animator);
+            
+            
             Patrol.Init(data.PatrolSpeed, data.PatrolCooldown, Stats);
             MovementToHero.Init(hero.Transform, data.MoveSpeed);
+            
             EnemyAudio.Init(data.AudioPath);
             Health.Set(data.HealthData);
         }

@@ -12,7 +12,7 @@ namespace Code.Character.Enemies
     [RequireComponent(typeof(EnemyAnimator))]
     public class EnemyMelleAttack : EnemyMelleAttackBase
     {
-        [SerializeField] private EnemyAnimator _animator;
+        private EnemyAnimator _animator;
         private readonly Cooldown _attackCooldown = new();
         
         private IEnemyStats _enemyStats;
@@ -27,12 +27,15 @@ namespace Code.Character.Enemies
         private int _layerMask;
         public bool IsAttacking { get; private set; }
 
-        public void Init(IHero hero, AttackData attackData, PushData pushData, IEnemyStats enemyStats)
+        public void Init(IHero hero, AttackData attackData, PushData pushData, IEnemyStats enemyStats, EnemyAnimator animator)
         {
             _hero = hero;
             _attackData =  attackData;
             _pushData = pushData;
             _enemyStats = enemyStats;
+
+            _animator = animator;
+            _animator.SetMelleAttackAnimationSpeed(attackData.AnimationSpeed);
             
             _attackCooldown.SetMaxTime(_attackData.Cooldown);
             _layerMask =  LayerMask.GetMask(Constants.HeroLayer);

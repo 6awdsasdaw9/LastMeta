@@ -34,7 +34,10 @@ namespace Code.Data.Configs
         public EnemyType Type;
         public HealthData HealthData;
 
-        [Space, Title("Attack")]
+        [Space, Title("Attack")] 
+        [GUIColor(0.8f, 0.5f, 0.2f), SerializeField]
+        public PushData PushData;
+        
         [GUIColor(0.8f, 0.5f, 0.2f), SerializeField]
         private bool _isHasMelleAttack;
         [GUIColor(0.8f, 0.5f, 0.2f), ShowIf(nameof(_isHasMelleAttack))]
@@ -45,9 +48,7 @@ namespace Code.Data.Configs
         [GUIColor(0.2f, 0.8f, 0.5f), ShowIf("@_rangeAttackType==RangeAttackType.Default")]
         public AttackData RangeAttackData;
         [GUIColor(0.2f, 0.8f, 0.5f), ShowIf("@_rangeAttackType==RangeAttackType.Spike")]
-        public float RangeCooldown;
-
-        [GUIColor(0.8f, 0.3f, 0.2f),Space] public PushData PushData;
+        public SpikeAttackData SpikeAttackData;
 
         [Space, Title("Move")] 
         [GUIColor(0.2f, 0.5f, 0.8f)] [Range(0, 10)]

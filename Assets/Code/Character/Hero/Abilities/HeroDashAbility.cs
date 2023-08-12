@@ -68,6 +68,7 @@ namespace Code.Character.Hero.Abilities
             IsDash = true;
             _hero.Animator?.PlayDash(true);
             _hero.Jump.DisableComponent();
+            
             UpdateDurationCooldown().Forget();
         }
 
