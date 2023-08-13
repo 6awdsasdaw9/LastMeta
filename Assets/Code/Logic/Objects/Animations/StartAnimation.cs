@@ -26,7 +26,6 @@ namespace Code.Logic.Objects.Animations
         {
             if(_isDestoy)return;
             _animator?.SetTrigger(_startIdle_t);
-            Logg.ColorLog("Play start idle");
         }
 
     }

@@ -48,18 +48,21 @@ MonoBehaviour:
     - attackData:
         Damage: 5
         DamagedRadius: 2
-        EffectiveDistance: {x: -0.5, y: 0.7, z: 0}
+        EffectiveDistance: {x: 0.5, y: 0.7, z: 0}
         Cooldown: 0.7
+        AnimationSpeed: 1
     - attackData:
         Damage: 0
         DamagedRadius: 0
         EffectiveDistance: {x: 0.5, y: 1, z: 0}
         Cooldown: 0.7
+        AnimationSpeed: 1
     - attackData:
         Damage: 0
         DamagedRadius: 0
         EffectiveDistance: {x: 0.5, y: 1, z: 0}
         Cooldown: 0.7
+        AnimationSpeed: 1
     GunAttackLevelData:
     - IsMassAttack: 0
       attackData:
@@ -67,6 +70,7 @@ MonoBehaviour:
         DamagedRadius: 0
         EffectiveDistance: {x: 0.5, y: 1, z: 0}
         Cooldown: 0.7
+        AnimationSpeed: 1
       AttackCooldown: 0.3
       MissileType: 0
       MoveType: 0
@@ -93,6 +97,7 @@ MonoBehaviour:
         DamagedRadius: 0
         EffectiveDistance: {x: 0.5, y: 1, z: 0}
         Cooldown: 0.7
+        AnimationSpeed: 1
       AttackCooldown: 0
       MissileType: 0
       MoveType: 0
@@ -117,6 +122,7 @@ MonoBehaviour:
         DamagedRadius: 0
         EffectiveDistance: {x: 0.5, y: 1, z: 0}
         Cooldown: 0.7
+        AnimationSpeed: 1
       AttackCooldown: 0
       MissileType: 0
       MoveType: 0

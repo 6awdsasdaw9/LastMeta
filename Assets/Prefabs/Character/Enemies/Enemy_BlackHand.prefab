@@ -203,8 +203,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.3428993, y: 1.5, z: 0.5}
-  m_Center: {x: 1.1875577, y: 0.75, z: 0}
+  m_Size: {x: 4.3320856, y: 1.9388045, z: 0.5}
+  m_Center: {x: 1.1929646, y: 0.53059775, z: 0}
 --- !u!114 &6829619423624205184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +235,6 @@ GameObject:
   - component: {fileID: 1137969862256876922}
   - component: {fileID: 8177802331461003248}
   - component: {fileID: 2108457380478618249}
-  - component: {fileID: 2108457381744422138}
   - component: {fileID: 7670385725047703730}
   - component: {fileID: 2108457381744422087}
   - component: {fileID: 1137969862256876921}
@@ -348,7 +347,6 @@ MonoBehaviour:
   MelleAttack: {fileID: 8177802331461003248}
   SpikeAttack: {fileID: 2108457380478618249}
   Patrol: {fileID: 7670385725047703730}
-  MovementToHero: {fileID: 2108457381744422138}
   RotateToHero: {fileID: 1137969862256876921}
   RotateToForward: {fileID: 2108457381744422087}
 --- !u!114 &1907010970399895141
@@ -425,19 +423,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spikeController: {fileID: 3305203062738246663}
   IsAttacking: 0
---- !u!114 &2108457381744422138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5935935822136764806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcab638d38e2488d874227f9dc594d7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _agent: {fileID: 6173131858378004887}
 --- !u!114 &7670385725047703730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c414b48fa2f404091d2dd06f2a83f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patrolDistance: 5.59
+  _patrolDistance: 3.62
   _agent: {fileID: 6173131858378004887}
 --- !u!114 &2108457381744422087
 MonoBehaviour:
@@ -591,8 +576,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2329361, y: 1.5, z: 0.5}
-  m_Center: {x: 0.11646816, y: 0.75, z: 0}
+  m_Size: {x: 2.2329361, y: 1.7289581, z: 0.5}
+  m_Center: {x: 0.11646819, y: 0.63552094, z: 0}
 --- !u!114 &8177802333424465989
 MonoBehaviour:
   m_ObjectHideFlags: 0

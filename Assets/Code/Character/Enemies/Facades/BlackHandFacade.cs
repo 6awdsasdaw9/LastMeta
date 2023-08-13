@@ -12,7 +12,6 @@ namespace Code.Character.Enemies.EnemiesFacades
         public EnemyMelleAttack MelleAttack;
         public EnemySpikeRangeAttack SpikeAttack;
         public EnemyMovementPatrol Patrol;
-        public EnemyMovementToHero MovementToHero;
         public RotateToHero RotateToHero;
         public AgentRotateToForfard RotateToForward;
 
@@ -32,14 +31,9 @@ namespace Code.Character.Enemies.EnemiesFacades
         private void InitComponents()
         {
             Stats = new BlackHandStats(this);
-
             MelleAttack.Init(hero, data.MelleAttackData, data.PushData, Stats, Animator);
-
             SpikeAttack.Init(hero, Stats, data.SpikeAttackData, Animator);
-
             Patrol.Init(data.PatrolSpeed, data.PatrolCooldown, Stats);
-            MovementToHero.Init(hero.Transform, data.MoveSpeed);
-
             EnemyAudio.Init(data.AudioPath);
             Health.Set(data.HealthData);
         }
@@ -57,14 +51,12 @@ namespace Code.Character.Enemies.EnemiesFacades
         public void OnPause()
         {
             Stats.Block();
-            MovementToHero.OnPause();
             Patrol.OnPause();
         }
 
         public void OnResume()
         {
             Stats.UnBlock();
-            MovementToHero.OnResume();
         }
     }
 
@@ -73,7 +65,7 @@ namespace Code.Character.Enemies.EnemiesFacades
         private readonly BlackHandFacade _blackHandFacade;
         public bool IsLoockLeft { get; private set; }
         public bool IsPatroling => _blackHandFacade.Patrol.IsMoving;
-        public bool IsMovingToHero => _blackHandFacade.MovementToHero.IsMoving;
+        public bool IsMovingToHero => false;
         public bool IsAttacking => IsMelleAttacking || IsRangeAttacing;
         public bool IsMelleAttacking => _blackHandFacade.MelleAttack.IsAttacking;
         public bool IsRangeAttacing => _blackHandFacade.SpikeAttack.IsAttacking;

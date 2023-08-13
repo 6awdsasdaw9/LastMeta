@@ -16,9 +16,9 @@ MonoBehaviour:
   - Type: 1
     Damage: 3
     PushData:
-      Force: 0
+      Force: 3
     Cooldown: 1
-    DelayAfterAttack: 0.4
+    DelayAfterAttack: 1.2
     AudioData:
       EnableAudioEvent:
         Guid:
@@ -44,7 +44,7 @@ MonoBehaviour:
   - Type: 0
     Damage: 2
     PushData:
-      Force: 2
+      Force: 3
     Cooldown: 1
     DelayAfterAttack: 0.1
     AudioData:

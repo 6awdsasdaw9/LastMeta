@@ -56,7 +56,6 @@ namespace Code.Services.Input
         #region Player input
 
         private void EnablePlayerInput() => _master.Player.Enable();
-
         public void DisablePlayerInput() => _master.Player.Disable();
 
         private void PressMovementEvent(InputAction.CallbackContext context) => OnPressMovement?.Invoke(context);

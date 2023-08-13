@@ -71,7 +71,7 @@ namespace Code.Character.Hero
         private void Construct(MovementLimiter movementLimiter, HeroConfig heroConfig)
         {
             Stats = _isGameHero
-                ? new HeroGameStats(this, movementLimiter, heroConfig)
+                ? new HeroStatsGame(this, movementLimiter, heroConfig)
                 : new HeroStats(this, movementLimiter, heroConfig);
         }
     }

@@ -1,17 +1,16 @@
-using System;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs.HeroConfigs;
 using Code.Services;
 
 namespace Code.Character.Hero
 {
-    public class HeroGameStats : IHeroStats
+    public class HeroStatsGame : IHeroStats
     {
         private readonly IHero _hero;
         private readonly MovementLimiter _movementLimiter;
         private readonly HeroConfig _heroConfig;
 
-        public HeroGameStats(IHero hero, MovementLimiter movementLimiter, HeroConfig heroConfig)
+        public HeroStatsGame(IHero hero, MovementLimiter movementLimiter, HeroConfig heroConfig)
         {
             _hero = hero;
             _movementLimiter = movementLimiter;
@@ -21,6 +20,7 @@ namespace Code.Character.Hero
         #region Conditions
 
         public Constants.HeroMode Mode => _hero.ModeToggle.Mode;
+        public int Direction => _hero.Movement.DirectionX > 0 ? 1 : -1;
         public bool IsBlockMove => !_movementLimiter.CharactersCanMove;
         public bool IsDash => _hero.Ability.DashAbility is { IsDash: true };
         public bool IsMove => _hero.Movement.DirectionX != 0;

@@ -22,7 +22,7 @@ namespace Code.Data.GameData
         [Range(1, 10)] public float Damage = 1;
         public PushData PushData;
         public float Cooldown = 1;
-        public float DelayAfterAttack = 0.4f;
+        [Range(1, 1.2f)] public float DelayAfterAttack = 0.4f;
         [GUIColor(0.85f, 0.74f, 1)] public SpikeAudioData AudioData;
     }
 

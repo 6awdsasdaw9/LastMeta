@@ -48,7 +48,7 @@ namespace Code.Character.Hero
         {
             AttackData = attackData;
             _raycastHitController = new RaycastHitsController(
-                owner: transform,
+                owner: _hero.Transform,
                 layerName: Constants.HittableLayer,
                 hitRadius: 0.2f,
                 hitsSize: 7,
