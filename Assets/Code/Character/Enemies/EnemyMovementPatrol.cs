@@ -48,6 +48,7 @@ namespace Code.Character.Enemies
 
         private void MoveToTarget()
         {
+          //  if(!IsMoving)return;
             if (PointNotReached(_targetPoint))
             {
                 _agent.destination = _targetPoint;

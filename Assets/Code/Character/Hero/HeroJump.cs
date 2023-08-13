@@ -18,8 +18,7 @@ namespace Code.Character.Hero
         private IHero _hero;
         private InputService _input;
         private HeroParams _params;
-
-
+        
         #region Values
 
         public float Height => _hero.Stats.JumpHeight;
@@ -83,7 +82,7 @@ namespace Code.Character.Hero
             if (_hero.Stats.IsCrouch || !_hero.Stats.OnGround)
                 return;
 
-            if (context.started)
+            if (context.started) 
                 _isDesiredJump = true;
         }
 
@@ -155,8 +154,6 @@ namespace Code.Character.Hero
         }
 
         private void Jump()
-        
-        
         {
             if (!IsCanJump())
                 return;

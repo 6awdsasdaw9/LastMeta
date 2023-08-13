@@ -88,7 +88,10 @@ namespace Code.Character.Enemies
             return hitCount > 0;
         }
 
-        private Vector3 StartPoint() => transform.position + _attackData.EffectiveDistance;
+        private Vector3 StartPoint() => transform.position + new Vector3(
+            (_enemyStats.IsLoockLeft ? -_attackData.EffectiveDistance.x : _attackData.EffectiveDistance.x),
+            _attackData.EffectiveDistance.y, 0);
+                                       
         private bool CanAttack() => IsActive && !IsAttacking && _attackCooldown.IsUp() && !_enemyStats.IsBlock && _hero.Health.Current > 0;
     }
 }

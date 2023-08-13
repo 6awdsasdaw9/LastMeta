@@ -61,10 +61,7 @@ namespace Code.Services.Input
 
         private void PressMovementEvent(InputAction.CallbackContext context) => OnPressMovement?.Invoke(context);
 
-        public float GetDirection()
-        {
-            return _master.Player.Horizontal.ReadValue<float>();
-        }
+        public float GetDirection() => _master.Player.Horizontal.ReadValue<float>();
 
         public event Action<InputAction.CallbackContext> OnPressMovement;
 

@@ -11,12 +11,13 @@ using Zenject;
 namespace Code.Character.Hero
 {
     public class HeroEffectsController : MonoBehaviour, IEventsSubscriber, IHeroEffectsController
-    { 
+    {
         private Cooldown _disableMovementCooldown;
         private IHero _hero;
         private InputService _inputService;
         private bool _isPressMove;
         private CancellationTokenSource _cts;
+        private bool _isPushed;
 
         [Inject]
         private void Construct(DiContainer container)
@@ -27,7 +28,7 @@ namespace Code.Character.Hero
             _disableMovementCooldown = new Cooldown();
             _disableMovementCooldown.SetMaxTime(0.15f);
         }
-        
+
         public void Push(Vector3 forward)
         {
             StopMoveAndPush(forward).Forget();
@@ -35,20 +36,24 @@ namespace Code.Character.Hero
 
         private async UniTaskVoid StopMoveAndPush(Vector3 forward)
         {
+            if (_isPushed) return;
+            _isPushed = true;
             _cts?.Cancel();
             _cts = new CancellationTokenSource();
             _disableMovementCooldown.SetMaxCooldown();
-            
+
             SubscribeToEvents(true);
             _hero.Movement.DisableComponent();
             _hero.Jump.DisableComponent();
-            
+
             _hero.Rigidbody.AddForce(forward, ForceMode.Impulse);
-            await UniTask.WaitUntil(() => _disableMovementCooldown.IsUp() || _isPressMove, cancellationToken: _cts.Token);
-            
+            await UniTask.WaitUntil(() => _disableMovementCooldown.IsUp() || _isPressMove,
+                cancellationToken: _cts.Token);
+
             SubscribeToEvents(false);
             _hero.Movement.EnableComponent();
             _hero.Jump.EnableComponent();
+            _isPushed = false;
         }
 
         public void SubscribeToEvents(bool flag)
