@@ -7,37 +7,26 @@ using Zenject;
 
 namespace Code.Character.Enemies.EnemiesFacades
 {
-    public class BlackHandFacade : EnemyFacade, IResumeListener
+    public class BlackHandFacade : EnemyFacade 
     {
+        public EnemyCollisionAttack CollisionAttack;
         public EnemyMelleAttack MelleAttack;
         public EnemySpikeRangeAttack SpikeAttack;
         public EnemyMovementPatrol Patrol;
         public RotateToHero RotateToHero;
         public AgentRotateToForfard RotateToForward;
-
-        [Inject]
-        private void Construct(DiContainer container)
-        {
-            data = container.Resolve<EnemiesConfig>().GetByType(Type);
-            hero = container.Resolve<IHero>();
-
-            if (hero == null || data == null) return;
-
-            container.Resolve<PauseListenerStorage>().Add(this);
-
-            InitComponents();
-        }
-
-        private void InitComponents()
+        
+        protected  override void InitComponents()
         {
             Stats = new BlackHandStats(this);
-            MelleAttack.Init(hero, data.MelleAttackData, data.PushData, Stats, Animator);
+            CollisionAttack.Init(hero,data.CollisionAttackData,collisionAttackDamage);
+            MelleAttack.Init(hero, data.MelleAttackData, Stats, Animator);
             SpikeAttack.Init(hero, Stats, data.SpikeAttackData, Animator);
             Patrol.Init(data.PatrolSpeed, data.PatrolCooldown, Stats);
             EnemyAudio.Init(data.AudioPath);
             Health.Set(data.HealthData);
         }
-
+        
         private void OnEnable()
         {
             Stats.SubscribeToEvents(true);
@@ -48,13 +37,13 @@ namespace Code.Character.Enemies.EnemiesFacades
             Stats.SubscribeToEvents(false);
         }
 
-        public void OnPause()
+        public override void OnPause()
         {
             Stats.Block();
             Patrol.OnPause();
         }
 
-        public void OnResume()
+        public override void OnResume()
         {
             Stats.UnBlock();
         }

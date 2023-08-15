@@ -10,7 +10,7 @@ namespace Code.Character.Enemies
         [SerializeField] private Collider _collider;
         [SerializeField] private EnemyHealth _health;
         [SerializeField] private EnemyAnimator _animator;
-        [SerializeField] private EnemyMelleAttack enemyMelleAttack;
+        [SerializeField] private EnemyAttack[] _attacks;
         [SerializeField] private EnemyMovementPatrol _agent;
         
         public event Action Happened;
@@ -40,8 +40,12 @@ namespace Code.Character.Enemies
             _animator.PlayDeath();
             
             _agent.enabled = false;
-            enemyMelleAttack.enabled = false;
             _collider.enabled = false;
+            
+            foreach (var attack in _attacks)
+            {
+                attack.enabled = false;
+            }
             
             StartCoroutine(DestroyCoroutine());
             

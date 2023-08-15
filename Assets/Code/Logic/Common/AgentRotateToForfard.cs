@@ -40,5 +40,11 @@ namespace Code.Logic.Common
         {
             enabled = true;
         }
+
+        private void OnValidate()
+        {
+            _meshAgent = GetComponent<NavMeshAgent>();
+            _sprite = GetComponentInChildren<SpriteRenderer>();
+        }
     }
 }

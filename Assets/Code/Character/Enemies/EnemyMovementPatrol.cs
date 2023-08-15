@@ -1,3 +1,4 @@
+using System;
 using Code.Character.Enemies.EnemiesInterfaces;
 using Code.Debugers;
 using Code.Logic.Collisions.Triggers;
@@ -30,13 +31,20 @@ namespace Code.Character.Enemies
 
         private void Awake()
         {
+            if (_agent == null)
+            {
+                Logg.ColorLog($"EnemyMovementPatrol from {gameObject.name} has not Nav Mesh Agent",LogStyle.Warning);
+            }
             _minimalDistance = _agent.stoppingDistance;
             InitPatrolPoints();
         }
 
         private void Update()
         {
-            if(_enemyStats is { IsBlock: false }) MoveToTarget();
+            if (_enemyStats is { IsBlock: false })
+            {
+                MoveToTarget();
+            }
         }
 
         private void InitPatrolPoints()
@@ -52,9 +60,11 @@ namespace Code.Character.Enemies
             if (PointNotReached(_targetPoint))
             {
                 _agent.destination = _targetPoint;
+                Logg.ColorLog($"{gameObject.name} _agent.destination = _targetPoint", ColorType.Blue);
             }
             if(Mathf.Abs(_agent.velocity.x) == 0 && _cooldown.IsUp())
             {
+                Logg.ColorLog($"{gameObject.name} SwitchTarget {_targetPoint}", ColorType.Blue);
                 SwitchTarget();
                 _cooldown.SetMaxCooldown();
             }
@@ -103,6 +113,11 @@ namespace Code.Character.Enemies
 
         public void OnResume()
         {
+        }
+
+        private void OnValidate()
+        {
+            _agent = GetComponent<NavMeshAgent>();  
         }
     }
 }

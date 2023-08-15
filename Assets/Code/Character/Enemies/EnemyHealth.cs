@@ -1,12 +1,10 @@
 using System;
 using Code.Data.GameData;
 using Code.Logic.Common.Interfaces;
-using TMPro;
 using UnityEngine;
 
 namespace Code.Character.Enemies
 {
-    [RequireComponent((typeof(EnemyAnimator)))]
     public class EnemyHealth : MonoBehaviour, ICharacterHealth
     {
         private readonly HealthData _data = new();
