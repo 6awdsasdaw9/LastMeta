@@ -23,6 +23,16 @@ namespace Code.Character.Enemies.EnemiesFacades
             Patrol.Init(data.PatrolSpeed, data.PatrolCooldown, Stats);
         }
 
+        private void OnEnable()
+        {
+            VulnerableZone.SubscribeToEvents(true);
+        }
+
+        private void OnDisable()
+        {
+            VulnerableZone.SubscribeToEvents(false);
+        }
+
         public override void OnPause()
         {
             Stats.Block();

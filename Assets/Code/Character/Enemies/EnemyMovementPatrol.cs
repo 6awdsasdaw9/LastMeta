@@ -1,4 +1,3 @@
-using System;
 using Code.Character.Enemies.EnemiesInterfaces;
 using Code.Debugers;
 using Code.Logic.Collisions.Triggers;
@@ -60,11 +59,9 @@ namespace Code.Character.Enemies
             if (PointNotReached(_targetPoint))
             {
                 _agent.destination = _targetPoint;
-                Logg.ColorLog($"{gameObject.name} _agent.destination = _targetPoint", ColorType.Blue);
             }
             if(Mathf.Abs(_agent.velocity.x) == 0 && _cooldown.IsUp())
             {
-                Logg.ColorLog($"{gameObject.name} SwitchTarget {_targetPoint}", ColorType.Blue);
                 SwitchTarget();
                 _cooldown.SetMaxCooldown();
             }
@@ -82,7 +79,6 @@ namespace Code.Character.Enemies
         
         public override void EnableComponent()
         {
-            Logg.ColorLog("Enable Component");
             IsMoving = true;
             _agent.speed = _speed;
             _cooldown.SetMaxCooldown();
@@ -91,7 +87,6 @@ namespace Code.Character.Enemies
 
         public override void DisableComponent()
         {
-            Logg.ColorLog("Disable Component");
             IsMoving = false;
             _targetPoint = transform.position;
             _agent.destination = _targetPoint;
@@ -109,10 +104,6 @@ namespace Code.Character.Enemies
         {
             _agent.destination = _targetPoint;
             _targetPoint = transform.position;
-        }
-
-        public void OnResume()
-        {
         }
 
         private void OnValidate()

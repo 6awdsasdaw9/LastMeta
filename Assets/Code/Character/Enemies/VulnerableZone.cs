@@ -9,7 +9,7 @@ namespace Code.Character.Enemies
     {
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private EnemyFacade _enemy;
-
+        
         public void SubscribeToEvents(bool flag)
         {
             if (flag)

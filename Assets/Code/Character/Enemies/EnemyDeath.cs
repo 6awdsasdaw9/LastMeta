@@ -52,8 +52,7 @@ namespace Code.Character.Enemies
             Happened?.Invoke();
         }
 
-
-
+        
         private IEnumerator DestroyCoroutine()
         {
             _collider.enabled = false;       
