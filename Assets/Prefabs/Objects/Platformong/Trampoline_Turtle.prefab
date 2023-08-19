@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 663415507117516015}
   - component: {fileID: 663415507117516014}
   m_Layer: 3
-  m_Name: Collider_tail (1)
+  m_Name: Collider_head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 663415509021892597}
   - component: {fileID: 663415509021892598}
   m_Layer: 0
-  m_Name: Collider_center
+  m_Name: Collider_center (Jump)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab979b39db244bbaf0cad72dc9e6983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collision: {fileID: 663415509021892597}
+  collider: {fileID: 663415509021892597}
   _force: {x: 0, y: 4}
   _audioEvent:
     _eventReference:

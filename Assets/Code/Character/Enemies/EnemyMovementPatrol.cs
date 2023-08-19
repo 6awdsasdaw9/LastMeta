@@ -23,6 +23,7 @@ namespace Code.Character.Enemies
         public void Init(float speed, float cooldown, IEnemyStats enemyStats)
         {
             _speed = speed;
+            _agent.speed = _speed;
             _cooldown = new Cooldown();
             _cooldown.SetMaxTime(cooldown);
             _enemyStats = enemyStats;

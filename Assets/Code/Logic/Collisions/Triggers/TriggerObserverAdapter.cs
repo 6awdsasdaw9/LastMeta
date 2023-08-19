@@ -31,7 +31,7 @@ namespace Code.Logic.Collisions.Triggers
 
         #region Triggers
 
-        private void OnEnter(Collider obj)
+        private void OnEnter(GameObject obj)
         {
             if (_hasReactionTarget) return;
 
@@ -40,7 +40,7 @@ namespace Code.Logic.Collisions.Triggers
             SwitchFollowOnAfterDelay().Forget();
         }
 
-        private void OnExit(Collider obj)
+        private void OnExit(GameObject obj)
         {
             if (!_hasReactionTarget)
                 return;

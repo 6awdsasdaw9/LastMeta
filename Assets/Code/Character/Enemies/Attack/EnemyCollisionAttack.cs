@@ -1,6 +1,7 @@
 using System;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.GameData;
+using Code.Debugers;
 using Code.Logic.Collisions;
 using Code.Services.EventsSubscribes;
 using UnityEngine;
@@ -9,19 +10,23 @@ namespace Code.Character.Enemies
 {
     public class EnemyCollisionAttack : EnemyCollisionAttackBase, IEventsSubscriber
     {
-        [SerializeField] private CollisionObserver _collisionObserver;
+        [SerializeField] private CollisionObserver _colliderObserver;
         private CollisionAttackData _data;
         private IHero _hero;
         private float _collisionDamage;
 
-        public void Init(IHero hero, CollisionAttackData data,float collisionDamage)
+        public void Init(IHero hero, CollisionAttackData data, float collisionDamage)
         {
             _data = data;
             _hero = hero;
             _collisionDamage = collisionDamage; 
-            SubscribeToEvents(true);
         }
 
+        private void OnEnable()
+        {
+            SubscribeToEvents(true);
+        }
+        
         private void OnDisable()
         {
             SubscribeToEvents(false);
@@ -31,19 +36,19 @@ namespace Code.Character.Enemies
         {
             if (flag)
             {
-                _collisionObserver.OnEnter += OnEnter;
+                _colliderObserver.OnEnter += OnEnter;
             }
             else
             {
-                _collisionObserver.OnEnter -= OnEnter;
+                _colliderObserver.OnEnter -= OnEnter;
             }
         }
 
-        private void OnEnter(Collision collision)
+        private void OnEnter(GameObject collision)
         {
-            var pushForward = Vector3.Reflect(_hero.Rigidbody.velocity.normalized, collision.GetContact(0).normal);
-            _hero.EffectsController.Push(pushForward * _data.PushForce);
+            _hero.EffectsController.Push((_hero.Transform.position - transform.position).normalized * _data.PushForce);
             _hero.Health.TakeDamage(_collisionDamage * _data.DamageMultiplayer);
+            Logg.ColorLog("OnEnter");
         }
 
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ScenesConfig
   m_EditorClassIdentifier: 
   InitialScene: 4
-  DayTimeInSeconds: 300
+  DayTimeInSeconds: 40
   PauseSnapshot:
     Guid:
       Data1: -2009899407

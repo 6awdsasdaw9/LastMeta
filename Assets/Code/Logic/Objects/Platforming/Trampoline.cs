@@ -12,7 +12,7 @@ namespace Code.Logic.Objects.Platforming
 {
     public class Trampoline : MonoBehaviour, IEventsSubscriber
     {
-        [SerializeField] private CollisionObserver _collision;
+        [SerializeField] private ColliderObserver collider;
         [SerializeField] private Vector2 _force = Vector2.up;
 
         [Title("Optional")] 
@@ -50,22 +50,22 @@ namespace Code.Logic.Objects.Platforming
             
             if (flag)
             {
-                _collision.OnEnter += OnEnter;
+                collider.OnEnter += OnEnter;
             }
             else
             {
-                _collision.OnEnter -= OnEnter;
+                collider.OnEnter -= OnEnter;
             }
         }
 
-        private void OnEnter(Collision collision)
+        private void OnEnter(GameObject collision)
         {
             AddForce(collision);
             _audioEvent.PlayAudioEvent();
             _startAnimation?.PlayStart();
         }
 
-        private void AddForce(Collision collision)
+        private void AddForce(GameObject collision)
         {
             if (collision.gameObject.TryGetComponent(out Rigidbody rb))
             {

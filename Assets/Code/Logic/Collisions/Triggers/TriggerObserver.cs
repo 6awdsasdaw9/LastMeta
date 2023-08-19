@@ -4,19 +4,17 @@ using UnityEngine;
 namespace Code.Logic.Collisions.Triggers
 {
     [RequireComponent(typeof(Collider))]
-    public class TriggerObserver : MonoBehaviour
+    public class TriggerObserver : CollisionObserver
     {
-        public event Action<Collider> OnEnter;
-        public event Action<Collider> OnExit;
-
+        
         private void OnTriggerEnter(Collider other)
         {
-            OnEnter?.Invoke(other);
+            OnEnter?.Invoke(other.gameObject);
         }
 
         private void OnTriggerExit(Collider other)
         {
-            OnExit?.Invoke(other);
+            OnExit?.Invoke(other.gameObject);
         }
     }
 }

@@ -2,10 +2,17 @@ using UnityEngine;
 
 namespace Code.Logic.Collisions
 {
-    public class CollidersRotater: MonoBehaviour
+    public class CollisionsController: MonoBehaviour
     {
         [SerializeField] private Collider[] _colliders;
         
+        public void SetActive(bool isActive)
+        {
+            foreach (var collider in _colliders)
+            {
+                collider.enabled = isActive;
+            }
+        }
         public void Flip()
         {
             foreach (var collider in _colliders)

@@ -45,7 +45,7 @@ namespace Code.Logic.Objects.DestroyedObjects
             }
         }
 
-        private void OnDestructionOnEnter(Collider collider)
+        private void OnDestructionOnEnter(GameObject collider)
         {
             _animation.PlayDestroy();
             foreach (var component in _disableComponents)

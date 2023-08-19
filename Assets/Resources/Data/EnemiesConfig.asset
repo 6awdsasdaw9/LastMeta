@@ -20,7 +20,7 @@ MonoBehaviour:
       CurrentHP: 0
     CollisionAttackData:
       DamageMultiplayer: 1
-      PushForce: 1
+      PushForce: 1.7
       Cooldown: 0.7
     _isHasMelleAttack: 0
     MelleAttackData:

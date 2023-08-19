@@ -36,22 +36,17 @@ namespace Code.Character.Enemies
             _animator.SetMelleAttackAnimationSpeed(attackData.AnimationSpeed);
             
             _attackCooldown.SetMaxTime(_attackData.Cooldown);
-            _layerMask =  LayerMask.GetMask(Constants.HeroLayer);
+            _layerMask = LayerMask.GetMask(Constants.HeroLayer);
         }
         
         private void Update()
         {
-            if (CanAttack()) StartAttack();
-        }
-
-        private void OnDisable()
-        {
-            if (IsAttacking)
+            if (CanAttack())
             {
-                _hero.Movement.SetSupportVelocity(Vector2.zero);
+                StartAttack();
             }
-            _attackCooldown.SetMaxCooldown();
         }
+        
         protected override void StartAttack()
         {
             IsAttacking = true;
@@ -64,7 +59,10 @@ namespace Code.Character.Enemies
         protected  override void OnAttack()
         {
             PhysicsDebug.DrawDebug(StartPoint(), _attackData.DamagedRadius, 1);
-            if (!Hit(out Collider hit)) return;
+            if (!Hit(out Collider hit))
+            {
+                return;
+            }
             _hero.Health.TakeDamage(_attackData.Damage);
             _hero.EffectsController.Push(forward: (transform.position - _hero.Transform.position) *_attackData.PushForce);
         }
@@ -77,7 +75,6 @@ namespace Code.Character.Enemies
             _attackCooldown.SetMaxCooldown();
             IsAttacking = false;
         }
-        
 
         private bool Hit(out Collider hit)
         {

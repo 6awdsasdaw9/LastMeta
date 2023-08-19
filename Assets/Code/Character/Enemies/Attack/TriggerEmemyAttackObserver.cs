@@ -1,8 +1,6 @@
 using Code.Logic.Collisions.Triggers;
-using Code.Services;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Character.Enemies
 {
@@ -25,12 +23,12 @@ namespace Code.Character.Enemies
             _triggerObserver.OnExit -= OnExit;
         }
 
-        private void OnEnter(Collider obj)
+        private void OnEnter(GameObject obj)
         {
             _enemyAttack.EnableAttack();
         }
 
-        private void OnExit(Collider obj)
+        private void OnExit(GameObject obj)
         {
             _enemyAttack.DisableAttack();
         }

@@ -72,13 +72,13 @@ namespace Code.Logic.Objects.Spikes
                 _damageTrigger.OnExit -= OnExit;
             }
         }
-        private void OnEnter(Collider obj)
+        private void OnEnter(GameObject obj)
         {
             _isWatching = true;
             StartFollowingTrigger();
         }
 
-        private void OnExit(Collider obj)
+        private void OnExit(GameObject obj)
         {
             _isWatching = false;
             _cts?.Cancel();

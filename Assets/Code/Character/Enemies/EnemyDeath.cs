@@ -1,33 +1,33 @@
 using System;
 using System.Collections;
+using Code.Character.Enemies.EnemiesFacades;
+using Code.Services.EventsSubscribes;
 using UnityEngine;
 
 namespace Code.Character.Enemies
 {
-    [RequireComponent(typeof(EnemyHealth),typeof(EnemyAnimator))]
-    public class EnemyDeath : MonoBehaviour
+    [RequireComponent(typeof(EnemyHealth), typeof(EnemyAnimator))]
+    public class EnemyDeath : MonoBehaviour, IEventsSubscriber
     {
-        [SerializeField] private Collider _collider;
-        [SerializeField] private EnemyHealth _health;
-        [SerializeField] private EnemyAnimator _animator;
-        [SerializeField] private EnemyAttack[] _attacks;
-        [SerializeField] private EnemyMovementPatrol _agent;
-        
+        [SerializeField] private EnemyFacade _facade;
         public event Action Happened;
 
-        private void Start()
+        public void SubscribeToEvents(bool flag)
         {
-            _health.OnHealthChanged += OnHealthChanged;
+            if (flag)
+            {
+                _facade.Health.OnHealthChanged += OnHealthChanged;
+            }
+            else
+            {
+                _facade.Health.OnHealthChanged -= OnHealthChanged;
+            }
         }
 
-        private void OnDestroy()
-        {
-            _health.OnHealthChanged -= OnHealthChanged;
-        }
 
         private void OnHealthChanged()
         {
-            if (_health.Current <= 0)
+            if (_facade.Health.Current <= 0)
             {
                 Die();
             }
@@ -35,29 +35,14 @@ namespace Code.Character.Enemies
 
         private void Die()
         {
-            _health.OnHealthChanged -= OnHealthChanged;
-            
-            _animator.PlayDeath();
-            
-            _agent.enabled = false;
-            _collider.enabled = false;
-            
-            foreach (var attack in _attacks)
-            {
-                attack.enabled = false;
-            }
-            
-            StartCoroutine(DestroyCoroutine());
-            
+            _facade.Health.OnHealthChanged -= OnHealthChanged;
+            _facade.Die();
             Happened?.Invoke();
         }
 
-        
-        private IEnumerator DestroyCoroutine()
+        private void OnValidate()
         {
-            _collider.enabled = false;       
-            yield return new WaitForSeconds(3);
-            Destroy(gameObject);
+            _facade = GetComponent<EnemyFacade>();
         }
     }
 }

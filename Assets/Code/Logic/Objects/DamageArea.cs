@@ -1,6 +1,7 @@
 using System;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Debugers;
+using Code.Logic.Collisions;
 using Code.Logic.Collisions.Triggers;
 using Code.Services;
 using Cysharp.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Code.Logic.Objects
         [SerializeField, Range(0,5)] private float _pushDuration;
         
         [Space,SerializeField] private Cooldown _cooldown;
-        [SerializeField] private TriggerObserver _trigger;
+        [SerializeField] private CollisionObserver _trigger;
 
         private IHero _hero;
 
@@ -43,16 +44,16 @@ namespace Code.Logic.Objects
 
             if (flag)
             {
-                _trigger.OnEnter+= OnOnEnter;
+                _trigger.OnEnter += OnEnter;
             }
             else
             {
-                _trigger.OnEnter -= OnOnEnter;
+                _trigger.OnEnter -= OnEnter;
             }
           
         }
 
-        private void OnOnEnter(Collider obj)
+        private void OnEnter(GameObject obj)
         {
             TakeDamage();
         }

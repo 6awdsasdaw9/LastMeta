@@ -2,6 +2,7 @@ using System;
 using Code.Character.Enemies.EnemiesInterfaces;
 using Code.Logic.Common;
 using Code.Logic.Common.Interfaces;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Code.Character.Enemies.EnemiesFacades
@@ -9,6 +10,7 @@ namespace Code.Character.Enemies.EnemiesFacades
     [RequireComponent(typeof(AgentRotateToForfard),typeof(EnemyMovementPatrol),typeof(EnemyCollisionAttack))]
     public class SpiderFacade : EnemyFacade
     {
+        [Space,Title("Spider components")]
         public AgentRotateToForfard RotateToForward;
         public EnemyMovementPatrol Patrol;
         public EnemyCollisionAttack CollisionAttack;
@@ -22,17 +24,34 @@ namespace Code.Character.Enemies.EnemiesFacades
             CollisionAttack.Init(hero, data.CollisionAttackData, collisionAttackDamage);
             Patrol.Init(data.PatrolSpeed, data.PatrolCooldown, Stats);
         }
-
-        private void OnEnable()
+        
+        public override void Die()
         {
-            VulnerableZone.SubscribeToEvents(true);
-        }
-
-        private void OnDisable()
-        {
+            Animator.PlayDeath();
+            //Animator.enabled = false;
+            Stats.Block();
+            Death.SubscribeToEvents(false);
             VulnerableZone.SubscribeToEvents(false);
+            CollisionAttack.SubscribeToEvents(false);
+            CollisionsController.SetActive(false);
         }
 
+        public override void Revival()
+        {
+            //Animator.enabled = true;
+            Animator.PlayEnter(() =>
+            {
+                Health.Reset();
+                Stats.UnBlock();
+                Death.SubscribeToEvents(true);
+                VulnerableZone.SubscribeToEvents(true);
+                CollisionAttack.SubscribeToEvents(true);
+                CollisionsController.SetActive(true);
+            });
+
+        }
+
+        
         public override void OnPause()
         {
             Stats.Block();

@@ -1,9 +1,5 @@
 using Code.Character.Enemies.EnemiesInterfaces;
-using Code.Character.Hero.HeroInterfaces;
-using Code.Data.Configs;
 using Code.Logic.Common;
-using Code.Services.PauseListeners;
-using Zenject;
 
 namespace Code.Character.Enemies.EnemiesFacades
 {
@@ -16,7 +12,7 @@ namespace Code.Character.Enemies.EnemiesFacades
         public RotateToHero RotateToHero;
         public AgentRotateToForfard RotateToForward;
         
-        protected  override void InitComponents()
+        protected override void InitComponents()
         {
             Stats = new BlackHandStats(this);
             CollisionAttack.Init(hero,data.CollisionAttackData,collisionAttackDamage);
@@ -26,17 +22,20 @@ namespace Code.Character.Enemies.EnemiesFacades
             EnemyAudio.Init(data.AudioPath);
             Health.Set(data.HealthData);
         }
-        
-        private void OnEnable()
-        {
-            Stats.SubscribeToEvents(true);
-        }
 
-        private void OnDisable()
+        public override void Die()
         {
             Stats.SubscribeToEvents(false);
+            CollisionAttack.SubscribeToEvents(false);
         }
 
+        public override void Revival()
+        {
+            Health.Reset();
+            Stats.SubscribeToEvents(true);
+            CollisionAttack.SubscribeToEvents(true);
+        }
+        
         public override void OnPause()
         {
             Stats.Block();

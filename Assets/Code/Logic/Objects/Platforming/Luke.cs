@@ -26,13 +26,11 @@ namespace Code.Logic.Objects.Platforming
             _triggerObserver.OnEnter += OnEnter;
         }
 
-        private void OnEnter(Collider obj)
+        private void OnEnter(GameObject obj)
         {
             _groundCollider.SetActive(false);
         }
-
- 
-
+        
         public void LoadData(SavedData savedData)
         {
             if (savedData.ObjectsPosition.ContainsKey(_uniqueId.Id))

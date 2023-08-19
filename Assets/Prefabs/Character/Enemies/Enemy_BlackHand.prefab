@@ -252,7 +252,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5935935822136764800
 Transform:
   m_ObjectHideFlags: 0
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c414b48fa2f404091d2dd06f2a83f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patrolDistance: 12.51
+  _patrolDistance: 5
   _agent: {fileID: 6173131858378004887}
 --- !u!114 &2108457381744422087
 MonoBehaviour:
@@ -478,8 +478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7677cd508e2b47278cc166dc670bb499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 1018188162270922403}
   _meshAgent: {fileID: 6173131858378004887}
+  _sprite: {fileID: 1018188162270922403}
   _collidersRotater: {fileID: 7173237155557771335}
 --- !u!114 &1137969862256876921
 MonoBehaviour:
@@ -506,6 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1175567a1f0ffb842a2932f3eb2678e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animationEvents: {fileID: 0}
   _animator: {fileID: 5935935822136764803}
   _agent: {fileID: 6173131858378004887}
 --- !u!114 &1137969862256876916

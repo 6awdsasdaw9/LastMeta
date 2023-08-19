@@ -30,7 +30,6 @@ namespace Code.Logic.Common
             
             impactVector = Quaternion.Euler(0f, 0f, -rotationAngle) * impactVector;
             return impactVector.normalized; 
-           //eturn Vector3.Reflect(_hero.Rigidbody.velocity.normalized, _owner.).normalized;
         }
     }
 
