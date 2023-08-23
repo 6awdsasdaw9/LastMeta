@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -26,5 +27,11 @@ namespace Code.Character.Enemies
         public void PlayRangeAttack() => _animator.SetTrigger(_rangeAttack_t);
         public void SetRangeAttackAnimationSpeed(float value) => _animator.SetFloat(_rangeAttackSpeed_f, value); 
         private void PlayMove(float speed) => _animator.SetFloat(_speed_f,speed);
+
+        private void OnValidate()
+        {
+            _agent = GetComponent<NavMeshAgent>();
+            _animator = GetComponentInChildren<Animator>();
+        }
     }
 }

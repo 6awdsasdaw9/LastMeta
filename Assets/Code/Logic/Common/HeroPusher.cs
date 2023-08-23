@@ -26,12 +26,11 @@ namespace Code.Logic.Common
         private Vector3 GetDirection()
         {
             Vector3 impactVector = _hero.Transform.position - _owner.position;
-            
             var rotationAngle = _owner.rotation.eulerAngles.z;
+            
             impactVector = Quaternion.Euler(0f, 0f, -rotationAngle) * impactVector;
-
-            Vector3 pushDirection = impactVector.normalized;
-            return pushDirection;
+            return impactVector.normalized; 
+           //eturn Vector3.Reflect(_hero.Rigidbody.velocity.normalized, _owner.).normalized;
         }
     }
 

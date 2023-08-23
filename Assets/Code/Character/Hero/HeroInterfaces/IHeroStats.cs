@@ -3,6 +3,7 @@ namespace Code.Character.Hero.HeroInterfaces
     public interface IHeroStats
     {
         Constants.HeroMode Mode { get; }
+        int Direction { get; }
         bool IsBlockMove { get; }
         bool IsDash { get; }
         bool IsMove { get; }

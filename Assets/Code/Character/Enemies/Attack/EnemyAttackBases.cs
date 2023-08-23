@@ -28,7 +28,6 @@ namespace Code.Character.Enemies
         /// Animation Event
         /// </summary>
         protected abstract void OnAttackEnded();
-        
     }
     
     public enum RangeAttackType
@@ -50,5 +49,10 @@ namespace Code.Character.Enemies
         /// Animation Event
         /// </summary>
         protected abstract void OnRangeAttackEnded();
+    }
+
+    public abstract class EnemyCollisionAttackBase : EnemyAttack
+    {
+        protected abstract void StartCollisionAttack();
     }
 }

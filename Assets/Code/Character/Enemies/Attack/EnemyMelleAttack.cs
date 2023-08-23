@@ -19,7 +19,6 @@ namespace Code.Character.Enemies
         private IHero _hero;
         
         private AttackData _attackData;
-        private PushData _pushData;
         
         private Vector3 _attackPoint;
         private readonly Collider[] _hits = new Collider[1];
@@ -27,11 +26,10 @@ namespace Code.Character.Enemies
         private int _layerMask;
         public bool IsAttacking { get; private set; }
 
-        public void Init(IHero hero, AttackData attackData, PushData pushData, IEnemyStats enemyStats, EnemyAnimator animator)
+        public void Init(IHero hero, AttackData attackData, IEnemyStats enemyStats, EnemyAnimator animator)
         {
             _hero = hero;
             _attackData =  attackData;
-            _pushData = pushData;
             _enemyStats = enemyStats;
 
             _animator = animator;
@@ -68,7 +66,7 @@ namespace Code.Character.Enemies
             PhysicsDebug.DrawDebug(StartPoint(), _attackData.DamagedRadius, 1);
             if (!Hit(out Collider hit)) return;
             _hero.Health.TakeDamage(_attackData.Damage);
-            _hero.EffectsController.Push(forward: (transform.position - _hero.Transform.position) * _pushData.Force);
+            _hero.EffectsController.Push(forward: (transform.position - _hero.Transform.position) *_attackData.PushForce);
         }
 
         /// <summary> 
@@ -88,7 +86,10 @@ namespace Code.Character.Enemies
             return hitCount > 0;
         }
 
-        private Vector3 StartPoint() => transform.position + _attackData.EffectiveDistance;
+        private Vector3 StartPoint() => transform.position + new Vector3(
+            (_enemyStats.IsLoockLeft ? -_attackData.EffectiveDistance.x : _attackData.EffectiveDistance.x),
+            _attackData.EffectiveDistance.y, 0);
+                                       
         private bool CanAttack() => IsActive && !IsAttacking && _attackCooldown.IsUp() && !_enemyStats.IsBlock && _hero.Health.Current > 0;
     }
 }

@@ -19,6 +19,7 @@ namespace Code.Character.Hero.HeroInterfaces
         #region Conditions
 
         public Constants.HeroMode Mode => Constants.HeroMode.Default;
+        public int Direction => _hero.Movement.DirectionX > 0 ? 1 : -1;
         public bool IsBlockMove => !_movementLimiter.CharactersCanMove;
         public bool IsDash => false;
         public bool IsMove => _hero.Movement.DirectionX != 0;

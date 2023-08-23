@@ -1,3 +1,4 @@
+using System;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Logic.Collisions.Triggers;
 using UnityEngine;
@@ -9,6 +10,9 @@ namespace Code.Logic.Common
     {
         [SerializeField] private SpriteRenderer _spriteRenderer;
         private Transform _heroTransform;
+        private bool _isLoockLeft;
+
+        public Action<bool> OnFlipLeft;
 
         [Inject]
         private void Construct(IHero hero)
@@ -18,7 +22,7 @@ namespace Code.Logic.Common
 
         private void Update()
         {
-            if (_heroTransform)
+            if (_heroTransform && !IsCorrectRotation())
             {
                 RotateTowardsHero();
             }
@@ -26,7 +30,12 @@ namespace Code.Logic.Common
 
         private void RotateTowardsHero()
         {
-            _spriteRenderer.flipX = !(transform.position.x < _heroTransform.position.x);
+            _isLoockLeft = !(transform.position.x < _heroTransform.position.x);
+            _spriteRenderer.flipX = _isLoockLeft;
+            OnFlipLeft?.Invoke(_isLoockLeft);
         }
+
+        private bool IsCorrectRotation() =>
+            _spriteRenderer.flipX == !(transform.position.x < _heroTransform.position.x);
     }
 }

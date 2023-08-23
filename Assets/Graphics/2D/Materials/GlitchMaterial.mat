@@ -118,7 +118,7 @@ Material:
     - _FlickerPercent: 0.088
     - _GhostBlend: 1
     - _GhostColorBoost: 2.55
-    - _GhostTransparency: 0.4
+    - _GhostTransparency: 0.6
     - _GlitchAmount: 0.3
     - _GlitchSize: 5
     - _Glow: 83.7

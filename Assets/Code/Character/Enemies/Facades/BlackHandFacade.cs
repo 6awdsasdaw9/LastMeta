@@ -1,73 +1,84 @@
 using Code.Character.Enemies.EnemiesInterfaces;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
+using Code.Logic.Common;
 using Code.Services.PauseListeners;
 using Zenject;
 
 namespace Code.Character.Enemies.EnemiesFacades
 {
-    public class BlackHandFacade : EnemyFacade, IResumeListener
+    public class BlackHandFacade : EnemyFacade 
     {
+        public EnemyCollisionAttack CollisionAttack;
         public EnemyMelleAttack MelleAttack;
         public EnemySpikeRangeAttack SpikeAttack;
         public EnemyMovementPatrol Patrol;
-        public EnemyMovementToHero MovementToHero;
+        public RotateToHero RotateToHero;
+        public AgentRotateToForfard RotateToForward;
         
-        [Inject]
-        private void Construct(DiContainer container)
-        {
-            data = container.Resolve<EnemiesConfig>().GetByType(Type);
-            hero = container.Resolve<IHero>();
-            
-            if (hero == null || data == null) return;
-
-          container.Resolve<PauseListenerStorage>().Add(this);
-          InitComponents();
-        }
-
-        private void InitComponents()
+        protected  override void InitComponents()
         {
             Stats = new BlackHandStats(this);
-            
-            MelleAttack.Init(hero, data.MelleAttackData, data.PushData, Stats, Animator);
-
-            SpikeAttack.Init(hero,Stats,data.SpikeAttackData,Animator);
-            
-            
+            CollisionAttack.Init(hero,data.CollisionAttackData,collisionAttackDamage);
+            MelleAttack.Init(hero, data.MelleAttackData, Stats, Animator);
+            SpikeAttack.Init(hero, Stats, data.SpikeAttackData, Animator);
             Patrol.Init(data.PatrolSpeed, data.PatrolCooldown, Stats);
-            MovementToHero.Init(hero.Transform, data.MoveSpeed);
-            
             EnemyAudio.Init(data.AudioPath);
             Health.Set(data.HealthData);
         }
+        
+        private void OnEnable()
+        {
+            Stats.SubscribeToEvents(true);
+        }
 
-        public void OnPause()
+        private void OnDisable()
+        {
+            Stats.SubscribeToEvents(false);
+        }
+
+        public override void OnPause()
         {
             Stats.Block();
-            MovementToHero.OnPause();
             Patrol.OnPause();
         }
 
-        public void OnResume()
+        public override void OnResume()
         {
             Stats.UnBlock();
-            MovementToHero.OnResume();
         }
     }
-    
-    public class BlackHandStats:IEnemyStats
+
+    public class BlackHandStats : IEnemyStats
     {
         private readonly BlackHandFacade _blackHandFacade;
+        public bool IsLoockLeft { get; private set; }
         public bool IsPatroling => _blackHandFacade.Patrol.IsMoving;
-        public bool IsMovingToHero => _blackHandFacade.MovementToHero.IsMoving;
+        public bool IsMovingToHero => false;
         public bool IsAttacking => IsMelleAttacking || IsRangeAttacing;
         public bool IsMelleAttacking => _blackHandFacade.MelleAttack.IsAttacking;
-        public bool IsRangeAttacing => false;
+        public bool IsRangeAttacing => _blackHandFacade.SpikeAttack.IsAttacking;
         public bool IsBlock { get; private set; }
-        
+
         public BlackHandStats(BlackHandFacade blackHandFacade)
         {
             _blackHandFacade = blackHandFacade;
+        }
+
+        public void SubscribeToEvents(bool flag)
+        {
+            if (_blackHandFacade == null) return;
+
+            if (flag)
+            {
+                _blackHandFacade.RotateToHero.OnFlipLeft += SetLoockLeft;
+                _blackHandFacade.RotateToForward.OnFlipLeft += SetLoockLeft;
+            }
+            else
+            {
+                _blackHandFacade.RotateToHero.OnFlipLeft -= SetLoockLeft;
+                _blackHandFacade.RotateToForward.OnFlipLeft -= SetLoockLeft;
+            }
         }
 
         public void Block()
@@ -78,6 +89,11 @@ namespace Code.Character.Enemies.EnemiesFacades
         public void UnBlock()
         {
             IsBlock = false;
+        }
+
+        public void SetLoockLeft(bool isLoockLeft)
+        {
+            IsLoockLeft = isLoockLeft;
         }
     }
 }

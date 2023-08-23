@@ -1,3 +1,5 @@
+using System;
+using Code.Logic.Collisions;
 using Code.Logic.Collisions.Triggers;
 using UnityEngine;
 using UnityEngine.AI;
@@ -6,8 +8,13 @@ namespace Code.Logic.Common
 {
     public class AgentRotateToForfard: FollowTriggerObserver
     {
-        [SerializeField] private SpriteRenderer _sprite;
         [SerializeField] private NavMeshAgent _meshAgent;
+        
+        [SerializeField] private SpriteRenderer _sprite;
+        [SerializeField] private CollidersRotater _collidersRotater;
+
+        private bool _isLookLeft;
+        public Action<bool> OnFlipLeft;
 
         private void Update()
         {
@@ -16,17 +23,33 @@ namespace Code.Logic.Common
                 return;
             }
             
+            _isLookLeft = !_isLookLeft;
             FlipSprite();
+            FlipObjectRoot();
+            OnFlipLeft?.Invoke(_isLookLeft);
         }
 
         private bool IsCorrectRotation()
         {
-            return _sprite.flipX == _meshAgent.velocity.x < 0 || _meshAgent.velocity.x == 0;
+            return _isLookLeft == _meshAgent.velocity.x < 0 || _meshAgent.velocity.x == 0;
         }
 
         private void FlipSprite()
         {
-            _sprite.flipX = !_sprite.flipX;
+            if (_sprite == null)
+            {
+                return;
+            }
+            _sprite.flipX = _isLookLeft;
+        }
+
+        private void FlipObjectRoot()
+        {
+            if (_collidersRotater == null)
+            {
+                return;
+            }
+            _collidersRotater.Flip();
         }
 
         public override void DisableComponent()

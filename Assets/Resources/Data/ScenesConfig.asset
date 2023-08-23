@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8209e9f5bd204becb110b2b25d376471, type: 3}
   m_Name: ScenesConfig
   m_EditorClassIdentifier: 
-  InitialScene: 5
+  InitialScene: 4
   DayTimeInSeconds: 300
   PauseSnapshot:
     Guid:

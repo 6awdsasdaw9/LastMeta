@@ -100,7 +100,7 @@ namespace Code.Character.Hero
             _heroCanMove = false;
             _pressingCrouch = false;
             _pressingMove = false;
-            if (_body) _body.velocity = Vector3.zero;
+            _body.velocity = Vector3.zero;
         }
 
         public void UnBlockMovement()
@@ -227,6 +227,7 @@ namespace Code.Character.Hero
         public void EnableComponent()
         {
             _heroCanMove = true;
+            _directionX = _input.GetDirection();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Code.Data.Configs
     [CreateAssetMenu(fileName = "EnemiesConfig", menuName = "ScriptableObjects/GameData/EnemiesConfig")]
     public class EnemiesConfig : ScriptableObject
     {
+        public float CollisionDamage = 3f;
         [ListDrawerSettings(Expanded = false, ShowIndexLabels = true, ShowPaging = false, ShowItemCount = true)]
         [GUIColor(0.9f, 0.9f, 0.9f)]
         public EnemyData[] EnemiesData;
@@ -35,9 +36,7 @@ namespace Code.Data.Configs
         public HealthData HealthData;
 
         [Space, Title("Attack")] 
-        [GUIColor(0.8f, 0.5f, 0.2f), SerializeField]
-        public PushData PushData;
-        
+        public CollisionAttackData CollisionAttackData;
         [GUIColor(0.8f, 0.5f, 0.2f), SerializeField]
         private bool _isHasMelleAttack;
         [GUIColor(0.8f, 0.5f, 0.2f), ShowIf(nameof(_isHasMelleAttack))]
