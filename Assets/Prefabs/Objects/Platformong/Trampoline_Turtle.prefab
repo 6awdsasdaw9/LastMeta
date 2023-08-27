@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 663415508083033646}
+  _isRepeat: 1
 --- !u!1 &663415509021892554
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab979b39db244bbaf0cad72dc9e6983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 663415509021892597}
+  colliderObserver: {fileID: 663415509021892597}
   _force: {x: 0, y: 4}
   _audioEvent:
     _eventReference:

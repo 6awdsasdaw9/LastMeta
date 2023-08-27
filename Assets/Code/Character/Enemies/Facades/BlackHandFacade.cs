@@ -1,10 +1,13 @@
 using Code.Character.Enemies.EnemiesInterfaces;
 using Code.Logic.Common;
+using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Code.Character.Enemies.EnemiesFacades
 {
     public class BlackHandFacade : EnemyFacade 
     {
+        [Space,Title("Black Hand components")]
         public EnemyCollisionAttack CollisionAttack;
         public EnemyMelleAttack MelleAttack;
         public EnemySpikeRangeAttack SpikeAttack;

@@ -32,7 +32,7 @@ AnimationClip:
     - time: 0.8333333
       value: {fileID: -1695777795, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
     attribute: m_Sprite
-    path: Enemy_Sprite
+    path: 
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -43,7 +43,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2929994392
+      path: 0
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -82,7 +82,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.8
-    functionName: OnAttackEnded
+    functionName: AnimationEvent_AttackEnded
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

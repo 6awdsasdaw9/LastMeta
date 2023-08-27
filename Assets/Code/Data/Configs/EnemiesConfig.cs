@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Code.Audio.AudioPath;
 using Code.Character.Enemies;
+using Code.Character.Enemies.EnemiesFacades;
 using Code.Data.GameData;
 using Code.Logic.Common;
 using Sirenix.OdinInspector;
@@ -15,15 +16,20 @@ namespace Code.Data.Configs
     {
         public float CollisionDamage = 3f;
         [ListDrawerSettings(Expanded = false, ShowIndexLabels = true, ShowPaging = false, ShowItemCount = true)]
-        [GUIColor(0.9f, 0.9f, 0.9f)]
-        public EnemyData[] EnemiesData;
-
-        public EnemyData GetByType(EnemyType type)
+        [GUIColor(0.9f, 0.9f, 0.9f)] public EnemyData[] EnemiesData;
+        [GUIColor(0.9f, 0.7f, 0.9f)] public EnemyFacade[] Prefabs;
+        
+        public EnemyFacade GetFacadeByType(EnemyType type)
+        {
+            return Prefabs.FirstOrDefault(d => d.Type == type);
+        }
+        
+        public EnemyData GetDataByType(EnemyType type)
         {
             return EnemiesData.FirstOrDefault(d => d.Type == type);
         }
 
-        public EnemyData GetRandom()
+        public EnemyData GetRandom()//todo peredelat`
         {
             return EnemiesData[Random.Range(0, EnemiesData.Length)];
         }

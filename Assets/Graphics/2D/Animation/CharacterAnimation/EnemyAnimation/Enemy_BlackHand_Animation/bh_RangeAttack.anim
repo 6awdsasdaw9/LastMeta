@@ -30,9 +30,9 @@ AnimationClip:
     - time: 0.8333333
       value: {fileID: -1318351441, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
     - time: 1
-      value: {fileID: 381631826, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
+      value: {fileID: 183357275, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
     attribute: m_Sprite
-    path: Enemy_Sprite
+    path: 
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -43,7 +43,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2929994392
+      path: 0
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -55,7 +55,7 @@ AnimationClip:
     - {fileID: -1402670353, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
     - {fileID: 1934426222, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
     - {fileID: -1318351441, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
-    - {fileID: 381631826, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
+    - {fileID: 183357275, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -82,7 +82,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.6
-    functionName: OnRangeAttack
+    functionName: AnimationEvent_RangeAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

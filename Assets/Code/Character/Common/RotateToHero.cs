@@ -1,6 +1,8 @@
 using System;
 using Code.Character.Hero.HeroInterfaces;
+using Code.Logic.Collisions;
 using Code.Logic.Collisions.Triggers;
+using Code.Logic.Graphics;
 using UnityEngine;
 using Zenject;
 
@@ -8,7 +10,9 @@ namespace Code.Logic.Common
 {
     public class RotateToHero : FollowTriggerObserver
     {
-        [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private SpriteFlipper _spriteFlipper;
+        [SerializeField] private CollisionsController _collisionsController;
+
         private Transform _heroTransform;
         private bool _isLoockLeft;
 
@@ -31,11 +35,19 @@ namespace Code.Logic.Common
         private void RotateTowardsHero()
         {
             _isLoockLeft = !(transform.position.x < _heroTransform.position.x);
-            _spriteRenderer.flipX = _isLoockLeft;
+            _spriteFlipper.Flip(_isLoockLeft);
+            _collisionsController?.Flip(_isLoockLeft);
             OnFlipLeft?.Invoke(_isLoockLeft);
         }
 
         private bool IsCorrectRotation() =>
-            _spriteRenderer.flipX == !(transform.position.x < _heroTransform.position.x);
+            _isLoockLeft == !(transform.position.x < _heroTransform.position.x);
+
+        private void OnValidate()
+        {
+            _spriteFlipper.Validate(gameObject);
+            _collisionsController = GetComponent<CollisionsController>();
+
+        }
     }
 }

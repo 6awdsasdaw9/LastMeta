@@ -13,25 +13,25 @@ namespace Code.Character.Enemies.EnemiesFacades
     public abstract class EnemyFacade: MonoBehaviour, IResumeListener
     {
         [Space, Title("Base components")] 
-        public EnemyDeath Death;
         public EnemyType Type;
         public IEnemyStats Stats;
         public EnemyHealth Health;
         public EnemyAudio EnemyAudio;
         public EnemyAnimator Animator;
         public CollisionsController CollisionsController;
+        public EnemyDeath Death;
 
         protected EnemyData data;
         protected  IHero hero;
         protected float collisionAttackDamage;
         
         [Inject]
-        protected void Construct(DiContainer container)
+        public void Construct(DiContainer container)
         {
             hero = container.Resolve<IHero>();
             
             var config = container.Resolve<EnemiesConfig>();
-            data = config.GetByType(Type);
+            data = config.GetDataByType(Type);
             collisionAttackDamage = config.CollisionDamage;
             
             if (hero == null || data == null) return;

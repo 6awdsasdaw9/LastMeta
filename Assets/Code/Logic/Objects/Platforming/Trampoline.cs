@@ -12,7 +12,7 @@ namespace Code.Logic.Objects.Platforming
 {
     public class Trampoline : MonoBehaviour, IEventsSubscriber
     {
-        [SerializeField] private ColliderObserver collider;
+        [SerializeField] private ColliderObserver colliderObserver;
         [SerializeField] private Vector2 _force = Vector2.up;
 
         [Title("Optional")] 
@@ -50,11 +50,11 @@ namespace Code.Logic.Objects.Platforming
             
             if (flag)
             {
-                collider.OnEnter += OnEnter;
+                colliderObserver.OnEnter += OnEnter;
             }
             else
             {
-                collider.OnEnter -= OnEnter;
+                colliderObserver.OnEnter -= OnEnter;
             }
         }
 

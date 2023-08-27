@@ -20,11 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -1318351441, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
-    - time: 0.3
       value: {fileID: 381631826, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
+    - time: 0.3
+      value: {fileID: -1318351441, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
     - time: 0.6666667
-      value: {fileID: -235979612, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
+      value: {fileID: -1402670353, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
     - time: 0.9
       value: {fileID: 183357275, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
     - time: 1.1
@@ -34,7 +34,7 @@ AnimationClip:
     - time: 1.4666667
       value: {fileID: -1695777795, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
     attribute: m_Sprite
-    path: Enemy_Sprite
+    path: 
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -45,16 +45,16 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2929994392
+      path: 0
       attribute: 0
       script: {fileID: 0}
       typeID: 212
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -1318351441, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
     - {fileID: 381631826, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
-    - {fileID: -235979612, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
+    - {fileID: -1318351441, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
+    - {fileID: -1402670353, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
     - {fileID: 183357275, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
     - {fileID: 1183444548, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
     - {fileID: -1432715265, guid: 7893de274f91fe24bb995b10e4353903, type: 3}
@@ -85,7 +85,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 1.4166666
-    functionName: OnRangeAttackEnded
+    functionName: AnimationEvent_RangeAttackEnded
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

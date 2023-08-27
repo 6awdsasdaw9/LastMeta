@@ -7,7 +7,6 @@ namespace Code.Character.Enemies
         protected bool IsActive { get; private set; }
         public void DisableAttack() => IsActive = false;
         public void EnableAttack() => IsActive = true;
-        
     }
 
     public enum MelleAttackType
@@ -15,38 +14,42 @@ namespace Code.Character.Enemies
         None,
         Default
     }
+
+    //------------------------------------------------------------------------------------------------------------------
     public abstract class EnemyMelleAttackBase : EnemyAttack
     {
         protected abstract void StartAttack();
-        
+
         /// <summary>
-        /// Animation Event
+        /// For Animation Event
         /// </summary>
         protected abstract void OnAttack();
 
         /// <summary> 
-        /// Animation Event
+        /// For Animation Event
         /// </summary>
         protected abstract void OnAttackEnded();
     }
-    
+
     public enum RangeAttackType
     {
         None,
         Default,
         Spike
     }
+    //------------------------------------------------------------------------------------------------------------------
+
     public abstract class EnemyRangeAttackBase : EnemyAttack
     {
         protected abstract void StartRangeAttack();
-        
+
         /// <summary>
-        /// Animation Event
+        /// For Animation Event
         /// </summary>
         protected abstract void OnRangeAttack();
 
         /// <summary> 
-        /// Animation Event
+        /// For Animation Event
         /// </summary>
         protected abstract void OnRangeAttackEnded();
     }
