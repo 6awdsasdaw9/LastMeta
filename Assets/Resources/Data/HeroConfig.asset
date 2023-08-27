@@ -21,7 +21,7 @@ MonoBehaviour:
     maxTurnSpeed: 53.8
     maxAirAcceleration: 11
     maxAirDeceleration: 51.7
-    maxAirTurnSpeed: 35.8
+    maxAirTurnSpeed: 42.6
     NoFrictionMaterial: {fileID: 13400000, guid: fcfcf8c2d4b646646b44fcc6be381bd9, type: 2}
     FrictionMaterial: {fileID: 13400000, guid: d815cddd93c0d304cb1eec9fc0c61526, type: 2}
     JumpHeight: 4.7
@@ -39,7 +39,7 @@ MonoBehaviour:
       SpeedBonus: 0.5
       Duration: 0.3
     - Cooldown: 0.7
-      SpeedBonus: 2
+      SpeedBonus: 1
       Duration: 0.5
     - Cooldown: 0.8
       SpeedBonus: 0.8

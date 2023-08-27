@@ -56,11 +56,11 @@ MonoBehaviour:
     _isHasMelleAttack: 1
     MelleAttackData:
       Damage: 3
-      DamagedRadius: 1
+      DamagedRadius: 1.7
       EffectiveDistance: {x: 0.75, y: 1, z: 0}
       PushForce: 1
       Cooldown: 0.7
-      AnimationSpeed: 2
+      AnimationSpeed: 1.7
     _rangeAttackType: 2
     RangeAttackData:
       Damage: 0
