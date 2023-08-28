@@ -8,24 +8,24 @@ using Zenject;
 
 namespace Code.Character.Enemies.EnemiesFacades
 {
-    public class BlackHandFacade : EnemyFacade 
+    public class BlackHandFacade : EnemyFacade
     {
-        [Space,Title("Black Hand components")]
+        [Space, Title("Black Hand components")]
         public EnemyCollisionAttack CollisionAttack;
+
         public EnemyMelleAttack MelleAttack;
         public EnemySpikeRangeAttack SpikeAttack;
         public MissileSpikeController MissileSpike;
-        [Space]
-        public EnemyMovementPatrol Patrol;
+        [Space] public EnemyMovementPatrol Patrol;
         public RotateToHero RotateToHero;
         public AgentRotateToForfard RotateToForward;
-        [Space] 
-        public GameObject HealthBar;
+        [Space] public GameObject HealthBar;
+
         protected override void InitComponents(DiContainer container)
         {
             Stats = new BlackHandStats(this);
             RotateToHero.Init(hero);
-            CollisionAttack.Init(hero,data.CollisionAttackData,collisionAttackDamage);
+            CollisionAttack.Init(hero, data.CollisionAttackData, collisionAttackDamage);
             MelleAttack.Init(hero, data.MelleAttackData, Stats, Animator);
             SpikeAttack.Init(hero, Stats, data.SpikeAttackData, Animator);
             MissileSpike.Init(hero, container.Resolve<ObjectsConfig>());
@@ -39,9 +39,9 @@ namespace Code.Character.Enemies.EnemiesFacades
             Animator.PlayDeath();
             Stats.Block();
             HealthBar.SetActive(false);
-            
+
             MissileSpike.EndReaction();
-            
+
             SpikeAttack.SubscribeToEvents(false);
             MelleAttack.SubscribeToEvents(false);
             CollisionAttack.SubscribeToEvents(false);
@@ -50,21 +50,22 @@ namespace Code.Character.Enemies.EnemiesFacades
 
         public override void Revival()
         {
+            HealthBar.SetActive(false);
+            
             Animator.PlayEnter(() =>
             {
                 HealthBar.SetActive(true);
                 Stats.UnBlock();
                 Health.Reset();
-                
+
                 Death.SubscribeToEvents(true);
                 SpikeAttack.SubscribeToEvents(true);
                 MelleAttack.SubscribeToEvents(true);
                 CollisionAttack.SubscribeToEvents(true);
                 CollisionsController.SetActive(true);
             });
-         
         }
-        
+
         public override void OnPause()
         {
             Stats.Block();

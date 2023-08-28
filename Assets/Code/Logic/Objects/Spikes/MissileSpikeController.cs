@@ -1,10 +1,8 @@
-using System;
 using System.Linq;
 using Code.Character.Hero.HeroInterfaces;
 using Code.Data.Configs;
 using Code.Data.GameData;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Logic.Objects.Spikes
 {

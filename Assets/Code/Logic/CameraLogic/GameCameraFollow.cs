@@ -1,10 +1,7 @@
 using System.Collections;
-using Code.Character.Hero;
 using Code.Character.Hero.HeroInterfaces;
-using Code.Data;
 using Code.Data.AdditionalData;
 using Code.Data.GameData;
-using Code.Services;
 using Code.Services.SaveServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,18 +9,19 @@ using Zenject;
 
 namespace Code.Logic.CameraLogic
 {
-    public class CameraFollow : MonoBehaviour, ISavedData
+    public class GameCameraFollow : MonoBehaviour, ISavedData
     {
-        [SerializeField] private bool _isTeleportToPlayerOnAwake =true;
+        [SerializeField] private bool _isTeleportToPlayerOnAwake = true;
         [SerializeField] private bool _isCanMove = true;
         [SerializeField] private bool _isCanMoveY = true;
         [SerializeField] private float _dampTime = 0.75f;
+
         private readonly float _maxDampTime = 1.5f;
         private float _currentDampTime;
         private readonly Vector3 _cameraOffset = new(0.5f, 1.6f, -60f);
 
         private float startPosY;
-        
+
         private IHero _hero;
         private Vector3 _velocity = Vector3.zero;
         private Vector3 _target;
@@ -31,9 +29,10 @@ namespace Code.Logic.CameraLogic
         private Vector3 _followingPosition => _hero.Transform.position + _cameraOffset;
 
         private Coroutine _dampTimeCoroutine;
-        
+        private float _bonusSpeed = 1; // чем меньше, тем быстрее
+
         [Inject]
-        private void Construct(IHero hero,SavedDataStorage dataStorage)
+        private void Construct(IHero hero, SavedDataStorage dataStorage)
         {
             _hero = hero;
             _currentDampTime = _dampTime;
@@ -44,29 +43,36 @@ namespace Code.Logic.CameraLogic
         {
             if (_hero == null || !_isCanMove)
                 return;
-            
+
             _target = _isCanMove ? GetTarget() : transform.position;
 
             CameraMove();
         }
 
+        public void SetBonusSpeed(float value) => _bonusSpeed = value;
+
+        public void ResetBonusSpeed() => _bonusSpeed = 1;
+
         private void CameraMove()
         {
             Vector3 horizontalTarget = new Vector3(_target.x, transform.position.y, _cameraOffset.z);
-            transform.position = Vector3.SmoothDamp(transform.position, horizontalTarget, ref _velocity, _currentDampTime);
-            
+            transform.position = Vector3.SmoothDamp(transform.position, horizontalTarget, ref _velocity,
+                _currentDampTime * _bonusSpeed);
+
             Vector3 verticalTarget = new Vector3(transform.position.x, _target.y, _cameraOffset.z);
-            var verticalDampTime = _target.y >= transform.position.y ? _currentDampTime * 0.7f : _currentDampTime * 0.4f;
-            transform.position = Vector3.SmoothDamp(transform.position, verticalTarget, ref _velocity,verticalDampTime);
+            var verticalDampTime = (_target.y >= transform.position.y ? _currentDampTime : _currentDampTime * 0.4f) *
+                                   _bonusSpeed;
+            transform.position =
+                Vector3.SmoothDamp(transform.position, verticalTarget, ref _velocity, verticalDampTime);
         }
 
         private Vector3 GetTarget()
         {
             var y = _isCanMoveY ? _followingPosition.y : startPosY;
-           
+
             y += _isCanMoveY && _hero.Movement.IsCrouch ? -1 : 0;
-          
-            return new Vector3(_followingPosition.x,y,_cameraOffset.z);
+
+            return new Vector3(_followingPosition.x, y, _cameraOffset.z);
         }
 
         public void StopFollow()
@@ -102,7 +108,7 @@ namespace Code.Logic.CameraLogic
 
             Vector3Data savedPosition = savedData.CameraPosition.positionInScene[CurrentLevel()];
             transform.position = savedPosition.AsUnityVector();
-            
+
             if (_isTeleportToPlayerOnAwake)
             {
                 transform.position = _followingPosition;

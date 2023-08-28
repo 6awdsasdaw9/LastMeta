@@ -62,8 +62,8 @@ namespace Code.Character.Enemies
 
         private void Spawn()
         {
-            var spawnEnemyType = _spawnEnemyTypes[Random.Range(0, _spawnEnemyTypes.Length)];
-            var enemy = _enemiesFactory.InstantiateEnemy(spawnEnemyType, transform.position);
+            var enemyType = _spawnEnemyTypes[Random.Range(0, _spawnEnemyTypes.Length)];
+            var enemy = _enemiesFactory.GetEnemy(enemyType, transform.position);
             enemy.Revival();
             gameObject.SetActive(false);
         }

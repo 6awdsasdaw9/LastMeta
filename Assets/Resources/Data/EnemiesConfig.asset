@@ -56,11 +56,11 @@ MonoBehaviour:
     _isHasMelleAttack: 1
     MelleAttackData:
       Damage: 3
-      DamagedRadius: 1.7
+      DamagedRadius: 1
       EffectiveDistance: {x: 0.75, y: 1, z: 0}
       PushForce: 1
-      Cooldown: 0.7
-      AnimationSpeed: 1.7
+      Cooldown: 1
+      AnimationSpeed: 1.3
     _rangeAttackType: 2
     RangeAttackData:
       Damage: 0
@@ -71,9 +71,9 @@ MonoBehaviour:
       AnimationSpeed: 0
     SpikeAttackData:
       Cooldown: 1
-      AnimationSpeed: 1.3
+      AnimationSpeed: 1.2
     MoveSpeed: 0.3
-    PatrolSpeed: 0.3
+    PatrolSpeed: 0.4
     PatrolCooldown: 1
     AudioPath: {fileID: 11400000, guid: 41d1fc554631a9149b96b91813ddaaa1, type: 2}
   Prefabs:

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2001254266093413320}
   - component: {fileID: 2001254266093413319}
   - component: {fileID: 2001254266093413318}
+  - component: {fileID: 2039869072}
   m_Layer: 7
-  m_Name: DamageTrigger
+  m_Name: CollisionAttackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001254266093413316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.024999619, y: 0.040999994, z: 0}
+  m_LocalPosition: {x: 0.024999619, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,7 +46,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.38016605, y: 0.13210818, z: 1}
-  m_Center: {x: 0.00019693375, y: -0.038945913, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2001254266093413318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +63,18 @@ MonoBehaviour:
   type: 4
   isVisible: 0
   alpha: 130
+--- !u!114 &2039869072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001254266093413316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428fd2050f56a984791176e3ce28c388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2001254266152057503
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +160,8 @@ MonoBehaviour:
   Health: {fileID: 2001254266152057474}
   EnemyAudio: {fileID: 7758060779780113923}
   Animator: {fileID: 2001254266152057477}
-  collisionsController: {fileID: 6906309120576293220}
+  CollisionsController: {fileID: 6906309120576293220}
+  Death: {fileID: 2001254266152057528}
   RotateToForward: {fileID: 2001254266152057475}
   Patrol: {fileID: 2001254266152057476}
   CollisionAttack: {fileID: 2001254266152057479}
@@ -179,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89705415f1d405d81fdbf98c4f34622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colliderObserver: {fileID: 0}
+  _colliderObserver: {fileID: 2039869072}
 --- !u!114 &2001254266152057476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c414b48fa2f404091d2dd06f2a83f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patrolDistance: -5.88
+  _patrolDistance: 6
   _agent: {fileID: 2001254266152057529}
 --- !u!114 &2001254266152057477
 MonoBehaviour:
@@ -234,8 +248,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshAgent: {fileID: 2001254266152057529}
-  _sprite: {fileID: 6211527913008078396}
-  collisionsController: {fileID: 0}
+  _spriteFlipper:
+    _sprite: {fileID: 6211527913008078396}
+  _collisionsController: {fileID: 6906309120576293220}
 --- !u!114 &2001254266152057472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8178cf40955421b8bd22ed4697dc37a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionObserver: {fileID: 0}
+  _collisionObserver: {fileID: 6211527914527776476}
   _enemy: {fileID: 2001254266152057478}
 --- !u!114 &2001254266152057528
 MonoBehaviour:
@@ -546,7 +561,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6211527914527776478}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.024999619, y: 0.022, z: 0}
+  m_LocalPosition: {x: 0.024999619, y: 0.1215, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -565,7 +580,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.228446, y: 0.039169192, z: 1}
-  m_Center: {x: 0.0011069775, y: 0.08541541, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6211527914527776476
 MonoBehaviour:
   m_ObjectHideFlags: 0

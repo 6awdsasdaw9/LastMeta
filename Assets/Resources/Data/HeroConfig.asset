@@ -49,18 +49,21 @@ MonoBehaviour:
         Damage: 5
         DamagedRadius: 2
         EffectiveDistance: {x: 0.5, y: 0.7, z: 0}
+        PushForce: 1
+        Cooldown: 0.7
+        AnimationSpeed: 1.488
+    - attackData:
+        Damage: 0
+        DamagedRadius: 0
+        EffectiveDistance: {x: 0.5, y: 1, z: 0}
+        PushForce: 1
         Cooldown: 0.7
         AnimationSpeed: 1
     - attackData:
         Damage: 0
         DamagedRadius: 0
         EffectiveDistance: {x: 0.5, y: 1, z: 0}
-        Cooldown: 0.7
-        AnimationSpeed: 1
-    - attackData:
-        Damage: 0
-        DamagedRadius: 0
-        EffectiveDistance: {x: 0.5, y: 1, z: 0}
+        PushForce: 1
         Cooldown: 0.7
         AnimationSpeed: 1
     GunAttackLevelData:
@@ -69,6 +72,7 @@ MonoBehaviour:
         Damage: 0
         DamagedRadius: 0
         EffectiveDistance: {x: 0.5, y: 1, z: 0}
+        PushForce: 1
         Cooldown: 0.7
         AnimationSpeed: 1
       AttackCooldown: 0.3
@@ -96,6 +100,7 @@ MonoBehaviour:
         Damage: 0
         DamagedRadius: 0
         EffectiveDistance: {x: 0.5, y: 1, z: 0}
+        PushForce: 1
         Cooldown: 0.7
         AnimationSpeed: 1
       AttackCooldown: 0
@@ -121,6 +126,7 @@ MonoBehaviour:
         Damage: 0
         DamagedRadius: 0
         EffectiveDistance: {x: 0.5, y: 1, z: 0}
+        PushForce: 1
         Cooldown: 0.7
         AnimationSpeed: 1
       AttackCooldown: 0

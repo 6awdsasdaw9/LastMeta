@@ -19,9 +19,9 @@ namespace Code.Logic.Common
 
         private bool _isLookLeft;
         public Action<bool> OnFlipLeft;
-        
 
-        public void TryFlip()
+
+        private void Update()
         {
             if (IsCorrectRotation())
             {
@@ -31,10 +31,11 @@ namespace Code.Logic.Common
             _isLookLeft = !_isLookLeft;
             _spriteFlipper.Flip(_isLookLeft);
             _collisionsController?.Flip();
-            OnFlipLeft?.Invoke(_isLookLeft); 
+            OnFlipLeft?.Invoke(_isLookLeft);
         }
 
-        private bool IsCorrectRotation() => 
+
+        private bool IsCorrectRotation() =>
             _isLookLeft == _meshAgent.velocity.x < 0 || _meshAgent.velocity.x == 0;
 
         public override void DisableComponent()
