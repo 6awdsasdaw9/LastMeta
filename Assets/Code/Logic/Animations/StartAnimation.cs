@@ -43,5 +43,12 @@ namespace Code.Logic.Objects.Animations
             _animator?.SetTrigger(_startIdle_t);
         }
 
+        /// <summary>
+        /// Animation event
+        /// </summary>
+        private void StartAnimation_PlayEndEvent()
+        {
+            OnEndAnimation?.Invoke();
+        }
     }
 }

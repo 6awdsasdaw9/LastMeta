@@ -6,6 +6,7 @@ namespace Code.Logic.Collisions
     {
         [SerializeField] private Collider[] _colliders;
 
+        //--------------------------------------------------------------------------------------------------------------
         public void SetActive(bool isActive)
         {
             foreach (var collider in _colliders)
@@ -15,7 +16,7 @@ namespace Code.Logic.Collisions
         }
         
         //--------------------------------------------------------------------------------------------------------------
-
+        
         public void Flip()
         {
             foreach (var collider in _colliders)
@@ -39,5 +40,6 @@ namespace Code.Logic.Collisions
                 collider.transform.localPosition = localPosition;
             }
         }
+        //--------------------------------------------------------------------------------------------------------------
     }
 }

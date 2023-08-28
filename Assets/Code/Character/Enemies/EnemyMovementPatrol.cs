@@ -13,7 +13,7 @@ namespace Code.Character.Enemies
         [SerializeField] private float _patrolDistance = 1;
         [SerializeField] private NavMeshAgent _agent;
 
-        private Cooldown _cooldown;
+        private readonly Cooldown _cooldown = new Cooldown();
         private float _speed;
         private float _minimalDistance;
         private Vector3 _startPoint, _finishPoint, _targetPoint;
@@ -22,23 +22,15 @@ namespace Code.Character.Enemies
 
         public void Init(float speed, float cooldown, IEnemyStats enemyStats)
         {
+            Logg.ColorLog("EnemyMovementPatrol: Init");
             _speed = speed;
             _agent.speed = _speed;
-            _cooldown = new Cooldown();
             _cooldown.SetMaxTime(cooldown);
             _enemyStats = enemyStats;
-        }
-
-        private void Awake()
-        {
-            if (_agent == null)
-            {
-                Logg.ColorLog($"EnemyMovementPatrol from {gameObject.name} has not Nav Mesh Agent",LogStyle.Warning);
-            }
             _minimalDistance = _agent.stoppingDistance;
             InitPatrolPoints();
         }
-
+        
         private void Update()
         {
             if (_enemyStats is { IsBlock: false })

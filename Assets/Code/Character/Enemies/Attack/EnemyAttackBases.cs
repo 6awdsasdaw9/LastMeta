@@ -1,10 +1,11 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Code.Character.Enemies
 {
     public abstract class EnemyAttack : MonoBehaviour
     {
-        protected bool IsActive { get; private set; }
+        [ShowInInspector,ReadOnly] protected bool IsActive { get; private set; }
         public void DisableAttack() => IsActive = false;
         public void EnableAttack() => IsActive = true;
     }

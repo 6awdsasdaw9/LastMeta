@@ -1,5 +1,4 @@
 using System;
-using Code.Debugers;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,8 +19,7 @@ namespace Code.Character.Enemies
         private static readonly int _death_t = Animator.StringToHash("Die");
         private static readonly int _enter_t = Animator.StringToHash("Enter");
         private static readonly int _disable_t = Animator.StringToHash("Disable");
-
-        public event Action OnEntet;
+        public event Action OnEndEnterEvent;
 
         private void OnEnable()
         {
@@ -30,7 +28,7 @@ namespace Code.Character.Enemies
 
         private void OnEnter()
         {
-            OnEntet?.Invoke();
+            OnEndEnterEvent?.Invoke();
         }
 
         private void Update()
@@ -40,8 +38,7 @@ namespace Code.Character.Enemies
 
         public void PlayEnter(Action onEnter = null)
         {
-            OnEntet = onEnter;
-            Logg.ColorLog($"{gameObject.name} PlayEnter");
+            OnEndEnterEvent = onEnter;
             _animator.SetTrigger(_enter_t);
         }
 

@@ -1,9 +1,8 @@
-using System;
 using Code.Character.Enemies.EnemiesInterfaces;
 using Code.Logic.Common;
-using Code.Logic.Common.Interfaces;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Character.Enemies.EnemiesFacades
 {
@@ -16,7 +15,7 @@ namespace Code.Character.Enemies.EnemiesFacades
         public EnemyCollisionAttack CollisionAttack;
         public VulnerableZone VulnerableZone;
         
-        protected override void InitComponents()
+        protected override void InitComponents(DiContainer container)
         {
             Stats = new SpiderStats(this);
             EnemyAudio.Init(data.AudioPath);

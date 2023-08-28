@@ -1,5 +1,6 @@
 using System;
 using Code.Data.GameData;
+using Code.Debugers;
 using Code.Logic.Common.Interfaces;
 using UnityEngine;
 
@@ -37,6 +38,7 @@ namespace Code.Character.Enemies
         public void TakeDamage(float damage)
         {
             Current -= damage;
+            Logg.ColorLog($"Enemy health: take damage -> {Current}");
             OnHealthChanged?.Invoke();
         }
 

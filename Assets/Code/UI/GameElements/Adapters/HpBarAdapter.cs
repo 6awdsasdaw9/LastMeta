@@ -7,19 +7,25 @@ namespace Code.UI.GameElements.Adapters
     {
         protected HpBar _hpBar;
         protected ICharacterHealth _health;
-        
-        protected  void Start()
+
+        protected void Start()
         {
-            _health = GetComponent<ICharacterHealth>();
-            _health.OnHealthChanged += UpdateHpBar;
+            TryGetComponent(out _health);
+            _health ??= GetComponentInChildren<ICharacterHealth>();
+            if (_health != null)
+            {
+                _health.OnHealthChanged += UpdateHpBar;
+            }
         }
-        
+
         private void OnDestroy()
         {
             if (_health != null)
+            {
                 _health.OnHealthChanged -= UpdateHpBar;
+            }
         }
-        
+
         private void UpdateHpBar()
         {
             _hpBar.SetValue(_health.Current, _health.Max);

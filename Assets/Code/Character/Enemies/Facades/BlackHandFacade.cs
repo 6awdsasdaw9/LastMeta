@@ -1,7 +1,10 @@
 using Code.Character.Enemies.EnemiesInterfaces;
+using Code.Data.Configs;
 using Code.Logic.Common;
+using Code.Logic.Objects.Spikes;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
 
 namespace Code.Character.Enemies.EnemiesFacades
 {
@@ -11,16 +14,18 @@ namespace Code.Character.Enemies.EnemiesFacades
         public EnemyCollisionAttack CollisionAttack;
         public EnemyMelleAttack MelleAttack;
         public EnemySpikeRangeAttack SpikeAttack;
+        public MissileSpikeController MissileSpike;
         public EnemyMovementPatrol Patrol;
         public RotateToHero RotateToHero;
         public AgentRotateToForfard RotateToForward;
         
-        protected override void InitComponents()
+        protected override void InitComponents(DiContainer container)
         {
             Stats = new BlackHandStats(this);
             CollisionAttack.Init(hero,data.CollisionAttackData,collisionAttackDamage);
             MelleAttack.Init(hero, data.MelleAttackData, Stats, Animator);
             SpikeAttack.Init(hero, Stats, data.SpikeAttackData, Animator);
+            MissileSpike.Init(hero, container.Resolve<ObjectsConfig>());
             Patrol.Init(data.PatrolSpeed, data.PatrolCooldown, Stats);
             EnemyAudio.Init(data.AudioPath);
             Health.Set(data.HealthData);
@@ -28,15 +33,29 @@ namespace Code.Character.Enemies.EnemiesFacades
 
         public override void Die()
         {
+            Animator.PlayDeath();
+            
             Stats.SubscribeToEvents(false);
+            
+            SpikeAttack.SubscribeToEvents(false);
+            MelleAttack.SubscribeToEvents(false);
             CollisionAttack.SubscribeToEvents(false);
+            CollisionsController.SetActive(false);
         }
 
         public override void Revival()
         {
+            Animator.PlayEnter();
+         
             Health.Reset();
-            Stats.SubscribeToEvents(true);
+            Stats.UnBlock();
+            
+            Death.SubscribeToEvents(true);
+            
+            SpikeAttack.SubscribeToEvents(true);
+            MelleAttack.SubscribeToEvents(true);
             CollisionAttack.SubscribeToEvents(true);
+            CollisionsController.SetActive(true);
         }
         
         public override void OnPause()

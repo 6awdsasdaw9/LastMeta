@@ -38,10 +38,10 @@ namespace Code.Character.Enemies.EnemiesFacades
 
             container.Resolve<PauseListenerStorage>().Add(this);
 
-            InitComponents();
+            InitComponents(container);
         }
 
-        protected abstract void InitComponents();
+        protected abstract void InitComponents(DiContainer container);
 
         public abstract void Die();
 
@@ -59,7 +59,7 @@ namespace Code.Character.Enemies.EnemiesFacades
         {
             Death = GetComponent<EnemyDeath>();
             EnemyAudio = GetComponentInChildren<EnemyAudio>();
-            Health = GetComponent<EnemyHealth>();
+           // Health = GetComponent<EnemyHealth>();
             Animator = GetComponent<EnemyAnimator>();
             CollisionsController = GetComponent<CollisionsController>();
         }

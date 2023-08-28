@@ -22,7 +22,8 @@ namespace Code.Infrastructure.Factories
             var newEnemy = GameObject.Instantiate(prefab, postion, Quaternion.identity);
 
             newEnemy.Construct(_container);
-
+          
+            
             return newEnemy;
         }
     }

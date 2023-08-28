@@ -1,17 +1,19 @@
 using Code.Character.Enemies.EnemiesInterfaces;
 using Code.Character.Hero.HeroInterfaces;
+using Code.Data.Configs;
 using Code.Data.GameData;
 using Code.Logic.Objects.Spikes;
 using Code.Services;
+using Code.Services.EventsSubscribes;
 using UnityEngine;
 
 namespace Code.Character.Enemies
 {
-    public class EnemySpikeRangeAttack : EnemyRangeAttackBase
+    public class EnemySpikeRangeAttack : EnemyRangeAttackBase, IEventsSubscriber
     {
         [SerializeField] private MissileSpikeController _spikeController;
 
-        private Cooldown _attackCooldown;
+        private readonly Cooldown _attackCooldown = new();
         private IEnemyStats _enemyStats;
         private EnemyAnimator _animator;
         private IHero _hero;
@@ -26,8 +28,22 @@ namespace Code.Character.Enemies
             _animator = enemyAnimator;
             _animator.SetRangeAttackAnimationSpeed(data.AnimationSpeed);
             
-            _attackCooldown = new Cooldown();
             _attackCooldown.SetMaxTime(data.Cooldown);
+        }
+
+
+        public void SubscribeToEvents(bool flag)
+        {
+            if (flag)
+            {
+                _animator.Events.OnRangeAttack += OnRangeAttack;
+                _animator.Events.OnRangeAttackEnded += OnRangeAttackEnded;
+            }
+            else
+            {
+                _animator.Events.OnRangeAttack -= OnRangeAttack;
+                _animator.Events.OnRangeAttackEnded -= OnRangeAttackEnded;
+            }
         }
 
         private void Update()
@@ -55,7 +71,6 @@ namespace Code.Character.Enemies
         private bool CanAttack() => IsActive && _attackCooldown.IsUp() && !IsAttacking
                                     &&_hero.Stats.CurrentHeath > 0 && _hero.Stats.OnGround 
                                     && !_enemyStats.IsBlock;
-        
     }
       
 }

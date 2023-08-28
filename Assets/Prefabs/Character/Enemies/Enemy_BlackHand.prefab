@@ -286,10 +286,10 @@ GameObject:
   - component: {fileID: 2108457381744422087}
   - component: {fileID: 1137969862256876921}
   - component: {fileID: 4204386684287309251}
-  - component: {fileID: 1137969862256876916}
   - component: {fileID: 1137969862256876917}
   - component: {fileID: 1137969862256876923}
   - component: {fileID: 7173237155557771335}
+  - component: {fileID: 8543463500204287670}
   m_Layer: 9
   m_Name: Enemy_BlackHand
   m_TagString: Untagged
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
-  Health: {fileID: 1137969862256876916}
+  Health: {fileID: 1851469389362018484}
   EnemyAudio: {fileID: 7195026053596736721}
   Animator: {fileID: 4204386684287309251}
   CollisionsController: {fileID: 7173237155557771335}
@@ -362,6 +362,7 @@ MonoBehaviour:
   CollisionAttack: {fileID: 8415187842658759536}
   MelleAttack: {fileID: 8177802331461003248}
   SpikeAttack: {fileID: 2108457380478618249}
+  MissileSpike: {fileID: 3305203062738246663}
   Patrol: {fileID: 7670385725047703730}
   RotateToHero: {fileID: 1137969862256876921}
   RotateToForward: {fileID: 2108457381744422087}
@@ -512,18 +513,6 @@ MonoBehaviour:
   _animationEvents: {fileID: 3417447798300044734}
   _animator: {fileID: 3596244605175402451}
   _agent: {fileID: 6173131858378004887}
---- !u!114 &1137969862256876916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5935935822136764806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32f6220a2eb13a44aa0f9bc5c87381c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1137969862256876917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,6 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyAudio: {fileID: 7195026053596736721}
+  _hpBar: {fileID: 2664332295752958928}
 --- !u!114 &1137969862256876923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,6 +557,18 @@ MonoBehaviour:
   - {fileID: 4909348111761609901}
   - {fileID: 8177802333424465990}
   - {fileID: 2108457382048457689}
+--- !u!114 &8543463500204287670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935935822136764806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f6220a2eb13a44aa0f9bc5c87381c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6594215845298580769
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +580,7 @@ GameObject:
   - component: {fileID: 2338872276891187398}
   - component: {fileID: 6008849571521801547}
   - component: {fileID: 6997315994296416909}
+  - component: {fileID: 1851469389362018484}
   m_Layer: 9
   m_Name: BodyCollider
   m_TagString: Untagged
@@ -624,6 +627,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 135530b8598c41769e210a32c600179e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1851469389362018484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594215845298580769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f6220a2eb13a44aa0f9bc5c87381c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8177802333424465988
@@ -882,6 +897,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ae0027f70d350a4bafe2bf256b46052, type: 3}
+--- !u!114 &2664332295752958928 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8169332356041449181, guid: 1ae0027f70d350a4bafe2bf256b46052, type: 3}
+  m_PrefabInstance: {fileID: 6171849475829554445}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d8c104101f4839aeab17b6fc657339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8177802332815217491 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2655913772648992350, guid: 1ae0027f70d350a4bafe2bf256b46052, type: 3}

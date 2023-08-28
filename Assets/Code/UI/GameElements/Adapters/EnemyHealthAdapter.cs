@@ -6,10 +6,10 @@ namespace Code.UI.GameElements.Adapters
     public class EnemyHealthAdapter : HpBarAdapter
     {
         [SerializeField] private EnemyAudio _enemyAudio;
+        [SerializeField] private HpBar _hpBar;
         protected new void Start()
         {
             base.Start();
-            _hpBar = GetComponentInChildren<HpBar>();
             _health.OnHealthChanged += _enemyAudio.AudioPlayTakeDamage;
         }
         private void OnDisable()

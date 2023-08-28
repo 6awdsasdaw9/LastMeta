@@ -76,3 +76,6 @@ MonoBehaviour:
     PatrolSpeed: 0.2
     PatrolCooldown: 1
     AudioPath: {fileID: 11400000, guid: 41d1fc554631a9149b96b91813ddaaa1, type: 2}
+  Prefabs:
+  - {fileID: 2108457380490255065, guid: bb228830be456474db5134492cbf334c, type: 3}
+  - {fileID: 2001254266152057478, guid: 9d299ef45c87e1e45ba56c071fc71a20, type: 3}

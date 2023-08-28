@@ -12,12 +12,10 @@ namespace Code.Logic.Objects.Spikes
     {
         [SerializeField] private SpikeType _type;
         [SerializeField] private SpikeController _spikeController;
-
-        [Inject]
-        private void Construct(DiContainer container)
+        
+        public void Init(IHero hero, ObjectsConfig objectsConfig)
         {
-            var hero = container.Resolve<IHero>();
-            var data = container.Resolve<ObjectsConfig>().SpikesData.FirstOrDefault(s => s.Type == _type);
+            var data = objectsConfig.SpikesData.FirstOrDefault(s => s.Type == _type);
             _spikeController.Init(owner: transform, hero: hero, data: data);
         }
 
