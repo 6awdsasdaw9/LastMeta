@@ -1,5 +1,4 @@
 using System;
-using Code.Debugers;
 using UnityEngine;
 
 namespace Code.Logic.Objects.Animations
@@ -12,8 +11,9 @@ namespace Code.Logic.Objects.Animations
         
         private readonly int _start_t = Animator.StringToHash("Start");
         private readonly int _startIdle_t = Animator.StringToHash("StartIdle");
-
-        public event Action OnEndAnimation;
+        public event Action OnStartAnimationPlayed;
+        public event Action OnStopAnimationPlayed;
+        
         private bool _isDestoy;
 
         
@@ -22,34 +22,54 @@ namespace Code.Logic.Objects.Animations
             _isDestoy = true;
         }
 
-        public void PlayStart(Action OnEndAnimationEvent = null)
+        public void PlayStart(Action OnStartAnimationPlayed = null)
         {
             if (_isDestoy)
             {
                 return;
             }
-            OnEndAnimation = OnEndAnimationEvent;
+            this.OnStartAnimationPlayed = OnStartAnimationPlayed;
             _animator?.SetTrigger(_start_t);
         }
         
-        public void PlayStartIdle()
+        public void PlayStartIdle(Action OnStartAnimationPlayed = null)
         {
             if (_isDestoy)
             {
                 return;
             }
             _animator?.SetTrigger(_startIdle_t);
+            OnStartAnimationPlayed?.Invoke();
         }
-        public void PlayStopIdle()
+        public void PlayStopIdle(Action OnStopAnimationPlayed = null)
         {
             if(_isDestoy)return;
             _animator?.SetTrigger(_stopIdle_t);
+            OnStopAnimationPlayed?.Invoke();
         }
 
-        public void PlayStop()
+        public void PlayStop(Action OnStopAnimationPlayed = null)
         {
             if(_isDestoy)return;
+            this.OnStopAnimationPlayed = OnStopAnimationPlayed;
             _animator?.SetTrigger(_stop_t);
         }
+
+        /// <summary>
+        /// Animation event
+        /// </summary>
+        private void StartStopAnimation_StartAnimationPlayedEvent()
+        {
+            OnStartAnimationPlayed?.Invoke();
+        }
+        
+        /// <summary>
+        /// Animation event
+        /// </summary>
+        private void StartStopAnimation_StopAnimationPlayedEvent()
+        {
+            OnStopAnimationPlayed?.Invoke();
+        }
+        
     }
 }

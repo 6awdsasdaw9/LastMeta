@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3583130101052238532}
   - component: {fileID: 3583130101052238533}
   - component: {fileID: 6338574497877869372}
+  - component: {fileID: 2773275432616409526}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -106,6 +107,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2773275432616409526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583130101052238535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01dca9e8cd1d4b17a26518dad48ab298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 6338574497877869372}
 --- !u!1 &3583130102039650748
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +129,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3583130102039650747}
-  - component: {fileID: 3583130102039650749}
   - component: {fileID: 3583130102039650744}
   m_Layer: 0
   m_Name: Spike_SmallForward_Missile
@@ -141,19 +154,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3583130102039650749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3583130102039650748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01dca9e8cd1d4b17a26518dad48ab298, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 6338574497877869372}
 --- !u!114 &3583130102039650744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 1
   _spikeController:
-    _animation: {fileID: 3583130102039650749}
+    _animation: {fileID: 2773275432616409526}
     _damageTrigger: {fileID: 8305236936660069474}
 --- !u!1 &6022582749042185044
 GameObject:

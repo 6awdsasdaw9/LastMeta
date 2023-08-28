@@ -20,7 +20,7 @@ namespace Code.Character.Enemies
 
         public bool IsAttacking;
 
-        public void Init(IHero hero,IEnemyStats enemyStats,SpikeAttackData data,EnemyAnimator enemyAnimator)
+        public void Init(IHero hero, IEnemyStats enemyStats, SpikeAttackData data, EnemyAnimator enemyAnimator)
         {
             _hero = hero;
             _enemyStats = enemyStats;

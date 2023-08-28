@@ -4,7 +4,6 @@ using Code.Logic.Collisions;
 using Code.Logic.Collisions.Triggers;
 using Code.Logic.Graphics;
 using UnityEngine;
-using Zenject;
 
 namespace Code.Logic.Common
 {
@@ -18,8 +17,7 @@ namespace Code.Logic.Common
 
         public Action<bool> OnFlipLeft;
 
-        [Inject]
-        private void Construct(IHero hero)
+        public void Init(IHero hero)
         {
             _heroTransform = hero.Transform;
         }
@@ -49,5 +47,6 @@ namespace Code.Logic.Common
             _collisionsController = GetComponent<CollisionsController>();
 
         }
+
     }
 }

@@ -26,7 +26,7 @@ namespace Code.Logic.Objects.Spikes
         private AudioEvent _audioEvent = new();
 
         private CancellationTokenSource _cts;
-        
+
         private bool _isActive;
         private bool _isWatching;
         private bool _isAttacking;
@@ -39,7 +39,7 @@ namespace Code.Logic.Objects.Spikes
             _cooldown = new Cooldown();
             _cooldown.SetMaxTime(_data.Cooldown);
         }
-        
+
         public void StartReaction()
         {
             if (_isActive) return;
@@ -60,7 +60,7 @@ namespace Code.Logic.Objects.Spikes
         {
             _isActive = flag;
             _damageTrigger.gameObject.SetActive(flag);
-            
+
             if (flag)
             {
                 _damageTrigger.OnEnter += OnEnter;
@@ -72,6 +72,7 @@ namespace Code.Logic.Objects.Spikes
                 _damageTrigger.OnExit -= OnExit;
             }
         }
+
         private void OnEnter(GameObject obj)
         {
             _isWatching = true;
@@ -83,7 +84,7 @@ namespace Code.Logic.Objects.Spikes
             _isWatching = false;
             _cts?.Cancel();
         }
-        
+
         public void SetStartReaction()
         {
             _animation.PlayStartIdle();
@@ -98,32 +99,33 @@ namespace Code.Logic.Objects.Spikes
         {
             FollowingTrigger().Forget();
         }
-        
+
         private async UniTaskVoid FollowingTrigger()
         {
-            if(_isAttacking) return;
-            
+            if (_isAttacking) return;
+
             _isAttacking = true;
             _cts?.Cancel();
             _cts = new CancellationTokenSource();
-            
+
             _cooldown.SetZeroCooldown();
-            
+
             await UniTask.Delay(
-                TimeSpan.FromSeconds(_data.DelayAfterAttack), 
+                TimeSpan.FromSeconds(_data.DelayAfterAttack),
                 cancellationToken: _hero.Transform.gameObject.GetCancellationTokenOnDestroy());
-            
+
             while (_isActive && _isWatching)
             {
                 await UniTask.WaitUntil(
                     () => _cooldown.IsUp(),
                     cancellationToken: _hero.Transform.gameObject.GetCancellationTokenOnDestroy());
-                
-                if(!_isActive || !_isWatching) break;
-                
+
+                if (!_isActive || !_isWatching) break;
+
                 AttackHero();
                 _cooldown.SetMaxCooldown();
             }
+
             _isAttacking = false;
         }
 
@@ -134,6 +136,4 @@ namespace Code.Logic.Objects.Spikes
             _pusher.Push();
         }
     }
-    
-    
 }

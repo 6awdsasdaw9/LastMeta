@@ -24,6 +24,7 @@ namespace Code.Character.Enemies.EnemiesFacades
         protected override void InitComponents(DiContainer container)
         {
             Stats = new BlackHandStats(this);
+            RotateToHero.Init(hero);
             CollisionAttack.Init(hero,data.CollisionAttackData,collisionAttackDamage);
             MelleAttack.Init(hero, data.MelleAttackData, Stats, Animator);
             SpikeAttack.Init(hero, Stats, data.SpikeAttackData, Animator);
@@ -38,6 +39,8 @@ namespace Code.Character.Enemies.EnemiesFacades
             Animator.PlayDeath();
             Stats.Block();
             HealthBar.SetActive(false);
+            
+            MissileSpike.EndReaction();
             
             SpikeAttack.SubscribeToEvents(false);
             MelleAttack.SubscribeToEvents(false);
