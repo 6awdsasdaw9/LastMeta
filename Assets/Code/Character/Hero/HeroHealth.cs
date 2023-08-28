@@ -11,7 +11,7 @@ namespace Code.Character.Hero
     {
         private IHero _hero;
         private HealthData _healthData = new();
-        public event Action OnHealthChanged;
+        public  Action OnHealthChanged { get; set; }
 
         [Inject]
         private void Construct()

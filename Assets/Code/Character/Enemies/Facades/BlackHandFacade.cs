@@ -15,10 +15,12 @@ namespace Code.Character.Enemies.EnemiesFacades
         public EnemyMelleAttack MelleAttack;
         public EnemySpikeRangeAttack SpikeAttack;
         public MissileSpikeController MissileSpike;
+        [Space]
         public EnemyMovementPatrol Patrol;
         public RotateToHero RotateToHero;
         public AgentRotateToForfard RotateToForward;
-        
+        [Space] 
+        public GameObject HealthBar;
         protected override void InitComponents(DiContainer container)
         {
             Stats = new BlackHandStats(this);
@@ -34,8 +36,8 @@ namespace Code.Character.Enemies.EnemiesFacades
         public override void Die()
         {
             Animator.PlayDeath();
-            
-            Stats.SubscribeToEvents(false);
+            Stats.Block();
+            HealthBar.SetActive(false);
             
             SpikeAttack.SubscribeToEvents(false);
             MelleAttack.SubscribeToEvents(false);
@@ -45,17 +47,19 @@ namespace Code.Character.Enemies.EnemiesFacades
 
         public override void Revival()
         {
-            Animator.PlayEnter();
+            Animator.PlayEnter(() =>
+            {
+                HealthBar.SetActive(true);
+                Stats.UnBlock();
+                Health.Reset();
+                
+                Death.SubscribeToEvents(true);
+                SpikeAttack.SubscribeToEvents(true);
+                MelleAttack.SubscribeToEvents(true);
+                CollisionAttack.SubscribeToEvents(true);
+                CollisionsController.SetActive(true);
+            });
          
-            Health.Reset();
-            Stats.UnBlock();
-            
-            Death.SubscribeToEvents(true);
-            
-            SpikeAttack.SubscribeToEvents(true);
-            MelleAttack.SubscribeToEvents(true);
-            CollisionAttack.SubscribeToEvents(true);
-            CollisionsController.SetActive(true);
         }
         
         public override void OnPause()

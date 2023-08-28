@@ -1,3 +1,4 @@
+using Code.Debugers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ namespace Code.UI.GameElements
         {
             _currentValue = current / max;
             _value.fillAmount = _currentValue;
+            Logg.ColorLog($"Hp bar({gameObject.name}) value = {_currentValue}",ColorType.Orange);
         }
     }
 }

@@ -192,7 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value: {fileID: 2655913772405436556}
   _backgroundValue: {fileID: 2298235787282026793}
-  _speed: 0.2
+  _speed: 0.7
 --- !u!1 &2655913773620847591
 GameObject:
   m_ObjectHideFlags: 0

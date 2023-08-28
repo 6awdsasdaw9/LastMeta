@@ -366,6 +366,7 @@ MonoBehaviour:
   Patrol: {fileID: 7670385725047703730}
   RotateToHero: {fileID: 1137969862256876921}
   RotateToForward: {fileID: 2108457381744422087}
+  HealthBar: {fileID: 8177802332815217495}
 --- !u!114 &1907010970399895141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,7 +527,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyAudio: {fileID: 7195026053596736721}
-  _hpBar: {fileID: 2664332295752958928}
+  _enemyHpBar: {fileID: 2664332295752958928}
+  _health: {fileID: 1851469389362018484}
 --- !u!114 &1137969862256876923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,6 +809,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5935935822136764800}
     m_Modifications:
+    - target: {fileID: 2655913772405436556, guid: 1ae0027f70d350a4bafe2bf256b46052, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2655913772648992346, guid: 1ae0027f70d350a4bafe2bf256b46052, type: 3}
       propertyPath: m_Name
       value: Canvas_EnemyHpBar
@@ -902,7 +908,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8169332356041449181, guid: 1ae0027f70d350a4bafe2bf256b46052, type: 3}
   m_PrefabInstance: {fileID: 6171849475829554445}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8177802332815217495}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5d8c104101f4839aeab17b6fc657339, type: 3}
@@ -911,5 +917,10 @@ MonoBehaviour:
 --- !u!224 &8177802332815217491 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2655913772648992350, guid: 1ae0027f70d350a4bafe2bf256b46052, type: 3}
+  m_PrefabInstance: {fileID: 6171849475829554445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8177802332815217495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2655913772648992346, guid: 1ae0027f70d350a4bafe2bf256b46052, type: 3}
   m_PrefabInstance: {fileID: 6171849475829554445}
   m_PrefabAsset: {fileID: 0}

@@ -7,7 +7,7 @@ namespace Code.Logic.Common.Interfaces
     {
         float Current { get; }
         float Max { get; }
-        event Action OnHealthChanged;
+         Action OnHealthChanged { get; set; }
         void TakeDamage(float damage);
     }
 

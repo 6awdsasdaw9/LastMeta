@@ -9,7 +9,7 @@ namespace Code.Character.Enemies
     public class EnemyHealth : MonoBehaviour, ICharacterHealth
     {
         private readonly HealthData _data = new();
-        public event Action OnHealthChanged;
+        public Action OnHealthChanged { get; set; }
 
         public float Current
         {
@@ -49,6 +49,7 @@ namespace Code.Character.Enemies
             {
                 _data.CurrentHP = _data.MaxHP;
             }
+            OnHealthChanged?.Invoke();
         }
     }
 }

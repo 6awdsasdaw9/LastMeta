@@ -10,7 +10,7 @@ namespace Code.Logic.Objects.DestroyedObjects
         [SerializeField] private HealthData _healthData;
         public float Current => _healthData.CurrentHP;
         public float Max => _healthData.MaxHP;
-        public event Action OnHealthChanged;
+        public  Action OnHealthChanged { get; set; }
 
         private void OnEnable()
         {
