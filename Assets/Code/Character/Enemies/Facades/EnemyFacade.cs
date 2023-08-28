@@ -59,7 +59,6 @@ namespace Code.Character.Enemies.EnemiesFacades
         {
             Death = GetComponent<EnemyDeath>();
             EnemyAudio = GetComponentInChildren<EnemyAudio>();
-           // Health = GetComponent<EnemyHealth>();
             Animator = GetComponent<EnemyAnimator>();
             CollisionsController = GetComponent<CollisionsController>();
         }

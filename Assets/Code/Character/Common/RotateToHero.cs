@@ -38,15 +38,15 @@ namespace Code.Logic.Common
             OnFlipLeft?.Invoke(_isLoockLeft);
         }
 
-        private bool IsCorrectRotation() =>
-            _isLoockLeft == !(transform.position.x < _heroTransform.position.x);
+        private bool IsCorrectRotation()
+        {
+            return _isLoockLeft == !(transform.position.x < _heroTransform.position.x);
+        }
 
         private void OnValidate()
         {
             _spriteFlipper.Validate(gameObject);
             _collisionsController = GetComponent<CollisionsController>();
-
         }
-
     }
 }

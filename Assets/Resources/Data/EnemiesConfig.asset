@@ -47,11 +47,11 @@ MonoBehaviour:
     AudioPath: {fileID: 11400000, guid: 536f58224f4120f489837674dc9c14fb, type: 2}
   - Type: 1
     HealthData:
-      MaxHP: 10
+      MaxHP: 20
       CurrentHP: 0
     CollisionAttackData:
       DamageMultiplayer: 1
-      PushForce: 3
+      PushForce: 0.5
       Cooldown: 0
     _isHasMelleAttack: 1
     MelleAttackData:
@@ -73,7 +73,7 @@ MonoBehaviour:
       Cooldown: 1
       AnimationSpeed: 1.3
     MoveSpeed: 0.3
-    PatrolSpeed: 0.2
+    PatrolSpeed: 0.3
     PatrolCooldown: 1
     AudioPath: {fileID: 11400000, guid: 41d1fc554631a9149b96b91813ddaaa1, type: 2}
   Prefabs:

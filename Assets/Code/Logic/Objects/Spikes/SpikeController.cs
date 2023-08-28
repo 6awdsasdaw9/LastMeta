@@ -27,7 +27,6 @@ namespace Code.Logic.Objects.Spikes
 
         private CancellationTokenSource _cts;
 
-        private bool _isActive;
         private bool _isWatching;
         private bool _isAttacking;
 
@@ -42,7 +41,6 @@ namespace Code.Logic.Objects.Spikes
 
         public void StartReaction()
         {
-            if (_isActive) return;
             SubscribeToEvents(true);
             _animation.PlayStart();
             _audioEvent.PlayAudioEvent(_data.AudioData.EnableAudioEvent);
@@ -50,15 +48,14 @@ namespace Code.Logic.Objects.Spikes
 
         public void EndReaction()
         {
-            if (!_isActive) return;
             SubscribeToEvents(false);
+            _isWatching = false;
             _audioEvent.PlayAudioEvent(_data.AudioData.DisableAudioEvent);
             _animation.PlayStop();
         }
 
         public void SubscribeToEvents(bool flag)
         {
-            _isActive = flag;
             _damageTrigger.gameObject.SetActive(flag);
 
             if (flag)
@@ -114,13 +111,13 @@ namespace Code.Logic.Objects.Spikes
                 TimeSpan.FromSeconds(_data.DelayAfterAttack),
                 cancellationToken: _hero.Transform.gameObject.GetCancellationTokenOnDestroy());
 
-            while (_isActive && _isWatching)
+            while (_isWatching)
             {
                 await UniTask.WaitUntil(
                     () => _cooldown.IsUp(),
                     cancellationToken: _hero.Transform.gameObject.GetCancellationTokenOnDestroy());
 
-                if (!_isActive || !_isWatching) break;
+                if (!_isWatching) break;
 
                 AttackHero();
                 _cooldown.SetMaxCooldown();
