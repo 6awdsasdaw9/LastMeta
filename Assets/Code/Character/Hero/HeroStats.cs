@@ -44,6 +44,7 @@ namespace Code.Character.Hero.HeroInterfaces
         public float Speed => _heroConfig.HeroParams.MaxSpeed;
         public float JumpHeight => _heroConfig.HeroParams.JumpHeight;
         public int AirJump => 0;
+        public float MelleAttackSpeed => 0;
 
         #endregion
     }

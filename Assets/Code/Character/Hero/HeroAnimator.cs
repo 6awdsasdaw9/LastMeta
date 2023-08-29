@@ -19,7 +19,17 @@ namespace Code.Character.Hero
         private readonly int Crouch_b = Animator.StringToHash("Crouch");
         private readonly int Stunned_b = Animator.StringToHash("Stunned");
         private readonly int GunMode_b = Animator.StringToHash("Gun");
-        private void Awake() => _hero = GetComponent<IHero>();
+        private readonly int MeleeAttackSpeed_f = Animator.StringToHash("MelleAttackSpeed");
+        private readonly int RangeAttackSpeed_f = Animator.StringToHash("RangeAttackSpeed");
+        private readonly int MaxAttackCombo_i = Animator.StringToHash("MaxCombo");
+
+        public bool IsCalPlayAnimation => _animator != null && _animator.isActiveAndEnabled;
+
+        private void Awake()
+        {
+            _hero = GetComponent<IHero>();
+        }
+
         private void Update()
         {
             PlayMove();
@@ -27,8 +37,8 @@ namespace Code.Character.Hero
             PlayJump();
         }
 
-        public bool IsCalPlayAnimation => _animator != null && _animator.isActiveAndEnabled;
 
+        public void SetMaxCombo(int count) => _animator.SetInteger(MaxAttackCombo_i, count);
         public void PlayJump() => 
             _animator.SetBool(Jump_b, !_hero.Collision.OnGround);
 
@@ -55,5 +65,15 @@ namespace Code.Character.Hero
             _animator.SetBool(GunMode_b, true);
         public void PlayEnterHandMode() => 
             _animator.SetBool(GunMode_b, false);
+
+        public void SetMelleAttackSpeed(float value)
+        {
+            _animator.SetFloat(MeleeAttackSpeed_f,value);
+        }
+
+        public void SetRangeAttackSpeed(float value)
+        {
+            _animator.SetFloat(RangeAttackSpeed_f,value);
+        }
     }
 }

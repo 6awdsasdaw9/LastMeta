@@ -24,5 +24,6 @@ namespace Code.Character.Hero.HeroInterfaces
         float Speed { get; }
         float JumpHeight { get; }
         int AirJump { get; }
+        float MelleAttackSpeed { get; }
     }
 }

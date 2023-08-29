@@ -57,11 +57,11 @@ namespace Code.Logic.CameraLogic
         {
             Vector3 horizontalTarget = new Vector3(_target.x, transform.position.y, _cameraOffset.z);
             transform.position = Vector3.SmoothDamp(transform.position, horizontalTarget, ref _velocity,
-                _currentDampTime * _bonusSpeed);
+                _currentDampTime * (_bonusSpeed - _hero.Stats.ModeSpeedMultiplayer * 0.1f));
 
             Vector3 verticalTarget = new Vector3(transform.position.x, _target.y, _cameraOffset.z);
             var verticalDampTime = (_target.y >= transform.position.y ? _currentDampTime : _currentDampTime * 0.4f) *
-                                   _bonusSpeed;
+                                   (_bonusSpeed - _hero.Stats.ModeSpeedMultiplayer * 0.1f);
             transform.position =
                 Vector3.SmoothDamp(transform.position, verticalTarget, ref _velocity, verticalDampTime);
         }

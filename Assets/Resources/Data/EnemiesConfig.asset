@@ -30,6 +30,7 @@ MonoBehaviour:
       PushForce: 1
       Cooldown: 0.7
       AnimationSpeed: 1
+      MaxCombo: 1
     _rangeAttackType: 0
     RangeAttackData:
       Damage: 0
@@ -38,6 +39,7 @@ MonoBehaviour:
       PushForce: 1
       Cooldown: 0.7
       AnimationSpeed: 0
+      MaxCombo: 1
     SpikeAttackData:
       Cooldown: 0.7
       AnimationSpeed: 1
@@ -55,12 +57,13 @@ MonoBehaviour:
       Cooldown: 0
     _isHasMelleAttack: 1
     MelleAttackData:
-      Damage: 3
-      DamagedRadius: 1
+      Damage: 5
+      DamagedRadius: 1.5
       EffectiveDistance: {x: 0.75, y: 1, z: 0}
-      PushForce: 1
-      Cooldown: 1
+      PushForce: 1.5
+      Cooldown: 2
       AnimationSpeed: 1.3
+      MaxCombo: 1
     _rangeAttackType: 2
     RangeAttackData:
       Damage: 0
@@ -69,9 +72,10 @@ MonoBehaviour:
       PushForce: 1
       Cooldown: 0.7
       AnimationSpeed: 0
+      MaxCombo: 1
     SpikeAttackData:
-      Cooldown: 1
-      AnimationSpeed: 1.2
+      Cooldown: 0.5
+      AnimationSpeed: 1.3
     MoveSpeed: 0.3
     PatrolSpeed: 0.4
     PatrolCooldown: 1

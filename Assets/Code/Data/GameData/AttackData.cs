@@ -12,6 +12,7 @@ namespace Code.Data.GameData
         [Range(0, 3)]public float PushForce = 1;
         [Range(0, 15)]public float Cooldown = 0.7f;
         [Range(1,2.5f)]public float AnimationSpeed = 1;
+        [Range(1, 3)] public int MaxCombo = 1;
     }
 
     [Serializable]

@@ -92,6 +92,10 @@ namespace Code.Character.Hero
             ? _hero.Ability.SuperJumpAbility.CurrentData.MaxAirJump
             : 0;
 
+        public float MelleAttackSpeed => _hero.Ability.HandAttackAbility  is { CurrentData: { } }
+           ? _hero.Ability.HandAttackAbility.CurrentData.attackData.AnimationSpeed
+           :1;
+
         #endregion
     }
 }

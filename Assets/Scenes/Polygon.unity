@@ -430,7 +430,7 @@ MonoBehaviour:
   _isTeleportToPlayerOnAwake: 1
   _isCanMove: 1
   _isCanMoveY: 1
-  _dampTime: 0.75
+  _dampTime: 0.65
 --- !u!1 &185571882
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 635733159107482557, guid: 385bb7db740e69844b6e3236a647f7d5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: -0.21
       objectReference: {fileID: 0}
     - target: {fileID: 635733159107482557, guid: 385bb7db740e69844b6e3236a647f7d5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1350,8 +1350,12 @@ PrefabInstance:
       value: Toy (2)
       objectReference: {fileID: 0}
     - target: {fileID: 635733159981192376, guid: 385bb7db740e69844b6e3236a647f7d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 635733159981192376, guid: 385bb7db740e69844b6e3236a647f7d5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 635733159981192381, guid: 385bb7db740e69844b6e3236a647f7d5, type: 3}
       propertyPath: m_FlipX

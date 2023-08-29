@@ -3,6 +3,7 @@ namespace Code.Character.Hero.HeroInterfaces
     public interface IHeroAnimator 
     {
         bool IsCalPlayAnimation { get; }
+        void SetMaxCombo(int count);
         void PlayJump();
         void PlayMove();
         void PlayCrouch();
@@ -15,5 +16,8 @@ namespace Code.Character.Hero.HeroInterfaces
         void PlayStunned(bool isStunned);
         void PlayEnterGunMode();
         void PlayEnterHandMode();
+
+        void SetMelleAttackSpeed(float value);
+        void SetRangeAttackSpeed(float value);
     }
 }
