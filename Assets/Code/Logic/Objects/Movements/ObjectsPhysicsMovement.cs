@@ -146,6 +146,10 @@ namespace Code.Logic.Objects.Movements
 
         private void OnDrawGizmos()
         {
+            if (!enabled || _collider == null)
+            {
+                return;
+            }
             switch (CurrentAxis)
             {
                 case Axis.X:

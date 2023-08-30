@@ -342,7 +342,7 @@ PrefabInstance:
     - target: {fileID: 240524611762470668, guid: 10e53213156fae0458c8c0fe62abfc1d, type: 3}
       propertyPath: _collider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 798672530}
     - target: {fileID: 240524611762470670, guid: 10e53213156fae0458c8c0fe62abfc1d, type: 3}
       propertyPath: m_RootOrder
       value: 0
