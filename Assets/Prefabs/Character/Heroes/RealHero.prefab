@@ -116,10 +116,13 @@ MonoBehaviour:
   _rigidbody: {fileID: 4988326818585598692}
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 16392
   _waterLayer:
     serializedVersion: 2
     m_Bits: 16
+  _platformLayer:
+    serializedVersion: 2
+    m_Bits: 16384
   _groundLength: 0.22
   _ceilingLength: 0.95
   _colliderOffset: {x: 0, y: 0, z: 0}

@@ -23,7 +23,10 @@ namespace Code.Logic.Objects.Movements
 
         private void OnEnable()
         {
-            _sprite.SetFlipX(isFlip: false);
+            if (_isFlipSprite)
+            {
+                _sprite.SetFlipX(isFlip: false);
+            }
             StartMove();
         }
 

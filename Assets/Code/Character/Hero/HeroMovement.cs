@@ -39,8 +39,9 @@ namespace Code.Character.Hero
         private bool _pressingMove;
         private bool _pressingCrouch;
 
+        /*
         private const float _maxSupportVelocity = 1f;
-        private const float _supportVelocityMultiplayer = 0.15f;
+        private const float _supportVelocityMultiplayer = 0.15f;*/
 
         #endregion
 
@@ -132,40 +133,16 @@ namespace Code.Character.Hero
 
         #region Velocity
 
-        public void AddBonusSpeed(float bonusSpeed)
-        {
-            _supportVelocity += new Vector2(transform.localScale.x, 0) * bonusSpeed;
-            
-        }
-
         public void SetSupportVelocity(Vector2 otherObjectVelocity)
         {
-            if (_directionX != 0)
-            {
-                if ((_directionX > 0 && otherObjectVelocity.x > 0) || (DirectionX < 0 && otherObjectVelocity.x < 0))
-                {
-                    _supportVelocity = new Vector2(otherObjectVelocity.x, 0) * _supportVelocityMultiplayer * 0.7f;
-                }
-                else
-                {
-                    _supportVelocity = new Vector2(otherObjectVelocity.x, 0) * _supportVelocityMultiplayer;
-                }
-            }
-            else
-                _supportVelocity = new Vector2(otherObjectVelocity.x, 0);
-
-            _supportVelocity = _supportVelocity.x switch
-            {
-                > _maxSupportVelocity => new Vector2(_maxSupportVelocity, 0),
-                < -_maxSupportVelocity => new Vector2(-_maxSupportVelocity, 0),
-                _ => _supportVelocity
-            };
+            _supportVelocity = otherObjectVelocity;
         }
 
 
         private void SetDesiredVelocity()
         {
-            _desiredVelocity = new Vector2(_directionX, 0f) * _hero.Stats.Speed * _hero.Stats.ModeSpeedMultiplayer;
+            _desiredVelocity = new Vector2(_directionX, 0f) * _hero.Stats.Speed * _hero.Stats.ModeSpeedMultiplayer 
+                               + _supportVelocity;
         }
 
         #endregion
@@ -181,26 +158,24 @@ namespace Code.Character.Hero
             if (_pressingMove)
             {
                 if (Mathf.Sign(DirectionX) != Mathf.Sign(_velocity.x))
+                {
                     _maxSpeedChange = _turnSpeed * Time.deltaTime;
+                }
                 else
+                {
                     _maxSpeedChange = _acceleration * Time.deltaTime;
+                }
             }
             else
             {
                 _maxSpeedChange = _deceleration * Time.deltaTime;
             }
 
-            _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange) *
+            _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, _maxSpeedChange) * 
                           (IsCrouch ? _heroParams.crouchSpeed : 1);
 
-            if (_heroCanMove)
-            {
-                _body.velocity = _velocity + _supportVelocity;
-            }
-            else
-            {
-                _body.velocity = _supportVelocity;
-            }
+            _body.velocity = _heroCanMove ? _velocity : _supportVelocity;
+            _supportVelocity = Vector2.zero;
         }
 
         private void Rotation()

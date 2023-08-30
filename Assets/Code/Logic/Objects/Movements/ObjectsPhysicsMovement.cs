@@ -11,17 +11,18 @@ namespace Code.Logic.Objects.Movements
 {
     public class ObjectsPhysicsMovement : ObjectsMovement
     {
-        [Space, Title("Components")] 
-        [SerializeField] private Rigidbody _rigidbody;
+        [Space, Title("Components")] [SerializeField]
+        private Rigidbody _rigidbody;
+
         [SerializeField] private BoxCollider _collider;
         [SerializeField] private PlatformFriction _friction;
         private MovementLimiter _movementLimiter;
 
-        private Vector3 _startPosition, _finishPosition, _targetPosition;
+        private Vector3 _startPosition, _finishPosition;
         private bool _isMove = true;
 
         [Inject]
-        private void Construct(MovementLimiter limiter,AssetsConfig assetsConfig)
+        private void Construct(MovementLimiter limiter, AssetsConfig assetsConfig)
         {
             _movementLimiter = limiter;
             SetPhysicsParams(assetsConfig.FrictionMaterial, assetsConfig.NoFrictionMaterial);
@@ -37,7 +38,18 @@ namespace Code.Logic.Objects.Movements
         {
             if (_isMove)
             {
-                MovementCycle().Forget();
+                if (CheckDistance())
+                {
+                    SwitchForward();
+                }
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            if (_isMove)
+            {
+                Move();
             }
         }
 
@@ -51,41 +63,29 @@ namespace Code.Logic.Objects.Movements
         protected override void StartMove()
         {
             _isMove = true;
-            _rigidbody.isKinematic = false;
         }
 
         protected override void Move() =>
-            _rigidbody.velocity = GetForward() * Speed;
+            _rigidbody.MovePosition(Vector3.MoveTowards(_rigidbody.position, TargetPosition,
+                Speed * Time.fixedDeltaTime));
 
         protected override void StopMove()
         {
             _isMove = false;
-            _rigidbody.isKinematic = true;
         }
 
-        private async UniTaskVoid MovementCycle()
-        {
-            Move();
-
-            await UniTask.WaitUntil(CheckDistance, cancellationToken: this.GetCancellationTokenOnDestroy());
-
-            SwitchForward();
-        }
-
+   
         #endregion
 
         #region Forward
 
         private bool CheckDistance() =>
-            Vector3.Distance(transform.position, DefaultTargetPosition) < 0.1f;
-
-        private Vector3 GetForward() =>
-            (DefaultTargetPosition - transform.position).normalized;
+            Vector3.Distance(transform.position, TargetPosition) < 0.1f;
 
         private void SwitchForward()
         {
             _rigidbody.velocity = Vector3.zero;
-            DefaultTargetPosition = DefaultTargetPosition == _startPosition ? _finishPosition : _startPosition;
+            TargetPosition = TargetPosition == _startPosition ? _finishPosition : _startPosition;
         }
 
         #endregion
@@ -103,7 +103,7 @@ namespace Code.Logic.Objects.Movements
                 _ => transform.position
             };
 
-            DefaultTargetPosition = _finishPosition;
+            TargetPosition = _finishPosition;
         }
 
         private void SetPhysicsParams(PhysicMaterial frictionMaterial, PhysicMaterial noFrictionMaterial)
@@ -154,7 +154,7 @@ namespace Code.Logic.Objects.Movements
                     Gizmos.DrawRay(transform.position, Vector3.right * forward);
                     break;
                 case Axis.Y:
-                    Gizmos.color = new Color32(0, 100, 255, Convert.ToByte(100*Speed));
+                    Gizmos.color = new Color32(0, 100, 255, Convert.ToByte(100 * Speed));
                     Gizmos.DrawCube(transform.position + Vector3.up * Distance / 2,
                         new Vector3(_collider.size.x, Distance));
                     break;

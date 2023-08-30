@@ -9,10 +9,18 @@ using Zenject;
 
 namespace Code.Character.Hero
 {
+    public enum SurfaceType
+    {
+        Ground,
+        Water,
+        MovementPlatform
+    }
     public class HeroCollision : MonoBehaviour, IHeroCollision
     {
         public bool OnGround { get; private set; }
         public bool UnderCeiling { get; private set; }
+
+        public bool OnMovementPlatform { get; private set; }
         public event Action OnWater;
 
         [SerializeField] private bool _isShowGroundRaycast;
@@ -20,6 +28,7 @@ namespace Code.Character.Hero
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private LayerMask _waterLayer;
+        [SerializeField] private LayerMask _platformLayer;
 
         [Space, Title("Collider Settings")] 
         [SerializeField] private float _groundLength = 0.22f;
@@ -49,8 +58,9 @@ namespace Code.Character.Hero
 
         private void Update()
         {
-            OnGround = GroundRaycast();
             UnderCeiling = CeilingRaycast();
+            OnGround = GroundRaycast();
+            OnMovementPlatform = PlatformRaycast();
             SetCollision();
         }
         
@@ -105,6 +115,9 @@ namespace Code.Character.Hero
         
         private bool GroundRaycast() => 
             Physics.Raycast(transform.position, Vector2.down, _groundLength, _groundLayer);
+        
+        private bool PlatformRaycast() => 
+            Physics.Raycast(transform.position, Vector2.down, _groundLength, _platformLayer);
 
         private bool CeilingRaycast() =>
             Physics.Raycast(transform.position + _colliderOffset, Vector2.up, _ceilingLength, _groundLayer) ||

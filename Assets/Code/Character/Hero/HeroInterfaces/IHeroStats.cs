@@ -21,6 +21,7 @@ namespace Code.Character.Hero.HeroInterfaces
         float BonusHealth { get; }
         float Damage { get; }
         float ModeSpeedMultiplayer { get; }
+        float SerfaceSpeedMultiplayer{ get; }
         float Speed { get; }
         float JumpHeight { get; }
         int AirJump { get; }

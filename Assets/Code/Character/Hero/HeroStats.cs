@@ -41,6 +41,7 @@ namespace Code.Character.Hero.HeroInterfaces
         public float Damage => 0;
 
         public float ModeSpeedMultiplayer => 1;
+        public float SerfaceSpeedMultiplayer => 1;
         public float Speed => _heroConfig.HeroParams.MaxSpeed;
         public float JumpHeight => _heroConfig.HeroParams.JumpHeight;
         public int AirJump => 0;

@@ -80,6 +80,8 @@ namespace Code.Character.Hero
             }
         }
 
+        public float SerfaceSpeedMultiplayer => _hero.Collision.OnMovementPlatform ? 4 : 1;
+
         public float Speed => _heroConfig.HeroParams.MaxSpeed + _hero.Upgrade.BonusSpeed;
 
         public float JumpHeight => _heroConfig.HeroParams.JumpHeight
@@ -92,9 +94,9 @@ namespace Code.Character.Hero
             ? _hero.Ability.SuperJumpAbility.CurrentData.MaxAirJump
             : 0;
 
-        public float MelleAttackSpeed => _hero.Ability.HandAttackAbility  is { CurrentData: { } }
-           ? _hero.Ability.HandAttackAbility.CurrentData.attackData.AnimationSpeed
-           :1;
+        public float MelleAttackSpeed => _hero.Ability.HandAttackAbility is { CurrentData: { } }
+            ? _hero.Ability.HandAttackAbility.CurrentData.attackData.AnimationSpeed
+            : 1;
 
         #endregion
     }

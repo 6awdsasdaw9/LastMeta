@@ -7,6 +7,7 @@ namespace Code.Character.Hero.HeroInterfaces
     {
         bool OnGround { get; }
         bool UnderCeiling { get; }
+         bool OnMovementPlatform { get; }
         event Action OnWater;
 
         void SetFrictionPhysicsMaterial();
