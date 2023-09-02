@@ -8,7 +8,7 @@ namespace Code.Logic.CameraLogic
 {
     public class CameraLimiter : MonoBehaviour
     {
-        [SerializeField] private CameraFollow _cameraFollow;
+        [SerializeField] private RealCameraFollow realCameraFollow;
         [SerializeField] private Camera _camera;
 
         [SerializeField] private float _cameraRaycastDistance = 0.2f;
@@ -30,8 +30,8 @@ namespace Code.Logic.CameraLogic
 
         private void Start()
         {
-            _cameraFollow.StopFollow();
-            _cameraFollow.StartFollow();
+            realCameraFollow.StopFollow();
+            realCameraFollow.StartFollow();
         }
 
         private void LateUpdate()
@@ -54,11 +54,11 @@ namespace Code.Logic.CameraLogic
             
             if (_cameraRaycast)
             {
-                _cameraFollow.StopFollow();
+                realCameraFollow.StopFollow();
             }
             if (!_heroRaycast)
             {
-                _cameraFollow.StartFollow();
+                realCameraFollow.StartFollow();
                 _cooldown.SetMaxCooldown();
             }
 

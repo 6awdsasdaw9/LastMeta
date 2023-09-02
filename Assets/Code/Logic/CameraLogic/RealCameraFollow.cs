@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Code.Logic.CameraLogic
 {
-    public class CameraFollow : MonoBehaviour, ISavedData
+    public class RealCameraFollow : MonoBehaviour, ISavedData
     {
         [SerializeField] private bool _isTeleportToPlayerOnAwake =true;
         [SerializeField] private bool _isCanMove = true;

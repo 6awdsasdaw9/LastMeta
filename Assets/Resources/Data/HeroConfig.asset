@@ -15,9 +15,9 @@ MonoBehaviour:
   HeroParams:
     maxHP: 100
     MaxSpeed: 2.7
-    crouchSpeed: 0.63
-    maxAcceleration: 34.5
-    maxDeceleration: 34.9
+    crouchSpeed: 0.688
+    maxAcceleration: 21.4
+    maxDeceleration: 29.9
     maxTurnSpeed: 53.8
     maxAirAcceleration: 11
     maxAirDeceleration: 51.7

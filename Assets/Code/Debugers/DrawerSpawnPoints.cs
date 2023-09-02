@@ -4,34 +4,35 @@ using Code.Data.Configs;
 using Code.Logic.Collisions.Triggers;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Code.Debugers
 {
     public class DrawerSpawnPoints : MonoBehaviour
     {
-
-
-        [SerializeField] private int _configIndex;
         [SerializeField] private ScenesConfig _config;
 
+
         [ShowInInspector]
-        private Constants.Scenes _selectedScene => 
-               _config == null || _config.ScenesParams.Count <= _configIndex
-                ? Constants.Scenes.Initial
-                : _config.ScenesParams[_configIndex].Scene;
-        
-        
-        [ShowInInspector]
-        private List<PointData> points =>  _config == null || _config.ScenesParams.Count <= _configIndex
-            ? null
-            : _config.ScenesParams[_configIndex].Points;
+        private List<PointData> points => _config?.ScenesParams
+            ?.FirstOrDefault(p => p.Scene.ToString() == SceneManager.GetActiveScene().name)?.Points;
+
         private void OnDrawGizmos()
         {
             if (_config == null)
                 return;
 
             Gizmos.color = Color.cyan;
-            var scenePoints = _config.ScenesParams[_configIndex].Points;
+
+            var sceneParams =
+                _config.ScenesParams.FirstOrDefault(p => p.Scene.ToString() == SceneManager.GetActiveScene().name);
+            if (sceneParams == null)
+            {
+                Logg.ColorLog("Chesk scene param in ScenesConfig", LogStyle.Warning);
+                return;
+            }
+
+            var scenePoints = sceneParams.Points;
             for (var index = 0; index < scenePoints.Count; index++)
             {
                 var scenePoint = scenePoints[index];
@@ -42,16 +43,22 @@ namespace Code.Debugers
         [Button]
         private void SetPoints()
         {
-            _config.ScenesParams[_configIndex].Points.Clear();
+            var sceneParams =
+                _config.ScenesParams.FirstOrDefault(p => p.Scene.ToString() == SceneManager.GetActiveScene().name);
+            if (sceneParams == null)
+            {
+                Logg.ColorLog("Chesk scene param in ScenesConfig", LogStyle.Warning);
+                return;
+            }
 
+            sceneParams.Points.Clear();
             var saveTriggers = FindObjectsOfType<SaveTrigger>().ToList();
             saveTriggers.Sort(new SaveTriggerComparer());
-            // Перебираем все объекты на сцене
             for (var index = 0; index < saveTriggers.Count; index++)
             {
                 var trigger = saveTriggers[index];
                 trigger.ID = index;
-                _config.ScenesParams[_configIndex].Points.Add(trigger.TriggerPointData);
+                sceneParams.Points.Add(trigger.TriggerPointData);
             }
         }
     }
@@ -71,5 +78,4 @@ namespace Code.Debugers
             return xNumber.CompareTo(yNumber);
         }
     }
-            
 }

@@ -2,7 +2,6 @@ using System;
 using Code.Data.Configs;
 using Code.Logic.Objects.Platforming;
 using Code.Services;
-using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;

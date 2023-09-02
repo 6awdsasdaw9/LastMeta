@@ -10,7 +10,7 @@ namespace Code.Services.ScenesEvents
     public class CutSceneController : MonoBehaviour
     {
       [SerializeField] private PlayableDirector _timelime;
-      [SerializeField] private CameraFollow _cameraFollow;
+      [SerializeField] private RealCameraFollow realCameraFollow;
       
       private IHero _hero;
       private MovementLimiter _movementLimiter;
@@ -29,7 +29,7 @@ namespace Code.Services.ScenesEvents
       private void PlayCutScene()
       {
           _movementLimiter.DisableMovement();
-          _cameraFollow.enabled = false;
+          realCameraFollow.enabled = false;
           _timelime.Play();
       }
 

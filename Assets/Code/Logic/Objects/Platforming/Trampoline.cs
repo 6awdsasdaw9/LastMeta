@@ -69,7 +69,7 @@ namespace Code.Logic.Objects.Platforming
         {
             if (collision.gameObject.TryGetComponent(out Rigidbody rb))
             {
-                rb.AddForce(_force, ForceMode.Impulse);
+                rb.AddForce(_force * rb.mass, ForceMode.Impulse);
             }
         }
 

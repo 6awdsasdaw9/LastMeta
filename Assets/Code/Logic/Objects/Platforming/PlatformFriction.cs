@@ -30,7 +30,7 @@ namespace Code.Logic.Objects.Platforming
             if (!collision.gameObject.CompareTag(Constants.PlayerTag)) 
                 return;
         
-            _hero.Movement.SetSupportVelocity(_platformRb.velocity);
+            _hero.Movement.SetSupportVelocity(_platformRb.velocity );
         }
 
         private void OnCollisionExit(Collision collision)
@@ -38,7 +38,6 @@ namespace Code.Logic.Objects.Platforming
             if (!collision.gameObject.CompareTag(Constants.PlayerTag)) 
                 return;
         
-            _hero.Movement.SetSupportVelocity(Vector2.zero);
             _hero.Collision.SetNoFrictionPhysicsMaterial();
         }
     }
